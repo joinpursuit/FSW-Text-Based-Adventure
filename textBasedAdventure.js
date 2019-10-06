@@ -78,7 +78,37 @@ while (breakfastComplete === false) {
             break;
         case "N":
             // If the user does not eat breakfast then this branch is followed
-            console.log("You're missing out!");
+            // Add in a battle with a waffle iron because it hasn't been used in forever
+            console.log("This angered your waffle iron. It attacks!");
+            console.log("The waffle iron uses 'face press'!");
+            let waffleAttack = Math.floor(Math.random() * 25) + 1);
+            health -= waffleAttack;
+            console.log(`You have ${health}HP`);
+            console.log("Which action do you take?");
+            console.log("1. Unplug the waffle iron.");
+            console.log("2. Splash water.");
+            console.log("3. Jump on it.");
+            console.log("4. Just walk away.");
+            let waffleCounter = readline.question("(Input a number between 1 and 4) ");
+            let waffleBattleComplete = false;
+            while (waffleBattleComplete === false) {
+                    if(waffleCounter === "1") {
+                        waffleBattleComplete = true;
+                        break;
+                    } else if(waffleCounter === "2") {
+                        waffleBattleComplete = true;
+                        break;
+                    } else if (waffleCounter === "3") {
+                        waffleBattleComplete = true;
+                        break;
+                    } else if (waffleCounter === "4") {
+                        waffleBattleComplete = true;
+                        break;
+                    } else {
+                        console.log("I do not understand");
+                        waffleCounter = readline.question("(Input a number between 1 and 4) ");
+                    }
+            }
             breakfastComplete = true;
             break;
         default:
