@@ -45,11 +45,31 @@ while(healComplete === false) {
         //If the user enters a negative number requires a redo of the heal input
         console.log(`You can't heal ${bathroomHeal} points!`);
         bathroomHeal = readline.question("How many health points do you recover? ");
-    } else {
-        //If none of the above are true it heals the inputted amount
+    } else if(Number(bathroomHeal) > 0 && Number(bathroomHeal) < breathDamage){
+        //If the number is between 0 and the damage the user is healed
         health += Number(bathroomHeal);
         console.log("Ah, refreshing.");
         healComplete = true;
         break;
+    } else {
+        //If any of the above are not true then a redo is required
+        console.log("I do not understand.");
+        bathroomHeal = readline.question("How many health points do you recover? ");
     }
+}
+
+// Breakfast & Question 4
+console.log("You finish your bathroom routine and continue about your day.");
+let breakfast = readline.question("Do you eat breakfast?(Y/N) ");
+
+//Branching if for breakfast.
+breakfast = breakfast.toUpperCase();
+if(breakfast === "Y") {
+    
+} else if(breakfast === "N") {
+
+} else {
+    //If any of the above are not true then a redo is required
+    console.log("I do not understand.");
+    breakfast = readline.question("Do you eat breakfast?(Y/N) ");
 }
