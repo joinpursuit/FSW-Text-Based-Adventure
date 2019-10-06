@@ -5,8 +5,9 @@ const readline = require('readline-sync')
 // console.log(`Hello ${nameInput}!  Welcome to my game.`)
 
 // Introduction - Question 1
-let nameInput = readline.question("Enter your name: ");
+let nameInput = readline.question("Enter your first name: ");
 console.log(`Good morning ${nameInput}!`);
+console.log("");
 console.log("You wake up after a good nights rest and walk to the bathroom.");
 
 // Bathroom attack
@@ -62,14 +63,27 @@ while(healComplete === false) {
 console.log("You finish your bathroom routine and continue about your day.");
 let breakfast = readline.question("Do you eat breakfast?(Y/N) ");
 
-//Branching if for breakfast.
+// Branching switch for breakfast.
 breakfast = breakfast.toUpperCase();
-if(breakfast === "Y") {
-    
-} else if(breakfast === "N") {
-
-} else {
-    //If any of the above are not true then a redo is required
-    console.log("I do not understand.");
-    breakfast = readline.question("Do you eat breakfast?(Y/N) ");
+let breakfastComplete = false;
+let favoriteBreakfast; // Initializing favoriteBreakfast so it can be called outside of the while loop if necessary
+while (breakfastComplete === false) {
+    switch(breakfast) {
+        case "Y": 
+            // If the user eats breakfast then this branch is followed
+            console.log(`The most important meal of the day! Serving it up ${nameInput}'s way!`);
+            favoriteBreakfast = readline.question("What's your favorite breakfast food? ");
+            console.log(`No way! I love ${favoriteBreakfast}`);
+            breakfastComplete = true;
+            break;
+        case "N":
+            // If the user does not eat breakfast then this branch is followed
+            console.log("You're missing out!");
+            breakfastComplete = true;
+            break;
+        default:
+            //If any of the above are not true then a redo is required
+            console.log("I do not understand.");
+            breakfast = readline.question("Do you eat breakfast?(Y/N) ");
+    }
 }
