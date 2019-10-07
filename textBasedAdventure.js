@@ -1,6 +1,6 @@
 const readline = require("readline-sync");
 // Example
-// let nameInput = readline.question("Enter your name: ")
+// let nameInput = userInput("Enter your name: ")
 // console.log(`Hello ${nameInput}!  Welcome to my game.`)
 
 // Creating arrays that will display the questions and answers given for the user at the end.
@@ -8,75 +8,111 @@ let arrQuestions = [];
 let arrAnswers = [];
 let health = 100;
 
-// Introduction - Question 1
-let nameInput = readline.question("Enter your first name: ");
-arrQuestions.push("Enter your first name");
-arrAnswers.push(nameInput);
+//Creating functions for cleaner code
+function healthDamage(damage) {
+    //Logs out how much damage taken for the argument "damage" and the users new HP
+    console.log(`You take ${damage} points of damage! You have ${health}HP.`)
+}
+
+function newLine() {
+    //Creates a line spacing
+    console.log("");
+}
+
+function answersPush(arg) {
+    //Pushes the argument to arrAnswers array
+    arrAnswers.push(arg);
+}
+
+function questionsPush(arg) {
+    //pushes the argument to arrQuestions array
+    arrQuestions.push(arg);
+}
+
+function randomInt(max, min) {
+    return Math.floor(Math.random() * max) + min;
+}
+
+function userInput(question) {
+    readline.question(question);
+}
+
+// 1# Introduction
+let nameInput = userInput("Enter your first name: ");
+questionsPush("Enter your first name");
+answersPush(nameInput);
 
 console.log(`Good morning ${nameInput}!`);
-console.log("");
+newLine();
 console.log("You wake up after a good nights rest and walk to the bathroom.");
-
-// Bathroom attack
 console.log("Oh no! Bad breath attacks!");
-let breathDamage = Math.floor(Math.random() * 15) + 1; // Takes a random integer for damage
+
+let breathDamage = randomInt(15, 1); // Takes a random integer for damage
 health -= breathDamage; // Subtracts the damage above from the users health total
-console.log(`You take ${breathDamage} points of damage! You have ${health}HP.`);
+healthDamage(breathDamage);
 
-// Bathroom Routine - Question 2
-let firstStep = readline.question(
-  "What's the first step of your bathroom routine? "
-);
-arrQuestions.push("What's the first step of your bathroom routine? ");
-arrAnswers.push(firstStep);
+// 2# Bathroom
+let firstStep = userInput("What's the first step of your bathroom routine? ");
+
+//Arrays
+questionsPush("What's the first step of your bathroom routine? ");
+answersPush(firstStep);
+
+newLine();
 console.log(`${firstStep} heals you.`);
+let bathroomHeal = userInput("How many health points do you recover? ");
 
-// Bathroom Routine - Question 3 (Number input)
-let bathroomHeal = readline.question("How many health points do you recover? ");
-arrQuestions.push("How many health points do you recover? ");
+//Array
+questionsPush("How many health points do you recover? ");
 
-// Bathroom Routine - While and if
+//Checking for valid user inputs, loops until the input is valid
 let healComplete = false;
-healComplete: while (healComplete === false) {
+healComplete: 
+while (healComplete === false) {
   if (Number(bathroomHeal) > breathDamage) {
     //If the heal is greater than the damage taken requires a redo of the heal input
     console.log("So you're trying to cheat? I've caught you.");
-    bathroomHeal = readline.question("How many health points do you recover? ");
+    bathroomHeal = userInput("How many health points do you recover? ");
+    
   } else if (Number(bathroomHeal) === breathDamage) {
     //If the heal is equal to the damage taken then user is fully healed
     health += Number(bathroomHeal);
     console.log("Fully healed!");
-    arrAnswers.push(bathroomHeal);
+
+    //Array
+    answersPush(bathroomHeal);
+
     healComplete = true;
     break healComplete;
+
   } else if (Number(bathroomHeal) === 0) {
     //If the heal is equal to 0 the user heals nothing
     console.log("You heal nothing!");
-    arrAnswers.push(bathroomHeal);
+    answersPush(bathroomHeal);
     healComplete = true;
     break healComplete;
   } else if (Number(bathroomHeal) < 0) {
     //If the user enters a negative number requires a redo of the heal input
     console.log(`You can't heal ${bathroomHeal} points!`);
-    bathroomHeal = readline.question("How many health points do you recover? ");
+    bathroomHeal = userInput("How many health points do you recover? ");
   } else if (Number(bathroomHeal) > 0 && Number(bathroomHeal) < breathDamage) {
     //If the number is between 0 and the damage the user is healed
     health += Number(bathroomHeal);
     console.log("Ah, refreshing.");
-    arrAnswers.push(bathroomHeal);
+    answersPush(bathroomHeal);
     healComplete = true;
     break healComplete;
   } else {
     //If any of the above are not true then a redo is required
     console.log("I do not understand.");
-    bathroomHeal = readline.question("How many health points do you recover? ");
+    bathroomHeal = userInput("How many health points do you recover? ");
   }
 }
 
 // Breakfast & Question 4
 console.log("You finish your bathroom routine and continue about your day.");
-let breakfast = readline.question("Do you eat breakfast?(Y/N) ");
-arrQuestions.push("Do you eat breakfast?(Y/N) ");
+let breakfast = userInput("Do you eat breakfast?(Y/N) ");
+questionsPush("Do you eat breakfast?(Y/N) ");
 
 // Branching switch for breakfast.
 breakfast = breakfast.toUpperCase();
@@ -90,39 +126,39 @@ breakfastComplete: while (breakfastComplete === false) {
       console.log(
         `The most important meal of the day! Serving it up ${nameInput}'s way!`
       );
-      favoriteBreakfast = readline.question(
+      favoriteBreakfast = userInput(
         "What's your favorite breakfast food? "
       );
       console.log(`No way! I love ${favoriteBreakfast}`);
-      arrAnswers.push(breakfast);
+      answersPush(breakfast);
       breakfastComplete = true;
       break breakfastComplete;
     case "N": //Contains question 5
       // If the user does not eat breakfast then this branch is followed
       // Add in a battle with a waffle iron because it hasn't been used in forever
-      arrAnswers.push(breakfast);
+      answersPush(breakfast);
       console.log("This angered your waffle iron. It attacks!");
       console.log("The waffle iron uses 'face press'!");
-      let waffleAttack = Math.floor(Math.random() * 25) + 1; // Random Integer between 1 and 25
+      let waffleAttack = randomInt(25, 1); // Random Integer between 1 and 25
       health -= waffleAttack; // Subtracting the damage done from total health
 
-      console.log(`You take ${waffleAttack}. You have ${health}HP`);
+      healthDamage(waffleAttack);
       console.log("Which action do you take?");
       console.log("1. Unplug the waffle iron.");
       console.log("2. Splash water.");
       console.log("3. Jump on it.");
       console.log("4. Just walk away.");
-      let waffleCounter = readline.question(
+      let waffleCounter = userInput(
         "(Input a number between 1 and 4) "
       );
-      arrQuestions.push("Which action do you take against the waffle iron?");
+      questionsPush("Which action do you take against the waffle iron?");
       let waffleBattleComplete = false;
       waffleBattle: while (waffleBattleComplete === false) {
         if (waffleCounter === "1") {
           //If the user chooses choice 1 the move is super effective and defeats the waffle iron
           console.log("The move is super effective!");
           console.log("The waffle iron is defeated.");
-          arrAnswers.push("Unplug the waffle iron");
+          answersPush("Unplug the waffle iron");
           waffleBattleComplete = true;
           break waffleBattle;
         } else if (waffleCounter === "2") {
@@ -132,7 +168,7 @@ breakfastComplete: while (breakfastComplete === false) {
           console.log("The explosion reaches to you and defeats you.");
           health = 0;
           console.log("You have died.");
-          arrAnswers.push("Splash water");
+          answersPush("Splash water");
           waffleBattleComplete = true;
           process.exit();
           break waffleBattle;
@@ -141,8 +177,8 @@ breakfastComplete: while (breakfastComplete === false) {
           console.log("The move is effective!");
           console.log("The heat from the waffle iron burns your legs.");
           health -= 15;
-          console.log(`You take 15 points of damage. You have ${health}HP.`);
-          arrAnswers.push("Jump on it");
+          healthDamage(15);
+          answersPush("Jump on it");
           waffleBattleComplete = true;
           break waffleBattle;
         } else if (waffleCounter === "4") {
@@ -151,7 +187,8 @@ breakfastComplete: while (breakfastComplete === false) {
           console.log("The waffle iron's anger grows.");
           console.log("The waffle iron uses 'waffle throw!'");
           console.log(`You take ${health} points of damage!`);
-          arrAnswers.push("Just walk away.");
+          health = 0;
+          answersPush("Just walk away.");
           waffleBattleComplete = true;
           process.exit();
           break waffleBattle;
@@ -163,7 +200,7 @@ breakfastComplete: while (breakfastComplete === false) {
           console.log("2. Splash water.");
           console.log("3. Jump on it.");
           console.log("4. Just walk away.");
-          waffleCounter = readline.question(
+          waffleCounter = userInput(
             "(Input a number between 1 and 4) "
           );
         }
@@ -173,15 +210,15 @@ breakfastComplete: while (breakfastComplete === false) {
     default:
       //If any of the above are not true then a redo is required
       console.log("I do not understand.");
-      breakfast = readline.question("Do you eat breakfast?(Y/N) ");
+      breakfast = useIuserInput("Do you eat breakfast?(Y/N) ");
   }
 }
 
 // Pet Care - Question 6
 console.log("You return to your room.");
 console.log("You get dressed, and ready for your day.");
-let pets = readline.question("Do you have any pets?(Y/N) ");
-arrQuestions.push("Do you have any pets?(Y/N) ");
+let pets = userInput("Do you have any pets?(Y/N) ");
+questionsPush("Do you have any pets?(Y/N) ");
 pets = pets.toUpperCase();
 
 let petsComplete = false;
@@ -191,39 +228,39 @@ petsComplete: while (petsComplete === false) {
   //Contains questions 7
   switch (pets) {
     case "Y":
-      arrAnswers.push(pets);
+      answersPush(pets);
       let petsAmountComplete = false;
       petsAmount: while (petsAmountComplete === false) {
-        petsAmount = readline.question("How many pets do you have? ");
-        arrQuestions.push("How many pets do you have? ");
+        petsAmount = userInput("How many pets do you have? ");
+        questionsPush("How many pets do you have? ");
         let petNumber = Number(petsAmount);
         if (petNumber > 1) {
           for (let i = 1; i < petNumber + 1; i += 1) {
-            let currentPet = readline.question(`What is pet #${i}? `);
+            let currentPet = userInput(`What is pet #${i}? `);
             arrPets.push(currentPet.toLowerCase());
           }
           for (let i = 0; i < arrPets.length; i += 1) {
             console.log(`You take care of your ${arrPets[i]}`);
           }
-          arrAnswers.push(petsAmount);
+          answersPush(petsAmount);
           break petsAmount;
         } else if (petNumber === 1) {
           console.log("You take care of your pet.");
-          arrAnswers.push(petsAmount);
+          answersPush(petsAmount);
           break petsAmount;
         } else {
           console.log("I do not understand.");
-          petsAmount = readline.question("How many pets do you have? ");
+          petsAmount = userInput("How many pets do you have? ");
         }
       }
       break petsComplete;
     case "N":
       console.log("Taking care of an animal is so much responsibility");
-      arrAnswers.push(pets);
+      answersPush(pets);
       break petsComplete;
     default:
       console.log("I do not understand.");
-      pets = readline.question("Do you have any pets?(Y/N) ");
+      pets = userInput("Do you have any pets?(Y/N) ");
   }
 }
 
@@ -234,14 +271,14 @@ console.log(
 );
 console.log("1. Still decide to drive.");
 console.log("2. Still take the train.");
-let transportation = readline.question("(Input either 1 or 2) ");
-arrQuestions.push("Do you drive or take the train?");
+let transportation = userInput("(Input either 1 or 2) ");
+questionsPush("Do you drive or take the train?");
 let transportationComplete = false;
 transportationComplete: while (transportationComplete === false) {
   switch (transportation) {
     case "1":
       //Battle with a road rager
-      arrAnswers.push("Take your car.");
+      answersPush("Take your car.");
       console.log("You decide to drive.");
       console.log("On your drive you get cut off by a reckless driver.");
       console.log("In response you honk your horn.");
@@ -250,17 +287,17 @@ transportationComplete: while (transportationComplete === false) {
       );
       console.log("The road rager attacks.");
       console.log("The road rager uses 'insult'.");
-      let roadRageInsultDamage = Math.floor(Math.random() * 25) + 1;
+      let roadRageInsultDamage = randomInt(25, 1);
       health -= roadRageInsultDamage;
-      console.log(`You take ${roadRageInsultDamage}. You have ${health}HP`);
+      healthDamage(roadRageInsultDamage);
       console.log("Which action do you take?");
       console.log("1. Insult back");
       console.log("2. Honk your horn");
       console.log("3. Ignore the road rager");
-      let roadRageCounter = readline.question(
+      let roadRageCounter = userInput(
         "(Input a number between 1 and 3) "
       );
-      arrQuestions.push("Which action do you take against the Road Rager?");
+      questionsPush("Which action do you take against the Road Rager?");
       let roadRageComplete = false;
       roadRageComplete: while (roadRageComplete === false) {
         switch (roadRageCounter) {
@@ -268,7 +305,7 @@ transportationComplete: while (transportationComplete === false) {
             console.log("Your insult does nothing!");
             console.log("Road Rager uses 'Mom insult'");
             console.log(`You take ${health} points of damage!`);
-            arrAnswers.push("Insult back");
+            answersPush("Insult back");
             roadRageComplete = true;
             health = 0;
             process.exit();
@@ -278,7 +315,7 @@ transportationComplete: while (transportationComplete === false) {
             console.log("He picks up a rock and throws it at your car.");
             console.log("The rock misses your car completely.");
             console.log("The road rager returns to his car in shame.");
-            arrAnswers.push("Honk your horn");
+            answersPush("Honk your horn");
             roadRageComplete = true;
             break roadRageComplete;
           case "3":
@@ -287,7 +324,7 @@ transportationComplete: while (transportationComplete === false) {
             console.log(
               "The road rager angrily returns to his car after no response."
             );
-            arrAnswers.push("Ignore the road rager");
+            answersPush("Ignore the road rager");
             roadRageComplete = true;
             break roadRageComplete;
           default:
@@ -295,7 +332,7 @@ transportationComplete: while (transportationComplete === false) {
             console.log("1. Insult back");
             console.log("2. Honk your horn");
             console.log("3. Ignore the road rager");
-            roadRageCounter = readline.question(
+            roadRageCounter = userInput(
               "(Input a number between 1 and 3) "
             );
         }
@@ -304,7 +341,7 @@ transportationComplete: while (transportationComplete === false) {
       break transportationComplete;
     case "2":
       //Battle with a subway rat
-      arrAnswers.push("Take the train");
+      answersPush("Take the train");
       console.log("You decide to take the train.");
       console.log("You arrive at the station.");
       console.log(
@@ -317,16 +354,16 @@ transportationComplete: while (transportationComplete === false) {
         "Out of fear you jump up and catch the attention of a subway rat!"
       );
       console.log("The rat leaps at you and uses 'Bite'");
-      let ratAttack = Math.floor(Math.random() * 10) + 1;
+      let ratAttack = randomInt(10, 1);
       health -= ratAttack;
-      console.log(`You take ${ratAttack}. You have ${health}HP`);
+      healthDamage(ratAttack);
       console.log("Which action do you take?");
       console.log("1. Kick the rat.");
       console.log("2. Pick the rat up and throw it at the train.");
       console.log("3. Walk to the other side of the platform.");
       console.log("4. Give the rat the pizza left on the bench.");
-      let ratCounter = readline.question("(Input a number between 1 and 4) ");
-      arrQuestions.push("Which action do you take against the rat?");
+      let ratCounter = userInput("(Input a number between 1 and 4) ");
+      questionsPush("Which action do you take against the rat?");
       let ratComplete = false;
       ratComplete: while (ratComplete === false) {
         switch (ratCounter) {
@@ -339,7 +376,7 @@ transportationComplete: while (transportationComplete === false) {
               "While attempting to get the rat off you stumble and hit your head on the bench."
             );
             console.log(`You take ${health} points of damage!`);
-            arrAnswers.push("Kick the rat.");
+            answersPush("Kick the rat.");
             ratComplete = true;
             health = 0;
             process.exit();
@@ -353,8 +390,8 @@ transportationComplete: while (transportationComplete === false) {
               "The rat explodes on impact and it's remains splatter you."
             );
             health -= 5;
-            console.log(`You take 5 points of damage! You have ${health}HP.`);
-            arrAnswers.push("Pick the rat up and throw it at the train.");
+            healthDamage(5);
+            answersPush("Pick the rat up and throw it at the train.");
             ratComplete = true;
             break ratComplete;
           case "3":
@@ -365,7 +402,7 @@ transportationComplete: while (transportationComplete === false) {
               "Upon reaching it you turn to see the rat is nowhere to be found."
             );
             console.log("You are safe for the time being.");
-            arrAnswers.push("Walk to the other side of the platform.");
+            answersPush("Walk to the other side of the platform.");
             ratComplete = true;
             break ratComplete;
           case "4":
@@ -382,7 +419,7 @@ transportationComplete: while (transportationComplete === false) {
             console.log(
               "You can't help but feel like you've made new friends."
             );
-            arrAnswers.push("Give the rat the pizza left on the bench.");
+            answersPush("Give the rat the pizza left on the bench.");
             ratComplete = true;
             break ratComplete;
           default:
@@ -405,7 +442,7 @@ transportationComplete: while (transportationComplete === false) {
       );
       console.log("1. Still decide to drive.");
       console.log("2. Still take the train.");
-      transportation = readline.question("(Input either 1 or 2) ");
+      transportation = userInput("(Input either 1 or 2) ");
   }
 }
 console.log(
@@ -421,7 +458,7 @@ console.log("You take out your phone and realize it's Sunday.");
 
 console.log(" ");
 console.log("Thank you for playing my game!");
-let review = readline.question(
+let review = userInput(
   "Would you like to see review the answers you gave?(Y/N) "
 );
 review = review.toUpperCase();
@@ -441,7 +478,7 @@ reviewComplete: while (reviewComplete === false) {
       break reviewComplete;
     default:
       console.log("I do not understand.");
-      review = readline.question(
+      review = userInput(
         "Would you like to see review the answers you gave?(Y/N) "
       );
   }
