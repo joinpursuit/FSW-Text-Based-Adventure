@@ -118,7 +118,7 @@ breakfastComplete: while (breakfastComplete === false) {
           //If the user chooses choice 1 the move is super effective and defeats the waffle iron
           console.log("The move is super effective!");
           console.log("The waffle iron is defeated.");
-          arrAnswers.push("Unpluf the waffle iron");
+          arrAnswers.push("Unplug the waffle iron");
           waffleBattleComplete = true;
           break waffleBattle;
         } else if (waffleCounter === "2") {
@@ -263,6 +263,7 @@ while(transportationComplete === false) {
                         console.log(`You take ${health} points of damage!`);
                         arrAnswers.push("Insult back");
                         roadRageComplete = true;
+                        health = 0;
                         process.exit();
                         break roadRageComplete;
                     case "2": 
@@ -289,12 +290,75 @@ while(transportationComplete === false) {
                 }
             }
             console.log("You continue driving to your job.");
-            arrAnswers.push(transportation);
+            arrAnswers.push("Take your car.");
             break transportationComplete;
         case "2":
             //Battle with a subway rat
-            console.log("You decide to take the train.")
-            arrAnswers.push(transportation);
+            console.log("You decide to take the train.");
+            console.log("You arrive at the station.");
+            console.log("You notice an entirely empty bench, except for a lone slice of pizza, and take a seat.");
+            console.log("After a few minutes of sitting you feel a brush against your leg.");
+            console.log("Out of fear you jump up and catch the attention of a subway rat!");
+            console.log("The rat leaps at you and uses 'Bite'");
+            let ratAttack = Math.floor(Math.random() * 10) + 1;
+            health -= ratAttack;
+            console.log(`You take ${ratAttack}. You have ${health}HP`);
+            console.log("Which action do you take?");
+            console.log("1. Kick the rat.");
+            console.log("2. Pick the rat up and throw it at the train.");
+            console.log("3. Walk to the other side of the platform.");
+            console.log("4. Give the rat the pizza left on the bench.")
+            let ratCounter = readline.question("(Input a number between 1 and 4) ");
+            let ratComplete = false;
+            ratComplete: 
+            while(ratComplete === false) {
+                switch(ratCounter) {
+                    case "1": 
+                        console.log("You begin to kick.");
+                        console.log("Mid swing the rat jumps and latches onto your leg with it's claws.");
+                        console.log("While attempting to get the rat off you stumble and hit your head on the bench.");
+                        console.log(`You take ${health} points of damage!`);
+                        arrAnswers.push("Kick the rat.");
+                        ratComplete = true;
+                        health = 0;
+                        process.exit();
+                        break ratComplete;
+                    case "2":
+                        console.log("Your inner neanderthal shows.");
+                        console.log("You grab the rat by it's tail and throw it at the incoming train.");
+                        console.log("The rat explodes on impact and it's remains splatter you.");
+                        health -= 5;
+                        console.log(`You take 5 points of damage! You have ${health}HP.`);
+                        arrAnswers.push("Pick the rat up and throw it at the train.");
+                        ratComplete = true;
+                        break ratComplete;
+                    case "3":
+                        console.log("After the rat lands you immediately sprint to the other side of the platform.");
+                        console.log("Upon reaching it you turn to see the rat is nowhere to be found.");
+                        console.log("You are safe for the time being.");
+                        arrAnswers.push("Walk to the other side of the platform.");
+                        ratComplete = true;
+                        break ratComplete;
+                    case "4":
+                        console.log("You grab the slice of pizza and throw it next to the rat.");
+                        console.log("The rat looks at you, then the pizza, then back at you.");
+                        console.log("It stands on it's hind legs, and bows.");
+                        console.log("Four turtles emerge from under the bench and help the rat carry the slice away.");
+                        console.log("You can't help but feel like you've made new friends.");
+                        arrAnswers.push("Give the rat the pizza left on the bench.");
+                        ratComplete = true;
+                        break ratComplete;
+                    default:
+                        console.log("I do not understand.");
+                        console.log("Which action do you take?");
+                        console.log("1. Kick the rat.");
+                        console.log("2. Pick the rat up and throw it at the train.");
+                        console.log("3. Walk to the other side of the platform.");
+                        console.log("4. Give the rat the pizza left on the bench.")
+                }
+            }
+            console.log("Your train arrives and you continue on your adventure to work.");
+            arrAnswers.push("Take the train");
             break transportationComplete;
         default:
             console.log("I do not understand.");
@@ -304,7 +368,12 @@ while(transportationComplete === false) {
             transportation = readline.question("(Input either 1 or 2) ");
     }
 }
-
+console.log("After what seems like forever you finally arrive outside of your office building");
+console.log("You step inside the building.");
+console.log("The security guard makes eye contact with you and you smile back.");
+console.log("She asks if you're here for some overtime.");
+console.log("You're confused as to why she would ask that...");
+console.log("You take out your phone and realize it's Sunday.");
 
 // Add an array for all the questions and all the answers to be displayed at the very end
 // It'll run through using a for loop and display the question and answer
