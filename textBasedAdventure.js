@@ -283,7 +283,8 @@ pets = pets.toUpperCase();
 let petsComplete = false;
 let petsAmount;
 let arrPets = [];//Initializing the array that well store the pet data
-petsComplete: while (petsComplete === false) {
+petsComplete: 
+while (petsComplete === false) {
   //Contains questions 7
   switch (pets) {
     case "Y":
@@ -292,7 +293,8 @@ petsComplete: while (petsComplete === false) {
 
         //Checking for valid user inputs, loops until the input is valid
         let petsAmountComplete = false;
-        petsAmount: while (petsAmountComplete === false) {
+        petsAmount: 
+        while (petsAmountComplete === false) {
             petsAmount = userInput("How many pets do you have? ");
             questionsPush("How many pets do you have? ");
 
@@ -339,7 +341,8 @@ petsComplete: while (petsComplete === false) {
 
         //End loop
         petsAmountComplete = true;
-        break petsAmount;
+        break petsComplete;
+        
     default:
         console.log("I do not understand.");
         pets = userInput("Do you have any pets?(Y/N) ");
@@ -361,7 +364,8 @@ questionsPush("Do you drive or take the train?");
 
 //Checking for valid user inputs, loops until the input is valid
 let transportationComplete = false;
-transportationComplete: while (transportationComplete === false) {
+transportationComplete: 
+while (transportationComplete === false) {
   switch (transportation) {
     case "1":
       //Battle with a road rager
@@ -393,7 +397,8 @@ transportationComplete: while (transportationComplete === false) {
 
       //Checking for valid user inputs, loops until the input is valid
       let roadRageComplete = false;
-      roadRageComplete: while (roadRageComplete === false) {
+      roadRageComplete: 
+      while (roadRageComplete === false) {
         switch (roadRageCounter) {
           case "1":
             console.log("Your insult does nothing!");
@@ -479,7 +484,8 @@ transportationComplete: while (transportationComplete === false) {
 
       //Checking for valid user inputs, loops until the input is valid
       let ratComplete = false;
-      ratComplete: while (ratComplete === false) {
+      ratComplete: 
+      while (ratComplete === false) {
         switch (ratCounter) {
           case "1":
             console.log("You begin to kick.");
@@ -575,7 +581,8 @@ review = review.toUpperCase();
 
 //Checking for valid user inputs, loops until the input is valid
 let reviewComplete = false;
-reviewComplete: while (reviewComplete === false) {
+reviewComplete: 
+while (reviewComplete === false) {
   switch (review) {
     case "Y":
         newLine();
