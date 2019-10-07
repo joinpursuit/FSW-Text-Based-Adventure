@@ -6,6 +6,7 @@ const readline = require("readline-sync");
 // Creating arrays that will display the questions and answers given for the user at the end.
 let arrQuestions = [];
 let arrAnswers = [];
+let health = 100;
 
 // Introduction - Question 1
 let nameInput = readline.question("Enter your first name: ");
@@ -15,7 +16,6 @@ arrAnswers.push(nameInput);
 console.log(`Good morning ${nameInput}!`);
 console.log("");
 console.log("You wake up after a good nights rest and walk to the bathroom.");
-let health = 100;
 
 // Bathroom attack
 console.log("Oh no! Bad breath attacks!");
@@ -99,6 +99,7 @@ breakfastComplete: while (breakfastComplete === false) {
     case "N": //Contains question 5
       // If the user does not eat breakfast then this branch is followed
       // Add in a battle with a waffle iron because it hasn't been used in forever
+      arrAnswers.push(breakfast);
       console.log("This angered your waffle iron. It attacks!");
       console.log("The waffle iron uses 'face press'!");
       let waffleAttack = Math.floor(Math.random() * 25) + 1; // Random Integer between 1 and 25
@@ -111,7 +112,7 @@ breakfastComplete: while (breakfastComplete === false) {
       console.log("3. Jump on it.");
       console.log("4. Just walk away.");
       let waffleCounter = readline.question("(Input a number between 1 and 4) ");
-      arrQuestions.push("Which action do you take?");
+      arrQuestions.push("Which action do you take against the waffle iron?");
       let waffleBattleComplete = false;
       waffleBattle: while (waffleBattleComplete === false) {
         if (waffleCounter === "1") {
@@ -162,7 +163,6 @@ breakfastComplete: while (breakfastComplete === false) {
           waffleCounter = readline.question("(Input a number between 1 and 4) ");
         }
       }
-      arrAnswers.push(breakfast);
       breakfastComplete = true;
       break breakfastComplete;
     default:
@@ -186,6 +186,7 @@ petsComplete:
 while(petsComplete === false) { //Contains questions 7
     switch(pets) {
         case "Y":
+            arrAnswers.push(pets);
             let petsAmountComplete = false;
             petsAmount:
             while(petsAmountComplete === false) {
@@ -193,14 +194,12 @@ while(petsComplete === false) { //Contains questions 7
                 arrQuestions.push("How many pets do you have? ")
                 let petNumber = Number(petsAmount);
                 if(petNumber > 1) {
-                    for(let i = 0; i < petNumber; i += 1) {
+                    for(let i = 1; i < petNumber + 1; i += 1) {
                         let currentPet = readline.question(`What is pet #${i}? `);
                             arrPets.push(currentPet.toLowerCase());
-                            arrAnswers.push(currentPet)
                     }
-                    arrQuestions.push(`What is pet #x `)
                     for(let i = 0; i < arrPets.length; i += 1) {
-                        console.log(`You take care of your ${arr[i]}`);
+                        console.log(`You take care of your ${arrPets[i]}`);
                     }
                     arrAnswers.push(petsAmount);
                     break petsAmount;
@@ -213,7 +212,6 @@ while(petsComplete === false) { //Contains questions 7
                     petsAmount = readline.question("How many pets do you have? ");
                 }
             }
-            arrAnswers.push(pets);
             break petsComplete;
         case "N":
             console.log("Taking care of an animal is so much responsibility");
@@ -226,7 +224,7 @@ while(petsComplete === false) { //Contains questions 7
 }
 
 console.log("Finally your morning routine is complete.");
-console.log("You leave your hourse.");
+console.log("You leave your house.");
 console.log("Traffic looks crazy today. And your train is also having delays. Do you: ");
 console.log("1. Still decide to drive.");
 console.log("2. Still take the train.");
@@ -238,6 +236,7 @@ while(transportationComplete === false) {
     switch(transportation) {
         case "1":
             //Battle with a road rager
+            arrAnswers.push("Take your car.");
             console.log("You decide to drive.")
             console.log("On your drive you get cut off by a reckless driver.");
             console.log("In response you honk your horn.");
@@ -252,7 +251,7 @@ while(transportationComplete === false) {
             console.log("2. Honk your horn");
             console.log("3. Ignore the road rager");
             let roadRageCounter = readline.question("(Input a number between 1 and 3) ");
-            arrQuestions.push("Which action do you take?")
+            arrQuestions.push("Which action do you take against the Road Rager?")
             let roadRageComplete = false;
             roadRageComplete:
             while(roadRageComplete === false) {
@@ -290,10 +289,10 @@ while(transportationComplete === false) {
                 }
             }
             console.log("You continue driving to your job.");
-            arrAnswers.push("Take your car.");
             break transportationComplete;
         case "2":
             //Battle with a subway rat
+            arrAnswers.push("Take the train");
             console.log("You decide to take the train.");
             console.log("You arrive at the station.");
             console.log("You notice an entirely empty bench, except for a lone slice of pizza, and take a seat.");
@@ -309,6 +308,7 @@ while(transportationComplete === false) {
             console.log("3. Walk to the other side of the platform.");
             console.log("4. Give the rat the pizza left on the bench.")
             let ratCounter = readline.question("(Input a number between 1 and 4) ");
+            arrQuestions.push("Which action do you take against the rat?");
             let ratComplete = false;
             ratComplete: 
             while(ratComplete === false) {
@@ -358,7 +358,6 @@ while(transportationComplete === false) {
                 }
             }
             console.log("Your train arrives and you continue on your adventure to work.");
-            arrAnswers.push("Take the train");
             break transportationComplete;
         default:
             console.log("I do not understand.");
@@ -374,6 +373,31 @@ console.log("The security guard makes eye contact with you and you smile back.")
 console.log("She asks if you're here for some overtime.");
 console.log("You're confused as to why she would ask that...");
 console.log("You take out your phone and realize it's Sunday.");
+
+console.log(" ");
+console.log("Thank you for playing my game!");
+let review = readline.question("Would you like to see review the answers you gave?(Y/N) ");
+review = review.toUpperCase();
+let reviewComplete = false;
+reviewComplete:
+while(reviewComplete === false) {
+    switch(review) {
+        case "Y":
+            for(let i = 0; i < arrAnswers.length; i++) {
+                console.log(`Question ${i}: ${arrQuestions[i]}`);
+                console.log(`Answer ${i}: ${arrAnswers[i]}`)
+            }
+            reviewComplete = true;
+            break reviewComplete;
+        case "N":
+            console.log("I hope you enjoyed the game!");
+            reviewComplete = true;
+            break reviewComplete;
+        default:
+            console.log("I do not understand.");
+            review = readline.question("Would you like to see review the answers you gave?(Y/N) ");
+    }
+}
 
 // Add an array for all the questions and all the answers to be displayed at the very end
 // It'll run through using a for loop and display the question and answer
