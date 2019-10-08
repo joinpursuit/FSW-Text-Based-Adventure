@@ -12,7 +12,7 @@ let minion2Att = Math.floor(Math.random() * 5);
 let minotaurHp = 60
 let minotaurAtt = Math.floor(Math.random() * 15);
 let Inventory = 1
-let potion = 20
+let potionUse = 20
 
 let nameInput = readline.question("Enter your name: ")
 
@@ -32,23 +32,40 @@ let classInput = readline.question('Choose a class: Mage or Warrior? ');{
         console.log("He may have mentioned something about slaying a large beast but you weren't paying much attention")
         let choice1 = readline.question(`You follow a path, however, it spilts into two, do you go left or right? `);{
         if(choice1 === "left" || choice1 === "Left") {
-        console.log("You find an empty room with nothing, maybe everyone left");
+        console.log("You find an empty room with nothing, maybe everyone left"); // this will lead us to the next room 2 as a mage
         } else {
             player["Inventory"] = 2
             console.log("You find a minion inside the room, you two stare at each other and then he lunges at you");
-            console.log("Prepare for battle; Health: " + player["Health"] + " Potions: " + player["Inventory"])
+            console.log("Prepare for battle; Health: " + player["Health"] + " Potions: " + player["Inventory"]) //loop coming up for battle update
+                } for(let i = 75; i > -1; i --){
+                    i -= minion1Att
+                    let battleInput = readline.question(`Do you wish to attack or use a potion? `);{
+                        if(battleInput === "attack" || battleInput === "Attack") {
+                            console.log(`You attack for ${mageAtt}`);
+                            console.log(`Minion's health is now ${minion1Hp - mageAtt}`);
+                            minion1Hp = (minion1Hp - mageAtt)
+                            console.log(`Minion attacks you for ${minion1Att}`);
+                            console.log(`Your health is now at ${mageHp - minion1Att}`);
+                            mageHp = (mageHp - minion1Att)
+                            if (minion1Hp <= 0){
+                                console.log ("You've defeated the minion and exit to the next hallway") //end of battle room loop with only minion health; add your health
+                            }
+                        }
+                    }
                 }
-}
-    } else { //story starting as a warrior
-        console.log("Ah, a mighty swordsman you are, are you ready?")
-        let player2 = {
-            Name: nameInput,
-            Class: "Warrior",
-            Health: warriorHp
+            }
         }
-        console.log(player2)
     }
-}
+//     } else { //story starting as a warrior
+//         console.log("Ah, a mighty swordsman you are, are you ready?")
+//         let player2 = {
+//             Name: nameInput,
+//             Class: "Warrior",
+//             Health: warriorHp
+//         }
+//         console.log(player2)
+//     }
+// }
 // console.log("You begin your journey by entering a dark dungeon commanded by your King")
 // console.log("He may have mentioned something about slaying a large beast but you weren't paying much attention")
 // let choice1 = readline.question(`You follow a path, however, it spilts into two, do you go left or right? `);{
