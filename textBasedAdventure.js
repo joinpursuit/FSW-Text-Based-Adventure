@@ -8,15 +8,15 @@ let pAge = readline.question("Enter your age: ")
 let playAgain=0;
 
 for(let i=0; i <= playAgain; i++){  //for Loop
-
+    let ans =0;
 if(pAge > 18 ){
     console.log("You are old enough to play")
     console.log("This game is a maze game can you get out!")
     console.log("The only way to get out if you answer 5 riddles, ")
 
-    let ans =0;
+    
     let qAns= []
-    while(ans <= 5){    // While loop
+    while(ans < 5){    // While loop
         qAns[0] = readline.question("What gets wet while it’s drying? ")
         if(qAns[0] === "a towel" || qAns[0] === "towel"){  // If statments
             ans++;
@@ -38,6 +38,14 @@ if(pAge > 18 ){
             console.log("Correct")
         }
         console.log("your score is "+ ans)
+
+        qAns[10] = readline.question("Do you want to quit yet? ")/////////// YOu QUIT YES OR NO
+        if(qAns[10] === "yes" || qAns[10] === "Yes"){
+            console.log("WOW you suck bye!!!");
+            break;
+        }else{ console.log("We Will Continue!!!!")}
+
+
         qAns[4] = readline.question("What stays where it is when it goes off? ")
         if(qAns[4] === "alarm clock" || qAns[4] === "alarm"){
             ans++;
@@ -53,13 +61,14 @@ if(pAge > 18 ){
             ans++;
             console.log("Correct")
         }
+        console.log("your score is "+ ans)
         qAns[7] = readline.question("What belongs to you but is used more by others? ")
         if(qAns[7] === "name" || qAns[7] === "your name"){
             ans++;
             console.log("Correct")
         }
-        qAns[8] = readline.question("What has one head, one foot and four legs? ")
-        if(qAns[8] === "bed" || qAns[8] === "a bed"){
+        qAns[8] = readline.question("If you were in a race and passed the person in 2nd place, what place would you be in? ")
+        if(qAns[8] === "2nd" || qAns[8] === "second"){
             ans++;
             console.log("Correct")
         }
@@ -77,8 +86,9 @@ if(pAge > 18 ){
     break;
 }
 
+if(ans >=5){
 let gameOver = readline.question("You WON!!!! DO YOU WANT TO PLAY AGAIN? ")
-switch(gameOver === "yes"|| gameOver === "Yes" ||gameOver === "YES"){
+switch(gameOver){
     case "yes":
         playAgain =1;
         break;
@@ -87,6 +97,6 @@ switch(gameOver === "yes"|| gameOver === "Yes" ||gameOver === "YES"){
         break;
     default :
     console.log("No Values Found!")    
-
+}
 }
 }
