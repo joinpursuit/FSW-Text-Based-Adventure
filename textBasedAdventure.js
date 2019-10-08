@@ -18,35 +18,48 @@ let nameInput = readline.question("Enter your name: ")
 
 console.log(`Hello ${nameInput}!  Welcome to my game.`)
 
+
 let classInput = readline.question('Choose a class: Mage or Warrior? ');{
     if(classInput === "Mage" || classInput === "mage") {
         console.log("Ah, a master of the mystic arts I see, are you ready?")
-        let Player = {
+        let player = {
             Name: nameInput,
-           Class: classInput,
-          Health: mageHp
-         }
-         console.log(Player)
-         } else if (classInput === "Warrior" || classInput === "warrior"); {
+            Class: "Mage",
+            Health: mageHp
+         } //story starting as a Mage
+        console.log(player)
+        console.log("You begin your journey by entering a dark dungeon commanded by your King")
+        console.log("He may have mentioned something about slaying a large beast but you weren't paying much attention")
+        let choice1 = readline.question(`You follow a path, however, it spilts into two, do you go left or right? `);{
+        if(choice1 === "left" || choice1 === "Left") {
+        console.log("You find an empty room with nothing, maybe everyone left");
+        } else {
+            player["Inventory"] = 2
+            console.log("You find a minion inside the room, you two stare at each other and then he lunges at you");
+            console.log("Prepare for battle; Health: " + player["Health"] + " Potions: " + player["Inventory"])
+                }
+}
+    } else { //story starting as a warrior
         console.log("Ah, a mighty swordsman you are, are you ready?")
-        let Player2 = {
+        let player2 = {
             Name: nameInput,
-            Class: classInput,
+            Class: "Warrior",
             Health: warriorHp
         }
-        console.log(Player2)
-    } else {
-        console.log("Try again")
-    } 
+        console.log(player2)
+    }
 }
 // console.log("You begin your journey by entering a dark dungeon commanded by your King")
-// console.log("He may have mentioned something about slaying a large beast but you weren't paying much atttention")
+// console.log("He may have mentioned something about slaying a large beast but you weren't paying much attention")
 // let choice1 = readline.question(`You follow a path, however, it spilts into two, do you go left or right? `);{
-//     if(choice1 === "left"); {
+//     if(choice1 === "left" || choice1 === "Left") {
 //         console.log("You find an empty room with nothing, maybe everyone left");
-//     }
-//         if(choice1 === "right");
+//     } else {
 //     console.log("You find a minion inside the room, you two stare at each other and then he lunges at you");
+//     console.log("Prepare for battle " + classInput)
+//         }
+// }
+
 //     console.log(`You attack for ${mageAtt}`);
 //     console.log(`Minion's health is now ${minion1Hp - mageAtt}`);
 //     console.log(`Minion attacks you for ${minion1Att}`);
