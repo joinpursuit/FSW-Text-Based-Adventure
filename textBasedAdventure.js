@@ -1,17 +1,17 @@
 const readline = require('readline-sync')
 
 //Everyone's health and attack declared
-let mageHp = 75
+let mageHp = 50
 const mageAtt = Math.floor(Math.random() * 20);
-let warriorHp = 100
+let warriorHp = 75
 let warriorAtt = Math.floor(Math.random() * 15);
 let minion1Hp = 20
-let minion1Att = Math.floor(Math.random() * 5);
+let minion1Att = Math.floor(Math.random() * 10);
 let minion2Hp = 20
 let minion2Att = Math.floor(Math.random() * 5);
-let minotaurHp = 60
+let minotaurHp = 40
 let minotaurAtt = Math.floor(Math.random() * 15);
-let Inventory = 1
+let Inventory = 2
 let potionUse = 20
 
 let nameInput = readline.question("Enter your name: ")
@@ -36,26 +36,36 @@ let classInput = readline.question('Choose a class: Mage or Warrior? ');{
         } else {
             player["Inventory"] = 2
             console.log("You find a minion inside the room, you two stare at each other and then he lunges at you");
-            console.log("Prepare for battle; Health: " + player["Health"] + " Potions: " + player["Inventory"]) //loop coming up for battle update
+            console.log("Prepare for battle") //loop coming up for battle update
+            console.log("-------------------------------------------------")
                 } for(let i = 75; i > -1; i --){
                     i -= minion1Att
+                    console.log("Health: " + mageHp + " Potions: " + Inventory)
                     let battleInput = readline.question(`Do you wish to attack or use a potion? `);{
                         if(battleInput === "attack" || battleInput === "Attack") {
                             console.log(`You attack for ${mageAtt}`);
                             console.log(`Minion's health is now ${minion1Hp - mageAtt}`);
                             minion1Hp = (minion1Hp - mageAtt)
                             console.log(`Minion attacks you for ${minion1Att}`);
-                            console.log(`Your health is now at ${mageHp - minion1Att}`);
+                            // console.log(`Your health is now at ${mageHp - minion1Att}`); remove for now
+                            console.log("-------------------------------------------------")
                             mageHp = (mageHp - minion1Att)
                             if (minion1Hp <= 0){
                                 console.log ("You've defeated the minion and exit to the next hallway") //end of battle room loop with only minion health; add your health
-                            }
+                                break
+                            } else if ( mageHp <= 0) {
+                                console.log ("You have been killed! GAME OVER: Try Again")
+                                process.exit() //completely exit the script like an ending
                         }
+                    } else if (battleInput === "potion" || battleInput === "Potion") {
+                        mageHp + potionUse === mageHp
+                        Inventory - 1 === Inventory //its not adding health - inventory
                     }
                 }
             }
         }
     }
+}
 //     } else { //story starting as a warrior
 //         console.log("Ah, a mighty swordsman you are, are you ready?")
 //         let player2 = {
