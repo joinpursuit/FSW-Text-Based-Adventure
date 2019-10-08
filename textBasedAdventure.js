@@ -57,9 +57,9 @@ let classInput = readline.question('Choose a class: Mage or Warrior? ');{
                                 console.log ("You have been killed! GAME OVER: Try Again")
                                 process.exit() //completely exit the script like an ending
                         }
-                    } else if (battleInput === "potion" || battleInput === "Potion") {
-                        mageHp + potionUse === mageHp
-                        Inventory - 1 === Inventory //its not adding health - inventory
+                    } else {
+                        mageHp = mageHp + potionUse
+                        Inventory = Inventory - 1 // how to get it to stop at 0 potions and repeat
                     }
                 }
             }
