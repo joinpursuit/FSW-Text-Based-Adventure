@@ -21,7 +21,11 @@ if(ageInput <= 19){
 
 // Team choice
 let teamChoice = readline.question(`Would you like the path of Light (enter 1) or to walk the Roads of Night (enter 2): `)
-
+if (teamChoice = 'Y'){
+    console.log(teamLight)
+} else if (teamChoice = 'N'){
+    console.log(teamDark)
+}
 
 
 // let teamLight = 'Your weapon is a sword. Your protection is armor.'
