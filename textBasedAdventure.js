@@ -1,16 +1,18 @@
 "use strict";
 // do all changes here!!!!!!!!!!!
-let currentMoveupDown = 0;
-let currentMoveLeftRight = 0;
-let currentMove = "";
-let mapChar = "";
-let outcomeOptions = ["💣","◼️"];
-let outcomeOption = "";
+let currentMoveupDown = 0; // value for index arr.[0][x]
+let currentMoveLeftRight = 0; //value for index arr.[x][0]
+let currentMove = ""; // takes in current move 'right' 'left' 'up' 'down'
+let mapChar = ""; // the char user has choosen and the weapon
+let displayChar = ""; // just the char
+let outcomeOptions = ["🍃","🐺"]; // options of what happens when you break through
+let outCome = ""
+
 
 // Prints map in readable form
 function printMap(Map) {
 
-      console.clear()
+
     
     for (let i = 0; i < Map.length; i++){
         console.log((Map[i].join(" ")));
@@ -19,7 +21,7 @@ function printMap(Map) {
    
  }
 
- // adds or subtacts to current move and keeps track of coordinates
+ // adds or subtacts to current move and keeps track of coordinates arr[x][x]
 
  function Move(currentMove){
 
@@ -40,42 +42,57 @@ function printMap(Map) {
     }
 
  }
- function printHello() {
-    return "hello"    
-}
-
- function callFunction(fn) {
-     return fn()
- }
-
- callFunction(printHello)
-
  // changes previous move to tunnel
- function perviousMoveChange (currentMoveupDown,currentMoveLeftRight){
+ function previousMoveChange (currentMoveupDown,currentMoveLeftRight){
 
-    Map[currentMoveupDown][currentMoveLeftRight] = " ◼️"
+    Map[currentMoveupDown][currentMoveLeftRight] = "🌱🌱🌱"
     }
     
 
  //moves and saves character on to the new 
 
- function nextMovechar (currentMoveupDown,currentMoveLeftRight){
+ function nextMovechar (currentMoveupDown,currentMoveLeftRight,outCome){
 
- Map[currentMoveupDown][currentMoveLeftRight] = mapChar
+ Map[currentMoveupDown][currentMoveLeftRight] = `${mapChar}${outCome}`
  }
  
+//Used to randomize a moveoitcome
+ function randomMove (){
+ let randomOutcome = Math.floor(Math.random() * 10) //used for randomizer
+    if (randomOutcome > 8){
+        outCome = outcomeOptions[1]
+    } else{
+           outCome = outcomeOptions[0]
+        }
+        
+ }
+
+ function gameInmotion(previousMoveChange,Move,randomMove,nextMovechar,printMap){
+
+// currentMove = readline.question("\nEnter your next move: ");
+//console.log (currentMove,currentMoveLeftRight, currentMoveupDown);
+previousMoveChange (currentMoveupDown,currentMoveLeftRight)
+//moves char and prints
+Move(currentMove);
+randomMove ();
+nextMovechar (currentMoveupDown,currentMoveLeftRight,outCome);
+console.clear();
+printMap(Map);
+}
 
 const readline = require('readline-sync')
 
 let Map = [
-    [" ⛰️"," ⛰"," ⛰️"," ⛰️", " ⛰️"],
-    [" ⛰️"," ⛰️"," ⛰️"," ⛰️", " ⛰️"],
-    [" ⛰️"," ⛰️"," ⛰️"," ⛰️", " ⛰️"],
-    [" ⛰️"," ⛰️"," ⛰️"," ⛰️", " ⛰️"],
-    [" ⛰️"," ⛰️"," ⛰️"," ⛰️", " 💎"],
+    ["🌳🌳🌳","🌳🌳🌳","🌳🌳🌳","🌳🌳🌳", "🌳🌳🌳", "🌳🌳🌳"],
+    ["🌳🌳🌳","🌳🌳🌳","🌳🌳🌳","🌳🌳🌳", "🌳🌳🌳", "🌳🌳🌳"],
+    ["🌳🌳🌳","🌳🌳🌳","🌳🌳🌳","🌳🌳🌳", "🌳🌳🌳", "🌳🌳🌳"],
+    ["🌳🌳🌳","🌳🌳🌳","🌳🌳🌳","🌳🌳🌳", "🌳🌳🌳", "🌳🌳🌳"],
+    ["🌳🌳🌳","🌳🌳🌳","🌳🌳🌳","🌳🌳🌳", "🌳🌳🌳", "🌳🌳🌳"],
+    ["🌳🌳🌳","🌳🌳🌳","🌳🌳🌳","🌳🌳🌳", "🌳🌳🌳", "🌳🏡🌳"],
  
 ]
-
+let allChar = ["🐷","🐰","🦄","🐱","🦏"]
+let allWeapons = ["🗡️","🔪","⛏️"]
 
 
 
@@ -83,84 +100,65 @@ let nameInput = readline.question("\nEnter your name: ")
 
 // takes in a string if you want convert to a number
 
-console.log(`\nHello ${nameInput}!  Welcome to my Dig-Dug Console Game.`)
+console.log(`\nHello ${nameInput}!  Welcome to D-Maze Game.`)
 
-let charChoosen = readline.question("\nChoose your Characther 😸 (1) 🐶 (2): ");
+let charChoosen = readline.question("\nChoose your Characther (1):🐷 (2):🐰 (3):🦄 (4):🐱"+" ")
 
-
-if (charChoosen === "1"){
-    mapChar ="😸⛏"
-    charChoosen = "😸";
-    Map[0][0] = (mapChar);
-    
-    
-
-} else if (charChoosen === "2") {
-    mapChar = " 🐶⛏️"
-    Map[0][0] = mapChar;
-    charChoosen = "🐶";
-}else {
-console.log ("you have choosen Wrong, Pick again")
-let charChoosen = readline.question("\nChoose your Characther 😸(1) 😸 (2): ")
+if (charChoosen > 4 || isNaN(charChoosen) ){
+    console.clear()
+    charChoosen = ""
+    console.log ("you have choosen Wrong, Pick again")
+    charChoosen = readline.question("\nChoose your Characther (1):🐷 (2):🐰 (3):🦄 (4):🐱"+" ")
 }
+displayChar = allChar[charChoosen];
 
-console.log ("Good Luck! You'll Need it\n");
+let WeaponChoosen = readline.question("\nChoose your Characther (1):🗡️ (2):🔪 (3):⛏" )
 
-console.log (`\nHelp ${charChoosen } navagate through the Moutains ⛰️ and get to the 💎`);
-console.log ("\nWrite right, left, down, up");
-console.log ("\nWatch out for 💣 "+"along the way\n");
+mapChar += displayChar
+mapChar += allWeapons[WeaponChoosen]
 
-console.log ("\nLet's Get Start");
+Map[0][0]= mapChar
+
+
+console.clear()
+
+console.log (`\nHelp ${charChoosen }`+" navagate through the forest 🌳 and get home 🏡");
+
+console.log ("\nWatch out for BIG BAD WOLF 🐺 "+" along the way!\n");
+
+console.log ("\nLet's Get Started");
 console.log("This is your Map\n");
+console.log ("\nWrite right, left, down, up\n");
 
 printMap(Map)
 
-// 1st move
+
+
+//Game Works in Here
+
+while (currentMoveupDown <= 5 && currentMoveLeftRight <= 5) {
 currentMove = readline.question("\nEnter your next move: ");
-//console.log (currentMove,currentMoveLeftRight, currentMoveupDown);
-perviousMoveChange (currentMoveupDown,currentMoveLeftRight)
-//moves char and prints
-Move(currentMove);
-nextMovechar (currentMoveupDown,currentMoveLeftRight)
-printMap(Map)
+
+gameInmotion(previousMoveChange,Move,randomMove,nextMovechar,printMap);
 
 
-// 2nd move
-console.log("\nSAFE! Keep Going");
-currentMove = readline.question("Enter your next move: ");
-//console.log (currentMove,currentMoveLeftRight, currentMoveupDown);
-perviousMoveChange (currentMoveupDown,currentMoveLeftRight)
-//moves char and prints
-Move(currentMove);
-nextMovechar (currentMoveupDown,currentMoveLeftRight)
-printMap(Map)
+}
+// currentMove = readline.question("\nEnter your next move: ");
 
-// 3rd move
-console.log("\nSAFE! Keep Going"+"Be Careful");
-currentMove = readline.question("Enter your next move: ");
-//console.log (currentMove,currentMoveLeftRight, currentMoveupDown);
-perviousMoveChange (currentMoveupDown,currentMoveLeftRight)
-//moves char and prints
-Move(currentMove);
-nextMovechar (currentMoveupDown,currentMoveLeftRight)
-printMap(Map)
+// gameInmotion(previousMoveChange,Move,randomMove,nextMovechar,printMap);
 
-// 4th move
-console.log("\nSAFE! Keep Going");
-currentMove = readline.question("Enter your next move: ");
-//console.log (currentMove,currentMoveLeftRight, currentMoveupDown);
-perviousMoveChange (currentMoveupDown,currentMoveLeftRight)
-//moves char and prints
-Move(currentMove);
-nextMovechar (currentMoveupDown,currentMoveLeftRight)
-printMap(Map)
+// //move2
+// currentMove = readline.question("\nEnter your next move: ");
+// gameInmotion(previousMoveChange,Move,randomMove,nextMovechar,printMap);
 
-// 5th move 
-console.log("\nSAFE! Keep Going");
-currentMove = readline.question("Enter your next move: ");
-//console.log (currentMove,currentMoveLeftRight, currentMoveupDown);
-perviousMoveChange (currentMoveupDown,currentMoveLeftRight)
-//moves char and prints
-Move(currentMove);
-nextMovechar (currentMoveupDown,currentMoveLeftRight)
-printMap(Map)
+// //move3
+// currentMove = readline.question("\nEnter your next move: ");
+// gameInmotion(previousMoveChange,Move,randomMove,nextMovechar,printMap);
+
+// //move4
+// currentMove = readline.question("\nEnter your next move: ");
+// gameInmotion(previousMoveChange,Move,randomMove,nextMovechar,printMap);
+
+// //move5
+// currentMove = readline.question("\nEnter your next move: ");
+// gameInmotion(previousMoveChange,Move,randomMove,nextMovechar,printMap);
