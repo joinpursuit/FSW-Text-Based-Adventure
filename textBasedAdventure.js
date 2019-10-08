@@ -18,6 +18,19 @@ if(pAge > 18 ){
     
     let qAns= []
     while(ans < 5){    // While loop
+        qAns[11] = readline.question("What's at least 6 inches long, goes in your mouth, and is more fun if it vibrates? ")
+        if(qAns[11] === "a toothbrush" || qAns[11] === "toothbrush" || qAns[11] === "Toothbrush"){  // If statments
+            ans++;
+            console.log("Correct That was a tough one!!")
+        } else if(ans === 5){ 
+            break;
+        }else { 
+            if(wrong === 0){ // if you get 3 wrong you lose
+                console.log("Your Lost in the maze FOREVER HAHAHAHA!");
+                break;
+            }
+            wrong--
+        }
         qAns[0] = readline.question("What gets wet while it’s drying? ")
         if(qAns[0] === "a towel" || qAns[0] === "towel"){  // If statments
             ans++;
@@ -86,7 +99,7 @@ if(pAge > 18 ){
 
 
         qAns[4] = readline.question("What stays where it is when it goes off? ")
-        if(qAns[4] === "alarm clock" || qAns[4] === "alarm"){
+        if(qAns[4] === "alarm clock" || qAns[4] === "alarm" || qAns[4] === "fire alarm"){
             ans++;
             console.log("Correct")
         }else if(ans === 5){
