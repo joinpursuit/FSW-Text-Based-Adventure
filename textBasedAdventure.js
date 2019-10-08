@@ -177,6 +177,7 @@ while(health > 0) {
             while(hungryStomachComplete === false) {
                 switch(stomachCounter) {
                     case "1":
+                        newLine();
                         console.log("You prepare a bowl of cereal.");
                         console.log("As you're eating you remember that you're lactose intolerant!");
                         console.log("The milk hurts your stomach but you sate your appetite.");
@@ -191,6 +192,7 @@ while(health > 0) {
                         break hungryStomach;
 
                     case "2":
+                        newLine();
                         console.log("The waft of the pancakes as they cook on the pan alert your stomach.");
                         console.log("Out of impatience your stomach growls again, hurting you.");
                         health -= stomachGrowl;
@@ -208,6 +210,7 @@ while(health > 0) {
                         break hungryStomach;
 
                     case "3":
+                        newLine();
                         console.log("The coffee energizes you.");
                         console.log("However your hunger isn't sated. Your stomach is upset.");
                         stomachGrowl *= 2;
@@ -222,6 +225,7 @@ while(health > 0) {
                         break hungryStomach;
 
                     default:
+                        newLine();
                         console.log("I do not understand.");
                         console.log("Which action do you take?");
                         console.log("1. Eat a bowl of cereal.");
@@ -243,6 +247,7 @@ while(health > 0) {
                 //Array
                 answersPush(breakfast);
 
+                newLine();
                 console.log("This angered your waffle iron. It attacks!");
                 console.log("The waffle iron uses 'face press'!");
 
@@ -369,6 +374,7 @@ while(health > 0) {
 
             default:
             //If any of the above are not true then a redo is required
+            newLine();
             console.log("I do not understand.");
             breakfast = useIuserInput("Do you eat breakfast?(Y/N) ");
 
@@ -424,6 +430,7 @@ while(health > 0) {
                         break petsAmount;
 
                     } else if (petNumber === 1) {
+                        newLine();
                         console.log("You take care of your pet.");
 
                         //Array
@@ -433,6 +440,7 @@ while(health > 0) {
                         petsAmountComplete = true;
                         break petsAmount;
                     } else {
+                        newLine();
                         console.log("I do not understand.");
                         petsAmount = userInput("How many pets do you have? ");
 
@@ -444,6 +452,7 @@ while(health > 0) {
                 break petsComplete;
 
             case "N":
+                newLine();
                 console.log("Taking care of an animal is so much responsibility");
 
                 //Array
@@ -454,6 +463,7 @@ while(health > 0) {
                 break petsComplete;
 
             default:
+                newLine();
                 console.log("I do not understand.");
                 pets = userInput("Do you have any pets?(Y/N) ");
 
@@ -517,6 +527,7 @@ while(health > 0) {
             while (roadRageComplete === false) {
                 switch (roadRageCounter) {
                 case "1":
+                    newLine();
                     console.log("Your insult does nothing!");
                     console.log("Road Rager uses 'Mom insult'");
                     console.log(`You take ${health} points of damage!`);
