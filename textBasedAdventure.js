@@ -89,23 +89,35 @@ while(portal !== '1' && portal !== '2' && portal !== '3'){
         console.clear();    
         console.log("You have teleported to " + area2);
             
-            let doors1 = ["left","left door", "right", "right door"];
-            let doors2 = ["traverse down", "traverse", "down", "go back", "back"];
+            let doors0 = ["left","left door", "right", "right door"];
+            let doors1 = ["traverse down", "traverse", "down", "go back", "back"];
+            let doors2 = ["open", "open door"]
+            let damage = Math.floor(Math.random() * 20) + 10;
 
             console.log(`Welcome to ${area2}.`)
             let path = readline.question(`You look around and see that you are in a room with two doors. Which door should you go through? Left or Right? `)
-            while ( path.toLowerCase() !== doors1[0] && path.toLowerCase() !== doors1[1] && path.toLowerCase() !== doors1[2] && path.toLowerCase() !== doors1[3]){
+            while ( path.toLowerCase() !== doors0[0] && path.toLowerCase() !== doors0[1] && path.toLowerCase() !== doors0[2] && path.toLowerCase() !== doors0[3]){
                 path = readline.question("Sorry, I couldn't understand. Which door do you choose? Left door or right door? ")
             }
 
             // condition: left
-            if (path.toLowerCase() === doors1[0] || path.toLowerCase() === doors1[1]){     
+            if (path.toLowerCase() === doors0[0] || path.toLowerCase() === doors0[1]){  
+                console.clear();   
                 let leftPath1 = readline.question(`You enter through the left door and there is a huge corridor that stretches down for almost a mile. A horrifying stench fills the corridor. Traverse down the corridor or go back? `);
-                while ( leftPath1.toLowerCase() !== doors2[0] && leftPath1.toLowerCase() !== doors2[1] && leftPath1.toLowerCase() !== doors2[2] && leftPath1.toLowerCase() !== doors2[3] && leftPath1.toLowerCase() !== doors2[4]){
+                while ( leftPath1.toLowerCase() !== doors1[0] && leftPath1.toLowerCase() !== doors1[1] && leftPath1.toLowerCase() !== doors1[2] && leftPath1.toLowerCase() !== doors1[3] && leftPath1.toLowerCase() !== doors1[4]){
                     leftPath1 = readline.question(`Sorry, didn't understand that. Traverse down or go back? `)
                 }
-                if(leftPath1.toLowerCase() === doors2[0] || leftPath1.toLowerCase() === doors2[1] || leftPath1.toLowerCase() === doors2[2]){
-                        let leftPath2 = readline.question("You reach the end of the corridor and the stench has completely obliterated your sense of smell. There is huge door that seems unlocked in front of you. Open it? ")
+                if(leftPath1.toLowerCase() === doors1[0] || leftPath1.toLowerCase() === doors1[1] || leftPath1.toLowerCase() === doors1[2]){
+                    console.clear();    
+                    let leftPath2 = readline.question("You reach the end of the corridor and the stench has completely obliterated your sense of smell. There is huge door that seems unlocked in front of you. Open it? ");
+                    while( leftPath2.toLowerCase() !== doors2[0] && leftPath2.toLowerCase() !== doors2[1]){
+                        leftPath2 = readline.question("Sorry couldn't understand that. Open it? ");
+                    }
+                    if(leftPath2.toLowerCase() === doors2[0] || leftPath2.toLowerCase() === doors2[1]){
+                        console.log("You open the door and a strange figure is seen in the middle of the room. It shifts towards you in an instant and you feel a prick on your chest. OUCH. The figure then disappears mysteriously out of thin air.")
+                        player.health -= damage;
+                        // CONTINUE console.log("You took "
+                    }
                 } else {
 
                 }
