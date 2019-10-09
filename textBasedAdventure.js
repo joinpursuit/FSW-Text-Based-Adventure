@@ -116,7 +116,7 @@ while(portal !== '1' && portal !== '2' && portal !== '3'){
                     if(leftPath2.toLowerCase() === doors2[0] || leftPath2.toLowerCase() === doors2[1]){
                         console.log("You open the door and a strange figure is seen in the middle of the room. It shifts towards you in an instant and you feel a prick on your chest. OUCH. The figure then disappears mysteriously out of thin air.")
                         player.health -= damage;
-                        // CONTINUE console.log("You took "
+                        // CONTINUE console.log("You took " 
                     }
                 } else {
 
