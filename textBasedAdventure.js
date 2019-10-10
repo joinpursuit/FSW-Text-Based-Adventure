@@ -67,7 +67,7 @@ let classInput = readline.question('Choose a class: Mage or Warrior? ');{
                     }
                 }
             }
-        }
+        } console.log ("You find a door on the other side of the room and continue down its hall")
     }
 }
 //     } else { //story starting as a warrior
