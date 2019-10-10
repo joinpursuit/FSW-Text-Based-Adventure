@@ -58,8 +58,12 @@ let classInput = readline.question('Choose a class: Mage or Warrior? ');{
                                 process.exit() //completely exit the script like an ending
                         }
                     } else {
-                        mageHp = mageHp + potionUse
-                        Inventory = Inventory - 1 // how to get it to stop at 0 potions and repeat
+                        if( Inventory < 1) {
+                            console.log("Out of potions")
+                        } else {
+                            mageHp = mageHp + potionUse
+                            Inventory = Inventory - 1 // how to get it to stop at 0 potions and repeat: SOLVED!
+                        }
                     }
                 }
             }
