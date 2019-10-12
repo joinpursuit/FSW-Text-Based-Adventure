@@ -2,13 +2,8 @@ const readline = require('readline-sync')
 
 let race = [ "human", "elf","orc"]
 
-let weapon = ["Sword","Axe","Spear"]
+let weapon = ["Sword","Axe","Spear","Fist"]
 
-let weaponStat = {
-    Sword:0,
-    Axe:0,
-    Spear:0
-}
 let playerHealth = 0;
 let playerAttack = 0;
 let armedPlayer = 0;
@@ -19,13 +14,14 @@ console.log(`Hello ${nameInput}!  Welcome to your first adventure.`)
 
 let raceInput = readline.question(`Choose your race ${race}.`)
 
-let raceStat = []
 
-if (raceInput = "human"){
+let raceStat = ''
+
+if (raceInput === "human"){
     raceStat = [10,10];
-} else if (raceInput = "elf"){
+} else if (raceInput === "elf"){
     raceStat = [12,8]
-} else if (raceInput = "orc"){
+} else if (raceInput === "orc"){
     raceStat = [8,12];
 }
 
@@ -35,23 +31,19 @@ playerAttack = raceStat[1]
 
 console.log(`your race is ${raceInput} health ${playerHealth} attack ${playerAttack}`)
 
+let weaponInput = readline.question(`Choose your weapon ${weapon}.`)
 
-// do{ let raceInputError = readline.question(`Sorry, that's not a correct race, Choose your race ${race}.`);
-// if(raceInputError === "human" || raceInputError === "elf" || raceInputError === "orc"){break;}
-// }
-// while(raceInputError !== "human" || raceInputError !== "elf" || raceInputError !== "orc");
-// raceInputError.tolowercase;
+let weaponStat = 0
 
 
+if (weaponInput === "sword"){
+    weaponStat = 1;
+} else if (weaponInput === "axe"){
+    weaponStat = 2
+} else if (weaponInput === "spear"){
+    weaponStat = 3;
+} else if (weaponInput === "fist"){
+    weaponStat = 4;
+}
 
-// let beginStat = ""
-
-// if(chosenRace === "human"){
-//     beginStat = raceStat["Human"]
-// } else if (chosenRace === "elf"){
-//     beginStat = raceStat["Elf"]
-// } else if (chosenRace === raceStat["orc"]){
-//     beginStat = raceStat["Orc"]
-// }
-
-// console.log(`your starting stats are ${Number(beginStat)}`)
+console.log(`You have chosen ${weaponInput}. Your attack power has gone up by ${weaponStat}`)
