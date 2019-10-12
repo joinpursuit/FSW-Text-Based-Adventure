@@ -62,32 +62,49 @@ let roundOneContinue = true;
 let damageRoundOnePlayer = Math.abs(goblinDefense-playerAttack)
 let damageRoundOneGoblin = Math.abs(playerDefense-goblinAttack)
 
-while(roundOneContinue === true){
-    while(playerHealth > 0 ){
-        let actionRoundOne = readline.question(`Choose your action. ${actionAvailable}.`);
-        let goblinAction = Math.floor(Math.random() * 3);
-        if(actionRoundOne === "attack"){
-            if(goblinAction === 0){
-                console.log(`You successfully attacked, and delt ${damageRoundOnePlayer} in damage.`);
-                goblinHealth -= damageRoundOnePlayer
-                roundOneCounter += 1
-            } else if (goblinAction === 1){
-                console.log(`You successfully attacked, and delt ${damageRoundOnePlayer} in damage. Your enemy also delt ${damageRoundOneGoblin}`);
-                goblinHealth -= damageRoundOnePlayer
-                playerHealth -= damageRoundOneGoblin
-                roundOneCounter += 1
-            } else if(goblinAction === 2){
-                console.log(`You attacked failed, and your enemy delt ${damageRoundOneGoblin}`);
-                playerHealth -= damageRoundOneGoblin
-                roundOneCounter += 1
+let actionRoundOne = ""
+actionRoundOne = readline.question(`Choose your action. ${actionAvailable}.`);
+
+while(roundOneContinue === true && actionRoundOne !== ""){
+    // actionRoundOne = readline.question(`Choose your action. ${actionAvailable}.`);
+    for(roundOneCounter = 1; roundOneCounter <= 3; roundOneCounter += 1){
+        if(playerHealth <= 0){
+            console.log("fail")
+            roundOneContinue = false;
+            playGame = false;
+        } else if(roundOneCounter === 3 && playerHealth > 0){
+            console.log("success");
+            roundOneContinue = false
+        } else if (playerHealth > 0 ){
+            let goblinAction = Math.floor(Math.random() * 2);
+            if(actionRoundOne === "attack"){
+                if(goblinAction === 0){
+                    goblinHealth -= damageRoundOnePlayer;
+                    if(playyerHealth >0 && goblinHealth > 0){console.log(`You successfully attacked, and delt ${damageRoundOnePlayer} in damage. ${playerHealth} ${goblinHealth}`);
+                    } else if (playerHealth >0 && goblinHealth <= 0){
+                        console.log(`goblin defeated - attack`)
+                        roundOneContinue = false
+
+                }   else if (playerHealth <= 0){
+                    console.log('you died')
+                    roundOneContinue = false
+                    playGame = false
+                    
+                }
+                    actionRoundOne = ""
+                } else if (goblinAction === 1){
+                    goblinHealth -= damageRoundOnePlayer
+                    playerHealth -= damageRoundOneGoblin
+                    console.log(`You successfully attacked, and delt ${damageRoundOnePlayer} in damage. Your enemy also delt ${damageRoundOneGoblin}  ${playerHealth} ${goblinHealth}`);
+                    // actionRoundOne = ""
+                    actionRoundOne = readline.question(`Choose your action. ${actionAvailable}.`);
+                } else if(goblinAction === 2){
+                    playerHealth -= damageRoundOneGoblin
+                    console.log(`You attacked failed, and your enemy delt ${damageRoundOneGoblin}  ${playerHealth} ${goblinHealth}`);
+                    // actionRoundOne = ""
+                    actionRoundOne = readline.question(`Choose your action. ${actionAvailable}.`);
+                }
             }
-    } else if(playerHealth <= 0){
-    playGame = false;
-    roundOneContinue = false
-    console.log("fail")
-    } else if(roundOneCounter === 3 && playerHealth > 0){
-    console.log("success");
-    roundOneContinue = false
+        }
 }
-    }
 }
