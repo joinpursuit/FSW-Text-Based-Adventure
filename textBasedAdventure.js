@@ -38,6 +38,60 @@ function userInput(question) {
     return readline.question(question);
 }
 
+let reflect = () => {
+    console.log("You reflect on the long day you've had, proud of everything you've accomplished.");
+    console.log("You get back in bed and knock out, only to start it all again tomorrow.");
+}
+
+//Function for one of the last choices in the game (used two times)
+let goForItsEyes = () => {
+    //Array
+    answersPush("Go for it's eyes.");
+
+    newLine();
+    console.log("You run over to the nightmare and leap to it's head.");
+    console.log("As you begin leaping it grabs hold of you and repeatedly slams you into the floor.");
+    console.log("When it stops it's already too late for you.");
+
+    //Health
+    health = 0;
+    healthDamage(health);
+}
+
+//Function for one of the last choices in the gamne (used two times)
+let checkEndTable = () => {
+    //Array
+    answersPush("Check your end table.");
+
+    newLine();
+    console.log("You run over to your end table and open the drawer.");
+    console.log("Inside is your pocket knife you have for safety.");
+    console.log("You feel the nightmare stomping towards you so you jump and roll to the other side of the bed.");
+    console.log("As the monster tries to stop it's momentum you take that chance to attack.");
+    console.log("You climb onto the bed, leap, and grab onto the nightmares back.");
+    console.log("It spins and swings trying to get you off of it.");
+    console.log("However it can't seem to do it, you stab it in the back numerous times before winding up for one last stab to the head.");
+    console.log("As you connect with it's head the nightmare stops moving and falls to the ground.");
+    reflect();
+}
+
+//Function for one of the last choices in the game (used two times)
+let openWindow = () => {
+    //Array
+    answersPush("Open the window.");
+
+    newLine();
+    console.log("You turn around to the window behind you and start to open it.");
+    console.log("The nightmare, as it realizes you are trying to escape stomps over to you.");
+    console.log("You're too fast and leap out of the open window.");
+    console.log("Underestimating the size of the nightmare you begin to celebrate your escape.");
+    console.log("As you're celebrating the nightmare bursts the wall like the Kool-Aid man. You'd almost expect for it to scream 'Oh yeah!'");
+    console.log("Breaking free from your shock you run out to the street.");
+    console.log("The nightmare chases you and as it walks into the street a truck drives by.");
+    console.log("The truck at full speed crashes into the nightmare, exploding the nightmare into numerous pieces.");
+    reflect();
+}
+
 gameRunning:
 while(health > 0) {
     // 1# Introduction
@@ -200,6 +254,9 @@ while(health > 0) {
 
                         console.log("The pancakes fill your stomach, and make you feel refreshed.");
                         health += 10;
+                        if(health > 100) {
+                            health = 100;
+                        }
                         console.log(`You heal 10 health! You have ${health}HP.`)
 
                         //Array
@@ -376,99 +433,99 @@ while(health > 0) {
             //If any of the above are not true then a redo is required
             newLine();
             console.log("I do not understand.");
-            breakfast = useIuserInput("Do you eat breakfast?(Y/N) ");
+            breakfast = userInput("Do you eat breakfast?(Y/N) ");
 
         }//End of Breakfast Validity Check
     }//End of Breakfast Loop
 
-    // 4# Pet Care
-    newLine();
-    console.log("You return to your room.");
-    console.log("You get dressed, and ready for your day.");
-    let pets = userInput("Do you have any pets?(Y/N) ");
+    // // 4# Pet Care
+    // newLine();
+    // console.log("You return to your room.");
+    // console.log("You get dressed, and ready for your day.");
+    // let pets = userInput("Do you have any pets?(Y/N) ");
 
-    //Array
-    questionsPush("Do you have any pets?(Y/N) ");
-    pets = pets.toUpperCase();
+    // //Array
+    // questionsPush("Do you have any pets?(Y/N) ");
+    // pets = pets.toUpperCase();
 
-    //Checking for valid user inputs, loops until the input is valid
-    let petsComplete = false;
-    let petsAmount;
-    let arrPets = [];//Initializing the array that well store the pet data
+    // //Checking for valid user inputs, loops until the input is valid
+    // let petsComplete = false;
+    // let petsAmount;
+    // let arrPets = [];//Initializing the array that well store the pet data
 
-    petsComplete: 
-    while (petsComplete === false) {
-        //Contains questions 7
-        switch (pets) {
-            case "Y":
-                //Array
-                answersPush(pets);
+    // petsComplete: 
+    // while (petsComplete === false) {
+    //     //Contains questions 7
+    //     switch (pets) {
+    //         case "Y":
+    //             //Array
+    //             answersPush(pets);
 
-                //Checking for valid user inputs, loops until the input is valid
-                let petsAmountComplete = false;
-                petsAmount: 
-                while (petsAmountComplete === false) {
-                    petsAmount = userInput("How many pets do you have? ");
-                    questionsPush("How many pets do you have? ");
+    //             //Checking for valid user inputs, loops until the input is valid
+    //             let petsAmountComplete = false;
+    //             petsAmount: 
+    //             while (petsAmountComplete === false) {
+    //                 petsAmount = userInput("How many pets do you have? ");
+    //                 questionsPush("How many pets do you have? ");
 
-                    let petNumber = Number(petsAmount); //Setting the inputted amount to a number
-                    if (petNumber > 1) {
-                        for (let i = 1; i < petNumber + 1; i += 1) {
-                            let currentPet = userInput(`What is pet #${i}? `);
-                            arrPets.push(currentPet.toLowerCase());
+    //                 let petNumber = Number(petsAmount); //Setting the inputted amount to a number
+    //                 if (petNumber > 1) {
+    //                     for (let i = 1; i < petNumber + 1; i += 1) {
+    //                         let currentPet = userInput(`What is pet #${i}? `);
+    //                         arrPets.push(currentPet.toLowerCase());
 
-                        }
-                        for (let i = 0; i < arrPets.length; i += 1) {
-                            console.log(`You take care of your ${arrPets[i]}`);
-                        }
+    //                     }
+    //                     for (let i = 0; i < arrPets.length; i += 1) {
+    //                         console.log(`You take care of your ${arrPets[i]}`);
+    //                     }
 
-                        //Array
-                        answersPush(petsAmount);
+    //                     //Array
+    //                     answersPush(petsAmount);
 
-                        //End loop
-                        petsAmountComplete = true;
-                        break petsAmount;
+    //                     //End loop
+    //                     petsAmountComplete = true;
+    //                     break petsAmount;
 
-                    } else if (petNumber === 1) {
-                        newLine();
-                        console.log("You take care of your pet.");
+    //                 } else if (petNumber === 1) {
+    //                     newLine();
+    //                     console.log("You take care of your pet.");
 
-                        //Array
-                        answersPush(petsAmount);
+    //                     //Array
+    //                     answersPush(petsAmount);
 
-                        //End loop
-                        petsAmountComplete = true;
-                        break petsAmount;
-                    } else {
-                        newLine();
-                        console.log("I do not understand.");
-                        petsAmount = userInput("How many pets do you have? ");
+    //                     //End loop
+    //                     petsAmountComplete = true;
+    //                     break petsAmount;
+    //                 } else {
+    //                     newLine();
+    //                     console.log("I do not understand.");
+    //                     petsAmount = userInput("How many pets do you have? ");
 
-                    }//End of petAmount validity check
-                }//End of petAmount loop
+    //                 }//End of petAmount validity check
+    //             }//End of petAmount loop
 
-                //End loop
-                petsComplete = true;
-                break petsComplete;
+    //             //End loop
+    //             petsComplete = true;
+    //             break petsComplete;
 
-            case "N":
-                newLine();
-                console.log("Taking care of an animal is so much responsibility");
+    //         case "N":
+    //             newLine();
+    //             console.log("Taking care of an animal is so much responsibility");
 
-                //Array
-                answersPush(pets);
+    //             //Array
+    //             answersPush(pets);
 
-                //End loop
-                petsComplete = true;
-                break petsComplete;
+    //             //End loop
+    //             petsComplete = true;
+    //             break petsComplete;
 
-            default:
-                newLine();
-                console.log("I do not understand.");
-                pets = userInput("Do you have any pets?(Y/N) ");
+    //         default:
+    //             newLine();
+    //             console.log("I do not understand.");
+    //             pets = userInput("Do you have any pets?(Y/N) ");
 
-        }//End of pets validity check
-    }//End of pets loop
+    //     }//End of pets validity check
+    // }//End of pets loop
 
     newLine();
     console.log("Finally your morning routine is complete.");
@@ -495,7 +552,7 @@ while(health > 0) {
             
             //Array
             answersPush("Take your car.");
-            let transportChoice = 1;
+            transportChoice = 1;
 
             newLine();
             console.log("You decide to drive.");
@@ -595,7 +652,7 @@ while(health > 0) {
 
             //Array
             answersPush("Take the train");
-            let transportChoice = 2;
+            transportChoice = 2;
 
             newLine();
             console.log("You decide to take the train.");
@@ -765,6 +822,9 @@ while(health > 0) {
                 console.log("Surprised that it works you take it upon yourself to be the new boss of the office!");
                 noUHeal = randomInt(10, 5);
                 health += noUHeal;
+                if(health > 100) {
+                    health = 100;
+                }
                 console.log(`You heal ${noUHeal} health! You have ${health}HP.`)
 
                 //Array
@@ -919,8 +979,7 @@ while(health > 0) {
                                     console.log("As it gets closer to ripping off the nightmare collapses.");
                                     console.log("You finish it off by ripping the arm out of it's socket.");
                                     console.log("You stand up, nightmare arm in hand and triumphantly look over at what you've done.");
-                                    console.log("You reflect on the long day you've had, proud of everything you've accomplished.");
-                                    console.log("You get back in bed and knock out, only to start it all again tomorrow.");
+                                    reflect();
 
                                     //End loop
                                     nightmareChoice2Complete = true;
@@ -966,15 +1025,31 @@ while(health > 0) {
                                                 //Array
                                                 answersPush("Go for it's eyes.");
 
+                                                goForItsEyes();
+
+                                                //End loop
+                                                nightmareChoice3Complete = true;
+                                                break nightmareChoice3;
+
                                             case "2":
                                                 //Array
                                                 answersPush("Check your end table.");
 
+                                                checkEndTable();
+
+                                                //End loop
+                                                nightmareChoice3Complete = true;
+                                                break nightmareChoice3;
 
                                             case "3":
                                                 //Array
                                                 answersPush("Open the window.");
 
+                                                openWindow();
+
+                                                //End loop
+                                                nightmareChoice3Complete = true;
+                                                break nightmareChoice3;
 
                                             default:
                                                 newLine()
@@ -985,8 +1060,13 @@ while(health > 0) {
                                                 console.log("2. Check your end table drawer.");
                                                 console.log("3. Open the window.");
                                                 nightmareChoice3 = userInput("(Input a number between 1 and 3) ");
-                                        }
-                                    }
+
+                                        }//End to nightmareChoice3 Switch
+                                    }//End to nightmareChoice3 Loop
+                                    
+                                    //End loop
+                                    nightmareChoice2Complete = true;
+                                    break nightmareChoice2;
 
                                 default:
                                     newLine();
@@ -1004,37 +1084,46 @@ while(health > 0) {
                         nightmareChoice1Complete = true;
                         break nightmareChoice1;
                         
-                        case "2":
-                            //Array
-                            answersPush("Go for it's eyes.")
+                    case "2":
+                        //Array
+                        answersPush("Go for it's eyes.")
+
+                        goForItsEyes();
+
+                        //End loop
+                        nightmareChoice1Complete = true;
+                        break nightmareChoice1;
                         
-                            newLine();
+                    case "3":
+                       //Array
+                        answersPush("Check your end table drawer.");
+
+                        checkEndTable();
+
+                        //End loop
+                        nightmareChoice1Complete = true;
+                        break nightmareChoice1;
                         
-                        case "3":
-                            //Array
-                            answersPush("Check your end table drawer.");
+                    case "4":
+                        //Array
+                        answersPush("Open the window.");
+
+                        openWindow();
                         
-                            newLine();
+                        //End loop
+                        nightmareChoice1Complete = true;
+                        break nightmareChoice1;
                         
-                        
-                        case "4":
-                            //Array
-                            answersPush("Open the window.");
-                        
-                            newLine();
-                        
-                        
-                        default:
-                            newLine();
-                            console.log("I do not understand.");
-                            console.log("Which action do you take?");
-                            console.log("1. Sweep the leg.");
-                            console.log("2. Go for it's eyes.");
-                            console.log("3. Check your end table drawer.");
-                            console.log("4. Open the window.");
-                            nightmareChoice = userInput("(Input a number between 1 and 4) ");
-                        
-                        
+                    default:
+                        newLine();
+                        console.log("I do not understand.");
+                        console.log("Which action do you take?");
+                        console.log("1. Sweep the leg.");
+                        console.log("2. Go for it's eyes.");
+                        console.log("3. Check your end table drawer.");
+                        console.log("4. Open the window.");
+                        nightmareChoice = userInput("(Input a number between 1 and 4) ");
+                                               
                 }//End of nightmareChoice1 switch
             }//End of nightmareChoice1 validity check
 
@@ -1047,6 +1136,7 @@ while(health > 0) {
                 case 2:
                     console.log("After packing your bags you go return to the train station.");
                     console.log("While walking down the steps someone runs passed and bumps your shoulder.");
+
             }
     }
 
