@@ -12,7 +12,7 @@ let playerAlive = true;
 //Creating functions for cleaner code
 function healthDamage(damage) {
     //Logs out how much damage taken for the argument "damage" and the users new HP
-    console.log(`You take ${damage} points of damage! You have ${health}HP.`)
+    console.log(`You take ${damage} points of damage! You have ${health}HP.`);
 }
 
 function newLine() {
@@ -704,11 +704,11 @@ while(health > 0) {
 
                 }//End of train validity check
             }//End of train loop
-            console.log("Your train arrives and you continue on your adventure to work.");
+                console.log("Your train arrives and you continue on your adventure to work.");
 
-            //End loop
-            transportationComplete = true;
-            break transportationComplete;
+                //End loop
+                transportationComplete = true;
+                break transportationComplete;
             default:
             console.log("I do not understand.");
             console.log("Traffic looks crazy today. And your train is also having delays. Do you: ");
@@ -723,9 +723,105 @@ while(health > 0) {
     console.log("After what seems like forever you finally arrive outside of your office building");
     console.log("You step inside the building.");
     console.log("The security guard makes eye contact with you and you smile back.");
-    console.log("She asks if you're here for some overtime.");
-    console.log("You're confused as to why she would ask that...");
-    console.log("You take out your phone and realize it's Sunday.");
+    console.log("She says your boss had been trying to get into contact with you.");
+    console.log("You became worried as to what it was about.");
+    console.log("When you enter the your space in the office you see it had been mostly emptied.");
+    console.log("You feel a presence behind you and turn around.");
+    console.log("Your boss was standing there, looking very intimadting.");
+    console.log("'YOU'RE FIRED' she screams to you.");
+
+    youreFired = randomInt(30, 1);
+    health -= youreFired;
+    healthDamage(youreFired);
+    if(health <= 0) {
+        console.log("You have died.");
+        break gameRunning;
+    }
+
+    console.log("Which action do you take?");
+    console.log("1. 'No u'");
+    console.log("2. Ask why.");
+    console.log("3. Accept your fate");
+    let responseToBoss = userInput("(Input a number between 1 and 3) ");
+
+    //Array
+    questionsPush("Which action do you take against your intimidating boss?");
+
+    //Checking for valid user inputs, loops until the input is valid
+    let intimadtingBossComplete = false;
+    intimadtingBossComplete:
+    while(intimadtingBossComplete === false) {
+        switch(responseToBoss) {
+            case "1":
+
+                newLine();
+                console.log("Your boss is shocked.");
+                console.log("Never did she expect such a reversal!");
+                console.log("She apologizes, turns around to her office and begins packing her bags.");
+                console.log("Surprised that it works you take it upon yourself to be the new boss of the office!");
+                noUHeal = randomInt(10, 5);
+                health += noUHeal;
+                console.log(`You heal ${noUHeal} health! You have ${health}HP.`)
+
+                //Array
+                answersPush("'No u'");
+
+                //End loop
+                intimadtingBossComplete = true;
+                break intimadtingBossComplete;
+
+            case "2":
+
+                newLine();
+                console.log("Your boss is astonished that you would ask such a question.");
+                console.log("'Because I am all powerful!' she answers as her eyes roll into the back of her head and she levitates.");
+                console.log("The last thing you see is a flash of light.");
+                console.log("You are unable to comprehend what had just happened.");
+
+                health = 0;
+                console.log(`You take ${health} points of damage!`);
+
+                //Array
+                answersPush("Ask why.");
+
+                //End loop & Program            
+                intimadtingBossComplete = true;
+                if(health <= 0) {
+                    console.log("You have died.");
+                    break gameRunning;
+                }
+                break intimadtingBossComplete;
+
+            case "3":
+
+                newLine();
+                console.log("Impressed by your acceptance your boss decides to let you go freely.");
+                console.log("You pack the rest of your bags and leave the office.")
+
+                //Array
+                answersPush("Accept your fate.");
+
+                //End loop
+                intimadtingBossComplete = true;
+                break intimadtingBossComplete;
+
+            default:
+                newLine();
+                console.log("I do not understand.");
+                console.log("Which action do you take?");
+                console.log("1. 'No u'");
+                console.log("2. Ask why.");
+                console.log("3. Accept your fate");
+                responseToBoss = userInput("(Input a number between 1 and 3) ");
+
+        } //End of Intimidating Boss Validity Check
+    } //End of Intimidating Boss Loop
+
+    newLine();
+    //Go home and your plant gets angry for not being watered and attacks
+
+    // console.log("You're confused as to why she would ask that...");
+    // console.log("You take out your phone and realize it's Sunday.");
     break gameRunning;
 
 } //End of the game
