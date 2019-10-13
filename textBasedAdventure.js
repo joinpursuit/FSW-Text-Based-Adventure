@@ -4,30 +4,46 @@ let nameInput = readline.question("Enter your name: ")
 
 console.log(`Hello ${nameInput}!  Welcome to my game.`)
 
-//Open the box
+//1.Create a video game
 let readlineSync = require('readline-sync');
-let i = readlineSync.keyInYN("You are at a park and find a box with your name on it. Would you like to open the box? (Y/N)")
+let i =""
 
-while(i !== 'y' && i === 'n'){
-  i = readlineSync.keyInYN("You are at a park and find a box with your name on it. Would you like to open the box? (Y/N)")
+
+while(i !== 'y' || i === 'n'){
+    i = readlineSync.question("Your task is to create a video game. Do you want to complete the task?")
+   
+
+ if(i === 'y') {
+     //'Y' key was pressed
+  console.log("You accepted the task!");
+  break
+ } 
+  if (i === 'n') {
+     //'N' was pressed
+  console.log("You rejected the task. (Answer yes)")
+  
+ }
+
+
 }
-  if(readlineSync.keyInYN("You are at a park and find a box with your name on it. Would you like to open the box? (Y/N)")) {
-      //'Y' key was pressed
-   console.log("There is $10,000 in the box!");
-  } else {
-      //'N' was pressed
-   console.log("You missed out on $10,000. (Answer yes) ")
-  }
 
-
-
-//How will you spend it?
+//2.How will you spend your time
 let readlineSync1 = require('readline-sync'),
-  decisions = ['pay off student loans', 'buy a new car', 'travel for a year'],
-  index = readlineSync1.keyInSelect(decisions, 'Which option?');
+  decisions = ["Start the day before it's due", 'Start now', 'Ask someone for help'],
+  index = readlineSync1.keyInSelect(decisions, 'You only have 2 weeks to complete this task. What will you do next?');
 console.log('Ok,' + " you chose " + decisions[index]);
 
-//
+//3.You need help
+const readline1 = require('readline-sync')
+let seeFriend = readline1.question("You started your project and realized you're stuck, so you ask your friend Tom for help")
+for(let conversation = 2; conversation > 1; conversation--)
+if (conversation !== 2 && conversation === 1 ){
+console.log("Take the help")
+} else {
+  console.log("No, thanks I don't need it")
+}
+
+
 
 
 
