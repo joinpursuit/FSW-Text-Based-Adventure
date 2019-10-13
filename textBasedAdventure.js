@@ -1,17 +1,18 @@
 const readline = require('readline-sync')
 
 let nameInput = readline.question("Enter your name: ")
-let health = 100
+let health = 70
 let patient = {
-    name: "Jana Nazim",
+    name: "John smith",
     age: 24,
     height: "5' 4inches",
-    illness: "Addicted to sweaters",
-    State: "New Jersey"
+    illness: "none",
+    State: "Michigan"
 
 }
 let reaction = "No that's not correct, your patient has"
 let reaction2 = "Alright that's great doctor."
+let reaction3 = "I almost thought we were going to lose him, but it looks like that bought us some more time."
 
 
 console.log(`Hello ${nameInput}!  Welcome to my game.`)
@@ -40,27 +41,60 @@ if (nameInput3 === "scapel"){
         nameInput4 = readline.question("yes or no?")
     }
     if(nameInput4 === "grab the incubator")
-    console.log(reaction2)
+    console.log(reaction3)
+    console.log("After giving a few minutes to make sure the body is sedated, the doctor made an incision and opened the chest")
+
     let nameInput5 = readline.question("Doctor, there seems to be a huge black spot in her heart, should we clean that or leave it alone?")
     if (nameInput5 === "clean"){
-        console.log("Wow doctor, her health is going up.")
-        console.log("good job, we kept her alive for a little bit more")
-    
-    }
-}   else if (nameInput3 === "hammer" || nameInput3 === "stethescope"){
-    
-    console.log()
-    let health = 90
-} else {
-    console.log("That is not a proper response, please try again")
-    
-    
-    }
-    
-}   else if(nameInput2 === "no"){
+        console.log("Wow doctor, her health is going up." + " " + (health + 5))
+        console.log("....")
+        console.log("....")
+        console.log("....")
+        console.log("....")
+        console.log("....")
+        console.log("....")
+        console.log("....")
+        console.log("....")
+        console.log("....")
+        console.log("....")
+        console.log("....")
+        console.log("....")
+        console.log(".....")
+        console.log("....")
+        console.log("....")
+        console.log("....")
+        console.log("....")
+        console.log("....")
+        console.log("....")
 
-         
-         }
+        console.log("good job, we kept her alive for a little bit more")
+        let nameInput6 = readline.question("Dr, the operation looks succesful. We can sew up the wounds or wait an hour, What do you want to do?")
+            if (nameInput6 === "sew up the wounds"){
+                console.log("Ok, looks like we did well")
+                let nameInput7 = readline.question("Doctor you can go home for an hour if you want")
+                while (nameInput7 !== "no"){
+                    console.log("THE PATIENCE HAS DIED........ LETS TRY AGAIN")
+                    nameInput7 = readline.question("Doctor you can go home if you want")
+                    
+                }   
+            } else if (nameInput7 === "no"){
+                let nameInput7 = readline.question("doctor, the patient had another major attack. He died ,try again?")
+                while (nameInput7 !== "yes") {
+                    console.log("OK what do you want to do now")
+                }
+                
+            }
+         }       
+     }   
+
+}
+
+    // create possibilities withion possiblity
+    // next create an option that the patient is recovering and needs rest, we can sew her now or wait
+    // or wait a little bit for the heart to heal up a bit before doing it. 
     
+   
+    
+   
 
 
