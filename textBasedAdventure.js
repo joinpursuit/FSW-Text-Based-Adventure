@@ -485,6 +485,7 @@ while(health > 0) {
 
     //Checking for valid user inputs, loops until the input is valid
     let transportationComplete = false;
+    let transportChoice = 0;
 
     transportationComplete: 
     while (transportationComplete === false) {
@@ -494,6 +495,7 @@ while(health > 0) {
             
             //Array
             answersPush("Take your car.");
+            let transportChoice = 1;
 
             newLine();
             console.log("You decide to drive.");
@@ -593,6 +595,7 @@ while(health > 0) {
 
             //Array
             answersPush("Take the train");
+            let transportChoice = 2;
 
             newLine();
             console.log("You decide to take the train.");
@@ -749,6 +752,7 @@ while(health > 0) {
 
     //Checking for valid user inputs, loops until the input is valid
     let intimadtingBossComplete = false;
+    let bossChoice = 0;
     intimadtingBossComplete:
     while(intimadtingBossComplete === false) {
         switch(responseToBoss) {
@@ -767,6 +771,7 @@ while(health > 0) {
                 answersPush("'No u'");
 
                 //End loop
+                bossChoice = 1;
                 intimadtingBossComplete = true;
                 break intimadtingBossComplete;
 
@@ -802,6 +807,7 @@ while(health > 0) {
                 answersPush("Accept your fate.");
 
                 //End loop
+                bossChoice = 3;
                 intimadtingBossComplete = true;
                 break intimadtingBossComplete;
 
@@ -819,9 +825,50 @@ while(health > 0) {
 
     newLine();
     //Go home and your plant gets angry for not being watered and attacks
+    switch(bossChoice) {
+        case 1:
+            console.log("After your long first day of being boss you return home exhausted.");
+            console.log("Your bed calls to you as soon as you enter.");
+            console.log("You slowly, and groggily make your way to your room.");
+            console.log("As soon as you enter, you collapse.");
+            console.log("You drift off into a deep sleep.");
+            console.log("You awake in a pitch black room. You can only see a foot in front of you.");
+            console.log("Two red lights flash in front of you, but you can't make out what it is.");
+            console.log("'Who's there?' You scream out.");
+            console.log("The lights start moving closer, and closer to you.");
+            console.log("It gets close enough for you to finally make out a shape.");
+            console.log("It's a nightmare of everything you've encountered in your day today.");
+            console.log("It grabs you by your leg and slams you onto the floor.");
 
-    // console.log("You're confused as to why she would ask that...");
-    // console.log("You take out your phone and realize it's Sunday.");
+            //Damage, and health check
+            slamDamage = randomInt(25, 1);
+            health -= slamDamage
+            healthDamage(slamDamage);
+            if(health <= 0) {
+                console.log("You have died.");
+                break gameRunning;
+            }
+
+            newLine();
+            console.log("You slowly stand back on your feet.");
+            console.log("Which action do you take?");
+            console.log("1. Sweep the leg.");
+            console.log("2. Go for it's eyes.");
+            console.log("3. Check your end table drawer.");
+            console.log("4. Open the window.");
+
+        case 3:
+            switch(transportChoice) {
+                case 1:
+                    console.log("After packing your bags you return to your car.");
+                    console.log("You drive home listening to 'Everybody Hurts' by REM on repeat the whole way.");
+
+                case 2:
+                    console.log("After packing your bags you go return to the train station.");
+                    console.log("While walking down the steps someone runs passed and bumps your shoulder.");
+            }
+    }
+
     break gameRunning;
 
 } //End of the game
