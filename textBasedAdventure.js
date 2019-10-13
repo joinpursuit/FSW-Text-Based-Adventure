@@ -884,249 +884,10 @@ while(health > 0) {
     } //End of Intimidating Boss Loop
 
     newLine();
-    //Go home and your plant gets angry for not being watered and attacks
     switch(bossChoice) {
         case 1:
             console.log("After your long first day of being boss you return home exhausted.");
-            console.log("Your bed calls to you as soon as you enter.");
-            console.log("You slowly, and groggily make your way to your room.");
-            console.log("As soon as you enter, you collapse.");
-            console.log("You drift off into a deep sleep.");
-            console.log("You awake in a pitch black room. You can only see a foot in front of you.");
-            console.log("Two red lights flash in front of you, but you can't make out what it is.");
-            console.log("'Who's there?' You scream out.");
-            console.log("The lights start moving closer, and closer to you.");
-            console.log("It gets close enough for you to finally make out a shape.");
-            console.log("It's a nightmare of everything you've encountered in your day today.");
-            console.log("It grabs you by your leg and slams you onto the floor.");
-
-            //Damage, and health check
-            slamDamage = randomInt(25, 1);
-            health -= slamDamage
-            healthDamage(slamDamage);
-            if(health <= 0) {
-                console.log("You have died.");
-                break gameRunning;
-            }
-
-            newLine();
-            console.log("You slowly stand back on your feet.");
-            console.log("Which action do you take?");
-            console.log("1. Sweep the leg.");
-            console.log("2. Go for it's eyes.");
-            console.log("3. Check your end table drawer.");
-            console.log("4. Open the window.");
-            let nightmareChoice = userInput("(Input a number between 1 and 4) ");
-
-            //Array
-            questionsPush("Which action do you take against the nightmare (1)");
-
-            //Checking for valid user inputs, loops until the input is valid
-            let nightmareChoice1Complete = false;
-            nightmareChoice1:
-            while(nightmareChoice1Complete === false) {
-                switch(nightmareChoice) {
-                    case "1":
-                        //Array
-                        answersPush("Sweep the leg.")
-
-                        newLine();
-                        console.log("You crouch into position, and stick out your leg for the sweep attack.");
-                        console.log("The nightmare jumps to avoid it.");
-                        console.log("As it comes back down to the ground you react fast enough to grab its legs and take it down.");
-                        console.log("The nightmare lets out a loud screech.");
-                        console.log("Which action do you take?");
-                        console.log("1. Put it in a guillotine.");
-                        console.log("2. Put it in an armbar.");
-                        console.log("3. Put it in an Omoplata.");
-                        let nightmareChoice2 = userInput("(Input a number between 1 and 3) ");
-
-                        //Array
-                        questionsPush("Which action do you take against the nightmare (2)");
-
-                        //Checking for valid user inputs, loops until the input is valid
-                        let nightmareChoice2Complete = false;
-                        nightmareChoice2:
-                        while(nightmareChoice2Complete === false) {
-                            switch(nightmareChoice2) {
-                                case "1":
-                                    //Array
-                                    answersPush("Put it in a guillotine.")
-
-                                    console.log("You get underneath the nightmare to get in position.");
-                                    console.log("The nightmare uses this to put all it's weight on you.");
-                                    console.log("It crushes you between itself and the floor.");
-
-                                    //Health check
-                                    health = 0;
-                                    healthDamage(0);
-                                    if(health <= 0) {
-                                        console.log("You have died.");
-                                        break gameRunning;
-                                    }
-
-                                    //End loop
-                                    nightmareChoice2Complete = true;
-                                    break nightmareChoice2;
-
-                                case "2":
-                                    //Array
-                                    answersPush("Put it in an armbar.")
-
-                                    newLine();
-                                    console.log("You pull the nightmares arm and hold it in a position that should start to break it.");
-                                    console.log("The nightmare lets out a loud screech as you slowly begin tearing off it's arm.");
-                                    console.log("As it gets closer to ripping off the nightmare collapses.");
-                                    console.log("You finish it off by ripping the arm out of it's socket.");
-                                    console.log("You stand up, nightmare arm in hand and triumphantly look over at what you've done.");
-                                    reflect();
-
-                                    //End loop
-                                    nightmareChoice2Complete = true;
-                                    break nightmareChoice2;
-
-                                case "3":
-                                    //Array
-                                    answersPush("Put it in an Omoplata.")
-
-                                    newLine();
-                                    console.log("You flip to the nightmares side.");
-                                    console.log("You grab it's arm in an Omoplata.");
-                                    console.log("It screams in agony.");
-                                    console.log("The nightmare uses it's weight to move you off of it.");
-                                    console.log("It slams you against the wall and stands up again.");
-
-                                    //Health Check
-                                    let wallSlam = randomInt(15, 1);
-                                    health -= wallSlam;
-                                    healthDamage(wallSlam);
-                                    if(health <= 0) {
-                                        console.log("You have died");
-                                        break gameRunning;
-                                    }
-
-                                    newLine();
-                                    console.log("The nightmare stands back up at the same time as you.");
-                                    console.log("Which action do you take?");
-                                    console.log("1. Go for it's eyes.");
-                                    console.log("2. Check your end table drawer.");
-                                    console.log("3. Open the window.");
-                                    let nightmareChoice3 = userInput("(Input a number between 1 and 3) ");
-
-                                    //Array
-                                    questionsPush("Which action do you take against the nightmare (3)?");
-
-                                    //Checking for valid user inputs, loops until the input is valid
-                                    let nightmareChoice3Complete = false;
-                                    nightmareChoice3:
-                                    while(nightmareChoice3Complete === false) {
-                                        switch(nightmareChoice3) {
-                                            case "1":
-                                                //Array
-                                                answersPush("Go for it's eyes.");
-
-                                                goForItsEyes();
-
-                                                //End loop
-                                                nightmareChoice3Complete = true;
-                                                break nightmareChoice3;
-
-                                            case "2":
-                                                //Array
-                                                answersPush("Check your end table.");
-
-                                                checkEndTable();
-
-                                                //End loop
-                                                nightmareChoice3Complete = true;
-                                                break nightmareChoice3;
-
-                                            case "3":
-                                                //Array
-                                                answersPush("Open the window.");
-
-                                                openWindow();
-
-                                                //End loop
-                                                nightmareChoice3Complete = true;
-                                                break nightmareChoice3;
-
-                                            default:
-                                                newLine()
-                                                console.log("I do not understand.");
-                                                console.log("The nightmare stands back up at the same time as you.");
-                                                console.log("Which action do you take?");
-                                                console.log("1. Go for it's eyes.");
-                                                console.log("2. Check your end table drawer.");
-                                                console.log("3. Open the window.");
-                                                nightmareChoice3 = userInput("(Input a number between 1 and 3) ");
-
-                                        }//End to nightmareChoice3 Switch
-                                    }//End to nightmareChoice3 Loop
-                                    
-                                    //End loop
-                                    nightmareChoice2Complete = true;
-                                    break nightmareChoice2;
-
-                                default:
-                                    newLine();
-                                    console.log("I do not understand.")
-                                    console.log("Which action do you take?");
-                                    console.log("1. Put it in a guillotine.");
-                                    console.log("2. Put it in an armbar.");
-                                    console.log("3. Put it in an Omoplata.");
-                                    nightmareChoice2 = userInput("(Input a number between 1 and 3) ");
-
-                            }//End of nightmareChoice2 switch
-                        }// End of nightmareChoice2 validity check
-
-                        //End loop
-                        nightmareChoice1Complete = true;
-                        break nightmareChoice1;
-                        
-                    case "2":
-                        //Array
-                        answersPush("Go for it's eyes.")
-
-                        goForItsEyes();
-
-                        //End loop
-                        nightmareChoice1Complete = true;
-                        break nightmareChoice1;
-                        
-                    case "3":
-                       //Array
-                        answersPush("Check your end table drawer.");
-
-                        checkEndTable();
-
-                        //End loop
-                        nightmareChoice1Complete = true;
-                        break nightmareChoice1;
-                        
-                    case "4":
-                        //Array
-                        answersPush("Open the window.");
-
-                        openWindow();
-                        
-                        //End loop
-                        nightmareChoice1Complete = true;
-                        break nightmareChoice1;
-                        
-                    default:
-                        newLine();
-                        console.log("I do not understand.");
-                        console.log("Which action do you take?");
-                        console.log("1. Sweep the leg.");
-                        console.log("2. Go for it's eyes.");
-                        console.log("3. Check your end table drawer.");
-                        console.log("4. Open the window.");
-                        nightmareChoice = userInput("(Input a number between 1 and 4) ");
-                                               
-                }//End of nightmareChoice1 switch
-            }//End of nightmareChoice1 validity check
-
+            
         case 3:
             switch(transportChoice) {
                 case 1:
@@ -1135,10 +896,248 @@ while(health > 0) {
 
                 case 2:
                     console.log("After packing your bags you go return to the train station.");
-                    console.log("While walking down the steps someone runs passed and bumps your shoulder.");
+                    console.log("You put on your headphones and blast 'Everybody Hurts' by REM on repeat the whole way.");
 
             }
     }
+    console.log("Your bed calls to you as soon as you enter.");
+    console.log("You slowly, and groggily make your way to your room.");
+    console.log("As soon as you enter, you collapse.");
+    console.log("You drift off into a deep sleep.");
+    console.log("You awake in a pitch black room. You can only see a foot in front of you.");
+    console.log("Two red lights flash in front of you, but you can't make out what it is.");
+    console.log("'Who's there?' You scream out.");
+    console.log("The lights start moving closer, and closer to you.");
+    console.log("It gets close enough for you to finally make out a shape.");
+    console.log("It's a nightmare of everything you've encountered in your day today.");
+    console.log("It grabs you by your leg and slams you onto the floor.");
+
+    //Damage, and health check
+    slamDamage = randomInt(25, 1);
+    health -= slamDamage
+    healthDamage(slamDamage);
+    if(health <= 0) {
+        console.log("You have died.");
+        break gameRunning;
+    }
+
+    newLine();
+    console.log("You slowly stand back on your feet.");
+    console.log("Which action do you take?");
+    console.log("1. Sweep the leg.");
+    console.log("2. Go for it's eyes.");
+    console.log("3. Check your end table drawer.");
+    console.log("4. Open the window.");
+    let nightmareChoice = userInput("(Input a number between 1 and 4) ");
+
+    //Array
+    questionsPush("Which action do you take against the nightmare (1)");
+
+    //Checking for valid user inputs, loops until the input is valid
+    let nightmareChoice1Complete = false;
+    nightmareChoice1:
+    while(nightmareChoice1Complete === false) {
+        switch(nightmareChoice) {
+            case "1":
+                //Array
+                answersPush("Sweep the leg.")
+
+                newLine();
+                console.log("You crouch into position, and stick out your leg for the sweep attack.");
+                console.log("The nightmare jumps to avoid it.");
+                console.log("As it comes back down to the ground you react fast enough to grab its legs and take it down.");
+                console.log("The nightmare lets out a loud screech.");
+                console.log("Which action do you take?");
+                console.log("1. Put it in a guillotine.");
+                console.log("2. Put it in an armbar.");
+                console.log("3. Put it in an Omoplata.");
+                let nightmareChoice2 = userInput("(Input a number between 1 and 3) ");
+
+                //Array
+                questionsPush("Which action do you take against the nightmare (2)");
+
+                //Checking for valid user inputs, loops until the input is valid
+                let nightmareChoice2Complete = false;
+                nightmareChoice2:
+                while(nightmareChoice2Complete === false) {
+                    switch(nightmareChoice2) {
+                        case "1":
+                            //Array
+                            answersPush("Put it in a guillotine.")
+
+                            console.log("You get underneath the nightmare to get in position.");
+                            console.log("The nightmare uses this to put all it's weight on you.");
+                            console.log("It crushes you between itself and the floor.");
+
+                            //Health check
+                            health = 0;
+                            healthDamage(0);
+                            if(health <= 0) {
+                                console.log("You have died.");
+                                break gameRunning;
+                            }
+
+                            //End loop
+                            nightmareChoice2Complete = true;
+                            break nightmareChoice2;
+
+                        case "2":
+                            //Array
+                            answersPush("Put it in an armbar.")
+
+                            newLine();
+                            console.log("You pull the nightmares arm and hold it in a position that should start to break it.");
+                            console.log("The nightmare lets out a loud screech as you slowly begin tearing off it's arm.");
+                            console.log("As it gets closer to ripping off the nightmare collapses.");
+                            console.log("You finish it off by ripping the arm out of it's socket.");
+                            console.log("You stand up, nightmare arm in hand and triumphantly look over at what you've done.");
+                            reflect();
+
+                            //End loop
+                            nightmareChoice2Complete = true;
+                            break nightmareChoice2;
+
+                        case "3":
+                            //Array
+                            answersPush("Put it in an Omoplata.")
+
+                            newLine();
+                            console.log("You flip to the nightmares side.");
+                            console.log("You grab it's arm in an Omoplata.");
+                            console.log("It screams in agony.");
+                            console.log("The nightmare uses it's weight to move you off of it.");
+                            console.log("It slams you against the wall and stands up again.");
+
+                            //Health Check
+                            let wallSlam = randomInt(15, 1);
+                            health -= wallSlam;
+                            healthDamage(wallSlam);
+                            if(health <= 0) {
+                                console.log("You have died");
+                                break gameRunning;
+                            }
+
+                            newLine();
+                            console.log("The nightmare stands back up at the same time as you.");
+                            console.log("Which action do you take?");
+                            console.log("1. Go for it's eyes.");
+                            console.log("2. Check your end table drawer.");
+                            console.log("3. Open the window.");
+                            let nightmareChoice3 = userInput("(Input a number between 1 and 3) ");
+
+                            //Array
+                            questionsPush("Which action do you take against the nightmare (3)?");
+
+                            //Checking for valid user inputs, loops until the input is valid
+                            let nightmareChoice3Complete = false;
+                            nightmareChoice3:
+                            while(nightmareChoice3Complete === false) {
+                                switch(nightmareChoice3) {
+                                    case "1":
+                                        //Array
+                                        answersPush("Go for it's eyes.");
+
+                                        goForItsEyes();
+
+                                        //End loop
+                                        nightmareChoice3Complete = true;
+                                        break nightmareChoice3;
+
+                                    case "2":
+                                        //Array
+                                        answersPush("Check your end table.");
+
+                                        checkEndTable();
+
+                                        //End loop
+                                        nightmareChoice3Complete = true;
+                                        break nightmareChoice3;
+
+                                    case "3":
+                                        //Array
+                                        answersPush("Open the window.");
+
+                                        openWindow();
+
+                                        //End loop
+                                        nightmareChoice3Complete = true;
+                                        break nightmareChoice3;
+
+                                    default:
+                                        newLine()
+                                        console.log("I do not understand.");
+                                        console.log("The nightmare stands back up at the same time as you.");
+                                        console.log("Which action do you take?");
+                                        console.log("1. Go for it's eyes.");
+                                        console.log("2. Check your end table drawer.");
+                                        console.log("3. Open the window.");
+                                        nightmareChoice3 = userInput("(Input a number between 1 and 3) ");
+
+                                }//End to nightmareChoice3 Switch
+                            }//End to nightmareChoice3 Loop
+                            
+                            //End loop
+                            nightmareChoice2Complete = true;
+                            break nightmareChoice2;
+
+                        default:
+                            newLine();
+                            console.log("I do not understand.")
+                            console.log("Which action do you take?");
+                            console.log("1. Put it in a guillotine.");
+                            console.log("2. Put it in an armbar.");
+                            console.log("3. Put it in an Omoplata.");
+                            nightmareChoice2 = userInput("(Input a number between 1 and 3) ");
+
+                    }//End of nightmareChoice2 switch
+                }// End of nightmareChoice2 validity check
+
+                //End loop
+                nightmareChoice1Complete = true;
+                break nightmareChoice1;
+                
+            case "2":
+                //Array
+                answersPush("Go for it's eyes.")
+
+                goForItsEyes();
+
+                //End loop
+                nightmareChoice1Complete = true;
+                break nightmareChoice1;
+                
+            case "3":
+               //Array
+                answersPush("Check your end table drawer.");
+
+                checkEndTable();
+
+                //End loop
+                nightmareChoice1Complete = true;
+                break nightmareChoice1;
+                
+            case "4":
+                //Array
+                answersPush("Open the window.");
+
+                openWindow();
+                
+                //End loop
+                nightmareChoice1Complete = true;
+                break nightmareChoice1;
+                
+            default:
+                newLine();
+                console.log("I do not understand.");
+                console.log("Which action do you take?");
+                console.log("1. Sweep the leg.");
+                console.log("2. Go for it's eyes.");
+                console.log("3. Check your end table drawer.");
+                console.log("4. Open the window.");
+                nightmareChoice = userInput("(Input a number between 1 and 4) ");
+                                       
+        }//End of nightmareChoice1 switch
+    }//End of nightmareChoice1 validity check
 
     break gameRunning;
 
