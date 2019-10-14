@@ -169,9 +169,11 @@ function breakfast() {
         switch (breakfast) {
             case "Y":
                 eatBreakfast();
+                break;
 
             case "N":
                 dontEatBreakfast();
+                break;
 
             default:
                 //If any of the above are not true then a redo is required
@@ -223,12 +225,15 @@ function eatBreakfast() {
             switch(stomachCounter) {
                 case "1":
                     eatCereal();
+                    break;
 
                 case "2":
                     makePancakes();
+                    break;
 
                 case "3":
                     haveCoffee();
+                    break;
 
                 default:
                     console.clear();
@@ -356,15 +361,19 @@ function dontEatBreakfast() {
         switch(waffleCounter) {
             case "1":
                 unplugWaffleIron();
+                break;
 
             case "2":
                 splashWater();
+                break;
 
             case "3":
                 jumpOnIt();
+                break;
 
             case "4":
                 walkAway();
+                break;
 
             default:
                 //If the user doesn't do a correct input then it asks for a repeat
@@ -379,6 +388,7 @@ function dontEatBreakfast() {
 
         }// End of waffleCounter switch
     }// End of waffleBattle Validity check
+    travel();
 }// End of dontEatBreakfast() function
 
 
@@ -437,7 +447,7 @@ function jumpOnIt() {
 
     //End Loop
     waffleBattleComplete = true;
-    travel();
+    // travel();
 
 }// End of jumpOnIt() function
 
@@ -461,6 +471,240 @@ function walkAway() {
     endGame();
 
 }// End of walkAway() function
+
+
+function travel() {
+    console.clear();
+    console.log("Finally your morning routine is complete.");
+    console.log("You leave your house.");
+
+    newLine();
+    console.log("Traffic looks crazy today. And your train is also having delays. Do you: ");
+    console.log("1. Still decide to drive.");
+    console.log("2. Still take the train.");
+    let transportation = userInput("(Input either 1 or 2) ");
+
+    //Array
+    questionsPush("Do you drive or take the train?");
+
+    //Checking for valid user inputs, loops until the input is valid
+    let transportationComplete = false;
+    let transportChoice = 0;
+
+    transportationComplete: 
+    while (transportationComplete === false) {
+        switch (transportation) {
+            case "1":
+                drive();
+
+            case "2":
+                train();
+
+            default:
+                console.log("I do not understand.");
+                console.log("Traffic looks crazy today. And your train is also having delays. Do you: ");
+                console.log("1. Still decide to drive.");
+                console.log("2. Still take the train.");
+                transportation = userInput("(Input either 1 or 2) ");
+
+        }// End of transportation switch
+    }// End of transportation Validity check
+}// End of travel() function
+
+
+function drive() {
+    //Battle with a road rager
+            
+    //Array
+    answersPush("Take your car.");
+    transportChoice = 1;
+
+    console.clear();
+    console.log("You decide to drive.");
+    console.log("On your drive you get cut off by a reckless driver.");
+    console.log("In response you honk your horn.");
+    console.log("The reckless driver didn't like this, and when a red light was reached he exited his car.");
+    console.log("The road rager attacks.");
+    console.log("The road rager uses 'insult'.");
+
+    //Health && Check
+    let roadRageInsultDamage = randomInt(25, 1);
+    health -= roadRageInsultDamage;
+    healthDamage(roadRageInsultDamage);
+    if(health <= 0) {
+        console.log("You have died.");
+        endGame();
+    }
+            
+    newLine();
+    console.log("Which action do you take?");
+    console.log("1. Insult back");
+    console.log("2. Honk your horn");
+    console.log("3. Ignore the road rager");
+    let roadRageCounter = userInput("(Input a number between 1 and 3) ");
+
+    //Array
+    questionsPush("Which action do you take against the Road Rager?");
+
+    //Checking for valid user inputs, loops until the input is valid
+    let roadRageComplete = false;
+    roadRageComplete: 
+    while (roadRageComplete === false) {
+        switch (roadRageCounter) {
+            case "1":
+                insult();
+
+            case "2":
+                honkHorn();
+
+            case "3":
+                ignore();
+
+            default:
+                console.clear();
+                console.log("Which action do you take?");
+                console.log("1. Insult back");
+                console.log("2. Honk your horn");
+                console.log("3. Ignore the road rager");
+                roadRageCounter = userInput("(Input a number between 1 and 3) ");
+
+        }// End of roadRage switch
+    }// End of roadRage Validity check
+}// End of drive() function
+
+
+function insult() {
+    console.clear();
+    console.log("Your insult does nothing!");
+    console.log("Road Rager uses 'Mom insult'");
+    console.log(`You take ${health} points of damage!`);
+
+    //Array
+    answersPush("Insult back");
+
+    //End loop & program
+    roadRageComplete = true;
+    health = 0;
+    if(health <= 0) {
+        console.log("You have died.");
+        endGame();
+    }
+
+}// End of insult() function
+
+
+function honkHorn() {
+    console.clear();
+    console.log("You slam your hand on your steering wheel.");
+    console.log("Your horn shocks the road rager.");
+    console.log("He picks up a rock and throws it at your car.");
+    console.log("The rock misses your car completely.");
+    console.log("The road rager returns to his car in shame.");
+    console.log("You continue driving to your job.");
+
+    //Array
+    answersPush("Honk your horn");
+
+    //End loop
+    roadRageComplete = true;
+    job();
+}// End of honkHorn() function
+
+
+function ignore() {
+    console.clear();
+    console.log("You pay no attention to the road rager.");
+    console.log("The road rager uses 'Middle Finger'");
+    console.log("It has no effect on you!");
+    console.log("The road rager angrily returns to his car after no response.");
+    console.log("You continue driving to your job.");
+
+    //Array
+    answersPush("Ignore the road rager");
+
+    //End loop
+    roadRageComplete = true;
+    job();
+}//End of ignore() function
+
+
+function train() {
+    //Battle with a subway rat
+
+    //Array
+    answersPush("Take the train");
+    transportChoice = 2;
+
+    console.clear();
+    console.log("You decide to take the train.");
+    console.log("You arrive at the station.");
+    console.log("You notice an entirely empty bench, except for a lone slice of pizza, and take a seat.");
+    console.log("After a few minutes of sitting you feel a brush against your leg.");
+    console.log("Out of fear you jump up and catch the attention of a subway rat!");
+    console.log("The rat leaps at you and uses 'Bite'");
+
+    let ratAttack = randomInt(10, 1);
+    health -= ratAttack;
+    healthDamage(ratAttack);
+    if(health <= 0) {
+        console.log("You have died.");
+        endGame();
+    }
+
+    newLine();
+    console.log("Which action do you take?");
+    console.log("1. Kick the rat.");
+    console.log("2. Pick the rat up and throw it at the train.");
+    console.log("3. Walk to the other side of the platform.");
+    console.log("4. Give the rat the pizza left on the bench.");
+    let ratCounter = userInput("(Input a number between 1 and 4) ");
+
+    //Array
+    questionsPush("Which action do you take against the rat?");
+
+    //Checking for valid user inputs, loops until the input is valid
+    let ratComplete = false;
+    ratComplete: 
+    while (ratComplete === false) {
+        switch (ratCounter) {
+            case "1":
+                kickRat();
+
+            case "2":
+                pickUpRat();
+
+            case "3":
+                walkAwayFromRat();
+
+            case "4":
+                giveRatPizza();
+
+            default:
+
+
+        }// End of ratCounter switch
+    }// End of ratCounter Validity check
+}// End of train() function
+
+
+function kickRat() {
+
+}// End of kickRat() function
+
+
+function pickUpRat() {
+
+}// End of pickUpRat() function
+
+
+function walkAwayFromRat() {
+
+}// End of walkAwayFromRat() function
+
+
+function giveRatPizza() {
+
+}// End of giveRatPizza() function
 
 
 function goForItsEyes() {
@@ -512,8 +756,7 @@ function openWindow() {
     reflect();
 }// End of openWindow() function
 
-gameRunning:
-while(health > 0) { 
+
     // // 4# Pet Care
     // newLine();
     // console.log("You return to your room.");
@@ -602,166 +845,16 @@ while(health > 0) {
 
     //     }//End of pets validity check
     // }//End of pets loop
+ 
 
-    newLine();
-    console.log("Finally your morning routine is complete.");
-    console.log("You leave your house.");
-
-    newLine();
-    console.log("Traffic looks crazy today. And your train is also having delays. Do you: ");
-    console.log("1. Still decide to drive.");
-    console.log("2. Still take the train.");
-    let transportation = userInput("(Input either 1 or 2) ");
-
-    //Array
-    questionsPush("Do you drive or take the train?");
-
-    //Checking for valid user inputs, loops until the input is valid
-    let transportationComplete = false;
-    let transportChoice = 0;
-
-    transportationComplete: 
-    while (transportationComplete === false) {
-        switch (transportation) {
-            case "1":
-            //Battle with a road rager
             
-            //Array
-            answersPush("Take your car.");
-            transportChoice = 1;
-
-            newLine();
-            console.log("You decide to drive.");
-            console.log("On your drive you get cut off by a reckless driver.");
-            console.log("In response you honk your horn.");
-            console.log("The reckless driver didn't like this, and when a red light was reached he exited his car.");
-            console.log("The road rager attacks.");
-            console.log("The road rager uses 'insult'.");
-
-            let roadRageInsultDamage = randomInt(25, 1);
-            health -= roadRageInsultDamage;
-            healthDamage(roadRageInsultDamage);
-            if(health <= 0) {
-                console.log("You have died.");
-                break gameRunning;
-            }
-            
-            newLine();
-            console.log("Which action do you take?");
-            console.log("1. Insult back");
-            console.log("2. Honk your horn");
-            console.log("3. Ignore the road rager");
-            let roadRageCounter = userInput("(Input a number between 1 and 3) ");
-
-            //Array
-            questionsPush("Which action do you take against the Road Rager?");
-
-            //Checking for valid user inputs, loops until the input is valid
-            let roadRageComplete = false;
-            roadRageComplete: 
-            while (roadRageComplete === false) {
-                switch (roadRageCounter) {
-                case "1":
-                    newLine();
-                    console.log("Your insult does nothing!");
-                    console.log("Road Rager uses 'Mom insult'");
-                    console.log(`You take ${health} points of damage!`);
-
-                    //Array
-                    answersPush("Insult back");
-
-                    //End loop & program
-                    roadRageComplete = true;
-                    health = 0;
-                    if(health <= 0) {
-                        console.log("You have died.");
-                        break gameRunning;
-                    }
-                    break roadRageComplete;
-
-                case "2":
-                    newLine();
-                    console.log("Your horn shocks the road rager.");
-                    console.log("He picks up a rock and throws it at your car.");
-                    console.log("The rock misses your car completely.");
-                    console.log("The road rager returns to his car in shame.");
-
-                    //Array
-                    answersPush("Honk your horn");
-
-                    //End loop
-                    roadRageComplete = true;
-                    break roadRageComplete;
-
-                case "3":
-                    newLine();
-                    console.log("The road rager uses 'Middle Finger'");
-                    console.log("It has no effect on you!");
-                    console.log("The road rager angrily returns to his car after no response.");
-
-                    //Array
-                    answersPush("Ignore the road rager");
-
-                    //End loop
-                    roadRageComplete = true;
-                    break roadRageComplete;
-
-                default:
-                    newLine();
-                    console.log("Which action do you take?");
-                    console.log("1. Insult back");
-                    console.log("2. Honk your horn");
-                    console.log("3. Ignore the road rager");
-                    roadRageCounter = userInput("(Input a number between 1 and 3) ");
-
-                }//End of car validity check
-            }//End of car loop
-
-            console.log("You continue driving to your job.");
 
             //End loop
             transportationComplete = true;
             break transportationComplete;
 
             case "2":
-            //Battle with a subway rat
-
-            //Array
-            answersPush("Take the train");
-            transportChoice = 2;
-
-            newLine();
-            console.log("You decide to take the train.");
-            console.log("You arrive at the station.");
-            console.log("You notice an entirely empty bench, except for a lone slice of pizza, and take a seat.");
-            console.log("After a few minutes of sitting you feel a brush against your leg.");
-            console.log("Out of fear you jump up and catch the attention of a subway rat!");
-            console.log("The rat leaps at you and uses 'Bite'");
-
-            let ratAttack = randomInt(10, 1);
-            health -= ratAttack;
-            healthDamage(ratAttack);
-            if(health <= 0) {
-                console.log("You have died.");
-                break gameRunning;
-            }
-
-            newLine();
-            console.log("Which action do you take?");
-            console.log("1. Kick the rat.");
-            console.log("2. Pick the rat up and throw it at the train.");
-            console.log("3. Walk to the other side of the platform.");
-            console.log("4. Give the rat the pizza left on the bench.");
-            let ratCounter = userInput("(Input a number between 1 and 4) ");
-
-            //Array
-            questionsPush("Which action do you take against the rat?");
-
-            //Checking for valid user inputs, loops until the input is valid
-            let ratComplete = false;
-            ratComplete: 
-            while (ratComplete === false) {
-                switch (ratCounter) {
+            
                 case "1":
                     newLine();
                     console.log("You begin to kick.");
@@ -845,12 +938,7 @@ while(health > 0) {
                 //End loop
                 transportationComplete = true;
                 break transportationComplete;
-            default:
-            console.log("I do not understand.");
-            console.log("Traffic looks crazy today. And your train is also having delays. Do you: ");
-            console.log("1. Still decide to drive.");
-            console.log("2. Still take the train.");
-            transportation = userInput("(Input either 1 or 2) ");
+
 
         }//End of transportation validity check
     }//End of transportation loop
