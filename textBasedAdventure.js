@@ -1,110 +1,140 @@
 const readline = require('readline-sync')
+const readlineSync = require('readline-sync')
+// currentDefaultOptions = readlineSync.setDefaultOptions([newDefaultOptions])
 
 let payGame = true
+let playerHealth = 30
+let position = {
+    x : 0,
+    y : 0
+};
 
-let race = [ "human", "elf","orc"]
+const upLeft = () =>{
+    let upLeftChoice;
+    while(upLeftChoice !== "u" && upLeftChoice !== "l" ){
+        upLeftChoice = readline.question('Which room would you like to move to? Left [l], up [u] ');
+        console.log(upLeftChoice)
+    }
 
-let weapon = ["Sword","Axe","Spear","Fist"]
-
-let playerHealth = 0;
-let playerAttack = 0;
-let playerDefense = 0;
-let armedPlayer = 0;
-
-let nameInput = readline.question("Enter your name: ")
-
-console.log(`Hello ${nameInput}!  Welcome to your first adventure.`)
-
-let raceInput = readline.question(`Choose your race ${race}.`)
-
-
-let raceStat = ''
-
-if (raceInput === "human"){
-    raceStat = [10,10,10];
-} else if (raceInput === "elf"){
-    raceStat = [12,8,8]
-} else if (raceInput === "orc"){
-    raceStat = [8,12,12];
+    if(String(upLeftChoice) === "u"){
+        position["y"] += 1;
+    } else if(String(upLeftChoice) === "l"){
+        position["x"] -= 1;
+    }
 }
 
+const upRight = () =>{
+    let upLeftChoice;
+    while(upLeftChoice !== "u" && upLeftChoice !== "r" ){
+        upLeftChoice = readline.question('Which room would you like to move to? Up [u], right [r] ');
+        console.log(upLeftChoice)
+    }
 
-playerHealth = raceStat[0]
-playerAttack = raceStat[1]
-
-console.log(`your race is ${raceInput} health ${playerHealth} attack ${playerAttack}`)
-
-let weaponInput = readline.question(`Choose your weapon ${weapon}.`)
-
-let weaponStat = 0
-
-
-if (weaponInput === "sword"){
-    weaponStat = 1;
-} else if (weaponInput === "axe"){
-    weaponStat = 2
-} else if (weaponInput === "spear"){
-    weaponStat = 3;
-} else if (weaponInput === "fist"){
-    weaponStat = 4;
+    if(String(upLeftChoice) === "u"){
+        position["y"] += 1;
+    } else if(String(upLeftChoice) === "r"){
+        position["x"] += 1;
+    }
 }
 
-console.log(`You have chosen ${weaponInput}. Your attack power has gone up by ${weaponStat}. Now it's time for your first challenge. 
-    A goblin appears.`)
-playerAttack = weaponStat+playerAttack
+const upDownRight = () =>{
+    let upLeftChoice;
+    while(upLeftChoice !== "u" && upLeftChoice !== "r" && upLeftChoice !== "d" ){
+        upLeftChoice = readline.question('Which room would you like to move to? Up [u], Down [d], right [r] ');
+        console.log(upLeftChoice)
+    }
 
-let goblinHealth = 30;
-let goblinAttack = 12;
-let goblinDefense = 6;
-let roundOneCounter = 0
-let actionAvailable = ["attack", "defend", "runAway"]
-let roundOneContinue = true;
-let damageRoundOnePlayer = Math.abs(goblinDefense-playerAttack)
-let damageRoundOneGoblin = Math.abs(playerDefense-goblinAttack)
+    if(String(upLeftChoice) === "u"){
+        position["y"] += 1;
+    } else if(String(upLeftChoice) === "r"){
+        position["x"] += 1;
+    } else if(String(upDownRight) === "d"){
+        position["y"] -= 1;
+    }
+}
 
-let actionRoundOne = ""
-actionRoundOne = readline.question(`Choose your action. ${actionAvailable}.`);
+const upDownLeft = () =>{
+    let upLeftChoice;
+    while(upLeftChoice !== "u" && upLeftChoice !== "l" && upLeftChoice !== "d" ){
+        upLeftChoice = readline.question('Which room would you like to move to? Up [u], Down [d], left [l] ');
+        console.log(upLeftChoice)
+    }
 
-while(roundOneContinue === true && actionRoundOne !== ""){
-    // actionRoundOne = readline.question(`Choose your action. ${actionAvailable}.`);
-    for(roundOneCounter = 1; roundOneCounter <= 3; roundOneCounter += 1){
-        if(playerHealth <= 0){
-            console.log("fail")
-            roundOneContinue = false;
-            playGame = false;
-        } else if(roundOneCounter === 3 && playerHealth > 0){
-            console.log("success");
-            roundOneContinue = false
-        } else if (playerHealth > 0 ){
-            let goblinAction = Math.floor(Math.random() * 2);
-            if(actionRoundOne === "attack"){
-                if(goblinAction === 0){
-                    goblinHealth -= damageRoundOnePlayer;
-                    if(playyerHealth >0 && goblinHealth > 0){console.log(`You successfully attacked, and delt ${damageRoundOnePlayer} in damage. ${playerHealth} ${goblinHealth}`);
-                    } else if (playerHealth >0 && goblinHealth <= 0){
-                        console.log(`goblin defeated - attack`)
-                        roundOneContinue = false
+    if(String(upLeftChoice) === "u"){
+        position["y"] += 1;
+    } else if(String(upLeftChoice) === "l"){
+        position["x"] -= 1;
+    } else if(String(upDownRight) === "d"){
+        position["y"] -= 1;
+    }
+}
 
-                }   else if (playerHealth <= 0){
-                    console.log('you died')
-                    roundOneContinue = false
-                    playGame = false
-                    
-                }
-                    actionRoundOne = ""
-                } else if (goblinAction === 1){
-                    goblinHealth -= damageRoundOnePlayer
-                    playerHealth -= damageRoundOneGoblin
-                    console.log(`You successfully attacked, and delt ${damageRoundOnePlayer} in damage. Your enemy also delt ${damageRoundOneGoblin}  ${playerHealth} ${goblinHealth}`);
-                    // actionRoundOne = ""
-                    actionRoundOne = readline.question(`Choose your action. ${actionAvailable}.`);
-                } else if(goblinAction === 2){
-                    playerHealth -= damageRoundOneGoblin
-                    console.log(`You attacked failed, and your enemy delt ${damageRoundOneGoblin}  ${playerHealth} ${goblinHealth}`);
-                    // actionRoundOne = ""
-                    actionRoundOne = readline.question(`Choose your action. ${actionAvailable}.`);
-                }
-            }
+const upDownLeftRight = () =>{
+    let upLeftChoice;
+    while(upLeftChoice !== "u" && upLeftChoice !== "l" && upLeftChoice !== "d" && upLeftChoice !== "r" ){
+        upLeftChoice = readline.question('Which room would you like to move to? Up [u], Down [d], left [l], right [r]');
+        console.log(upLeftChoice)
+    }
+
+    if(String(upLeftChoice) === "u"){
+        position["y"] += 1;
+    } else if(String(upLeftChoice) === "l"){
+        position["x"] -= 1;
+    } else if(String(upDownRight) === "d"){
+        position["y"] -= 1;
+    } else if(String(upLeftChoice) === "r"){
+        position["x"] += 1;
+}
+}
+
+const upLeftRight = () =>{
+    let upLeftChoice;
+    while(upLeftChoice !== "u" && upLeftChoice !== "l" && upLeftChoice !== "r" ){
+        upLeftChoice = readline.question('Which room would you like to move to? Up [u], left [l], right [r]');
+        console.log(upLeftChoice)
+    }
+
+    if(String(upLeftChoice) === "u"){
+        position["y"] += 1;
+    } else if(String(upLeftChoice) === "l"){
+        position["x"] -= 1;
+    } else if(String(upLeftChoice) === "r"){
+        position["x"] += 1;
+}
+}
+
+const chestChance = () =>{
+    let cContains;
+    cContains = Math.floor((Math.random() * 4) + 1);
+    return cContains
+}
+
+const chestContains = () =>{
+    // chestChance()
+    if(chestChance() === 1){
+        console.log(`The chest contains a position. Your health went up by 4 pts`)
+        playerHealth += 4
+    } else if(chestChance() === 2){
+        console.log(`The chest contained a booby trap. You took 6 pts of damage`)
+        playerHealth -= 6
+    } else {
+        console.log(`The chest was empty. Better luck next time`)
+    }
+}
+
+const chest = () =>{
+    let findChest = Math.floor((Math.random() * 3) + 1)
+    if( findChest === 1){
+        let openChest;
+        while(openChest !== "y" && openChest !== "n"){
+            openChest = readline.question('You found a chest. Do you want to open it? Yes [y] No [n]');
         }
+        if( String(openChest) === "y" ){
+            chestContains()
+        } else {
+            console.log("Chest contain helpful items, open one next time")
+        }
+    }
 }
-}
+
+chest()
