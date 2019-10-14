@@ -59,7 +59,7 @@ function game() {
 
 
 function bathroom() {
-    console.clear();
+    newLine();
     console.log("You wake up after a good nights rest and walk to the bathroom.");
     console.log("Oh no! Bad breath attacks!");
     let breathDamage = randomInt(15, 1); // Takes a random integer for damage
@@ -155,7 +155,7 @@ function bathroomHealCheck() {
 }// End of bathroomHealCheck() Function
 
 function breakfast() {
-    console.clear();
+    newLine();
     console.log("You finish your bathroom routine and continue about your day.");
     let breakfast = userInput("Do you eat breakfast?(Y/N) ");
 
@@ -474,7 +474,7 @@ function walkAway() {
 
 
 function travel() {
-    console.clear();
+    newLine();
     console.log("Finally your morning routine is complete.");
     console.log("You leave your house.");
 
@@ -608,6 +608,7 @@ function honkHorn() {
     //End loop
     roadRageComplete = true;
     job();
+
 }// End of honkHorn() function
 
 
@@ -625,6 +626,7 @@ function ignore() {
     //End loop
     roadRageComplete = true;
     job();
+
 }//End of ignore() function
 
 
@@ -680,6 +682,14 @@ function train() {
                 giveRatPizza();
 
             default:
+                console.clear();
+                console.log("I do not understand.");
+                console.log("Which action do you take?");
+                console.log("1. Kick the rat.");
+                console.log("2. Pick the rat up and throw it at the train.");
+                console.log("3. Walk to the other side of the platform.");
+                console.log("4. Give the rat the pizza left on the bench.");
+                ratCounter = userInput("(Input a number between 1 and 4) ");
 
 
         }// End of ratCounter switch
@@ -688,23 +698,160 @@ function train() {
 
 
 function kickRat() {
+    console.clear();
+    console.log("You lift your leg to kick the rat.");
+    console.log("Mid swing the rat jumps and latches onto your leg with it's claws.");
+    console.log("While attempting to get the rat off you stumble and hit your head on the bench.");
+    console.log(`You take ${health} points of damage!`);
+
+    //Array
+    answersPush("Kick the rat.");
+
+    //End loop & program
+    ratComplete = true;
+    health = 0;
+    if(health <= 0) {
+        console.log("You have died.");
+        endGame();
+    }
+    job();
 
 }// End of kickRat() function
 
 
 function pickUpRat() {
+    console.clear();
+    console.log("Your inner neanderthal shows itself.");
+    console.log("You grab the rat by it's tail and throw it at the incoming train.");
+    console.log("The rat explodes on impact and it's remains splatter you.");
+
+    //Health && CHheck
+    health -= 5;
+    healthDamage(5);
+    if(health <= 0) {
+        console.log("You have died.");
+        endGame();
+    }
+
+    console.log("Your train arrives and you continue on your adventure to work.");
+
+    //Array
+    answersPush("Pick the rat up and throw it at the train.");
+
+    //End loop
+    ratComplete = true;
+    job();
 
 }// End of pickUpRat() function
 
 
 function walkAwayFromRat() {
+    console.clear();
+    console.log("After the rat lands you immediately sprint to the other side of the platform.");
+    console.log("Upon reaching it you turn to see the rat is nowhere to be found.");
+    console.log("You are safe for the time being.");
+    console.log("Your train arrives and you continue on your adventure to work.");
+
+    //Array
+    answersPush("Walk to the other side of the platform.");
+
+    //End loop
+    ratComplete = true;
+    job();
 
 }// End of walkAwayFromRat() function
 
 
 function giveRatPizza() {
+    console.clear();
+    console.log("You grab the slice of pizza and throw it next to the rat.");
+    console.log("The rat looks at you, then the pizza, then back at you.");
+    console.log("It stands on it's hind legs, and bows.");
+    console.log("Four turtles emerge from under the bench and help the rat carry the slice away.");
+    console.log("You can't help but feel like you've made new friends.");
+    console.log("Your train arrives and you continue on your adventure to work.");
+
+    //Array
+    answersPush("Give the rat the pizza left on the bench.");
+
+    //End loop
+    ratComplete = true;
+    job();
 
 }// End of giveRatPizza() function
+
+
+function job() {
+    newLine();
+    console.log("After what seems like forever you finally arrive outside of your office building");
+    console.log("You step inside the building.");
+    console.log("The security guard makes eye contact with you and you smile back.");
+    console.log("She says your boss had been trying to get into contact with you.");
+    console.log("You became worried as to what it was about.");
+    console.log("When you enter the your space in the office you see it had been mostly emptied.");
+    console.log("You feel a presence behind you and turn around.");
+    console.log("Your boss was standing there, looking very intimadting.");
+    console.log("'YOU'RE FIRED' she screams to you.");
+
+    youreFired = randomInt(30, 1);
+    health -= youreFired;
+    healthDamage(youreFired);
+    if(health <= 0) {
+        console.log("You have died.");
+        break gameRunning;
+    }
+
+    console.log("Which action do you take?");
+    console.log("1. 'No u'");
+    console.log("2. Ask why.");
+    console.log("3. Accept your fate");
+    let responseToBoss = userInput("(Input a number between 1 and 3) ");
+
+    //Array
+    questionsPush("Which action do you take against your intimidating boss?");
+
+    //Checking for valid user inputs, loops until the input is valid
+    let intimadtingBossComplete = false;
+    let bossChoice = 0;
+    intimadtingBossComplete:
+    while(intimadtingBossComplete === false) {
+        switch(responseToBoss) {
+            case "1":
+                noU();
+
+            case "2":
+                askWhy();
+
+            case "3":
+                acceptFate();
+
+            default:
+                newLine();
+                console.log("I do not understand.");
+                console.log("Which action do you take?");
+                console.log("1. 'No u'");
+                console.log("2. Ask why.");
+                console.log("3. Accept your fate");
+                responseToBoss = userInput("(Input a number between 1 and 3) ");
+
+        }// End of responseToBoss switch
+    }// End of intimidatingBoss Validity check
+}// End of job() function
+
+
+function noU() {
+
+}// End of noU() function
+
+
+function askWhy() {
+
+}// End of askWhy() function
+
+
+function acceptFate() {
+
+}// End of acceptFate() function
 
 
 function goForItsEyes() {
@@ -845,138 +992,6 @@ function openWindow() {
 
     //     }//End of pets validity check
     // }//End of pets loop
- 
-
-            
-
-            //End loop
-            transportationComplete = true;
-            break transportationComplete;
-
-            case "2":
-            
-                case "1":
-                    newLine();
-                    console.log("You begin to kick.");
-                    console.log("Mid swing the rat jumps and latches onto your leg with it's claws.");
-                    console.log("While attempting to get the rat off you stumble and hit your head on the bench.");
-                    console.log(`You take ${health} points of damage!`);
-
-                    //Array
-                    answersPush("Kick the rat.");
-
-                    //End loop & program
-                    ratComplete = true;
-                    health = 0;
-                    if(health <= 0) {
-                        console.log("You have died.");
-                        break gameRunning;
-                    }
-                    break ratComplete;
-
-                case "2":
-                    newLine();
-                    console.log("Your inner neanderthal shows itself.");
-                    console.log("You grab the rat by it's tail and throw it at the incoming train.");
-                    console.log("The rat explodes on impact and it's remains splatter you.");
-
-                    health -= 5;
-                    healthDamage(5);
-                    if(health <= 0) {
-                        console.log("You have died.");
-                        break gameRunning;
-                    }
-
-                    //Array
-                    answersPush("Pick the rat up and throw it at the train.");
-
-                    //End loop
-                    ratComplete = true;
-                    break ratComplete;
-                    
-                case "3":
-                    newLine();
-                    console.log("After the rat lands you immediately sprint to the other side of the platform.");
-                    console.log("Upon reaching it you turn to see the rat is nowhere to be found.");
-                    console.log("You are safe for the time being.");
-
-                    //Array
-                    answersPush("Walk to the other side of the platform.");
-
-                    //End loop
-                    ratComplete = true;
-                    break ratComplete;
-
-                case "4":
-                    newLine();
-                    console.log("You grab the slice of pizza and throw it next to the rat.");
-                    console.log("The rat looks at you, then the pizza, then back at you.");
-                    console.log("It stands on it's hind legs, and bows.");
-                    console.log("Four turtles emerge from under the bench and help the rat carry the slice away.");
-                    console.log("You can't help but feel like you've made new friends.");
-
-                    //Array
-                    answersPush("Give the rat the pizza left on the bench.");
-
-                    //End loop
-                    ratComplete = true;
-                    break ratComplete;
-
-                default:
-                    newLine();
-                    console.log("I do not understand.");
-                    console.log("Which action do you take?");
-                    console.log("1. Kick the rat.");
-                    console.log("2. Pick the rat up and throw it at the train.");
-                    console.log("3. Walk to the other side of the platform.");
-                    console.log("4. Give the rat the pizza left on the bench.");
-
-                }//End of train validity check
-            }//End of train loop
-                console.log("Your train arrives and you continue on your adventure to work.");
-
-                //End loop
-                transportationComplete = true;
-                break transportationComplete;
-
-
-        }//End of transportation validity check
-    }//End of transportation loop
-
-    newLine();
-    console.log("After what seems like forever you finally arrive outside of your office building");
-    console.log("You step inside the building.");
-    console.log("The security guard makes eye contact with you and you smile back.");
-    console.log("She says your boss had been trying to get into contact with you.");
-    console.log("You became worried as to what it was about.");
-    console.log("When you enter the your space in the office you see it had been mostly emptied.");
-    console.log("You feel a presence behind you and turn around.");
-    console.log("Your boss was standing there, looking very intimadting.");
-    console.log("'YOU'RE FIRED' she screams to you.");
-
-    youreFired = randomInt(30, 1);
-    health -= youreFired;
-    healthDamage(youreFired);
-    if(health <= 0) {
-        console.log("You have died.");
-        break gameRunning;
-    }
-
-    console.log("Which action do you take?");
-    console.log("1. 'No u'");
-    console.log("2. Ask why.");
-    console.log("3. Accept your fate");
-    let responseToBoss = userInput("(Input a number between 1 and 3) ");
-
-    //Array
-    questionsPush("Which action do you take against your intimidating boss?");
-
-    //Checking for valid user inputs, loops until the input is valid
-    let intimadtingBossComplete = false;
-    let bossChoice = 0;
-    intimadtingBossComplete:
-    while(intimadtingBossComplete === false) {
-        switch(responseToBoss) {
             case "1":
 
                 newLine();
@@ -1034,15 +1049,7 @@ function openWindow() {
                 bossChoice = 3;
                 intimadtingBossComplete = true;
                 break intimadtingBossComplete;
-
-            default:
-                newLine();
-                console.log("I do not understand.");
-                console.log("Which action do you take?");
-                console.log("1. 'No u'");
-                console.log("2. Ask why.");
-                console.log("3. Accept your fate");
-                responseToBoss = userInput("(Input a number between 1 and 3) ");
+                
 
         } //End of Intimidating Boss Validity Check
     } //End of Intimidating Boss Loop
