@@ -840,18 +840,74 @@ function job() {
 
 
 function noU() {
+    console.clear();
+    console.log("Your boss is shocked.");
+    console.log("Never did she expect such a reversal!");
+    console.log("She apologizes, turns around to her office and begins packing her bags.");
+    console.log("Surprised that it works you take it upon yourself to be the new boss of the office!");
+
+    //Health && Check
+    noUHeal = randomInt(10, 5);
+    health += noUHeal;
+    if(health > 100) {
+        health = 100;
+    }
+    console.log(`You heal ${noUHeal} health! You have ${health}HP.`)
+
+    //Array
+    answersPush("'No u'");
+
+    //End loop
+    bossChoice = 1;
+    intimadtingBossComplete = true;
+    returnHome();
 
 }// End of noU() function
 
 
 function askWhy() {
+    console.clear();
+    console.log("Your boss is astonished that you would ask such a question.");
+    console.log("'Because I am all powerful!' she answers as her eyes roll into the back of her head and she levitates.");
+    console.log("The last thing you see is a flash of light.");
+    console.log("You are unable to comprehend what had just happened.");
+
+    //Health
+    health = 0;
+    console.log(`You take ${health} points of damage!`);
+
+    //Array
+    answersPush("Ask why.");
+
+    //End loop & Program            
+    intimadtingBossComplete = true;
+    if(health <= 0) {
+        console.log("You have died.");
+        endGame();
+    }
 
 }// End of askWhy() function
 
 
 function acceptFate() {
+    console.clear();
+    console.log("Impressed by your acceptance your boss decides to let you go freely.");
+    console.log("You pack the rest of your bags and leave the office.")
+
+    //Array
+    answersPush("Accept your fate.");
+
+    //End loop
+    bossChoice = 3;
+    intimadtingBossComplete = true;
+    returnHome();
 
 }// End of acceptFate() function
+
+
+function returnHome() {
+
+}
 
 
 function goForItsEyes() {
@@ -992,69 +1048,7 @@ function openWindow() {
 
     //     }//End of pets validity check
     // }//End of pets loop
-            case "1":
 
-                newLine();
-                console.log("Your boss is shocked.");
-                console.log("Never did she expect such a reversal!");
-                console.log("She apologizes, turns around to her office and begins packing her bags.");
-                console.log("Surprised that it works you take it upon yourself to be the new boss of the office!");
-                noUHeal = randomInt(10, 5);
-                health += noUHeal;
-                if(health > 100) {
-                    health = 100;
-                }
-                console.log(`You heal ${noUHeal} health! You have ${health}HP.`)
-
-                //Array
-                answersPush("'No u'");
-
-                //End loop
-                bossChoice = 1;
-                intimadtingBossComplete = true;
-                break intimadtingBossComplete;
-
-            case "2":
-
-                newLine();
-                console.log("Your boss is astonished that you would ask such a question.");
-                console.log("'Because I am all powerful!' she answers as her eyes roll into the back of her head and she levitates.");
-                console.log("The last thing you see is a flash of light.");
-                console.log("You are unable to comprehend what had just happened.");
-
-                health = 0;
-                console.log(`You take ${health} points of damage!`);
-
-                //Array
-                answersPush("Ask why.");
-
-                //End loop & Program            
-                intimadtingBossComplete = true;
-                if(health <= 0) {
-                    console.log("You have died.");
-                    break gameRunning;
-                }
-                break intimadtingBossComplete;
-
-            case "3":
-
-                newLine();
-                console.log("Impressed by your acceptance your boss decides to let you go freely.");
-                console.log("You pack the rest of your bags and leave the office.")
-
-                //Array
-                answersPush("Accept your fate.");
-
-                //End loop
-                bossChoice = 3;
-                intimadtingBossComplete = true;
-                break intimadtingBossComplete;
-                
-
-        } //End of Intimidating Boss Validity Check
-    } //End of Intimidating Boss Loop
-
-    newLine();
     switch(bossChoice) {
         case 1:
             console.log("After your long first day of being boss you return home exhausted.");
