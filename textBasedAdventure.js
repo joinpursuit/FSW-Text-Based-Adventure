@@ -38,83 +38,40 @@ function userInput(question) {
     return readline.question(question);
 }
 
-let reflect = () => {
+function reflect() {
     console.log("You reflect on the long day you've had, proud of everything you've accomplished.");
     console.log("You get back in bed and knock out, only to start it all again tomorrow.");
 }
 
-//Function for one of the last choices in the game (used two times)
-let goForItsEyes = () => {
-    //Array
-    answersPush("Go for it's eyes.");
+// Game functions
+function game() {
+        let nameInput = userInput("Enter your first name: ");
 
-    newLine();
-    console.log("You run over to the nightmare and leap to it's head.");
-    console.log("As you begin leaping it grabs hold of you and repeatedly slams you into the floor.");
-    console.log("When it stops it's already too late for you.");
+        //Array
+        questionsPush("Enter your first name");
+        answersPush(nameInput);
+    
+        console.log(`Good morning ${nameInput}!`);
 
-    //Health
-    health = 0;
-    healthDamage(health);
-}
+        //Runs the bathroom branch
+        bathroom();
+}// End of game() function
 
-//Function for one of the last choices in the gamne (used two times)
-let checkEndTable = () => {
-    //Array
-    answersPush("Check your end table.");
 
-    newLine();
-    console.log("You run over to your end table and open the drawer.");
-    console.log("Inside is your pocket knife you have for safety.");
-    console.log("You feel the nightmare stomping towards you so you jump and roll to the other side of the bed.");
-    console.log("As the monster tries to stop it's momentum you take that chance to attack.");
-    console.log("You climb onto the bed, leap, and grab onto the nightmares back.");
-    console.log("It spins and swings trying to get you off of it.");
-    console.log("However it can't seem to do it, you stab it in the back numerous times before winding up for one last stab to the head.");
-    console.log("As you connect with it's head the nightmare stops moving and falls to the ground.");
-    reflect();
-}
-
-//Function for one of the last choices in the game (used two times)
-let openWindow = () => {
-    //Array
-    answersPush("Open the window.");
-
-    newLine();
-    console.log("You turn around to the window behind you and start to open it.");
-    console.log("The nightmare, as it realizes you are trying to escape stomps over to you.");
-    console.log("You're too fast and leap out of the open window.");
-    console.log("Underestimating the size of the nightmare you begin to celebrate your escape.");
-    console.log("As you're celebrating the nightmare bursts the wall like the Kool-Aid man. You'd almost expect for it to scream 'Oh yeah!'");
-    console.log("Breaking free from your shock you run out to the street.");
-    console.log("The nightmare chases you and as it walks into the street a truck drives by.");
-    console.log("The truck at full speed crashes into the nightmare, exploding the nightmare into numerous pieces.");
-    reflect();
-}
-
-gameRunning:
-while(health > 0) {
-    // 1# Introduction
-    let nameInput = userInput("Enter your first name: ");
-
-    //Array
-    questionsPush("Enter your first name");
-    answersPush(nameInput);
-
-    console.log(`Good morning ${nameInput}!`);
-    newLine();
+function bathroom() {
+    console.clear();
     console.log("You wake up after a good nights rest and walk to the bathroom.");
     console.log("Oh no! Bad breath attacks!");
-
     let breathDamage = randomInt(15, 1); // Takes a random integer for damage
+
+    //Health check
     health -= breathDamage; // Subtracts the damage above from the users health total
     healthDamage(breathDamage);
     if(health <= 0) {
         console.log("You have died.");
-        break gameRunning;
+        endGame();
     }
 
-    // 2# Bathroom
     let firstStep = userInput("What's the first step of your bathroom routine? ");
 
     //Arrays
@@ -128,65 +85,77 @@ while(health > 0) {
     //Array
     questionsPush("How many health points do you recover? ");
 
-    //Checking for valid user inputs, loops until the input is valid
-    let healComplete = false;
-    healComplete: 
-    while (healComplete === false) {
-        if (Number(bathroomHeal) > breathDamage) {
-            //If the heal is greater than the damage taken requires a redo of the heal input
-            console.log("So you're trying to cheat? I've caught you.");
-            bathroomHeal = userInput("How many health points do you recover? ");
+    //Runs bathroomHealCheck function
+    bathroomHealCheck();
+}// End of bathroom() function
 
-        } else if (Number(bathroomHeal) === breathDamage) {
-            //If the heal is equal to the damage taken then user is fully healed
-            health += Number(bathroomHeal);
-            console.log("Fully healed!");
 
-            //Array
-            answersPush(bathroomHeal);
+function bathroomHealCheck() {
+     //Checking for valid user inputs, loops until the input is valid
+     let healComplete = false;
+     while (healComplete === false) {
+         if (Number(bathroomHeal) > breathDamage) {
+             //If the heal is greater than the damage taken requires a redo of the heal input
+             newLine();
+             console.log("So you're trying to cheat? I've caught you.");
+             bathroomHeal = userInput("How many health points do you recover? ");
+ 
+         } else if (Number(bathroomHeal) === breathDamage) {
+             //If the heal is equal to the damage taken then user is fully healed
+             health += Number(bathroomHeal);
+             newLine();
+             console.log("Fully healed!");
+ 
+             //Array
+             answersPush(bathroomHeal);
+ 
+             //End loop
+             healComplete = true;
+             breakfast();
+ 
+         } else if (Number(bathroomHeal) === 0) {
+             //If the heal is equal to 0 the user heals nothing
+             newLine();
+             console.log("You heal nothing!");
+ 
+             //Array
+             answersPush(bathroomHeal);
+ 
+             //End loop
+             healComplete = true;
+             breakfast();
+ 
+         } else if (Number(bathroomHeal) < 0) {
+             //If the user enters a negative number requires a redo of the heal input
+             newLine();
+             console.log(`You can't heal ${bathroomHeal} points!`);
+             bathroomHeal = userInput("How many health points do you recover? ");
+ 
+         } else if (Number(bathroomHeal) > 0 && Number(bathroomHeal) < breathDamage) {
+             //If the number is between 0 and the damage the user is healed
+             newLine();
+             health += Number(bathroomHeal);
+             console.log("Ah, refreshing.");
+ 
+             //Array
+             answersPush(bathroomHeal);
+ 
+             //End loop
+             healComplete = true;
+             breakfast();
+ 
+         } else {
+             //If any of the above are not true then a redo is required
+             console.clear();
+             console.log("I do not understand.");
+             bathroomHeal = userInput("How many health points do you recover? ");
+ 
+         } // End of bathroomHeal validity check
+     }// End of bathroomHeal loop
+}// End of bathroomHealCheck() Function
 
-            //End loop
-            healComplete = true;
-            break healComplete;
-
-        } else if (Number(bathroomHeal) === 0) {
-            //If the heal is equal to 0 the user heals nothing
-            console.log("You heal nothing!");
-
-            //Array
-            answersPush(bathroomHeal);
-
-            //End loop
-            healComplete = true;
-            break healComplete;
-
-        } else if (Number(bathroomHeal) < 0) {
-            //If the user enters a negative number requires a redo of the heal input
-            console.log(`You can't heal ${bathroomHeal} points!`);
-            bathroomHeal = userInput("How many health points do you recover? ");
-
-        } else if (Number(bathroomHeal) > 0 && Number(bathroomHeal) < breathDamage) {
-            //If the number is between 0 and the damage the user is healed
-            health += Number(bathroomHeal);
-            console.log("Ah, refreshing.");
-
-            //Array
-            answersPush(bathroomHeal);
-
-            //End loop
-            healComplete = true;
-            break healComplete;
-
-        } else {
-            //If any of the above are not true then a redo is required
-            console.log("I do not understand.");
-            bathroomHeal = userInput("How many health points do you recover? ");
-
-        } // End of bathroomHeal validity check
-    }// End of bathroomHeal loop
-
-    // 3# Breakfast
-    newLine();
+function breakfast() {
+    console.clear();
     console.log("You finish your bathroom routine and continue about your day.");
     let breakfast = userInput("Do you eat breakfast?(Y/N) ");
 
@@ -196,248 +165,355 @@ while(health > 0) {
     //Checking for valid user inputs, loops until the input is valid
     breakfast = breakfast.toUpperCase();
     let breakfastComplete = false;
-    let favoriteBreakfast; // Initializing favoriteBreakfast so it can be called outside of the while loop if necessary
-
-    breakfastComplete: 
     while (breakfastComplete === false) {
         switch (breakfast) {
             case "Y":
-            // If the user eats breakfast then this branch is followed
-            console.log(`The most important meal of the day! Serving it up ${nameInput}'s way!`);
-            newLine();
+                eatBreakfast();
 
-            // Add in another battle here with hungry stomach
-            // It uses growl as an attack
-            // Choices for a counter attack are choices for breakfast
-            console.log("While walking into the kitchen you feel a movement.");
-            console.log("A loud growl is felt deep within your stomach!");
-            let stomachGrowl = randomInt(10, 1);
-            health -= stomachGrowl;
-            healthDamage(stomachGrowl);
-            console.log("Which action do you take?");
-            console.log("1. Eat a bowl of cereal.");
-            console.log("2. Make pancakes.");
-            console.log("3. Have a coffee.");
-            let stomachCounter = userInput("(Input a number between 1 and 3) ");
-
-            //Array
-            questionsPush("Which action do you take against the hungry stomach?");
-
-
-            //Checking for valid user inputs, loops until the input is valid
-            let hungryStomachComplete = false;
-
-            hungryStomach:
-            while(hungryStomachComplete === false) {
-                switch(stomachCounter) {
-                    case "1":
-                        newLine();
-                        console.log("You prepare a bowl of cereal.");
-                        console.log("As you're eating you remember that you're lactose intolerant!");
-                        console.log("The milk hurts your stomach but you sate your appetite.");
-                        health -= 5;
-                        healthDamage(5);
-
-                        //Array
-                        answersPush("Eat a bowl of cereal.");
-
-                        //End loop
-                        hungryStomachComplete = true;
-                        break hungryStomach;
-
-                    case "2":
-                        newLine();
-                        console.log("The waft of the pancakes as they cook on the pan alert your stomach.");
-                        console.log("Out of impatience your stomach growls again, hurting you.");
-                        health -= stomachGrowl;
-                        healthDamage(stomachGrowl);
-
-                        console.log("The pancakes fill your stomach, and make you feel refreshed.");
-                        health += 10;
-                        if(health > 100) {
-                            health = 100;
-                        }
-                        console.log(`You heal 10 health! You have ${health}HP.`)
-
-                        //Array
-                        answersPush("Make pancakes.");
-
-                        //End loop
-                        hungryStomachComplete = true;
-                        break hungryStomach;
-
-                    case "3":
-                        newLine();
-                        console.log("The coffee energizes you.");
-                        console.log("However your hunger isn't sated. Your stomach is upset.");
-                        stomachGrowl *= 2;
-                        health -= stomachGrowl;
-                        healthDamage(stomachGrowl);
-
-                        //Array
-                        answersPush("Have a coffee");
-
-                        //End loop
-                        hungryStomachComplete = true;
-                        break hungryStomach;
-
-                    default:
-                        newLine();
-                        console.log("I do not understand.");
-                        console.log("Which action do you take?");
-                        console.log("1. Eat a bowl of cereal.");
-                        console.log("2. Make pancakes.");
-                        console.log("3. Have a coffee.");
-                        stomachCounter = userInput("(Input a number between 1 and 3) ");
-
-                } //End of hungry stomach validity check
-            } //End of hungry stomach fight
-
-            //Array
-            answersPush(breakfast);
-
-            //End Loop
-            breakfastComplete = true;
-            break breakfastComplete;
             case "N":
-                // If the user does not eat breakfast then this branch is followed
-                //Array
-                answersPush(breakfast);
+                dontEatBreakfast();
 
-                newLine();
-                console.log("This angered your waffle iron. It attacks!");
-                console.log("The waffle iron uses 'face press'!");
+            default:
+                //If any of the above are not true then a redo is required
+                console.clear();
+                console.log("I do not understand.");
+                breakfast = userInput("Do you eat breakfast?(Y/N) ");
 
-                let waffleAttack = randomInt(25, 1); // Random Integer between 1 and 25
-                health -= waffleAttack; // Subtracting the damage done from total health
-                healthDamage(waffleAttack);
-                if(health <= 0) {
-                    console.log("You have died.");
-                    break gameRunning;
-                }
+        }// End of breakfast switch
+    }// End of breakfastComplete Validity Loop
+}// End of breakfast() function
 
-                //User attack choice
-                newLine();
+
+function eatBreakfast() {
+    // If the user eats breakfast then this branch is followed
+
+    //Array
+    answersPush(breakfast);
+
+    console.clear();
+    console.log(`The most important meal of the day! Serving it up ${nameInput}'s way!`);
+
+    newLine();
+    console.log("While walking into the kitchen you feel a movement.");
+    console.log("A loud growl is felt deep within your stomach!");
+
+    // Health && Check
+    let stomachGrowl = randomInt(10, 1);
+    health -= stomachGrowl;
+    healthDamage(stomachGrowl);
+    if(health <= 0) {
+        console.log("You have died.");
+        endGame();
+    }
+
+    console.log("Which action do you take?");
+    console.log("1. Eat a bowl of cereal.");
+    console.log("2. Make pancakes.");
+    console.log("3. Have a coffee.");
+    let stomachCounter = userInput("(Input a number between 1 and 3) ");
+
+    //Array
+    questionsPush("Which action do you take against the hungry stomach?");
+
+
+    //Checking for valid user inputs, loops until the input is valid
+    let hungryStomachComplete = false;
+    hungryStomach:
+        while(hungryStomachComplete === false) {
+            switch(stomachCounter) {
+                case "1":
+                    eatCereal();
+
+                case "2":
+                    makePancakes();
+
+                case "3":
+                    haveCoffee();
+
+                default:
+                    console.clear();
+                    console.log("I do not understand.");
+                    console.log("Which action do you take?");
+                    console.log("1. Eat a bowl of cereal.");
+                    console.log("2. Make pancakes.");
+                    console.log("3. Have a coffee.");
+                    stomachCounter = userInput("(Input a number between 1 and 3) ");
+
+            }// End of stomachCounter switch
+        }// End of hungryStomach Validity check
+}// End of eatBreakfast() function
+
+
+function eatCereal() {
+    console.clear();
+    console.log("You prepare a bowl of cereal.");
+    console.log("As you're eating you remember that you're lactose intolerant!");
+    console.log("The milk hurts your stomach but you sate your appetite.");
+
+    //Health & check
+    health -= 5;
+    healthDamage(5);
+    if(health <= 0) {
+        console.log("You have died.");
+        endGame();
+    }
+
+    //Array
+    answersPush("Eat a bowl of cereal.");
+
+    //End loop
+    hungryStomachComplete = true;
+    travel();
+}// End of eatCereal() function
+
+
+function makePancakes() {
+    console.clear();
+    console.log("The waft of the pancakes as they cook on the pan alert your stomach.");
+    console.log("Out of impatience your stomach growls again, hurting you.");
+
+    //Health && check
+    health -= stomachGrowl;
+    healthDamage(stomachGrowl);
+    if(health >= 0) {
+        console.log("You have died.");
+        endGame();
+    }
+
+    console.log("The pancakes fill your stomach, and make you feel refreshed.");
+    health += 10;
+    if(health > 100) {
+        health = 100;
+    }
+    console.log(`You heal 10 health! You have ${health}HP.`)
+
+    //Array
+    answersPush("Make pancakes.");
+
+    //End loop
+    hungryStomachComplete = true;
+    travel();
+}// End of makePancakes() function
+
+
+function haveCoffee() {
+    console.clear();
+    console.log("The coffee energizes you.");
+    console.log("However your hunger isn't sated. Your stomach is upset.");
+
+    //health && check
+    stomachGrowl *= 2;
+    health -= stomachGrowl;
+    healthDamage(stomachGrowl);
+    if(health <= 0) {
+        console.log("You have died.");
+        endGame();
+    }
+
+    //Array
+    answersPush("Have a coffee");
+
+    //End loop
+    hungryStomachComplete = true;
+    travel();
+}// End of haveCoffee() function
+
+
+function dontEatBreakfast() {
+    //Array
+    answersPush(breakfast);
+
+    console.clear();
+    console.log("Angry that you never use it, your Waffle Iron attacks!");
+    console.log("The waffle iron uses 'face press'!");
+
+    //Health && check
+    let waffleAttack = randomInt(25, 1); // Random Integer between 1 and 25
+    health -= waffleAttack; // Subtracting the damage done from total health
+    healthDamage(waffleAttack);
+    if(health <= 0) {
+        console.log("You have died.");
+        endGame();
+    }
+
+    //User attack choice
+    newLine();
+    console.log("Which action do you take?");
+    console.log("1. Unplug the waffle iron.");
+    console.log("2. Splash water.");
+    console.log("3. Jump on it.");
+    console.log("4. Just walk away.");
+    let waffleCounter = userInput("(Input a number between 1 and 4) ");
+
+    //Array
+    questionsPush("Which action do you take against the waffle iron?");
+
+    //Checking for valid user inputs, loops until the input is valid
+    let waffleBattleComplete = false;
+
+    waffleBattle: 
+    while (waffleBattleComplete === false) {
+        switch(waffleCounter) {
+            case "1":
+                unplugWaffleIron();
+
+            case "2":
+                splashWater();
+
+            case "3":
+                jumpOnIt();
+
+            case "4":
+                walkAway();
+
+            default:
+                //If the user doesn't do a correct input then it asks for a repeat
+                console.clear();
+                console.log("I do not understand");
                 console.log("Which action do you take?");
                 console.log("1. Unplug the waffle iron.");
                 console.log("2. Splash water.");
                 console.log("3. Jump on it.");
                 console.log("4. Just walk away.");
-                let waffleCounter = userInput("(Input a number between 1 and 4) ");
+                waffleCounter = userInput("(Input a number between 1 and 4) ");
 
-                //Array
-                questionsPush("Which action do you take against the waffle iron?");
+        }// End of waffleCounter switch
+    }// End of waffleBattle Validity check
+}// End of dontEatBreakfast() function
 
-                //Checking for valid user inputs, loops until the input is valid
-                let waffleBattleComplete = false;
 
-                waffleBattle: 
-                while (waffleBattleComplete === false) {
-                    if (waffleCounter === "1") {
-                        //If the user chooses choice 1 the move is super effective and defeats the waffle iron
-                        newLine();
-                        console.log("You reach for the plug and yank it out of the socket!");
-                        console.log("The waffle iron is defeated.");
+function unplugWaffleIron() {
+    //If the user chooses choice 1 the move is super effective and defeats the waffle iron
+    console.clear();
+    console.log("You reach for the plug and yank it out of the socket!");
+    console.log("The waffle iron is defeated.");
 
-                        //Array
-                        answersPush("Unplug the waffle iron");
+    //Array
+    answersPush("Unplug the waffle iron");
 
-                        //End loop
-                        waffleBattleComplete = true;
-                        break waffleBattle;
+    //End loop
+    waffleBattleComplete = true;
+    travel();
 
-                    } else if (waffleCounter === "2") {
-                        //If the user chooses choice 2 the move kills both the player and the waffle iron creating a game over
-                        newLine();
-                        console.log("You turn on the sink and throw a load of water at the Waffle Iron.");
-                        console.log("The water creates a fire and explodes.");
-                        console.log("The explosion reaches to you and defeats you.");
+}// End of unplugWaffleIron() function
 
-                        //Kills the user
-                        health = 0;
-                        console.log("You have died.");
 
-                        //Array
-                        answersPush("Splash water");
+function splashWater() {
+    //If the user chooses choice 2 the move kills both the player and the waffle iron creating a game over
+    newLine();
+    console.log("You turn on the sink and throw a load of water at the Waffle Iron.");
+    console.log("The water creates a fire and explodes.");
+    console.log("The explosion reaches to you and defeats you.");
 
-                        //End loop & program
-                        waffleBattleComplete = true;
-                        if(health <= 0) {
-                            console.log("You have died.");
-                            break gameRunning;
-                        }
-                        break waffleBattle;
+    //Kills the user
+    health = 0;
+    console.log("You have died.");
 
-                    } else if (waffleCounter === "3") {
-                        //If the user chooses choice 3 the move kills the waffle iron and hurts the user
-                        newLine();
-                        console.log("The move is effective!");
-                        console.log("The heat from the waffle iron burns your legs.");
-                        
-                        health -= 15;
-                        healthDamage(15);
-                        if(health <= 0) {
-                            console.log("You have died.");
-                            break gameRunning;
-                        }
+    //Array
+    answersPush("Splash water");
 
-                        //Array
-                        answersPush("Jump on it");
+    //End loop
+    endGame();
 
-                        //End Loop
-                        waffleBattleComplete = true;
-                        break waffleBattle;
+}// End of splashWater() function
 
-                    } else if (waffleCounter === "4") {
-                        //If the user chooses choice 4 the waffle iron lives, but kills the player and creates a game over
-                        newLine();
-                        console.log("You turn your back to the waffle iron to escape.");
-                        console.log("The waffle iron's anger grows.");
-                        console.log("The waffle iron uses 'waffle throw!'");
-                        console.log(`You take ${health} points of damage!`);
 
-                        //Kills the user
-                        health = 0;
-                        console.log("You have died.");
+function jumpOnIt() {
+    //If the user chooses choice 3 the move kills the waffle iron and hurts the user
+    console.clear()
+    console.log("You leap into the air and land on the waffle iron. The move is super effective!");
+    console.log("The heat from the waffle iron burns your legs.");
+    
+    //Health && Check
+    health -= 15;
+    healthDamage(15);
+    if(health <= 0) {
+        console.log("You have died.");
+        endGame();
+    }
 
-                        //Array
-                        answersPush("Just walk away.");
+    //Array
+    answersPush("Jump on it");
 
-                        //End loop and program
-                        waffleBattleComplete = true;
-                        if(health <= 0) {
-                            console.log("You have died.");
-                            break gameRunning;
-                        }
-                        break waffleBattle;
+    //End Loop
+    waffleBattleComplete = true;
+    travel();
 
-                    } else {
-                        //If the user doesn't do a correct input then it asks for a repeat
-                        newLine();
-                        console.log("I do not understand");
-                        console.log("Which action do you take?");
-                        console.log("1. Unplug the waffle iron.");
-                        console.log("2. Splash water.");
-                        console.log("3. Jump on it.");
-                        console.log("4. Just walk away.");
-                        waffleCounter = userInput("(Input a number between 1 and 4) ");
+}// End of jumpOnIt() function
 
-                    }//End of Waffle Fight Validity check
-                }//End of Waffle Fight
 
-            //End loop
-            breakfastComplete = true;
-            break breakfastComplete;
+function walkAway() {
+    //If the user chooses choice 4 the waffle iron lives, but kills the player and creates a game over
+    console.clear();
+    console.log("You turn your back to the waffle iron to escape.");
+    console.log("The waffle iron's anger grows.");
+    console.log("The waffle iron uses 'waffle throw!'");
+    console.log(`You take ${health} points of damage!`);
 
-            default:
-            //If any of the above are not true then a redo is required
-            newLine();
-            console.log("I do not understand.");
-            breakfast = userInput("Do you eat breakfast?(Y/N) ");
+    //Kills the user
+    health = 0;
+    console.log("You have died.");
 
-        }//End of Breakfast Validity Check
-    }//End of Breakfast Loop
+    //Array
+    answersPush("Just walk away.");
 
+    //End loop
+    endGame();
+
+}// End of walkAway() function
+
+
+function goForItsEyes() {
+    //Array
+    answersPush("Go for it's eyes.");
+
+    newLine();
+    console.log("You run over to the nightmare and leap to it's head.");
+    console.log("As you begin leaping it grabs hold of you and repeatedly slams you into the floor.");
+    console.log("When it stops it's already too late for you.");
+
+    //Health
+    health = 0;
+    healthDamage(health);
+} //End of goForItsEyes() function
+
+
+function checkEndTable() {
+    //Array
+    answersPush("Check your end table.");
+
+    newLine();
+    console.log("You run over to your end table and open the drawer.");
+    console.log("Inside is your pocket knife you have for safety.");
+    console.log("You feel the nightmare stomping towards you so you jump and roll to the other side of the bed.");
+    console.log("As the monster tries to stop it's momentum you take that chance to attack.");
+    console.log("You climb onto the bed, leap, and grab onto the nightmares back.");
+    console.log("It spins and swings trying to get you off of it.");
+    console.log("However it can't seem to do it, you stab it in the back numerous times before winding up for one last stab to the head.");
+    console.log("As you connect with it's head the nightmare stops moving and falls to the ground.");
+    reflect();
+
+}// End of checkEndTable() Function
+
+
+function openWindow() {
+    //Array
+    answersPush("Open the window.");
+
+    newLine();
+    console.log("You turn around to the window behind you and start to open it.");
+    console.log("The nightmare, as it realizes you are trying to escape stomps over to you.");
+    console.log("You're too fast and leap out of the open window.");
+    console.log("Underestimating the size of the nightmare you begin to celebrate your escape.");
+    console.log("As you're celebrating the nightmare bursts the wall like the Kool-Aid man. You'd almost expect for it to scream 'Oh yeah!'");
+    console.log("Breaking free from your shock you run out to the street.");
+    console.log("The nightmare chases you and as it walks into the street a truck drives by.");
+    console.log("The truck at full speed crashes into the nightmare, exploding the nightmare into numerous pieces.");
+    reflect();
+}// End of openWindow() function
+
+gameRunning:
+while(health > 0) { 
     // // 4# Pet Care
     // newLine();
     // console.log("You return to your room.");
