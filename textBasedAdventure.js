@@ -906,8 +906,133 @@ function acceptFate() {
 
 
 function returnHome() {
+    newLine();
+    switch(bossChoice) {
+        case 1:
+            console.log("After your long first day of being boss you return home exhausted.");
+            
+        case 3:
+            switch(transportChoice) {
+                case 1:
+                    console.log("After packing your bags you return to your car.");
+                    console.log("You drive home listening to 'Everybody Hurts' by REM on repeat the whole way.");
 
-}
+                case 2:
+                    console.log("After packing your bags you go return to the train station.");
+                    console.log("You put on your headphones and blast 'Everybody Hurts' by REM on repeat the whole way.");
+
+            }// End of transportChoice switch
+    }// End of bossChoice switch
+
+    console.log("Your bed calls to you as soon as you enter.");
+    console.log("You slowly, and groggily make your way to your room.");
+    console.log("As soon as you enter, you collapse.");
+    console.log("You drift off into a deep sleep.");
+    console.log("You awake in a pitch black room. You can only see a foot in front of you.");
+    console.log("Two red lights flash in front of you, but you can't make out what it is.");
+    console.log("'Who's there?' You scream out.");
+    console.log("The lights start moving closer, and closer to you.");
+    console.log("It gets close enough for you to finally make out a shape.");
+    console.log("It's a nightmare of everything you've encountered in your day today.");
+    console.log("It grabs you by your leg and slams you onto the floor.");
+
+    //Damage, and health check
+    slamDamage = randomInt(25, 1);
+    health -= slamDamage
+    healthDamage(slamDamage);
+    if(health <= 0) {
+        console.log("You have died.");
+        endGame();
+    }
+
+    newLine();
+    console.log("You slowly stand back on your feet.");
+    console.log("Which action do you take?");
+    console.log("1. Sweep the leg.");
+    console.log("2. Go for it's eyes.");
+    console.log("3. Check your end table drawer.");
+    console.log("4. Open the window.");
+    let nightmareChoice = userInput("(Input a number between 1 and 4) ");
+
+    //Array
+    questionsPush("Which action do you take against the nightmare (1)");
+
+    //Checking for valid user inputs, loops until the input is valid
+    let nightmareChoice1Complete = false;
+    nightmareChoice1:
+    while(nightmareChoice1Complete === false) {
+        switch(nightmareChoice) {
+            case "1":
+                sweepTheLeg();
+
+            case "2":
+                goForItsEyes();
+            
+            case "3":
+                checkEndTable();
+
+            case "4":
+                openWindow();
+
+            default:
+
+        }// End of nightmareChoice switch
+    }// End of nightmareChoice1 Validity check
+}// End of returnHome() function
+
+
+function sweepTheLeg() {
+    //Array
+    answersPush("Sweep the leg.")
+
+    console.clear();
+    console.log("You crouch into position, and stick out your leg for the sweep attack.");
+    console.log("The nightmare jumps to avoid it.");
+    console.log("As it comes back down to the ground you react fast enough to grab its legs and take it down.");
+    console.log("The nightmare lets out a loud screech.");
+    console.log("Which action do you take?");
+    console.log("1. Put it in a guillotine.");
+    console.log("2. Put it in an armbar.");
+    console.log("3. Put it in an Omoplata.");
+    let nightmareChoice2 = userInput("(Input a number between 1 and 3) ");
+
+    //Array
+    questionsPush("Which action do you take against the nightmare (2)");
+
+    //Checking for valid user inputs, loops until the input is valid
+    let nightmareChoice2Complete = false;
+    nightmareChoice2:
+    while(nightmareChoice2Complete === false) {
+        switch(nightmareChoice2) {
+            case "1":
+                guillotine();
+            
+            case "2":
+                armbar();
+
+            case "3":
+                omoplata();
+
+            default:
+
+        }// End of nightmareChoice2 switch
+    }// End of nightmareChoice2 Validity check
+}// End of sweepTheLeg() function
+
+
+function guillotine() {
+
+}// End of guillotine() function
+
+
+function armbar() {
+
+}// End of armbar() function
+
+
+function omoplata() {
+
+}// End of omoplata() function
 
 
 function goForItsEyes() {
@@ -1049,84 +1174,9 @@ function openWindow() {
     //     }//End of pets validity check
     // }//End of pets loop
 
-    switch(bossChoice) {
-        case 1:
-            console.log("After your long first day of being boss you return home exhausted.");
-            
-        case 3:
-            switch(transportChoice) {
-                case 1:
-                    console.log("After packing your bags you return to your car.");
-                    console.log("You drive home listening to 'Everybody Hurts' by REM on repeat the whole way.");
-
-                case 2:
-                    console.log("After packing your bags you go return to the train station.");
-                    console.log("You put on your headphones and blast 'Everybody Hurts' by REM on repeat the whole way.");
-
-            }
-    }
-    console.log("Your bed calls to you as soon as you enter.");
-    console.log("You slowly, and groggily make your way to your room.");
-    console.log("As soon as you enter, you collapse.");
-    console.log("You drift off into a deep sleep.");
-    console.log("You awake in a pitch black room. You can only see a foot in front of you.");
-    console.log("Two red lights flash in front of you, but you can't make out what it is.");
-    console.log("'Who's there?' You scream out.");
-    console.log("The lights start moving closer, and closer to you.");
-    console.log("It gets close enough for you to finally make out a shape.");
-    console.log("It's a nightmare of everything you've encountered in your day today.");
-    console.log("It grabs you by your leg and slams you onto the floor.");
-
-    //Damage, and health check
-    slamDamage = randomInt(25, 1);
-    health -= slamDamage
-    healthDamage(slamDamage);
-    if(health <= 0) {
-        console.log("You have died.");
-        break gameRunning;
-    }
-
-    newLine();
-    console.log("You slowly stand back on your feet.");
-    console.log("Which action do you take?");
-    console.log("1. Sweep the leg.");
-    console.log("2. Go for it's eyes.");
-    console.log("3. Check your end table drawer.");
-    console.log("4. Open the window.");
-    let nightmareChoice = userInput("(Input a number between 1 and 4) ");
-
-    //Array
-    questionsPush("Which action do you take against the nightmare (1)");
-
-    //Checking for valid user inputs, loops until the input is valid
-    let nightmareChoice1Complete = false;
-    nightmareChoice1:
-    while(nightmareChoice1Complete === false) {
-        switch(nightmareChoice) {
-            case "1":
-                //Array
-                answersPush("Sweep the leg.")
-
-                newLine();
-                console.log("You crouch into position, and stick out your leg for the sweep attack.");
-                console.log("The nightmare jumps to avoid it.");
-                console.log("As it comes back down to the ground you react fast enough to grab its legs and take it down.");
-                console.log("The nightmare lets out a loud screech.");
-                console.log("Which action do you take?");
-                console.log("1. Put it in a guillotine.");
-                console.log("2. Put it in an armbar.");
-                console.log("3. Put it in an Omoplata.");
-                let nightmareChoice2 = userInput("(Input a number between 1 and 3) ");
-
-                //Array
-                questionsPush("Which action do you take against the nightmare (2)");
-
-                //Checking for valid user inputs, loops until the input is valid
-                let nightmareChoice2Complete = false;
-                nightmareChoice2:
-                while(nightmareChoice2Complete === false) {
-                    switch(nightmareChoice2) {
-                        case "1":
+    
+    
+                
                             //Array
                             answersPush("Put it in a guillotine.")
 
