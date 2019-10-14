@@ -1,18 +1,24 @@
 const readline = require('readline-sync')
-
+// DR. BANDERSNATCH 
 let nameInput = readline.question("Enter your name: ")
-let health = 70
 let patient = {
-    name: "John smith",
-    age: 24,
+    name: "Jana Nazim",
+    age: 23,
     height: "5' 4inches",
-    illness: "none",
+    illness: "FUCKING IDIOT",
     State: "Michigan"
 
 }
-let reaction = "No that's not correct, your patient has"
+let reaction1 = "No that's not correct, your patient has"
 let reaction2 = "Alright that's great doctor."
 let reaction3 = "I almost thought we were going to lose him, but it looks like that bought us some more time."
+
+  let health = 70;
+    const takeDamage = (num) =>{
+    health -= num
+    }
+    console.log(health)
+   
 
 
 console.log(`Hello ${nameInput}!  Welcome to my game.`)
@@ -29,7 +35,9 @@ if (nameInput2 === "yes"){
     
     let nameInput3 = readline.question("What should we grab now? we can choose between the scapel, hammer or the stetescope?")
     while (nameInput3 !== "scapel"){ 
-        console.log("oooh sorry, time is running out, your patient has" + " " + (health - 10) + " " + "life")
+        console.log("oooh sorry, time is running out"
+        takeDamage(10)
+        console.log("the patient has " + health + " " + "left")
         nameInput3 = readline.question("scapel, hammer, or stetescope?")
     }
 if (nameInput3 === "scapel"){
