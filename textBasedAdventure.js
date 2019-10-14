@@ -24,29 +24,29 @@ const upLeft = () =>{
 }
 
 const upRight = () =>{
-    let upLeftChoice;
-    while(upLeftChoice !== "u" && upLeftChoice !== "r" ){
-        upLeftChoice = readline.question('Which room would you like to move to? Up [u], right [r] ');
-        console.log(upLeftChoice)
+    let upRightChoice;
+    while(upRightChoice !== "u" && upRightChoice !== "r" ){
+        upRightChoice = readline.question('Which room would you like to move to? Up [u], right [r] ');
+        console.log(upRightChoice)
     }
 
-    if(String(upLeftChoice) === "u"){
+    if(String(upRightChoice) === "u"){
         position["y"] += 1;
-    } else if(String(upLeftChoice) === "r"){
+    } else if(String(upRightChoice) === "r"){
         position["x"] += 1;
     }
 }
 
 const upDownRight = () =>{
-    let upLeftChoice;
-    while(upLeftChoice !== "u" && upLeftChoice !== "r" && upLeftChoice !== "d" ){
-        upLeftChoice = readline.question('Which room would you like to move to? Up [u], Down [d], right [r] ');
-        console.log(upLeftChoice)
+    let upDownLeftChoice;
+    while(upDownLeftChoice !== "u" && upDownLeftChoice !== "r" && upDownLeftChoice !== "d" ){
+        upDownLeftChoice = readline.question('Which room would you like to move to? Up [u], Down [d], right [r] ');
+        console.log(upDownLeftChoice)
     }
 
-    if(String(upLeftChoice) === "u"){
+    if(String(upDownLeftChoice) === "u"){
         position["y"] += 1;
-    } else if(String(upLeftChoice) === "r"){
+    } else if(String(upDownLeftChoice) === "r"){
         position["x"] += 1;
     } else if(String(upDownRight) === "d"){
         position["y"] -= 1;
@@ -54,23 +54,23 @@ const upDownRight = () =>{
 }
 
 const upDownLeft = () =>{
-    let upLeftChoice;
-    while(upLeftChoice !== "u" && upLeftChoice !== "l" && upLeftChoice !== "d" ){
-        upLeftChoice = readline.question('Which room would you like to move to? Up [u], Down [d], left [l] ');
-        console.log(upLeftChoice)
+    let upDownLeftChoice;
+    while(upDownLeftChoice !== "u" && upDownLeftChoice !== "l" && upDownLeftChoice !== "d" ){
+        upDownLeftChoice = readline.question('Which room would you like to move to? Up [u], Down [d], left [l] ');
+        console.log(upDownLeftChoice)
     }
 
-    if(String(upLeftChoice) === "u"){
+    if(String(upDownLeftChoice) === "u"){
         position["y"] += 1;
-    } else if(String(upLeftChoice) === "l"){
+    } else if(String(upDownLeftChoice) === "l"){
         position["x"] -= 1;
-    } else if(String(upDownRight) === "d"){
+    } else if(String(upDownLeftChoice) === "d"){
         position["y"] -= 1;
     }
 }
 
 const upDownLeftRight = () =>{
-    let upLeftChoice;
+    lDownet upLeftChoice;
     while(upLeftChoice !== "u" && upLeftChoice !== "l" && upLeftChoice !== "d" && upLeftChoice !== "r" ){
         upLeftChoice = readline.question('Which room would you like to move to? Up [u], Down [d], left [l], right [r]');
         console.log(upLeftChoice)
