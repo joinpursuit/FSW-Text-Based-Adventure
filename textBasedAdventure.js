@@ -190,10 +190,10 @@ const endLeft = () => {
 const startRight = () => {
     console.log("You enter through the right door and you are located in a large open room. A shiny liquid substance is dripping onto the walls from the ceiling and a black spherical ball is floats in the center of the room.");
     let userInput = readline.question("Will you approach the black sphere or go back? ");
-    while(userInput.toLowerCase() !== 'back' && userInput.toLowerCase() !== 'go back' && userInput.toLowerCase() !== 'approach sphere' && userInput.toLowerCase() !== 'black sphere' && userInput.toLowerCase() !== 'approach' ){
-        userInput = readline.question("Approach the black sphere or go back? ");
+    while(userInput.toLowerCase() !== 'back' && userInput.toLowerCase() !== 'go back' && userInput.toLowerCase() !== 'approach sphere' && userInput.toLowerCase() !== 'approach black sphere' && userInput.toLowerCase() !== 'black sphere' && userInput.toLowerCase() !== 'approach' ){
+        userInput = readline.question("Approach black sphere or go back? ");
     }
-    if(userInput.toLowerCase() === 'black sphere' || userInput.toLowerCase() === 'approach sphere' || userInput.toLowerCase() === 'approach'){
+    if(userInput.toLowerCase() === 'black sphere' || userInput.toLowerCase() === 'approach sphere' || userInput.toLowerCase() === 'approach black sphere' || userInput.toLowerCase() === 'approach'){
         console.clear(); 
         blackSphere();
     } else{
@@ -204,8 +204,63 @@ const startRight = () => {
 
 //blackSphere
 const blackSphere = () => {
-
+    console.log("As you approach the spherical object in the center of the room, it begins to grow larger. Eventually is becomes massive enough for you to touch it.");
+    console.log("As you touch the black sphere, it sucks you into it and everything goes black. You are suddenly transported to another room in the base." + "\n")
+    let userInput = readline.question("You find yourself in a weapons lab and you spot U.S. Military personnel with heavy weaponry guarding the entrance. In the corner of the laboratory, you see vents that you might be able to crawl through. Which way will you go, out the entrance or through the vents? ");
+    while(userInput.toLowerCase() !== 'entrance' && userInput.toLowerCase() !== 'out the entrance' && userInput.toLowerCase() !== 'the entrance' && userInput.toLowerCase() !== 'vents' && userInput.toLowerCase() !== 'the vents' && userInput.toLowerCase() !== 'through the vents'){
+        userInput = readline.question("Which way will you go, out the entrance or through the vents? ");
+    }
+    if (userInput.toLowerCase() === 'entrance' || userInput.toLowerCase() === 'out the entrance' || userInput.toLowerCase() === 'the entrance'){
+        player.health -= 100;
+        console.clear();
+        console.log(player);
+        console.log("You try to run out the entrance and get past the Military personnel but they easily spot you. They end up shooting you down... GAME OVER!! TRY AGAIN")
+    } else{
+        console.clear();
+        vents();
+    }
 }
 
+// VENT PATHs - splits into leftVent and rightVent
+const vents = () => {
+    let userInput = readline.question("You open the vents and crawl through them. In the middle of traveling through the vents the passage splits into two different vents.. Should you go left or right? ");
+    while (userInput.toLowerCase() !== 'left' && userInput.toLowerCase() !== 'left vent' && userInput.toLowerCase() !== 'right' && userInput.toLowerCase() !== 'right vent'){
+        userInput = readline.question("Which vent? Left vent or right vent? ");
+    }
+    if(userInput.toLowerCase() === 'left' || userInput.toLowerCase() === 'left vent'){
+        console.clear();
+        leftVent();
+    } else{
+        console.clear();
+        rightVent();
+    }
+}
+
+const leftVent = () => {
+    console.log("You crawl down the left vent and there is an opening to another room. After busting into the room, you are surrounded by a thousand micro aliens.");
+    let userInput = readline.question("Out of the thousand micro aliens, one of them steps forward and starts dancing. Then they all start dancing. Should you dance with the alien and act like one of them? Or should you not dance? ");
+    while (userInput.toLowerCase() !== 'dance' && userInput.toLowerCase() !== 'dance with alien' && userInput.toLowerCase() !== 'no' && userInput.toLowerCase() !== 'not dance' && userInput.toLowerCase() !== `don't dance`){
+        userInput = readline.question(`Dance with alien or don't dance? `)
+    }
+    if(userInput.toLowerCase() === 'dance' || userInput.toLowerCase() === 'dance with alien'){
+        console.clear();
+        console.log("The micro aliens see you as one of them. They open up a secret door that leads to the upper floor of the base");
+        secretDoor();
+    } else{
+        console.clear();
+        console.log("The aliens find you suspicious because you are not dancing with them. They stop dancing and become aggressively violent towards you.")
+        player.health -= 100;
+        console.log(player);
+        console.log("You have been probed a thousand times and didn't make it out of AREA 51 ... GAME OVER!! TRY AGAIN")
+    }
+}
+
+const rightVent = () => {
+    
+}
+
+const secretDoor = () => {
+
+}
 // INITIALIZE GAME
 play();
