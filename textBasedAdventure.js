@@ -1,15 +1,18 @@
 const readline = require('readline-sync')
 
+// Input name
 let nameInput = readline.question("Enter your name: ")
-
 console.log(`Hello ${nameInput}!  Welcome to my game.`)
 
-let portal = readline.question("Pick a Portal 1-3: ");
+
+// Portal 1 or  Portal 2
+let portal = readline.question("Pick a portal, 1 (BATTLE) or 2 (ADVENTURE) ? ");
 
 const area1 = "Coliseum";
 const area2 = "AREA 51";
-const area3 = "President Trump's Office";
-    
+
+
+// OBJECTS for game ------------------------------------------------
 let player = {
     name: nameInput,
     health: 100,
@@ -21,126 +24,135 @@ let gladiator = {
 }
 
 
-while(portal !== '1' && portal !== '2' && portal !== '3'){
-    portal = readline.question("Please pick a Portal 1-3: ");
+// FUNCTIONS --------------------------------------------------------
+function play (){       // play() to initialize game
+    while(portal !== '1' && portal !== '2' ){
+        portal = readline.question("Please pick a Portal 1 or 2: ");
+    }
+    switch (portal){
+        case '1':
+            console.log("You have teleported to " + area1);
+            portal1();
+            break;
+        case '2':
+            console.log("You have teleported to " + area2);
+            console.log(`Welcome to ${area2}.`)
+            portal2();
+            break;
+    }
 }
 
-    switch(portal){             // Switch statement to see which world the Player goes to
-
-        case '1': //****** --------------------------------------------------------------------------------------------------------- case 1 is WORLD 1 - The COLISEUM 
-        console.clear();    
-        console.log("You have teleported to " + area1);
-
-            let a1 = readline.question("Welcome to the COLISEUM's ARENA. You are summoned to fight against an opposing gladiator." + "\n" +
+// PORTAL 1
+const portal1 = () =>{         // portal1 = coliseum (battle arena)
+    let a1 = readline.question("Welcome to the COLISEUM's ARENA. You are summoned to fight against an opposing gladiator." + "\n" +
             "You can either 1- dodge, 2- defend, or 3 - attack: ");
-
-            
+    while(a1 !== '1' && a1 !== '2' && a1 !== '3' && a1 !== 'dodge' && a1 !== 'defend' && a1 !== 'attack'){
+        a1 = readline.question("Please pick an action. " + "You can either 1- dodge, 2- defend, or 3 - attack: ");
+    }
+    while(player.health > 0 && gladiator.health > 0) {
+        if (a1 === "1" || a1.toLowerCase() === 'dodge' ){
+            console.clear();
+            console.log("You evade the gladiators attack but he successfully slashes you.")
+            let hit1 = Math.floor(Math.random() * 24) + 10;  
+            player.health -= hit1;
+            console.log(`You lost ${hit1} health.`);
+            console.log(player);
+            console.log(gladiator);
+            a1 = readline.question("Please pick an action. " + "You can either 1- dodge, 2- defend, or 3 - attack: ");
             while(a1 !== '1' && a1 !== '2' && a1 !== '3' && a1 !== 'dodge' && a1 !== 'defend' && a1 !== 'attack'){
                 a1 = readline.question("Please pick an action. " + "You can either 1- dodge, 2- defend, or 3 - attack: ");
             }
-            
-            while(player.health > 0 && gladiator.health > 0) {
-                if (a1 === "1" || a1.toLowerCase() === 'dodge' ){
-                    console.clear();
-                    console.log("You evade the gladiators attack but he successfully grazes you.")
-                    let hit1 = Math.floor(Math.random() * 10) + 1;  
-                    player.health -= hit1;
-                    console.log(`You lost ${hit1} health.`);
-                    console.log(player);
-                    console.log(gladiator)
-                    a1 = readline.question("Please pick an action. " + "You can either 1- dodge, 2- defend, or 3 - attack: ");
-                } else if (a1 === "2" || a1.toLowerCase() === 'defend'){
-                    console.clear();
-                    console.log("You defend the attack with your shield and attempt to counter attack the gladiator. You and the gladiator end up simulatenously getting hit.");
-                    let hit2 = Math.floor(Math.random() * 20) + 10;
-                    player.health -= hit2;
-                    gladiator.health -= hit2;
-                    console.log(`You lost ${hit2} health.`);
-                    console.log(`Gladiator lost ${hit2} health.`);
-                    console.log(player);
-                    console.log(gladiator);
-                    a1 = readline.question("Please pick an action. " + "You can either 1- dodge, 2- defend, or 3 - attack: ");
-                } else if (a1 === '3' || a1.toLowerCase() === 'attack'){
-                    console.clear();
-                    console.log("Moving with swiftness, you attack the gladiator by suprise");
-                    let hit3 = Math.floor(Math.random() * 40) + 20;
-                    gladiator.health -= hit3;
-                    console.log(`Gladiator lost ${hit3} health.`)
-                    console.log(player);
-                    console.log(gladiator);
-                    a1 = readline.question("Please pick an action. " + "You can either 1- dodge, 2- defend, or 3 - attack: ");
-                }
-                else {
-                    a1 = readline.question("Please pick an action. " + "You can either 1- dodge, 2- defend, or 3 - attack: ");
-                }
-            }
+        } else if (a1 === "2" || a1.toLowerCase() === 'defend'){
             console.clear();
-            if (gladiator.health <= 0){
-                console.log("You've defeated the gladiator. CONGRATULATIONS, you are the Champion of the arena!! YOU WIN!! ");
-                console.log("Try going to a different portal next time, winner!");
+            console.log("You defend the attack with your shield and attempt to counter attack the gladiator. You and the gladiator end up simulatenously getting hit.");
+            let hit2 = Math.floor(Math.random() * 15) + 5;
+            player.health -= hit2;
+            gladiator.health -= hit2;
+            console.log(`You lost ${hit2} health.`);
+            console.log(`Gladiator lost ${hit2} health.`);
+            console.log(player);
+            console.log(gladiator);
+            a1 = readline.question("Please pick an action. " + "You can either 1- dodge, 2- defend, or 3 - attack: ");
+            while(a1 !== '1' && a1 !== '2' && a1 !== '3' && a1 !== 'dodge' && a1 !== 'defend' && a1 !== 'attack'){
+                a1 = readline.question("Please pick an action. " + "You can either 1- dodge, 2- defend, or 3 - attack: ");
             }
-            if (player.health <= 0){
-                console.log("You tried your best to defeat the gladiator, but it was you who were defeated instead... GAME OVER!")
+        } else if (a1 === '3' || a1.toLowerCase() === 'attack'){
+            console.clear();
+            console.log("Moving with swiftness, you attack the gladiator by suprise");
+            let hit3 = Math.floor(Math.random() * 28) + 12;
+            gladiator.health -= hit3;
+            console.log(`Gladiator lost ${hit3} health.`)
+            console.log(player);
+            console.log(gladiator);
+            a1 = readline.question("Please pick an action. " + "You can either 1- dodge, 2- defend, or 3 - attack: ");
+            while(a1 !== '1' && a1 !== '2' && a1 !== '3' && a1 !== 'dodge' && a1 !== 'defend' && a1 !== 'attack'){
+                a1 = readline.question("Please pick an action. " + "You can either 1- dodge, 2- defend, or 3 - attack: ");
             }
-
-        break; //****** ------ END CASE 1: WORLD 1
-
-        case '2': //****** --------------------------------------------------------------------------------------------------------- case 2 is WORLD 2 - MARS
-        console.clear();    
-        console.log("You have teleported to " + area2);
-            
-            let doors0 = ["left","left door", "right", "right door"];
-            let doors1 = ["traverse down", "traverse", "down", "go back", "back"];
-            let doors2 = ["open", "open door"];
-            let damage = Math.floor(Math.random() * 20) + 10;
-
-            console.log(`Welcome to ${area2}.`)
-            let path = readline.question(`You look around and see that you are in a room with two doors. Which door should you go through? Left or Right? `)
-            while ( path.toLowerCase() !== doors0[0] && path.toLowerCase() !== doors0[1] && path.toLowerCase() !== doors0[2] && path.toLowerCase() !== doors0[3]){
-                path = readline.question("Sorry, I couldn't understand. Which door do you choose? Left door or right door? ")
-            }
-
-            // condition: left
-            if (path.toLowerCase() === doors0[0] || path.toLowerCase() === doors0[1]){  
-                console.clear();   
-                let leftPath1 = readline.question(`You enter through the left door and there is a huge corridor that stretches down for almost a mile. A horrifying stench fills the corridor. Traverse down the corridor or go back? `);
-                while ( leftPath1.toLowerCase() !== doors1[0] && leftPath1.toLowerCase() !== doors1[1] && leftPath1.toLowerCase() !== doors1[2] && leftPath1.toLowerCase() !== doors1[3] && leftPath1.toLowerCase() !== doors1[4]){
-                    leftPath1 = readline.question(`Sorry, didn't understand that. Traverse down or go back? `)
-                }
-                if(leftPath1.toLowerCase() === doors1[0] || leftPath1.toLowerCase() === doors1[1] || leftPath1.toLowerCase() === doors1[2]){       // condition: Traverse down corridor
-                    console.clear();    
-                    let leftPath2 = readline.question("You reach the end of the corridor and the stench has completely obliterated your sense of smell. There is huge door that seems unlocked in front of you. Open it? ");
-                    while( leftPath2.toLowerCase() !== doors2[0] && leftPath2.toLowerCase() !== doors2[1]){
-                        leftPath2 = readline.question("Sorry couldn't understand that. Open it? ");
-                    }
-                    if(leftPath2.toLowerCase() === doors2[0] || leftPath2.toLowerCase() === doors2[1]){
-                        console.log("You open the door and a strange figure is seen in the middle of the room. It shifts towards you in an instant and you feel a prick on your chest. OUCH. The figure then molecularly disappears in front of your eyes.")
-                        player.health -= damage;
-                        console.log("You lost " + damage + " health");
-                        console.log("Health " + player["health"]);
-                        let returnLeft = readline.question("The only option is to turn back. You realize that this place is no joke and you will need to escape! This route was obviously a bad idea. Go back to room with 2 doors? ");
-                        while (returnLeft.toLowerCase() !== doors1[3] && returnLeft.toLowerCase() !== doors1[4]){
-                            console.log("This place is dangerous! You need to escape! Go back? ");
-                        }
-                        if(returnLeft.toLowerCase() === doors1[3] || returnLeft.toLowerCase() === doors1[4]){
-                            path = readline.question(`You look around and see that you are in a room with two doors. Which door should you go through? Left or Right? `)
-                        }
-                    }
-                } else {                                                                                                                            //condition: go back from corridor
-
-                }
-            }
-
-            // condition: right
-            else{                                                                         
-                console.log("what happens here if you go right");
-            }
-
-        break; //****** ------ END CASE 2: WORLD 2
-
-        case '3':
-            console.log("You have teleported to " + area3);
-
-        break; //****** ------ END CASE 3: WORLD 3
-
+        }
+        if (player.health <= 0){
+            console.log("You tried your best to defeat the gladiator, but it was you who were defeated instead... GAME OVER!");
+            console.log("Try again!");
+        }
+        if (gladiator.health <= 0){
+            console.log("You've defeated the gladiator. CONGRATULATIONS, you are the Champion of the arena!! YOU WIN!! ");
+            console.log("Try going to a different portal next time, winner!");
+        }
     }
+    console.clear();
+    if (gladiator.health <= 0 && player.health <= 0){
+        console.log("The crowd goes wild. The match is a draw! This marks history in our arena where two of our gladiators have fallen at the same time! ... ");
+        console.log("GAME IS OVER. Please pick a different portal");
+    }else if (gladiator.health <= 0){
+        console.log("You've defeated the gladiator. CONGRATULATIONS, you are the Champion of the arena!! YOU WIN!! ");
+        console.log("Try going to a different portal next time, winner!");
+    } else if (player.health <= 0){
+        console.log("You tried your best to defeat the gladiator, but it was you who was defeated instead... GAME OVER!")
+    }
+
+} // END FUNCTION portal1
+
+//functions - different pathways that split for Area51 
+// PORTAL 2
+const portal2 = () =>{         // portal2 = area51
+    console.clear();
+    let userInput = readline.question(`You look around and see that you are in a room with two doors. Which door should you go through? Left or Right? `);
+    while(userInput.toLowerCase() !== 'left' && userInput.toLowerCase() !== 'right'){
+        userInput = readline.question(`You look around and see that you are in a room with two doors. Which door should you go through? Left or Right? `);
+    }
+    if(userInput.toLowerCase() === 'left'){
+        startLeft();
+    } else{
+        startRight();
+    }
+}
+
+// LEFT
+const startLeft = () => {
+    let userInput = readline.question(`You enter through the left door and there is a huge corridor that stretches down for almost a mile. A horrifying stench fills the corridor. Traverse down the corridor or go back? `);
+    while(userInput.toLowerCase() !== 'traverse' && userInput.toLowerCase() !== 'down' && userInput.toLowerCase() !== 'back' && userInput.toLowerCase() !== 'go back'){
+        userInput = readline.question(`You enter through the left door and there is a huge corridor that stretches down for almost a mile. A horrifying stench fills the corridor. Traverse down the corridor or go back? `);
+    }
+    if(userInput.toLowerCase() === 'traverse' || userInput.toLowerCase() === 'down' || userInput.toLowerCase() === 'traverse down'){
+        middleLeft();
+    } else{
+        portal2();
+    }
+
+}
+
+const middleLeft = () => {
+
+}
+
+const endLeft = () => {
+
+}
+
+// RIGHT
+const startRight = () => {
+
+}
+
+
+// INITIALIZE GAME
+play();
