@@ -42,7 +42,7 @@ function play (){       // play() to initialize game
     }
 }
 
-// PORTAL 1
+// PORTAL 1 - GAME 1 - BATTLE
 const portal1 = () =>{         // portal1 = coliseum (battle arena)
     let a1 = readline.question("Welcome to the COLISEUM's ARENA. You are summoned to fight against an opposing gladiator." + "\n" +
             "You can either 1- dodge, 2- defend, or 3 - attack: ");
@@ -111,48 +111,101 @@ const portal1 = () =>{         // portal1 = coliseum (battle arena)
 
 } // END FUNCTION portal1
 
+
+
+// damage function
+const damage = (object) =>{
+    let hit4 = Math.floor(Math.random() * 101) + 25;
+    object.health -= hit4
+    console.log(`${object.name} took ${hit4} damage!!`); 
+}
+
+
 //functions - different pathways that split for Area51 
-// PORTAL 2
+// PORTAL 2 - GAME 2 - ADVENTURE
 const portal2 = () =>{         // portal2 = area51
-    console.clear();
     let userInput = readline.question(`You look around and see that you are in a room with two doors. Which door should you go through? Left or Right? `);
     while(userInput.toLowerCase() !== 'left' && userInput.toLowerCase() !== 'right'){
         userInput = readline.question(`You look around and see that you are in a room with two doors. Which door should you go through? Left or Right? `);
     }
     if(userInput.toLowerCase() === 'left'){
+        console.clear(); 
         startLeft();
     } else{
+        console.clear(); 
         startRight();
     }
 }
 
 // LEFT
 const startLeft = () => {
-    let userInput = readline.question(`You enter through the left door and there is a huge corridor that stretches down for almost a mile. A horrifying stench fills the corridor. Traverse down the corridor or go back? `);
-    while(userInput.toLowerCase() !== 'traverse' && userInput.toLowerCase() !== 'down' && userInput.toLowerCase() !== 'back' && userInput.toLowerCase() !== 'go back'){
-        userInput = readline.question(`You enter through the left door and there is a huge corridor that stretches down for almost a mile. A horrifying stench fills the corridor. Traverse down the corridor or go back? `);
+    let userInput = readline.question(`You enter through the left door and you are standing at the beginning of a long corridor. A horrible smell fills the corridor. Traverse down the corridor or go back? `);
+    while(userInput.toLowerCase() !== 'traverse' && userInput.toLowerCase() !== 'down' && userInput.toLowerCase() !== "traverse down" && userInput.toLowerCase() !== "corridor" && userInput.toLowerCase() !== 'back' && userInput.toLowerCase() !== 'go back'){
+        userInput = readline.question(`You enter through the left door and you are standing at the beginning of a long corridor. A horrible smell fills the corridor. Traverse down the corridor or go back? `);
     }
-    if(userInput.toLowerCase() === 'traverse' || userInput.toLowerCase() === 'down' || userInput.toLowerCase() === 'traverse down'){
+    if(userInput.toLowerCase() === 'traverse' || userInput.toLowerCase() === 'down' || userInput.toLowerCase() === 'traverse down' || userInput.toLowerCase() === 'corridor'){
+        console.clear(); 
         middleLeft();
     } else{
+        console.clear(); 
         portal2();
     }
 
 }
 
-const middleLeft = () => {
+const middleLeft = () => { 
+    let userInput = readline.question("You reach the end of the corridor and the stench has completely obliterated your sense of smell. There is huge door that seems unlocked in front of you. Open door? Or go back? ");
+    while(userInput.toLowerCase() !== 'open' && userInput.toLowerCase() !== 'open it' && userInput.toLowerCase() !== 'open door' && userInput.toLowerCase() !== 'back' && userInput.toLowerCase() !== 'go back' ){
+        userInput = readline.question("Sorry couldn't understand that. Open it or go back? ");
+    }
+    if(userInput.toLowerCase() === 'open' || userInput.toLowerCase() === 'open door' || userInput.toLowerCase() === 'open it'){
+        console.clear(); 
+        endLeft();
+    } else {
+        console.clear(); 
+        startLeft();
+    }
 
 }
 
 const endLeft = () => {
-
+    console.log("You open the door and a strange figure is seen in the middle of the room. It flashes towards you in an blink-instant and you feel a probe to your stomach. OUCH. The figure then molecularly dissipates into thin air in front of your eyes.");
+    damage(player);
+    if(player.health <= 0){
+        console.log("The strange figure (most likely extraterrestrial) has probed the life out of you! You didn't make it out of AREA 51 alive... GAME OVER!! TRY AGAIN");
+    } else{
+        console.log(player);
+        let userInput = readline.question("The only option is to turn back. You realize that this place is no joke and you will need to escape! This route was obviously a bad idea. Go back to room with 2 doors? ");
+        while(userInput.toLowerCase() !== 'back' && userInput.toLowerCase() !== 'go back' && userInput.toLowerCase() !== 'turn back'){
+            userInput = readline.question("This place is dangerous! You need to escape! Go back? ");
+        }
+        if (userInput.toLowerCase() === "go back" || userInput.toLowerCase() === "back" || userInput.toLowerCase() === "turn back"){
+            console.clear();
+            portal2();
+        }
+    }
 }
 
 // RIGHT
 const startRight = () => {
-
+    console.log("You enter through the right door and you are located in a large open room. A shiny liquid substance is dripping onto the walls from the ceiling and a black spherical ball is floats in the center of the room.");
+    let userInput = readline.question("Will you approach the black sphere or go back? ");
+    while(userInput.toLowerCase() !== 'back' && userInput.toLowerCase() !== 'go back' && userInput.toLowerCase() !== 'approach sphere' && userInput.toLowerCase() !== 'black sphere' && userInput.toLowerCase() !== 'approach' ){
+        userInput = readline.question("Approach the black sphere or go back? ");
+    }
+    if(userInput.toLowerCase() === 'black sphere' || userInput.toLowerCase() === 'approach sphere' || userInput.toLowerCase() === 'approach'){
+        console.clear(); 
+        blackSphere();
+    } else{
+        console.clear();
+        portal2();
+    }
 }
 
+//blackSphere
+const blackSphere = () => {
+
+}
 
 // INITIALIZE GAME
 play();
