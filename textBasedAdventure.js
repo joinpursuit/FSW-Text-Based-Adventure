@@ -116,7 +116,7 @@ const portal1 = () =>{         // portal1 = coliseum (battle arena)
 
 // damage function
 const damage = (object) =>{
-    let hit4 = Math.floor(Math.random() * 101) + 25;
+    let hit4 = Math.floor(Math.random() * 101) + 10;
     object.health -= hit4
     console.log(`${object.name} took ${hit4} damage!!`); 
 }
@@ -257,11 +257,25 @@ const leftVent = () => {
 }
 
 const rightVent = () => {
-    
+    console.log("You crawl down the right vent and it starts to shake. The vent collapses and you fall down out of the vent. ")
+    damage(player);
+    if(player.health <= 0){
+        console.log("The fall from the vents disabled you to move any further. You lay there until you meet your demise.. You didn't make it out of AREA 51 alive... GAME OVER!! TRY AGAIN");
+    } else{
+        console.log(player);
+        let userInput = readline.question("You are in critical condition, but still survived that fall from the vent. Struggling but managing to get up, you see a door in front of you. Open it? ");
+        while(userInput.toLowerCase() !== 'open' && userInput.toLowerCase() !== 'open door' && userInput.toLowerCase() !== 'open the door' && userInput.toLowerCase() !== 'open it'){
+            userInput = readline.question("How much more can you take?? The only move is to go forward. Open the door! ");
+        }
+        if (userInput.toLowerCase() === "open" || userInput.toLowerCase() === "open door" || userInput.toLowerCase() === "open the door" || userInput.toLowerCase() === "open it"){
+            console.clear();
+            secretDoor();
+        }
+    }
 }
 
 const secretDoor = () => {
-
+    console.log("You are now located at the upper floor of the base.")
 }
 // INITIALIZE GAME
 play();
