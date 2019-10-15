@@ -18,6 +18,13 @@ let reaction3 = "I almost thought we were going to lose him, but it looks like t
     health -= num
     }
     console.log(health)
+
+    let health2 = health
+    const healthIncrease = (num) => {
+    health2 += num
+    health2 = health
+    }
+    console.log(health2)
    
 
 
@@ -35,7 +42,7 @@ if (nameInput2 === "yes"){
     
     let nameInput3 = readline.question("What should we grab now? we can choose between the scapel, hammer or the stetescope?")
     while (nameInput3 !== "scapel"){ 
-        console.log("oooh sorry, time is running out"
+        console.log("oooh sorry, time is running out")
         takeDamage(10)
         console.log("the patient has " + health + " " + "left")
         nameInput3 = readline.question("scapel, hammer, or stetescope?")
@@ -45,16 +52,23 @@ if (nameInput3 === "scapel"){
     
     let nameInput4 = readline.question ("The patient is starting to get weary, should we grab the incubator?")
     while (nameInput4 !== "yes"){
-        console.log("What do you mean no? you are wasting time, the patient now has" + " " + (health - 20) + " " + "life")
+        console.log("What do you mean no? you are wasting time")
+        takeDamage(10)
+        console.log("the patient has " + health + " life left.")
         nameInput4 = readline.question("yes or no?")
     }
     if(nameInput4 === "grab the incubator")
+    healthIncrease(10)
+    console.log("The patient has " + health2 + " life.")
     console.log(reaction3)
+    
     console.log("After giving a few minutes to make sure the body is sedated, the doctor made an incision and opened the chest")
 
     let nameInput5 = readline.question("Doctor, there seems to be a huge black spot in her heart, should we clean that or leave it alone?")
     if (nameInput5 === "clean"){
-        console.log("Wow doctor, her health is going up." + " " + (health + 5))
+        console.log("Wow doctor, her health is going up.")
+        healthIncrease(20)
+        console.log(health2)
         console.log("....")
         console.log("....")
         console.log("....")
@@ -81,7 +95,10 @@ if (nameInput3 === "scapel"){
                 console.log("Ok, looks like we did well")
                 let nameInput7 = readline.question("Doctor you can go home for an hour if you want")
                 while (nameInput7 !== "no"){
-                    console.log("THE PATIENCE HAS DIED........ LETS TRY AGAIN")
+                    console.log("DOCTOR HURRY, SHE SEEMS TO BE HAVING ANOTHER HEART ATTACK PLEASE HELP")
+                    console.log("DOCTOR???????")
+                    console.log("THE PATIENCE HAS DIED")
+                    console.log("Let's try to see if we have a better option.")
                     nameInput7 = readline.question("Doctor you can go home if you want")
                     
                 }   
