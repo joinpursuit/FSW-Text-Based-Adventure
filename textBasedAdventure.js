@@ -10,7 +10,7 @@ let i =""
 
 
 while(i !== 'y' || i === 'n'){
-    i = readlineSync.question("Your task is to create a video game. Do you want to complete the task?")
+    i = readlineSync.question("Your task is to create a video game. Do you want to complete the task?(y/n)")
    
 
  if(i === 'y') {
@@ -34,17 +34,22 @@ let readlineSync1 = require('readline-sync'),
 console.log('Ok,' + " you chose " + decisions[index]);
 
 //3.You need help
-const readline1 = require('readline-sync')
-let seeFriend = readline1.question("You started your project and realized you're stuck, so you ask your friend Tom for help")
-for(let conversation = 2; conversation > 1; conversation--)
-if (conversation !== 2 && conversation === 1 ){
-console.log("Take the help")
-} else {
-  console.log("No, thanks I don't need it")
+let readlineSync2 = require('readline-sync')
+
+for(a = 0; a <= 1; a++)
+    if (a !== 'y' || a === 'n'){
+  let a = readlineSync2.question("You started your project and realized you're stuck, so you ask your friend Tom for help and he offers you a caffeine pill to stay up to practice coding. Do you take the pill?[y/n]")
+  if (a === 'y') {
+     //'y' was pressed
+  console.log("You took the caffeine pill")
+  break
+ } 
+  if(a === 'n') {
+     //'n' key was pressed
+  console.log("You didnt take the caffeine pill[Answer yes]");
+
+ }
 }
 
-
-
-
-
+//4.
 
