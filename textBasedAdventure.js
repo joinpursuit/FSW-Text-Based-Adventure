@@ -43,6 +43,10 @@ function reflect() {
     console.log("You get back in bed and knock out, only to start it all again tomorrow.");
 }
 
+function pressEnter() {
+    let pressEnter = userInput("")
+}
+
 // Game functions
 function game() {
         let nameInput = userInput("Enter your first name: ");
@@ -975,6 +979,14 @@ function returnHome() {
                 openWindow();
 
             default:
+                console.clear();
+                console.log("I do not understand.");
+                console.log("Which action do you take?");
+                console.log("1. Sweep the leg.");
+                console.log("2. Go for it's eyes.");
+                console.log("3. Check your end table drawer.");
+                console.log("4. Open the window.");
+                nightmareChoice = userInput("(Input a number between 1 and 4) ");
 
         }// End of nightmareChoice switch
     }// End of nightmareChoice1 Validity check
@@ -1014,6 +1026,13 @@ function sweepTheLeg() {
                 omoplata();
 
             default:
+                console.clear();
+                console.log("I do not understand.");
+                console.log("Which action do you take?");
+                console.log("1. Put it in a guillotine.");
+                console.log("2. Put it in an armbar.");
+                console.log("3. Put it in an Omoplata.");
+                nightmareChoice2 = userInput("(Input a number between 1 and 3) ");
 
         }// End of nightmareChoice2 switch
     }// End of nightmareChoice2 Validity check
@@ -1021,17 +1040,128 @@ function sweepTheLeg() {
 
 
 function guillotine() {
+    //Array
+    answersPush("Put it in a guillotine.")
 
+    console.clear();
+    console.log("You get underneath the nightmare to get in position.");
+    console.log("The nightmare uses this to put all it's weight on you.");
+    console.log("It crushes you between itself and the floor.");
+
+    //Health && check
+    health = 0;
+    healthDamage(0);
+    if(health <= 0) {
+        console.log("You have died.");
+        endGame();
+    }
+
+    //End loop
+    nightmareChoice2Complete = true;
+    endGame();
 }// End of guillotine() function
 
 
 function armbar() {
+    //Array
+    answersPush("Put it in an armbar.")
 
+    console.clear();
+    console.log("You pull the nightmares arm and hold it in a position that should start to break it.");
+    console.log("The nightmare lets out a loud screech as you slowly begin tearing off it's arm.");
+    console.log("As it gets closer to ripping off the nightmare collapses.");
+    console.log("You finish it off by ripping the arm out of it's socket.");
+    console.log("You stand up, nightmare arm in hand and triumphantly look over at what you've done.");
+    reflect();
+
+    //End loop
+    nightmareChoice2Complete = true;
+    endGame();
 }// End of armbar() function
 
 
 function omoplata() {
+    //Array
+    answersPush("Put it in an Omoplata.")
 
+    newLine();
+    console.log("You flip to the nightmares side.");
+    console.log("You grab it's arm in an Omoplata.");
+    console.log("It screams in agony.");
+    console.log("The nightmare uses it's weight to move you off of it.");
+    console.log("It slams you against the wall and stands up again.");
+
+    //Health Check
+    let wallSlam = randomInt(15, 1);
+    health -= wallSlam;
+    healthDamage(wallSlam);
+    if(health <= 0) {
+        console.log("You have died");
+        break gameRunning;
+    }
+
+    newLine();
+    console.log("The nightmare stands back up at the same time as you.");
+    console.log("Which action do you take?");
+    console.log("1. Go for it's eyes.");
+    console.log("2. Check your end table drawer.");
+    console.log("3. Open the window.");
+    let nightmareChoice3 = userInput("(Input a number between 1 and 3) ");
+
+    //Array
+    questionsPush("Which action do you take against the nightmare (3)?");
+
+    //Checking for valid user inputs, loops until the input is valid
+    let nightmareChoice3Complete = false;
+    nightmareChoice3:
+    while(nightmareChoice3Complete === false) {
+        switch(nightmareChoice3) {
+            case "1":
+                //Array
+                answersPush("Go for it's eyes.");
+
+                goForItsEyes();
+
+                //End loop
+                nightmareChoice3Complete = true;
+                endGame();
+
+            case "2":
+                //Array
+                answersPush("Check your end table.");
+
+                checkEndTable();
+
+                //End loop
+                nightmareChoice3Complete = true;
+                endGame();
+
+            case "3":
+                //Array
+                answersPush("Open the window.");
+
+                openWindow();
+
+                //End loop
+                nightmareChoice3Complete = true;
+                endGame();
+
+            default:
+                newLine()
+                console.log("I do not understand.");
+                console.log("The nightmare stands back up at the same time as you.");
+                console.log("Which action do you take?");
+                console.log("1. Go for it's eyes.");
+                console.log("2. Check your end table drawer.");
+                console.log("3. Open the window.");
+                nightmareChoice3 = userInput("(Input a number between 1 and 3) ");
+
+        }//End to nightmareChoice3 Switch
+    }//End to nightmareChoice3 Loop
+    
+    //End loop
+    nightmareChoice2Complete = true;
+    endGame();
 }// End of omoplata() function
 
 
@@ -1039,14 +1169,16 @@ function goForItsEyes() {
     //Array
     answersPush("Go for it's eyes.");
 
-    newLine();
+    console.clear();
     console.log("You run over to the nightmare and leap to it's head.");
     console.log("As you begin leaping it grabs hold of you and repeatedly slams you into the floor.");
     console.log("When it stops it's already too late for you.");
 
-    //Health
+    //Health && check
     health = 0;
     healthDamage(health);
+    endGame();
+    
 } //End of goForItsEyes() function
 
 
@@ -1054,7 +1186,7 @@ function checkEndTable() {
     //Array
     answersPush("Check your end table.");
 
-    newLine();
+    console.clear();
     console.log("You run over to your end table and open the drawer.");
     console.log("Inside is your pocket knife you have for safety.");
     console.log("You feel the nightmare stomping towards you so you jump and roll to the other side of the bed.");
@@ -1064,6 +1196,7 @@ function checkEndTable() {
     console.log("However it can't seem to do it, you stab it in the back numerous times before winding up for one last stab to the head.");
     console.log("As you connect with it's head the nightmare stops moving and falls to the ground.");
     reflect();
+    
 
 }// End of checkEndTable() Function
 
@@ -1072,7 +1205,7 @@ function openWindow() {
     //Array
     answersPush("Open the window.");
 
-    newLine();
+    console.clear();
     console.log("You turn around to the window behind you and start to open it.");
     console.log("The nightmare, as it realizes you are trying to escape stomps over to you.");
     console.log("You're too fast and leap out of the open window.");
@@ -1083,6 +1216,45 @@ function openWindow() {
     console.log("The truck at full speed crashes into the nightmare, exploding the nightmare into numerous pieces.");
     reflect();
 }// End of openWindow() function
+
+
+function endGame() {
+    //End program review
+    newLine();
+    console.log("Thank you for playing my game!");
+    let review = userInput("Would you like to see review the answers you gave?(Y/N) ");
+    review = review.toUpperCase();
+
+    //Checking for valid user inputs, loops until the input is valid
+    let reviewComplete = false;
+    reviewComplete: 
+    while (reviewComplete === false) {
+        switch (review) {
+            case "Y":
+                console.clear();
+                for (let i = 0; i < arrAnswers.length; i++) {
+                    console.log(`Question ${i + 1}: ${arrQuestions[i]}`);
+                    console.log(`Answer ${i + 1}: ${arrAnswers[i]}`);
+                } 
+
+                //End loop
+                reviewComplete = true;
+                break reviewComplete;
+
+            case "N":
+                console.log("I hope you enjoyed the game!");
+
+                //End loop
+                reviewComplete = true;
+                break reviewComplete;
+
+            default:
+                console.log("I do not understand.");
+                review = userInput("Would you like to see review the answers you gave?(Y/N) ");
+
+        }// End of reviewComplete switch
+    }// End of reviewComplete validity check
+}// End of endGame() function
 
 
     // // 4# Pet Care
@@ -1174,221 +1346,4 @@ function openWindow() {
     //     }//End of pets validity check
     // }//End of pets loop
 
-    
-    
-                
-                            //Array
-                            answersPush("Put it in a guillotine.")
 
-                            console.log("You get underneath the nightmare to get in position.");
-                            console.log("The nightmare uses this to put all it's weight on you.");
-                            console.log("It crushes you between itself and the floor.");
-
-                            //Health check
-                            health = 0;
-                            healthDamage(0);
-                            if(health <= 0) {
-                                console.log("You have died.");
-                                break gameRunning;
-                            }
-
-                            //End loop
-                            nightmareChoice2Complete = true;
-                            break nightmareChoice2;
-
-                        case "2":
-                            //Array
-                            answersPush("Put it in an armbar.")
-
-                            newLine();
-                            console.log("You pull the nightmares arm and hold it in a position that should start to break it.");
-                            console.log("The nightmare lets out a loud screech as you slowly begin tearing off it's arm.");
-                            console.log("As it gets closer to ripping off the nightmare collapses.");
-                            console.log("You finish it off by ripping the arm out of it's socket.");
-                            console.log("You stand up, nightmare arm in hand and triumphantly look over at what you've done.");
-                            reflect();
-
-                            //End loop
-                            nightmareChoice2Complete = true;
-                            break nightmareChoice2;
-
-                        case "3":
-                            //Array
-                            answersPush("Put it in an Omoplata.")
-
-                            newLine();
-                            console.log("You flip to the nightmares side.");
-                            console.log("You grab it's arm in an Omoplata.");
-                            console.log("It screams in agony.");
-                            console.log("The nightmare uses it's weight to move you off of it.");
-                            console.log("It slams you against the wall and stands up again.");
-
-                            //Health Check
-                            let wallSlam = randomInt(15, 1);
-                            health -= wallSlam;
-                            healthDamage(wallSlam);
-                            if(health <= 0) {
-                                console.log("You have died");
-                                break gameRunning;
-                            }
-
-                            newLine();
-                            console.log("The nightmare stands back up at the same time as you.");
-                            console.log("Which action do you take?");
-                            console.log("1. Go for it's eyes.");
-                            console.log("2. Check your end table drawer.");
-                            console.log("3. Open the window.");
-                            let nightmareChoice3 = userInput("(Input a number between 1 and 3) ");
-
-                            //Array
-                            questionsPush("Which action do you take against the nightmare (3)?");
-
-                            //Checking for valid user inputs, loops until the input is valid
-                            let nightmareChoice3Complete = false;
-                            nightmareChoice3:
-                            while(nightmareChoice3Complete === false) {
-                                switch(nightmareChoice3) {
-                                    case "1":
-                                        //Array
-                                        answersPush("Go for it's eyes.");
-
-                                        goForItsEyes();
-
-                                        //End loop
-                                        nightmareChoice3Complete = true;
-                                        break nightmareChoice3;
-
-                                    case "2":
-                                        //Array
-                                        answersPush("Check your end table.");
-
-                                        checkEndTable();
-
-                                        //End loop
-                                        nightmareChoice3Complete = true;
-                                        break nightmareChoice3;
-
-                                    case "3":
-                                        //Array
-                                        answersPush("Open the window.");
-
-                                        openWindow();
-
-                                        //End loop
-                                        nightmareChoice3Complete = true;
-                                        break nightmareChoice3;
-
-                                    default:
-                                        newLine()
-                                        console.log("I do not understand.");
-                                        console.log("The nightmare stands back up at the same time as you.");
-                                        console.log("Which action do you take?");
-                                        console.log("1. Go for it's eyes.");
-                                        console.log("2. Check your end table drawer.");
-                                        console.log("3. Open the window.");
-                                        nightmareChoice3 = userInput("(Input a number between 1 and 3) ");
-
-                                }//End to nightmareChoice3 Switch
-                            }//End to nightmareChoice3 Loop
-                            
-                            //End loop
-                            nightmareChoice2Complete = true;
-                            break nightmareChoice2;
-
-                        default:
-                            newLine();
-                            console.log("I do not understand.")
-                            console.log("Which action do you take?");
-                            console.log("1. Put it in a guillotine.");
-                            console.log("2. Put it in an armbar.");
-                            console.log("3. Put it in an Omoplata.");
-                            nightmareChoice2 = userInput("(Input a number between 1 and 3) ");
-
-                    }//End of nightmareChoice2 switch
-                }// End of nightmareChoice2 validity check
-
-                //End loop
-                nightmareChoice1Complete = true;
-                break nightmareChoice1;
-                
-            case "2":
-                //Array
-                answersPush("Go for it's eyes.")
-
-                goForItsEyes();
-
-                //End loop
-                nightmareChoice1Complete = true;
-                break nightmareChoice1;
-                
-            case "3":
-               //Array
-                answersPush("Check your end table drawer.");
-
-                checkEndTable();
-
-                //End loop
-                nightmareChoice1Complete = true;
-                break nightmareChoice1;
-                
-            case "4":
-                //Array
-                answersPush("Open the window.");
-
-                openWindow();
-                
-                //End loop
-                nightmareChoice1Complete = true;
-                break nightmareChoice1;
-                
-            default:
-                newLine();
-                console.log("I do not understand.");
-                console.log("Which action do you take?");
-                console.log("1. Sweep the leg.");
-                console.log("2. Go for it's eyes.");
-                console.log("3. Check your end table drawer.");
-                console.log("4. Open the window.");
-                nightmareChoice = userInput("(Input a number between 1 and 4) ");
-                                       
-        }//End of nightmareChoice1 switch
-    }//End of nightmareChoice1 validity check
-
-    break gameRunning;
-
-} //End of the game
-
-//End program review
-newLine();
-console.log("Thank you for playing my game!");
-let review = userInput("Would you like to see review the answers you gave?(Y/N) ");
-review = review.toUpperCase();
-
-//Checking for valid user inputs, loops until the input is valid
-let reviewComplete = false;
-reviewComplete: 
-while (reviewComplete === false) {
-    switch (review) {
-        case "Y":
-            newLine();
-            for (let i = 0; i < arrAnswers.length; i++) {
-                console.log(`Question ${i + 1}: ${arrQuestions[i]}`);
-                console.log(`Answer ${i + 1}: ${arrAnswers[i]}`);
-            } 
-
-            //End loop
-            reviewComplete = true;
-            break reviewComplete;
-
-        case "N":
-            console.log("I hope you enjoyed the game!");
-
-            //End loop
-            reviewComplete = true;
-            break reviewComplete;
-
-        default:
-            console.log("I do not understand.");
-            review = userInput("Would you like to see review the answers you gave?(Y/N) ");
-    }
-}
