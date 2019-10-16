@@ -7,7 +7,7 @@ const readline = require("readline-sync");
 let arrQuestions = [];
 let arrAnswers = [];
 let health = 100;
-let playerAlive = true;
+// let playerAlive = true;
 
 //Creating functions for cleaner code
 function healthDamage(damage) {
@@ -47,10 +47,19 @@ function pressEnter() {
     let pressEnter = userInput("")
 }
 
+function healthCheck(damage) {
+    health -= damage;
+    healthDamage(damage);
+    if(health <= 0) {
+        console.log("You have died.");
+        endGame();
+    }
+}
+
+let nameInput = userInput("Enter your first name: ");
+
 // Game functions
 function game() {
-        let nameInput = userInput("Enter your first name: ");
-
         //Array
         questionsPush("Enter your first name");
         answersPush(nameInput);
@@ -66,15 +75,10 @@ function bathroom() {
     newLine();
     console.log("You wake up after a good nights rest and walk to the bathroom.");
     console.log("Oh no! Bad breath attacks!");
-    let breathDamage = randomInt(15, 1); // Takes a random integer for damage
 
-    //Health check
-    health -= breathDamage; // Subtracts the damage above from the users health total
-    healthDamage(breathDamage);
-    if(health <= 0) {
-        console.log("You have died.");
-        endGame();
-    }
+    //Health && Check
+    let breathDamage = randomInt(15, 1); // Takes a random integer for damage
+    healthCheck(breathDamage);
 
     let firstStep = userInput("What's the first step of your bathroom routine? ");
 
@@ -84,82 +88,82 @@ function bathroom() {
 
     newLine();
     console.log(`${firstStep} heals you.`);
-    let bathroomHeal = userInput("How many health points do you recover? ");
 
     //Array
     questionsPush("How many health points do you recover? ");
 
-    //Runs bathroomHealCheck function
-    bathroomHealCheck();
+    //Checking for valid user inputs, loops until the input is valid
+    let bathroomHeal = userInput("How many health points do you recover? ");
+    let healComplete = false;
+    while (healComplete === false) {
+        if (Number(bathroomHeal) > breathDamage) {
+            //If the heal is greater than the damage taken requires a redo of the heal input
+
+            newLine();
+            console.log("So you're trying to cheat? I've caught you.");
+            bathroomHeal = userInput("How many health points do you recover? ");
+
+        } else if (Number(bathroomHeal) === breathDamage) {
+            //If the heal is equal to the damage taken then user is fully healed
+
+            health += Number(bathroomHeal);
+            newLine();
+            console.log("Fully healed!");
+
+            //Array
+            answersPush(bathroomHeal);
+
+            //End loop
+            healComplete = true;
+            breakfast();
+
+        } else if (Number(bathroomHeal) === 0) {
+            //If the heal is equal to 0 the user heals nothing
+
+            newLine();
+            console.log("You heal nothing!");
+
+            //Array
+            answersPush(bathroomHeal);
+
+            //End loop
+            healComplete = true;
+            breakfast();
+
+        } else if (Number(bathroomHeal) < 0) {
+            //If the user enters a negative number requires a redo of the heal input
+            
+            newLine();
+            console.log(`You can't heal ${bathroomHeal} points!`);
+            bathroomHeal = userInput("How many health points do you recover? ");
+
+        } else if (Number(bathroomHeal) > 0 && Number(bathroomHeal) < breathDamage) {
+            //If the number is between 0 and the damage the user is healed
+
+            newLine();
+            health += Number(bathroomHeal);
+            console.log("Ah, refreshing.");
+
+            //Array
+            answersPush(bathroomHeal);
+
+            //End loop
+            healComplete = true;
+            breakfast();
+
+        } else {
+            //If any of the above are not true then a redo is required
+
+            console.clear();
+            console.log("I do not understand.");
+            bathroomHeal = userInput("How many health points do you recover? ");
+
+        } // End of bathroomHeal validity check
+    }// End of bathroomHeal loop
 }// End of bathroom() function
 
-
-function bathroomHealCheck() {
-     //Checking for valid user inputs, loops until the input is valid
-     let healComplete = false;
-     while (healComplete === false) {
-         if (Number(bathroomHeal) > breathDamage) {
-             //If the heal is greater than the damage taken requires a redo of the heal input
-             newLine();
-             console.log("So you're trying to cheat? I've caught you.");
-             bathroomHeal = userInput("How many health points do you recover? ");
- 
-         } else if (Number(bathroomHeal) === breathDamage) {
-             //If the heal is equal to the damage taken then user is fully healed
-             health += Number(bathroomHeal);
-             newLine();
-             console.log("Fully healed!");
- 
-             //Array
-             answersPush(bathroomHeal);
- 
-             //End loop
-             healComplete = true;
-             breakfast();
- 
-         } else if (Number(bathroomHeal) === 0) {
-             //If the heal is equal to 0 the user heals nothing
-             newLine();
-             console.log("You heal nothing!");
- 
-             //Array
-             answersPush(bathroomHeal);
- 
-             //End loop
-             healComplete = true;
-             breakfast();
- 
-         } else if (Number(bathroomHeal) < 0) {
-             //If the user enters a negative number requires a redo of the heal input
-             newLine();
-             console.log(`You can't heal ${bathroomHeal} points!`);
-             bathroomHeal = userInput("How many health points do you recover? ");
- 
-         } else if (Number(bathroomHeal) > 0 && Number(bathroomHeal) < breathDamage) {
-             //If the number is between 0 and the damage the user is healed
-             newLine();
-             health += Number(bathroomHeal);
-             console.log("Ah, refreshing.");
- 
-             //Array
-             answersPush(bathroomHeal);
- 
-             //End loop
-             healComplete = true;
-             breakfast();
- 
-         } else {
-             //If any of the above are not true then a redo is required
-             console.clear();
-             console.log("I do not understand.");
-             bathroomHeal = userInput("How many health points do you recover? ");
- 
-         } // End of bathroomHeal validity check
-     }// End of bathroomHeal loop
-}// End of bathroomHealCheck() Function
-
 function breakfast() {
-    newLine();
+    console.clear();
     console.log("You finish your bathroom routine and continue about your day.");
     let breakfast = userInput("Do you eat breakfast?(Y/N) ");
 
@@ -184,6 +188,7 @@ function breakfast() {
                 console.clear();
                 console.log("I do not understand.");
                 breakfast = userInput("Do you eat breakfast?(Y/N) ");
+                breakfast = breakfast.toUpperCase();
 
         }// End of breakfast switch
     }// End of breakfastComplete Validity Loop
@@ -205,12 +210,7 @@ function eatBreakfast() {
 
     // Health && Check
     let stomachGrowl = randomInt(10, 1);
-    health -= stomachGrowl;
-    healthDamage(stomachGrowl);
-    if(health <= 0) {
-        console.log("You have died.");
-        endGame();
-    }
+    healthCheck(stomachGrowl);
 
     console.log("Which action do you take?");
     console.log("1. Eat a bowl of cereal.");
@@ -232,11 +232,11 @@ function eatBreakfast() {
                     break;
 
                 case "2":
-                    makePancakes();
+                    makePancakes(stomachGrowl);
                     break;
 
                 case "3":
-                    haveCoffee();
+                    haveCoffee(stomachGrowl);
                     break;
 
                 default:
@@ -259,13 +259,8 @@ function eatCereal() {
     console.log("As you're eating you remember that you're lactose intolerant!");
     console.log("The milk hurts your stomach but you sate your appetite.");
 
-    //Health & check
-    health -= 5;
-    healthDamage(5);
-    if(health <= 0) {
-        console.log("You have died.");
-        endGame();
-    }
+    //Health && Check
+    healthCheck(5);
 
     //Array
     answersPush("Eat a bowl of cereal.");
@@ -273,21 +268,17 @@ function eatCereal() {
     //End loop
     hungryStomachComplete = true;
     travel();
+
 }// End of eatCereal() function
 
 
-function makePancakes() {
+function makePancakes(stomachGrowl) {
     console.clear();
     console.log("The waft of the pancakes as they cook on the pan alert your stomach.");
     console.log("Out of impatience your stomach growls again, hurting you.");
 
-    //Health && check
-    health -= stomachGrowl;
-    healthDamage(stomachGrowl);
-    if(health >= 0) {
-        console.log("You have died.");
-        endGame();
-    }
+    //Health && Check
+    healthCheck(stomachGrowl);
 
     console.log("The pancakes fill your stomach, and make you feel refreshed.");
     health += 10;
@@ -302,22 +293,17 @@ function makePancakes() {
     //End loop
     hungryStomachComplete = true;
     travel();
+
 }// End of makePancakes() function
 
 
-function haveCoffee() {
+function haveCoffee(stomachGrowl) {
     console.clear();
     console.log("The coffee energizes you.");
     console.log("However your hunger isn't sated. Your stomach is upset.");
 
-    //health && check
-    stomachGrowl *= 2;
-    health -= stomachGrowl;
-    healthDamage(stomachGrowl);
-    if(health <= 0) {
-        console.log("You have died.");
-        endGame();
-    }
+    //Health && Check
+    healthCheck(stomachGrowl * 2);
 
     //Array
     answersPush("Have a coffee");
@@ -325,6 +311,7 @@ function haveCoffee() {
     //End loop
     hungryStomachComplete = true;
     travel();
+
 }// End of haveCoffee() function
 
 
@@ -338,12 +325,7 @@ function dontEatBreakfast() {
 
     //Health && check
     let waffleAttack = randomInt(25, 1); // Random Integer between 1 and 25
-    health -= waffleAttack; // Subtracting the damage done from total health
-    healthDamage(waffleAttack);
-    if(health <= 0) {
-        console.log("You have died.");
-        endGame();
-    }
+    healthCheck(waffleAttack)
 
     //User attack choice
     newLine();
@@ -420,13 +402,13 @@ function splashWater() {
     console.log("The explosion reaches to you and defeats you.");
 
     //Kills the user
-    health = 0;
-    console.log("You have died.");
+    healthCheck(health);
 
     //Array
     answersPush("Splash water");
 
     //End loop
+    waffleBattleComplete = true;
     endGame();
 
 }// End of splashWater() function
@@ -439,19 +421,14 @@ function jumpOnIt() {
     console.log("The heat from the waffle iron burns your legs.");
     
     //Health && Check
-    health -= 15;
-    healthDamage(15);
-    if(health <= 0) {
-        console.log("You have died.");
-        endGame();
-    }
+    healthCheck(15);
 
     //Array
     answersPush("Jump on it");
 
     //End Loop
     waffleBattleComplete = true;
-    // travel();
+    travel();
 
 }// End of jumpOnIt() function
 
@@ -462,11 +439,9 @@ function walkAway() {
     console.log("You turn your back to the waffle iron to escape.");
     console.log("The waffle iron's anger grows.");
     console.log("The waffle iron uses 'waffle throw!'");
-    console.log(`You take ${health} points of damage!`);
 
-    //Kills the user
-    health = 0;
-    console.log("You have died.");
+    //Health && Check
+    healthCheck(health);
 
     //Array
     answersPush("Just walk away.");
@@ -533,12 +508,7 @@ function drive() {
 
     //Health && Check
     let roadRageInsultDamage = randomInt(25, 1);
-    health -= roadRageInsultDamage;
-    healthDamage(roadRageInsultDamage);
-    if(health <= 0) {
-        console.log("You have died.");
-        endGame();
-    }
+    healthCheck(roadRageInsultDamage);
             
     newLine();
     console.log("Which action do you take?");
@@ -559,10 +529,10 @@ function drive() {
                 insult();
 
             case "2":
-                honkHorn();
+                honkHorn(transportChoice);
 
             case "3":
-                ignore();
+                ignore(transportChoice);
 
             default:
                 console.clear();
@@ -588,16 +558,12 @@ function insult() {
 
     //End loop & program
     roadRageComplete = true;
-    health = 0;
-    if(health <= 0) {
-        console.log("You have died.");
-        endGame();
-    }
+    healthCheck(health);
 
 }// End of insult() function
 
 
-function honkHorn() {
+function honkHorn(transportChoice) {
     console.clear();
     console.log("You slam your hand on your steering wheel.");
     console.log("Your horn shocks the road rager.");
@@ -611,12 +577,12 @@ function honkHorn() {
 
     //End loop
     roadRageComplete = true;
-    job();
+    job(transportChoice);
 
 }// End of honkHorn() function
 
 
-function ignore() {
+function ignore(transportChoice) {
     console.clear();
     console.log("You pay no attention to the road rager.");
     console.log("The road rager uses 'Middle Finger'");
@@ -629,7 +595,7 @@ function ignore() {
 
     //End loop
     roadRageComplete = true;
-    job();
+    job(transportChoice);
 
 }//End of ignore() function
 
@@ -649,13 +615,9 @@ function train() {
     console.log("Out of fear you jump up and catch the attention of a subway rat!");
     console.log("The rat leaps at you and uses 'Bite'");
 
+    //Health && Check
     let ratAttack = randomInt(10, 1);
-    health -= ratAttack;
-    healthDamage(ratAttack);
-    if(health <= 0) {
-        console.log("You have died.");
-        endGame();
-    }
+    healthCheck(ratAttack);
 
     newLine();
     console.log("Which action do you take?");
@@ -677,13 +639,13 @@ function train() {
                 kickRat();
 
             case "2":
-                pickUpRat();
+                pickUpRat(transportChoice);
 
             case "3":
-                walkAwayFromRat();
+                walkAwayFromRat(transportChoice);
 
             case "4":
-                giveRatPizza();
+                giveRatPizza(transportChoice);
 
             default:
                 console.clear();
@@ -706,36 +668,24 @@ function kickRat() {
     console.log("You lift your leg to kick the rat.");
     console.log("Mid swing the rat jumps and latches onto your leg with it's claws.");
     console.log("While attempting to get the rat off you stumble and hit your head on the bench.");
-    console.log(`You take ${health} points of damage!`);
 
     //Array
     answersPush("Kick the rat.");
 
-    //End loop & program
-    ratComplete = true;
-    health = 0;
-    if(health <= 0) {
-        console.log("You have died.");
-        endGame();
-    }
-    job();
+    //Health && Check
+    healthCheck(health);
 
 }// End of kickRat() function
 
 
-function pickUpRat() {
+function pickUpRat(transportChoice) {
     console.clear();
     console.log("Your inner neanderthal shows itself.");
     console.log("You grab the rat by it's tail and throw it at the incoming train.");
     console.log("The rat explodes on impact and it's remains splatter you.");
 
-    //Health && CHheck
-    health -= 5;
-    healthDamage(5);
-    if(health <= 0) {
-        console.log("You have died.");
-        endGame();
-    }
+    //Health && Check
+    healthCheck(5);
 
     console.log("Your train arrives and you continue on your adventure to work.");
 
@@ -744,12 +694,12 @@ function pickUpRat() {
 
     //End loop
     ratComplete = true;
-    job();
+    job(transportChoice);
 
 }// End of pickUpRat() function
 
 
-function walkAwayFromRat() {
+function walkAwayFromRat(transportChoice) {
     console.clear();
     console.log("After the rat lands you immediately sprint to the other side of the platform.");
     console.log("Upon reaching it you turn to see the rat is nowhere to be found.");
@@ -761,12 +711,12 @@ function walkAwayFromRat() {
 
     //End loop
     ratComplete = true;
-    job();
+    job(transportChoice);
 
 }// End of walkAwayFromRat() function
 
 
-function giveRatPizza() {
+function giveRatPizza(transportChoice) {
     console.clear();
     console.log("You grab the slice of pizza and throw it next to the rat.");
     console.log("The rat looks at you, then the pizza, then back at you.");
@@ -780,12 +730,12 @@ function giveRatPizza() {
 
     //End loop
     ratComplete = true;
-    job();
+    job(transportChoice);
 
 }// End of giveRatPizza() function
 
 
-function job() {
+function job(transportChoice) {
     newLine();
     console.log("After what seems like forever you finally arrive outside of your office building");
     console.log("You step inside the building.");
@@ -797,13 +747,9 @@ function job() {
     console.log("Your boss was standing there, looking very intimadting.");
     console.log("'YOU'RE FIRED' she screams to you.");
 
+    //Health && Check
     youreFired = randomInt(30, 1);
-    health -= youreFired;
-    healthDamage(youreFired);
-    if(health <= 0) {
-        console.log("You have died.");
-        break gameRunning;
-    }
+    healthCheck(youreFired);
 
     console.log("Which action do you take?");
     console.log("1. 'No u'");
@@ -821,13 +767,13 @@ function job() {
     while(intimadtingBossComplete === false) {
         switch(responseToBoss) {
             case "1":
-                noU();
+                noU(transportChoice, bossChoice);
 
             case "2":
                 askWhy();
 
             case "3":
-                acceptFate();
+                acceptFate(transportChoice, bossChoice);
 
             default:
                 newLine();
@@ -843,7 +789,7 @@ function job() {
 }// End of job() function
 
 
-function noU() {
+function noU(transportChoice, bossChoice) {
     console.clear();
     console.log("Your boss is shocked.");
     console.log("Never did she expect such a reversal!");
@@ -864,7 +810,7 @@ function noU() {
     //End loop
     bossChoice = 1;
     intimadtingBossComplete = true;
-    returnHome();
+    returnHome(bossChoice, transportChoice);
 
 }// End of noU() function
 
@@ -876,24 +822,19 @@ function askWhy() {
     console.log("The last thing you see is a flash of light.");
     console.log("You are unable to comprehend what had just happened.");
 
-    //Health
-    health = 0;
-    console.log(`You take ${health} points of damage!`);
+    //Health && Check
+    healthCheck(health);
 
     //Array
     answersPush("Ask why.");
 
     //End loop & Program            
     intimadtingBossComplete = true;
-    if(health <= 0) {
-        console.log("You have died.");
-        endGame();
-    }
 
 }// End of askWhy() function
 
 
-function acceptFate() {
+function acceptFate(transportChoice, bossChoice) {
     console.clear();
     console.log("Impressed by your acceptance your boss decides to let you go freely.");
     console.log("You pack the rest of your bags and leave the office.")
@@ -904,12 +845,12 @@ function acceptFate() {
     //End loop
     bossChoice = 3;
     intimadtingBossComplete = true;
-    returnHome();
+    returnHome(bossChoice, transportChoice);
 
 }// End of acceptFate() function
 
 
-function returnHome() {
+function returnHome(bossChoice, transportChoice) {
     newLine();
     switch(bossChoice) {
         case 1:
@@ -940,14 +881,9 @@ function returnHome() {
     console.log("It's a nightmare of everything you've encountered in your day today.");
     console.log("It grabs you by your leg and slams you onto the floor.");
 
-    //Damage, and health check
+    //Health && Check
     slamDamage = randomInt(25, 1);
-    health -= slamDamage
-    healthDamage(slamDamage);
-    if(health <= 0) {
-        console.log("You have died.");
-        endGame();
-    }
+    healthCheck(slamDamage);
 
     newLine();
     console.log("You slowly stand back on your feet.");
@@ -1049,12 +985,7 @@ function guillotine() {
     console.log("It crushes you between itself and the floor.");
 
     //Health && check
-    health = 0;
-    healthDamage(0);
-    if(health <= 0) {
-        console.log("You have died.");
-        endGame();
-    }
+    healthCheck(health);
 
     //End loop
     nightmareChoice2Complete = true;
@@ -1093,12 +1024,7 @@ function omoplata() {
 
     //Health Check
     let wallSlam = randomInt(15, 1);
-    health -= wallSlam;
-    healthDamage(wallSlam);
-    if(health <= 0) {
-        console.log("You have died");
-        break gameRunning;
-    }
+    healthCheck(wallSlam);
 
     newLine();
     console.log("The nightmare stands back up at the same time as you.");
@@ -1175,9 +1101,7 @@ function goForItsEyes() {
     console.log("When it stops it's already too late for you.");
 
     //Health && check
-    health = 0;
-    healthDamage(health);
-    endGame();
+    healthCheck(health);
     
 } //End of goForItsEyes() function
 
@@ -1239,14 +1163,14 @@ function endGame() {
 
                 //End loop
                 reviewComplete = true;
-                break reviewComplete;
+                process.exit();
 
             case "N":
                 console.log("I hope you enjoyed the game!");
 
                 //End loop
                 reviewComplete = true;
-                break reviewComplete;
+                process.exit();
 
             default:
                 console.log("I do not understand.");
@@ -1347,3 +1271,5 @@ function endGame() {
     // }//End of pets loop
 
 
+game();
+// breakfast();
