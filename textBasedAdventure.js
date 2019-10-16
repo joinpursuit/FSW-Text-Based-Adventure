@@ -18,7 +18,7 @@ console.log(`Hello ${nameInput}!
 let portal = readline.question("Pick a portal, 1 (BATTLE) or 2 (ADVENTURE) ? ");
 
 const area1 = `
-_______  _______  _       _________ _______  _______           _______ 
+ _______  _______  _       _________ _______  _______           _______ 
 (  ____ \(  ___  )( \      \__   __/(  ____ \(  ____ \|\     /|(       )
 | (    \/| (   ) || (         ) (   | (    \/| (    \/| )   ( || () () |
 | |      | |   | || |         | |   | (_____ | (__    | |   | || || || |
@@ -333,13 +333,33 @@ const secretLeverDoor = () => {
 }
 
 const secretRight = () => {
-    console.log("You open the right door and ")
+    console.log("You go through the right door and it leads into what appears to be a hangar, with very strange disturbing aircrafts. Some soldiers are patrolling on the otherside of the hangar and you quickly hide behind some cargo cases.")
+    let userInput = readline.question("On the closer side of the hangar there is a passageway that you can escape to. You can also try to attempt to sneak into one of the aircrafts, but the tech is superbly advanced and the soldiers might also spot you. Will you sneak into aircraft, run up passageway, or go back? ");
+    while (userInput.toLowerCase() !== 'sneak' && userInput.toLowerCase() !== 'sneak into aircraft' && userInput.toLowerCase() !== 'aircraft' && userInput.toLowerCase() !== 'run' && userInput.toLowerCase() !== 'run up passageway' && userInput.toLowerCase() !== 'passageway' && userInput.toLowerCase() !== 'go back' && userInput.toLowerCase() !== 'back'){
+        userInput = readline.question("Sneak into aircraft, run up passageway, or go back? ")
+    }
+    if (userInput.toLowerCase() === 'sneak' || userInput.toLowerCase() === 'sneak into aircraft' || userInput.toLowerCase() === 'aircraft'){
+        console.clear();
+        console.log("You successfully were able to board one of the aircrafts, but the technology is too advanced for you to operate. After tinkering with it, alarms go suddenly blare and go off. The soldiers have caught you trying to steal one of the aircrafts! They shoot you down .. ");
+        let damage = 100;
+        player.health -= 100;
+        console.log(player.name + " took " + damage + " damage!!");
+        console.log(player);
+        console.log (" ... GAME OVER!!");
+    } else if (userInput.toLowerCase() === 'run' || userInput.toLowerCase() === 'run up passageway' || userInput.toLowerCase() === 'passageway'){
+        console.clear();
+        passageWay();
+    } else {
+        console.clear();
+        endVents();
+    }
 }
 
+const passageWay = () => {
 
-// 
+}
 
 
 // INITIALIZE GAME
 //play();
-leftVent();
+secretLeverDoor();
