@@ -56,6 +56,7 @@ function healthCheck(damage) {
     }
 }
 
+console.clear();
 let nameInput = userInput("Enter your first name: ");
 
 // Game functions
@@ -165,30 +166,38 @@ function bathroom() {
 function breakfast() {
     console.clear();
     console.log("You finish your bathroom routine and continue about your day.");
-    let breakfast = userInput("Do you eat breakfast?(Y/N) ");
+    let breakfastInput = userInput("Do you eat breakfast?(Y/N) ");
 
     //Array
     questionsPush("Do you eat breakfast?(Y/N) ");
 
     //Checking for valid user inputs, loops until the input is valid
-    breakfast = breakfast.toUpperCase();
+    breakfastInput = breakfastInput.toUpperCase();
     let breakfastComplete = false;
     while (breakfastComplete === false) {
-        switch (breakfast) {
+        switch (breakfastInput) {
             case "Y":
                 eatBreakfast();
+
+                //Array
+                answersPush(breakfastInput);
+
                 break;
 
             case "N":
                 dontEatBreakfast();
+
+                //Array
+                answersPush(breakfast);
+
                 break;
 
             default:
                 //If any of the above are not true then a redo is required
                 console.clear();
                 console.log("I do not understand.");
-                breakfast = userInput("Do you eat breakfast?(Y/N) ");
-                breakfast = breakfast.toUpperCase();
+                breakfastInput = userInput("Do you eat breakfast?(Y/N) ");
+                breakfastInput = breakfast.toUpperCase();
 
         }// End of breakfast switch
     }// End of breakfastComplete Validity Loop
@@ -197,9 +206,6 @@ function breakfast() {
 
 function eatBreakfast() {
     // If the user eats breakfast then this branch is followed
-
-    //Array
-    answersPush(breakfast);
 
     console.clear();
     console.log(`The most important meal of the day! Serving it up ${nameInput}'s way!`);
@@ -316,9 +322,6 @@ function haveCoffee(stomachGrowl) {
 
 
 function dontEatBreakfast() {
-    //Array
-    answersPush(breakfast);
-
     console.clear();
     console.log("Angry that you never use it, your Waffle Iron attacks!");
     console.log("The waffle iron uses 'face press'!");
@@ -1273,3 +1276,4 @@ function endGame() {
 
 game();
 // breakfast();
+// sweepTheLeg();
