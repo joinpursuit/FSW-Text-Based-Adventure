@@ -3,14 +3,40 @@ const readline = require('readline-sync')
 
 // Input name
 let nameInput = readline.question("Enter your name: ")
-console.log(`Hello ${nameInput}!  Welcome to my game.`)
+console.log(`Hello ${nameInput}! 
+██╗    ███████████╗     ██████╗██████╗███╗   ██████████╗    ████████╗██████╗     ███╗   █████╗   ██╗     ██████╗ █████╗███╗   ██████████╗
+██║    ████╔════██║    ██╔════██╔═══██████╗ ██████╔════╝    ╚══██╔══██╔═══██╗    ████╗ ████╚██╗ ██╔╝    ██╔════╝██╔══██████╗ ██████╔════╝
+██║ █╗ ███████╗ ██║    ██║    ██║   ████╔████╔███████╗         ██║  ██║   ██║    ██╔████╔██║╚████╔╝     ██║  ████████████╔████╔███████╗  
+██║███╗████╔══╝ ██║    ██║    ██║   ████║╚██╔╝████╔══╝         ██║  ██║   ██║    ██║╚██╔╝██║ ╚██╔╝      ██║   ████╔══████║╚██╔╝████╔══╝  
+╚███╔███╔██████████████╚██████╚██████╔██║ ╚═╝ █████████╗       ██║  ╚██████╔╝    ██║ ╚═╝ ██║  ██║       ╚██████╔██║  ████║ ╚═╝ █████████╗
+ ╚══╝╚══╝╚══════╚══════╝╚═════╝╚═════╝╚═╝     ╚═╚══════╝       ╚═╝   ╚═════╝     ╚═╝     ╚═╝  ╚═╝        ╚═════╝╚═╝  ╚═╚═╝     ╚═╚══════╝
+                                                                                                                                         
+`)
 
 
 // Portal 1 or  Portal 2
 let portal = readline.question("Pick a portal, 1 (BATTLE) or 2 (ADVENTURE) ? ");
 
-const area1 = "Coliseum";
-const area2 = "AREA 51";
+const area1 = `
+_______  _______  _       _________ _______  _______           _______ 
+(  ____ \(  ___  )( \      \__   __/(  ____ \(  ____ \|\     /|(       )
+| (    \/| (   ) || (         ) (   | (    \/| (    \/| )   ( || () () |
+| |      | |   | || |         | |   | (_____ | (__    | |   | || || || |
+| |      | |   | || |         | |   (_____  )|  __)   | |   | || |(_)| |
+| |      | |   | || |         | |         ) || (      | |   | || |   | |
+| (____/\| (___) || (____/\___) (___/\____) || (____/\| (___) || )   ( |
+(_______/(_______)(_______/\_______/\_______)(_______/(_______)|/     \|
+                                                                                                                                    
+`;
+const area2 = `
+    ###    ########  ########    ###       ########   ##   
+   ## ##   ##     ## ##         ## ##      ##       ####   
+  ##   ##  ##     ## ##        ##   ##     ##         ##   
+ ##     ## ########  ######   ##     ##    #######    ##   
+ ######### ##   ##   ##       #########          ##   ##   
+ ##     ## ##    ##  ##       ##     ##    ##    ##   ##   
+ ##     ## ##     ## ######## ##     ##     ######  ###### 
+`;
 
 
 // OBJECTS for game ------------------------------------------------
@@ -37,7 +63,7 @@ function play (){       // play() to initialize game
             break;
         case '2':
             console.log("You have teleported to " + area2);
-            console.log(`Welcome to ${area2}.`)
+            console.log(`Welcome to AREA 51. `)
             portal2();
             break;
     }
@@ -191,10 +217,10 @@ const endLeft = () => {
 const startRight = () => {
     console.log("You enter through the right door and you are located in a large open room. A shiny liquid substance is dripping onto the walls from the ceiling and a black spherical ball is floats in the center of the room.");
     let userInput = readline.question("Will you approach the black sphere or go back? ");
-    while(userInput.toLowerCase() !== 'back' && userInput.toLowerCase() !== 'go back' && userInput.toLowerCase() !== 'approach sphere' && userInput.toLowerCase() !== 'approach black sphere' && userInput.toLowerCase() !== 'black sphere' && userInput.toLowerCase() !== 'approach' ){
+    while(userInput.toLowerCase() !== 'back' && userInput.toLowerCase() !== 'go back' && userInput.toLowerCase() !== 'approach sphere' && userInput.toLowerCase() !== 'approach black sphere' && userInput.toLowerCase() !== 'black sphere' && userInput.toLowerCase() !== 'approach' && userInput.toLowerCase() !== 'approach the black sphere'  ){
         userInput = readline.question("Approach black sphere or go back? ");
     }
-    if(userInput.toLowerCase() === 'black sphere' || userInput.toLowerCase() === 'approach sphere' || userInput.toLowerCase() === 'approach black sphere' || userInput.toLowerCase() === 'approach'){
+    if(userInput.toLowerCase() === 'black sphere' || userInput.toLowerCase() === 'approach the black sphere' || userInput.toLowerCase() === 'approach sphere' || userInput.toLowerCase() === 'approach black sphere' || userInput.toLowerCase() === 'approach'){
         console.clear(); 
         blackSphere();
     } else{
@@ -245,8 +271,8 @@ const leftVent = () => {
     }
     if(userInput.toLowerCase() === 'dance' || userInput.toLowerCase() === 'dance with alien'){
         console.clear();
-        console.log("The micro aliens see you as one of them. They open up a secret door that leads to the upper floor of the base");
-        secretDoor();
+        console.log("The micro aliens see you as one of them. They open up a passage that leads to the upper floor of the base");
+        endVents();
     } else{
         console.clear();
         console.log("The aliens find you suspicious because you are not dancing with them. They stop dancing and become aggressively violent towards you.")
@@ -269,13 +295,51 @@ const rightVent = () => {
         }
         if (userInput.toLowerCase() === "open" || userInput.toLowerCase() === "open door" || userInput.toLowerCase() === "open the door" || userInput.toLowerCase() === "open it"){
             console.clear();
-            secretDoor();
+            endVents();
         }
     }
 }
 
-const secretDoor = () => {
-    console.log("You are now located at the upper floor of the base.")
+const endVents = () => {
+    console.log("It seems that you are now located on the upper floor of the underground base. This room has one lever that is attached to the left wall and a door on the right.")
+    let userInput = readline.question("Will you pull the lever or go through the door on the right? ");
+    while(userInput.toLowerCase() !== 'pull lever' && userInput.toLowerCase() !== 'pull the lever' && userInput.toLowerCase() !== 'lever' && userInput.toLowerCase() !== 'go through door' && userInput.toLowerCase() !== 'door' && userInput.toLowerCase() !== 'go through the door' && userInput.toLowerCase() !== 'go through the door on the right' && userInput.toLowerCase() !== 'through the door' && userInput.toLowerCase() !== 'right'){
+        userInput = readline.question("Pull the lever or go through the door? ");
+    }
+    if (userInput.toLowerCase() === 'pull lever' || userInput.toLowerCase() === 'pull the lever' || userInput.toLowerCase() === 'lever'){
+        console.clear();
+        secretLeverDoor();
+    } else {
+        console.clear();
+        secretRight();
+    }
 }
+
+let password = ["THE", "UPSIDE", "DOWN"];
+const secretLeverDoor = () => {
+    console.log("You pulled the lever and a loud shifting noise is heard above you. A secret door in the ceiling has opened up and a suddently ladder comes sliding down, almost killing you , but you are able to dodge it in time. What could be up there? You go up the ladder to find out.");
+    console.log(`You now appear to be in some sort of control room with many incomprehensible devices and equipment. A screen that is brightly lighting up the room reads some sort of password: `);
+    for (let i = 0; i < password.length; i++) {
+        console.log(password[i]);
+    }
+    let userInput = readline.question("Go back down the ladder? ");
+    while (userInput.toLowerCase() !== 'go back' && userInput.toLowerCase() !== 'go back down the ladder' && userInput.toLowerCase() !== 'go back down' && userInput.toLowerCase() !== 'down' && userInput.toLowerCase() !== 'down the ladder'){
+        userInput = readline.question("There is nothing left to do here ... Go back down? ")
+    }
+    if (userInput.toLowerCase() === 'go back' || userInput.toLowerCase() === 'go back down the ladder' || userInput.toLowerCase() === 'go back down' || userInput.toLowerCase() === 'down' || userInput.toLowerCase() === 'down the ladder'){
+        console.clear();
+        endVents();
+    }
+}
+
+const secretRight = () => {
+    console.log("You open the right door and ")
+}
+
+
+// 
+
+
 // INITIALIZE GAME
-play();
+//play();
+leftVent();
