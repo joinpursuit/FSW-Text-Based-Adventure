@@ -55,17 +55,6 @@ function option1() {
 
 console.log("It's been several weeks since you've been on the water, it's about time you set sail.")
 
-function option2b() {
-    let sailOptionsA = readline.question("Do you want to sail across the BLACK SEAS in search of the buried treasure, or sail to the LAGOON OF DOOM in search of the Isles of Paradise?: ")
-    if (sailOptionsA === "Black Seas") {
-        console.log("You've hit a storm in the middle of the Black Seas but successfully made it to Tortuga Island where your crew finds a cave full of riches beyond their wildest dreams.")
-    } else if (sailOptionsA === "Lagoon of Doom") {
-        console.log("It was a long journey and you're almost out of resources but you've successfully battled the great monster of the Lagoon of Doom and have landed on the Isles of Paradise.")
-    }
-}
-
-//Option#2a steal(Black Seas or Lagoon of Doom)
-//Option#2b buy(North or South)
 function option2a() {
     let sailOptionsB = readline.question("Do you want to sail NORTH to the Isles of the Abyss or SOUTH to Sunken Cove?: ")
     if (sailOptionsB === "North") {
@@ -77,14 +66,15 @@ function option2a() {
     option3a();
 }
 
-//Option#3b
-// if (sailOptions === "Black Seas") {
-//     let seasOptions = readline.question("COMPLETE NARRATIVE")
-// } else if (sailOptions === "Lagoon of Doom") {
-//     let lagoonOptions = readline.question("COMPLETE NARRATIVE")
-// }
+function option2b() {
+    let sailOptionsA = readline.question("Do you want to sail across the BLACK SEAS in search of the buried treasure, or sail to the LAGOON OF DOOM in search of the Isles of Paradise?: ")
+    if (sailOptionsA === "Black Seas") {
+        console.log("You've hit a storm in the middle of the Black Seas but successfully made it to Tortuga Island where your crew finds a cave full of riches beyond their wildest dreams.")
+    } else if (sailOptionsA === "Lagoon of Doom") {
+        console.log("It was a long journey and you're almost out of resources but you've successfully battled the great monster of the Lagoon of Doom and have landed on the Isles of Paradise.")
+    }
+}
 
-// Option#3a
 function option3a() {
     let thiefOptions = readline.question("You and your crew have just stolen a chest full of gold and jewels from the party; you can't stay here! Do you want to CONTINUE forward on your journey or RETURN to town with your new riches?: ")
     if (thiefOptions === "Continue") {
