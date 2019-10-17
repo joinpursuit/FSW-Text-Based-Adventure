@@ -5,10 +5,10 @@ let mageHp = 50
 let mageAtt = Math.floor(Math.random() * 20);
 let warriorHp = 75
 let warriorAtt = Math.floor(Math.random() * 15);
-let minion1Hp = 20
-let minion1Att = Math.floor(Math.random() * 10);
+let minion1Hp = 15
+let minion1Att = Math.floor(Math.random() * 7);
 let minion2Hp = 20
-let minion2Att = Math.floor(Math.random() * 5);
+let minion2Att = Math.floor(Math.random() * 10);
 let minotaurHp = 40
 let minotaurAtt = Math.floor(Math.random() * 15);
 let Inventory = 2
@@ -126,6 +126,40 @@ let classInput = readline.question('Choose a class: Mage or Warrior? '); wait(15
             console.log("You walk towards a large door, the sounds get louder, you prepare yourself for whats on the other side and give a big push"); wait(4000);
             console.log('Nothing happens, how anticlimactic. You noticed a rug under you and you find a key, you unlocked the door and gently push'); wait(2000);
             console.log("-------------------------------------------------"); wait(1500);
+            console.log("Inside you find the largest ugliest minotaur you've ever seen in your life, granted you've never actually seen a minotaur before."); wait(2000);
+            console.log("The minotaur roars and charges at you"); wait(2000);
+            console.log("Prepare for battle"); wait(1500); //loop coming up for battle update
+            console.log("-------------------------------------------------"); wait(1500); {
+            for(let i = mageHp; i > -1; i --){
+                i -= minotaurAtt
+                console.log("Health: " + mageHp + " Potions: " + Inventory); wait(1500);
+                let battleInput = readline.question(`Do you wish to attack or use a potion? `);{
+                    if(battleInput === "attack" || battleInput === "Attack") {
+                        console.log(`You attack for ${mageAtt}`); wait(1500);
+                        console.log(`Minotaur's health is now ${minotaurHp - mageAtt}`); wait(1500);
+                        minotaurHp = (minotaurHp - mageAtt)
+                        console.log(`Minotaur attacks you for ${minotaurAtt}`); wait(1500);
+                        // console.log(`Your health is now at ${mageHp - minotaurAtt}`); remove for now
+                        console.log("-------------------------------------------------"); wait(1500);
+                        mageHp = (mageHp - minotaurAtt)
+                        if (minotaurHp <= 0){
+                            console.log ("You've defeated the Minotaur and exit to the next hallway"); wait(1500); //end of battle room loop with only minion health; add your health
+                            break
+                        } else if ( mageHp <= 0) {
+                            console.log ("You have been killed! GAME OVER: Try Again"); wait(1500);
+                            process.exit() //completely exit the script like an ending
+                    }
+                } else {
+                    if( Inventory < 1) {
+                        console.log("Out of potions"); wait(1500);
+                    } else {
+                        mageHp = mageHp + potionUse
+                        Inventory = Inventory - 1 // how to get it to stop at 0 potions and repeat: SOLVED!
+                    }
+                }
+}
+}
+}
 }
 }
 }
