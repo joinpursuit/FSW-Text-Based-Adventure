@@ -69,29 +69,79 @@ function option2b() {
 function option2a() {
     let sailOptionsB = readline.question("Do you want to sail NORTH to the Isles of the Abyss or SOUTH to Sunken Cove?: ")
     if (sailOptionsB === "North") {
-        console.log("You've reached the Isles of the Abyss where you and your crew discover COMPLETE NARRATIVE")
+        console.log("You safely reached the Isles of the Abyss!")
     } else if (sailOptionsB === "South") {
-        console.log("COMPLETE NARRATIVE")
+        console.log("After a turbulent trip across the Southern Seas you've arrived at Sunken Cove.")
     }
     console.log("Here you've found a community of rich powerful politicans and royal families partying with the wealth they've collected from poor tax payers.")
+    option3a();
 }
 
-//Option#3a
+//Option#3b
 // if (sailOptions === "Black Seas") {
 //     let seasOptions = readline.question("COMPLETE NARRATIVE")
 // } else if (sailOptions === "Lagoon of Doom") {
 //     let lagoonOptions = readline.question("COMPLETE NARRATIVE")
 // }
 
-//Option#3b
-// if (sailOptionsB === "North" || sailOptionsB === "South") {
-//     let thiefOptions = readline.question("Do you want to CONTINUE on your journey or STEAL from these greedy selfish royals and corrupt politicians?: ")
-// }
+// Option#3a
+function option3a() {
+    let thiefOptions = readline.question("You and your crew have just stolen a chest full of gold and jewels from the party; you can't stay here! Do you want to CONTINUE forward on your journey or RETURN to town with your new riches?: ")
+    if (thiefOptions === "Continue") {
+        console.log("You've chosen to continue on your journey, and kudos to you for it. On your way you've managed to come upon the Lagoon of Doom where, with all of your riches, you were able to settle down and form a small community of the biggest badasses. Enjoy ruling like a King!")
+    } else if (thiefOptions === "Return") {
+        console.log("You've chosen to return to town. Let's see what we can get ourself into with all these riches.")
+        option4a();
+    }
+}
 
-// if (thiefOptions === "Continue") {
-//     console.log("COMPLETE NARRATIVE")
-// } else if (thiefOptions === "Steal") { 
-//     console.log("COMPLETE NARRATIVE")
-// }
+function option4a() {
+    let returnOptions = readline.question("You've just arrived in town and are ready to put these riches to use. Do you want to go to the nearest BROTHEL and see what trouble we can get ourselves into or do you want to GIVE some of these riches back to the tax-ridden townspeople?: ")
+    if (returnOptions === "Brothel") {
+        console.log("While in the brothel you got into a bar fight and was apprehended by officers. It's back to jail for you. Better luck next time!")
+    } else if (returnOptions === "Give") {
+        console.log("You've given riches to the poor and they love you for it. You've gained notariety and loyalty among the masses, but you can't stay here. You take to the Black Seas!")
+        option5a();
+    }
+}
+
+function option5a() {
+    let blackSeas = readline.question("Sail around & creative pirate paradise vs Find Treasure CONTINUE")
+    if (blackSeas === "Sail Around CONTINUE") {
+        console.log("CONTINUE")
+    } else if (blackSeas === "Find Treasure CONTINUE") {
+        console.log("CONTINUE")
+        option6a();
+    }
+}
+
+function option6a() {
+    let afterTreasure = readline.question("Sunken Cove vs Return to Town CONTINUE")
+    if (afterTreasure === "Sunken Cove CONTINUE") {
+        console.log("CONTINUE")
+        option7a();
+    } else if (afterTreasure === "Return to Town") {
+        console.log("CONTINUE")
+        option7b();
+    }
+}
+
+function option7a() {
+    console.log("DIES")
+}
+
+function option7b() {
+    let returnOptions = readline.question("You've just arrived in town and are ready to put these riches to use. Do you want to go to the nearest BROTHEL and see what trouble we can get ourselves into or do you want to GIVE some of these riches back to the tax-ridden townspeople?: ")
+    if (returnOptions === "Brothel") {
+        console.log("While in the brothel you got into a bar fight and was apprehended by officers. It's back to jail for you. Better luck next time!")
+    } else if (returnOptions === "Give") {
+        console.log("You've given riches to the poor and they love you for it. You've gained notariety and loyalty among the masses, but you can't stay here. You take to the Black Seas!")
+        option8a();
+    }    
+}
+
+function option8a() {
+    console.log("You're the mayor CONTINUE");
+}
 
 option1();
