@@ -178,8 +178,7 @@ const startLeft = () => {
         console.clear(); 
         portal2();
     }
-
-}
+} // END startLeft()
 
 const middleLeft = () => { 
     let userInput = readline.question("You reach the end of the corridor and the stench has completely obliterated your sense of smell. There is huge door that seems unlocked in front of you. Open door? Or go back? ");
@@ -193,8 +192,7 @@ const middleLeft = () => {
         console.clear(); 
         startLeft();
     }
-
-}
+} // END middleLeft()
 
 const endLeft = () => {
     console.log("You open the door and a strange figure is seen in the middle of the room. It flashes towards you in an blink-instant and you feel a probe to your stomach. OUCH. The figure then molecularly dissipates into thin air in front of your eyes.");
@@ -212,7 +210,7 @@ const endLeft = () => {
             portal2();
         }
     }
-}
+}  // END endLeft()
 
 // RIGHT
 const startRight = () => {
@@ -228,7 +226,7 @@ const startRight = () => {
         console.clear();
         portal2();
     }
-}
+}  // END startRight()
 
 //blackSphere
 const blackSphere = () => {
@@ -247,7 +245,7 @@ const blackSphere = () => {
         console.clear();
         vents();
     }
-}
+} // END blackSphere()
 
 // VENT PATHs - splits into leftVent and rightVent
 const vents = () => {
@@ -262,7 +260,7 @@ const vents = () => {
         console.clear();
         rightVent();
     }
-}
+} // END vents()
 
 const leftVent = () => {
     console.log("You crawl down the left vent and there is an opening to another room. After busting into the room, you are surrounded by a thousand micro aliens.");
@@ -281,7 +279,7 @@ const leftVent = () => {
         console.log(player);
         console.log("You have been probed a thousand times and didn't make it out of AREA 51 ... GAME OVER!! TRY AGAIN")
     }
-}
+} // END leftVent()
 
 const rightVent = () => {
     console.log("You crawl down the right vent and it starts to shake. The vent collapses and you fall down out of the vent. ")
@@ -299,7 +297,7 @@ const rightVent = () => {
             endVents();
         }
     }
-}
+}  // END rightVent()
 
 const endVents = () => {
     console.log("It seems that you are now located on the upper floor of the underground base. This room has one lever that is attached to the left wall and a door on the right.")
@@ -314,7 +312,7 @@ const endVents = () => {
         console.clear();
         secretRight();
     }
-}
+} // END endVents()
 
 let password = ["THE", "UPSIDE", "DOWN"];   // PASSWORD array NEEDED at end of game
 
@@ -332,7 +330,7 @@ const secretLeverDoor = () => {
         console.clear();
         endVents();
     }
-}
+} // END secretLeverDoor()
 
 const secretRight = () => {
     console.log("You enter into what appears to be a hangar, with very strange disturbing aircrafts. Some soldiers are patrolling on the otherside of the hangar and you quickly hide behind some cargo cases.")
@@ -355,7 +353,7 @@ const secretRight = () => {
         console.clear();
         endVents();
     }
-}
+} // END secretRight()
 
 const passageWay = () => {
     console.log(`In the passageway, you see a huge vaulted door at the end. You finally reach the vaulted door and try to open it. It doesn't budge. There is panel on the side that prompts you for some sort of password ... `);
@@ -376,7 +374,7 @@ const vault = () => {
     let secretPassword = readlineSync.question(`Please enter password: `, {hideEchoBack: true});
     if (secretPassword === `${password[0]} ${password[1]} ${password[2]}`){
         console.log("A hissing noise comes throughout the sides of the vault and it opens. The light from the Nevada desert comes shining in. You've finally found the exit and escaped AREA 51! ");
-        console.log(`
+        console.log(`                                                               CONGRATULATIONS!!!
 
                                             ██╗   ██╗ ██████╗ ██╗   ██╗    ██╗    ██╗██╗███╗   ██╗██╗
                                             ╚██╗ ██╔╝██╔═══██╗██║   ██║    ██║    ██║██║████╗  ██║██║
@@ -385,13 +383,11 @@ const vault = () => {
                                                ██║   ╚██████╔╝╚██████╔╝    ╚███╔███╔╝██║██║ ╚████║██╗
                                                ╚═╝    ╚═════╝  ╚═════╝      ╚══╝╚══╝ ╚═╝╚═╝  ╚═══╝╚═╝
                                                                          
-MMMMMMMMMMMMMMMd//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////dMMMMMMMMMMMMMMM
-MMMMMMMMMMMMMMMd//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////dMMMMMMMMMMMMMMM
-MMMMMMMMMMMMMMMh//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////dMMMMMMMMMMMMMMM
+
 MMMMMMMMMMMMMMMh:/:///////////////////////////////////////////////////////////////////////////////////////////////////////////////////dMMMMMMMMMMMMMMM
 MMMMMMMMMMMMMMMh::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::dMMMMMMMMMMMMMMM
-MMMMMMMMMMMMMMMh::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::hMMMMMMMMMMMMMMM
-MMMMMMMMMMMMMMMh::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::hMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMh::::::::::::::::::::::::::::::::::::::::: You walk out into the desert..::::::::::::::::::::::::::::::::::::::::::::::hMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMh::::::::::::::::::::::::::::::::::::::::::::::::::::: blessed to be alive ...:::::::::::::::::::::::::::::::::::::::::hMMMMMMMMMMMMMMM
 MMMMMMMMMMMMMMMh::::::::::::::::::::::::::::::::::::::::::::::::::::::::///:-:::::::::::::::::::::::::::::::::::::::::::::::::::::::::hMMMMMMMMMMMMMMM
 MMMMMMMMMMMMMMMh:-::::::::::-:::/:-::::::::::::::::::::::::::::::::::-+hmNNms:-:::::::::::::::::::::::::::::::::::::::::::::::::::-:::hMMMMMMMMMMMMMMM
 MMMMMMMMMMMMMMMh----------------+s/:---------------------------------:hmNNMMMs--------------------------------------------------------hMMMMMMMMMMMMMMM
