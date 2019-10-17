@@ -1,5 +1,6 @@
   
-const readline = require('readline-sync')
+const readline = require('readline-sync')           // readline
+var readlineSync = require('readline-sync');        // readlineSync
 
 // Input name
 let nameInput = readline.question("Enter your name: ")
@@ -14,7 +15,7 @@ console.log(`Hello ${nameInput}!
 `)
 
 
-// Portal 1 or  Portal 2
+// Portal 1 or  Portal 2 prompt
 let portal = readline.question("Pick a portal, 1 (BATTLE) or 2 (ADVENTURE) ? ");
 
 const area1 = `
@@ -39,7 +40,7 @@ const area2 = `
 `;
 
 
-// OBJECTS for game ------------------------------------------------
+// OBJECTS for game -----------------------------------------------*
 let player = {
     name: nameInput,
     health: 100,
@@ -51,7 +52,7 @@ let gladiator = {
 }
 
 
-// FUNCTIONS --------------------------------------------------------
+// function play --------------------------------------------------*
 function play (){       // play() to initialize game
     while(portal !== '1' && portal !== '2' ){
         portal = readline.question("Please pick a Portal 1 or 2: ");
@@ -69,7 +70,7 @@ function play (){       // play() to initialize game
     }
 }
 
-// PORTAL 1 - GAME 1 - BATTLE
+// PORTAL 1 - GAME 1 - BATTLE -----------------------------------------------------------------------------------------------------------*
 const portal1 = () =>{         // portal1 = coliseum (battle arena)
     let a1 = readline.question("Welcome to the COLISEUM's ARENA. You are summoned to fight against an opposing gladiator." + "\n" +
             "You can either 1- dodge, 2- defend, or 3 - attack: ");
@@ -136,7 +137,7 @@ const portal1 = () =>{         // portal1 = coliseum (battle arena)
         console.log("You tried your best to defeat the gladiator, but it was you who was defeated instead... GAME OVER!")
     }
 
-} // END FUNCTION portal1
+} // END FUNCTION portal1()
 
 
 
@@ -149,7 +150,7 @@ const damage = (object) =>{
 
 
 //functions - different pathways that split for Area51 
-// PORTAL 2 - GAME 2 - ADVENTURE
+// PORTAL 2 - GAME 2 - ADVENTURE --------------------------------------------------------------------------------------------------------*
 const portal2 = () =>{         // portal2 = area51
     let userInput = readline.question(`You look around and see that you are in a room with two doors. Which door should you go through? Left or Right? `);
     while(userInput.toLowerCase() !== 'left' && userInput.toLowerCase() !== 'right'){
@@ -162,7 +163,7 @@ const portal2 = () =>{         // portal2 = area51
         console.clear(); 
         startRight();
     }
-}
+} // END FUNCTION portal2() - portal2 is mapped out with other functions below
 
 // LEFT
 const startLeft = () => {
@@ -266,10 +267,10 @@ const vents = () => {
 const leftVent = () => {
     console.log("You crawl down the left vent and there is an opening to another room. After busting into the room, you are surrounded by a thousand micro aliens.");
     let userInput = readline.question("Out of the thousand micro aliens, one of them steps forward and starts dancing. Then they all start dancing. Should you dance with the alien and act like one of them? Or should you not dance? ");
-    while (userInput.toLowerCase() !== 'dance' && userInput.toLowerCase() !== 'dance with alien' && userInput.toLowerCase() !== 'no' && userInput.toLowerCase() !== 'not dance' && userInput.toLowerCase() !== `don't dance`){
-        userInput = readline.question(`Dance with alien or don't dance? `)
+    while (userInput.toLowerCase() !== 'dance' && userInput.toLowerCase() !== 'dance with aliens' && userInput.toLowerCase() !== 'no' && userInput.toLowerCase() !== 'not dance' && userInput.toLowerCase() !== `don't dance`){
+        userInput = readline.question(`Dance with aliens or don't dance? `)
     }
-    if(userInput.toLowerCase() === 'dance' || userInput.toLowerCase() === 'dance with alien'){
+    if(userInput.toLowerCase() === 'dance' || userInput.toLowerCase() === 'dance with aliens'){
         console.clear();
         console.log("The micro aliens see you as one of them. They open up a passage that leads to the upper floor of the base");
         endVents();
@@ -303,7 +304,7 @@ const rightVent = () => {
 const endVents = () => {
     console.log("It seems that you are now located on the upper floor of the underground base. This room has one lever that is attached to the left wall and a door on the right.")
     let userInput = readline.question("Will you pull the lever or go through the door on the right? ");
-    while(userInput.toLowerCase() !== 'pull lever' && userInput.toLowerCase() !== 'pull the lever' && userInput.toLowerCase() !== 'lever' && userInput.toLowerCase() !== 'go through door' && userInput.toLowerCase() !== 'door' && userInput.toLowerCase() !== 'go through the door' && userInput.toLowerCase() !== 'go through the door on the right' && userInput.toLowerCase() !== 'through the door' && userInput.toLowerCase() !== 'right'){
+    while(userInput.toLowerCase() !== 'pull lever' && userInput.toLowerCase() !== 'pull the lever' && userInput.toLowerCase() !== 'lever' && userInput.toLowerCase() !== 'go through door' && userInput.toLowerCase() !== 'door' && userInput.toLowerCase() !== 'go through the door' && userInput.toLowerCase() !== 'go through the door on the right' && userInput.toLowerCase() !== 'through the door' && userInput.toLowerCase() !== 'right' && userInput.toLowerCase() !== 'right door'){
         userInput = readline.question("Pull the lever or go through the door? ");
     }
     if (userInput.toLowerCase() === 'pull lever' || userInput.toLowerCase() === 'pull the lever' || userInput.toLowerCase() === 'lever'){
@@ -315,7 +316,8 @@ const endVents = () => {
     }
 }
 
-let password = ["THE", "UPSIDE", "DOWN"];
+let password = ["THE", "UPSIDE", "DOWN"];   // PASSWORD array NEEDED at end of game
+
 const secretLeverDoor = () => {
     console.log("You pulled the lever and a loud shifting noise is heard above you. A secret door in the ceiling has opened up and a suddently ladder comes sliding down, almost killing you , but you are able to dodge it in time. What could be up there? You go up the ladder to find out.");
     console.log(`You now appear to be in some sort of control room with many incomprehensible devices and equipment. A screen that is brightly lighting up the room reads some sort of password: `);
@@ -323,19 +325,19 @@ const secretLeverDoor = () => {
         console.log(password[i]);
     }
     let userInput = readline.question("Go back down the ladder? ");
-    while (userInput.toLowerCase() !== 'go back' && userInput.toLowerCase() !== 'go back down the ladder' && userInput.toLowerCase() !== 'go back down' && userInput.toLowerCase() !== 'down' && userInput.toLowerCase() !== 'down the ladder'){
+    while (userInput.toLowerCase() !== 'go back' && userInput.toLowerCase() !== 'go down' && userInput.toLowerCase() !== 'go back down the ladder' && userInput.toLowerCase() !== 'go back down' && userInput.toLowerCase() !== 'down' && userInput.toLowerCase() !== 'down the ladder'){
         userInput = readline.question("There is nothing left to do here ... Go back down? ")
     }
-    if (userInput.toLowerCase() === 'go back' || userInput.toLowerCase() === 'go back down the ladder' || userInput.toLowerCase() === 'go back down' || userInput.toLowerCase() === 'down' || userInput.toLowerCase() === 'down the ladder'){
+    if (userInput.toLowerCase() === 'go back' || userInput.toLowerCase() === 'go down' || userInput.toLowerCase() === 'go back down the ladder' || userInput.toLowerCase() === 'go back down' || userInput.toLowerCase() === 'down' || userInput.toLowerCase() === 'down the ladder'){
         console.clear();
         endVents();
     }
 }
 
 const secretRight = () => {
-    console.log("You go through the right door and it leads into what appears to be a hangar, with very strange disturbing aircrafts. Some soldiers are patrolling on the otherside of the hangar and you quickly hide behind some cargo cases.")
-    let userInput = readline.question("On the closer side of the hangar there is a passageway that you can escape to. You can also try to attempt to sneak into one of the aircrafts, but the tech is superbly advanced and the soldiers might also spot you. Will you sneak into aircraft, run up passageway, or go back? ");
-    while (userInput.toLowerCase() !== 'sneak' && userInput.toLowerCase() !== 'sneak into aircraft' && userInput.toLowerCase() !== 'aircraft' && userInput.toLowerCase() !== 'run' && userInput.toLowerCase() !== 'run up passageway' && userInput.toLowerCase() !== 'passageway' && userInput.toLowerCase() !== 'go back' && userInput.toLowerCase() !== 'back'){
+    console.log("You enter into what appears to be a hangar, with very strange disturbing aircrafts. Some soldiers are patrolling on the otherside of the hangar and you quickly hide behind some cargo cases.")
+    let userInput = readline.question("On the closer side of the hangar there is a passageway that you can escape to. You can also try to attempt to sneak into one of the aircrafts, but the tech is undeniably advanced and the soldiers might also spot you. Will you sneak into aircraft, run up passageway, or go back? ");
+    while (userInput.toLowerCase() !== 'sneak' && userInput.toLowerCase() !== 'sneak into aircraft' && userInput.toLowerCase() !== 'aircraft' && userInput.toLowerCase() !== 'run' && userInput.toLowerCase() !== 'run up' && userInput.toLowerCase() !== 'run up passageway' && userInput.toLowerCase() !== 'passageway' && userInput.toLowerCase() !== 'go back' && userInput.toLowerCase() !== 'back'){
         userInput = readline.question("Sneak into aircraft, run up passageway, or go back? ")
     }
     if (userInput.toLowerCase() === 'sneak' || userInput.toLowerCase() === 'sneak into aircraft' || userInput.toLowerCase() === 'aircraft'){
@@ -346,7 +348,7 @@ const secretRight = () => {
         console.log(player.name + " took " + damage + " damage!!");
         console.log(player);
         console.log (" ... GAME OVER!!");
-    } else if (userInput.toLowerCase() === 'run' || userInput.toLowerCase() === 'run up passageway' || userInput.toLowerCase() === 'passageway'){
+    } else if (userInput.toLowerCase() === 'run' || userInput.toLowerCase() === 'run up' || userInput.toLowerCase() === 'run up passageway' || userInput.toLowerCase() === 'passageway'){
         console.clear();
         passageWay();
     } else {
@@ -356,10 +358,104 @@ const secretRight = () => {
 }
 
 const passageWay = () => {
+    console.log(`In the passageway, you see a huge vaulted door at the end. You finally reach the vaulted door and try to open it. It doesn't budge. There is panel on the side that prompts you for some sort of password ... `);
+    let userInput = readline.question("Enter password? Or go back? ");
+    while(userInput.toLowerCase() !== 'enter password' && userInput.toLowerCase() !== 'enter' && userInput.toLowerCase() !== 'password' && userInput.toLowerCase() !== 'go back' && userInput.toLowerCase() !== 'back' ){
+        userInput = readline.question("Enter password? Or go back? ");
+    }
+    if (userInput.toLowerCase() === 'enter password' || userInput.toLowerCase() === 'enter' || userInput.toLowerCase() === 'password'){
+        console.clear();
+        vault();
+    } else {
+        console.clear();
+        secretRight();
+    }
+}   // END passageWay()
 
-}
+const vault = () => {
+    let secretPassword = readlineSync.question(`Please enter password: `, {hideEchoBack: true});
+    if (secretPassword === `${password[0]} ${password[1]} ${password[2]}`){
+        console.log("A hissing noise comes throughout the sides of the vault and it opens. The light from the Nevada desert comes shining in. You've finally found the exit and escaped AREA 51! ");
+        console.log(`
+
+                                            ██╗   ██╗ ██████╗ ██╗   ██╗    ██╗    ██╗██╗███╗   ██╗██╗
+                                            ╚██╗ ██╔╝██╔═══██╗██║   ██║    ██║    ██║██║████╗  ██║██║
+                                             ╚████╔╝ ██║   ██║██║   ██║    ██║ █╗ ██║██║██╔██╗ ██║██║
+                                              ╚██╔╝  ██║   ██║██║   ██║    ██║███╗██║██║██║╚██╗██║╚═╝
+                                               ██║   ╚██████╔╝╚██████╔╝    ╚███╔███╔╝██║██║ ╚████║██╗
+                                               ╚═╝    ╚═════╝  ╚═════╝      ╚══╝╚══╝ ╚═╝╚═╝  ╚═══╝╚═╝
+                                                                         
+MMMMMMMMMMMMMMMd//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////dMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMd//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////dMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMh//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////dMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMh:/:///////////////////////////////////////////////////////////////////////////////////////////////////////////////////dMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMh::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::dMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMh::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::hMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMh::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::hMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMh::::::::::::::::::::::::::::::::::::::::::::::::::::::::///:-:::::::::::::::::::::::::::::::::::::::::::::::::::::::::hMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMh:-::::::::::-:::/:-::::::::::::::::::::::::::::::::::-+hmNNms:-:::::::::::::::::::::::::::::::::::::::::::::::::::-:::hMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMh----------------+s/:---------------------------------:hmNNMMMs--------------------------------------------------------hMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMh----------------+y+oo:-------------------------------/oydNMMMh--------------------------------------------------------hMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMh---------------:sy+syso+/:---------------------:://::+ohdmmNNmo+:-----------------------------------------------------hMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMh---------------+yyyyyyyyyo----------------::/oyyhhmhhmmmNmmmdmNNmhs+/:------------------------------------------------hMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMy---------------+oyyyyyyyy/--------------:oooyhdddhmmdhmmNmdyydNMMMMNNmh/-----------------------------------:/+/:------hMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMy.-......--.-.-+oosyyyyyyyo/...-----.---.-+ydNNmmmmddysmNNmsydNNMMMMNNMMN-...------------------------..---:/+/sys--..--hMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMh-:::::::-.-../so+oyyyyyyyyo........---/:::/smNNNmysyyohMMdsdmmNMMMMNNMMM:...............................--ooosyss:....hMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMh/osoossso/://+o++oyyyyyyyyso+:----://+so/oyodmMdyydmddNMMNNmhdNMMMMNNNMMs//:://+//:--..................-::oosyyyys-...hMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMmyyysss+oo+++osoo/+oossssossyyyyyso+/+syyoyyodNMmyyddddmMNmdmhdNMMMNNNNNMNsooosssooo++++++/--.........--::/o:+yyyyho/:-hMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMmysss+//sso/+++++//+sssssssyyyyysosysyys++sosNMMMdddddmNNNdoyhmNMMNhdNNNMMNhsssoooo+++o++soo++//-.-:///+///o:/oyyyyyyysmMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMd/+o++++////////+oooooooo+++oo++++++++/////+yNMMmshmmmmNMMNyymNMMMs+ohmmNNNs++o+oo/:-::://:::///::::::://:////+ooooosssmMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMh//++++++++++//+++//////////////::::::://++oyMMMs/odmmNNMMMNNMMMMM+//+hdNNNy//+syyoo//://:://:////////://::::::::/+ooo+mMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMmsyoso++++++syssyyysooo+++++++++ooo+////osohdMMN///ydmNNMMNNMMMMMM++/+hdmNNNo/oshhyy+/::///:/:///+ysoo/////:-:/+osyhhhhNMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMNddhyo++++//+ohdddhso+/+++++++++syhy////osohNMMMo++shmNNNMMMMMMMMMsoooymmmNNs+oosssoo++++++/////++hddhys/+++///////+oosmMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMNmdhss+++o++/+/osso++//////++ooooooooo+////yNMMMsydhdNNNNMMNNNNNNMd+//+dmNNNo//////:::::::/+/+yyhdmmmmmdyyhho//::::::::dMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMdso++ooooo++++++++///////++++/++/++++////++yNMMMhdmmNNNNMMMNNMNMMMMsydssmNNN+:://:::::::///++++oyysooo++////:::::::::::dMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMdooooooooooo+++ooooooooo+ooooo++++++++/////odMMMhyhdmNNNMMMMMMMMMMMmNMm/yNNN+///:::----:/::///++++++/+/+++++++o+ooooooomMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMmhhhysssssooo++ooooo+oo+++++++////++++++/+++sNMh+/+oydmNNNNNNNMMMMMNmMm/:mNN:-:-::///::/++//+++++++ooosoo+osoooooosssssmMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMmyyhhhyyyyyyysssssssso+oossoo+++o++oooooooooomMNh+oshdNNNNNNNNMMMMMMNMMh/hmNsooo++ooooooosssysso+o/+++++++ooo+++/+oyyhymMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMmsssyyhhhyyyssssoo+oooosyyyyyyoossossyysyyyso+mMmsoshmNMMMMNMMMMMMMMMMMdoNmNh++++oooo+++++++o+/://:///+ooo+//+///+oosysmMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMdooooossyssooooooooooo+++++ossyyssssoo++o+oosohMooyhdNMMMMMMMMMMMMMMMMMyhyyNm:-------...-----://///oyhhhdddddyyyysyyyhsmMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMmhhhyyysyssooossssyyyyyyyysoosysoosssssoyyyysssdmhdmmNMMMMMMMMMMMMMMMMMo/odNs---..-.-.-....---/////+oso++++ssssssoosyhymMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMmyyyyysyyysyyysyhyhyhyyyysssossyyysooo++ooossoo+/sddmmMMMMMMMMMMMMMMMMN/-+ys:::::::------::::::/:://///+o+/++yysossooyhNMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMNdhhhyhyyyyyyyyssossooosso+++++oooooo+////+ossssssdddmMMMMMMMMMMMMMMMMm:--:-:---::::-------:::::::///+oyyyhyyyddyyyhhhmNMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMNhhhsooo+++++o++++++ooooosss+//+/++oooosooo/::/:/+hhdmMMMMMmMMMMMMMMMMm/:-:---::::::::++//+soo/+/++o++ooyyysosshysyyhdmNMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMmsosssssoooosyysssoooossyysssooooo++oooo+++////://hhdmMMMMN+dMMMMMMMMMh/++/:::::://+/+oooo+o+o+++oosssoososysyyhyyhhyhhNMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMd+++++++++////+++ossssoosossooososssssssssosso+///yhhmMMMMd/smMMMMMNys+++++++++/ossosssssoooo+//++++++ooo+o++++ossys+oodMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMh/++ooosso+////++oooooosyysooooo+//++++oo+/////::/oshmMMMMh++dNMMMMh--::::::::/+/+//+osssossso////+/+//:/::::++ooso+///dMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMdoossssoo++:/++++++/+osssssssooo+/////////+o++//+//symNMMMy//yNMMMMs:/+++++++ooosoo+/+/////::///::/::::/:::://+osooshdymMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMd+oo+++++o+++++/:///+/+/+ossssoso//://+//++++///:::+smMMMMhhyomNMMMh///////://////+/:////::/::/::://://+oosossssooyyyyymMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMh/////+++/++/+::/syyyyyyyysso+/+o+ooo++++///:/:::::/sdMMMN////ohNMMm/++//::----:///++/+///:/:/:://+/+++sosyssyyyssyyo//dMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMd++/////++osssssoossyssosssosyyyyyooo+++/:://///++//sdNMMd/://sdNMMN+///////:-:::::::::::/::/://+++++/+++soooo+////://+dMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMmysssyyyssyhyysssssssosssyssssso++/++//://://:/:/y+oyhNMMy+///ymNMMMh++o+++::::///://::/://+o+o+++//+++/++/+o+++/+/:/++dMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMdssosososhhss+//++o/+o++oso++/////::/:/:+////::/:h/shdNMMyo+/odmNMMMmoso++o////:///:/::/::/+/+oooo//+sysssso///+/++ooo+dMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMdooossssso+//+////+/:///+++ssossyso//://:::/++oooysyhdmMMm+/:/dmMMMMdoo+///://:://///::::://:://+osooso+oo+/:/++oo/://+dMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMh:://///:/+///+o+oo+/+sossyyyyyyyyyos/o+/++sosysoodhmmNMMMo//:dmMMMMy++/////++::/+/:///:::::/+o+sysyssysyyysooosso++o++dMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMh:/+oo+/++oossyyssyyosyo+syyssyyyyyhs+oossososso/sdydNNMMMs///hmNMMMy+++++////:-:::::::::/::://+sso+++oooos++oyooo++:oomMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMh/ooyysssys+sossssyyyssyossssoossysyyyo+ooo//+++oyddmNNMNmh++++hNMMN+/+o++//:/-://+//////:::::oo/+/-://+//+o/+oo/:-::+omMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMh:/+ooooososyssyyysyyyyyyhyyso//++/+/+//+///://+yyhNmNMMMMysso+hmMMm://+//:::://:-:://s++::::::///:/+oo+osysooo+/:-:--/hMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMh:://+yssssyysssyyyyhyyyysoos+///++//:::/::/o///+ohdhmNMMmoysysydMMNs:::/+++////---::-:://::++o+:/:://+/:/ssss+/:///--:hMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMdoso+ossysysssosyhyyyyyyysyyso+::/:////:/+/+/:://+odhdNMMy//+/ohdMMMy:+/+++++++//::/:::-::/://++/++:::::://++///:-::--:hMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMmysssyysyyyysysyhyhyyyhysssyyyy+/:://///++/+//::://oshNMMs+oooohmMMNo+ossysso///++///++++/+/:::://:::::-:-::--::--:-::/dMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMmyyhyyssyooysyyhyyyyyyyhyyyhyyyso+++sss++//+o/++/++++smMMy/////smMNmdddddddddso+ssoo+++oo+ooo+s++/////://::---:+:-:-:::hMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMdosy+o++/++o++++ossyyhhhsysyysyyooosyyso//oossyhsssyosmMMh+oo//+oyhddddhdddddmdddhysoo++oooossssossyso++://:/::::--:::/dMMMMMMMMMMMMMMM
+        `);
+    } else{
+        console.log("Incorrect password! Try again!!! ")
+        let userInput = readline.question("Enter password? Or go back? ");
+        while(userInput.toLowerCase() !== 'enter password' && userInput.toLowerCase() !== 'enter' && userInput.toLowerCase() !== 'password' && userInput.toLowerCase() !== 'go back' && userInput.toLowerCase() !== 'back' ){
+            userInput = readline.question("Enter password? Or go back? ");
+        }
+        if (userInput.toLowerCase() === 'enter password' || userInput.toLowerCase() === 'enter' || userInput.toLowerCase() === 'password'){
+            console.clear();
+            vault();
+        } else{
+            console.clear();
+            passageWay();
+        }
+    }
+}   // END vault()
 
 
-// INITIALIZE GAME
-//play();
-secretLeverDoor();
+
+// INITIALIZE GAME ---------------------------------
+play();
