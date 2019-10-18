@@ -5,14 +5,26 @@ let currentMoveLeftRight = 0; //value for index arr.[x][0]
 let currentMove = ""; // takes in current move 'right' 'left' 'up' 'down'
 let mapChar = ""; // the char user has choosen and the weapon
 let displayChar = ""; // just the char
-let outcomeOptions = ["🍃","🐺"]; // options of what happens when you break through
-let outCome = ""
+let outcomeOptions = ["🐺","🍃","🍄"]; // options of what happens when you break through
+let mapOutComeoptions = [ "🌳🍄🌳","🌳💎🌳","🌳🍒🌳","🌳🌳🌳"]
+let outCome = "";
+let text= ""
+let score = 0;
+let health = ["❤️","❤️","❤️"]
+let collectObj = [];
+let Map = [
+    [,,,,,,,,],
+    [,,,,,,,,],
+    [,,,,,,,,],
+    [,,,,,,,,],
+    [,,,,,,,,],
+    [,,,,,,,,],
+    [,,,,,,,,],
+    [,,,,,,,,],
+]
 
 
-// Prints map in readable form
 function printMap(Map) {
-
-
     
     for (let i = 0; i < Map.length; i++){
         console.log((Map[i].join(" ")));
@@ -24,50 +36,95 @@ function printMap(Map) {
  // adds or subtacts to current move and keeps track of coordinates arr[x][x]
 
  function Move(currentMove){
+let currentMovetemp = currentMove.toLowerCase()
 
-    if ( currentMove === "right"){
+// if (currentMovetemp === "right" || currentMovetemp === "left" || currentMovetemp === "down" || currentMovetemp === "up") {
 
+    if ( currentMovetemp === "d"){
         currentMoveLeftRight += 1;
+        score +=100
+
         
-        
-    } else if (currentMove === "left"){
+    } else if (currentMovetemp === "a"){
         currentMoveLeftRight -= 1
+        score +=100
 
-    } else if (currentMove === "down"){
+    } else if (currentMovetemp === "s"){
         currentMoveupDown += 1
+        score +=100
 
-    } else if( currentMove === "up") {
+    } else if( currentMovetemp === "w") {
 
         currentMoveupDown -= 1
+        score +=100
     }
 
+
+    
+
+    if(currentMoveLeftRight === 8){
+        currentMoveLeftRight -= 1
+        score -= 100
+    } 
+    if (currentMoveupDown === 8){
+        currentMoveupDown -=1
+        score -=100
+    } 
+    if(currentMoveLeftRight === -1){
+        currentMoveLeftRight += 1
+        score -= 100
+    } 
+
+    if (currentMoveupDown === -1){
+        currentMoveupDown +=1
+        score -=100
+    } 
+
+
  }
- // changes previous move to tunnel
+
+
+ // changes previous move to grass
  function previousMoveChange (currentMoveupDown,currentMoveLeftRight){
 
     Map[currentMoveupDown][currentMoveLeftRight] = "🌱🌱🌱"
-    }
+}
     
 
  //moves and saves character on to the new 
-
  function nextMovechar (currentMoveupDown,currentMoveLeftRight,outCome){
+    if(Map[currentMoveupDown][currentMoveupDown] ==='🌳🍄🌳'){
+        score += 200
+        text = "Look at you finding that Mushroom 🍄 +200!"
+        collectObj.push("🍄")
+    }
+    if(Map[currentMoveupDown][currentMoveLeftRight].includes( '🌳💎🌳') ){
+        score += 200
+        text = "BLING BLING! 💎 +500!"
+        collectObj.push("💎")
+    }
+    if(Map[currentMoveupDown][currentMoveLeftRight].includes( '🌳🍒🌳') ){
+        score += 200
+        text = "CHERRIES! 🍒 +200!"
+        collectObj.push("🍒")
+    }
 
  Map[currentMoveupDown][currentMoveLeftRight] = `${mapChar}${outCome}`
+ 
  }
  
 //Used to randomize a moveoitcome
  function randomMove (){
  let randomOutcome = Math.floor(Math.random() * 10) //used for randomizer
-    if (randomOutcome > 8){
-        outCome = outcomeOptions[1]
+    if (randomOutcome === 9){
+        outCome = outcomeOptions[0]
     } else{
-           outCome = outcomeOptions[0]
+           outCome = outcomeOptions[1]
         }
         
  }
 
- function gameInmotion(previousMoveChange,Move,randomMove,nextMovechar,printMap){
+function gameInmotion(previousMoveChange,Move,randomMove,nextMovechar,printMap){
 
 // currentMove = readline.question("\nEnter your next move: ");
 //console.log (currentMove,currentMoveLeftRight, currentMoveupDown);
@@ -80,85 +137,153 @@ console.clear();
 printMap(Map);
 }
 
+
+let mapoutcomeOptions = [ "🌳🍄🌳","🌳💎🌳","🌳🍒🌳","🌳🌳🌳"]
+
+function randomMapob (){
+    let randomOutcome = Math.floor(Math.random() * 10) //used for randomizer
+    let mapOutcome = ""
+
+       if (randomOutcome === 9){
+        mapOutcome = mapoutcomeOptions[0]
+        } else if (randomOutcome === 8){
+            mapOutcome = mapoutcomeOptions[1]
+        }else if (randomOutcome === 7){
+            mapOutcome = mapoutcomeOptions[2]
+        } else{
+            mapOutcome = mapoutcomeOptions[3]
+        }
+return mapOutcome
+}
+
+
+const randomMap = (randomMapob) => {
+
+
+let rowNumber = 8
+let colNumber = 8
+
+for(let row = 0; row < rowNumber; row++){
+
+    for (let col = 0; col < colNumber; col++){
+        
+        
+        Map[row][col]= randomMapob()
+    }
+
+    
+    
+
+}
+Map[7][7]= "🌳🏡🌳"
+
+}
+
+randomMap(randomMapob);
+
 const readline = require('readline-sync')
 
-let Map = [
-    ["🌳🌳🌳","🌳🌳🌳","🌳🌳🌳","🌳🌳🌳", "🌳🌳🌳", "🌳🌳🌳"],
-    ["🌳🌳🌳","🌳🌳🌳","🌳🌳🌳","🌳🌳🌳", "🌳🌳🌳", "🌳🌳🌳"],
-    ["🌳🌳🌳","🌳🌳🌳","🌳🌳🌳","🌳🌳🌳", "🌳🌳🌳", "🌳🌳🌳"],
-    ["🌳🌳🌳","🌳🌳🌳","🌳🌳🌳","🌳🌳🌳", "🌳🌳🌳", "🌳🌳🌳"],
-    ["🌳🌳🌳","🌳🌳🌳","🌳🌳🌳","🌳🌳🌳", "🌳🌳🌳", "🌳🌳🌳"],
-    ["🌳🌳🌳","🌳🌳🌳","🌳🌳🌳","🌳🌳🌳", "🌳🌳🌳", "🌳🏡🌳"],
- 
-]
-let allChar = ["🐷","🐰","🦄","🐱","🦏"]
-let allWeapons = ["🗡️","🔪","⛏️"]
 
 
+let allChar = ["🐶","🐰","🦄","🐱","🦏"]
+// let allWeapons = ["🗡️","🔪","⛏️"]
 
-let nameInput = readline.question("\nEnter your name: ")
+let nameInput = readline.question("\nNew game who this: ")
+console.clear()
 
 // takes in a string if you want convert to a number
 
 console.log(`\nHello ${nameInput}!  Welcome to D-Maze Game.`)
 
-let charChoosen = readline.question("\nChoose your Characther (1):🐷 (2):🐰 (3):🦄 (4):🐱"+" ")
+let charChoosen = readline.question("\nChoose your Character (1):🐶 (2):🐰 (3):🦄 (4):🐱 "+" ")
 
 if (charChoosen > 4 || isNaN(charChoosen) ){
     console.clear()
     charChoosen = ""
     console.log ("you have choosen Wrong, Pick again")
-    charChoosen = readline.question("\nChoose your Characther (1):🐷 (2):🐰 (3):🦄 (4):🐱"+" ")
+    charChoosen = readline.question("Choose your Character (1):🐶 (2):🐰 (3):🦄 (4):🐱 ")
 }
-displayChar = allChar[charChoosen];
+displayChar = allChar[charChoosen-1];
 
-let WeaponChoosen = readline.question("\nChoose your Characther (1):🗡️ (2):🔪 (3):⛏" )
+console.clear
+let WeaponChoosen = readline.question("\nChoose your weapon (1):🗡️ (2):🔪 (3):⛏" )
+let weapon = ""
+switch (WeaponChoosen) {
+    case "1":
+    weapon = "🗡️"
+    break;
+    case "2":
+    weapon = "🔪"
+    break;
+    case "3":
+    weapon = "⛏"
+    break;
+    
+    }
 
-mapChar += displayChar
-mapChar += allWeapons[WeaponChoosen]
+mapChar = displayChar + weapon
+
 
 Map[0][0]= mapChar
 
 
 console.clear()
 
-console.log (`\nHelp ${charChoosen }`+" navagate through the forest 🌳 and get home 🏡");
+console.log ("\nLet's Get Started!");
+console.log (`Help ${displayChar }`+" navagate through the forest 🌳 and get home 🏡");
+console.log ("Collect 💎 🍄 🍒"+" along the way for extra points!\n");
+console.log ("Watch out for BIG BAD WOLF 🐺 "+" along the way!\n");
+console.log("You have 3 lives ❤️ ❤️ ❤️")
+console.log("\n Directions")
+console.log ("\nTo Go \n Right - 'd'\n Left - 'a'\n Up - 'w \n down -'s' ");
 
-console.log ("\nWatch out for BIG BAD WOLF 🐺 "+" along the way!\n");
+let readyPlayerone = readline.question("\nReady Player One? Press (Enter)")
+console.clear()
 
-console.log ("\nLet's Get Started");
+
 console.log("This is your Map\n");
-console.log ("\nWrite right, left, down, up\n");
 
 printMap(Map)
-
-
+console.log("Score:")
+console.log(score)
+console.log ("HEALTH "+health)
 
 //Game Works in Here
 
-while (currentMoveupDown <= 5 && currentMoveLeftRight <= 5) {
+while (currentMoveupDown <= 8 && currentMoveLeftRight <= 8) {
+text = "You got this 💪 "
 currentMove = readline.question("\nEnter your next move: ");
+
 
 gameInmotion(previousMoveChange,Move,randomMove,nextMovechar,printMap);
 
 
+
+
+console.log("Score:")
+console.log(score)
+// console.log("health"+health)
+console.log(collectObj.join());
+console.log(text)
+
+// 
+if (outCome === "🐺" && health.length > 0){
+    health.pop()
+    console.log ("HEALTH " + health)
+    console.log("😰YOU JUST LOST A LIFE and 200 POINTS! TREAD LIGHTLY! Enter Next Move to Continue")
+    score -=200
 }
-// currentMove = readline.question("\nEnter your next move: ");
+else if (outCome === "🐺" && health.length === 0){
+    console.log(`You lost 😥 and let down, yourself! your family and ${displayChar}`)
+    break;
 
-// gameInmotion(previousMoveChange,Move,randomMove,nextMovechar,printMap);
+}else if(currentMoveLeftRight === 7 && currentMoveupDown === 7) {
+    console.log ("HEALTH"+health)
+    console.log( "🥳 YOU WON!!! 🍻 on me!")
+    break;
+}else{
+    console.log ("Health: "+ health)
+}
 
-// //move2
-// currentMove = readline.question("\nEnter your next move: ");
-// gameInmotion(previousMoveChange,Move,randomMove,nextMovechar,printMap);
+}
 
-// //move3
-// currentMove = readline.question("\nEnter your next move: ");
-// gameInmotion(previousMoveChange,Move,randomMove,nextMovechar,printMap);
-
-// //move4
-// currentMove = readline.question("\nEnter your next move: ");
-// gameInmotion(previousMoveChange,Move,randomMove,nextMovechar,printMap);
-
-// //move5
-// currentMove = readline.question("\nEnter your next move: ");
-// gameInmotion(previousMoveChange,Move,randomMove,nextMovechar,printMap);
