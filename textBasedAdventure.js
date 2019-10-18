@@ -42,7 +42,7 @@ function guardGuess() {
 function compareGuesses(guess1, guess2) {
   console.log(nameInput + " chose: " + guess1 + " and the Guard chose: " + guess2 + "!");
   if(guess1 === guess2) {
-    console.log("You and the Guard guessed the same thing. Try Again ");
+    console.log(nameInput + " and the Guard guessed the same thing. Try Again ");
     return 0; 
   }
   if(
