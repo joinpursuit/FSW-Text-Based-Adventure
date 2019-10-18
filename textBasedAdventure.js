@@ -2,9 +2,9 @@ const readline = require('readline-sync')
 
 let nameInput = readline.question("Enter your name: ")
 
-console.log(`Hello ${nameInput}!  Welcome to my game.`)
+console.log(`Hello ${nameInput}! Welcome to my game.`)
 
-const play= ( ) => {
+const play = () => {
   let userInput;
   while(userInput !== 'yes') {
     userInput = readline.question('Would you like to play, yes or no? ')
@@ -12,6 +12,7 @@ const play= ( ) => {
   console.log('Lets get started')
 }
 
+play()
 
 const maze = () => {
   console.log('Welcome to the maze. To escape the maze, you must defeat the guard in a game of Rock, Paper, Scissors ')
@@ -21,8 +22,8 @@ maze()
 
 // Create user choice
 const playerGuess = () => {
- let playerChoice = readline.question("Choose rock, paper, or scissors. ");
-   if(playerChoice === "rock" || playerChoice === "paper" || playerChoice === "scissors") {
+ let playerChoice = readline.question("Choose rock, paper, or scissors. ".toLowerCase())
+   if(playerChoice === "rock" || playerChoice === "Rock" ||  playerChoice === "paper" || playerChoice === "Paper"|| playerChoice === "scissors" || playerChoice === "Scissors" ) {
           return playerChoice;
    }
   console.log("Error");
@@ -62,7 +63,7 @@ const compareGuesses= (guess1, guess2) => {
    return 2;
 }
 
-//Update the scores
+
 
 const updateScores = (result, points) => {
     if(result === 1) {
@@ -82,7 +83,7 @@ let guardSCore = 0;
 
 function playGame(numOfRounds) {
   do {
-    let player   = playerGuess();
+    let player = playerGuess();
     let guard = guardGuess();
     let result = compareGuesses(player, guard);
     updateScores(result, 1);
@@ -94,7 +95,7 @@ function playGame(numOfRounds) {
   if(playerScore > guardSCore) {
     console.log( nameInput + " has " + playerScore + " points compared to the Guards's " + guardSCore + " points. " + "So " + nameInput + " wins." + " You have escaped the maze!");
   } else {
-    console.log("The Guard has " + guardSCore + " points compared to " + nameInput +"'s " + playerScore + " points. So the Guard wins." + ' You are stuck in the maze forever!');
+    console.log("The Guard has " + guardSCore + " points compared to " + nameInput + "'s " + playerScore + " points. So the Guard wins." + ' You are stuck in the maze forever!');
   }
 
 
