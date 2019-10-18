@@ -1,105 +1,113 @@
-const readline = require('readline-sync')
-let titleCard = readline.question("CAVE HERO! PRESS ENTER TO BEGIN!")
-console.log(`${titleCard}`)
-let nameInput = readline.question("Enter your name: ")
-console.log(`Greetings ${nameInput}!`)
+const readline = require('readline-sync');
+let titleCard = readline.question("CAVE HERO! PRESS ENTER TO BEGIN!");
+console.log(`${titleCard}`);
+let nameInput = readline.question("Enter your name: ");
+console.log(`Greetings ${nameInput}!`);
+
+///STATS
+let health = 100
+let damagePoints = 20
+let goblinHealth = 50
+let GoblinKingHealth = 100
+let swordDamage = damagePoints + 20
+let sword = swordDamage
+let caveHeroWeapons = []
 let caveHero =  {
     name: `${nameInput}`,
-    hP: 10,
-    aP: 2,
-    weapon: "",
-    item: "",   
+    health: health,
+    atk: damagePoints,
+    weapon: "",  
 }
 
 let checkStatus = caveHero
 
 
-let caveEntrance = "You arrive at the entrance of a dimly lit cave aligned with torches. From the torchlight you see there are three tunnel entrances: One to the left, one to the right, and one to the center. Which tunnel will you enter?"
 let overviewStatement = "We need your help. Our princess has been captured, and we need you to rescue her. Can we count on you?"
-let missionStart = readline.question(`${overviewStatement} Type yes or no.`)
-
-let smallEnemy = {
-    name: "Goblin",
-    attackPower: 1,
-    health: 5,
-}
-
-let bigEnemy = {
-    name: "Orc Soldier",
-    attackPower: 3,
-    health: 10,
-}
-let enemyTinyArr = [smallEnemy, bigEnemy];
-let battleStart = readline.question("You encountered an" + smallEnemy + " ! What will you do?: TYPE ATTACK or RUN ");
-let battleStart2 = readline.question("You encountered an" + bigEnemy + " What will you do?: TYPE ATTACK  or RUN ");
-
-battleStart = battleStart.toLowerCase()
-battleStart2 = battleStart2.toLocaleLowerCase()
+let missionStart = readline.question(`${overviewStatement} Type yes.`)
 
 missionStart = missionStart.toLowerCase()
+let caveEntrance = readline.question("You arrive at the entrance of a dimly lit cave aligned with torches. From the torchlight you see there are three tunnel entrances: One to the left, one to the right, and one to the center. Which tunnel will you enter? Enter LEFT, CENTER, RIGHT, CHECK STATUS: ")
+caveEntrance = caveEntrance.toLowerCase()
 
-                if (missionStart === "yes") {
-                    console.log(caveEntrance)
-                } else {     
-                    console.log("Your cowardice shames us - Good day!")
-                }
+let directionChoice2 = "back"
 
+const goBack = (str) => {
+    // str = str.toLowerCase()
+    let back = readline.question("Type back to go back")
+    if (back = directionChoice2) {
+        return caveEntrance
+    }
+    return back
+}
 
-let tunnels = readline.question("Enter LEFT, CENTER, RIGHT, CHECK STATUS: ")
-tunnels = tunnels.toLowerCase()
-
-let tunnelOutcomesArr = ["Battle Start!","You rescued her!","Nothing here. Go back?"]
-let randomOutcome = Math.floor(Math.random() * 10)
-
-// ENEMY VARIABLES
-
-
-//ITEM VARIABLES 
-let sword = 1
-let shield = 2
-let meat = 3
-let torch = 4
-let monsterSword = 5
-let doorKey = 6
-let itemDropArr = [sword, shield, meat, torch, monsterSword, doorKey]
-
-// 
-
-// if (tunnels === "check status") {
-//     console.table(checkStatus)
-// } else {
-
-// }
+function startGame(choice) {
+    if (missionStart === "yes") {
+        console.log(caveEntrance)
+    } 
+}
     
-// let tunnelChoice = []
+const takeDamage = (num) => {
+    health -= num
+}
 
-// let tunnelOutcomes = 
+const healthUp = (num) => {
+    health += num
+}
 
-if (tunnels === "check status") {
+const goblinKingTakesDmage = (num) => {
+    GoblinKingHealth -= num
+}
+
+const goblinTakesDamage = (num) => {
+    goblinHealth -= num
+}
+
+// //ITEM VARIABLES 
+
+let meat = 3
+let monsterSword = damagePoints + 30
+let doorKey = 6
+
+let itemDropArr = [{ sword: sword},{meat: meat}, {monsterSword: monsterSword}, {doorKey: doorKey},{nothing: "nothing"}]
+
+function itemDrop(arr) {
+    for (let i = 0; i < arr.length; i++) {
+        Math.floor(Math.random([i]) * 20)
+        let result = console.log(arr[i])
+        return `${nameInput} obtained ${result}`
+    }
+}
+
+
+
+//     //
+// let enemyCampArr = [
+//     {name: "Goblin King", hP: 20, atk: 5, spd: 2,},
+//     {name: "Goblin Grunt", hp: 5, atk: 1, spd: 2,},
+//     {name: "Death Worm", hp: 3, atk: 3, spd: 5,},
+//     {name: "Bat", hp: 2, atk: 1, spd: 3, atk: 3,}
+// ]
+
+// let randEnemy = enemyCampArr[Math.floor(Math.random() * enemyCampArr.length)]
+
+// let battleStart = readline.question("You encountered a " + enemyTinyArr[0]["name"] + " ! What will you do?: TYPE ATTACK or RUN ");
+// let battleStart2 = readline.question("You encountered a " + enemyTinyArr[1]["name"] + " What will you do?: TYPE ATTACK  or RUN ");
+// battleStart = battleStart.toLowerCase()
+// battleStart2 = battleStart2.toLowerCase()
+
+if (caveEntrance === "check status") {
     console.table(checkStatus)
-} else if (tunnels === "left") {
-   console.log("You went left!")
-   console.log(string)
-} else if (tunnels === "center") {
-    console.log("You chose the center path!")
-    console.log(string)  
-} else if (tunnels === "right") {
-    console.log("You chose the rightmost path!")
-       console.log(string) 
-} else {
-       console.log(string)
+    goBack("back")   
+}  else if (caveEntrance === "left") {
+   console.log(`${nameInput} went left!`);
+   console.log(itemDrop(itemDropArr))
+} else if (caveEntrance === "center") {
+    console.log(`${nameInput} chose the center path!`);
+    console.log(itemDropArr)
+    // console.log(string)  
+} else if (caveEntrance === "right") {
+    console.log(`${nameInput} chose the rightmost path!`)
+    console.log(itemDrop(itemDropArr))
 }
-
-// console.log(tunnelOutcomesArr)
-let string = ""
-let i = 0
-
-for (i; i < tunnelOutcomesArr.length; i ++) {
-if (randomOutcome > 6) {
-    string = tunnelOutcomesArr[0];
-} else if (randomOutcome > 3) {
-    string = tunnelOutcomesArr[1]
-} else {
-    string = tunnelOutcomesArr[2]
-}    
-}
+    //    console.log(string) 
+    
