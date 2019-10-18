@@ -4,7 +4,7 @@ let nameInput = readline.question("Enter your name: ")
 
 console.log(`Hello ${nameInput}!  Welcome to my game.`)
 
-function play( ){
+const play= ( ) => {
   let userInput;
   while(userInput !== 'yes') {
     userInput = readline.question('Would you like to play, yes or no? ')
@@ -13,14 +13,14 @@ function play( ){
 }
 
 
-function maze() {
+const maze = () => {
   console.log('Welcome to the maze. To escape the maze, you must defeat the guard in a game of Rock, Paper, Scissors ')
 }
 
 maze()
 
 
-function playerGuess() {
+const playerGuess = () => {
  let playerChoice = readline.question("Choose rock, paper, or scissors. ");
    if(playerChoice === "rock" || playerChoice === "paper" || playerChoice === "scissors") {
           return playerChoice;
@@ -29,7 +29,7 @@ function playerGuess() {
   playerGuess();
 }
 
-function guardGuess() {
+const guardGuess= () => {
   let choice = Math.random();
   if(choice < 0.34) {
     return "rock";
@@ -39,7 +39,7 @@ function guardGuess() {
   return "scissors";
 }
 }
-function compareGuesses(guess1, guess2) {
+const compareGuesses= (guess1, guess2) => {
   console.log(nameInput + " chose: " + guess1 + " and the Guard chose: " + guess2 + "!");
   if(guess1 === guess2) {
     console.log(nameInput + " and the Guard guessed the same thing. Try Again ");
@@ -59,14 +59,12 @@ function compareGuesses(guess1, guess2) {
    return 2;
 }
 
-function updateScores(result, points) {
+const updateScores = (result, points) => {
     if(result === 1) {
       playerScore += points;
-    }
-    if(result === 2) {
+    } else if(result === 2) {
       guardSCore += points;
-    }
-    if(result === 0) {
+    } else if (result === 0) {
       guardSCore += 0;
       playerScore += 0;
     }
