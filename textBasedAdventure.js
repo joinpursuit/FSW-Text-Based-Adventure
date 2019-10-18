@@ -21,3 +21,17 @@ const play = () => {
 play()
 
 readline.question("This is a game of survival where your choices will determine your future. Are you ready to fight for your life? yes or no?")
+
+console.log(`${nameInput}, you are a skilled Air Marshall who has served a decade in the Army Special Forces.You are currently transporting a high-priority prisoner to an underground facility on a commercial flight. Word reaches you that there is a bomb on the plane.`) 
+
+const bomb = () => {
+    let userInput = readline.question("What do you do? alert the passengers or search for bomb?")
+    if (userInput === "alert the passengers") {
+        console.log("Panic breaks out in the cabin and the plane becomes unstable. In the commotion, your prisoner escapes to the bathroom.")
+        readline.question("Do you...ease panic or get prisoner?")
+    } else if (userInput === "search for bomb") {
+        console.log("You locate the bomb in the cargo compartment. You have 30 minutes before detonation.")
+        readline.question("Do you...defuse the bomb or call for back-up?")
+    }
+}
+bomb()
