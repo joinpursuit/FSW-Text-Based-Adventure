@@ -72,12 +72,12 @@ console.log("Incorrect Password")
 //5. The coffee made you nervous
 var readlineSync4 = require('readline-sync'),
   choices = ['take a walk', 'watch TV', 'call Tom'],
-  index1 = readlineSync4.keyInSelect(choices, "You're caffiene sensitive! The coffee you drank made you nervous and you need to relax. What do you do?");
+  index1 = readlineSync4.keyInSelect(choices, "You're caffeine sensitive! The coffee you drank made you nervous and you need to relax. What do you do?");
 console.log('You decided to ' + choices[index1]);
 
 //6. Finally start
-const readlineSync = require('readline-sync')
-answer = readlineSync.question('The caffiene wears off. Are you ready to start making your video game?', {
+const readlineSync5 = require('readline-sync')
+answer = readlineSync5.question('The caffeine wears off. Are you ready to start making your video game?', {
   trueValue: ['yes', 'y'],
   falseValue: ['no', 'n']
 });
@@ -92,5 +92,22 @@ if (answer === true) {
   console.log('Invalid answer');
 }
 
-//7.
+//7. Mom calls you for dinner
+const readlineSync6 = require('readline-sync')
+
+var eatDinner = readlineSync6.question("Mom asks if you're coming downstairs for dinner [y/n] ", {
+  trueValue: ['yes', 'y'],
+  falseValue: ['no', 'n']
+}); 
+
+switch (true) {
+case (eatDinner === true):
+  console.log("What's for dinner?")
+  break
+case (eatDinner === false):
+  console.log("No thanks, mom")
+}
+
+//8. 
+
 
