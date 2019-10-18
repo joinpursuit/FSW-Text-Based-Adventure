@@ -12,7 +12,6 @@ let i =""
 while(i !== 'y' || i === 'n'){
     i = readlineSync.question("Your task is to create a video game. Do you want to complete the task?(y/n)")
    
-
  if(i === 'y') {
      //'Y' key was pressed
   console.log("You accepted the task!");
@@ -21,10 +20,7 @@ while(i !== 'y' || i === 'n'){
   if (i === 'n') {
      //'N' was pressed
   console.log("You rejected the task. (Answer yes)")
-  
  }
-
-
 }
 
 //2.How will you spend your time
@@ -36,20 +32,41 @@ console.log('Ok,' + " you chose " + decisions[index]);
 //3.You need help
 let readlineSync2 = require('readline-sync')
 
-for(a = 0; a <= 1; a++)
+for(a = 0; a <= Infinity; a++)
     if (a !== 'y' || a === 'n'){
-  let a = readlineSync2.question("You started your project and realized you're stuck, so you ask your friend Tom for help and he offers you a caffeine pill to stay up to practice coding. Do you take the pill?[y/n]")
+  let a = readlineSync2.question("You started your project and realized you're stuck, so you ask your friend Tom for help and he offers you a pill to help you concentrate. Do you take the pill?[y/n]")
   if (a === 'y') {
      //'y' was pressed
-  console.log("You took the caffeine pill")
+  console.log("You took the pill")
   break
  } 
   if(a === 'n') {
      //'n' key was pressed
-  console.log("You didnt take the caffeine pill[Answer yes]");
+  console.log("You didnt take the pill [Answer yes]");
 
  }
 }
 
-//4.
+//4. Enter your password
+var readlineSync3 = require('readline-sync');
+menuId = readlineSync3.question('You forgot your password to your github, but you know that your last three passwords are either 369, 246, or 51015. Guess your password: ', {limit: 51015});
 
+var readlineSync3 = 51015 
+switch (readlineSync3) {
+
+case 369:
+console.log("Incorrect Password")
+
+case 246:
+console.log("Incorrect Password")
+
+case 51015:
+console.log("Logging in...")
+break;
+
+default:
+console.log("Incorrect Password")
+
+}
+
+//5. 
