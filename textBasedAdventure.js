@@ -19,7 +19,7 @@ const maze = () => {
 
 maze()
 
-
+// Create user choice
 const playerGuess = () => {
  let playerChoice = readline.question("Choose rock, paper, or scissors. ");
    if(playerChoice === "rock" || playerChoice === "paper" || playerChoice === "scissors") {
@@ -29,6 +29,7 @@ const playerGuess = () => {
   playerGuess();
 }
 
+// Create Guard choice
 const guardGuess= () => {
   let choice = Math.random();
   if(choice < 0.34) {
@@ -39,6 +40,8 @@ const guardGuess= () => {
   return "scissors";
 }
 }
+
+//Compare Guesses
 const compareGuesses= (guess1, guess2) => {
   console.log(nameInput + " chose: " + guess1 + " and the Guard chose: " + guess2 + "!");
   if(guess1 === guess2) {
@@ -58,6 +61,8 @@ const compareGuesses= (guess1, guess2) => {
    console.log("Guard wins the round! ");
    return 2;
 }
+
+//Update the scores
 
 const updateScores = (result, points) => {
     if(result === 1) {
@@ -88,8 +93,7 @@ function playGame(numOfRounds) {
 
   if(playerScore > guardSCore) {
     console.log( nameInput + " has " + playerScore + " points compared to the Guards's " + guardSCore + " points. " + "So " + nameInput + " wins." + " You have escaped the maze!");
-  }
-  else {
+  } else {
     console.log("The Guard has " + guardSCore + " points compared to " + nameInput +"'s " + playerScore + " points. So the Guard wins." + ' You are stuck in the maze forever!');
   }
 
