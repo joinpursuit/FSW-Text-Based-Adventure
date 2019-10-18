@@ -51,10 +51,11 @@ const destiny = () => {
 const fool = () => {
   console.clear()
   console.log("MysteryMan: Foolish child! alright then, lead the way, left or right? ");
-  userInput = readline.question("What will it be? choose wisely, left or right:")
-    if(userInput === "right"){
+  userDirection = readline.question("What will it be? choose wisely, left or right:")
+    if(userDirection === "right"){
          console.log("Narrorator: The two decide to the right path ");
          console.log("MysteryMan(to himself): I took the one less traveled by. ");
+         //fate();
     } else {
       destiny();
     }
@@ -84,8 +85,13 @@ const fool = () => {
 
 }
 const fate = () => {
-  let inputNum = readline.question([]);
+  let sum = 0;
+  //let inputNum = readline.question([]);
   let userNum = [];
+  for(let i = 0; i <= 5; i++){
+    let inputNum = readline.question([] < 5);
+  }
+
 
 }
 // let userDirection = readline.question()
