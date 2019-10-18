@@ -42,8 +42,8 @@ function guardGuess() {
 function compareGuesses(guess1, guess2) {
   console.log(nameInput + " chose: " + guess1 + " and the Guard chose: " + guess2 + "!");
   if(guess1 === guess2) {
-    console.log("You and the Guard guessed the same thing! Go again, no score added!");
-    return 0;
+    console.log("You and the Guard guessed the same thing. Try Again ");
+    return 0; 
   }
   if(
     (guess1 === "rock" && guess2 === "scissors"
@@ -52,10 +52,10 @@ function compareGuesses(guess1, guess2) {
                        ||
     guess1 === "scissors" && guess2 === "paper"))
     {
-   console.log(nameInput + " wins the round!");
+   console.log(nameInput + " wins the round! ");
     return 1;
     }
-   console.log("Guard wins the round!");
+   console.log("Guard wins the round! ");
    return 2;
 }
 
