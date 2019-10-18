@@ -63,7 +63,7 @@ if (nameInput3 === "scapel"){
         console.log("the patient has " + health + " life left.")
         nameInput4 = readline.question("yes or no?")
     }
-    if(nameInput4 === "grab the incubator" || "yes")
+    if(nameInput4 === "yes")
     healthIncrease(10)
     console.log("The patient has " + health2 + " life.")
     console.log(reaction3)
@@ -77,7 +77,7 @@ if (nameInput3 === "scapel"){
         console.log("The patient has " + health + " life left.")
         nameInput5 = readline.question("clean or leave it alone?")
     }
-    if (nameInput5 === "clean" || "clean it"){
+    if (nameInput5 === "clean" || nameInput5 === "clean it") 
         console.log("Wow doctor, her health is going up.")
         healthIncrease(20)
         console.log("good job, we kept her alive for a little bit more")
@@ -85,14 +85,16 @@ if (nameInput3 === "scapel"){
     }
     
         let nameInput6 = readline.question("Dr, the operation looks succesful. We can sew up the wounds or wait an hour, What do you want to do? ")
-            while (nameInput6 !== "sew") {
+            while (nameInput6 === "wait an hour") {
             console.log("Doctor, her organs are getting infected. I think you should sew them up")
             takeDamage (10)
             console.log("The patient has" + health + "life left. ")
             nameInput6 = readline.question ("sew up the wound or wait an hour?")
             }
-            if (nameInput6 === "sew up the wounds" || "sew" || "sew up the wound"){
+            if (nameInput6 === "sew up the wounds"){
                 console.log("Ok, looks like we did well")
+            } else if (nameInput6 === "sew"){
+                console.log("Ok looks like we did well")
             }
                 
             let nameInput7 = readline.question("Doctor you can go home for an hour if you want")
@@ -128,7 +130,7 @@ if (nameInput3 === "scapel"){
                 
                 }
                 
-            }
+            
             
      
     
