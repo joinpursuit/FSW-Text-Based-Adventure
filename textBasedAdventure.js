@@ -6,7 +6,7 @@ let name = nameInput
 const fail = "you died"
 const beat = "Congrats you beat have escaped"
 const secret = "you've found the super mario secret pipe that sends you to world 3, you beat the game. You and Ban have escaped congrats... tell no one about this."
-
+const theTen = Math.random
 
 
 const roomThree = () => {
@@ -91,7 +91,7 @@ const roomThree = () => {
                         console.log(" ")
                         userInput = readline.question("Mazel tov!, \
                         You and Ban enter Room 8" + " \
-                        Room 8 contains 2 doors \
+                        Room 8 contains two doors \
                          " + "make your pick " + "\
                          please enter a number between 1 and 2 ")
                             if(userInput === "1" ||userInput === "2") {
@@ -105,9 +105,9 @@ const roomThree = () => {
                             console.log(" ")
                             userInput = readline.question("Respects, \
                             You and Ban enter Room 9" + " \
-                            Room 9 contains 10  doors\
+                            Room 9 contains ten doors\
                              " + "make your pick " + "\
-                             please enter a number between 1 and 6 ")
+                             please enter a number between 1 and 10 ")
                                 if(userInput === "7") {
                                     roomTen()
                                 } else {    
@@ -115,24 +115,28 @@ const roomThree = () => {
                                 }
                             }
 
-                            // const roomTen = () => {
-                            //     console.log(" ")
-                            //     userInput = readline.question("\
-                            //     you and Ban enter room 10" + " \
-                            //     Room 10 contains no doors\
-                            //     however there is a button on the floor that\ 
-                            //     someone must stand and stay on for the final\
-                            //     door to stay open
-                            //      " + "make your pick " + "\
-                            //      please enter a number between 1 and 6 ")
-                            //         if(userInput === "1" ||userInput === "2") {
-                            //             Math.random {
-                            //                 if (Math.random)
-                            //             }
-                            //         } else {    
-                            //             console.log(fail)
-                            //         }
-                            //     }
+                            const roomTen = () => {
+                                console.log(" ")
+                                userInput = readline.question("You and Ban enter room 10. Room 10 contains no doors, however there is a button on the floor that someone must stand and stay on for the final\
+                                door to stay open, this means only one person can leave. \
+                                Ban glances at you and throws a punch. You fall to the floor, \
+                                You notice a knife across the room, Ban does too. You and Ban each \
+                                attempt to get the knife. \
+                                let us leave this up to chance. Will you? \
+                                Please enter 1 for Yes or 2 for No ")
+                                    if(userInput === "1") {
+                                              if(theTen <= 0.34) {
+                                             console.log("you killed Ban and placed his body on the button and you found you way to freedom... and into police custody")
+                                          } else if(theTen <= 0.67) {
+                                            console.log("Ban Killed you... Well he wasn't your friend")
+                                             } else {
+                                             console.log("You and Ban fought over the knife and Killed each other")
+                                        }
+                                    } else {    
+                                        console.log("You were too weak to take a life in order to save your own, and it costed you... You had a painful death")
+                                    }
+                                }
+                    
 
 
 
@@ -171,3 +175,5 @@ Room 2 contains four doors \
     } else {    
         console.log(fail)
     }
+
+
