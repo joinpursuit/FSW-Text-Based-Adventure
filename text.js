@@ -41,22 +41,46 @@ let question1 = readline.question("Do you want to enter explore the town? yes or
 //     }
 // }
 
+let backstory = readline.question("Pick a number between 1 and 3 ")
+backstory = 1 < 3
+    backstory = readline("Pick a number between 1 and 3")
+switch(backstory) {
+     case '1': 
+         setting  = "You find a room in the deserted town and get some rest.";
+         break;
+     case '2':
+         setting = "You go for a walk through town and search for clues.";
+         break;
+     case '3':
+         setting = "You get lost in your thoughts try to remember your past.";
+         break;
+     default:
+         setting = "You are lost";
+ }
 
-// let backstory = readline.question("Pick a number between 1 and 3 ")
-// console.ReadKey() 
-// switch(backstory) {
-//     case 1: 
-//         setting  = "You find a room in the deserted town and get some rest.";
-//         break;
-//     case 2:
-//         setting = "You go for a walk through town and search for clues.";
-//         break;
-//     case 3:
-//         setting = "You get lost in your thoughts try to remember your past.";
-//         break;
-//     default:
-//         setting = "You are lost";
-// }
-// console.ReadKey(backstory)
 
 ``
+let numInput;
+    numInput= 1 < 10
+       numInput = readline.question("How many pieces? Pick a number from 0-10");
+   switch (numInput) {
+     case '10':
+       console.log("Wow! You're a chocoholic like me! Enjoy! Come back for more chocolate making any time!! Thank you for playing my game!");
+       break;
+     case '9':
+     case '8':
+     case '7':
+     case '6':
+       console.log("Cool! You have enough for sharing--or not! Come back for more! Thanks for playing!" );
+       break;
+       case '5':
+       case '4':
+       case '3':
+       case '2':
+       case '1':
+       console.log("That's great, just enough to tantilize ya! I hope you come back for more! Thanks for playing!" );
+       break;
+     default:
+       console.log("That's too bad! Come back when you change your mind!");
+   }
+   }

@@ -10,8 +10,8 @@ let nameInput = readline.question("What is your name? ")
 readline.question(`Hi ${nameInput}! Let us begin with a game of chance. You will now be given a random number. `)
 let num1 = Math.floor((Math.random() * 10) * 15);
 readline.question(`Your number is ${num1}. Remember this number. "${num1}"`)
-readline.question((`So ${nameInput}, what is your favorite number?   `))
-let number = readline.question(`Is your number + ${num1} greater than 150? yes or no    `)
+let favoriteNumber = readline.question((`So ${nameInput}, what is your favorite number?   `))
+let number = readline.question(`Is your number ${favoriteNumber} + ${num1} greater than 150? yes or no    `)
 if(number === "yes") {
     console.log()
         readline.question("The journey ahead will be very difficult.  ")
@@ -32,12 +32,31 @@ if (question1 === "yes") {
 }
 console.log("It is morning of a new day and you seek answers to the questions you've been keeping.")
 readline.question(`Who am I ${nameInput}, you ask yourself? `)
-let hunt = []
-for (let i = 0; i < age.length; i++) {
-    if (age[i] > 21) {
-        
-    }
-}
+backstory = 1 < 3
+    backstory = readline.question("Pick a number between 1 and 3")
+switch(backstory) {
+     case '1': 
+         console.log("You find a room in the deserted town and get some rest.")
+         break;
+     case '2':
+         console.log("You go for a walk through town and search for clues.")
+         break;
+     case '3':
+         console.log("You get lost in your thoughts try to remember your past.")
+         break;
+     default:
+         console.log("You are lost")
+ }
+
+
+
+
+// let hunt = []
+// for (let i = 0; i < age.length; i++) {
+//     if (age[i] > 21) {
+//         canHunt.push[i];
+//     }
+// }
 
 
 
