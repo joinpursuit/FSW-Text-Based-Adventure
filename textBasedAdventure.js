@@ -13,15 +13,16 @@ console.log(`${answerInput} ? Good! Start it up!`);
     console.log("Oh well, we starting it up anyway...");
 } 
 
-// let age = [18]
-// let ageInput = readline.question("...but wait.. how old are you? 👀")
 
-// for (i = 0; i > 17; i -- ) {
-//     if (age <= 17) {
-//         console.log(age + "? Damn kid. Access denied.")
-//     } else {
-//         console.log(age + "? Oh bet, let's get to it.")
-//     }
+let ageInput = readline.question("...but wait.. how old are you? 👀")
+
+for (i = 0; i > 17; i -- ) {
+    if (ageInput <= 17) {
+        console.log(ageInput+ "? Damn kid. Access denied.")
+    } else {
+        console.log(ageInput + "? Oh bet, let's get to it.")
+    }
+}
 
 let storyNodeOne = readline.question("You are walking to the mall. It is midnight which means it is super dark out and you notice one of those weird vans following behind you real slow. What do you do?   [A] Keep walking! It does not scare me.  [B] I might do a little power walk.  [C] RUNNNN! ... and probably duck down the alley too.")
 let storyNodeTwo = readline.question("You see 2 doors. Door A is cracked open a bit and Door B is shut real tight. What do you do.  [A] Bang on door B! I'm not entering some random door or    [B] I'm going through Door A")
