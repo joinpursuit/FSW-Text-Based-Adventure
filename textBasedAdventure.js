@@ -31,18 +31,19 @@ if (question1 === "yes") {
     readline.question("You prepare to exit the town.")
 }
 console.log("It is morning of a new day and you seek answers to the questions you've been keeping.")
-readline.question(`Who am I ${nameInput}, you ask yourself? `)
+let response = readline.question(`Who am I ${nameInput}, you ask yourself?    `)
+readline.question(`I am ${response}`)
 backstory = 1 < 3
     backstory = readline.question("Pick a number between 1 and 3")
 switch(backstory) {
      case '1': 
-         console.log("You find a room in the deserted town and get some rest.")
+         console.log("You are sweating as anxiety begins to kick in.")
          break;
      case '2':
-         console.log("You go for a walk through town and search for clues.")
+         console.log("You begin to run for no reason.")
          break;
      case '3':
-         console.log("You get lost in your thoughts try to remember your past.")
+         console.log("You explore your inner thoughts trying to remember your past.")
          break;
      default:
          console.log("You are lost")
@@ -51,12 +52,12 @@ switch(backstory) {
 
 
 
-// let hunt = []
-// for (let i = 0; i < age.length; i++) {
-//     if (age[i] > 21) {
-//         canHunt.push[i];
-//     }
-// }
+let hunt = []
+for (let i = 0; i < age.length; i++) {
+    if (age[i] > 21) {
+        canHunt.push[i];
+    }
+}
 
 
 
