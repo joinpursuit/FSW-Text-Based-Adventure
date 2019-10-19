@@ -15,23 +15,27 @@ let guide = readline.question("Hey, I'm your Guide. I'll pop in from time to tim
 
 
 let genderInput = readline.question("Are you Male or Female? ");
-if(  "Male" && "male" || "Female" && "female" === genderInput)
-console.log("Great!");
+if(  "Male" && "male" || "Female" && "female" === genderInput){
+    console.log("Great!");
+}else{
+    console.log(" ");
+};
+
     
-
-
 
 
 let player = readline.question("Do you want to play a math game? ");
 
 let words = "Yes" && "yes";
-let words2 = "No" && "no"
+let words2 = "No" && "no";
 
 if(words === "Yes" && "yes"){
     console.log("Let's Go!!");
 }else if(words2 === "No" && "no"){
-    console.log("Aww Goodbye")
-}
+    console.log("Aww Goodbye");
+}else{
+    console.log(" ");
+};
 
 
 
@@ -75,6 +79,8 @@ for(let i = 0; i < numbers.length; i ++){
     console.log("...");
 } else if(answerInput == sum/numbers.length){
 console.log("Great job!!!!");
+}else{
+    console.log(" ")
 };
 
 let answerInput2 = readline.question("Answer:");
@@ -92,10 +98,9 @@ if(input1 === "Yes" || "yes" ){
     console.log("Yes!! Nice work!")
 }else if (input2 = "No" || "no"){
     console.log("No!! Aww maybe next time.");
-}else (' ');
-
-
-
+}else {
+    console.log(' ');
+}
 
 
 
@@ -137,14 +142,20 @@ let options =  choice;
 
 let answerInput4 = readline.question("Answer:");
 if(answerInput4 === "1"){
-    console.log("Nice!")
+    console.log("Nice!");
 }else if(answerInput4 != "1"){
-    console.log("Correct answer:" + " " + "1. An Object is a collection of key/value pairs.")
+    console.log("Correct answer:" + " " + "1. An Object is a collection of key/value pairs.");
+}else {
+    console.log(" ");
+};
 
-}
 
-
-
+let guide6 = readline.question("Did you get the second question right? ");
+if("yes" || "Yes"){
+    console.log("You are doing great.");
+}else{
+    console.log("Aww man, maybe you should study more.");
+};
 
 
 
