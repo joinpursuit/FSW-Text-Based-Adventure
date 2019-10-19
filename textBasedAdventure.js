@@ -6,6 +6,8 @@ let playAGame = readline.question(`${playerName},would you like to play a game? 
 
 let deathCount = 0 
 
+let winCount = 0
+
 const roomOne = () => {
   let userInputRoomOne = readline.question('You awake to find yourself strapped to a chair in a poorly lit and unfamiliar room with a strange device attached to your head and mouth. You spot a tape recorder hanging from the ceiling. Do you play the tape or try to leave the room? Please type "play" or "leave"');
     
@@ -16,6 +18,7 @@ const roomOne = () => {
             userInputRoomOne = readline.question('You feel a pin fall from your device and hear a timer begin to countdown. You head over to the body in the corner and see a small pen-knife next to the body. You pickup the knife and begin cutting, but the body begins to move. The cellmate is actually alive! Do you keep cutting or do you stop? Please type "cut" or "stop"')
               if (userInputRoomOne.toLowerCase() === 'cut'){
                   console.log(`You continue to plunge your knife into your cellmate and keep cutting until you find the key deep inside of the stomach. You quickly unlock your trap with only seconds to spare as the trap flies open as soon as your pull it over your head. You hear the door unlock. You rush outside and find yourself in the middle of the city as cars fly by and the bright sun burns your eyes. You have survived another day ${playerName}!` )
+                  winCount++
               } else if (userInputRoomOne.toLowerCase() === 'stop' ){
                   console.log(`You begin to panic and realize that you have just stabbed a live person. You try to administer aid, but your frantic cellmate punches you in the stomach and makes you double over. You pick up the knife and stab  them to get the key, but it's too late. The trap flies open and your jaw is ripped apart and your blood paints the floor. It was a strange time to choose compassion ${playerName}. GAME OVER!`)
                   deathCount++
@@ -49,6 +52,7 @@ const roomTwo = () => {
 
               if (userInputRoomTwo.toLowerCase() === 'continue'){
                   console.log(`You continue to tear away pieces of your arm and pile them up on the scale as you can hear the drill whirring. Just as the drill makes contact with the sides of your head you place the final piece of your arm on the scale and the whirring comes to a halt. The device falls to the ground and you hear the door unlock. You walk through the door and open another door that leads to a back alley way. You are in the middle of the city at what appears to be midnight. You have survived the ordeal. Congratulations ${playerName}, live your new life with humility or you will find yourself in an unwinnable game.`)
+                  winCount++
               } else if (userInputRoomTwo.toLowerCase() === 'door'){
                   console.log('You run for the door and as you approach you begin to hear a rapid beeping. The drills begin to spin at full speed and drive straight into your skull. You collapse in front of the door and your body is dragged away into the darkness by a man in a pig mask. The game master always gets their way. GAME OVER!')
                   deathCount++
@@ -126,7 +130,13 @@ const  startGame = () => {
 }
 
 
-while (deathCount < 5){
+while (deathCount < 5 && winCount < 1){
   startGame() 
 }
-Console.log('You have died 5 times. You are out of continues. Better luck next time. - Game Master')
+console.clear()
+
+if (winCount === 1){
+  console.log('You have beaten my game. This will not happen again! - Game Master')
+}else{
+  console.log('You have died 5 times. You are out of continues. Better luck next time. - Game Master')
+}
