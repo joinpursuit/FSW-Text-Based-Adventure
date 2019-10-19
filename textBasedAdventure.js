@@ -138,3 +138,20 @@ if (storyNodeTen === "a") {
 } else {
     console.log("Error. Start game over.");
 }
+
+
+
+// This game didn't really have any need for a switch statment but.... example for a bonus round
+
+let expr = ("Italian?")
+switch (expr) {
+    case 'Russian?':
+        console.log("Why'd you pick " + expr);
+        break;
+      case 'German':
+        console.log("Why'd you pick " + expr);
+        break;
+      default:
+        console.log("Why'd you pick " + expr);
+    }
+    
