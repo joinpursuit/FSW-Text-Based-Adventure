@@ -50,12 +50,9 @@ switch(backstory) {
  }
 let age = readline.question("How old are you now?    ")
 readline.question(`Must be nice to be ${age} years old`)
-let hunt = []
-for (let i = 0; i < age.length; i++) {
-    if (age[i] > 21) {
-        canHunt.push[i];
-    }
-}
+
+
+
 
 
 

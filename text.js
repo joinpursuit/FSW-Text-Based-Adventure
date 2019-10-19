@@ -60,27 +60,3 @@ switch(backstory) {
 
 
 ``
-let numInput;
-    numInput= 1 < 10
-       numInput = readline.question("How many pieces? Pick a number from 0-10");
-   switch (numInput) {
-     case '10':
-       console.log("Wow! You're a chocoholic like me! Enjoy! Come back for more chocolate making any time!! Thank you for playing my game!");
-       break;
-     case '9':
-     case '8':
-     case '7':
-     case '6':
-       console.log("Cool! You have enough for sharing--or not! Come back for more! Thanks for playing!" );
-       break;
-       case '5':
-       case '4':
-       case '3':
-       case '2':
-       case '1':
-       console.log("That's great, just enough to tantilize ya! I hope you come back for more! Thanks for playing!" );
-       break;
-     default:
-       console.log("That's too bad! Come back when you change your mind!");
-   }
-   }
