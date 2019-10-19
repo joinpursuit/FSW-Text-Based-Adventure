@@ -11,7 +11,7 @@ const rl = readline.createInterface =
 });
 
 
-const  play = () => {
+const play = () => {
     let userInput;
     while(userInput !== "start") {
         userInput = readline.question("Type start:  ")
@@ -34,7 +34,7 @@ console.log("");
 
 console.log("Narrorator: "+ `Both ${nameInput} and the MysteryMan make their way out of the rubble from the aftermath`);
 //console.clear();
-console.log(`${nameInput} and the MysteryMan are greeted with Two roads diverged in a yellow wood,`);
+console.log(`${nameInput} and the MysteryMan are greeted with two roads that are diverged in a yellow wood`);
 console.log("");
 userChoice = readline.question(`MysteryMan: Do you believe in destiny`)//console.log(`MysteryMan: Do you believe in destiny ${nameInput}?`);
 
@@ -45,14 +45,7 @@ userChoice = readline.question(`MysteryMan: Do you believe in destiny`)//console
   }
 }
 
-// const destiny = () => {
-//   console.clear()
-//   console.log("MysteryMan: so this is your answer, you know how this will end. Its destined we go left. ");
-//   console.log("");
-//   console.log("Narrorator: The two decide to the left path ");
-//   console.log("MysteryMan(to himself): sorry I could not travel both and be one traveler. ");
-//
-// }
+
 
 const fool = () => {
   console.clear()
@@ -111,32 +104,31 @@ const fate = () => {
   console.log("2: " + set2);
   console.log("3: " + set3);
   userSet = readline.question();
-  if(userSet ===  "1"){
-    for(i = 0; i < set1.length; i++){
+    if(userSet ===  "1"){
+      for(i = 0; i < set1.length; i++){
       sum1+= set1[i]
     }
-    console.log(sum1 + " Is your lucky number.");
-    console.log("FortunePoe: Strange lucky number ain't it? well its your lucky day, Procceed onward");
-    dungeon();
+      console.log(sum1 + " Is your lucky number.");
+      console.log("FortunePoe: Strange lucky number ain't it? well its your lucky day, Procceed onward");
+      dungeon();
   } else if( userSet === "2"){
     for(let i = 0; i <set2.length; i++){
       sum2 += set2[i]
     }
-    console.log(sum2 + " Is your lucky number.");
-    console.log("FortunePoe: You're not worthy, go back to where you came from.");
-    console.log("");
-    console.log("Narrorator the two head back and take the left path this time.");
-    destiny();
+      console.log(sum2 + " Is your lucky number.");
+      console.log("FortunePoe: You're not worthy, go back to where you came from.");
+      console.log("");
+      console.log("Narrorator the two head back and take the left path this time.");
+      destiny();
 
-  }else if (userSet === "3") {
+  }else if(userSet === "3") {
     for(let i = 0; i < set3.length; i++){
       sum3 += set3[i]
     }
-    console.log(sum3 + " Is your lucky number.");
-    console.log("FortunePoe: Just because the number 7 is associated with luck, you've entered a deep misfortune");
-    console.log("Narrorator: MysteryMan is possessed and kills you. ");
-
-  }
+      console.log(sum3 + " Is your lucky number.");
+      console.log("FortunePoe: Just because the number 7 is associated with luck, you've entered a deep misfortune");
+      console.log("Narrorator: MysteryMan is possessed and kills you. ");
+    }
 }
 const dungeon = () => {
   console.clear();
