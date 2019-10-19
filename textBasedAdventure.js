@@ -1,8 +1,8 @@
 const readline = require('readline-sync')
 
-let playAGame = readline.question("Would you like to play a game?")
+let playerName = readline.question('What is your name?')
 
-let playerName = readline.question('Good, what is your name?')
+let playAGame = readline.question(`${playerName},would you like to play a game? Please answer "yes" or "no"`)
 
 const roomOne = () => {
   let userInputRoomOne = readline.question('You awake to find yourself strapped to a chair in a poorly lit and unfamiliar room with a strange device attached to your head and mouth. You spot a tape recorder hanging from the ceiling. Do you play the tape or try to leave the room? Please type "play" or "leave"');
@@ -40,8 +40,66 @@ const roomTwo = () => {
             userInputRoomTwo = readline.question('You slip off the handcuffs and stare at your bare arm. You take a deep breath and take a huge bite of your arm. Pain shoots through your arm as you tear the flesh away and the taste of your own blood fills your mouth. You begin to gag. Do you keep continue or do you head for the door? Please type "continue" or "door"')
 
               if (userInputRoomTwo.toLowerCase() === 'continue'){
-                  console.log("You continue to tear away pieces of your arm and pile them up on the scale as you can hear the drill whirring. Just as the drill makes contact with the sides of your head you place the final piece of your arm on the scale and the whirring comes to a halt. The device falls to the ground and you hear the door unlock. ")
+                  console.log(`You continue to tear away pieces of your arm and pile them up on the scale as you can hear the drill whirring. Just as the drill makes contact with the sides of your head you place the final piece of your arm on the scale and the whirring comes to a halt. The device falls to the ground and you hear the door unlock. You walk through the door and open another door that leads to a back alley way. You are in the middle of the city at what appears to be midnight. You have survived the ordeal. Congratulations ${playerName}, live your new life with humility or you will find yourself in an unwinnable game.`)
+              } else if (userInputRoomTwo.toLowerCase() === 'door'){
+                  console.log('You run for the door and as you approach you begin to hear a rapid beeping. The drills begin to spin at full speed and drive straight into your skull. You collapse in front of the door and your body is dragged away into the darkness by a man in a pig mask. The game master always gets their way. GAME OVER!')
+              } else {
+                  console.log(`Defiance is not tolerated ${playerName}. A man in a pig mask emerges and straps you back to the chair. He proceeds to slowly flay the flesh from your body as the drill continues to inch closer and closer to your skull. When the drills finally put you out of your misery he has cut both of your arms and one of your legs to the bone. GAME OVER! `)
               }
+        } else if (userInputRoomTwo.toLowerCase === 'door'){
+            console.log('Are you trying to end our game early? So be it! The drills begin to spin at full speed and drive their way into your skull. Your body collapses and a man in a pig mask drags your body into the next room. He dismembers you and feeds you to his pigs. GAME OVER!')
+        } else {
+            console.log ('It seems your are incapable of following simple directions. We must make you more compliant. A man in a pig mask appears and sticks an ice pick in your skull. He lobotimizes you and drags you to another room where you become a prop for another one of his sick games. Better luck next time. GAME OVER!')
         }
-  } 
+  } else if (userInputRoomTwo.toLowerCase() === 'run'){
+      console.log("There is no running from your fate. A man in a pig mask appears and slices the tendons at back of your feet to keep you from running. The man drags you to a back room where he begins to drill into you repeatedly as the drills on your head inch closer and closer. You begin to pray for the drills to end your suffering and after what felt like an eternity , your prayers are answered. GAME OVER!")
+  } else {
+      console.log ('It appears you can not read simple directions. Then, you must have no use for your eyes. A man in a pig mask appears with a drill of his own and drills through you eyes. He leaves the drills on your head to finish you off as you wail in agony. GAME OVER! ')
+  }
+} 
+
+const roomThree = () => {
+  let bulletChamber = [1,6,3,5,4,2]
+  let userInputRoomThree = readline.question('You awake to find one of your hands handcuffed to a table and Colt .45 placed in front of you. There is a tape recorder next to it. Do you try and flee or play the tape? Please type "flee" or "play"')
+  if (userInputRoomThree.toLowerCase() === 'play'){
+    userInputRoomThree = readline.question(`${playerName} the game is quite simple. Pick up the gun and pull the trigger. You must pull the trigger three times to be released. Do not to try to run. Will you pick up the gun or run? Please type "gun" or "run"`)
+      if (userInputRoomThree.toLowerCase() === 'gun'){
+        for (let i = 0; i < bulletChamber.length; i++){
+          if (bulletChamber[i] === 1){
+            console.log ('There was never a way out for you. You are the worst of the worst. You pull the trigger and gun goes off spilling your brains on the floor beneath you. GAME OVER!')
+            break;
+          }else{
+            console.log ('There was never a way out for you. You are the worst of the worst. You pull the trigger and gun goes off spilling your brains on the floor beneath you. GAME OVER!')
+          }
+        
+      } 
+    } else {
+        console.log ('For a depraved individual like you the game will always end the same way. A turret descends from the ceiling and sprays you with bullets. You are still alive after the barrage and bleed out slowly. GAME OVER!')
+    }
+
+    
+  } else {
+      console.log('I apologize if I made it seem like you had a choice. You disgust me more than anyone I have ever let enter my game. A man in a pig mask emerges and decapatates you. GAME OVER!')
+  }
+
+  }
+const chooseRoom = () => {
+  let roomNumber = Math.floor((Math.random()*3)+1)
+  switch (roomNumber){
+    case 1:
+      roomOne()
+      break;
+    case 2:
+      roomTwo()
+      break;
+    case 3:
+      roomThree()
+      break;
+  }
+}
+if (playAGame.toLowerCase() === 'yes'){
+  chooseRoom()
+} else{
+  console.log('You were foolish to think there was a way out of this.')
+  chooseRoom()
 }
