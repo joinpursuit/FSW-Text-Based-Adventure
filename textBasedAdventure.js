@@ -15,12 +15,15 @@ function pause(milliseconds) {
     }
   }
 
+
+let spiritName
 const becomeGuardian = () => {let joinFight = readline.keyInYNStrict("Will you join us in our struggle against the menace of colonization? ") 
     if (joinFight === true) {
-        pause (1000)
-        let spiritName = readline.question(`No longer will you be known as ${nameInput}. What is your nom de guerre - In what name will the warrior's call summon you?: `)
+    pause (1000)
+    let newName = readline.question(`No longer will you be known as ${nameInput}. What is your nom de guerre - In what name will the warrior's call summon you?: `)
+    spiritName = newName
     pause (2000)
-    console.log(`Arise fledgling spirit. Arm yourself ${spiritName}. You are manifest.`)
+    console.log(`Arise fledgling spirit. Arm yourself ${newName}. You are manifest.`)
     pause (5000)
     } else {
     console.log("You have forsaken the truth. Banish yourself from our lands in dishonor")
@@ -35,70 +38,95 @@ pause(4000)
 
 readline.keyInPause("Their vessels have landed. Their denizens, like exponential infectious hordes, scorch the lands with their mere vision, sowing and reaping with inexhaustible hunger and claiming the enclosure of everything within their putrefying grasp.")
 
-pause (4000)
-
-readline.keyInPause(`Within two years of arrival into our realm, the invaders have built outposts and laid waste throughout the alluvial pampas of the river Mayu, on the Western-facing shores of Anahuac. It is our sworn pursuit, ${spiritName}, to annhilate the blight.`)
+readline.keyInPause(`Within two years of arrival into our realm, the invaders have built outposts and laid waste throughout the alluvial pampas of the river Mayu, on the Western-facing shores of Anahuac. It is our sworn pursuit, ${spiritName}, to annhilate the blight. Prove Yourself!`)
 
 pause (2000)
 
+///////////////////////////////////////////////////////////////////////////////////////////////
 //GAME SET-UP
-let spiritHealth = 100
-let settlerCapitalHealth = 400
-let settlerCapitalStructuralHealth = 400
-let miningComplexStructuralHealth = 200
-let frontierGHealth = 250
-let frontierGStructuralHealth = 300
-let damStructuralHealth = 200
-let farmsHealth = 150
-let farmsStructuralHealth = 150
 
+// Initial Health Indices
+let spiritHealth = 150
+let settlerCapitalHealth = 400
+//let settlerCapitalStructuralHealth = 400
+//let miningComplexStructuralHealth = 200
+let frontierGHealth = 250
+//let frontierGStructuralHealth = 300
+//let damStructuralHealth = 200
+let farmsHealth = 150
+//let farmsStructuralHealth = 150
+
+//Spirit Energy Nexus (Prisms)
+let spiritEnergy = 100
+
+//Prism Cost Sacrifice
 let spiritFire = 15 // Burns Settler Physical Structures
 let spiritFamine = 20 // Kills Settler Population and Destroys Food Supply
 let spiritPlague = 20 // Kills Settler Population
-let spiritFlood = 15 // Floods Settler Physical Structures
-let spiritDrought = 10 // Destroys Settler Food Supply
 let spiritDisorder = 20 // Terminates Settler Communication
-let spiritDerangement = 25 // Kills Settler Population (Incites Social Hysteria)
-let spiritWraith = 25 // Mystical shadows of the night - Feed on Settler Population
+let spiritDerangement = 25 // Kills Settler Population (Incites Mass Psychosis)
+let spiritWraith = 25 // Ravenous shadows of the night - Feed and Kill Settler Population
 
+//Settler Power Counter
 let settlerCapitalPower = 50
 let miningComplexPower = 30
 let frontierGPower = 40
 let damPower = 30
 let farmsPower = 20
 
-const attackSettler = () => {
-    if (colonialOutpost[targetOutpost] = colonialOutpost[0])
-    
+const energyUsage = () => {
+    spiritEnergy += spiritPower[targetPower].Energy
 }
 
-const spiritDamage = num =>{ 
-    } 
+const guardianPower = () => {
+    spiritPower = [{power: "Ignite Hellfire ", Energy: "15 Prisms"}, {power: "Starve the Settler Progeny ", Energy: 20}, {power: "Infect the Settlers with a Mortal Plague ", Energy: 20}, {power: "Disrupt Settler Communication", Energy: 20}, {power: "Incite Mass Purge Psychosis", Energy: 25}, {power: "Unleash the Wraith", Energy: 25}] 
+    targetPower = readline.keyInSelect(spiritPower, `Choose the Fate of the Outpost. Reckon with the sacrifice`,
+    {cancel: "The Coward's Way"});
+    console.log(`You have chosen to ${spiritPower[targetPower].power}. You have righteously sacrificed ${spiritPower[targetPower].Energy} Prisms from your energy nexus`)
+    energyUsage()
+}
 
+// const settlerDamage = () => {
+//     if (spiritPower[targetPower].power = spiritFire){
+//         if (colonialOutpost[targetOutpost] === colonialOutpost[0])
+
+//     }
+// }
+
+const attackSettler = () => {
+    if (colonialOutpost[targetOutpost] === colonialOutpost[0]){
+        guardianPower()
+        settlerDamage()
+    } else if (colonialOutpost[targetOutpost] === colonialOutpost[1]){
+        guardianPower()
+        settlerDamage()
+    }
+}
+
+
+const spiritDamage = () => { 
+    if (attack === settlerCapitalPower){
+    spiritHealth += settlerCapitalPower
+    } 
+}   
+
+
+//GAME SET-UP
+///////////////////////////////////////////////////////////////////////////////////////////////
 
 const outposts1 = () => {
-    colonialOutpost = ["The Settler Capital on the river delta ", "The lead ore mining complex in the hills of the Progenitors ", "The freeholder farms on the great pampas ", "The frontier garrison on the river terraces ", "The wall damning our sacred waters "]
-    targetOutpost = readline.keyInSelect(colonialOutposts, `Which defiled outpost shall we attack? ${spiritName}`);
-    console.log(`Storm the ${colonialOutpost[targetOutpost]} `);
+    colonialOutpost = ["The Settler Capital on the river delta ", "The Lead Ore Mining Complex in the hills of the Progenitors ", "The Freeholder Farms on the great pampas ", "The Frontier Garrison on the river terraces ", "TheWall damning our sacred waters "]
+    targetOutpost = readline.keyInSelect(colonialOutpost,`Which defiled outpost shall we attack ${spiritName}?`);
+    console.log(`Sunder ${colonialOutpost[targetOutpost]} `);
     attackSettler()
 }
 outposts1()
 
-
-
-
-
-    
-    // console.log(health) 
-    // takeDamage(20)
-    // console.log(health) 
-    // console.log(takeDamage(30)) 
-
-const outposts = () => {
-    colonialOutposts = ["The Settler Capital ", "The lead ore mining complex ", "The freeholder farms ", "The frontier garrison ", "The river wall "]
-    index = readline.keyInSelect(colonialOutposts, `Which defiled outpost shall we attack next? ${spiritName}`);
-    console.log(` ${colonialOutposts[index]} `);
-    }
+// const outposts = () => {
+//     colonialOutposts = ["The Settler Capital ", "The lead ore mining complex ", "The freeholder farms ", "The frontier garrison ", "The river wall "]
+//     targetOutpost = readline.keyInSelect(colonialOutposts, `Which defiled outpost shall we attack next? ${spiritName}`);
+//     console.log(` ${colonialOutposts[targetOutpost]} `);
+//     }
 
 
     function nbYear(p0, percent, aug, p) {
@@ -112,19 +140,7 @@ const outposts = () => {
         } 
         return year
     } 
-    // while (true) {
-    //     input = readlineSync.prompt();
-    //     console.log(`You said "' + input + '"');
-    //     if (input === 'bye') {
-    //       break;
-    //     }
-    //   }
-    //   console.log('It\'s exited from loop.');
-    //   readlineSync.promptLoop(function(input) {
-    //     console.log('-- You said "' + input + '"');
-    //     return input === 'bye';
-    //   });
-    //   console.log('It\'s exited from loop.');
+
 
     
     
