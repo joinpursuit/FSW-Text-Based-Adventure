@@ -1,5 +1,512 @@
-const readline = require('readline-sync')
+const readline = require('readline-sync');
+// askName()
+function play () {
 
-let nameInput = readline.question("Enter your name: ")
+  let userInput;
+  while(userInput !== "yes"){
+    userInput = readline.question('would you like to prepare a nice BREAKFAST to start your day, yes or no ?');
+  }
+   
+  console.log("Let see what you have first as options ");
+  userChoices = readline.question("would you like to choose you a random recipe, random_recipe or myChoice or no?")
 
-console.log(`Hello ${nameInput}!  Welcome to my game.`)
+  if (userChoices = "random_recipe") {
+   
+    let recipes = "random_recipe"
+    function getRecipe(recipes) {
+      recipes =["oatmeal", "Sandwiches", "Smoothie_bowls"]
+      let selectedRecipe = recipes[Math.floor(Math.random() * recipes.length)];
+      return selectedRecipe;
+    }
+    let result = getRecipe(recipes);
+    console.log(result)
+    switch(result) {
+      
+      case "oatmeal" :
+        Oatmeal () 
+        break;
+        case "Sandwiches" :
+          Sandwiches () 
+          break;
+        default:
+          Smoothie_bowls ()
+  
+    }
+    getRecipe();
+  } else if (userChoices = "myChoice"){
+    userInput = readline.question(" OK! would you like Oatmeal, Sandwiches, or Smoothie bowls?")
+  } else if (userInput === "no"){
+    userInput = readline.question('would you like to prepare a nice BREAKFAST to start your day, yes or no ?');
+  }
+
+  // let recipes = "random_recipe"
+  
+  // recipes =["oatmeal", "Sandwiches", "Smoothie_bowls"]
+  // function getRecipe(recipes) {
+  //   let selectedRecipe = recipes[Math.floor(Math.random() * recipes.length)];
+  //   return selectedRecipe;
+  // }
+  // let result = getRecipe(recipes);
+  // console.log(result)
+  // switch(result) {
+    
+  //   case "oatmeal" :
+  //     Oatmeal () 
+  //     break;
+  //     case "Sandwiches" :
+  //       Sandwiches () 
+  //       break;
+  //     default:
+  //       Smoothie_bowls ()
+
+  // }
+        
+            
+  // let newChoice;  
+  // newChoice = readline.question ("would you like another recipe, yes or no?")
+ 
+  // userInput = readline.question("would you like Oatmeal, Sandwiches, or Smoothie bowls?")
+  
+ 
+  // if (userInput === "oatmeal") {
+  //   Oatmeal ();
+  // } else if (userInput === "Sandwiches") { 
+  //   Sandwiches ();
+  // } else {
+  //   Smoothie_bowls ();
+  // }          
+
+  function Oatmeal () {
+  console.clear ( );
+  console.log( " Oatmeal Is Right Choice :-) GREAT!!! ** WE HAVE PREPARATION TIME BETWEEN 5 To 10 minutes ** Please choose a random time between ");
+  
+  let userInputNum = readline.question('')
+ 
+  if ( userInputNum < 6) {
+    ingredientsOvernightOat()
+    // overnightOatmeal ();
+  } else if ( userInputNum >= 6 && userInputNum < 8 ) {
+    Smoothie_bowls ();
+  } else {
+    FruitNutOatmeal ();
+  }
+}
+
+
+    function ingredientsOvernightOat (recipe1) {
+    console.clear();
+    console.log('~~~~~~~~~~ * * * Overnight chia oatmeal in a mason jar * * * ~~~~~~~~~~');
+    console.log('');
+    console.log('');
+    console.log(' * PREP 5 MIN | TOTAL 5 MIN | PLUS OVERNIGHT CHILLING  | SERVES 1 *');
+    console.log('');
+    console.log('* review : * * * * ')
+    console.log('');
+    console.log('~~~~~~~~~~ * * * Ingredients * * * ~~~~~~~~~~');
+    console.log('');
+     
+     console.table([
+      {
+        Measurements : '3/4 cup',
+        Ingredients : 'unsweetened almond milk'
+      } , {
+        Measurements : '1/3 cup' ,
+        Ingredients : 'rolled oats'
+      } , {
+        Measurements : '1 tbsp',
+        Ingredients : 'chia seeds'
+      } , {
+        Measurements : '2 tsp',
+        Ingredients : 'honey'
+      } , {
+        Measurements : '1/3 cup' ,
+        Ingredients : 'vanilla'
+      } , {
+        Measurements : '2 tbsp',
+        Ingredients :'dried cranberries, or 1 finely chopped fig'
+      } , {
+        Measurements : '1 banana',
+        Ingredients : 'thinly sliced'
+      } , {
+        Measurements: '2 tbsp',
+        Ingredients: 'toasted sliced almonds'
+      }
+    ]);
+    console.log('');
+    console.log('~~~~~~~~~~~~~ * * * Instructions * * * ~~~~~~~~~~~~~');
+    console.log('');
+
+    console.table([
+      {
+        Instructions :'COMBINE : almond milk, oats, chia seeds, honey, vanilla and dried fruit in a 250-mL Mason jar.'
+      } , {
+        Instructions : 'STIR : well, then cover and refrigerate overnight.'
+      } , {
+        Instructions : 'BEFORE : serving, top with banana and almonds.'
+      } ,{
+        Instructions: 'NUTRITION : Calories 488, Protein 11 g, Carbohydrates 86 g, Fat 15 g, Fibre 14 g, Sodium 141 mg.'
+      }
+    ])
+    console.log('');
+    }
+
+    function Smoothie_bowls (recipe2) {
+    console.clear();
+    console.log('~~~~~~~~~~ * * * Green goddess smoothie bowl * * * ~~~~~~~~~~');
+    console.log('');
+    console.log('');
+    console.log(' * PREP 10 MIN | TOTAL 10 MIN | SERVES 2 *');
+    console.log('');
+    console.log('* review : * * * *   ');
+    console.log('');
+    console.log('~~~~~~~~~~~~~ * * * Ingredients * * * ~~~~~~~~~~~~~');
+    console.log('');
+
+     console.table([
+      {
+        Measurements : '1',
+        Ingredients : 'Avocado, peeled and finely chopped'
+      } , {
+        Measurements : '1 cup' ,
+        Ingredients : 'Packed baby spinach'
+      } , {
+        Measurements : '1 cup',
+        Ingredients : 'Finely chopped romaine stems'
+      } , {
+        Measurements : '1',
+        Ingredients : 'Granny Smith apple, finely chopped'
+      } , {
+        Measurements : '1' ,
+        Ingredients : 'Frozen banana, broken in half'
+      } , {
+        Measurements : '1/2 cup',
+        Ingredients :'2% Plain yogurt'
+      } , {
+        Measurements : '1 tsp',
+        Ingredients : 'Manuka honey, optional'
+      } 
+    ]);
+    console.log('');
+    console.log('~~~~~~~~~~~~~ * * * Instructions * * * ~~~~~~~~~~~~~');
+    console.log('');
+
+    console.table([
+      {
+        Techniques : 'WHIRL',
+        Instructions : 'avocado, spinach, apple, banana, yogurt and honey (optional) in a blender until smooth, Pour into 2 bowls.'
+      } , {
+        Techniques : 'TOP',
+        Instructions : 'with your choice of smoothie toppers.'
+      } , {
+         Techniques : 'KITCHEN NOTE',
+        Instructions : 'Smart Smoothie toppers( SEE THE TABLE BELOW)'
+      } ,{
+        Techniques: 'NUTRITION',
+        Instructions: ' Calories 294, Protein 6 g, Carbohydrates 37 g, Fat 16 g, Fibre 10 g, Sodium 63 mg. Excellent source of Vitamin B6'
+      }
+    ])
+    console.log('');
+    console.log('** Smart Smoothie toppers **');
+
+    console.table([
+      {
+        Toppings : 'Pepitas',
+        Instructions : 'Just 2 tbsp contains 5 g of protein and 5 g of fibre.'
+      } , {
+        Toppings : 'Figs',
+        Instructions : 'High in vitamin K, fibre and copper.'
+      } , {
+         Toppings : 'Goji berries',
+        Instructions : 'Great source of vitamins A and C.'
+      } ,{
+        Toppings: 'Almonds',
+        Instructions: 'The nut with the most fibre: 3 g in 2 tbsp'
+      },{
+        Toppings: 'Chia:',
+        Instructions: 'Rich in Omega-3 fatty acids, calcium, protein and fibre.'
+      } ,{
+        Toppings: 'Flax',
+        Instructions: 'Nearly 4 g of fibre in 2 tbsp. Ground seeds are easier for your body to absorb.'
+      } ,{
+        Toppings: 'Hemp hearts',
+        Instructions: 'Full of protein, magnesium and healthy fats.'
+      } 
+    ])
+    console.log('');
+    }
+
+
+    function FruitNutOatmeal (recipe3) {
+    console.clear();
+    console.log('~~~~~~~~~~ * * * Fruit and nut steel-cut oats * * * ~~~~~~~~~~');
+    console.log('');
+    console.log('');
+    console.log(' * PREP 10 MIN | TOTAL 20 MIN | SERVES 6 *');
+    console.log('');
+    console.log('* review : * * *  ');
+    console.log('');
+    console.log('~~~~~~~~~~~~~ * * * Ingredients * * * ~~~~~~~~~~~~~');
+    console.log('');
+
+     console.table([
+      {
+        Measurements : '2 cups',
+        Ingredients : 'steel-cut oats'
+      } , {
+        Measurements : '1 tsp' ,
+        Ingredients : 'salt'
+      } , {
+        Measurements : '3/4 tsp',
+        Ingredients : 'cinnamon'
+      } , {
+        Measurements : '1/4 tsp',
+        Ingredients : 'nutmeg'
+      } , {
+        Measurements : '8 cups' ,
+        Ingredients : 'water'
+      } , {
+        Measurements : '1 cup',
+        Ingredients :'milk'
+      } , {
+        Measurements : '1/2 cup',
+        Ingredients : 'brown sugar'
+      } , {
+        Measurements: '1 cup',
+        Ingredients: 'chopped pitted dates'
+      } , {
+        Measurements: '1/2 cup',
+        Ingredients: 'dried cranberries'
+      } , {
+        Measurements: '1/2 cup',
+        Ingredients: 'toasted sunflower seeds, or chopped walnuts (optional)'
+      }
+    ]);
+    console.log('');
+    console.log('~~~~~~~~~~~~~ * * * Instructions * * * ~~~~~~~~~~~~~');
+    console.log('');
+
+    console.table([
+      {
+        Techniques : 'COMBINE',
+        Instructions : 'Oats with salt, cinnamon, nutmeg and water in rice cooker. press in oatmeal insert. let it cook.'
+      } , {
+        Techniques : 'STIR',
+        Instructions : 'In milk, sugar, dates and cranberries. Scoop into bowls and sprinkle with seeds or walnuts.'
+      } , {
+         Techniques : 'KITCHEN NOTE',
+        Instructions : 'Our rice cooker recipes are developed with a 7L rice cooker.'
+      } ,{
+        Techniques: 'NUTRITION',
+        Instructions: ' Calories 483, Protein 14 g, Carbohydrates 88 g, Fat 11 g, Fibre 9 g, Sodium 423 mg. Excellent source of Iron'
+      }
+    ])
+    console.log('');
+    }
+
+
+  function Sandwiches () {
+    console.clear ( );
+    // console.log( "You entered Sandwiches  :-) GREAT!!! ** WE HAVE PREPARATION TIME BETWEEN 5 To 10 minutes ** Please choose a random time between ");
+    
+    let userInputNum = readline.question('Sandwiches Is Right Choice  :-) GREAT!!! ** WE HAVE PREPARATION TIME BETWEEN 3 To 25 minutes ** Please choose a random time between "')
+   
+    if ( userInputNum < 4) {
+      eggBreakfastSandwich()
+    } else if ( userInputNum >= 5 && userInputNum <= 20 ) {
+      SmokedSalmonDillEggsSandwich ();
+    } else {
+      GuacamoleBreakfastSandwich ();
+    }
+  }
+  
+    function eggBreakfastSandwich (recipe4) {
+      console.clear();
+      console.log('~~~~~~~~~~ * * * Egg Breakfast Sandwich * * * ~~~~~~~~~~');
+      console.log('');
+      console.log('');
+      console.log(' * PREP 3 MIN  | SERVES 1 *');
+      console.log('');
+      console.log('* review : * * * * ')
+      console.log('');
+      console.log('~~~~~~~~~~ * * * Ingredients * * * ~~~~~~~~~~');
+      console.log('');
+       
+       console.table([
+        {
+          Measurements : '1',
+          Ingredients : 'Egg'
+        } , {
+          Measurements : '1 to 2 Slices' ,
+          Ingredients : 'Low-fat cheese'
+        } , {
+          Measurements : '4 Leaves',
+          Ingredients : 'Baby spinach'
+        } , {
+          Measurements : '1',
+          Ingredients : 'Whole grain English Muffin'
+        } 
+      ]);
+      console.log('');
+      console.log('~~~~~~~~~~~~~ * * * Instructions * * * ~~~~~~~~~~~~~');
+      console.log('');
+  
+      console.table([
+        {
+          Instructions :'SPRAY : coffee mug or small bowl with oil'
+        } , {
+          Instructions : 'WHISK : egg in mug or bowl; season with salt and pepper.'
+        } , {
+          Instructions : 'MICROWAVE : egg on high for 1 minute.'
+        } , {
+          Instructions: 'SET UP: Place cheese, tomato and spinach on English muffin and top with egg.'
+        } , {
+          Instructions: 'NUTRITION : Calories 263, Protein 19 g, Carbohydrates 27 g, Fat 9 g, Sodium 499 mg.'
+        }
+      ])
+      console.log('');
+    }
+  
+    function SmokedSalmonDillEggsSandwich (recipe5) {
+      console.clear();
+      console.log('~~~~~~~~~~ * * * Smoked Salmon Dill Eggs Benedict * * * ~~~~~~~~~~');
+      console.log('');
+      console.log('');
+      console.log(' * PREP 10 MIN | TOTAL 20 MIN | SERVES 2 *');
+      console.log('');
+      console.log('* review : * * * * *  ');
+      console.log('');
+      console.log('~~~~~~~~~~~~~ * * * Ingredients * * * ~~~~~~~~~~~~~');
+      console.log('');
+  
+       console.table([
+        {
+          Measurements : '1/4 cup',
+          Ingredients : 'Butter, softened'
+        } , {
+          Measurements : '2 Tbs' ,
+          Ingredients : 'Fresh dill'
+        } , {
+          Measurements : '1 teaspoon',
+          Ingredients : 'Lemon zest'
+        } , {
+          Measurements : '1 pinch',
+          Ingredients : 'Salt'
+        } , {
+          Measurements : '4' ,
+          Ingredients : 'Eggs'
+        } , {
+          Measurements : '2',
+          Ingredients :'English muffins, split and toasted'
+        } , {
+          Measurements : '4 ounces',
+          Ingredients : 'Sliced smoked salmon'
+        } , {
+          Measurements : '1 pinch',
+          Ingredients : 'Cayenne pepper'
+        } , {
+          Measurements : '4' ,
+          Ingredients : 'Small fresh dill springs '
+        } , {
+          Measurements : '1 pinch',
+          Ingredients : 'Salt and ground black pepper to taste'
+        } 
+      ]);
+      console.log('');
+      console.log('~~~~~~~~~~~~~ * * * Instructions * * * ~~~~~~~~~~~~~');
+      console.log('');
+  
+      console.table([
+        {
+          Techniques : 'STIR',
+          Instructions : 'butter, dill, lemon zest, cayenne pepper, salt, and black pepper in a bowl until combined. Set aside.'
+        } , {
+          Techniques : 'POACH',
+          Instructions : 'Eggs in boiled water for 4 to 6 minutes. Remove excess water, then transfer to a warm plate.  '
+        } , {
+          Techniques : 'SPREAD',
+          Instructions : 'English muffin half with dill butter'
+        } , {
+          Techniques : "SET UP",
+          Instructions : "Top with a layer of smoked salmon, then 1 poached egg. Season with cayenne pepper, salt, and black pepper to taste."
+        } , {
+          Techniques: 'NUTRITION',
+          Instructions: '528 calories; 35.3 g fat; 27 g carbohydrates; 26.3 g protein; 400 mg cholesterol; 1298 mg sodium.'
+        }
+      ])
+      
+      console.log('');
+    }
+  
+    function GuacamoleBreakfastSandwich (recipe6) {
+      console.clear();
+      console.log('~~~~~~~~~~ * * * GUACAMOLE BREAKFAST SANDWICH * * * ~~~~~~~~~~');
+      console.log('');
+      console.log('');
+      console.log(' * PREP 15 MIN | TOTAL 25 MIN | SERVES 4 *');
+      console.log('');
+      console.log('* review : * * * * * ');
+      console.log('');
+      console.log('~~~~~~~~~~~~~ * * * Ingredients * * * ~~~~~~~~~~~~~');
+      console.log('');
+  
+       console.table([
+        {
+          Measurements : '8 Slices',
+          Ingredients : 'Bacon'
+        } , {
+          Measurements : '4 Large' ,
+          Ingredients : 'Eggs'
+        } , {
+          Measurements : '4 slices',
+          Ingredients : 'American cheese'
+        } , {
+          Measurements : '4 Tbs',
+          Ingredients : 'Unsalted butter, at room temperature'
+        } , {
+          Measurements : '8 Slices' ,
+          Ingredients : 'Bread'
+        } , {
+          Measurements : '1 cup',
+          Ingredients :'Guacamole'
+        } 
+      ]);
+      console.log('');
+      console.log('~~~~~~~~~~~~~ * * * Instructions * * * ~~~~~~~~~~~~~');
+      console.log('');
+  
+      console.table([
+        {
+          Techniques : 'COOK',
+          Instructions : 'Bacon until brown and crispy, flipping once, about 3-4 minutes.'
+        } , {
+          Techniques : 'COOK',
+          Instructions : 'Eggs about 3 minutes add salt and pepper. Place a slice of cheese over each egg during the last 30 seconds of cooking time.'
+        } , {
+           Techniques : 'SPREAD',
+           Instructions : 'Spread butter on each slice of bread then toast it in both sides about 2-3 minutes.'
+        } ,{
+     
+          Techniques : 'ASSEMBLE',
+          Instructions : 'Spread 4 slices of bread with guacamole, topped with bacon, egg, cheese and another slice of bread.'
+        } ,{
+          Techniques: 'NUTRITION',
+          Instructions: ' Calories 703.5, Protein 20.7 g, Carbohydrates 43.3 g, Fat 50.4 g, Fibre 5.5 g, Sodium 821.9 mg.'
+        }
+      ])
+      console.log('');
+    }
+
+    // let allRecipe = ["ingredientsOvernightOat()", "Smoothie_bowls()", "FruitNutOatmeal()", "eggBreakfastSandwich()", "SmokedSalmonDillEggsSandwich()", "GuacamoleBreakfastSandwich()"]
+
+    // let allRecipe = ["ingredientsOvernightOat()", "Smoothie_bowls()", "FruitNutOatmeal()", "eggBreakfastSandwich()", "SmokedSalmonDillEggsSandwich()", "GuacamoleBreakfastSandwich()"]
+    // function getAllRecipe(arr) {
+    
+    //   let arr ;
+    //   let newArr = ""
+    //   for (let i = 0; i < arr.length; i++) {
+    //   newArr.push(arr[i])
+    //   }
+    //   getAllRecipe(allRecipe)
+    // }
+}
+  play();
