@@ -7,67 +7,38 @@ console.log(`${nameInput}? Pull up then.`)
 let answerInput = readline.question("You ready for this?")
 
 
-if (answerInput == "yes") {
+if (answerInput === "yes" || "Yes" || "YES") {
 console.log(`${answerInput} ? Good! Start it up!`);
 } else { 
     console.log("Oh well, we starting it up anyway...");
 } 
 
-let ageInput = readline.question("...but wait.. how old are you? 👀")
+// let age = [18]
+// let ageInput = readline.question("...but wait.. how old are you? 👀")
 
-// const storyNodeOne = [
-//     {
-//         id: 1, 
-//         text: 'You are walking to the mall. It is midnight which means it is super dark out and you notice one of those weird vans following behind you real slow. What do you do?',
-//         options: [ 
-//             {
-//                 text: 'A: Keep walking! It does not scare me.',
-//              },
-//              {
-//                  text: 'B: I might do a little power walk.',
-//               },
-//               {
-//                   text: 'C: RUNNNN! ... and probably duck down the alley too.'
-//               }
-//             ]
-//         }
-//         ]
+// for (i = 0; i > 17; i -- ) {
+//     if (age <= 17) {
+//         console.log(age + "? Damn kid. Access denied.")
+//     } else {
+//         console.log(age + "? Oh bet, let's get to it.")
+//     }
 
+let storyNodeOne = readline.question("You are walking to the mall. It is midnight which means it is super dark out and you notice one of those weird vans following behind you real slow. What do you do?   A: Keep walking! It does not scare me.  B: I might do a little power walk.  C: RUNNNN! ... and probably duck down the alley too.")
 
-// might need to do a for loop so that it can check any number
-
-let age = []
-for (i = 0; i > 17; i -- ) {
-    if (age <= 17) {
-        console.log(age + "? Damn kid. Access denied.")
+if (storyNodeOne === "A" || "a") {
+    console.log("Congratulations. You've been kidnapped. Game OVER!")
+} else if (storyNodeOne === "B" || "b") {
+        console.log("I mean... I see your point but you still got kidnapped :( Game over.")
+    } else if (storyNodeOne === "C" || "c") {
+        console.log("Oh, you smart. You're safe... for now.")
     } else {
-        console.log(age + "? Oh bet, let's get to it.")
+        console.log("Error. Start over.");
     }
-}
-// if(age >= 18) {
-//     console.log(`${ageInput} ? Oh bet, let's get to it!`);
-// } else {
-//     console.log(`${ageInput} ? Damn. Access denied kid.`);
-//     { break; }
-// }
 
 
-// let nameStoryA = readline.question("You're walking to the mall. It's midnight. It's super dark and you notice one of those weird vans following behind you real slow. What do you do? A: Keep walking! It doesn't scare me! B: I might do a little power walk. C: RUNNNN! ... and probably duck down the alley too.");
-// // let a = "Keep walking! It doesn't scare me!"
-// // let b = "I might do a little power walk."
-// // let c = "RUNNNN! ... and probably duck down the alley too."
 
 
-//  if (nameStoryA === "a") {
-//     console.log("Congratulations. You've been kidnapped. Game OVER!");
-// } else if (nameStoryA === "b") {
-//     console.log ("I mean... I see your point but you still got kidnapped :( Game over.")
-// } else if (nameStoryA === "c") {
 //     console.log(readline.question("Oh, you smart. You're safe... for now. You see 2 doors. Door A is cracked open a bit and Door B is shut real tight. What do you do. [D] Bang on door B! I'm not entering some random door or [E] I'm going through Door A"))
-// } else {
-//     console.log("Error. Start over.");
-// }
-// break;
 
 // // let nameStoryB = readline.question("You see 2 doors. Door A is cracked open a bit and Door B is shut real tight. What do you do. [A] Bang on door B! I'm not entering some random door or [B] I'm going through Door A");
 // // // // let D = "Bang on door B! I'm not entering some random door."
