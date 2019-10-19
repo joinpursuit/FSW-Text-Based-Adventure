@@ -22,18 +22,22 @@ if(number === "yes") {
 }
 // Story 
 
-readline.question("As the sun sets and you enter a nearby town called 'Dalmasca'.")
+readline.question("As the sun sets, you enter a nearby town called 'Dalmasca'.")
 readline.question("You find a room in the deserted town and get some rest.")
-let question1 = readline.question("Do you want to enter explore the town? yes or no   ")
+let question1 = readline.question("Do you want to explore the town? yes or no   ")
 if (question1 === "yes") {
     readline.question("You walk around to see if anyone is around.")
 } else if (question1 === "no") {
     readline.question("You prepare to exit the town.")
 }
 console.log("It is morning of a new day and you seek answers to the questions you've been keeping.")
-readline.question(`Who am I ${nameInput}, you ask yourself. `)
-
-
+readline.question(`Who am I ${nameInput}, you ask yourself? `)
+let hunt = []
+for (let i = 0; i < age.length; i++) {
+    if (age[i] > 21) {
+        
+    }
+}
 
 
 
