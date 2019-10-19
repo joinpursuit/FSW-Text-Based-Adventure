@@ -499,7 +499,7 @@ function drive() {
             
     //Array
     answersPush("Take your car.");
-    transportChoice = 1;
+    let transportChoice = 1;
 
     console.clear();
     console.log("You decide to drive.");
@@ -608,7 +608,7 @@ function train() {
 
     //Array
     answersPush("Take the train");
-    transportChoice = 2;
+    let transportChoice = 2;
 
     console.clear();
     console.log("You decide to take the train.");
@@ -1046,9 +1046,6 @@ function omoplata() {
     while(nightmareChoice3Complete === false) {
         switch(nightmareChoice3) {
             case "1":
-                //Array
-                answersPush("Go for it's eyes.");
-
                 goForItsEyes();
 
                 //End loop
@@ -1056,9 +1053,6 @@ function omoplata() {
                 endGame();
 
             case "2":
-                //Array
-                answersPush("Check your end table.");
-
                 checkEndTable();
 
                 //End loop
@@ -1066,9 +1060,6 @@ function omoplata() {
                 endGame();
 
             case "3":
-                //Array
-                answersPush("Open the window.");
-
                 openWindow();
 
                 //End loop
@@ -1105,6 +1096,10 @@ function goForItsEyes() {
 
     //Health && check
     healthCheck(health);
+
+    let space = userInput("");
+
+    endGame();
     
 } //End of goForItsEyes() function
 
@@ -1123,7 +1118,9 @@ function checkEndTable() {
     console.log("However it can't seem to do it, you stab it in the back numerous times before winding up for one last stab to the head.");
     console.log("As you connect with it's head the nightmare stops moving and falls to the ground.");
     reflect();
-    
+    let space = userInput("");
+
+    endGame();
 
 }// End of checkEndTable() Function
 
@@ -1142,6 +1139,9 @@ function openWindow() {
     console.log("The nightmare chases you and as it walks into the street a truck drives by.");
     console.log("The truck at full speed crashes into the nightmare, exploding the nightmare into numerous pieces.");
     reflect();
+    let space = userInput("");
+
+    endGame();
 }// End of openWindow() function
 
 
@@ -1275,5 +1275,6 @@ function endGame() {
 
 
 game();
+// returnHome(1,2);
 // breakfast();
 // sweepTheLeg();
