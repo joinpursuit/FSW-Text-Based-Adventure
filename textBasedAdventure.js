@@ -288,7 +288,7 @@ if (outCome === "🐺" && health.length > 0){
 
 }else if(currentMoveLeftRight === 7 && currentMoveupDown === 7) {
     console.log ("HEALTH"+health)
-    console.log( `🥳 YOU WON!!! ${nameInput} 🍻 on me!`)
+    console.log( `🥳 ${nameInput} YOU WON!!!${displayChar } is Home! 🍻 on me!`)
     break;
 }else{
     console.log ("Health: "+ health)
