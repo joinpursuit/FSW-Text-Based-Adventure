@@ -26,18 +26,18 @@ let choiceOne = readline.question(`Would you like to 'A' explore the cave or 'B'
     } else if(choiceOne === 'B'){
         console.log("You are now outside. It is dawn, the birds are chirpping.");
         console.log("Your stomach growls. You are hungry. There is a berry tree to your left and a pond to your right.")
-        let storyLine = readline.question(`Would you like to go to the berry tree 'A' or the pond 'B' :`)
+        let storyLine = readline.question(`Would you like to go to the berry tree 'A' or the pond 'B': `)
     if(storyLine === 'A'){
         console.log("You pick a few berries and eat them. They were posionous. You are now dead")
     } else if(storyLine === 'B'){
         console.log("You go to the pond and use your shield to capture a fish.")
         console.log("You have a successful meal.")
         console.log("As you relax in the sun, you witness a wild horse approach the pond to drink water.")
-        let storyLinePtTwo = readline.question(` Do you: 'A' attempt to mount the horse or 'B' shoo the horse away :`)
+        let storyLinePtTwo = readline.question(` Do you: 'A' attempt to mount the horse or 'B' shoo the horse away: `)
         if(storyLinePtTwo === 'A'){
-            console.log("The horse takes to your kid approach and allows you to mount.")
+            console.log("The horse takes to your kind approach and allows you to mount.")
             console.log("You horse takes you down a dirt road and you come to a fork.")
-            let crossRoads = readline.question(`'A' go left or 'B' go right? :`)
+            let crossRoads = readline.question(`'A' go left or 'B' go right?: `)
                 if(crossRoads === 'A'){
                     console.log("Dead end. Sorry, try again.")
                 } else if(crossRoads === 'B'){
@@ -49,11 +49,23 @@ let choiceOne = readline.question(`Would you like to 'A' explore the cave or 'B'
                         if(princessRide === 'A'){
                             console.log("She guides you to her castle and introduces you to her parents")
                             console.log("They accept you as their daughters saviour and knight you")
-                            console.log("You are now rich and live happily ever after.")
+                            let choiceTwo = readline.question(`'A' stay in the kingdom or 'B' begin a new quest: `)
+                            if(choiceTwo === 'A'){
+                                console.log("You are now rich and live happily ever after.")
+                            } else if(choiceTwo === 'B'){
+                                console.log("Enjoy your new quest. DON'T DIE!!!")
+                            }
                         } else if(princessRide === 'B'){
                             console.log("The princess brings you to the front gate of her kingdom and leaves thanking you for your service.")
                             console.log("The princess makes one last offer to come inside and accept an award")
-                            
+                            let choiceThree = readline.question(`'A' accept her offer or 'B' decline: `)
+                            if(choiceThree === 'A'){
+                                console.log("She guides you to her castle and introduces you to her parents")
+                                console.log("They accept you as their daughters saviour and knight you.")
+                                console.log("You are free of the reigns of my game. Enjoy your life!")
+                            } else if(choiceThree === 'B'){
+                                console.log("You are again attending a valiant journey. DON'T DIE")
+                            }
                         }
                     } else if(hitchHiker === 'B'){
                         console.log("You run into a gang of bandits. They rob you of your shield, sword and horse then kill you.")
