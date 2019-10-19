@@ -31,10 +31,10 @@ if (question1 === "yes") {
     readline.question("You prepare to exit the town.")
 }
 console.log("It is morning of a new day and you seek answers to the questions you've been keeping.")
-let response = readline.question(`Who am I ${nameInput}, you ask yourself?    `)
+let response = readline.question(`Who am I ${nameInput}, you ask yourself? 'Choose a one word response:'   `)
 readline.question(`I am ${response}`)
 backstory = 1 < 3
-    backstory = readline.question("Pick a number between 1 and 3")
+    backstory = readline.question("A number between 1 and 3 pops in your head. What is it?   ")
 switch(backstory) {
      case '1': 
          console.log("You are sweating as anxiety begins to kick in.")
@@ -48,10 +48,8 @@ switch(backstory) {
      default:
          console.log("You are lost")
  }
-
-
-
-
+let age = readline.question("How old are you now?    ")
+readline.question(`Must be nice to be ${age} years old`)
 let hunt = []
 for (let i = 0; i < age.length; i++) {
     if (age[i] > 21) {
