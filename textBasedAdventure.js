@@ -135,7 +135,7 @@ function door4() {
     }
     if (userInput1 === "c"){
         console.log("Reeper: You May Enter");
-        doorSelction3
+        doorSelction3()
     } 
     return space;
 }
@@ -147,16 +147,16 @@ function door4() {
 
 function doorSelction3(space = "...")  {
     let userInput;
-    console.log("Reeper: You have made it past the first chamber, but i have a strong feeling i will be taking your soul soon!")
+    console.log("Reeper:Ha! your sould will be mines soon!")
         userInput = readline.question("Reeper: Which chamber would you like to enter? Type (1) for chamber one or Type (2) for chamber two:");
     if(userInput === "1"){
-        door3();
+        door5();
     } else {
-        door4();                      
+        door6();                      
     }
     return space;
 }
-console.log(doorSelction2());
+console.log(doorSelction3());
         
     
 
@@ -169,14 +169,58 @@ console.log(doorSelction2());
 
 
 
+function door5(space = " ")  {
+    console.clear()
+     let userInput1;
+        console.log("Reeper:How long will it take a tree to reach 14 feet tall if it grows at a rate of 8 inches per year?");
+    while (userInput1 !== "c"){
+    if (userInput1 !== "c"){
+        console.log("Reeper: Your answer is incorrect try again or i must take your soul!");
+        userInput1 = readline.question("(A). 32 years (B). 24 years (C). 21 years :PLEASE TYPE THE LETTER THAT CORRESPONDS WITH YOUR ANSWER!:");
+    }
+    }
+    if (userInput1 === "c"){
+        console.log("Reeper: You May Enter");   
+        doorSelction4() 
+    } 
+        return space;
+}
+    
+    
+function door6() {
+    console.clear()
+      let userInput1;
+        console.log("One movie ticket costs $1.20, how much you have to pay for 10 tickets?");
+    while (userInput1 !== "a"){
+    if (userInput1 !== "a")
+        console.log("Reeper: Try again or i must take your soul!");
+        userInput1 = readline.question("if (A). $12.00 (B). $13.00 (C). $15.00 :PLEASE TYPE THE LETTER THAT CORRESPONDS WITH YOUR ANSWER!:");
+    }
+    if (userInput1 === "a"){
+        console.log("Reeper: You May Enter");
+        doorSelction4()
+    } 
+    return space;
+}
 
 
 
 
 
 
-
-
+function doorSelction4(space = "...")  {
+    let userInput;
+    console.log("Reeper:Ha! your sould will be mines soon!")
+        userInput = readline.question("Reeper: Which chamber would you like to enter? Type (1) for chamber one or Type (2) for chamber two:");
+    if(userInput === "1"){
+        door7();
+    } else {
+        door8();                      
+    }
+    return space;
+}
+console.log(doorSelction4());
+        
 
 
 
