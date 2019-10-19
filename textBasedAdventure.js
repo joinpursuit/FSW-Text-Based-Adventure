@@ -37,9 +37,9 @@ function doorSelction(space = "...")  {
     console.log("Reeper: STOP RITE THERE!")
       userInput = readline.question("Reeper: Which chamber would you like to enter? Type (1) for chamber one or Type (2) for chamber two:");
     if(userInput === "1"){
-      doorOne();
+      door1();
     } else {
-      doorTwo();                      
+      door2();                      
     
     }
     return space;
@@ -50,7 +50,7 @@ function doorSelction(space = "...")  {
 
 
 
-function doorOne(space = " ")  {
+function door1(space = " ")  {
     console.clear()
     let userInput1;
       console.log("Reeper:I have 300 stickes I gave 199 to Mujtaba. how many do  I have now ?");
@@ -61,13 +61,14 @@ function doorOne(space = " ")  {
     }
     }
     if (userInput1 === "c"){
-      console.log("Reeper: You May Enter")    
+      console.log("Reeper: You May Enter")   
+      doorSelction2() 
     } 
     return space;
 }
 
 
-function doorTwo() {
+function door2() {
     console.clear()
     let userInput1;
       console.log("Reeper:What is 3 multiplied by 20?");
@@ -83,6 +84,20 @@ return space
 
 
 
+function doorSelction2(space = "...")  {
+    let userInput;
+    console.log("Reeper: You have made it past the first chamber, but i have a strong feeling i will be taking your soul soon!")
+      userInput = readline.question("Reeper: Which chamber would you like to enter? Type (1) for chamber one or Type (2) for chamber two:");
+    if(userInput === "1"){
+      door3();
+    } else {
+      door4();                      
+    
+    }
+    return space;
+    
+}
+    console.log(doorSelction2());
 
 
 
