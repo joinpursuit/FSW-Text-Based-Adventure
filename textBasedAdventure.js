@@ -23,40 +23,49 @@ console.log(`${answerInput} ? Good! Start it up!`);
 //         console.log(age + "? Oh bet, let's get to it.")
 //     }
 
-let storyNodeOne = readline.question("You are walking to the mall. It is midnight which means it is super dark out and you notice one of those weird vans following behind you real slow. What do you do?   A: Keep walking! It does not scare me.  B: I might do a little power walk.  C: RUNNNN! ... and probably duck down the alley too.")
+let storyNodeOne = readline.question("You are walking to the mall. It is midnight which means it is super dark out and you notice one of those weird vans following behind you real slow. What do you do?   [A] Keep walking! It does not scare me.  [B] I might do a little power walk.  [C] RUNNNN! ... and probably duck down the alley too.")
+let storyNodeTwo = readline.question("You see 2 doors. Door A is cracked open a bit and Door B is shut real tight. What do you do.  [A] Bang on door B! I'm not entering some random door or    [B] I'm going through Door A")
 
-if (storyNodeOne === "A" || "a") {
+if (storyNodeOne === "a") {
     console.log("Congratulations. You've been kidnapped. Game OVER!")
-} else if (storyNodeOne === "B" || "b") {
+} else if (storyNodeOne === "b") {
         console.log("I mean... I see your point but you still got kidnapped :( Game over.")
-    } else if (storyNodeOne === "C" || "c") {
-        console.log("Oh, you smart. You're safe... for now.")
-    } else {
-        console.log("Error. Start over.");
+} else if (storyNodeOne === "c") {
+        console.log("Oh, you smart. You're safe... for now." + storyNodeTwo)
+} else {
+        console.log("Error. Start game over.");
     }
 
+let storyNodeThree = readline.question("You enter the open door and you see a hallway forking into 2 directions. One is lit up and one is super dark. Which one are you walking through?    [A] The one that's lit up, duh. [B] The one that's pretty dark. Sue me.")
 
+if (storyNodeTwo === "a") {
+    console.log("You'd be right in the real world but since this is a game... the creepy people heard you from down the block and now they've got you.")
+} else if (storyNodeTwo === "b") {
+    console.log("Niceee but don't do that in real life. Congrats, you're still in the game." + storyNodeThree)
+} else {
+    console.log("Error. Start game over.")
+}
+
+if (storyNodeThree === a) {
+    console.log("Damn. Some people affiliated with the people from the van were at the end of it. You got GOT!")
+} else if (storyNodeThree === b) {
+    console.log("Oh whatever, you're safe.. for now." + storyNodeFour)
+} else {
+    console.log("Error. Start game over.")
+}
 
 
 //     console.log(readline.question("Oh, you smart. You're safe... for now. You see 2 doors. Door A is cracked open a bit and Door B is shut real tight. What do you do. [D] Bang on door B! I'm not entering some random door or [E] I'm going through Door A"))
 
-// // let nameStoryB = readline.question("You see 2 doors. Door A is cracked open a bit and Door B is shut real tight. What do you do. [A] Bang on door B! I'm not entering some random door or [B] I'm going through Door A");
-// // // // let D = "Bang on door B! I'm not entering some random door."
-// // // // let E = "I'm going through Door A"
-
-//if they went through door B -----> console.log("You'd be right in the real world but since this is a game... the creepy people heard you from down the block and now they've got you.")
-// if door A ---> console.log("Niceee but don't do that in real life. Congrats, you're still in the game.")
 
 
 
-// next part of the story--> You enter the open door and you see a hallway forking into 2 directions. One is lit up and one is super dark. Which one are you walking through?
 
-// Options ---> A. The one that's lit up, duh.
-//              B. The one that's pretty dark. Sue me.
 
-// if A. --> console.log("Damn. Some people affiliated with the people from the van were at the end of it. You got GOT!")
-// if B. --> console.log("Oh whatever, you're safe.. for now.")
 
+
+// if A. --> 
+// if B. --> 
 
 
 
