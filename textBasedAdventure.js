@@ -13,9 +13,9 @@ console.log(`You are in vacation island and you ship is waiting for you,
 `)};
 
 const play = () => {
-  console.log(`You want "default" this ${monsName} and retrieve ticket or DO NOTHING and try to survice in Island`)
+  console.log(`You want "attack" this ${monsName} and retrieve ticket or DO NOTHING and try to survice in Island`)
   let userInput = readline.question("")
-  if(userInput === "default") {
+  if(userInput === "attack") {
   console.clear();
   console.log(`\n\n\nThen ${nameInput} start look around and ${nameInput} find some weapons over the island`)
   
