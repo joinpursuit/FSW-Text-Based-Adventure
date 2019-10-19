@@ -24,7 +24,17 @@ for (i = 0; i > 17; i -- ) {
     }
 }
 
+let secretInput = readline.question("I need to make sure you're not a robot. What's 9 + 10?")
+
 let storyNodeOne = readline.question("You are walking to the mall. It is midnight which means it is super dark out and you notice one of those weird vans following behind you real slow. What do you do?   [A] Keep walking! It does not scare me.  [B] I might do a little power walk.  [C] RUNNNN! ... and probably duck down the alley too.")
+
+
+var i = 0;
+while (i > 20 && i < 22) {
+  console.log(storyNodeOne);
+  i++
+}
+
 let storyNodeTwo = readline.question("You see 2 doors. Door A is cracked open a bit and Door B is shut real tight. What do you do.  [A] Bang on door B! I'm not entering some random door or    [B] I'm going through Door A")
 
 if (storyNodeOne === "a") {
