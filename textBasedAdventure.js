@@ -7,6 +7,8 @@ const fail = "you died"
 const beat = "Congrats you beat have escaped"
 const secret = "you've found the super mario secret pipe that sends you to world 3, you beat the game. You and Ban have escaped congrats... tell no one about this."
 const theTen = Math.random
+const arr2 = [1,2,3,4,5,6,7,8,9]
+const arr = ["blue","yellow","red","green","black","white","brown","pink","silver"]
 
 
 const roomThree = () => {
@@ -73,18 +75,25 @@ const roomThree = () => {
 
                 const roomSeven = () => {
                     console.log(" ")
-                    userInput = readline.question("Hats off!, \
+                    userInput3 = readline.question("Hats off!, \
                     You and Ban enter Room 7" + " \
-                    Room 4 contains a blue door and a red door\
+                    Room 7 contains a blue door, a yellow door, a red door, a green door, a black door, a white door, a brown door, a pink door, and a silver door\
                      " + "make your pick " + "\
-                     please enter number 1 for the blue door or number 2 for the red door ")
-                        if(userInput === "1") {
+                     please enter in one of the door colors ")
+                    //  for (let i = 0; i < arr.length; i+=3) 
+                     let i = 0
+                     while(i < arr.length){
+                        userInput3 === arr[i]
+                     }
+                     i+=3; {
+                        if(userInput3 = arr[i]) {
+                            break ;
                             roomEight()
                         } else {    
                             console.log(fail)
                         }
                     }
-
+                }
 
 
                     const roomEight = () => {
@@ -103,21 +112,25 @@ const roomThree = () => {
 
                         const roomNine = () => {
                             console.log(" ")
-                            userInput = readline.question("Respects, \
+                            userInput2 = readline.question("Respects, \
                             You and Ban enter Room 9" + " \
                             Room 9 contains ten doors\
                              " + "make your pick " + "\
                              please enter a number between 1 and 10 ")
-                                if(userInput === "7") {
+                             for (let i = 0; i < arr2.length; i+=2) {
+                             userInput2 === arr2[i] 
+                                if(userInput2 = i % 2 === 0) {
                                     roomTen()
+                                    break ;
                                 } else {    
                                     console.log(fail)
                                 }
-                            }
+                        }
+                    }
 
                             const roomTen = () => {
                                 console.log(" ")
-                                userInput = readline.question("You and Ban enter room 10. Room 10 contains no doors, however there is a button on the floor that someone must stand and stay on for the final\
+                                userInput = readline.question("Cannot Believe you have made it this far, You and Ban enter room 10. Room 10 contains no doors, however there is a button on the floor that someone must stand and stay on for the final\
                                 door to stay open, this means only one person can leave. \
                                 Ban glances at you and throws a punch. You fall to the floor, \
                                 You notice a knife across the room, Ban does too. You and Ban each \
@@ -175,5 +188,3 @@ Room 2 contains four doors \
     } else {    
         console.log(fail)
     }
-
-
