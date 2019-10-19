@@ -1,7 +1,7 @@
 const readline = require('readline-sync')
 //Intro
 
-let intro = ("~ Welcome to 'Tales of Pursuit' ~");
+let intro = ("~ Welcome to 'Tales of Persona' ~");
 console.log(intro)
 let dialogue = ("In this adventure you will be embark on a quest to find yourself and possibly others who will help you along the way. ");
 console.log(dialogue)
@@ -25,41 +25,18 @@ if(number === "yes") {
 readline.question("As the sun sets and you enter a nearby town called 'Dalmasca'.")
 readline.question("You find a room in the deserted town and get some rest.")
 let question1 = readline.question("Do you want to enter explore the town? yes or no   ")
+if (question1 === "yes") {
+    readline.question("You walk around to see if anyone is around.")
+} else if (question1 === "no") {
+    readline.question("You prepare to exit the town.")
+}
+console.log("It is morning of a new day and you seek answers to the questions you've been keeping.")
+readline.question(`Who am I ${nameInput}, you ask yourself. `)
 
 
-// /* Backstory */
-
-// readline.question("As the sun sets and you enter a nearby town called 'Dalmasca'.")
-// console.log()
-// readline.question("How many letters are in the town name    ")
-// let townName = "Dalmasca"
-// for (let i = 0; i = townName.length; i++) {
-//     if (i === townName.length) {
-//         readline.question("You find a room in the deserted town and get some rest.")
-//     } if (i !== 8) {
-//         readline.question("You go for a walk through town and search for clues.")
-//     }
-// }
 
 
-// let backstory = readline.question("Pick a number between 1 and 3 ")
-// console.ReadKey() 
-// switch(backstory) {
-//     case 1: 
-//         setting  = "You find a room in the deserted town and get some rest.";
-//         break;
-//     case 2:
-//         setting = "You go for a walk through town and search for clues.";
-//         break;
-//     case 3:
-//         setting = "You get lost in your thoughts try to remember your past.";
-//         break;
-//     default:
-//         setting = "You are lost";
-// }
-// console.ReadKey(backstory)
 
-``
 
 
 
