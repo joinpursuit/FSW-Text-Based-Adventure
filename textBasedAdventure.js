@@ -129,7 +129,7 @@ const fate = () => {
     destiny();
 
   }else if (userSet === "3") {
-    for(let i = 0; i < let3.length; i++){
+    for(let i = 0; i < set3.length; i++){
       sum3 += set3[i]
     }
     console.log(sum3 + " Is your lucky number.");
@@ -137,11 +137,39 @@ const fate = () => {
     console.log("Narrorator: MysteryMan is possessed and kills you. ");
 
   }
+}
 const dungeon = () => {
   console.clear();
   console.log("MysteryMan: What a strange encounter, we'll need to go through this cave");
   console.log("You don't say? I think can handle myself from now,");
-}
+  console.log("MysteryMan: *sigh* you haven't gorwn much since we last saw each other. ");
+  console.log("");
+  console.log("Narrorator: Walking onward into the dark cave, you encounter human remains and their belongings");
+  console.log("");
+  console.log("MysteryMan: Oh my God. This isnt safe we need to turn back");
+  userFate = readline.question("Turn back? yes or no?. ")
+    if(userFate === "no"){
+      console.log("No, we got this far, theres some items on the ground, we only have space for one.");
+      console.log("Pickaxe, Torch, and a map");
+    } else{
+      console.log("You're right, lets go back and take the left road this time.");
+      destiny();
+    }
+
+      let item = userItem = readline.question()
+        switch(item){
+            case "pickaxe":
+            console.log("Brute force your way out the cave ");
+            break;
+            case "torch":
+            console.log("Illuminates the way");
+            break;
+            case "map":
+            console.log("A travelers trusty companion");
+            break;
+                      }
+
+                    }
 
 
 //   let sum = 0;
@@ -156,7 +184,7 @@ const dungeon = () => {
 
   //console.log(userNum);
 
-}
+
 // let userDirection = readline.question()
 // if(userDirection === "right"){
 //   right();
