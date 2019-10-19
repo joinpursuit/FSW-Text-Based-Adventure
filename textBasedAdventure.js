@@ -61,7 +61,7 @@ function door1(space = " ")  {
     }
     }
     if (userInput1 === "c"){
-      console.log("Reeper: You May Enter")   
+      console.log("Reeper: You May Enter");   
       doorSelction2() 
     } 
     return space;
@@ -71,14 +71,18 @@ function door1(space = " ")  {
 function door2() {
     console.clear()
     let userInput1;
-      console.log("Reeper:What is 3 multiplied by 20?");
-    userInput1 = readline.question("if (A). 4 (B). 60 (C). 19 :PLEASE TYPE THE LETTER THAT CORRESPONDS WITH YOUR ANSWER!:");
+     console.log("Reeper:What is 3 multiplied by 20?");
+    while (userInput1 !== "b"){
+    if (userInput1 !== "b"){
+        console.log("Reeper: Try again or i must take your soul!");
+        userInput1 = readline.question("if (A). 4 (B). 60 (C). 19 :PLEASE TYPE THE LETTER THAT CORRESPONDS WITH YOUR ANSWER!:");
+    }
+    }
     if (userInput1 === "b"){
-      console.log("Reeper: You May Enter")    
-    } else {
-      console.log("Reeper: Try again or i must take your soul!")
-}
-return space
+      console.log("Reeper: You May Enter");
+      doorSelction2
+} 
+return space;
 }
 
 
@@ -95,18 +99,66 @@ function doorSelction2(space = "...")  {
     
     }
     return space;
-    
 }
-    console.log(doorSelction2());
+console.log(doorSelction2());
+
+
+
+
+
+function door3(space = " ")  {
+    console.clear()
+     let userInput1;
+        console.log("Reeper:How much will your bill be if your pasta cost $6.75 and your two drinks were $3.85 each?");
+    while (userInput1 !== "a"){
+    if (userInput1 !== "a"){
+        console.log("Reeper: Your answer is incorrect try again or i must take your soul!");
+        userInput1 = readline.question("(A). $14.45 (B). $33.50 (C). $10.10 :PLEASE TYPE THE LETTER THAT CORRESPONDS WITH YOUR ANSWER!:");
+    }
+    }
+    if (userInput1 === "a"){
+        console.log("Reeper: You May Enter");   
+        doorSelction3() 
+    } 
+        return space;
+}
+    
+    
+function door4() {
+    console.clear()
+      let userInput1;
+        console.log("If 7/8 of a grade one class are six or older, what percentage of them are five or younger?");
+    while (userInput1 !== "c"){
+    if (userInput1 !== "c")
+        console.log("Reeper: Try again or i must take your soul!");
+        userInput1 = readline.question("if (A).40.0% (B).33.30%(C).12.50% :PLEASE TYPE THE LETTER THAT CORRESPONDS WITH YOUR ANSWER!:");
+    }
+    if (userInput1 === "c"){
+        console.log("Reeper: You May Enter");
+        doorSelction3
+    } 
+    return space;
+}
 
 
 
 
 
 
-
-
-
+function doorSelction3(space = "...")  {
+    let userInput;
+    console.log("Reeper: You have made it past the first chamber, but i have a strong feeling i will be taking your soul soon!")
+        userInput = readline.question("Reeper: Which chamber would you like to enter? Type (1) for chamber one or Type (2) for chamber two:");
+    if(userInput === "1"){
+        door3();
+    } else {
+        door4();                      
+    }
+    return space;
+}
+console.log(doorSelction2());
+        
+    
 
 
 
@@ -139,14 +191,3 @@ function doorSelction2(space = "...")  {
 
 
 
- //  Which chamber would you like to enter? Type (1) for chamber one or Type (2) for chamber two:")),5000);{
-//     if (userInput !== yes){
-//         console.log("Hint: breh")
-//     } else {
-//         console.log("great")            // write a if else statement to enter function of door one or door 2
-//     }
-//     }
-//     return space
-    
-//     }
-//      console.log(doorSelction())
