@@ -4,6 +4,12 @@
 // this game is meant to be story driven.
 
 const readline = require('readline-sync')
+const rl = readline.createInterface =
+({
+  input: process.stdin,
+  output: process.stdout
+});
+
 
 const  play = () => {
     let userInput;
@@ -39,14 +45,14 @@ userChoice = readline.question(`MysteryMan: Do you believe in destiny`)//console
   }
 }
 
-const destiny = () => {
-  console.clear()
-  console.log("MysteryMan: so this is your answer, you know how this will end. Its destined we go left. ");
-  console.log("");
-  console.log("Narrorator: The two decide to the left path ");
-  console.log("MysteryMan(to himself): sorry I could not travel both and be one traveler. ");
-
-}
+// const destiny = () => {
+//   console.clear()
+//   console.log("MysteryMan: so this is your answer, you know how this will end. Its destined we go left. ");
+//   console.log("");
+//   console.log("Narrorator: The two decide to the left path ");
+//   console.log("MysteryMan(to himself): sorry I could not travel both and be one traveler. ");
+//
+// }
 
 const fool = () => {
   console.clear()
@@ -56,7 +62,8 @@ const fool = () => {
          console.log("Narrorator: The two decide to the right path ");
          console.log("MysteryMan(to himself): I took the one less traveled by. ");
          //fate();
-    } else {
+    } else {(userDirection === "left")
+      console.log("MysteryMan guess Left is the way.");
       destiny();
     }
     console.log("Narrorator: The two wonder endlessly...");
@@ -76,7 +83,7 @@ const fool = () => {
       let userInput = readline.question("yes/no?")
       if (userInput === "yes"){
         console.clear()
-        console.log("FortunePoe: Great, pick 5 numbers between 0 - 11");
+        console.log("FortunePoe: Great, pick 2 set of numbers.");
         fate(); // game
       } else {
         console.log("FortunePoe: Guess I have no choice to give you the fortune of doom");
@@ -84,14 +91,46 @@ const fool = () => {
       }
 
 }
+const destiny = () => {
+  console.clear()
+  console.log("MysteryMan: so this is your answer, you know how this will end. Its destined we go left. ");
+  console.log("");
+  console.log("Narrorator: The two decide to the left path ");
+  console.log("MysteryMan(to himself): sorry I could not travel both and be one traveler. ");
+
+}
 const fate = () => {
-  let sum = 0;
-  //let inputNum = readline.question([]);
-  let userNum = [];
-  for(let i = 0; i <= 5; i++){
-    let inputNum = readline.question([] < 5);
+  console.log("pick a set.(letter in Caps)")
+  sum1 = 0;
+  sum2 = 0;
+  sum3 = 0;
+  let set1 = [0,2,8,3,0] // 13
+  let set2 = [0,0,0,0,1] // 1
+  let set3 = [7,7,7,7,7] // 35
+  console.log("A: " + set1);
+  console.log("B: " + set2);
+  console.log("C: " + set3);
+  userSet = readline.question();
+  if(userSet ===  "A"){
+    for(i = 0; i < set1.length, i++;){
+      sum1+= set1[i]
+
+    }
+      console.log(sum1 + " Is your lucky number.");
   }
 
+
+//   let sum = 0;
+//   //let inputNum = readline.question([]);
+//   let userNum = [];
+//   for(let i = 0; i < 5; i++){
+//     let inputNum = readline.question([]);
+//     inputNum +=
+//     //userNum.push(inputNum[i])
+// //console.log(inputNum);
+//   }
+
+  //console.log(userNum);
 
 }
 // let userDirection = readline.question()
