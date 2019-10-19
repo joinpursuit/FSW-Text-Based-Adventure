@@ -108,6 +108,26 @@ case (eatDinner === false):
   console.log("No thanks, mom")
 }
 
-//8. 
+//8. What's for dinner
+var readlineSync7 = require('readline-sync');
+readlineSync7.setDefaultOptions({limit: ['pizza', 'lasagna', 'not hungry']});
+a1 = readlineSync7.question('What do you want for dinner? [pizza, lasagna, not hungry] ');
 
+//9.What do you want to drink
+var readlineSync7 = require('readline-sync');
+readlineSync7.setDefaultOptions({limit: ['soda', 'water', 'juice']});
+a1 = readlineSync7.question('What do you want to drink? [soda, water, juice] ');
+
+//10. Finish your video game
+var readlineSync8 = require('readline-sync');
+if(readlineSync8.keyInYN("Do you want to complete your video game")) {
+  // 'Y' key was pressed.
+  console.log('You completed it');
+ 
+} else {
+  // 'N' was pressed.
+  console.log('You never finish it');
+  
+}
+ 
 
