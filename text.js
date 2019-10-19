@@ -60,14 +60,3 @@ let question1 = readline.question("Do you want to enter explore the town? yes or
 // console.ReadKey(backstory)
 
 ``
-
-
-
-
-
-
-
-
-
-
-
