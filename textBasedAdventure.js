@@ -92,7 +92,7 @@ const fool = () => {
 
 }
 const destiny = () => {
-  console.clear()
+  //console.clear()
   console.log("MysteryMan: so this is your answer, you know how this will end. Its destined we go left. ");
   console.log("");
   console.log("Narrorator: The two decide to the left path ");
@@ -107,17 +107,41 @@ const fate = () => {
   let set1 = [0,2,8,3,0] // 13
   let set2 = [0,0,0,0,1] // 1
   let set3 = [7,7,7,7,7] // 35
-  console.log("A: " + set1);
-  console.log("B: " + set2);
-  console.log("C: " + set3);
+  console.log("1: " + set1);
+  console.log("2: " + set2);
+  console.log("3: " + set3);
   userSet = readline.question();
-  if(userSet ===  "A"){
-    for(i = 0; i < set1.length, i++;){
+  if(userSet ===  "1"){
+    for(i = 0; i < set1.length; i++){
       sum1+= set1[i]
-
     }
-      console.log(sum1 + " Is your lucky number.");
+    console.log(sum1 + " Is your lucky number.");
+    console.log("FortunePoe: Strange lucky number ain't it? well its your lucky day, Procceed onward");
+    dungeon();
+  } else if( userSet === "2"){
+    for(let i = 0; i <set2.length; i++){
+      sum2 += set2[i]
+    }
+    console.log(sum2 + " Is your lucky number.");
+    console.log("FortunePoe: You're not worthy, go back to where you came from.");
+    console.log("");
+    console.log("Narrorator the two head back and take the left path this time.");
+    destiny();
+
+  }else if (userSet === "3") {
+    for(let i = 0; i < let3.length; i++){
+      sum3 += set3[i]
+    }
+    console.log(sum3 + " Is your lucky number.");
+    console.log("FortunePoe: Just because the number 7 is associated with luck, you've entered a deep misfortune");
+    console.log("Narrorator: MysteryMan is possessed and kills you. ");
+
   }
+const dungeon = () => {
+  console.clear();
+  console.log("MysteryMan: What a strange encounter, we'll need to go through this cave");
+  console.log("You don't say? I think can handle myself from now,");
+}
 
 
 //   let sum = 0;
