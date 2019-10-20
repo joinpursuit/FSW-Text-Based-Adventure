@@ -23,7 +23,8 @@ maze()
 // Create user choice
 const playerGuess = () => {
  let playerChoice = readline.question("Choose rock, paper, or scissors. ".toLowerCase())
-   if(playerChoice === "rock" || playerChoice === "Rock" ||  playerChoice === "paper" || playerChoice === "Paper"|| playerChoice === "scissors" || playerChoice === "Scissors" ) {
+    playerChoice = playerChoice.toLowerCase()
+   if(playerChoice === "rock" ||   playerChoice === "paper" ||  playerChoice === "scissors" ) {
           return playerChoice;
    }
   console.log("Error");
