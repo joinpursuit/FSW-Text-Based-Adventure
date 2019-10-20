@@ -13,7 +13,7 @@ console.log(`You are in vacation island and you ship is waiting for you,
 `)};
 
 const play = () => {
-  console.log(`You want "attack" this ${monsName} and retrieve ticket or DO NOTHING and try to survice in Island`)
+  console.log(`You want "attack" this ${monsName} and retrieve ticket or DO NOTHING and try to survice in Island👣`)
   let userInput = readline.question("")
   if(userInput === "attack") {
   console.clear();
@@ -23,9 +23,9 @@ const play = () => {
   while (monsK1LifeHP <=100){
   if  (monsK1LifeHP > 20){
   var readlineSync = require('readline-sync');
-  weapons = ['Rock', 'Starfish', 'Stone Crab', 'Dead Shark', 'Blue Lobster'],
+  weapons = ['Rock🐚', 'Starfish⭐', 'Stone Crab🦀', 'Ruby Lobster🦞','Deadly Shark🦈'],
   console.log("\n\n```Select from Weapons List below```")
-  index = readlineSync.keyInSelect(weapons, 'Pick your weapons?');
+  index = readlineSync.keyInSelect(weapons, 'Pick your weapons⚔️?');
   console.log("\nI Pick up a weapon [" + weapons[index] + `] throw it to ${monsName}.`);
   
   //wepower selection
@@ -54,9 +54,9 @@ const play = () => {
   
   else if(monsK1LifeHP <= 20 && monsK1LifeHP>0){
     var readlineSync = require('readline-sync');
-    weapons = ['Banana', 'Apple X!!', 'Galaxy GG', 'Pixel P9', 'HUAWEI'],
+    weapons = ['🐌', '🐍', '🦗', '🦂', '🐙'],
     console.log("\n```Select from Weapons List below```")
-    index = readlineSync.keyInSelect(weapons, 'Pick your weapon?');
+    index = readlineSync.keyInSelect(weapons, 'Pick your weapon⚔️?');
     console.log("\n\nI Pick up a weapon [" + weapons[index] + `] throw it to ${monsName}.`);
     //wepower selection
     var readlineSync = require('readline-sync'),
@@ -82,12 +82,12 @@ const play = () => {
     console.table(`\n${monsName} HP ${monsK1LifeHP}`)
   }
   else if(monsK1LifeHP <= 0){
-    console.log(`${nameInput} knok down ${monsName} badly, \nCongratulations, retrieve your ticket, \nYou can go Home `)
+    console.log(`${nameInput} knok down ${monsName} badly, \nCongratulations, retrieve your ticket⛵, \nYou can go Home `)
     break;
   }
   }
   } else {
-      console.log("Happy ever after survive about 7 day and died")
+      console.log("Happy ever after survive about 7 day and died☠️")
   }
 }
 
