@@ -56,6 +56,22 @@ function healthCheck(damage) {
     }
 }
 
+function choiceCreation(choiceOne, choiceTwo, choiceThree, choiceFour) {
+    if(choiceFour) {
+        console.log(`[1] ${choiceOne}`);
+        console.log(`[2] ${choiceTwo}`);
+        console.log(`[3] ${choiceThree}`);
+        console.log(`[4] ${choiceFour}`);
+    } else if(choiceThree) {
+        console.log(`[1] ${choiceOne}`);
+        console.log(`[2] ${choiceTwo}`);
+        console.log(`[3] ${choiceThree}`);
+    } else {
+        console.log(`[1] ${choiceOne}`);
+        console.log(`[2] ${choiceTwo}`);
+    }
+}// End of choiceCreation() function
+
 console.clear();
 let nameInput = userInput("Enter your first name: ");
 
