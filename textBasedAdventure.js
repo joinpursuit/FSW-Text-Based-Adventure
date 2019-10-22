@@ -164,37 +164,5 @@ const dungeon = () => {
                     }
 
 
-//   let sum = 0;
-//   //let inputNum = readline.question([]);
-//   let userNum = [];
-//   for(let i = 0; i < 5; i++){
-//     let inputNum = readline.question([]);
-//     inputNum +=
-//     //userNum.push(inputNum[i])
-// //console.log(inputNum);
-//   }
-
-  //console.log(userNum);
-
-
-// let userDirection = readline.question()
-// if(userDirection === "right"){
-//   right();
-// } else {
-//   left();
-// }
-// const right = () => {
-//   console.log("Narrorator: The two decide to the right path ");
-//   console.log("MysteryMan(to himself): I took the one less traveled by. ");
-// }
-// const left = () => {
-//   console.log("Narrorator: The two decide to the left path ");
-//   console.log("MysteryMan(to himself): sorry I could not travel both and be one traveler.");
-
-//}
 
 play();
-
-// let choice1 = readline.question("Enter Yes or No: ")
-// console.log(`${nameInput}: ${choice1}`);
-// echo -e "\a"
