@@ -395,6 +395,327 @@ let willUserChoose = readline.question("would you like to choose for your[self] 
     }
     
     function eggBreakfastSandwich () {
+// askName()
+function play () {
+
+  let userInput;
+  while(userInput !== "yes"){
+    userInput = readline.question('would you like to prepare a nice BREAKFAST to start your day, yes or no ?');
+  }
+   
+  console.log("Let see what you have first as options ");
+  userChoices = readline.question("would you like to choose you a random recipe, random_recipe or myChoice or no?")
+
+  if (userChoices = "random_recipe") {
+   
+    let recipes = "random_recipe"
+    function getRecipe(recipes) {
+      recipes =["oatmeal", "Sandwiches", "Smoothie_bowls"]
+      let selectedRecipe = recipes[Math.floor(Math.random() * recipes.length)];
+      return selectedRecipe;
+    }
+    let result = getRecipe(recipes);
+    console.log(result)
+    switch(result) {
+      
+      case "oatmeal" :
+        Oatmeal () 
+        break;
+        case "Sandwiches" :
+          Sandwiches () 
+          break;
+        default:
+          Smoothie_bowls ()
+  
+    }
+    getRecipe();
+  } else if (userChoices = "myChoice"){
+    userInput = readline.question(" OK! would you like Oatmeal, Sandwiches, or Smoothie bowls?")
+  } else if (userInput === "no"){
+    userInput = readline.question('would you like to prepare a nice BREAKFAST to start your day, yes or no ?');
+  }
+
+  // let recipes = "random_recipe"
+  
+  // recipes =["oatmeal", "Sandwiches", "Smoothie_bowls"]
+  // function getRecipe(recipes) {
+  //   let selectedRecipe = recipes[Math.floor(Math.random() * recipes.length)];
+  //   return selectedRecipe;
+  // }
+  // let result = getRecipe(recipes);
+  // console.log(result)
+  // switch(result) {
+    
+  //   case "oatmeal" :
+  //     Oatmeal () 
+  //     break;
+  //     case "Sandwiches" :
+  //       Sandwiches () 
+  //       break;
+  //     default:
+  //       Smoothie_bowls ()
+
+  // }
+        
+            
+  // let newChoice;  
+  // newChoice = readline.question ("would you like another recipe, yes or no?")
+ 
+  // userInput = readline.question("would you like Oatmeal, Sandwiches, or Smoothie bowls?")
+  
+ 
+  // if (userInput === "oatmeal") {
+  //   Oatmeal ();
+  // } else if (userInput === "Sandwiches") { 
+  //   Sandwiches ();
+  // } else {
+  //   Smoothie_bowls ();
+  // }          
+
+  function Oatmeal () {
+  console.clear ( );
+  console.log( " Oatmeal Is Right Choice :-) GREAT!!! ** WE HAVE PREPARATION TIME BETWEEN 5 To 10 minutes ** Please choose a random time between ");
+  
+  let userInputNum = readline.question('')
+ 
+  if ( userInputNum < 6) {
+    ingredientsOvernightOat()
+    // overnightOatmeal ();
+  } else if ( userInputNum >= 6 && userInputNum < 8 ) {
+    Smoothie_bowls ();
+  } else {
+    FruitNutOatmeal ();
+  }
+}
+
+
+    function ingredientsOvernightOat (recipe1) {
+    console.clear();
+    console.log('~~~~~~~~~~ * * * Overnight chia oatmeal in a mason jar * * * ~~~~~~~~~~');
+    console.log('');
+    console.log('');
+    console.log(' * PREP 5 MIN | TOTAL 5 MIN | PLUS OVERNIGHT CHILLING  | SERVES 1 *');
+    console.log('');
+    console.log('* review : * * * * ')
+    console.log('');
+    console.log('~~~~~~~~~~ * * * Ingredients * * * ~~~~~~~~~~');
+    console.log('');
+     
+     console.table([
+      {
+        Measurements : '3/4 cup',
+        Ingredients : 'unsweetened almond milk'
+      } , {
+        Measurements : '1/3 cup' ,
+        Ingredients : 'rolled oats'
+      } , {
+        Measurements : '1 tbsp',
+        Ingredients : 'chia seeds'
+      } , {
+        Measurements : '2 tsp',
+        Ingredients : 'honey'
+      } , {
+        Measurements : '1/3 cup' ,
+        Ingredients : 'vanilla'
+      } , {
+        Measurements : '2 tbsp',
+        Ingredients :'dried cranberries, or 1 finely chopped fig'
+      } , {
+        Measurements : '1 banana',
+        Ingredients : 'thinly sliced'
+      } , {
+        Measurements: '2 tbsp',
+        Ingredients: 'toasted sliced almonds'
+      }
+    ]);
+    console.log('');
+    console.log('~~~~~~~~~~~~~ * * * Instructions * * * ~~~~~~~~~~~~~');
+    console.log('');
+
+    console.table([
+      {
+        Instructions :'COMBINE : almond milk, oats, chia seeds, honey, vanilla and dried fruit in a 250-mL Mason jar.'
+      } , {
+        Instructions : 'STIR : well, then cover and refrigerate overnight.'
+      } , {
+        Instructions : 'BEFORE : serving, top with banana and almonds.'
+      } ,{
+        Instructions: 'NUTRITION : Calories 488, Protein 11 g, Carbohydrates 86 g, Fat 15 g, Fibre 14 g, Sodium 141 mg.'
+      }
+    ])
+    console.log('');
+    }
+
+    function Smoothie_bowls (recipe2) {
+    console.clear();
+    console.log('~~~~~~~~~~ * * * Green goddess smoothie bowl * * * ~~~~~~~~~~');
+    console.log('');
+    console.log('');
+    console.log(' * PREP 10 MIN | TOTAL 10 MIN | SERVES 2 *');
+    console.log('');
+    console.log('* review : * * * *   ');
+    console.log('');
+    console.log('~~~~~~~~~~~~~ * * * Ingredients * * * ~~~~~~~~~~~~~');
+    console.log('');
+
+     console.table([
+      {
+        Measurements : '1',
+        Ingredients : 'Avocado, peeled and finely chopped'
+      } , {
+        Measurements : '1 cup' ,
+        Ingredients : 'Packed baby spinach'
+      } , {
+        Measurements : '1 cup',
+        Ingredients : 'Finely chopped romaine stems'
+      } , {
+        Measurements : '1',
+        Ingredients : 'Granny Smith apple, finely chopped'
+      } , {
+        Measurements : '1' ,
+        Ingredients : 'Frozen banana, broken in half'
+      } , {
+        Measurements : '1/2 cup',
+        Ingredients :'2% Plain yogurt'
+      } , {
+        Measurements : '1 tsp',
+        Ingredients : 'Manuka honey, optional'
+      } 
+    ]);
+    console.log('');
+    console.log('~~~~~~~~~~~~~ * * * Instructions * * * ~~~~~~~~~~~~~');
+    console.log('');
+
+    console.table([
+      {
+        Techniques : 'WHIRL',
+        Instructions : 'avocado, spinach, apple, banana, yogurt and honey (optional) in a blender until smooth, Pour into 2 bowls.'
+      } , {
+        Techniques : 'TOP',
+        Instructions : 'with your choice of smoothie toppers.'
+      } , {
+         Techniques : 'KITCHEN NOTE',
+        Instructions : 'Smart Smoothie toppers( SEE THE TABLE BELOW)'
+      } ,{
+        Techniques: 'NUTRITION',
+        Instructions: ' Calories 294, Protein 6 g, Carbohydrates 37 g, Fat 16 g, Fibre 10 g, Sodium 63 mg. Excellent source of Vitamin B6'
+      }
+    ])
+    console.log('');
+    console.log('** Smart Smoothie toppers **');
+
+    console.table([
+      {
+        Toppings : 'Pepitas',
+        Instructions : 'Just 2 tbsp contains 5 g of protein and 5 g of fibre.'
+      } , {
+        Toppings : 'Figs',
+        Instructions : 'High in vitamin K, fibre and copper.'
+      } , {
+         Toppings : 'Goji berries',
+        Instructions : 'Great source of vitamins A and C.'
+      } ,{
+        Toppings: 'Almonds',
+        Instructions: 'The nut with the most fibre: 3 g in 2 tbsp'
+      },{
+        Toppings: 'Chia:',
+        Instructions: 'Rich in Omega-3 fatty acids, calcium, protein and fibre.'
+      } ,{
+        Toppings: 'Flax',
+        Instructions: 'Nearly 4 g of fibre in 2 tbsp. Ground seeds are easier for your body to absorb.'
+      } ,{
+        Toppings: 'Hemp hearts',
+        Instructions: 'Full of protein, magnesium and healthy fats.'
+      } 
+    ])
+    console.log('');
+    }
+
+
+    function FruitNutOatmeal (recipe3) {
+    console.clear();
+    console.log('~~~~~~~~~~ * * * Fruit and nut steel-cut oats * * * ~~~~~~~~~~');
+    console.log('');
+    console.log('');
+    console.log(' * PREP 10 MIN | TOTAL 20 MIN | SERVES 6 *');
+    console.log('');
+    console.log('* review : * * *  ');
+    console.log('');
+    console.log('~~~~~~~~~~~~~ * * * Ingredients * * * ~~~~~~~~~~~~~');
+    console.log('');
+
+     console.table([
+      {
+        Measurements : '2 cups',
+        Ingredients : 'steel-cut oats'
+      } , {
+        Measurements : '1 tsp' ,
+        Ingredients : 'salt'
+      } , {
+        Measurements : '3/4 tsp',
+        Ingredients : 'cinnamon'
+      } , {
+        Measurements : '1/4 tsp',
+        Ingredients : 'nutmeg'
+      } , {
+        Measurements : '8 cups' ,
+        Ingredients : 'water'
+      } , {
+        Measurements : '1 cup',
+        Ingredients :'milk'
+      } , {
+        Measurements : '1/2 cup',
+        Ingredients : 'brown sugar'
+      } , {
+        Measurements: '1 cup',
+        Ingredients: 'chopped pitted dates'
+      } , {
+        Measurements: '1/2 cup',
+        Ingredients: 'dried cranberries'
+      } , {
+        Measurements: '1/2 cup',
+        Ingredients: 'toasted sunflower seeds, or chopped walnuts (optional)'
+      }
+    ]);
+    console.log('');
+    console.log('~~~~~~~~~~~~~ * * * Instructions * * * ~~~~~~~~~~~~~');
+    console.log('');
+
+    console.table([
+      {
+        Techniques : 'COMBINE',
+        Instructions : 'Oats with salt, cinnamon, nutmeg and water in rice cooker. press in oatmeal insert. let it cook.'
+      } , {
+        Techniques : 'STIR',
+        Instructions : 'In milk, sugar, dates and cranberries. Scoop into bowls and sprinkle with seeds or walnuts.'
+      } , {
+         Techniques : 'KITCHEN NOTE',
+        Instructions : 'Our rice cooker recipes are developed with a 7L rice cooker.'
+      } ,{
+        Techniques: 'NUTRITION',
+        Instructions: ' Calories 483, Protein 14 g, Carbohydrates 88 g, Fat 11 g, Fibre 9 g, Sodium 423 mg. Excellent source of Iron'
+      }
+    ])
+    console.log('');
+    }
+
+
+  function Sandwiches () {
+    console.clear ( );
+    // console.log( "You entered Sandwiches  :-) GREAT!!! ** WE HAVE PREPARATION TIME BETWEEN 5 To 10 minutes ** Please choose a random time between ");
+    
+    let userInputNum = readline.question('Sandwiches Is Right Choice  :-) GREAT!!! ** WE HAVE PREPARATION TIME BETWEEN 3 To 25 minutes ** Please choose a random time between "')
+   
+    if ( userInputNum < 4) {
+      eggBreakfastSandwich()
+    } else if ( userInputNum >= 5 && userInputNum <= 20 ) {
+      SmokedSalmonDillEggsSandwich ();
+    } else {
+      GuacamoleBreakfastSandwich ();
+    }
+  }
+  
+    function eggBreakfastSandwich (recipe4) {
       console.clear();
       console.log('~~~~~~~~~~ * * * Egg Breakfast Sandwich * * * ~~~~~~~~~~');
       console.log('');
@@ -405,8 +726,13 @@ let willUserChoose = readline.question("would you like to choose for your[self] 
       console.log('');
       console.log('~~~~~~~~~~ * * * Ingredients * * * ~~~~~~~~~~');
       console.log('');
+<<<<<<< HEAD
       
       console.table([
+=======
+       
+       console.table([
+>>>>>>> 2e8c0a2e9b1a816d1a1f787e744626cd9da9ba42
         {
           Measurements : '1',
           Ingredients : 'Egg'
@@ -424,7 +750,11 @@ let willUserChoose = readline.question("would you like to choose for your[self] 
       console.log('');
       console.log('~~~~~~~~~~~~~ * * * Instructions * * * ~~~~~~~~~~~~~');
       console.log('');
+<<<<<<< HEAD
       
+=======
+  
+>>>>>>> 2e8c0a2e9b1a816d1a1f787e744626cd9da9ba42
       console.table([
         {
           Instructions :'SPRAY : coffee mug or small bowl with oil'
@@ -440,8 +770,13 @@ let willUserChoose = readline.question("would you like to choose for your[self] 
       ])
       console.log('');
     }
+<<<<<<< HEAD
     
     function SmokedSalmonDillEggsSandwich () {
+=======
+  
+    function SmokedSalmonDillEggsSandwich (recipe5) {
+>>>>>>> 2e8c0a2e9b1a816d1a1f787e744626cd9da9ba42
       console.clear();
       console.log('~~~~~~~~~~ * * * Smoked Salmon Dill Eggs Benedict * * * ~~~~~~~~~~');
       console.log('');
@@ -452,8 +787,13 @@ let willUserChoose = readline.question("would you like to choose for your[self] 
       console.log('');
       console.log('~~~~~~~~~~~~~ * * * Ingredients * * * ~~~~~~~~~~~~~');
       console.log('');
+<<<<<<< HEAD
       
       console.table([
+=======
+  
+       console.table([
+>>>>>>> 2e8c0a2e9b1a816d1a1f787e744626cd9da9ba42
         {
           Measurements : '1/4 cup',
           Ingredients : 'Butter, softened'
@@ -489,7 +829,11 @@ let willUserChoose = readline.question("would you like to choose for your[self] 
       console.log('');
       console.log('~~~~~~~~~~~~~ * * * Instructions * * * ~~~~~~~~~~~~~');
       console.log('');
+<<<<<<< HEAD
       
+=======
+  
+>>>>>>> 2e8c0a2e9b1a816d1a1f787e744626cd9da9ba42
       console.table([
         {
           Techniques : 'STIR',
@@ -511,8 +855,13 @@ let willUserChoose = readline.question("would you like to choose for your[self] 
       
       console.log('');
     }
+<<<<<<< HEAD
     
     function GuacamoleBreakfastSandwich () {
+=======
+  
+    function GuacamoleBreakfastSandwich (recipe6) {
+>>>>>>> 2e8c0a2e9b1a816d1a1f787e744626cd9da9ba42
       console.clear();
       console.log('~~~~~~~~~~ * * * GUACAMOLE BREAKFAST SANDWICH * * * ~~~~~~~~~~');
       console.log('');
@@ -523,8 +872,13 @@ let willUserChoose = readline.question("would you like to choose for your[self] 
       console.log('');
       console.log('~~~~~~~~~~~~~ * * * Ingredients * * * ~~~~~~~~~~~~~');
       console.log('');
+<<<<<<< HEAD
       
       console.table([
+=======
+  
+       console.table([
+>>>>>>> 2e8c0a2e9b1a816d1a1f787e744626cd9da9ba42
         {
           Measurements : '8 Slices',
           Ingredients : 'Bacon'
@@ -548,7 +902,11 @@ let willUserChoose = readline.question("would you like to choose for your[self] 
       console.log('');
       console.log('~~~~~~~~~~~~~ * * * Instructions * * * ~~~~~~~~~~~~~');
       console.log('');
+<<<<<<< HEAD
       
+=======
+  
+>>>>>>> 2e8c0a2e9b1a816d1a1f787e744626cd9da9ba42
       console.table([
         {
           Techniques : 'COOK',
@@ -557,10 +915,17 @@ let willUserChoose = readline.question("would you like to choose for your[self] 
           Techniques : 'COOK',
           Instructions : 'Eggs about 3 minutes add salt and pepper. Place a slice of cheese over each egg during the last 30 seconds of cooking time.'
         } , {
+<<<<<<< HEAD
           Techniques : 'SPREAD',
           Instructions : 'Spread butter on each slice of bread then toast it in both sides about 2-3 minutes.'
         } ,{
           
+=======
+           Techniques : 'SPREAD',
+           Instructions : 'Spread butter on each slice of bread then toast it in both sides about 2-3 minutes.'
+        } ,{
+     
+>>>>>>> 2e8c0a2e9b1a816d1a1f787e744626cd9da9ba42
           Techniques : 'ASSEMBLE',
           Instructions : 'Spread 4 slices of bread with guacamole, topped with bacon, egg, cheese and another slice of bread.'
         } ,{
@@ -571,4 +936,20 @@ let willUserChoose = readline.question("would you like to choose for your[self] 
       console.log('');
     }
 
+<<<<<<< HEAD
+=======
+    // let allRecipe = ["ingredientsOvernightOat()", "Smoothie_bowls()", "FruitNutOatmeal()", "eggBreakfastSandwich()", "SmokedSalmonDillEggsSandwich()", "GuacamoleBreakfastSandwich()"]
+
+    // let allRecipe = ["ingredientsOvernightOat()", "Smoothie_bowls()", "FruitNutOatmeal()", "eggBreakfastSandwich()", "SmokedSalmonDillEggsSandwich()", "GuacamoleBreakfastSandwich()"]
+    // function getAllRecipe(arr) {
+    
+    //   let arr ;
+    //   let newArr = ""
+    //   for (let i = 0; i < arr.length; i++) {
+    //   newArr.push(arr[i])
+    //   }
+    //   getAllRecipe(allRecipe)
+    // }
+}
+>>>>>>> 2e8c0a2e9b1a816d1a1f787e744626cd9da9ba42
   play();
