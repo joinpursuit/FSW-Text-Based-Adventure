@@ -128,8 +128,13 @@ let willUserChoose = readline.question("would you like to choose for your[self] 
   let willUserPrint = readline.question("would you like to print all the recipes [y]es or [n]o? ");
   function getAllRecipe(allRecipe) {
     
+    // for (let i = 0; i < allRecipe.length; i++) {
+    //   return allRecipe[i]()
+      
+    // }
+
     for (let i = 0; i < allRecipe.length; i++) {
-      return allRecipe[i]()
+      return allRecipe
       
     }
     
@@ -726,13 +731,8 @@ function play () {
       console.log('');
       console.log('~~~~~~~~~~ * * * Ingredients * * * ~~~~~~~~~~');
       console.log('');
-<<<<<<< HEAD
-      
-      console.table([
-=======
        
        console.table([
->>>>>>> 2e8c0a2e9b1a816d1a1f787e744626cd9da9ba42
         {
           Measurements : '1',
           Ingredients : 'Egg'
@@ -770,13 +770,8 @@ function play () {
       ])
       console.log('');
     }
-<<<<<<< HEAD
-    
-    function SmokedSalmonDillEggsSandwich () {
-=======
   
     function SmokedSalmonDillEggsSandwich (recipe5) {
->>>>>>> 2e8c0a2e9b1a816d1a1f787e744626cd9da9ba42
       console.clear();
       console.log('~~~~~~~~~~ * * * Smoked Salmon Dill Eggs Benedict * * * ~~~~~~~~~~');
       console.log('');
@@ -787,13 +782,8 @@ function play () {
       console.log('');
       console.log('~~~~~~~~~~~~~ * * * Ingredients * * * ~~~~~~~~~~~~~');
       console.log('');
-<<<<<<< HEAD
-      
-      console.table([
-=======
   
        console.table([
->>>>>>> 2e8c0a2e9b1a816d1a1f787e744626cd9da9ba42
         {
           Measurements : '1/4 cup',
           Ingredients : 'Butter, softened'
@@ -829,11 +819,7 @@ function play () {
       console.log('');
       console.log('~~~~~~~~~~~~~ * * * Instructions * * * ~~~~~~~~~~~~~');
       console.log('');
-<<<<<<< HEAD
-      
-=======
   
->>>>>>> 2e8c0a2e9b1a816d1a1f787e744626cd9da9ba42
       console.table([
         {
           Techniques : 'STIR',
@@ -855,13 +841,8 @@ function play () {
       
       console.log('');
     }
-<<<<<<< HEAD
-    
-    function GuacamoleBreakfastSandwich () {
-=======
   
     function GuacamoleBreakfastSandwich (recipe6) {
->>>>>>> 2e8c0a2e9b1a816d1a1f787e744626cd9da9ba42
       console.clear();
       console.log('~~~~~~~~~~ * * * GUACAMOLE BREAKFAST SANDWICH * * * ~~~~~~~~~~');
       console.log('');
@@ -872,13 +853,8 @@ function play () {
       console.log('');
       console.log('~~~~~~~~~~~~~ * * * Ingredients * * * ~~~~~~~~~~~~~');
       console.log('');
-<<<<<<< HEAD
-      
-      console.table([
-=======
   
        console.table([
->>>>>>> 2e8c0a2e9b1a816d1a1f787e744626cd9da9ba42
         {
           Measurements : '8 Slices',
           Ingredients : 'Bacon'
@@ -902,11 +878,7 @@ function play () {
       console.log('');
       console.log('~~~~~~~~~~~~~ * * * Instructions * * * ~~~~~~~~~~~~~');
       console.log('');
-<<<<<<< HEAD
-      
-=======
   
->>>>>>> 2e8c0a2e9b1a816d1a1f787e744626cd9da9ba42
       console.table([
         {
           Techniques : 'COOK',
@@ -915,17 +887,10 @@ function play () {
           Techniques : 'COOK',
           Instructions : 'Eggs about 3 minutes add salt and pepper. Place a slice of cheese over each egg during the last 30 seconds of cooking time.'
         } , {
-<<<<<<< HEAD
-          Techniques : 'SPREAD',
-          Instructions : 'Spread butter on each slice of bread then toast it in both sides about 2-3 minutes.'
-        } ,{
-          
-=======
            Techniques : 'SPREAD',
            Instructions : 'Spread butter on each slice of bread then toast it in both sides about 2-3 minutes.'
         } ,{
      
->>>>>>> 2e8c0a2e9b1a816d1a1f787e744626cd9da9ba42
           Techniques : 'ASSEMBLE',
           Instructions : 'Spread 4 slices of bread with guacamole, topped with bacon, egg, cheese and another slice of bread.'
         } ,{
@@ -936,8 +901,8 @@ function play () {
       console.log('');
     }
 
-<<<<<<< HEAD
-=======
+// <<<<<<< HEAD
+// =======
     // let allRecipe = ["ingredientsOvernightOat()", "Smoothie_bowls()", "FruitNutOatmeal()", "eggBreakfastSandwich()", "SmokedSalmonDillEggsSandwich()", "GuacamoleBreakfastSandwich()"]
 
     // let allRecipe = ["ingredientsOvernightOat()", "Smoothie_bowls()", "FruitNutOatmeal()", "eggBreakfastSandwich()", "SmokedSalmonDillEggsSandwich()", "GuacamoleBreakfastSandwich()"]
@@ -950,6 +915,6 @@ function play () {
     //   }
     //   getAllRecipe(allRecipe)
     // }
-}
->>>>>>> 2e8c0a2e9b1a816d1a1f787e744626cd9da9ba42
+//}
+// >>>>>>> 2e8c0a2e9b1a816d1a1f787e744626cd9da9ba42
   play();
