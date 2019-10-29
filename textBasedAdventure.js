@@ -137,7 +137,7 @@ let willUserChoose = readline.question("would you like to choose for your[self] 
     GuacamoleBreakfastSandwich();
   }
   console.log(willUserPrint)
-  //let allRecipe = [ingredientsOvernightOat, smoothieBowls, fruitNutOatmeal, eggBreakfastSandwich, SmokedSalmonDillEggsSandwich, GuacamoleBreakfastSandwich]
+  
   if (willUserPrint === "y") {
     
     getAllRecipe()
@@ -147,10 +147,50 @@ let willUserChoose = readline.question("would you like to choose for your[self] 
     willUserChoose = readline.question("would you like to choose for your[self] or, be given a [random] option again? ");
     usersChoice = readline.question("OK! would you like [oatmeal], [sandwiches], or [smoothie] bowls? ");
     choiceRunner(usersChoice);
-    //let willUserPrint = readline.question("would you like to print all the recipes [y]es or [n]o? ");
-  }
-    
 
+  }
+
+
+
+  usersPantryCheatCheat = readline.question("OK! would you like pantry cheat cheat how to double recipes [y] or [n]? ");
+  console.log("Pantry Cheat Cheat How to Double Recipes")
+
+if (usersPantryCheatCheat === "y"){
+  const myForEach = ( arr, fn) => {
+    for ( let i = 0 ; i< arr.length ; i ++) {
+      fn([arr[i]])
+    }
+  }
+
+  const doubleRecipeTsp = (num) => {
+    console.log((num * 2)+ " tsp")
+  }
+
+  const doubleRecipeTbs = (num) => {
+    console.log((num * 2)+ " Tbs")
+  }
+
+  const doubleRecipeCups = (num) => {
+    console.log( (num * 2)+ " Cups")
+  }
+
+  console.log(`cheat cheat for teaspoon\n`)
+  myForEach([1 ,2, 3, 4], doubleRecipeTsp);
+
+  console.log(`cheat cheat for Tablespoon\n`)
+  myForEach([1 ,2, 3, 4], doubleRecipeTbs);
+
+
+  console.log(`cheat cheat for Cups\n`)
+  myForEach([1/ 2, 1/3, 1/4, 1/8], doubleRecipeCups)
+
+} else {
+
+  willUserChoose = readline.question("would you like to choose for your[self] or, be given a [random] option again? ");
+  usersChoice = readline.question("OK! would you like [oatmeal], [sandwiches], or [smoothie] bowls? ");
+  choiceRunner(usersChoice);
+
+}
 }
 
 
@@ -427,15 +467,10 @@ let willUserChoose = readline.question("would you like to choose for your[self] 
     }
     
     function SmokedSalmonDillEggsSandwich () {
-      console.log('~~~~~~~~~~ * * * Smoked Salmon Dill Eggs Benedict * * * ~~~~~~~~~~');
-      console.log('');
-      console.log('');
-      console.log(' * PREP 10 MIN | TOTAL 20 MIN | SERVES 2 *');
-      console.log('');
-      console.log('* review : * * * * *  ');
-      console.log('');
-      console.log('~~~~~~~~~~~~~ * * * Ingredients * * * ~~~~~~~~~~~~~');
-      console.log('');
+      console.log('~~~~~~~~~~ * * * Smoked Salmon Dill Eggs Benedict * * * ~~~~~~~~~~\n\n');
+      console.log(' * PREP 10 MIN | TOTAL 20 MIN | SERVES 2 *\n');
+      console.log('* review : * * * * *  \n');
+      console.log('~~~~~~~~~~~~~ * * * Ingredients * * * ~~~~~~~~~~~~~\n');
       
       console.table([
         {
@@ -470,10 +505,8 @@ let willUserChoose = readline.question("would you like to choose for your[self] 
           Ingredients : 'Salt and ground black pepper to taste'
         } 
       ]);
-      console.log('');
-      console.log('~~~~~~~~~~~~~ * * * Instructions * * * ~~~~~~~~~~~~~');
-      console.log('');
-      
+     
+      console.log('\n~~~~~~~~~~~~~ * * * Instructions * * * ~~~~~~~~~~~~~\n');
       console.table([
         {
           Techniques : 'STIR',
@@ -497,15 +530,10 @@ let willUserChoose = readline.question("would you like to choose for your[self] 
     }
     
     function GuacamoleBreakfastSandwich () {
-      console.log('~~~~~~~~~~ * * * GUACAMOLE BREAKFAST SANDWICH * * * ~~~~~~~~~~');
-      console.log('');
-      console.log('');
-      console.log(' * PREP 15 MIN | TOTAL 25 MIN | SERVES 4 *');
-      console.log('');
-      console.log('* review : * * * * * ');
-      console.log('');
-      console.log('~~~~~~~~~~~~~ * * * Ingredients * * * ~~~~~~~~~~~~~');
-      console.log('');
+      console.log('~~~~~~~~~~ * * * GUACAMOLE BREAKFAST SANDWICH * * * ~~~~~~~~~~\n\n');
+      console.log(' * PREP 15 MIN | TOTAL 25 MIN | SERVES 4 *\n');
+      console.log('* review : * * * * * \n');
+      console.log('~~~~~~~~~~~~~ * * * Ingredients * * * ~~~~~~~~~~~~~\n');
       
       console.table([
         {
@@ -528,10 +556,7 @@ let willUserChoose = readline.question("would you like to choose for your[self] 
           Ingredients :'Guacamole'
         } 
       ]);
-      console.log('');
-      console.log('~~~~~~~~~~~~~ * * * Instructions * * * ~~~~~~~~~~~~~');
-      console.log('');
-      
+      console.log('\n~~~~~~~~~~~~~ * * * Instructions * * * ~~~~~~~~~~~~~\n');
       console.table([
         {
           Techniques : 'COOK',
