@@ -66,12 +66,15 @@ console.clear( );
 const choiceRunner = (str) => {
   switch (str) {
     case "oatmeal":
+      console.clear();
       oatmeal(); 
       break;
     case "sandwiches":
+        console.clear();
       sandwiches();
       break;
     default:
+        console.clear();
         smoothieBowls();
   }
 }
@@ -112,8 +115,8 @@ let willUserChoose = readline.question("would you like to choose for your[self] 
   }
 
 
-  askFoeGroceries = readline.question("Do you have all the groceries [y]es or [n]o? ");
-  if (askFoeGroceries === "y") {
+  askForGroceries = readline.question("Do you have all the groceries [y]es or [n]o? ");
+  if (askForGroceries === "y") {
     console.log("Great let get started");
     getRecipe();
   } else {
@@ -125,15 +128,16 @@ let willUserChoose = readline.question("would you like to choose for your[self] 
 
   let willUserPrint = readline.question("would you like to print all the recipes [y]es or [n]o? ");
   function getAllRecipe() {
-    let allRecipe = [ingredientsOvernightOat, smoothieBowls, fruitNutOatmeal, eggBreakfastSandwich, SmokedSalmonDillEggsSandwich, GuacamoleBreakfastSandwich]
-    for (let i = 0; i < allRecipe.length; i++) {
-      return allRecipe[i]
-      
-    }
-    
+    console.clear();
+    ingredientsOvernightOat();
+    smoothieBowls();
+    fruitNutOatmeal();
+    eggBreakfastSandwich();
+    SmokedSalmonDillEggsSandwich();
+    GuacamoleBreakfastSandwich();
   }
   console.log(willUserPrint)
-  let allRecipe = [ingredientsOvernightOat, smoothieBowls, fruitNutOatmeal, eggBreakfastSandwich, SmokedSalmonDillEggsSandwich, GuacamoleBreakfastSandwich]
+  //let allRecipe = [ingredientsOvernightOat, smoothieBowls, fruitNutOatmeal, eggBreakfastSandwich, SmokedSalmonDillEggsSandwich, GuacamoleBreakfastSandwich]
   if (willUserPrint === "y") {
     
     getAllRecipe()
@@ -152,33 +156,26 @@ let willUserChoose = readline.question("would you like to choose for your[self] 
 
   
   function oatmeal() {
-    console.clear ( );
     console.log( "Oatmeal Is The Right Choice :-) GREAT!!! ** IT HAS A PREPARATION TIME of either 5 or 10 minutes.");
       
     let timeChosen = readline.question('** Please choose 5 or 10: ')
       
     if (timeChosen < 6) {
-
+      console.clear();
     ingredientsOvernightOat();
       
     } else {
-
+      console.clear();
       fruitNutOatmeal();
     }
   }
     
     
     function ingredientsOvernightOat () {
-      console.clear();
-      console.log('~~~~~~~~~~ * * * Overnight chia oatmeal in a mason jar * * * ~~~~~~~~~~');
-      console.log('');
-      console.log('');
-      console.log(' * PREP 5 MIN | TOTAL 5 MIN | PLUS OVERNIGHT CHILLING  | SERVES 1 *');
-      console.log('');
-      console.log('* review : * * * * ')
-      console.log('');
-      console.log('~~~~~~~~~~ * * * Ingredients * * * ~~~~~~~~~~');
-      console.log('');
+      console.log('~~~~~~~~~~ * * * Overnight chia oatmeal in a mason jar * * * ~~~~~~~~~~\n\n');
+      console.log(' * PREP 5 MIN | TOTAL 5 MIN | PLUS OVERNIGHT CHILLING  | SERVES 1 *\n');
+      console.log('* review : * * * * \n')
+      console.log('~~~~~~~~~~ * * * Ingredients * * * ~~~~~~~~~~\n');
       
       console.table([
         {
@@ -226,16 +223,10 @@ let willUserChoose = readline.question("would you like to choose for your[self] 
     }
     
     function smoothieBowls () {
-      console.clear();
-      console.log('~~~~~~~~~~ * * * Green goddess smoothie bowl * * * ~~~~~~~~~~');
-      console.log('');
-      console.log('');
-      console.log(' * PREP 10 MIN | TOTAL 10 MIN | SERVES 2 *');
-      console.log('');
-      console.log('* review : * * * *   ');
-      console.log('');
-      console.log('~~~~~~~~~~~~~ * * * Ingredients * * * ~~~~~~~~~~~~~');
-      console.log('');
+      console.log('~~~~~~~~~~ * * * Green goddess smoothie bowl * * * ~~~~~~~~~~\n\n');
+      console.log(' * PREP 10 MIN | TOTAL 10 MIN | SERVES 2 *\n');
+      console.log('* review : * * * *   \n');
+      console.log('~~~~~~~~~~~~~ * * * Ingredients * * * ~~~~~~~~~~~~~\n');
       
       console.table([
         {
@@ -261,9 +252,7 @@ let willUserChoose = readline.question("would you like to choose for your[self] 
           Ingredients : 'Manuka honey, optional'
         } 
       ]);
-      console.log('');
-      console.log('~~~~~~~~~~~~~ * * * Instructions * * * ~~~~~~~~~~~~~');
-      console.log('');
+      console.log('\n~~~~~~~~~~~~~ * * * Instructions * * * ~~~~~~~~~~~~~\n');
       
       console.table([
         {
@@ -280,8 +269,7 @@ let willUserChoose = readline.question("would you like to choose for your[self] 
           Instructions: ' Calories 294, Protein 6 g, Carbohydrates 37 g, Fat 16 g, Fibre 10 g, Sodium 63 mg. Excellent source of Vitamin B6'
         }
       ])
-      console.log('');
-      console.log('** Smart Smoothie toppers **');
+      console.log('\n** Smart Smoothie toppers **');
       
       console.table([
         {
@@ -312,7 +300,6 @@ let willUserChoose = readline.question("would you like to choose for your[self] 
     
     
     function fruitNutOatmeal () {
-      console.clear();
       console.log('~~~~~~~~~~ * * * Fruit and nut steel-cut oats * * * ~~~~~~~~~~');
       console.log('');
       console.log('');
@@ -380,11 +367,10 @@ let willUserChoose = readline.question("would you like to choose for your[self] 
     
     
     function sandwiches () {
-      console.clear ( );
       // console.log( "You entered Sandwiches  :-) GREAT!!! ** WE HAVE PREPARATION TIME BETWEEN 5 To 10 minutes ** Please choose a random time between ");
       
       let userInputNum = readline.question('Sandwiches Is Right Choice  :-) GREAT!!! ** WE HAVE PREPARATION TIME BETWEEN 3 To 25 minutes ** Please choose a random time between "')
-      
+      console.clear();
       if ( userInputNum < 4) {
         eggBreakfastSandwich()
       } else if ( userInputNum >= 5 && userInputNum <= 20 ) {
@@ -395,7 +381,6 @@ let willUserChoose = readline.question("would you like to choose for your[self] 
     }
     
     function eggBreakfastSandwich () {
-      console.clear();
       console.log('~~~~~~~~~~ * * * Egg Breakfast Sandwich * * * ~~~~~~~~~~');
       console.log('');
       console.log('');
@@ -442,7 +427,6 @@ let willUserChoose = readline.question("would you like to choose for your[self] 
     }
     
     function SmokedSalmonDillEggsSandwich () {
-      console.clear();
       console.log('~~~~~~~~~~ * * * Smoked Salmon Dill Eggs Benedict * * * ~~~~~~~~~~');
       console.log('');
       console.log('');
@@ -513,7 +497,6 @@ let willUserChoose = readline.question("would you like to choose for your[self] 
     }
     
     function GuacamoleBreakfastSandwich () {
-      console.clear();
       console.log('~~~~~~~~~~ * * * GUACAMOLE BREAKFAST SANDWICH * * * ~~~~~~~~~~');
       console.log('');
       console.log('');
