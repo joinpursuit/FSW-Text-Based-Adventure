@@ -93,16 +93,26 @@ const startLine = () => {
 
 const designatedRoute = () => {
     console.log("forward")
+    //as youre running you rememerb didn't have any breakfast and you stop for street meat. The vendor asks you if you could watch his cart(yes || or no?)
+        // helpvendor() leads to bathroom function
 }
 
 const shadyShortCut = () => {
     console.log("shady")
+    // youre making your way down a bushy path when a bug jumps on you and talking spider asks you age 
+    // enter number
+    // make a loop that will give prizes point and or time depending on the age
+    // next choice/function call
 }
 
 const boat = () => {
     console.log("boat")
+    // while rowing on the boat you feel a tug at the ore. A droagon appears and asks how oyu got his boat? and as payment for using it you have to retrive something for him 1 being the eaisest and 5 the hardest which do you choose?//could use while loop here.
+    //somthing small for each number choice be sure to display GSP and time
 }
 
 // play()
 startLine()
+
+// think of how you want to end the game... 
  
