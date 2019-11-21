@@ -22,7 +22,8 @@ let current = (`Current time is: ${time} hrs & current GSP is ${GSP}`);
 
 
 //     if (userInput !== "yes" && userInput !== "no") {
-//         console.log("You trip and sprang your ankle on the way out the door. :-( try again next time")
+//         console.log("You trip and sprang your ankle on the way out the door. :-( try again next time");   
+//          startOver();
 //     } else if (userInput === "yes") {
 //         helpMom();
 //     } else {
@@ -51,9 +52,10 @@ let current = (`Current time is: ${time} hrs & current GSP is ${GSP}`);
 //     enRouteToRace()
 // }
 
+
 // const enRouteToRace = () => {
 //     console.clear();
-//     let helpELderlyMan = readline.question("You have to take the bus and train to get to the start line. The train was delayed costing you 30 mins and the bus will take another 10. You see an older man struggling to get across the street do you go to offer him assistence (yes|| no)?").toLowerCase();
+//     let helpELderlyMan = readline.question("You have to take the bus and train to get to the start line. The train was delayed costing you 30 mins and the bus will take another 10. You see an older man struggling to get across the street do you go to offer him assistence (yes || no)?").toLowerCase();
 
 //     let timeCheck = current + "If ypu help him it will cost you 10 minutes"
 
@@ -70,6 +72,7 @@ let current = (`Current time is: ${time} hrs & current GSP is ${GSP}`);
 //     }
 //     startLine()
 // }
+
 
 const startLine = () => {
     console.log(`You can take the designated route in front of you (forward), follow the shady looking shorcut sign in the bushes (right), or cross the lake in the random small boat to the (left)? `)
@@ -91,6 +94,7 @@ const startLine = () => {
     }     
 }
 
+
 const designatedRoute = () => {
     let helpVendor = readline.question("As you're running you see a street vendor who looks like they're in need of help, will you stop to lend him a hand (yes || or)? ").toLowerCase()
     switch (helpVendor) {
@@ -106,11 +110,23 @@ const designatedRoute = () => {
     }
 }
 
+
 const shadyShortCut = () => {
-    let bugDrop = readline.question("As you're making your way through the shady path a bug jumps from a tree and lands on your FACE!!! Fight, run or kill? Which do you choose(fight, run || kill)?")
+    let bugDrop = readline.question("As you're making your way through the shady path a bug jumps from a tree and lands on your FACE!!! Fight, run or kill? Which do you choose(fight, run || kill)? ")
     if (bugDrop === "run") {
-        let stayAndChat = readline.question("As you try to flee the bug begains to speak, do you stop to listen or high tale it out of there (listen || run)?").toLowerCase()
+        let stayAndChat = readline.question("As you try to flee the bug begains to speak, do you stop to listen or high tale it out of there (listen || run)? ").toLowerCase()
+            if (stayAndChat === "listen") {
+                talkingSpider();
+                //MAYBE THIS SHOULD ACTUALLY GO IN THE TALKING SPIDER UFNCTION LOOKS A WEE BIT CONFUSING
+            }
     } else if (bugDrop === "fight" || bugDrop === "kill") {
+        let didYouHearThat = readline.question("as you're fighting to kill the bug you hear someone yell:'Now wait a second man! Will you stop to see where it's coming from or go for the kill squash (squash || look)? ").toLowerCase();
+            if (didYouHearThat === "look") {
+                talkingSpider();
+            } else if (didYouHearThat === "squash") {
+                console.log("The spider bites you and you have to call for help... SOrry try again")
+                startOver()
+            }
         
     }
     // enter number
@@ -118,14 +134,16 @@ const shadyShortCut = () => {
     // next choice/function call
 }
 
+
 const boat = () => {
     console.log("boat")
     // while rowing on the boat you feel a tug at the ore. A droagon appears and asks how oyu got his boat? and as payment for using it you have to retrive something for him 1 being the eaisest and 5 the hardest which do you choose?//could use while loop here.
     //somthing small for each number choice be sure to display GSP and time
 }
 
+
 const bathroomSprint = () => {
-let findStall = readline.question("You've continuned on your route and your stomache starts to bubble, you see a public bathroom coming up. It looks and smell disgusting! But any second longer and you may have an accident!!! There are four stalls, which do you choose (1, 2, 3 || 4) please enter a number?")
+let findStall = readline.question("You've continuned on your route and your stomache starts to bubble, you see a public bathroom coming up. It looks and smell disgusting! But any second longer and you may have an accident!!! There are four stalls, which do you choose (1, 2, 3 || 4) please enter a number? ")
 if (findStall !== Number) {
     console.log("Please enter a number!")//What else do I need to put here? to make sure it runs again? or is aloop even okay here
     // Also decide what will be next after this choice
@@ -144,12 +162,31 @@ for (let i = 0; i < stalls.length; i++) {
 
     }
 }
+
+}
+
+
+const talkingSpider = () => {
+    console.log("this is next")
+}
+
+
+
+const startOver = () => {
+    console.log(`Sorry your run has come to an end. This is your final score ${current} \n Thanks for playing and rememebr to sto and help those around you!!!`)
+    let playAgain = readline.question("Would oyu like to play again (yes || no) ?")
+
+    if (playAgain === "yes") {
+        play();
+    } else {
+        false;
+    }
 }
 
 
 // play()
-// startLine()
-bathroomSprint()
+startLine()
+// bathroomSprint()
 
 // think of how you want to end the game... 
  
