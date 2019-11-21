@@ -76,15 +76,15 @@ const startLine = () => {
     let forkInTheRoad = readline.question(`Which will it be (forward || right || left)? `).toLowerCase()
     switch (forkInTheRoad) {
         case "forward" :
-            console.log("hey")
+            console.log("Forward and on ward lets get to the finishline...")
             designatedRoute()
             break;
         case "right" :
-            console.log("what")
+            console.log("You start your decent down around and through the dirt path in front of you...")
             shadyShortCut()
             break;
         case "left" :
-            console.log("NOW")
+            console.log("You wobble and slightly rock the boat as you climb in and get ready for your short trip across the lake...")
             boat()
             break;
 
@@ -92,14 +92,27 @@ const startLine = () => {
 }
 
 const designatedRoute = () => {
-    console.log("forward")
-    //as youre running you rememerb didn't have any breakfast and you stop for street meat. The vendor asks you if you could watch his cart(yes || or no?)
-        // helpvendor() leads to bathroom function
+    let helpVendor = readline.question("As you're running you see a street vendor who looks like they're in need of help, will you stop to lend him a hand (yes || or)? ").toLowerCase()
+    switch (helpVendor) {
+        case "yes" :
+            GSP += 20;
+            time -= .35;
+            console.log(` ${current} \n The vendor is beyond grateful, he offers you free food as thanks`)
+            bathroomSprint()
+            break;
+        case "no" :
+            console.log(`${current} You're making grate progress!!! We're getting closer to the finishline, don't forget your GSP!`)
+            break;
+    }
 }
 
 const shadyShortCut = () => {
-    console.log("shady")
-    // youre making your way down a bushy path when a bug jumps on you and talking spider asks you age 
+    let bugDrop = readline.question("As you're making your way through the shady path a bug jumps from a tree and lands on your FACE!!! Fight, run or kill? Which do you choose(fight, run || kill)?")
+    if (bugDrop === "run") {
+        let stayAndChat = readline.question("As you try to flee the bug begains to speak, do you stop to listen or high tale it out of there (listen || run)?").toLowerCase()
+    } else if (bugDrop === "fight" || bugDrop === "kill") {
+        
+    }
     // enter number
     // make a loop that will give prizes point and or time depending on the age
     // next choice/function call
@@ -111,8 +124,32 @@ const boat = () => {
     //somthing small for each number choice be sure to display GSP and time
 }
 
+const bathroomSprint = () => {
+let findStall = readline.question("You've continuned on your route and your stomache starts to bubble, you see a public bathroom coming up. It looks and smell disgusting! But any second longer and you may have an accident!!! There are four stalls, which do you choose (1, 2, 3 || 4) please enter a number?")
+if (findStall !== Number) {
+    console.log("Please enter a number!")//What else do I need to put here? to make sure it runs again? or is aloop even okay here
+    // Also decide what will be next after this choice
+}
+let stalls = [1, 2, 3, 4]
+for (let i = 0; i < stalls.length; i++) {
+
+    if (stalls[i] === 1) {
+        console.log("You chose stall 1. Just your luck theres no tissue! You lose 20 minuets trying to find some!")
+        time -= .20
+    } else if (stalls[i] === 2) {
+        console.log("")
+    } else if (stalls[i] === 3) {
+
+    } else if (stalls[i] === 4) {
+
+    }
+}
+}
+
+
 // play()
-startLine()
+// startLine()
+bathroomSprint()
 
 // think of how you want to end the game... 
  
