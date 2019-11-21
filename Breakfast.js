@@ -13,11 +13,11 @@ class Breakfast extends Helper{
         if(this.YN("Do you eat breakfast?")) {
             this.eatBreakfast();
 
-            this.answersPush("Yes");
+            this.answersPush(this.player, "Yes");
         } else {
             this.dontEatBreakfast();
 
-            this.answersPush("No");
+            this.answersPush(this.player, "No");
         }
     
         //Array
@@ -38,28 +38,27 @@ class Breakfast extends Helper{
         this.player.isDead(stomachGrowl);
     
         let stomachChoices = ["Eat a bowl of cereal", "Make pancakes", "Have a coffee"];
-        let index = this.choiceSelection(stomachChoices, "Which action do you take? ")
-        
+        let index = this.choiceSelection(stomachChoices, "Which action do you take? ");
     
         //Array
         this.questionsPush(this.player, "Which action do you take against the hungry stomach?");
     
-        while(!stomachChoices[index] || index === 0) {
+        while(index !== 0 && index !== 1 && index !== 2) {
             console.clear();
             console.log("I do not understand.");
             index = this.choiceSelection(stomachChoices, "Which action do you take? ");
         }
-        
+
         switch(index) {
-            case 1:
+            case 0:
                 this.eatCereal();
                 break;
     
-            case 2:
+            case 1:
                 this.makePancakes(stomachGrowl);
                 break;
     
-            case 3:
+            case 2:
                 this.haveCoffee(stomachGrowl);
                 break;
     
@@ -91,21 +90,20 @@ class Breakfast extends Helper{
         console.log("Out of impatience your stomach growls again, hurting you.");
     
         //Health && Check
-        healthCheck(stomachGrowl);
+        this.player.isDead(stomachGrowl);
     
         console.log("The pancakes fill your stomach, and make you feel refreshed.");
-        health += 10;
-        if(health > 100) {
-            health = 100;
+        this.player.health += 10;
+        if(this.player.health > 100) {
+            this.player.health = 100;
         }
-        console.log(`You heal 10 health! You have ${health}HP.`)
+        console.log(`You heal 10 health! You have ${this.player.health}HP.`)
     
         //Array
-        answersPush("Make pancakes.");
+        this.answersPush(this.player, "Make pancakes.");
     
         //End loop
-        hungryStomachComplete = true;
-        travel();
+        this.travel();
     
     }// End of makePancakes() function
     
@@ -260,6 +258,10 @@ class Breakfast extends Helper{
         endGame();
     
     }// End of walkAway() function
+
+    travel() {
+        console.log("hi");
+    }
     
 }
 
