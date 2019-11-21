@@ -1,54 +1,32 @@
-const readline = require("readline-sync");
-const Player = require("./player.js");
+const Bathroom = require("./Bathroom.js");
+const Helper = require("./Helper.js")
 
-let questionsArr = [];
-let answersArr = [];
+class Game extends Helper{
+    constructor() {
+        super();
+        this.gameStart();
+    } // End of constructor
 
-const newLine = () => {
-    console.log("");
-}
+    gameStart() {
+        console.clear();
+        let nameInput = this.userInput("Please enter your first name. ");
+        this.player.name = nameInput;
 
-const answersPush = (player, answer) => {
-    player.answers.push(answer);
-}
+        this.questionsPush("Enter your first name.");
+        this.answersPush(nameInput);
 
-const questionsPush = (player, question) => {
-    player.questions.push(question);
-}
+        console.log(`Good morning ${this.player.name}!`);
 
-const randomInt = (max, min = 0) => {
-    return Math.floor(Math.random() * max) + min;
-}
+        this.bathroom();
+        this.bathroom.bathroom();
+    } // End of gameStart() function
 
-const userInput = (question) => {
-    return readline.question(question);
-}
+    bathroom(player) {
+        this.bathroom = new Bathroom(player);
+    } // End of bathroom() function
 
-const pressEnter = () => {
-    userInput("Press enter to continue.");
-}
+} // End of Game Class
 
-const choiceCreation = (choiceOne, choiceTwo, choiceThree, choiceFour) => {
-    if(choiceFour) {
-        console.log(`[1] ${choiceOne}`);
-        console.log(`[2] ${choiceTwo}`);
-        console.log(`[3] ${choiceThree}`);
-        console.log(`[4] ${choiceFour}`);
-    } else if(choiceThree) {
-        console.log(`[1] ${choiceOne}`);
-        console.log(`[2] ${choiceTwo}`);
-        console.log(`[3] ${choiceThree}`);
-    } else {
-        console.log(`[1] ${choiceOne}`);
-        console.log(`[2] ${choiceTwo}`);
-    }
-}
+new Game()
 
-const game = () => {
-    console.clear();
-    let nameInput = userInput("Please enter your first name.");
-    let player = new Player(nameInput, 100);
-
-    questionsPush(player, "Enter your first name.");
-    answersPush(player, nameInput);
-}
+module.exports = Game;
