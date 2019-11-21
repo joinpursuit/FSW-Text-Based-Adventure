@@ -176,7 +176,7 @@ class Breakfast extends Helper{
         console.log("The waffle iron is defeated.");
     
         //Array
-        this.answersPush("Unplug the waffle iron");
+        this.answersPush(this.player, "Unplug the waffle iron");
     }// End of unplugWaffleIron() function
 
     splashWater() {
