@@ -1,6 +1,10 @@
-class Breakfast {
-    constructor() {
+const Helper = require("./Helper.js");
+const Travel = require("./Travel.js");
 
+class Breakfast extends Helper{
+    constructor(player) {
+        super()
+        this.player = player;
     }
 
     breakfast() {
@@ -291,3 +295,5 @@ class Breakfast {
     }// End of walkAway() function
     
 }
+
+module.exports = Breakfast;

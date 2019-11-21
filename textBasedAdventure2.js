@@ -18,11 +18,11 @@ class Game extends Helper{
         console.log(`Good morning ${this.player.name}!`);
 
         this.bathroom();
-        this.bathroom.bathroom();
+
     } // End of gameStart() function
 
-    bathroom(player) {
-        this.bathroom = new Bathroom(player);
+    bathroom() {
+        new Bathroom(this.player).bathroom();
     } // End of bathroom() function
 
 } // End of Game Class
