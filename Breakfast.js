@@ -198,20 +198,15 @@ class Breakfast extends Helper{
     
     
     jumpOnIt() {
-        //If the user chooses choice 3 the move kills the waffle iron and hurts the user
         console.clear()
         console.log("You leap into the air and land on the waffle iron. The move is super effective!");
         console.log("The heat from the waffle iron burns your legs.");
         
         //Health && Check
-        healthCheck(15);
+        this.player.isDead(15);
     
         //Array
-        answersPush("Jump on it");
-    
-        //End Loop
-        waffleBattleComplete = true;
-        travel();
+        this.answersPush(this.player, "Jump on it");
     
     }// End of jumpOnIt() function
     
