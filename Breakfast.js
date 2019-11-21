@@ -180,21 +180,19 @@ class Breakfast extends Helper{
     }// End of unplugWaffleIron() function
 
     splashWater() {
-        //If the user chooses choice 2 the move kills both the player and the waffle iron creating a game over
-        newLine();
+        this.newLine();
         console.log("You turn on the sink and throw a load of water at the Waffle Iron.");
         console.log("The water creates a fire and explodes.");
         console.log("The explosion reaches to you and defeats you.");
     
         //Kills the user
-        healthCheck(health);
+        this.player.isDead(this.player.health);
     
         //Array
-        answersPush("Splash water");
+        this.answersPush(this.player, "Splash water");
     
         //End loop
-        waffleBattleComplete = true;
-        endGame();
+        this.endGame(this.player);
     
     }// End of splashWater() function
     

@@ -42,9 +42,10 @@ class Helper {
         userInput("Press enter to continue.");
     } // End of pressEnter() function
 
-    endGame() {
+    endGame(player) {
         //End program review
         this.newLine();
+        this.player = player;
         console.log("Thank you for playing my game!");
         let review = this.userInput("Would you like to see review the answers you gave?(Y/N) ");
         review = review.toUpperCase();
@@ -59,6 +60,7 @@ class Helper {
                     for (let i = 0; i < this.player.answers.length; i++) {
                         console.log(`Question ${i + 1}: ${this.player.questions[i]}`);
                         console.log(`Answer ${i + 1}: ${this.player.answers[i]}`);
+                        this.newLine();
                     } 
 
                     //End loop
