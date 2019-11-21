@@ -24,8 +24,8 @@ class Bathroom extends Helper {
         let firstStep = this.userInput("What's the first step of your bathroom routine? ");
     
         //Arrays
-        this.questionsPush("What's the first step of your bathroom routine? ");
-        this.answersPush(firstStep);
+        this.questionsPush(this.player, "What's the first step of your bathroom routine? ");
+        this.answersPush(this.player, firstStep);
     
         this.newLine();
         console.log(`${firstStep} heals you.`);
@@ -33,7 +33,7 @@ class Bathroom extends Helper {
 
     bathroomHeal(damage) {
         //Array
-        this.questionsPush("How many health points do you recover? ");
+        this.questionsPush(this.player, "How many health points do you recover? ");
 
         //Checking for valid user inputs, loops until the input is valid
         let bathroomHeal = this.userInput("How many health points do you recover? ");
@@ -75,7 +75,7 @@ class Bathroom extends Helper {
         }
    
         //Array
-        this.answersPush(bathroomHeal);
+        this.answersPush(this.player, bathroomHeal);
 
         this.breakfast();
     } // End of bathroomHeal() function

@@ -12,8 +12,8 @@ class Game extends Helper{
         let nameInput = this.userInput("Please enter your first name. ");
         this.player.name = nameInput;
 
-        this.questionsPush("Enter your first name.");
-        this.answersPush(nameInput);
+        this.questionsPush(this.player, "Enter your first name.");
+        this.answersPush(this.player, nameInput);
 
         console.log(`Good morning ${this.player.name}!`);
 

@@ -10,65 +10,39 @@ class Breakfast extends Helper{
     breakfast() {
         console.clear();
         console.log("You finish your bathroom routine and continue about your day.");
-        let breakfastInput = userInput("Do you eat breakfast?(Y/N) ");
+        if(this.YN("Do you eat breakfast?")) {
+            this.eatBreakfast();
+
+            this.answersPush("Yes");
+        } else {
+            this.dontEatBreakfast();
+
+            this.answersPush("No");
+        }
     
         //Array
-        questionsPush("Do you eat breakfast?(Y/N) ");
-    
-        //Checking for valid user inputs, loops until the input is valid
-        breakfastInput = breakfastInput.toUpperCase();
-        let breakfastComplete = false;
-        while (breakfastComplete === false) {
-            switch (breakfastInput) {
-                case "Y":
-                    eatBreakfast();
-    
-                    //Array
-                    answersPush(breakfastInput);
-    
-                    break;
-    
-                case "N":
-                    dontEatBreakfast();
-    
-                    //Array
-                    answersPush(breakfast);
-    
-                    break;
-    
-                default:
-                    //If any of the above are not true then a redo is required
-                    console.clear();
-                    console.log("I do not understand.");
-                    breakfastInput = userInput("Do you eat breakfast?(Y/N) ");
-                    breakfastInput = breakfast.toUpperCase();
-    
-            }// End of breakfast switch
-        }// End of breakfastComplete Validity Loop
+        this.questionsPush(this.player, "Do you eat breakfast?");
+
     }// End of breakfast() function
     
-    
     eatBreakfast() {
-        // If the user eats breakfast then this branch is followed
-    
         console.clear();
-        console.log(`The most important meal of the day! Serving it up ${nameInput}'s way!`);
+        console.log(`The most important meal of the day! Serving it up ${this.player.name}'s way!`);
     
-        newLine();
+        this.newLine();
         console.log("While walking into the kitchen you feel a movement.");
         console.log("A loud growl is felt deep within your stomach!");
     
         // Health && Check
         let stomachGrowl = randomInt(10, 1);
-        healthCheck(stomachGrowl);
+        this.player.isDead(stomachGrowl);
     
         console.log("Which action do you take?");
-        choiceCreation("Eat a bowl of cereal", "Make pancakes", "Have a coffee");
+        this.choiceCreation("Eat a bowl of cereal", "Make pancakes", "Have a coffee");
         let stomachCounter = userInput("(Input a number between 1 and 3) ");
     
         //Array
         questionsPush("Which action do you take against the hungry stomach?");
-    
     
         //Checking for valid user inputs, loops until the input is valid
         let hungryStomachComplete = false;

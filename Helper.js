@@ -14,12 +14,12 @@ class Helper {
         console.log("");
     } // End of newLine() function
 
-    answersPush(answer) {
-        this.player.answersPush(answer);
+    answersPush(player, answer) {
+        player.answersPush(answer);
     } // End of answersPush() function
 
     questionsPush(player, question) {
-        this.player.questionsPush(question);
+        player.questionsPush(question);
     } // End of questionsPush() function
 
     randomInt(max, min = 0) {
@@ -29,6 +29,10 @@ class Helper {
     userInput(question) {
         return readline.question(question);
     } // End of userInput() function
+
+    YN(question) {
+        return readline.keyInYN(question);
+    }
 
     pressEnter() {
         userInput("Press enter to continue.");
