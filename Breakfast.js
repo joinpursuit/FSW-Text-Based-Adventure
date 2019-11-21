@@ -212,20 +212,19 @@ class Breakfast extends Helper{
     
     
     walkAway() {
-        //If the user chooses choice 4 the waffle iron lives, but kills the player and creates a game over
         console.clear();
         console.log("You turn your back to the waffle iron to escape.");
         console.log("The waffle iron's anger grows.");
         console.log("The waffle iron uses 'waffle throw!'");
     
         //Health && Check
-        healthCheck(health);
+        this.player.isDead(this.player.health);
     
         //Array
-        answersPush("Just walk away.");
+        this.answersPush(this.player, "Just walk away.");
     
         //End loop
-        endGame();
+        this.endGame(this.player);
     
     }// End of walkAway() function
 
