@@ -43,7 +43,7 @@ class Breakfast extends Helper{
         //Array
         this.questionsPush(this.player, "Which action do you take against the hungry stomach?");
     
-        while(index !== 0 && index !== 1 && index !== 2) {
+        while(!stomachChoices[index]) {
             console.clear();
             console.log("I do not understand.");
             index = this.choiceSelection(stomachChoices, "Which action do you take? ");
@@ -114,14 +114,13 @@ class Breakfast extends Helper{
         console.log("However your hunger isn't sated. Your stomach is upset.");
     
         //Health && Check
-        healthCheck(stomachGrowl * 2);
+        this.player.isDead(stomachGrowl * 2);
     
         //Array
-        answersPush("Have a coffee");
+        this.answersPush("Have a coffee");
     
         //End loop
-        hungryStomachComplete = true;
-        travel();
+        this.travel();
     
     }// End of haveCoffee() function
     
@@ -132,74 +131,52 @@ class Breakfast extends Helper{
         console.log("The waffle iron uses 'face press'!");
     
         //Health && check
-        let waffleAttack = randomInt(25, 1); // Random Integer between 1 and 25
-        healthCheck(waffleAttack)
+        let waffleAttack = this.randomInt(25, 1); // Random Integer between 1 and 25
+        this.player.isDead(waffleAttack)
     
         //User attack choice
-        newLine();
-        console.log("Which action do you take?");
-        // console.log("1. Unplug the waffle iron.");
-        // console.log("2. Splash water.");
-        // console.log("3. Jump on it.");
-        // console.log("4. Just walk away.");
-        choiceCreation("Unplug the waffle iron", "Splash water", "Jump on it", "Just walk away");
-        let waffleCounter = userInput("(Input a number between 1 and 4) ");
+        this.newLine();
+        let waffleChoices = ["Unplug the waffle iron", "Splash water", "Jump on it", "Just walk away"];
+        let index = this.choiceSelection(waffleChoices, "Which action do you take? ");
     
         //Array
-        questionsPush("Which action do you take against the waffle iron?");
+        this.questionsPush(this.player, "Which action do you take against the waffle iron?");
     
-        //Checking for valid user inputs, loops until the input is valid
-        let waffleBattleComplete = false;
+        while (!waffleChoices[index]) {
+            console.clear();
+            console.log("I do not understand");
+            index = this.choiceSelection(waffleChoices, "Which action do you take? ");
+        }
+
+        switch(index) {
+            case 0:
+                this.unplugWaffleIron();
+                break;
     
-        waffleBattle: 
-        while (waffleBattleComplete === false) {
-            switch(waffleCounter) {
-                case "1":
-                    unplugWaffleIron();
-                    break;
+            case 1:
+                this.splashWater();
+                break;
+
+            case 2:
+                this.jumpOnIt();
+                break;
     
-                case "2":
-                    splashWater();
-                    break;
-    
-                case "3":
-                    jumpOnIt();
-                    break;
-    
-                case "4":
-                    walkAway();
-                    break;
-    
-                default:
-                    //If the user doesn't do a correct input then it asks for a repeat
-                    console.clear();
-                    console.log("I do not understand");
-                    console.log("Which action do you take?");
-                    console.log("1. Unplug the waffle iron.");
-                    console.log("2. Splash water.");
-                    console.log("3. Jump on it.");
-                    console.log("4. Just walk away.");
-                    waffleCounter = userInput("(Input a number between 1 and 4) ");
-    
-            }// End of waffleCounter switch
+            case 3:
+                this.walkAway();
+                break;
         }// End of waffleBattle Validity check
-        travel();
+
+        this.travel();
     }// End of dontEatBreakfast() function
     
     
     unplugWaffleIron() {
-        //If the user chooses choice 1 the move is super effective and defeats the waffle iron
         console.clear();
         console.log("You reach for the plug and yank it out of the socket!");
         console.log("The waffle iron is defeated.");
     
         //Array
-        answersPush("Unplug the waffle iron");
-    
-        //End loop
-        waffleBattleComplete = true;
-        travel();
-    
+        this.answersPush("Unplug the waffle iron");
     }// End of unplugWaffleIron() function
 
     splashWater() {
