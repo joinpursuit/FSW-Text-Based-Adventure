@@ -1,13 +1,9 @@
 const readline = require("readline-sync");
-// Example
-// let nameInput = userInput("Enter your name: ")
-// console.log(`Hello ${nameInput}!  Welcome to my game.`)
 
 // Creating arrays that will display the questions and answers given for the user at the end.
 let arrQuestions = [];
 let arrAnswers = [];
 let health = 100;
-// let playerAlive = true;
 
 //Creating functions for cleaner code
 function healthDamage(damage) {
@@ -235,9 +231,7 @@ function eatBreakfast() {
     healthCheck(stomachGrowl);
 
     console.log("Which action do you take?");
-    console.log("1. Eat a bowl of cereal.");
-    console.log("2. Make pancakes.");
-    console.log("3. Have a coffee.");
+    choiceCreation("Eat a bowl of cereal.", "Make pancakes.", "Hava a coffee");
     let stomachCounter = userInput("(Input a number between 1 and 3) ");
 
     //Array
