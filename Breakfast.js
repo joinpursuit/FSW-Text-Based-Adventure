@@ -34,42 +34,36 @@ class Breakfast extends Helper{
         console.log("A loud growl is felt deep within your stomach!");
     
         // Health && Check
-        let stomachGrowl = randomInt(10, 1);
+        let stomachGrowl = this.randomInt(10, 1);
         this.player.isDead(stomachGrowl);
     
-        console.log("Which action do you take?");
-        this.choiceCreation("Eat a bowl of cereal", "Make pancakes", "Have a coffee");
-        let stomachCounter = userInput("(Input a number between 1 and 3) ");
+        let stomachChoices = ["Eat a bowl of cereal", "Make pancakes", "Have a coffee"];
+        let index = this.choiceSelection(stomachChoices, "Which action do you take? ")
+        
     
         //Array
-        questionsPush("Which action do you take against the hungry stomach?");
+        this.questionsPush(this.player, "Which action do you take against the hungry stomach?");
     
-        //Checking for valid user inputs, loops until the input is valid
-        let hungryStomachComplete = false;
-        hungryStomach:
-            while(hungryStomachComplete === false) {
-                switch(stomachCounter) {
-                    case "1":
-                        eatCereal();
-                        break;
+        while(!stomachChoices[index] || index === 0) {
+            console.clear();
+            console.log("I do not understand.");
+            index = this.choiceSelection(stomachChoices, "Which action do you take? ");
+        }
+        
+        switch(index) {
+            case 1:
+                this.eatCereal();
+                break;
     
-                    case "2":
-                        makePancakes(stomachGrowl);
-                        break;
+            case 2:
+                this.makePancakes(stomachGrowl);
+                break;
     
-                    case "3":
-                        haveCoffee(stomachGrowl);
-                        break;
+            case 3:
+                this.haveCoffee(stomachGrowl);
+                break;
     
-                    default:
-                        console.clear();
-                        console.log("I do not understand.");
-                        console.log("Which action do you take?");
-                        choiceCreation("Eat a bowl of cereal", "Make pancakes", "Have a coffee");
-                        stomachCounter = userInput("(Input a number between 1 and 3) ");
-    
-                }// End of stomachCounter switch
-            }// End of hungryStomach Validity check
+        }// End of stomachCounter switch
     }// End of eatBreakfast() function
     
     
@@ -80,14 +74,13 @@ class Breakfast extends Helper{
         console.log("The milk hurts your stomach but you sate your appetite.");
     
         //Health && Check
-        healthCheck(5);
+        this.player.isDead(5);
     
         //Array
-        answersPush("Eat a bowl of cereal.");
+        this.answersPush(this.player, "Eat a bowl of cereal.");
     
         //End loop
-        hungryStomachComplete = true;
-        travel();
+        this.travel();
     
     }// End of eatCereal() function
     

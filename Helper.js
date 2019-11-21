@@ -32,6 +32,10 @@ class Helper {
 
     YN(question) {
         return readline.keyInYN(question);
+    } // End of YN() function
+
+    choiceSelection(choices, question) {
+        return readline.keyInSelect(choices, question);
     }
 
     pressEnter() {
