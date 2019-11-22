@@ -6,7 +6,7 @@ class Nightmare extends Helper {
         this.player = player;
         this.transportChoice = transportChoice;
         this.bossChoice = bossChoice;
-    }
+    } // End of constructor()
 
     returnHome() {
         this.newLine();
@@ -54,7 +54,7 @@ class Nightmare extends Helper {
                 break;
     
             }// End of nightmareChoice switch
-    }// End of returnHome() function
+    } // End of returnHome() function
 
     travelHomeText() {
         if(this.bossChoice === 1) {
@@ -68,7 +68,7 @@ class Nightmare extends Helper {
                 console.log("You put on your headphones and blast 'Everybody Hurts' by REM on repeat the whole way.");
             }
         }
-    }
+    } // End of travelHomeText() function
 
     returnHomeText() {
         console.log("Your bed calls to you as soon as you enter.");
@@ -82,7 +82,7 @@ class Nightmare extends Helper {
         console.log("It gets close enough for you to finally make out a shape.");
         console.log("It's a nightmare of everything you've encountered in your day today.");
         console.log("It grabs you by your leg and slams you onto the floor.");
-    }
+    } // End of returnHomeText() function
 
     sweepTheLeg() {
         //Array
@@ -118,14 +118,14 @@ class Nightmare extends Helper {
                 break;
     
             }// End of nightmareChoice2 switch
-    }// End of sweepTheLeg() function
+    } // End of sweepTheLeg() function
 
     sweepTheLegText() {
         console.log("You crouch into position, and stick out your leg for the sweep attack.");
         console.log("The nightmare jumps to avoid it.");
         console.log("As it comes back down to the ground you react fast enough to grab its legs and take it down.");
         console.log("The nightmare lets out a loud screech.");
-    }
+    } // End of sweepTheLegText() function
 
     guillotine() {
         //Array
@@ -140,7 +140,7 @@ class Nightmare extends Helper {
         if(this.player.isDead(this.player.health)) {
             this.endGame(this.player);
         }
-    }// End of guillotine() function
+    } // End of guillotine() function
 
     armbar() {
         //Array
@@ -156,7 +156,7 @@ class Nightmare extends Helper {
     
         //End loop
         this.endGame(this.player);
-    }// End of armbar() function
+    } // End of armbar() function
 
     omoplata() {
         //Array
@@ -208,7 +208,7 @@ class Nightmare extends Helper {
             }//End to nightmareChoice3 Switch
         
         this.endGame();
-    }// End of omoplata() function
+    } // End of omoplata() function
 
     goForItsEyes() {
         //Array
@@ -242,7 +242,7 @@ class Nightmare extends Helper {
         this.pressEnter();
     
         this.endGame(this.player);
-    }// End of checkEndTable() Function
+    } // End of checkEndTable() Function
 
     openWindow() {
         //Array
@@ -261,7 +261,7 @@ class Nightmare extends Helper {
         this.pressEnter();
     
         this.endGame();
-    }// End of openWindow() function
+    } // End of openWindow() function
 
 }
 

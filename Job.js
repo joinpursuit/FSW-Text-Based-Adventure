@@ -7,7 +7,7 @@ class Job extends Helper {
         this.player = player;
         this.transportChoice = transportChoice;
         this.bossChoice;
-    }
+    } // End of constructor()
 
     job() {
         this.newLine();
@@ -54,7 +54,7 @@ class Job extends Helper {
                 break;
 
             }// End of responseToBoss switch
-    }// End of job() function
+    } // End of job() function
 
 
     noU() {
@@ -79,7 +79,7 @@ class Job extends Helper {
         this.bossChoice = 1;
         this.returnHome();
 
-    }// End of noU() function
+    } // End of noU() function
 
 
     askWhy() {
@@ -96,7 +96,7 @@ class Job extends Helper {
             this.endGame(this.player);
         }
 
-    }// End of askWhy() function
+    } // End of askWhy() function
 
 
     acceptFate() {
@@ -111,11 +111,11 @@ class Job extends Helper {
         this.bossChoice = 3;
         this.returnHome();
 
-    }// End of acceptFate() function
+    } // End of acceptFate() function
 
     returnHome() {
         new Nightmare(this.player, this.transportChoice, this.bossChoice).returnHome();
-    }
+    } // End of returnHome() function
 }
 
 module.exports = Job;

@@ -4,7 +4,7 @@ class Player {
         this.health = health;
         this.questions = [];
         this.answers = [];
-    }
+    } // End of constructor() 
 
     isDead(damage) {
         this.health -= damage;
@@ -13,11 +13,11 @@ class Player {
             return true;
         }
         return false;
-    }
+    } // End of isDead() function
 
     healthDamage(damage) {
         console.log(`You take ${damage} points of damage! You have ${this.health}HP.`);
-    }
+    } // End of healthDamage() function
 
     choiceCreation(choiceOne, choiceTwo, choiceThree, choiceFour) {
         if(choiceFour) {
@@ -33,7 +33,7 @@ class Player {
             console.log(`[1] ${choiceOne}`);
             console.log(`[2] ${choiceTwo}`);
         }
-    }
+    } // End of choiceCreation() function
 
     answersPush(answer) {
         this.answers.push(answer);

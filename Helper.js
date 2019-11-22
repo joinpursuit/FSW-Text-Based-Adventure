@@ -8,7 +8,7 @@ class Helper {
         this.breakfast;
         this.job;
         this.nightmare;
-    }
+    } // End of constructor
 
     newLine() {
         console.log("");
@@ -36,7 +36,7 @@ class Helper {
 
     choiceSelection(choices, question) {
         return readline.keyInSelect(choices, question);
-    }
+    } // End of choiceSelection() function
 
     pressEnter() {
         this.userInput("Press enter to continue.");

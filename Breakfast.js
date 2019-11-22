@@ -5,7 +5,7 @@ class Breakfast extends Helper{
     constructor(player) {
         super()
         this.player = player;
-    }
+    } // End of constructor()
 
     breakfast() {
         console.clear();
@@ -22,7 +22,7 @@ class Breakfast extends Helper{
 
         }
 
-    }// End of breakfast() function
+    } // End of breakfast() function
     
     eatBreakfast() {
         console.clear();
@@ -63,8 +63,8 @@ class Breakfast extends Helper{
                 this.haveCoffee(stomachGrowl);
                 break;
     
-        }// End of stomachCounter switch
-    }// End of eatBreakfast() function
+        } // End of stomachCounter switch
+    } // End of eatBreakfast() function
     
     
     eatCereal() {
@@ -83,7 +83,7 @@ class Breakfast extends Helper{
         //End loop
         this.travel();
     
-    }// End of eatCereal() function
+    } // End of eatCereal() function
     
     
     makePancakes(stomachGrowl) {
@@ -108,7 +108,7 @@ class Breakfast extends Helper{
         //End loop
         this.travel();
     
-    }// End of makePancakes() function
+    } // End of makePancakes() function
     
     
     haveCoffee(stomachGrowl) {
@@ -126,7 +126,7 @@ class Breakfast extends Helper{
         //End loop
         this.travel();
     
-    }// End of haveCoffee() function
+    } // End of haveCoffee() function
     
     
     dontEatBreakfast() {
@@ -173,7 +173,7 @@ class Breakfast extends Helper{
         }// End of waffleBattle Validity check
 
         this.travel();
-    }// End of dontEatBreakfast() function
+    } // End of dontEatBreakfast() function
     
     
     unplugWaffleIron() {
@@ -183,7 +183,7 @@ class Breakfast extends Helper{
     
         //Array
         this.answersPush(this.player, "Unplug the waffle iron");
-    }// End of unplugWaffleIron() function
+    } // End of unplugWaffleIron() function
 
     splashWater() {
         this.newLine();
@@ -197,7 +197,7 @@ class Breakfast extends Helper{
             this.endGame(this.player);
         }
     
-    }// End of splashWater() function
+    } // End of splashWater() function
     
     
     jumpOnIt() {
@@ -212,7 +212,7 @@ class Breakfast extends Helper{
             this.endGame(this.player);
         }        
     
-    }// End of jumpOnIt() function
+    } // End of jumpOnIt() function
     
     
     walkAway() {
@@ -228,11 +228,11 @@ class Breakfast extends Helper{
             this.endGame(this.player);
         }
     
-    }// End of walkAway() function
+    } // End of walkAway() function
 
     travel() {
         new Travel(this.player).travel();
-    }
+    } // End of travel() function
     
 }
 

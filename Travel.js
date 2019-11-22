@@ -6,7 +6,7 @@ class Travel extends Helper{
         super();
         this.player = player;
         this.transportChoice;
-    }
+    } // End of constructor()
 
     travel() {
         this.newLine();
@@ -84,7 +84,7 @@ class Travel extends Helper{
                 break;
 
         }// End of roadRage switch
-    }// End of drive() function
+    } // End of drive() function
 
 
     insult() {
@@ -98,7 +98,7 @@ class Travel extends Helper{
 
         this.endGame(this.player);
 
-    }// End of insult() function
+    } // End of insult() function
 
 
     honkHorn() {
@@ -115,7 +115,7 @@ class Travel extends Helper{
 
         this.job();
 
-    }// End of honkHorn() function
+    } // End of honkHorn() function
 
 
     ignore() {
@@ -131,7 +131,7 @@ class Travel extends Helper{
 
         this.job();
 
-    }//End of ignore() function
+    } //End of ignore() function
 
     train() {
         //Battle with a subway rat
@@ -186,7 +186,7 @@ class Travel extends Helper{
                     this.giveRatPizza();
                     break;
             }// End of ratCounter switch
-    }// End of train() function
+    } // End of train() function
 
 
     kickRat() {
@@ -203,7 +203,7 @@ class Travel extends Helper{
             this.endGame(this.player);
         }
 
-    }// End of kickRat() function
+    } // End of kickRat() function
 
 
     pickUpRat() {
@@ -224,7 +224,7 @@ class Travel extends Helper{
         //End loop
         this.job();
 
-    }// End of pickUpRat() function
+    } // End of pickUpRat() function
 
 
     walkAwayFromRat() {
@@ -240,7 +240,7 @@ class Travel extends Helper{
         //End loop
         this.job();
 
-    }// End of walkAwayFromRat() function
+    } // End of walkAwayFromRat() function
 
 
     giveRatPizza() {
@@ -258,11 +258,11 @@ class Travel extends Helper{
         //End loop
         this.job();
 
-    }// End of giveRatPizza() function
+    } // End of giveRatPizza() function
 
     job() {
         new Job(this.player, this.transportChoice).job();
-    }
+    } // End of job() function
 }
 
 module.exports = Travel;
