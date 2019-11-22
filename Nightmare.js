@@ -1,80 +1,89 @@
-function returnHome(bossChoice, transportChoice) {
-    newLine();
-    switch(bossChoice) {
-        case 1:
+const Helper = require("./Helper.js");
+
+class Nightmare extends Helper {
+    constructor(player, transportChoice, bossChoice) {
+        super();
+        this.player = player;
+        this.transportChoice = transportChoice;
+        this.bossChoice = bossChoice;
+    }
+
+    returnHome() {
+        this.newLine();
+
+        if(this.bossChoice === 1) {
             console.log("After your long first day of being boss you return home exhausted.");
+        } else {
+            if(this.transportChoice === 1) {
+                console.log("After packing your bags you return to your car.");
+                console.log("You drive home listening to 'Everybody Hurts' by REM on repeat the whole way.");
+            } else {
+                console.log("After packing your bags you go return to the train station.");
+                console.log("You put on your headphones and blast 'Everybody Hurts' by REM on repeat the whole way.");
+            }
+        }
+    
+        this.returnHomeText();
+    
+        //Health && Check
+        let slamDamage = this.randomInt(25, 1);
+        this.player.isDead(slamDamage);
+    
+        this.newLine();
+        console.log("You slowly stand back on your feet.");
+        let nightmareChoices = ["Sweep the leg.", "Go for it's eyes.", "Check your end table drawer.", "Open the window."];
+        let index = this.choiceSelection(nightmareChoices, "Which action do you take?");
+    
+        //Array
+        this.questionsPush(this.player, "Which action do you take against the nightmare (1)");
+    
+        //Checking for valid user inputs, loops until the input is valid
+        while(!nightmareChoices[index]) {
+            console.clear();
+            console.log("I do not understand.");
+            index = this.choiceSelection(nightmareChoices, "Which action do you take?");
+        }
             
-        case 3:
-            switch(transportChoice) {
-                case 1:
-                    console.log("After packing your bags you return to your car.");
-                    console.log("You drive home listening to 'Everybody Hurts' by REM on repeat the whole way.");
+        switch(index) {
+            case 0:
+                // this.sweepTheLeg();
+                console.log(1);
+                break;
+    
+            case 1:
+                // this.goForItsEyes();
+                console.log(2);
+                break;
+                
+            case 2:
+                console.log(3);
+                // this.checkEndTable();
+                break;
+    
+            case 3:
+                console.log(4);
+                // this.openWindow();
+                break;
+    
+            }// End of nightmareChoice switch
+    }// End of returnHome() function
 
-                case 2:
-                    console.log("After packing your bags you go return to the train station.");
-                    console.log("You put on your headphones and blast 'Everybody Hurts' by REM on repeat the whole way.");
+    returnHomeText() {
+        console.log("Your bed calls to you as soon as you enter.");
+        console.log("You slowly, and groggily make your way to your room.");
+        console.log("As soon as you enter, you collapse.");
+        console.log("You drift off into a deep sleep.");
+        console.log("You awake in a pitch black room. You can only see a foot in front of you.");
+        console.log("Two red lights flash in front of you, but you can't make out what it is.");
+        console.log("'Who's there?' You scream out.");
+        console.log("The lights start moving closer, and closer to you.");
+        console.log("It gets close enough for you to finally make out a shape.");
+        console.log("It's a nightmare of everything you've encountered in your day today.");
+        console.log("It grabs you by your leg and slams you onto the floor.");
+    }
+}
 
-            }// End of transportChoice switch
-    }// End of bossChoice switch
 
-    console.log("Your bed calls to you as soon as you enter.");
-    console.log("You slowly, and groggily make your way to your room.");
-    console.log("As soon as you enter, you collapse.");
-    console.log("You drift off into a deep sleep.");
-    console.log("You awake in a pitch black room. You can only see a foot in front of you.");
-    console.log("Two red lights flash in front of you, but you can't make out what it is.");
-    console.log("'Who's there?' You scream out.");
-    console.log("The lights start moving closer, and closer to you.");
-    console.log("It gets close enough for you to finally make out a shape.");
-    console.log("It's a nightmare of everything you've encountered in your day today.");
-    console.log("It grabs you by your leg and slams you onto the floor.");
-
-    //Health && Check
-    slamDamage = randomInt(25, 1);
-    healthCheck(slamDamage);
-
-    newLine();
-    console.log("You slowly stand back on your feet.");
-    console.log("Which action do you take?");
-    console.log("1. Sweep the leg.");
-    console.log("2. Go for it's eyes.");
-    console.log("3. Check your end table drawer.");
-    console.log("4. Open the window.");
-    let nightmareChoice = userInput("(Input a number between 1 and 4) ");
-
-    //Array
-    questionsPush("Which action do you take against the nightmare (1)");
-
-    //Checking for valid user inputs, loops until the input is valid
-    let nightmareChoice1Complete = false;
-    nightmareChoice1:
-    while(nightmareChoice1Complete === false) {
-        switch(nightmareChoice) {
-            case "1":
-                sweepTheLeg();
-
-            case "2":
-                goForItsEyes();
-            
-            case "3":
-                checkEndTable();
-
-            case "4":
-                openWindow();
-
-            default:
-                console.clear();
-                console.log("I do not understand.");
-                console.log("Which action do you take?");
-                console.log("1. Sweep the leg.");
-                console.log("2. Go for it's eyes.");
-                console.log("3. Check your end table drawer.");
-                console.log("4. Open the window.");
-                nightmareChoice = userInput("(Input a number between 1 and 4) ");
-
-        }// End of nightmareChoice switch
-    }// End of nightmareChoice1 Validity check
-}// End of returnHome() function
 
 
 function sweepTheLeg() {
@@ -289,3 +298,4 @@ function openWindow() {
     endGame();
 }// End of openWindow() function
 
+module.exports = Nightmare;

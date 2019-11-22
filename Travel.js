@@ -171,15 +171,15 @@ class Travel extends Helper{
                     break;
 
                 case 1:
-                    this.pickUpRat(transportChoice);
+                    this.pickUpRat();
                     break;
 
                 case 2:
-                    this.walkAwayFromRat(transportChoice);
+                    this.walkAwayFromRat();
                     break;
 
                 case 3:
-                    this.giveRatPizza(transportChoice);
+                    this.giveRatPizza();
                     break;
             }// End of ratCounter switch
     }// End of train() function
@@ -236,7 +236,7 @@ class Travel extends Helper{
     }// End of walkAwayFromRat() function
 
 
-    giveRatPizza(transportChoice) {
+    giveRatPizza() {
         console.clear();
         console.log("You grab the slice of pizza and throw it next to the rat.");
         console.log("The rat looks at you, then the pizza, then back at you.");
@@ -249,11 +249,11 @@ class Travel extends Helper{
         this.answersPush(this.player, "Give the rat the pizza left on the bench.");
 
         //End loop
-        this.job(transportChoice);
+        this.job();
 
     }// End of giveRatPizza() function
 
-    job(transportChoice) {
+    job() {
         new Job(this.player, this.transportChoice).job();
     }
 }

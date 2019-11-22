@@ -114,7 +114,7 @@ class Job extends Helper {
     }// End of acceptFate() function
 
     returnHome() {
-        new Nightmare(this.player, this.transportChoice, this.bossChoice);
+        new Nightmare(this.player, this.transportChoice, this.bossChoice).returnHome();
     }
 }
 
