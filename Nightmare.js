@@ -17,7 +17,9 @@ class Nightmare extends Helper {
     
         //Health && Check
         let slamDamage = this.randomInt(25, 1);
-        this.player.isDead(slamDamage);
+        if(this.player.isDead(slamDamage)) {
+            this.endGame(this.player);
+        }
     
         this.newLine();
         console.log("You slowly stand back on your feet.");
@@ -135,10 +137,9 @@ class Nightmare extends Helper {
         console.log("It crushes you between itself and the floor.");
     
         //Health && check
-        this.player.isDead(this.player.health);
-    
-        //End loop
-        this.endGame(this.player);
+        if(this.player.isDead(this.player.health)) {
+            this.endGame(this.player);
+        }
     }// End of guillotine() function
 
     armbar() {
@@ -170,7 +171,9 @@ class Nightmare extends Helper {
     
         //Health Check
         let wallSlam = this.randomInt(15, 1);
-        this.player.isDead(wallSlam);
+        if(this.player.isDead(wallSlam)) {
+            this.endGame(this.player);
+        }
     
         this.newLine();
         console.log("The nightmare stands back up at the same time as you.");
@@ -217,12 +220,9 @@ class Nightmare extends Helper {
         console.log("When it stops it's already too late for you.");
     
         //Health && check
-        this.player.isDead(this.player.health);
-    
-        this.pressEnter();
-    
-        this.endGame(this.player);
-        
+        if(this.player.isDead(this.player.health)) {
+            this.endGame(this.player);
+        } 
     } //End of goForItsEyes() function
 
     checkEndTable() {

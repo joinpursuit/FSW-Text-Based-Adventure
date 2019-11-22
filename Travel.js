@@ -53,7 +53,9 @@ class Travel extends Helper{
 
         //Health && Check
         let roadRageInsultDamage = this.randomInt(25, 1);
-        this.player.isDead(roadRageInsultDamage);
+        if(this.player.isDead(roadRageInsultDamage)) {
+            this.endGame(this.player);
+        }
                 
         this.newLine();
         let roadRageChoices = ["Insult back", "Honk your horn", "Ignore the road rage"];
@@ -148,7 +150,9 @@ class Travel extends Helper{
 
         //Health && Check
         let ratAttack = this.randomInt(10, 1);
-        this.player.isDead(ratAttack);
+        if(this.player.isDead(ratAttack)) {
+            this.endGame(this.player);
+        }
 
         this.newLine();
         let ratChoices = ["Kick the rat", "Pick the rat up and throw it at the train.", 
@@ -195,7 +199,9 @@ class Travel extends Helper{
         this.answersPush(this.player, "Kick the rat.");
 
         //Health && Check
-        this.player.isDead(this.player.health);
+        if(this.player.isDead(this.player.health)) {
+            this.endGame(this.player);
+        }
 
     }// End of kickRat() function
 
@@ -206,13 +212,14 @@ class Travel extends Helper{
         console.log("You grab the rat by it's tail and throw it at the incoming train.");
         console.log("The rat explodes on impact and it's remains splatter you.");
 
+        this.answersPush(this.player, "Pick the rat up and throw it at the train.");
+
         //Health && Check
-        this.player.isDead(5);
+        if(this.player.isDead(5)) {
+            this.endGame(this.player);
+        }
 
         console.log("Your train arrives and you continue on your adventure to work.");
-
-        //Array
-        this.answersPush(this.player, "Pick the rat up and throw it at the train.");
 
         //End loop
         this.job();

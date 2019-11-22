@@ -23,7 +23,9 @@ class Job extends Helper {
 
         //Health && Check
         let youreFired = this.randomInt(30, 1);
-        this.player.isDead(youreFired);
+        if(this.player.isDead(youreFired)) {
+            this.endGame(this.player);
+        }
 
         let bossResponse = ["'No u.'", "Ask why.", "Accept your fate."];
         let index = this.choiceSelection(bossResponse, "Which action do you take?");
@@ -87,14 +89,12 @@ class Job extends Helper {
         console.log("The last thing you see is a flash of light.");
         console.log("You are unable to comprehend what had just happened.");
 
-        //Health && Check
-        this.player.isDead(this.player.health);
-
-        //Array
         this.answersPush(this.player, "Ask why.");
 
-        //End loop & Program            
-        this.endGame(this.player);
+        //Health && Check
+        if(this.player.isDead(this.player.health)) {
+            this.endGame(this.player);
+        }
 
     }// End of askWhy() function
 

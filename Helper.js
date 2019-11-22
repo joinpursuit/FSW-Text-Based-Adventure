@@ -45,46 +45,25 @@ class Helper {
     reflect() {
         console.log("You reflect on the long day you've had, proud of everything you've accomplished.");
         console.log("You get back in bed and knock out, only to start it all again tomorrow.");
-    }
+    } // End of reflect() function
 
     endGame(player) {
         //End program review
-        this.newLine();
-        this.player = player;
+        this.pressEnter();
+        console.clear()
         console.log("Thank you for playing my game!");
-        let review = this.userInput("Would you like to see review the answers you gave?(Y/N) ");
-        review = review.toUpperCase();
 
-        //Checking for valid user inputs, loops until the input is valid
-        let reviewComplete = false;
-        reviewComplete: 
-        while (reviewComplete === false) {
-            switch (review) {
-                case "Y":
-                    console.clear();
-                    for (let i = 0; i < this.player.answers.length; i++) {
-                        console.log(`Question ${i + 1}: ${this.player.questions[i]}`);
-                        console.log(`Answer ${i + 1}: ${this.player.answers[i]}`);
-                        this.newLine();
-                    } 
-
-                    //End loop
-                    reviewComplete = true;
-                    process.exit();
-
-                case "N":
-                    console.log("I hope you enjoyed the game!");
-
-                    //End loop
-                    reviewComplete = true;
-                    process.exit();
-
-                default:
-                    console.log("I do not understand.");
-                    review = userInput("Would you like to see review the answers you gave?(Y/N) ");
-
-            }// End of reviewComplete switch
-        }// End of reviewComplete validity check
+        if(readline.keyInYN("Would you like to see review the answers you gave?")) {
+            console.clear();
+            for (let i = 0; i < player.answers.length; i++) {
+                console.log(`Question ${i + 1}: ${player.questions[i]}`);
+                console.log(`Answer ${i + 1}: ${player.answers[i]}`);
+                process.exit();
+            } 
+        } else {
+            console.log("I hope you enjoyed the game!");
+            process.exit();
+        }
     } // End of endGame() function
 }
 

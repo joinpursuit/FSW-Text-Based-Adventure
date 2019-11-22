@@ -10,18 +10,17 @@ class Breakfast extends Helper{
     breakfast() {
         console.clear();
         console.log("You finish your bathroom routine and continue about your day.");
+
+        this.questionsPush(this.player, "Do you eat breakfast?");
         if(this.YN("Do you eat breakfast?")) {
+            this.answersPush(this.player, "Yes");
             this.eatBreakfast();
 
-            this.answersPush(this.player, "Yes");
         } else {
+            this.answersPush(this.player, "No");
             this.dontEatBreakfast();
 
-            this.answersPush(this.player, "No");
         }
-    
-        //Array
-        this.questionsPush(this.player, "Do you eat breakfast?");
 
     }// End of breakfast() function
     
@@ -35,7 +34,9 @@ class Breakfast extends Helper{
     
         // Health && Check
         let stomachGrowl = this.randomInt(10, 1);
-        this.player.isDead(stomachGrowl);
+        if(this.player.isDead(stomachGrowl)) {
+            this.endGame(this.player);
+        }
     
         let stomachChoices = ["Eat a bowl of cereal", "Make pancakes", "Have a coffee"];
         let index = this.choiceSelection(stomachChoices, "Which action do you take? ");
@@ -72,11 +73,12 @@ class Breakfast extends Helper{
         console.log("As you're eating you remember that you're lactose intolerant!");
         console.log("The milk hurts your stomach but you sate your appetite.");
     
-        //Health && Check
-        this.player.isDead(5);
-    
-        //Array
         this.answersPush(this.player, "Eat a bowl of cereal.");
+
+        //Health && Check
+        if(this.player.isDead(5)) {
+            this.endGame(this.player);
+        }        
     
         //End loop
         this.travel();
@@ -89,8 +91,12 @@ class Breakfast extends Helper{
         console.log("The waft of the pancakes as they cook on the pan alert your stomach.");
         console.log("Out of impatience your stomach growls again, hurting you.");
     
+        this.answersPush(this.player, "Make pancakes.");
+
         //Health && Check
-        this.player.isDead(stomachGrowl);
+        if(this.player.isDead(stomachGrowl)) {
+            this.endGame(this.player);
+        }
     
         console.log("The pancakes fill your stomach, and make you feel refreshed.");
         this.player.health += 10;
@@ -98,9 +104,6 @@ class Breakfast extends Helper{
             this.player.health = 100;
         }
         console.log(`You heal 10 health! You have ${this.player.health}HP.`)
-    
-        //Array
-        this.answersPush(this.player, "Make pancakes.");
     
         //End loop
         this.travel();
@@ -112,12 +115,13 @@ class Breakfast extends Helper{
         console.clear();
         console.log("The coffee energizes you.");
         console.log("However your hunger isn't sated. Your stomach is upset.");
+
+        this.answersPush(this.player, "Have a coffee");
     
         //Health && Check
-        this.player.isDead(stomachGrowl * 2);
-    
-        //Array
-        this.answersPush(this.player, "Have a coffee");
+        if(this.player.isDead(stomachGrowl * 2)) {
+            this.endGame(this.player);
+        }
     
         //End loop
         this.travel();
@@ -132,7 +136,9 @@ class Breakfast extends Helper{
     
         //Health && check
         let waffleAttack = this.randomInt(25, 1); // Random Integer between 1 and 25
-        this.player.isDead(waffleAttack)
+        if(this.player.isDead(waffleAttack)) {
+            this.endGame(this.player);
+        }
     
         //User attack choice
         this.newLine();
@@ -184,15 +190,12 @@ class Breakfast extends Helper{
         console.log("You turn on the sink and throw a load of water at the Waffle Iron.");
         console.log("The water creates a fire and explodes.");
         console.log("The explosion reaches to you and defeats you.");
-    
-        //Kills the user
-        this.player.isDead(this.player.health);
-    
-        //Array
         this.answersPush(this.player, "Splash water");
     
-        //End loop
-        this.endGame(this.player);
+        //Kills the user
+        if(this.player.isDead(this.player.health)) {
+            this.endGame(this.player);
+        }
     
     }// End of splashWater() function
     
@@ -202,11 +205,12 @@ class Breakfast extends Helper{
         console.log("You leap into the air and land on the waffle iron. The move is super effective!");
         console.log("The heat from the waffle iron burns your legs.");
         
-        //Health && Check
-        this.player.isDead(15);
-    
-        //Array
         this.answersPush(this.player, "Jump on it");
+
+        //Health && Check
+        if(this.player.isDead(15)) {
+            this.endGame(this.player);
+        }        
     
     }// End of jumpOnIt() function
     
@@ -216,15 +220,13 @@ class Breakfast extends Helper{
         console.log("You turn your back to the waffle iron to escape.");
         console.log("The waffle iron's anger grows.");
         console.log("The waffle iron uses 'waffle throw!'");
-    
-        //Health && Check
-        this.player.isDead(this.player.health);
-    
-        //Array
+
         this.answersPush(this.player, "Just walk away.");
     
-        //End loop
-        this.endGame(this.player);
+        //Health && Check
+        if(this.player.isDead(this.player.health)) {
+            this.endGame(this.player);
+        }
     
     }// End of walkAway() function
 

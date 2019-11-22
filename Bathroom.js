@@ -14,7 +14,9 @@ class Bathroom extends Helper {
     
         //Health && Check
         let breathDamage = this.randomInt(15, 1); // Takes a random integer for damage
-        this.player.isDead(breathDamage);
+        if(this.player.isDead(breathDamage)) {
+            this.endGame(this.player);
+        }
 
         this.firstStep();
         this.bathroomHeal(breathDamage);
