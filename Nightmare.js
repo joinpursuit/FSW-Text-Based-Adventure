@@ -11,17 +11,7 @@ class Nightmare extends Helper {
     returnHome() {
         this.newLine();
 
-        if(this.bossChoice === 1) {
-            console.log("After your long first day of being boss you return home exhausted.");
-        } else {
-            if(this.transportChoice === 1) {
-                console.log("After packing your bags you return to your car.");
-                console.log("You drive home listening to 'Everybody Hurts' by REM on repeat the whole way.");
-            } else {
-                console.log("After packing your bags you go return to the train station.");
-                console.log("You put on your headphones and blast 'Everybody Hurts' by REM on repeat the whole way.");
-            }
-        }
+        this.travelHomeText();
     
         this.returnHomeText();
     
@@ -46,8 +36,7 @@ class Nightmare extends Helper {
             
         switch(index) {
             case 0:
-                // this.sweepTheLeg();
-                console.log(1);
+                this.sweepTheLeg();
                 break;
     
             case 1:
@@ -68,6 +57,20 @@ class Nightmare extends Helper {
             }// End of nightmareChoice switch
     }// End of returnHome() function
 
+    travelHomeText() {
+        if(this.bossChoice === 1) {
+            console.log("After your long first day of being boss you return home exhausted.");
+        } else {
+            if(this.transportChoice === 1) {
+                console.log("After packing your bags you return to your car.");
+                console.log("You drive home listening to 'Everybody Hurts' by REM on repeat the whole way.");
+            } else {
+                console.log("After packing your bags you go return to the train station.");
+                console.log("You put on your headphones and blast 'Everybody Hurts' by REM on repeat the whole way.");
+            }
+        }
+    }
+
     returnHomeText() {
         console.log("Your bed calls to you as soon as you enter.");
         console.log("You slowly, and groggily make your way to your room.");
@@ -81,55 +84,57 @@ class Nightmare extends Helper {
         console.log("It's a nightmare of everything you've encountered in your day today.");
         console.log("It grabs you by your leg and slams you onto the floor.");
     }
+
+    sweepTheLeg() {
+        //Array
+        this.answersPush(this.player, "Sweep the leg.")
+    
+        console.clear();
+        this.sweepTheLegText();
+
+        let sweepTheLegChoices = ["Put it in a guillotine.", "Put it in an armbar.", "Put it in an Omoplata."];
+        let index = this.choiceSelection(sweepTheLegChoices, "Which action do you take?");
+    
+        //Array
+        this.questionsPush(this.player, "Which action do you take against the nightmare (2)");
+    
+        //Checking for valid user inputs, loops until the input is valid
+        while(!sweepTheLegChoices[index]) {
+            console.clear();
+            console.log("I do not understand.");
+            index = this.choiceSelection(sweepTheLegChoices, "Which action do you take?");
+        }
+
+        switch(index) {
+            case 0:
+                this.guillotine();
+                break;
+                
+            case 1:
+                // this.armbar();
+                break;
+    
+            case 2:
+                // this.omoplata();
+                break;
+    
+            }// End of nightmareChoice2 switch
+    }// End of sweepTheLeg() function
+
+    sweepTheLegText() {
+        console.log("You crouch into position, and stick out your leg for the sweep attack.");
+        console.log("The nightmare jumps to avoid it.");
+        console.log("As it comes back down to the ground you react fast enough to grab its legs and take it down.");
+        console.log("The nightmare lets out a loud screech.");
+    }
+
+
 }
 
 
 
 
-function sweepTheLeg() {
-    //Array
-    answersPush("Sweep the leg.")
 
-    console.clear();
-    console.log("You crouch into position, and stick out your leg for the sweep attack.");
-    console.log("The nightmare jumps to avoid it.");
-    console.log("As it comes back down to the ground you react fast enough to grab its legs and take it down.");
-    console.log("The nightmare lets out a loud screech.");
-    console.log("Which action do you take?");
-    console.log("1. Put it in a guillotine.");
-    console.log("2. Put it in an armbar.");
-    console.log("3. Put it in an Omoplata.");
-    let nightmareChoice2 = userInput("(Input a number between 1 and 3) ");
-
-    //Array
-    questionsPush("Which action do you take against the nightmare (2)");
-
-    //Checking for valid user inputs, loops until the input is valid
-    let nightmareChoice2Complete = false;
-    nightmareChoice2:
-    while(nightmareChoice2Complete === false) {
-        switch(nightmareChoice2) {
-            case "1":
-                guillotine();
-            
-            case "2":
-                armbar();
-
-            case "3":
-                omoplata();
-
-            default:
-                console.clear();
-                console.log("I do not understand.");
-                console.log("Which action do you take?");
-                console.log("1. Put it in a guillotine.");
-                console.log("2. Put it in an armbar.");
-                console.log("3. Put it in an Omoplata.");
-                nightmareChoice2 = userInput("(Input a number between 1 and 3) ");
-
-        }// End of nightmareChoice2 switch
-    }// End of nightmareChoice2 Validity check
-}// End of sweepTheLeg() function
 
 
 function guillotine() {
