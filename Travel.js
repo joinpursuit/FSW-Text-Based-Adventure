@@ -125,11 +125,9 @@ class Travel extends Helper{
         console.log("You continue driving to your job.");
 
         //Array
-        answersPush("Ignore the road rager");
+        this.answersPush(this.player, "Ignore the road rager");
 
-        //End loop
-        roadRageComplete = true;
-        job(transportChoice);
+        this.job(transportChoice);
 
     }//End of ignore() function
 
