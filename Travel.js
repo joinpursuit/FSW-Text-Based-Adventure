@@ -92,11 +92,9 @@ class Travel extends Helper{
         console.log(`You take ${this.player.health} points of damage!`);
 
         //Array
-        this.answersPush("Insult back");
+        this.answersPush(this.player, "Insult back");
 
-        //End loop & program
-        roadRageComplete = true;
-        healthCheck(health);
+        this.endGame(this.player);
 
     }// End of insult() function
 
@@ -111,11 +109,9 @@ class Travel extends Helper{
         console.log("You continue driving to your job.");
 
         //Array
-        answersPush("Honk your horn");
+        this.answersPush(this.player, "Honk your horn");
 
-        //End loop
-        roadRageComplete = true;
-        job(transportChoice);
+        this.job(transportChoice);
 
     }// End of honkHorn() function
 
@@ -271,6 +267,10 @@ class Travel extends Helper{
         job(transportChoice);
 
     }// End of giveRatPizza() function
+
+    job(transportChoice) {
+        console.log("Job");
+    }
 }
 
 module.exports = Travel;
