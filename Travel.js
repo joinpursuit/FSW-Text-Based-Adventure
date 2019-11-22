@@ -30,8 +30,7 @@ class Travel extends Helper{
                 break;
 
             case 1:
-                // train();
-                console.log("2");
+                this.train();
                 break;
 
         } // End of transportation switch
@@ -228,11 +227,10 @@ class Travel extends Helper{
         console.log("Your train arrives and you continue on your adventure to work.");
 
         //Array
-        answersPush("Walk to the other side of the platform.");
+        this.answersPush(this.player, "Walk to the other side of the platform.");
 
         //End loop
-        ratComplete = true;
-        job(transportChoice);
+        this.job(transportChoice);
 
     }// End of walkAwayFromRat() function
 
@@ -247,11 +245,10 @@ class Travel extends Helper{
         console.log("Your train arrives and you continue on your adventure to work.");
 
         //Array
-        answersPush("Give the rat the pizza left on the bench.");
+        this.answersPush(this.player, "Give the rat the pizza left on the bench.");
 
         //End loop
-        ratComplete = true;
-        job(transportChoice);
+        this.job(transportChoice);
 
     }// End of giveRatPizza() function
 

@@ -117,7 +117,7 @@ class Breakfast extends Helper{
         this.player.isDead(stomachGrowl * 2);
     
         //Array
-        this.answersPush("Have a coffee");
+        this.answersPush(this.player, "Have a coffee");
     
         //End loop
         this.travel();
