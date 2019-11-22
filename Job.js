@@ -24,41 +24,37 @@ class Job extends Helper {
         let youreFired = this.randomInt(30, 1);
         this.player.isDead(youreFired);
 
-        console.log("Which action do you take?");
-        console.log("1. 'No u'");
-        console.log("2. Ask why.");
-        console.log("3. Accept your fate");
-        let responseToBoss = userInput("(Input a number between 1 and 3) ");
+        let bossResponse = ["'No u.'", "Ask why.", "Accept your fate."];
+        let index = this.choiceSelection(bossResponse, "Which action do you take?");
 
         //Array
-        questionsPush("Which action do you take against your intimidating boss?");
+        this.questionsPush(this.player, "Which action do you take against your intimidating boss?");
 
         //Checking for valid user inputs, loops until the input is valid
-        let intimadtingBossComplete = false;
         let bossChoice = 0;
-        intimadtingBossComplete:
-        while(intimadtingBossComplete === false) {
-            switch(responseToBoss) {
-                case "1":
-                    noU(transportChoice, bossChoice);
 
-                case "2":
-                    askWhy();
+        while(!bossResponse[index]) {
+            console.clear();
+            console.log("I do not understand.");
+            index = this.choiceSelection(bossResponse, "Which action do you take?");
+        }
 
-                case "3":
-                    acceptFate(transportChoice, bossChoice);
+        switch(index) {
+            case 0:
+                this.noU(transportChoice, bossChoice);
+                break;
 
-                default:
-                    newLine();
-                    console.log("I do not understand.");
-                    console.log("Which action do you take?");
-                    console.log("1. 'No u'");
-                    console.log("2. Ask why.");
-                    console.log("3. Accept your fate");
-                    responseToBoss = userInput("(Input a number between 1 and 3) ");
+            case 1:
+                // this.askWhy();
+                console.log(2);
+                break;
+
+            case 2:
+                // this.acceptFate(transportChoice, bossChoice);
+                console.log(3);
+                break;
 
             }// End of responseToBoss switch
-        }// End of intimidatingBoss Validity check
     }// End of job() function
 
 
