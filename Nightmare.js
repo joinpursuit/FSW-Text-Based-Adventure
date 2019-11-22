@@ -244,25 +244,25 @@ class Nightmare extends Helper {
         this.endGame(this.player);
     }// End of checkEndTable() Function
 
+    openWindow() {
+        //Array
+        this.answersPush(this.player, "Open the window.");
+    
+        console.clear();
+        console.log("You turn around to the window behind you and start to open it.");
+        console.log("The nightmare, as it realizes you are trying to escape stomps over to you.");
+        console.log("You're too fast and leap out of the open window.");
+        console.log("Underestimating the size of the nightmare you begin to celebrate your escape.");
+        console.log("As you're celebrating the nightmare bursts the wall like the Kool-Aid man. You'd almost expect for it to scream 'Oh yeah!'");
+        console.log("Breaking free from your shock you run out to the street.");
+        console.log("The nightmare chases you and as it walks into the street a truck drives by.");
+        console.log("The truck at full speed crashes into the nightmare, exploding the nightmare into numerous pieces.");
+        this.reflect();
+        this.pressEnter();
+    
+        this.endGame();
+    }// End of openWindow() function
+
 }
-
-function openWindow() {
-    //Array
-    answersPush("Open the window.");
-
-    console.clear();
-    console.log("You turn around to the window behind you and start to open it.");
-    console.log("The nightmare, as it realizes you are trying to escape stomps over to you.");
-    console.log("You're too fast and leap out of the open window.");
-    console.log("Underestimating the size of the nightmare you begin to celebrate your escape.");
-    console.log("As you're celebrating the nightmare bursts the wall like the Kool-Aid man. You'd almost expect for it to scream 'Oh yeah!'");
-    console.log("Breaking free from your shock you run out to the street.");
-    console.log("The nightmare chases you and as it walks into the street a truck drives by.");
-    console.log("The truck at full speed crashes into the nightmare, exploding the nightmare into numerous pieces.");
-    reflect();
-    let space = userInput("");
-
-    endGame();
-}// End of openWindow() function
 
 module.exports = Nightmare;
