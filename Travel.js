@@ -253,7 +253,7 @@ class Travel extends Helper{
     }// End of giveRatPizza() function
 
     job(transportChoice) {
-        console.log("Job");
+        new Job(this.player, transportChoice).job();
     }
 }
 
