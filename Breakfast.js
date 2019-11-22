@@ -229,7 +229,7 @@ class Breakfast extends Helper{
     }// End of walkAway() function
 
     travel() {
-        console.log("hi");
+        new Travel(this.player).travel();
     }
     
 }
