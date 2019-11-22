@@ -6,6 +6,7 @@ class Job extends Helper {
         super();
         this.player = player;
         this.transportChoice = transportChoice;
+        this.bossChoice;
     }
 
     job() {
@@ -31,8 +32,6 @@ class Job extends Helper {
         this.questionsPush(this.player, "Which action do you take against your intimidating boss?");
 
         //Checking for valid user inputs, loops until the input is valid
-        let bossChoice = 0;
-
         while(!bossResponse[index]) {
             console.clear();
             console.log("I do not understand.");
@@ -41,24 +40,22 @@ class Job extends Helper {
 
         switch(index) {
             case 0:
-                this.noU(transportChoice, bossChoice);
+                this.noU();
                 break;
 
             case 1:
-                // this.askWhy();
-                console.log(2);
+                this.askWhy();
                 break;
 
             case 2:
-                // this.acceptFate(transportChoice, bossChoice);
-                console.log(3);
+                this.acceptFate();
                 break;
 
             }// End of responseToBoss switch
     }// End of job() function
 
 
-    noU(transportChoice, bossChoice) {
+    noU() {
         console.clear();
         console.log("Your boss is shocked.");
         console.log("Never did she expect such a reversal!");
@@ -66,20 +63,19 @@ class Job extends Helper {
         console.log("Surprised that it works you take it upon yourself to be the new boss of the office!");
 
         //Health && Check
-        noUHeal = randomInt(10, 5);
-        health += noUHeal;
-        if(health > 100) {
-            health = 100;
+        let noUHeal = this.randomInt(10, 5);
+        this.player.health += noUHeal;
+        if(this.player.health > 100) {
+            this.player.health = 100;
         }
-        console.log(`You heal ${noUHeal} health! You have ${health}HP.`)
+        console.log(`You heal ${noUHeal} health! You have ${this.player.health}HP.`)
 
         //Array
-        answersPush("'No u'");
+        this.answersPush(this.player, "'No u'");
 
         //End loop
-        bossChoice = 1;
-        intimadtingBossComplete = true;
-        returnHome(bossChoice, transportChoice);
+        this.bossChoice = 1;
+        this.returnHome();
 
     }// End of noU() function
 
@@ -92,31 +88,34 @@ class Job extends Helper {
         console.log("You are unable to comprehend what had just happened.");
 
         //Health && Check
-        healthCheck(health);
+        this.player.isDead(this.player.health);
 
         //Array
-        answersPush("Ask why.");
+        this.answersPush(this.player, "Ask why.");
 
         //End loop & Program            
-        intimadtingBossComplete = true;
+        this.endGame(this.player);
 
     }// End of askWhy() function
 
 
-    acceptFate(transportChoice, bossChoice) {
+    acceptFate() {
         console.clear();
         console.log("Impressed by your acceptance your boss decides to let you go freely.");
         console.log("You pack the rest of your bags and leave the office.")
 
         //Array
-        answersPush("Accept your fate.");
+        this.answersPush(this.player, "Accept your fate.");
 
         //End loop
-        bossChoice = 3;
-        intimadtingBossComplete = true;
-        returnHome(bossChoice, transportChoice);
+        this.bossChoice = 3;
+        this.returnHome();
 
     }// End of acceptFate() function
+
+    returnHome() {
+        console.log("Hi");
+    }
 }
 
 module.exports = Job;
