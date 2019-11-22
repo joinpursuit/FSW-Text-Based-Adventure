@@ -42,6 +42,11 @@ class Helper {
         userInput("Press enter to continue.");
     } // End of pressEnter() function
 
+    reflect() {
+        console.log("You reflect on the long day you've had, proud of everything you've accomplished.");
+        console.log("You get back in bed and knock out, only to start it all again tomorrow.");
+    }
+
     endGame(player) {
         //End program review
         this.newLine();

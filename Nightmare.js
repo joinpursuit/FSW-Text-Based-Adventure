@@ -111,7 +111,7 @@ class Nightmare extends Helper {
                 break;
                 
             case 1:
-                // this.armbar();
+                this.armbar();
                 break;
     
             case 2:
@@ -144,25 +144,25 @@ class Nightmare extends Helper {
         this.endGame(this.player);
     }// End of guillotine() function
 
+    armbar() {
+        //Array
+        this.answersPush(this.player, "Put it in an armbar.")
+    
+        console.clear();
+        console.log("You pull the nightmares arm and hold it in a position that should start to break it.");
+        console.log("The nightmare lets out a loud screech as you slowly begin tearing off it's arm.");
+        console.log("As it gets closer to ripping off the nightmare collapses.");
+        console.log("You finish it off by ripping the arm out of it's socket.");
+        console.log("You stand up, nightmare arm in hand and triumphantly look over at what you've done.");
+        this.reflect();
+    
+        //End loop
+        this.endGame(this.player);
+    }// End of armbar() function
 
 }
 
-function armbar() {
-    //Array
-    answersPush("Put it in an armbar.")
 
-    console.clear();
-    console.log("You pull the nightmares arm and hold it in a position that should start to break it.");
-    console.log("The nightmare lets out a loud screech as you slowly begin tearing off it's arm.");
-    console.log("As it gets closer to ripping off the nightmare collapses.");
-    console.log("You finish it off by ripping the arm out of it's socket.");
-    console.log("You stand up, nightmare arm in hand and triumphantly look over at what you've done.");
-    reflect();
-
-    //End loop
-    nightmareChoice2Complete = true;
-    endGame();
-}// End of armbar() function
 
 
 function omoplata() {
