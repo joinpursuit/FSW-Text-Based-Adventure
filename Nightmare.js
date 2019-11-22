@@ -115,7 +115,7 @@ class Nightmare extends Helper {
                 break;
     
             case 2:
-                // this.omoplata();
+                this.omoplata();
                 break;
     
             }// End of nightmareChoice2 switch
@@ -160,81 +160,58 @@ class Nightmare extends Helper {
         this.endGame(this.player);
     }// End of armbar() function
 
-}
-
-
-
-
-function omoplata() {
-    //Array
-    answersPush("Put it in an Omoplata.")
-
-    newLine();
-    console.log("You flip to the nightmares side.");
-    console.log("You grab it's arm in an Omoplata.");
-    console.log("It screams in agony.");
-    console.log("The nightmare uses it's weight to move you off of it.");
-    console.log("It slams you against the wall and stands up again.");
-
-    //Health Check
-    let wallSlam = randomInt(15, 1);
-    healthCheck(wallSlam);
-
-    newLine();
-    console.log("The nightmare stands back up at the same time as you.");
-    console.log("Which action do you take?");
-    console.log("1. Go for it's eyes.");
-    console.log("2. Check your end table drawer.");
-    console.log("3. Open the window.");
-    let nightmareChoice3 = userInput("(Input a number between 1 and 3) ");
-
-    //Array
-    questionsPush("Which action do you take against the nightmare (3)?");
-
-    //Checking for valid user inputs, loops until the input is valid
-    let nightmareChoice3Complete = false;
-    nightmareChoice3:
-    while(nightmareChoice3Complete === false) {
-        switch(nightmareChoice3) {
-            case "1":
-                goForItsEyes();
-
-                //End loop
-                nightmareChoice3Complete = true;
-                endGame();
-
-            case "2":
-                checkEndTable();
-
-                //End loop
-                nightmareChoice3Complete = true;
-                endGame();
-
-            case "3":
-                openWindow();
-
-                //End loop
-                nightmareChoice3Complete = true;
-                endGame();
-
-            default:
-                newLine()
-                console.log("I do not understand.");
-                console.log("The nightmare stands back up at the same time as you.");
-                console.log("Which action do you take?");
-                console.log("1. Go for it's eyes.");
-                console.log("2. Check your end table drawer.");
-                console.log("3. Open the window.");
-                nightmareChoice3 = userInput("(Input a number between 1 and 3) ");
-
-        }//End to nightmareChoice3 Switch
-    }//End to nightmareChoice3 Loop
+    omoplata() {
+        //Array
+        this.answersPush(this.player, "Put it in an Omoplata.")
     
-    //End loop
-    nightmareChoice2Complete = true;
-    endGame();
-}// End of omoplata() function
+        this.newLine();
+        console.log("You flip to the nightmares side.");
+        console.log("You grab it's arm in an Omoplata.");
+        console.log("It screams in agony.");
+        console.log("The nightmare uses it's weight to move you off of it.");
+        console.log("It slams you against the wall and stands up again.");
+    
+        //Health Check
+        let wallSlam = this.randomInt(15, 1);
+        this.player.isDead(wallSlam);
+    
+        this.newLine();
+        console.log("The nightmare stands back up at the same time as you.");
+        let nightmareChoices = ["Go for it's eyes.", "Check your end table drawer.", "Open the window."];
+        let index = this.choiceSelection(nightmareChoices, "Which action do you take?");
+       
+        //Array
+        this.questionsPush(this.player, "Which action do you take against the nightmare (3)?");
+    
+        //Checking for valid user inputs, loops until the input is valid
+        while(!nightmareChoices[index]) {
+            console.clear();
+            console.log("I do not understand.");
+            index = this.choiceSelection(nightmareChoices, "Which action do you take?");
+        }
 
+        switch(index) {            
+            case 0:
+                // this.goForItsEyes();
+                console.log(1);
+    
+                this.endGame(this.player);
+    
+            case 1:
+                this.checkEndTable();
+
+                this.endGame(this.player);
+    
+            case 2:
+                this.openWindow();
+    
+                this.endGame(this.player);
+            }//End to nightmareChoice3 Switch
+        
+        this.endGame();
+    }// End of omoplata() function
+
+}
 
 function goForItsEyes() {
     //Array
