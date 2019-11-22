@@ -26,8 +26,7 @@ class Travel extends Helper{
         
         switch (index) {
             case 0:
-                // drive();
-                console.log("1");
+                this.drive();
                 break;
 
             case 1:
@@ -39,11 +38,9 @@ class Travel extends Helper{
     } // End of travel() function
 
 
-    drive() {
-        //Battle with a road rager
-                
+    drive() {                
         //Array
-        answersPush("Take your car.");
+        this.answersPush(this.player, "Take your car.");
         let transportChoice = 1;
 
         console.clear();
@@ -55,43 +52,36 @@ class Travel extends Helper{
         console.log("The road rager uses 'insult'.");
 
         //Health && Check
-        let roadRageInsultDamage = randomInt(25, 1);
-        healthCheck(roadRageInsultDamage);
+        let roadRageInsultDamage = this.randomInt(25, 1);
+        this.player.isDead(roadRageInsultDamage);
                 
-        newLine();
-        console.log("Which action do you take?");
-        console.log("1. Insult back");
-        console.log("2. Honk your horn");
-        console.log("3. Ignore the road rager");
-        let roadRageCounter = userInput("(Input a number between 1 and 3) ");
+        this.newLine();
+        let roadRageChoices = ["Insult back", "Honk your horn", "Ignore the road rage"];
+        let index = this.choiceSelection(roadRageChoices, "Which action do you take? ");
 
         //Array
-        questionsPush("Which action do you take against the Road Rager?");
+        this.questionsPush(this.player, "Which action do you take against the Road Rager?");
 
-        //Checking for valid user inputs, loops until the input is valid
-        let roadRageComplete = false;
-        roadRageComplete: 
-        while (roadRageComplete === false) {
-            switch (roadRageCounter) {
-                case "1":
-                    insult();
+        while (!roadRageChoices[index]) {
+            console.clear();
+            console.log("I do not understand.");
+            index = this.choiceSelection(roadRageChoices, "Which action do you take? ");
+        }
 
-                case "2":
-                    honkHorn(transportChoice);
+        switch (index) {
+            case 0:
+                this.insult();
+                break;
 
-                case "3":
-                    ignore(transportChoice);
+            case 1:
+                this.honkHorn(transportChoice);
+                break;
 
-                default:
-                    console.clear();
-                    console.log("Which action do you take?");
-                    console.log("1. Insult back");
-                    console.log("2. Honk your horn");
-                    console.log("3. Ignore the road rager");
-                    roadRageCounter = userInput("(Input a number between 1 and 3) ");
+            case 2:
+                this.ignore(transportChoice);
+                break;
 
-            }// End of roadRage switch
-        }// End of roadRage Validity check
+        }// End of roadRage switch
     }// End of drive() function
 
 
@@ -99,10 +89,10 @@ class Travel extends Helper{
         console.clear();
         console.log("Your insult does nothing!");
         console.log("Road Rager uses 'Mom insult'");
-        console.log(`You take ${health} points of damage!`);
+        console.log(`You take ${this.player.health} points of damage!`);
 
         //Array
-        answersPush("Insult back");
+        this.answersPush("Insult back");
 
         //End loop & program
         roadRageComplete = true;
