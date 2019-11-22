@@ -225,31 +225,26 @@ class Nightmare extends Helper {
         
     } //End of goForItsEyes() function
 
+    checkEndTable() {
+        //Array
+        this.answersPush(this.player, "Check your end table.");
+    
+        console.clear();
+        console.log("You run over to your end table and open the drawer.");
+        console.log("Inside is your pocket knife you have for safety.");
+        console.log("You feel the nightmare stomping towards you so you jump and roll to the other side of the bed.");
+        console.log("As the monster tries to stop it's momentum you take that chance to attack.");
+        console.log("You climb onto the bed, leap, and grab onto the nightmares back.");
+        console.log("It spins and swings trying to get you off of it.");
+        console.log("However it can't seem to do it, you stab it in the back numerous times before winding up for one last stab to the head.");
+        console.log("As you connect with it's head the nightmare stops moving and falls to the ground.");
+        this.reflect();
+        this.pressEnter();
+    
+        this.endGame(this.player);
+    }// End of checkEndTable() Function
+
 }
-
-
-
-
-function checkEndTable() {
-    //Array
-    answersPush("Check your end table.");
-
-    console.clear();
-    console.log("You run over to your end table and open the drawer.");
-    console.log("Inside is your pocket knife you have for safety.");
-    console.log("You feel the nightmare stomping towards you so you jump and roll to the other side of the bed.");
-    console.log("As the monster tries to stop it's momentum you take that chance to attack.");
-    console.log("You climb onto the bed, leap, and grab onto the nightmares back.");
-    console.log("It spins and swings trying to get you off of it.");
-    console.log("However it can't seem to do it, you stab it in the back numerous times before winding up for one last stab to the head.");
-    console.log("As you connect with it's head the nightmare stops moving and falls to the ground.");
-    reflect();
-    let space = userInput("");
-
-    endGame();
-
-}// End of checkEndTable() Function
-
 
 function openWindow() {
     //Array
