@@ -40,18 +40,15 @@ class Nightmare extends Helper {
                 break;
     
             case 1:
-                // this.goForItsEyes();
-                console.log(2);
+                this.goForItsEyes();
                 break;
                 
             case 2:
-                console.log(3);
-                // this.checkEndTable();
+                this.checkEndTable();
                 break;
     
             case 3:
-                console.log(4);
-                // this.openWindow();
+                this.openWindow();
                 break;
     
             }// End of nightmareChoice switch
@@ -192,8 +189,7 @@ class Nightmare extends Helper {
 
         switch(index) {            
             case 0:
-                // this.goForItsEyes();
-                console.log(1);
+                this.goForItsEyes();
     
                 this.endGame(this.player);
     
@@ -211,25 +207,27 @@ class Nightmare extends Helper {
         this.endGame();
     }// End of omoplata() function
 
+    goForItsEyes() {
+        //Array
+        this.answersPush(this.player, "Go for it's eyes.");
+    
+        console.clear();
+        console.log("You run over to the nightmare and leap to it's head.");
+        console.log("As you begin leaping it grabs hold of you and repeatedly slams you into the floor.");
+        console.log("When it stops it's already too late for you.");
+    
+        //Health && check
+        this.player.isDead(this.player.health);
+    
+        this.pressEnter();
+    
+        this.endGame(this.player);
+        
+    } //End of goForItsEyes() function
+
 }
 
-function goForItsEyes() {
-    //Array
-    answersPush("Go for it's eyes.");
 
-    console.clear();
-    console.log("You run over to the nightmare and leap to it's head.");
-    console.log("As you begin leaping it grabs hold of you and repeatedly slams you into the floor.");
-    console.log("When it stops it's already too late for you.");
-
-    //Health && check
-    healthCheck(health);
-
-    let space = userInput("");
-
-    endGame();
-    
-} //End of goForItsEyes() function
 
 
 function checkEndTable() {

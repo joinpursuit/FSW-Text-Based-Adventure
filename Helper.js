@@ -39,7 +39,7 @@ class Helper {
     }
 
     pressEnter() {
-        userInput("Press enter to continue.");
+        this.userInput("Press enter to continue.");
     } // End of pressEnter() function
 
     reflect() {
