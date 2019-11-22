@@ -131,12 +131,11 @@ class Travel extends Helper{
 
     }//End of ignore() function
 
-
     train() {
         //Battle with a subway rat
 
         //Array
-        answersPush("Take the train");
+        this.answersPush(this.player, "Take the train");
         let transportChoice = 2;
 
         console.clear();
@@ -148,50 +147,41 @@ class Travel extends Helper{
         console.log("The rat leaps at you and uses 'Bite'");
 
         //Health && Check
-        let ratAttack = randomInt(10, 1);
-        healthCheck(ratAttack);
+        let ratAttack = this.randomInt(10, 1);
+        this.player.isDead(ratAttack);
 
-        newLine();
-        console.log("Which action do you take?");
-        console.log("1. Kick the rat.");
-        console.log("2. Pick the rat up and throw it at the train.");
-        console.log("3. Walk to the other side of the platform.");
-        console.log("4. Give the rat the pizza left on the bench.");
-        let ratCounter = userInput("(Input a number between 1 and 4) ");
+        this.newLine();
+        let ratChoices = ["Kick the rat", "Pick the rat up and throw it at the train.", 
+                          "Walk to the other side of the platform.", "Give the rat the pizza left on the bench."];
+        let index = this.choiceSelection(ratChoices, "Which action do you take?");
 
         //Array
-        questionsPush("Which action do you take against the rat?");
+        this.questionsPush(this.player, "Which action do you take against the rat?");
 
         //Checking for valid user inputs, loops until the input is valid
-        let ratComplete = false;
-        ratComplete: 
-        while (ratComplete === false) {
-            switch (ratCounter) {
-                case "1":
-                    kickRat();
+        while (!ratChoices[index]) {
+            console.clear();
+            console.log("I do not understand.");
+            index = this.choiceSelection(ratChoices, "Which action do you take?");
+        }
 
-                case "2":
-                    pickUpRat(transportChoice);
+            switch (index) {
+                case 0:
+                    this.kickRat();
+                    break;
 
-                case "3":
-                    walkAwayFromRat(transportChoice);
+                case 1:
+                    this.pickUpRat(transportChoice);
+                    break;
 
-                case "4":
-                    giveRatPizza(transportChoice);
+                case 2:
+                    this.walkAwayFromRat(transportChoice);
+                    break;
 
-                default:
-                    console.clear();
-                    console.log("I do not understand.");
-                    console.log("Which action do you take?");
-                    console.log("1. Kick the rat.");
-                    console.log("2. Pick the rat up and throw it at the train.");
-                    console.log("3. Walk to the other side of the platform.");
-                    console.log("4. Give the rat the pizza left on the bench.");
-                    ratCounter = userInput("(Input a number between 1 and 4) ");
-
-
+                case 3:
+                    this.giveRatPizza(transportChoice);
+                    break;
             }// End of ratCounter switch
-        }// End of ratCounter Validity check
     }// End of train() function
 
 
@@ -202,10 +192,10 @@ class Travel extends Helper{
         console.log("While attempting to get the rat off you stumble and hit your head on the bench.");
 
         //Array
-        answersPush("Kick the rat.");
+        this.answersPush(this.player, "Kick the rat.");
 
         //Health && Check
-        healthCheck(health);
+        this.player.isDead(this.player.health);
 
     }// End of kickRat() function
 
@@ -217,16 +207,15 @@ class Travel extends Helper{
         console.log("The rat explodes on impact and it's remains splatter you.");
 
         //Health && Check
-        healthCheck(5);
+        this.player.isDead(5);
 
         console.log("Your train arrives and you continue on your adventure to work.");
 
         //Array
-        answersPush("Pick the rat up and throw it at the train.");
+        this.answersPush(this.player, "Pick the rat up and throw it at the train.");
 
         //End loop
-        ratComplete = true;
-        job(transportChoice);
+        this.job(transportChoice);
 
     }// End of pickUpRat() function
 
