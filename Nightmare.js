@@ -128,32 +128,24 @@ class Nightmare extends Helper {
         console.log("The nightmare lets out a loud screech.");
     }
 
+    guillotine() {
+        //Array
+        this.answersPush(this.player, "Put it in a guillotine.")
+    
+        console.clear();
+        console.log("You get underneath the nightmare to get in position.");
+        console.log("The nightmare uses this to put all it's weight on you.");
+        console.log("It crushes you between itself and the floor.");
+    
+        //Health && check
+        this.player.isDead(this.player.health);
+    
+        //End loop
+        this.endGame(this.player);
+    }// End of guillotine() function
+
 
 }
-
-
-
-
-
-
-
-function guillotine() {
-    //Array
-    answersPush("Put it in a guillotine.")
-
-    console.clear();
-    console.log("You get underneath the nightmare to get in position.");
-    console.log("The nightmare uses this to put all it's weight on you.");
-    console.log("It crushes you between itself and the floor.");
-
-    //Health && check
-    healthCheck(health);
-
-    //End loop
-    nightmareChoice2Complete = true;
-    endGame();
-}// End of guillotine() function
-
 
 function armbar() {
     //Array
