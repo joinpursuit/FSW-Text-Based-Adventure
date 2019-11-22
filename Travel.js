@@ -5,6 +5,7 @@ class Travel extends Helper{
     constructor(player) {
         super();
         this.player = player;
+        this.transportChoice;
     }
 
     travel() {
@@ -40,7 +41,7 @@ class Travel extends Helper{
     drive() {                
         //Array
         this.answersPush(this.player, "Take your car.");
-        let transportChoice = 1;
+        this.transportChoice = 1;
 
         console.clear();
         console.log("You decide to drive.");
@@ -73,11 +74,11 @@ class Travel extends Helper{
                 break;
 
             case 1:
-                this.honkHorn(transportChoice);
+                this.honkHorn();
                 break;
 
             case 2:
-                this.ignore(transportChoice);
+                this.ignore();
                 break;
 
         }// End of roadRage switch
@@ -98,7 +99,7 @@ class Travel extends Helper{
     }// End of insult() function
 
 
-    honkHorn(transportChoice) {
+    honkHorn() {
         console.clear();
         console.log("You slam your hand on your steering wheel.");
         console.log("Your horn shocks the road rager.");
@@ -110,12 +111,12 @@ class Travel extends Helper{
         //Array
         this.answersPush(this.player, "Honk your horn");
 
-        this.job(transportChoice);
+        this.job();
 
     }// End of honkHorn() function
 
 
-    ignore(transportChoice) {
+    ignore() {
         console.clear();
         console.log("You pay no attention to the road rager.");
         console.log("The road rager uses 'Middle Finger'");
@@ -126,7 +127,7 @@ class Travel extends Helper{
         //Array
         this.answersPush(this.player, "Ignore the road rager");
 
-        this.job(transportChoice);
+        this.job();
 
     }//End of ignore() function
 
@@ -135,7 +136,7 @@ class Travel extends Helper{
 
         //Array
         this.answersPush(this.player, "Take the train");
-        let transportChoice = 2;
+        this.transportChoice = 2;
 
         console.clear();
         console.log("You decide to take the train.");
@@ -199,7 +200,7 @@ class Travel extends Helper{
     }// End of kickRat() function
 
 
-    pickUpRat(transportChoice) {
+    pickUpRat() {
         console.clear();
         console.log("Your inner neanderthal shows itself.");
         console.log("You grab the rat by it's tail and throw it at the incoming train.");
@@ -214,12 +215,12 @@ class Travel extends Helper{
         this.answersPush(this.player, "Pick the rat up and throw it at the train.");
 
         //End loop
-        this.job(transportChoice);
+        this.job();
 
     }// End of pickUpRat() function
 
 
-    walkAwayFromRat(transportChoice) {
+    walkAwayFromRat() {
         console.clear();
         console.log("After the rat lands you immediately sprint to the other side of the platform.");
         console.log("Upon reaching it you turn to see the rat is nowhere to be found.");
@@ -230,7 +231,7 @@ class Travel extends Helper{
         this.answersPush(this.player, "Walk to the other side of the platform.");
 
         //End loop
-        this.job(transportChoice);
+        this.job();
 
     }// End of walkAwayFromRat() function
 
@@ -253,7 +254,7 @@ class Travel extends Helper{
     }// End of giveRatPizza() function
 
     job(transportChoice) {
-        new Job(this.player, transportChoice).job();
+        new Job(this.player, this.transportChoice).job();
     }
 }
 
