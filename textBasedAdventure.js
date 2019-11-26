@@ -106,12 +106,6 @@ const designatedRoute = () => {
 
     let helpVendor = readline.question("As you're running you see a street vendor who looks like they're in need of help, will you stop to lend him a hand (yes || or)? ").toLowerCase()
 
-    let vendorChoice = ("yes" , "no")
-
-    // while (helpVendor !== vendorChoice) {
-    //     readline.question("As you're running you see a street vendor who looks like they're in need of help, will you stop to lend him a hand (yes || or)? ").toLowerCase();
-    // }
-
     switch (helpVendor) {
         case "yes" :
             GSP += 20;
@@ -180,25 +174,28 @@ const boat = () => {
 const bathroomSprint = () => {
     console.clear();
 
-let findStall = readline.question("You've continuned on your route and your stomache starts to bubble, you see a public bathroom coming up. \n It looks and smell disgusting! But any second longer and you may have an accident!!! \n There are four stalls, which do you choose (1, 2, 3 || 4) please enter a number? ");
+let findStall = readline.question("You've continuned on your route and your stomache starts to bubble, you see a public bathroom coming up. \n It looks and smell disgusting! But any second longer and you may have an accident!!! \n There are four stalls, which do you choose (1, 2 || 3) please enter a number? ");
 
 if (findStall !== Number) {
-    console.log("Please enter a number!")//What else do I need to put here? to make sure it runs again? or is aloop even okay here
+    console.log("Please enter a number (1, 2 || 3)!")//What else do I need to put here? to make sure it runs again? or is aloop even okay here
     // Also decide what will be next after this choice
 }
 let stalls = [1, 2, 3, 4]
 for (let i = 0; i < stalls.length; i++) {
 
     if (stalls[i] === 1) {
-        console.log("You chose stall 1. Just your luck theres no tissue! You lose 20 minuets trying to find some!")
+        console.log("You chose stall 1. Just your luck theres no tissue! You lose 40 minuets trying to find some!")
         time -= .20
     } else if (stalls[i] === 2) {
-        console.log("")
+        console.log("The stall you chose has no toilet tissue. You have to wait until someone comes to pass you tissue! You lost 30 mins")
+        GSP
+        time -= .30;
     } else if (stalls[i] === 3) {
-
-    } else if (stalls[i] === 4) {
-
+        console.log("You chose well my friend. You handled your buisness, you only lost 15 minuets")
+        GSP 
+        time -= .15
     }
+    //next step/function
 }
 
 }
@@ -206,7 +203,9 @@ for (let i = 0; i < stalls.length; i++) {
 
 const talkingSpider = () => {
     console.clear();
+
     console.log("You stop and notice the spider. \n Spider: 'You dare come into my home causing a ruckus! Now I haven't had any visitors in a while so I want to do something nice for you.'");
+    
     let userAge = readline.question("Go on head tell me how old you are:(enter number for age) ");
 
     let i = userAge;
