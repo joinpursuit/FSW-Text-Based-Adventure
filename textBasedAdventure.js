@@ -12,14 +12,15 @@ but let me tell you; with my life, lady luck doesn't just ignore me she
 sent me a restraining order.")
 const dice = () => {
     let userInput;
-    while(userInput === ) {
-
+    while(userInput !== "Really?") {
+        userInput =  readline.question("I tell ya, me and my wife were happy for twenty years. Answer: Really")
     }
 }
-console.log("")
+console.log("Yeah then we met. But that's not totally true, even as a kid I got the short end of the stick. I asked my dad if I counld go out ice skating at the local pond, and he told me, wait till it gets warmer.")
 const noDice = () => {
     let userInput;
-    while(userInput === "")
+    while(userInput !== "Tell me more")
+        userInput = readline.question("")
 }
 //
 //
