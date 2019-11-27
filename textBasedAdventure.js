@@ -1,13 +1,26 @@
+const readline = require("readline-sync")
 console.log("Sometimes, things just go from bad to worse.")
+
 const play = () => {
     let userInput;
     while(userInput !== "yes") {
         userInput = readline.question("Want me to tell you about it; yes, or no?")
     }
 }
-console.log("Well I''d be glad to tell you. Anyone can have a rough time, but let me tell you with my life, lady luck 
-doesn't just ignore me she sent me a restraining order.")
-const dice
+console.log("Well I'd be glad to tell you. Anyone can have a rough time,
+but let me tell you; with my life, lady luck doesn't just ignore me she 
+sent me a restraining order.")
+const dice = () => {
+    let userInput;
+    while(userInput === ) {
+
+    }
+}
+console.log("")
+const noDice = () => {
+    let userInput;
+    while(userInput === "")
+}
 //
 //
 //
