@@ -20,38 +20,29 @@ console.log("Yeah then we met. But that's not totally true, even as a kid I got 
 const noDice = () => {
     let userInput;
     while(userInput !== "Tell me more")
-        userInput = readline.question("")
+        userInput = readline.question("It doesn't just go for people either. Answer: Tell me more")
 }
-//
-//
-//
-//
-//
-//
-//
+console.log("Do you still need me to go on? yes or no")
 
-//the other day I asked a bell boy to handle my bag and he started feeling up my wife
-//I asked him hey buddy who told you you could mess around with my wife he said everybody
-//people keep saying that dogs and their owners end up looking alike, and when my dog found that out he ran away
-//when i was a kid my parents took me to the zoo an they thanked them for returning me 
-//holloween I open the door and kids give me candy
-
-//developing story and choice of passive or aggresive actions
 const aLikelyStory = () => {
     let userInput;
-    while (userInput){
-
+    if(userInput === "yes"){
+        console.log("I had no idea you cared so much")
+    }else if(userInput === "no") {
+        console.log("playing hard to get I see")
+    }else{
+        console.log("Come on buddy")
     }
 }
-//three parts for initial story
-//1 set up - 
-    //1. loop for type of dog that attacks you
-    //2. loop for number of attacks landed
-//2 conflict
-    //flash array of numbers
-    //assume something significant abour it and return a variable to be used later
-    //lost disoriented and feed up choose a direction to go in north, south,east or west
-//3 resolution
-    //each path leads to a tie in with the number choosen
-    // different ccontext for each direction
-
+console.log("I tell ya, not in life and not in service do I get any respect. THe other day I told the bell boy to handle my bag and he starts feeling up my wife. ")
+const question = () =>{
+    let userInput;
+    if(userInput === "oh, I'm sorry sir"){
+        console.log("Haven't you been paying attention?")
+    }else if(userInput === "Everybody"){
+        console.log("How'd you guess?")
+    }readline.question("So I ask the guy, hey buddy, who told you you could feel up my wife? An what do yoiu think he said?")
+}
+// console.log("")
+//people keep saying that dogs and their owners end up looking alike, and when my dog found that out he ran away
+//when i was a kid my parents took me to the zoo an they thanked them for returning me 
