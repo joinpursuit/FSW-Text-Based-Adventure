@@ -282,11 +282,129 @@ const trollUnderBridge = () => {
 }
 
 const findLittleOne = () => {
-    console.log("find the wee little mate")
+    console.clear();
+    
+    let whereIsLittleOne = readline.question("Troll: We were out for our daily walk, when I just turned for a second to grad a snack for the lad. When I looked back they were nowhere to be seen. They usually enjoy following the flowers down the path there. I am not fast enough to follow to catch up I am afraid. Could you go for me (yes || no) ?")
+     if (whereIsLittleOne === "no") {
+         console.log("Well then my friend you may as well go on your way, I'll just slow you down. But thanks for stopping");
+         nearingFinishline();
+     } else if (whereIsLittleOne === "yes") {
+         followTheFlowers();
+     }
+}
+
+const followTheFlowers = () => {
+    console.clear();
+
+    let choosePath = readline.question("You follow the flowers as the Troll dad asks and you reach a fork in the road. You can go left and follow the yellow flowers or right and follow the puffy white ones. Which do you think a little one would enjoy more (left || right)? ")
+
+    switch (choosePath) {
+        case "left" :
+            console.log("Running through the flowers, you miss a dip in the terrain and tumble down the side of a hill.");
+            hillTumble();
+            break;
+        case "right" :
+            console.log("As you're following the puffy white flowers you come across a snack that the dad troll had mentioned");
+            snackFind();
+             break;
+    }
+}
+const snackFind = () => {
+    console.clear();
+
+    let snackTrail = readline.question("Do you want to constinue looking for the the young troll or go back to the race (yes || no)? ")
+
+    switch (snackTrail) {
+        case "yes" :
+            console.log("You folow through the thick of the flowers and you heatr a youthful voice amongst a bunch of toher cheers. To your surprise you find the young troll and reach the finish line");
+            GSP += 100;
+            time -= .55;
+            congratulations()
+            break;
+        case "no" :
+            console.log("You went the opposite way from which you came prior to the scuffle with the Troll, you get lost and don't finish the race");
+            startOver();
+            break;
+    }
+}
+
+const hillTumble = () => {
+    console.clear();
+
+    let getUpandGo = readline.question("You tumble and you roll all the way down the side of the hill. You are now pretty banged up and a little sore will you fidn help or keep going (help || continue)? ")
+    if (getUpandGo === "yes") {
+        time -= .55
+        console.log("You lose time hobbling about, and no longer have a trail to follow to try to find the little troll ")
+        nearingFinishline()
+    } else if (getUpandGo === "help") {
+        console.log("Sometimes you have to know when to throw in the towel. Nice run though!")
+        help()
+    }
+}
+
+const help = () => {
+    console.clear();
+
+    let hearSomeVoices = readline.question("As you're walking, looking for help you hear some vocie. Will you go towards them or in the opposite direction as you do not know wh you can trust (towards || opposite)? ")
+
+    if (hearSomeVoices === "towards") {
+        console.log("You go towards gthe voice and see the familiar numbers hanging off the backs of their shirts. They are also in the race liek you. They help you reach the finshline, where you also run into the little troll.")
+    } else if (hearSomeVoices === "opposite") {
+        console.log("You continue to wander to find help or the finish line. ..")
+        nearingFinishline();
+    }
 }
 
 const nearingFinishline = () => {
+    console.clear();
+    let gettingClose = readline.question("Runnign along you know you're getting closer to the finish line because you see a statue that stuck out on your map. But taking a closer look oyu see someone in pain leaning up against it. Will have one last act of kindness or keep on running (stop || run)? ");
+
+        switch (gettingClose) {
+            case "run" :
+                console.log("Run, run, as fast as you can! You are almost at the end.")
+                reachedFinishline()
+                break;
+            case "stop" :
+                console.log("Woman: Thank you so much for stopping, I could really use a hand. I believe I may have pulled muscle")
+            helpRunner();
+            break;
+        }
+}
+
+const helpRunner = () => {
+    console.clear();
     
+    let whatShouldWeDo = readline.question("Woman: I really would love it if I could walk across the line but also I do not think I can make it... Do you think you could help me hold my weight or could you just run and get help when you reach the end. Will you try to go together or will you go alone (together || alone)? ");
+
+    if (whatShouldWeDo === "alone") {
+        reachedFinishline();
+    } else if (whatShouldWeDo === "together") {
+        console.log("It's not easy but the woman is deeply greateful and apprecitive") 
+    }
+    reachedFinishline2()
+}
+
+const reachedFinishline = () => {
+    console.clear();
+    
+    console.log("You made and helped so many along the way! No matter what the final score you are awesome");
+    
+    congratulations();
+}
+const reachedFinishline2 = () => {
+    console.clear();
+    
+    console.log("Not only did you make it, but you also helped a stranded fellow racer make it as well!")
+    GSP += 50
+    
+    congratulations();
+}
+
+const congratulations = () => {
+    console.clear();
+
+    console.log(`Thanks so much for playing! Hope to see back soon! \n ${current} this is your final score!`)
+    playAgain();
 }
 
 const startOver = () => {
@@ -302,14 +420,20 @@ const startOver = () => {
     }
 }
 
-const reachedFinishline = () => {
+const playAgain = () => {
+    console.clear();
 
+    let wouldYouLike = readline.question("Would you like to play again (yes || no)?")
+    if (wouldYouLike === "yes") {
+        play();
+    } else {
+        console.log("Thank you have a good day!!!")
+    }
 }
-
-
 // play()
 // startLine()
 // designatedRoute()
 // shadyShortCut()
-underBridge()
+// underBridge()
+
 // bathroomSprint()
