@@ -2,7 +2,7 @@ const readline = require('readline-sync')
 
 let nameInput = readline.question("Enter your name: ") // can change if needed
 
-console.log(`Hello ${nameInput}!  Welcome to my game.`)
+console.log(`Hello ${nameInput}!  Welcome to my chocolate game.`)
 
 function play() {
     let userInput;
@@ -12,7 +12,7 @@ function play() {
         userInput = readline.question("Would you like to play? Enter yes or no?")
     } 
     if (userInput === "yes"); {
-            console.log("YAY! Le's go!")
+            console.log("YAY! Let's go!")
     }
     userInput = readline.question("Do you like chocolate?")
     while (userInput !== "yes") {
