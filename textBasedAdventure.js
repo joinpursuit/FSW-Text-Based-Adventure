@@ -5,12 +5,10 @@ for(let i = 0; i <= Infinity; i++)
     if (i !== 'y' || i === 'n'){
   let i = readline.question("You started your project and realized you're stuck, so you ask your friend Tom for help and he offers you a cup of coffee to keep you up. Do you take the coffee?[y/n]")
   if (i === 'y') {
-     //'y' was pressed
   console.log("You drank the coffee")
   break
  } 
   if(i === 'n') {
-     //'n' key was pressed
   console.log("You didnt drink the coffee [Answer yes]");
 
  }
