@@ -14,11 +14,16 @@ const play = () => {
     } else {
         console.log("Just the right age for a journey!")
     }
-    userInput = readline.question("Are you going to the woods or the swamp?")
-    if(userInput === "woods") {
-        woods();
-    } else {
-        swamp();
+    // userInput = readline.question("Are you going to the woods or the swamp?")
+    while(userInput !== "woods" || userInput !== "swamp") {
+        userInput = readline.question("Please choose between the woods and the swamp: ")
+        if(userInput === "woods") {
+            woods();
+            break;
+        } else if(userInput === "swamp") {
+            swamp();
+            break;
+        }
     }
 }
 const swamp = () => {
@@ -55,8 +60,24 @@ const clearing = () => {
             console.log("It's getting dark, you need to start a campfire");
             break;
         case "west":    
-            console.log("You fall into a pit");
+            pit();
             break;    
     }
+}
+const pit = () => {
+    let fruits = ["banana", "strawberry", "apple", "orange"];
+    userInput = readline.question("You fall into the pit and now the ogres are coming for you. Choose a fruit: ")
+    for(let i = 0; i < fruits.length; i++) {
+        let chosen = !fruits;
+        if(userInput !== chosen) {
+            gameOver();
+            break;
+        } else if(userInput === chosen)
+            console.log("You survived, you win!");
+            break;
+    }
+}
+const gameOver = () => {
+    console.log("The ogre gives you the fruit. It's poisonous. You die.");
 }
 play();
