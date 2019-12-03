@@ -31,22 +31,12 @@ const search = (ans) => {
 }
 search();
 
-const fight = (something) => {
-    let userInput = something;
-    if (userInput === "disarm") {
-        console.log("There is a tremendous tussle between the two of you but you are able to secure the prisoner with zipties to his seat.");
-        userInput = readline.question("What do you do next? ease panic or search for bomb");
-        
-    } else if (userInput === "surrender") {
-        console.log("There is no escape for you. The bomb goes off and everyone dies!")
-        play();
-    }
-}
+
 
 const panic = (something) => {
     let userInput = something
     if (userInput === "ease panic") {
-        console.log("Plane stabilizes.")
+        console.log("The plane stabilizes and everyone calmly settles into their seats.k")
         let ans = readline.question("Do you...[search] for bomb or get [prisoner]?")
         if (ans === "search") {
             console.log("You locate the bomb in the cargo compartment. You have 30 minutes before detonation.")
@@ -62,10 +52,26 @@ const panic = (something) => {
         userInput = readline.question("Do you...disarm the prisoner or surrender?");
         fight();
     }
- }
+}
 
+const fight = (something) => {
+    let userInput = something;
+    if (userInput === "disarm") {
+        console.log("There is a tremendous tussle between the two of you but you are able to secure the prisoner with zipties to his seat.");
+        let answer = readline.question("What do you do next? ease panic or search for bomb");
+        ease(answer);
+    } else if (userInput === "surrender") {
+        console.log("There is no escape for you. The bomb goes off and everyone dies!")
+        play();
+    }
+}
 
-
+const ease = (something) => {
+    let userInput = something;
+    if (userInput === "ease panic") {
+        console.log("The plane stabilizes and everyone calmly settles into their seats.");
+    } else if (userInput === "search")
+}
 const bomb = (something) => {
     let userInput = readline.question("What do you do? [alert] the passengers or [search] for bomb?");
     if (userInput === "alert") {
@@ -80,7 +86,7 @@ const bomb = (something) => {
 }
 bomb();
 
-// panic();
+
 
 
 
