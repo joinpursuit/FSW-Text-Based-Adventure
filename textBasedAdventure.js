@@ -1,25 +1,32 @@
 const readline = require("readline-sync")
+let userInput = userInput.toLowerCase();
 
 const play = () => {
     userInput = readline.question("This life I tell ya, want me to tell you about it; yes, or no?")
     while(userInput !== "yes") {
         console.log("Oh, I'm sure you have the time.")
     }
-}
-console.log("Thanks, I'd be glad to tell you. Anyone can have a rough time, but let me tell you; with my life, lady luck doesn't just ignore me she sent me a restraining order.")
+    if(userInput === "yes"){
+        dice();
+    }
 
-const dice = () => {
-    userInput =  readline.question("I tell ya, me and my wife were happy for twenty years. Would you believe that? Yes / No")
-    while(userInput !== "Yes") {
+function dice(){
+    userInput =  readline.question("Thanks, I'd be glad to tell you. Anyone can have a rough time, but let me tell you; with my life, lady luck doesn't just ignore me she sent me a restraining order. I tell ya, me and my wife were happy for twenty years. Would you believe that? Yes / No")
+    while(userInput !== "yes") {
         console.log("I'm waiting.")
     }
+    if(userInput === "yes"){
+        noDice();
+    }
 }
-console.log("Yeah then we met. But that's not totally true, even as a kid I got the short end of the stick. I asked my dad if I counld go out ice skating at the local pond, and he told me, wait till it gets warmer.")
 
 const noDice = () => {
-    userInput = readline.question("It doesn't just go for people either. You get where I'm coming from? Yes / No")
-    while(userInput !== "No"){
+    userInput = readline.question("Yeah then we met. But that's not totally true, even as a kid I got the short end of the stick. I asked my dad if I counld go out ice skating at the local pond, and he told me, wait till it gets warmer. It doesn't just go for people either. You get where I'm coming from? Yes / No")
+    while(userInput !== "no"){
         console.log("I doubt it.")
+    }
+    if(userInput === "no"){
+        aLikelyStory();
     }
 }
 const aLikelyStory = () => {
@@ -31,23 +38,35 @@ const aLikelyStory = () => {
     }else{
         console.log("Come on buddy")
     }
+    if(userInput === "yes"){
+        question();
+    }
 }
 
-const question = () =>{
-    readline.question("I tell ya, not in life and not in service do I get any respect. THe other day I told the bell boy to handle my bag and he starts feeling up my wife. ")
+const question = () => {
+    readline.question("I tell ya, not in life and not in service do I get any respect. The other day I told the bell boy to handle my bag and he starts feeling up my wife. 'No way / Tough luck pal'")
 
-    if(userInput === "oh, I'm sorry sir"){
+    if(userInput === "no way"){
         console.log("Haven't you been paying attention?")
-    }else if(userInput === "Everybody"){
-        console.log("How'd you guess?")
+    }else if(userInput === "tough luck pal"){
+        console.log("Don't I know it")
+    }
+    if(userInput === "tough luck pal"){
+        nextQuestion();
+    }
 }
 
-const nextQuestion = () =>{
-    
+const nextQuestion = () => {
+    let answer = " "
+    question = readline.question("So I ask the guy, hey buddy, who told you you could feel up my wife? An what do yoiu think he said?")
+        switch (question){
+        case "I couldn't guess" :
+            answer = "Sure you could"
+        case "Nobody?" :
+            answer = "I wish"
+        case "Everybody" :
+            answer = "I tell ya no respect"
 }
-"So I ask the guy, hey buddy, who told you you could feel up my wife? An what do yoiu think he said?"
-// console.log("")
-//people keep saying that dogs and their owners end up looking alike, and when my dog found that out he ran away
-//when i was a kid my parents took me to the zoo an they thanked them for returning me 
-//needs 5 more instances and a switch case and a for loop, edit it to 
-//switch the console logs to be readline questions and make sure it works on play
+}
+}
+play()
