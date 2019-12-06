@@ -58,6 +58,7 @@ const question = () => {
 }
 
 const nextQuestion = () => {
+    let userInput;
     let answer = " "
     question = readline.question("So I ask the guy, hey buddy, who told you you could feel up my wife? An what do yoiu think he said?")
         switch (question){
@@ -71,6 +72,57 @@ const nextQuestion = () => {
             answer = "I tell ya no respect";
             break;
 }
+    if(userInput){
+        anotherQuestion();
+    }
 }
+    const anotherQuestion = () => {
+        let userInput;
+        let string = "empty";
+        for(let i = 0; i < string.length; i++){
+            if(x){
+
+            }else if (y){
+
+            }
+        }
+
+        oneMore();
+    }
+    const oneMore = () => {
+        let userInput;
+        let anotherString = "empty again!";
+        for(let i = 0; i < anotherString.length; i++){
+            if(a){
+
+            } else if (b){
+
+            }
+        }
+        otherQuestion();
+    }
+    const otherQuestion = () => {
+        let userInput;
+        let otherString = " Thinking";
+        for(let i = 0; i < otherString.length; i++){
+            if(que){
+
+            } else if(res){
+
+            }
+        }
+        lastOne();
+    }
+    const lastOne = () => {
+        let userInput;
+        let lastString = "done";
+        for(let i = 0; i < lastString.length; i++){
+            if(ques){
+
+            }else if(ans) {
+
+            }
+        }
+    }
 }
 play()
