@@ -17,6 +17,7 @@ function dice(){
         noDice();
     }
 }
+}
 
 const noDice = () => {
     let userInput
@@ -78,51 +79,43 @@ const nextQuestion = () => {
 }
     const anotherQuestion = () => {
         let userInput;
-        let string = "empty";
-        for(let i = 0; i < string.length; i++){
-            if(x){
-
-            }else if (y){
-
-            }
+        for(let userInput = readline.question.toLowerCase("Once when I was kidnapped they sent my father one of my fingers. Know what he told them? yes/no? "); input !== "yes";){
+            if(input === "yes"){
+                console.log("He said he wanted more proof.")
+          
         }
+    }
 
         oneMore();
     }
+
     const oneMore = () => {
         let userInput;
-        let anotherString = "empty again!";
-        for(let i = 0; i < anotherString.length; i++){
-            if(a){
-
-            } else if (b){
-
+        
+        for(let userinput = readline.question.toLowerCase("I tell ya its not like I'm compleatly innocent in all this either. I'm a terrible lover, you know what happened when a peeping tom came to my house? yes/no"); input !== "yes";){
+            if(userInput="yes"){
+                console.log("he started booing me.")
             }
         }
         otherQuestion();
     }
+
     const otherQuestion = () => {
         let userInput;
-        let otherString = " Thinking";
-        for(let i = 0; i < otherString.length; i++){
-            if(que){
-
-            } else if(res){
-
+        for(let userInput = readline.question.toLowerCase("A girl phoned me and said, “Come on over. There’s nobody home.” I went over, and what do you think happened next? Nothing / Let me know"); userInput !== "let me know"; ){
+            if(userInput === "let me know"){
+                console.log("Well let me tell ya, I went over and nobody was home!")
             }
         }
         lastOne();
     }
+
     const lastOne = () => {
         let userInput;
-        let lastString = "done";
-        for(let i = 0; i < lastString.length; i++){
-            if(ques){
-
-            }else if(ans) {
-
+        for(let userInput = readline.question.toLowerCase("But all in all I can't complain, there's this story I heard about recently that I think about whenever I get too down. Want to hear it? yes / no"); userInput !== "yes";){
+            if(userInput === "yes"){
+                console.log("I knew a girl so ugly, they use her in prisons to cure sex offenders.")
             }
         }
     }
-}
 play()
