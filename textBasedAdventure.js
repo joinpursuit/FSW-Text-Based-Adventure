@@ -21,8 +21,8 @@ function dice(){
 
 const noDice = () => {
     let userInput
-    userInput = readline.question("Yeah then we met. But that's not totally true, even as a kid I got the short end of the stick. I asked my dad if I counld go out ice skating at the local pond, and he told me, wait till it gets warmer. It doesn't just go for people either. You get where I'm coming from? Yes / No").toLowerCase()
     while(userInput !== "yes"){
+    userInput = readline.question("Yeah then we met. But that's not totally true, even as a kid I got the short end of the stick. I asked my dad if I counld go out ice skating at the local pond, and he told me, wait till it gets warmer. It doesn't just go for people either. You get where I'm coming from? Yes / No").toLowerCase()
         console.log("I doubt it.")
     }
     if(userInput === "yes"){
