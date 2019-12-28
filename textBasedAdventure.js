@@ -72,15 +72,17 @@ function nextQuestion(){
             answer = "I tell ya no respect";
             break;
 }
-    if(userInput){
+    if(userInput === "3"){
         anotherQuestion();
     }else{
         nextQuestion();
     }
 }
     const anotherQuestion = () => {
-        for(let userInput = readline.question("Once when I was kidnapped they sent my father one of my fingers. Know what he told them? yes/no? ").toLowerCase(); userInput !== "yes";){
-            if(userInput === "yes"){
+        let options = ["yes", "no"]
+        let userInput = readline.question("Once when I was kidnapped they sent my father one of my fingers. Know what he told them? 1 or 2? ")
+        for(let i = 0; i < options.length; i++){
+            if(userInput === "1"){
                 console.log("He said he wanted more proof.")
           
         }
