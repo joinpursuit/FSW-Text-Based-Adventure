@@ -46,7 +46,8 @@ if(firstSurvey ==="A"){
     console.log("you dont know how to say it its cool no one goes there!")
 }
 
-
+bustelloCafe()
+famousNyers()
 }
 const bustelloCafe =()=>{
     let sugarAmount;
@@ -64,5 +65,27 @@ const bustelloCafe =()=>{
         }
     }
 }
-bustelloCafe()
+const famousNyers =()=>{
+    let famousPerson;
+    famousPerson = readline.question("Are they from NYC?")
+    if(famousPerson === "JayZ", "JLo", "Pacino","Trump","Aguilera", "Cruise" ){
+        readline.question(`Pick one:"JayZ", "JLo", "Pacino","Trump","Aguilera", "Cruise"`)
+    }
+    while(famousPerson ===3){
+        if(Number(famousPerson ==="JayZ")){
+            console.log("Broooklyn!!!! you get a Baconeggandcheese")
+        } else if(Number(famousPerson ==="JLo")) {
+            console.log("BX!!!! you get a Baconeggandcheese")
+        } else if(Number(famousPerson==="Pacino")) {
+            console.log("Manhattan!!!! you get a Baconeggandcheese")
+        } else if(Number(famousPerson==="Trump")) {
+            console.log("Queens!!!! you get a Baconeggandcheese")
+        } else if(Number(famousPerson=="Aguilera")) {
+            console.log("Staten Island!!!! you get a Baconeggandcheese")
+        }else{
+            console.log("No Baconeggandcheese for you!")
+        }
+    }
+}
+
 play()
