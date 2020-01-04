@@ -74,6 +74,7 @@ function nextQuestion(){
             otherOne()
             break;
 }
+}
     const lastOne = () => {
             console.log("That's it")
     }
@@ -97,6 +98,7 @@ function nextQuestion(){
             eitherOne()
         }
     }
+}
     const eitherOne = () => {
         let userInput = readline.question("But all in all I can't complain, there's this story I heard about recently that I think about whenever I get too down. Want to hear it? yes / no").toLowerCase()
         while( userInput !== "yes"){
@@ -128,4 +130,7 @@ function nextQuestion(){
             lastOne();
 
     }
-    play()
+}
+    
+}
+play();
