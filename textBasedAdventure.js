@@ -20,13 +20,12 @@ function dice(){
 }
 
 const noDice = () => {
-    let userInput
-    while(userInput !== "yes"){
-    userInput = readline.question("Yeah then we met. But that's not totally true, even as a kid I got the short end of the stick. I asked my dad if I counld go out ice skating at the local pond, and he told me, wait till it gets warmer. It doesn't just go for people either. You get where I'm coming from? Yes / No").toLowerCase()
-        console.log("I doubt it.")
-    }
+    let userInput = readline.question("Yeah then we met. But that's not totally true, even as a kid I got the short end of the stick. I asked my dad if I counld go out ice skating at the local pond, and he told me, wait till it gets warmer. It doesn't just go for people either. You get where I'm coming from? Yes / No").toLowerCase()
+    while(userInput !== "yes")
     if(userInput === "yes"){
         aLikelyStory();
+    }else if( userInput === "no"){
+        anotherOne()
     }
 }
 const aLikelyStory = () => {
@@ -115,5 +114,23 @@ function nextQuestion(){
                 console.log("I knew a girl so ugly, they use her in prisons to cure sex offenders.")
             }
         }
+    }
+    const newOne = () => {
+
+    }
+    const anotherOne = () =>{
+        let userInput =  readline.question("I worked at a pet store and people kept asking me how big I'd get. Can you believe it?").toLowerCase()
+        while(userInput !== "yes"){
+            if(userInput === "no"){
+                newOne()
+        }else{
+            eitherOne()
+        }
+    }
+    const eitherOne = () => {
+
+    }
+    const otherOne = () =>{
+
     }
 play()
