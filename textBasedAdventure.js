@@ -109,9 +109,8 @@ function nextQuestion(){
     }
 
     const lastOne = () => {
-        for(let userInput = readline.question("But all in all I can't complain, there's this story I heard about recently that I think about whenever I get too down. Want to hear it? yes / no").toLowerCase(); userInput !== "yes";){
             if(userInput !== "no"){
-                console.log("I knew a girl so ugly, they use her in prisons to cure sex offenders.")
+                
             }
         }
     }
@@ -128,9 +127,24 @@ function nextQuestion(){
         }
     }
     const eitherOne = () => {
-
+        let userInput = readline.question("But all in all I can't complain, there's this story I heard about recently that I think about whenever I get too down. Want to hear it? yes / no").toLowerCase()
+        while( userInput !== "yes"){
+            if(userInput === "no"){
+                console.log("I knew a girl so ugly, they use her in prisons to cure sex offenders.")
+                otherOne();
+            }
+        }
     }
     const otherOne = () =>{
+
+    }
+    const fewMore = () => {
+
+    }
+    const adding = () => {
+
+    }
+    const gettingMore = () => {
 
     }
 play()
