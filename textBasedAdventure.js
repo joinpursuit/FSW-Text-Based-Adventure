@@ -74,31 +74,8 @@ function nextQuestion(){
             otherOne()
             break;
 }
-}
-    const anotherQuestion = () => {
-        let options = ["yes", "no"]
-        let userInput = readline.question("Once when I was kidnapped they sent my father one of my fingers. Know what he told them? 1 or 2? ")
-        for(let i = 0; i < options.length; i++){
-            if(userInput === "1"){
-                console.log("He said he wanted more proof.")
-          
-        }
-    }
-
-        oneMore();
-    }
-
-    const oneMore = () => {
-            if(userInput !== "no"){
-                
-            }
-        }
-        lastOne();
-    }
-
-
     const lastOne = () => {
-            
+            console.log("That's it")
     }
     const newOne = () => {
         let userInput = readline.question("I tell ya its not like I'm compleatly innocent in all this either. I'm a terrible lover, you know what happened when a peeping tom came to my house? yes/no").toLowerCase()
@@ -143,10 +120,12 @@ function nextQuestion(){
             }
     }
     const fewMore = () => {
-        
+        let userInput = readline.question("Once when I was kidnapped they sent my father one of my fingers. Know what he told them? 1 or 2? ")
+        while(userInput !== "1"){
+            if(userInput = "2"){
+                console.log("He said he wanted more proof.")
+        }else{
+            lastOne();
 
     }
-    const adding = () => {
-
-    }
-play()
+    play()
