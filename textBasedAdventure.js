@@ -100,19 +100,14 @@ function nextQuestion(){
     }
 
     const otherQuestion = () => {
-        for(let userInput = readline.question("A girl phoned me and said, “Come on over. There’s nobody home.” I went over, and what do you think happened next? Nothing / Let me know").toLowerCase(); userInput !== "let me know"; ){
-            if(userInput !== "nothing"){
-                console.log("Well let me tell ya, I went over and nobody was home!")
-            }
-        }
+        for(
+            
+        
         lastOne();
     }
 
     const lastOne = () => {
-            if(userInput !== "no"){
-                
-            }
-        }
+            
     }
     const newOne = () => {
 
@@ -132,11 +127,21 @@ function nextQuestion(){
             if(userInput === "no"){
                 console.log("I knew a girl so ugly, they use her in prisons to cure sex offenders.")
                 otherOne();
+            }else{
+                fewMore()
             }
         }
     }
     const otherOne = () =>{
-
+        let userInput = readline.question("A girl phoned me and said, “Come on over. There’s nobody home.” I went over, and what do you think happened next? Nothing / Let me know").toLowerCase();
+            while( userInput !== "yes"){
+                if(userInput === "yes"){
+                    console.log("Well let me tell ya, I went over and nobody was home!")
+                    fewMore()
+                }else{
+                    adding()
+                }
+            }
     }
     const fewMore = () => {
 
