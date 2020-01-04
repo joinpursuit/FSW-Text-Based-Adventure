@@ -63,19 +63,17 @@ function nextQuestion(){
         switch (userInput){
         case "1" :
             answer = "Sure you could";
+            anotherQuestion()
             break;
         case "2" :
             answer = "I wish";
+            eitherOne()
             break;
         case "3" :
             answer = "I tell ya no respect";
+            otherOne()
             break;
 }
-    if(userInput === "3"){
-        anotherQuestion();
-    }else{
-        nextQuestion();
-    }
 }
     const anotherQuestion = () => {
         let options = ["yes", "no"]
@@ -91,27 +89,28 @@ function nextQuestion(){
     }
 
     const oneMore = () => {
-        for(let userInput = readline.question("I tell ya its not like I'm compleatly innocent in all this either. I'm a terrible lover, you know what happened when a peeping tom came to my house? yes/no").toLowerCase(); userInput !== "yes";){
             if(userInput !== "no"){
-                console.log("he started booing me.")
+                
             }
         }
-        otherQuestion();
-    }
-
-    const otherQuestion = () => {
-        for(
-            
-        
         lastOne();
     }
+
 
     const lastOne = () => {
             
     }
     const newOne = () => {
-
+        let userInput = readline.question("I tell ya its not like I'm compleatly innocent in all this either. I'm a terrible lover, you know what happened when a peeping tom came to my house? yes/no").toLowerCase()
+        while(userInput !== "yes"){
+           if(userInput === "yes") {
+               console.log("he started booing me.")
+            lastOne();
+        }else{
+            anotherOne()
+        }
     }
+}
     const anotherOne = () =>{
         let userInput =  readline.question("I worked at a pet store and people kept asking me how big I'd get. Can you believe it?").toLowerCase()
         while(userInput !== "yes"){
@@ -144,12 +143,10 @@ function nextQuestion(){
             }
     }
     const fewMore = () => {
+        
 
     }
     const adding = () => {
-
-    }
-    const gettingMore = () => {
 
     }
 play()
