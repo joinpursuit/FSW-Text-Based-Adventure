@@ -15,3 +15,14 @@ const beginGame = () => {
     }
 }
 beginGame() //This goes at the last line
+
+
+const restartGame = () => {
+    if(readline1.keyInYN("Play again?")){
+        beginGame()
+    } else {
+        console.log("Thanks for playing!")
+        console.clear()
+        process.exit()
+    }
+}
