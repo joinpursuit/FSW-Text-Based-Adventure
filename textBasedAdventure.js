@@ -21,7 +21,19 @@ const playloop = () => {
 
     let answer = readline.question(yourVariableHere + " Where would you like to go \n" )  
     let countries = ("Sweden", "Canada", "China", "Haiti", "Brazil", "Austria", "Greece", "Chile", "Colombia", "Cuba")
-
+    let choice = "Canada"
+    for( let i = 0; i > contries;i++ )
+    choice(contries[i])
+   if(answer = choice) {
+    console.log("Amazing" + "Let's go to Canda")
+    canadaTrip()
+   }else{
+       console.log("Sorry" + yourVariableHere)
+       console.log("Unfortunally we don't have more tickets to Canada")
+       console.log("However we still have others destinations")
+       playloop()
+   }
+   
 } 
 
 
@@ -42,6 +54,12 @@ const gameHistories = () => {
         quitGame()
     }
 }
+
+const canadaTrip =() =>{
+    let attractions = ("Historia", "Tradiciones", "Religions"," Holidays"," Cuisine"," ")
+}
+
+
 
 const quitGame = () => {
     console.log("GoodBye" + yourVariableHere)
