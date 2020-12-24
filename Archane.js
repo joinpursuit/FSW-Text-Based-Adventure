@@ -1,9 +1,12 @@
 const rls = require('readline-sync')
 
+
 //Introduction function
 const startGame = () => {
+    console.clear()
     console.log("Welcome to Archane: A Choose Your Own Adventure Game!")
-    console.log("This game has been developed by MiKode Tech Inc.")
+    console.log("This game has been developed by Jailene DeVine-Jones.")
+    console.log("\nInstructions:\nUse the keyboard to type in your answers. Pretty simple, right?\n")
     if (rls.keyInYN("Would you like to play?")){
         partOne();
     } else {
@@ -19,14 +22,13 @@ const endGame = () => {
 
 //Part One function
 const partOne = () => {
-    playerName = rls.question("What is your name? \n")
-    console.log(`Hello ${playerName}! Please select your class.`)
+    playerName = rls.question("\nWhat is your name? \n")
+    console.log(`\nHello ${playerName}! Please select your class.`)
     selectClass();
 }
 
 
 //Player is selecting class
-
 const selectClass = () => {
     let classOptions = ["Bard", "Wizard", "Assassin", "Warrior", "Mage"]
     classSelect = rls.keyInSelect(classOptions)
@@ -40,14 +42,39 @@ const selectClass = () => {
         }
     } else{
         if (rls.keyInYN(`You have selected the ${playerClass} Class. Is that correct?`)){
-            console.log("Great! Here are your stats: \n")
-            //playerStats()
-    } 
+            console.log("\nGreat! Here are your stats: ")
+            playerStats()
+            logPlayerStats()
+        } else {
+            console.log("Please reselect a class: ")
+            selectClass();
+        } 
 }
 }
+
+//Player Stats randomized using rollDieTen()
+const playerStats = () => {
+    playerStrength = rollDieTwenty() //Measuring Physical Power
+    playerDexterity = rollDieTwenty() // Measuring Agility
+    playerConstitution = rollDieTwenty() //Measuring Endurance
+    playerIntelligence = rollDieTwenty() //Measuring Reasoning and Memory
+    playerWisdom = rollDieTwenty() //Measuring Perception and Insight
+    playerCharisma = rollDieTwenty() //Measuring Force of Personality
+}
+
+//Logging Player Stats 
+const logPlayerStats = () => {
+    console.log(`
+    Strength: ${playerStrength}
+    Dexterity: ${playerDexterity}
+    Constitution: ${playerConstitution}
+    Intelligence: ${playerIntelligence}
+    Wisdom: ${playerWisdom}
+    Charisma: ${playerCharisma}\n`)
+}
+
 
 //Side Ending if Player does not select class.
-
 const sideEndingOne = () => {
     console.log(`\nYou decide not to select a class. The village you and your family reside in has been torn into ruins by the goblins. 
 There are no traces of anyone. You live out your days in loneliness until a goblin finds you and kills you.
@@ -64,6 +91,10 @@ const rollDieSix = () => {
     return Math.floor((Math.random() * 6) + 1)
 }
 
+//Rolling a 10-sided die to determing player stats.
+const rollDieTwenty = () => {
+    return Math.floor((Math.random() * 20) + 1)
+}
+
 startGame()
 
-// selectClass()
