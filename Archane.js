@@ -20,6 +20,16 @@ const endGame = () => {
     process.exit();
 }
 
+//Rolling a 6-sided die to determine the hit points.
+const rollDieSix = () => {
+    return Math.floor((Math.random() * 6) + 1)
+}
+
+//Rolling a 10-sided die to determing player stats.
+const rollDieTwenty = () => {
+    return Math.floor((Math.random() * 20) + 1)
+}
+
 //Part One function
 const partOne = () => {
     playerName = rls.question("\nWhat is your name? \n")
@@ -52,15 +62,21 @@ const selectClass = () => {
 }
 }
 
-//Player Stats randomized using rollDieTen()
+//Player Stats randomized using rollDieTwenty()
 const playerStats = () => {
-    playerStrength = rollDieTwenty() //Measuring Physical Power
-    playerDexterity = rollDieTwenty() // Measuring Agility
-    playerConstitution = rollDieTwenty() //Measuring Endurance
-    playerIntelligence = rollDieTwenty() //Measuring Reasoning and Memory
-    playerWisdom = rollDieTwenty() //Measuring Perception and Insight
+    arr = []
+    playerStrength = rollDieTwenty()  //Measuring Physical Power
+    playerDexterity = rollDieTwenty()  // Measuring Agility
+    playerConstitution = rollDieTwenty()  //Measuring Endurance
+    playerIntelligence = rollDieTwenty()  //Measuring Reasoning and Memory
+    playerWisdom = rollDieTwenty()  //Measuring Perception and Insight
     playerCharisma = rollDieTwenty() //Measuring Force of Personality
+
+    arr.push(playerStrength, playerDexterity, playerConstitution, playerIntelligence, playerWisdom, playerCharisma)
+    return arr
 }
+
+playerStatArray = playerStats()
 
 //Logging Player Stats 
 const logPlayerStats = () => {
@@ -71,6 +87,28 @@ const logPlayerStats = () => {
     Intelligence: ${playerIntelligence}
     Wisdom: ${playerWisdom}
     Charisma: ${playerCharisma}\n`)
+}
+
+//rollDieTwenty to roll for Stats. Depending on Stats, it adds a modifier to roll.
+const playerStatModifier = (playerStatArray) => {
+    for (i = 0; i < playerStatArray.length; i++){
+        if (playerStatArray[i] <= 3){
+            statModifier = -5
+        } else if (playerStatArray[i] <= 6){
+            statModifier = -3
+        } else if (playerStatArray[i] <= 9){
+            statModifier = -1
+        } else if (playerStatArray[i] <= 12){
+            statModifier = 0
+        } else if (playerStatArray[i] <= 15){
+            statModifier = 1
+        } else if (playerStatArray[i] <= 18){
+            statModifier = 3
+        } else if (playerStatArray[i] <= 20){
+            statModifier = 5
+        }
+    }
+    return statModifier
 }
 
 
@@ -86,15 +124,7 @@ You should have picked a class, ${playerName}. \n`)
     }
 }
 
-//Rolling a 6-sided die to determine the hit points.
-const rollDieSix = () => {
-    return Math.floor((Math.random() * 6) + 1)
-}
-
-//Rolling a 10-sided die to determing player stats.
-const rollDieTwenty = () => {
-    return Math.floor((Math.random() * 20) + 1)
-}
-
 startGame()
-
+// playerStats()
+// playerStatModifier()
+// console.log(playerStatArray.length)
