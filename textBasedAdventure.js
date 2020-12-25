@@ -7,23 +7,73 @@ const leaveGame = () => {
   //console.clear();
   process.exit();
 };
+///--CHOICE 3
+// const door1 = () => {};
+// const door2 = () => {};
+// const city = () => {};
+// const country = () => {};
+const door1 = () => {};
+const door2 = () => {};
+const city = () => {};
+const country = () => {};
 
-const inside = () => {};
-const outside = () => {};
+/// --CHOICE 2 
+//const inside = () => {} --> doors
+//const outside = () => {} --> city or country
+const inside = () => {
+  let choice2;
+  console.log(`Welcome to my Parlor ${nameInput}`);
+  console.log("Just the number please.")
+  while (choice2 !== "1" && choice2 !== "2") {
+    choice2 = rls.question("Door 1 or Door 2? \n");
+    choice2 = choice2.trim().toLowerCase();
+    if (choice2 !== "1" && choice2 !== "2") {
+      console.log("Really?");
+      console.log("Let's try this again.");
+    }
+  }
+  if (choice2 === "1") {
+    door1();
+  } else {
+    door2();
+  }
+};
 
-/// --START GAME
-// let nameInput = rls.question("Enter your name: ");
-// console.log(`Hello ${nameInput}!  Welcome to my Text Adventure Game.`);
+const outside = () => {
+  let choice2a;
+  console.log(`Ahhh. The great outdoors.`);
+  while (choice2a !== "city" && choice2a !== "country") {
+    choice2a = rls.question("City or Country? \n");
+    choice2a = choice2a.trim().toLowerCase();
+    if (choice2a !== "city" && choice2a !== "country") {
+      console.log("Really?");
+      console.log("Let's try this again.");
+    }
+  }
+  if (choice2a === "city") {
+    city();
+  } else {
+    country();
+  }
+};
+
+/// --START GAME --> CHOICE 1
+//const inside = () => {}
+//const outside = () => {}
 const startGame = () => {
-  console.log("Testing, testing, 1, 2, 3");
-  let choice;
-  while (choice !== "inside" && choice !== "outside") {
-    choice = rls.question("Inside or Outside? \n");
-    choice = choice.trim().toLocaleLowerCase();
-    if (choice !== "inside" && choice !== "outside") {
+  let choice1;
+  while (choice1 !== "inside" && choice1 !== "outside") {
+    choice1 = rls.question("Inside or Outside? \n");
+    choice1 = choice1.trim().toLocaleLowerCase();
+    if (choice1 !== "inside" && choice1 !== "outside") {
       console.log("Uhmmm, NO!");
       console.log("Let's try this again.");
     }
+  }
+  if (choice1 === "inside") {
+    inside();
+  } else {
+    outside();
   }
 };
 
@@ -33,16 +83,6 @@ const startGame = () => {
 //         console.log("Uhmmm, NO!");
 //         console.log("Let's try this again. ")
 //     }}
-// };
-
-/// --PLAY
-// const play = () => {
-//   console.log("OK. Here we go.");
-//   if (rls.keyInYN("Ready to play?")) {
-//     startGame();
-//   } else {
-//     leaveGame();
-//   }
 // };
 
 /// --RULES
@@ -85,3 +125,13 @@ if (rls.keyInYN("Do you want to play a game with me?")) {
 //         console.log("Not a valid guess. Must be high ot low.")
 //     }
 // }
+
+/// --PLAY
+// const play = () => {
+//   console.log("OK. Here we go.");
+//   if (rls.keyInYN("Ready to play?")) {
+//     startGame();
+//   } else {
+//     leaveGame();
+//   }
+// };
