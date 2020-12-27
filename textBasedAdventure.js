@@ -2,8 +2,10 @@ const rls = require("readline-sync");
 
 /// --LEAVE GAME
 const leaveGame = () => {
-  console.log(`--* Hmmm. ${nameInput}, you're no fun.`);
-  console.log("--* So long");
+  console.log(
+    `--* Hmmm, you're no fun.
+    So long ${nameInput}.`
+  );
   //console.clear();
   process.exit();
 };
@@ -32,8 +34,9 @@ const incapacitated = () => {
     leaveGame();
   }
 };
+
 /// --CHOICE 6
-// const stay = () => {}; --> meet someone --> go with or ?
+// const stay = () => {}; --> meet someone --> wave or hide?
 // const leave = () => {}; -->
 const stay = () => {
   console.log(
@@ -43,6 +46,18 @@ const stay = () => {
     specimen of a human being staring right at you.\n
     What do you do?`
   );
+  // while (choice6 !== "" && choice6 !== "") {
+  //   choice6 = rls.question(" or  \n");
+  //   choice6 = choice6.trim().toLowerCase();
+  //   if (choice6 !== "" && choice6 !== "") {
+  //     console.log("");
+  //   }
+  // }
+  // if (choice6 === "") {
+  //     ();
+  //   } else {
+  //     ();
+  //   }
 };
 
 const leave = () => {
