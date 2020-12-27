@@ -1,11 +1,11 @@
 const readline1 = require('readline-sync')
 
+
 const beginGame = () => {
     console.log(`Welcome to my game.`)
     let nameInput = readline1.question(`What is your name? \n`)
-   // console.log(`Hello ${nameInput}!  Welcome to my game.`)
-    
-    console.log(`Hello ${nameInput}! In this game, you're a bank robber and the decisions that you enter in the console determine whether you will go to jail or not \nbut you don't know which path takes you where and you have one chance to escape. Good luck!`)
+   
+    console.log(`Hello ${nameInput}! In this game, you're a bank robber and the decisions that you enter in the console determine whether you will go to jail or not \nbut you don't know which path takes you where and you have one chance to escape. Good luck! (User input should be lowercase)`)
     if(readline1.keyInYNStrict(`Do you want to play?`)){
         startGame()
     } else {
@@ -18,14 +18,14 @@ const beginGame = () => {
 const startGame = () => {
     console.log(`\nYou arrive at the bank and your choice is to either pass a note to the teller demanding all the money in the drawer or you can brandish your gun.`)
     
-    let noteOrGun = readline1.question(`Which would you like to choose? Type "pass note" or "show gun"\n`)
+    let noteOrGun = readline1.question(`Which would you like to choose? "pass note" or "show gun"\n`)
     
-    if (noteOrGun === "pass note") {
+    if (noteOrGun.toLowerCase() === "pass note") {
         passNote()
-    } else if (noteOrGun === "show gun") {
+    } else if (noteOrGun.toLowerCase() === "show gun") {
         showGun()
     } else {
-        console.log("Sorry, decisions are case sensitive. Please re-enter a valid answer with all lowercase letters.")
+        console.log("Please re-enter a valid answer.")
         startGame()
     }
         
@@ -35,15 +35,16 @@ const passNote = () => {
     console.log(`You give your empty backpack to the teller and she nervously puts all the money in the bag.`)
     console.log(`Oh no! You hear police sirens outside!`)
 
-    let surrenderOrGetaway = readline1.question(`Will you panic and surrender to the police or drive off in the getaway car? Type in 'surrender to the police' or 'get in the getaway car!'\n`)
+    let surrenderOrGetaway = readline1.question(`Will you panic and surrender to the police or drive off in the getaway car? "surrender to the police" or "get in the getaway car"\n`)
 
-    switch(surrenderOrGetaway){
+    switch(surrenderOrGetaway.toLowerCase()){
     case `surrender to the police`: 
         surrender()
-    case `get in the getaway car!`:
+    case `get in the getaway car`:
         getawayCar()
     break
     default:
+        console.log("Please re-enter a valid answer.")
         passNote()
     }
 }
@@ -53,8 +54,10 @@ const showGun = () => {
 }
 
 const surrender = () => {
-    console.log(`hello`)
-    // fight()
+    console.log(`YOU'VE BEEN ARRESTED`)
+    console.log(`but you have a chance to escape jail`)
+    //fight()
+    // escape()
 }
 
 const getawayCar = () => {
@@ -63,43 +66,66 @@ const getawayCar = () => {
     
     const surrenderOrCleanUp = readline1.question(`surrender to police or clean up dye\n`)
     
-    surrenderOrCleanUp === `surrender to police` ? surrender()
-    : surrenderOrCleanUp === `clean up dye` ? cleanUp()
-    : getawayCar()
+    surrenderOrCleanUp.toLowerCase() === `surrender to police` ? surrender()
+    : surrenderOrCleanUp.toLowerCase() === `clean up dye` ? cleanUp()
+    : console.log(`Please re-enter a valid answer.`)
+        getawayCar()
     
 }
 
 const fight = () => {
+    console.log(`hi`)
     // escape()
     // goToJail()
 }
 
 const cleanUp = () => {
-//     bathroomPasscode() //if entered wrong then go back and get caught
-//     surrender()
-    console.log(`hi`)
+    console.log(`The gas station attendant passes you a receipt with 3418 written on it when you ask for the bathroom passcode. You have 3 attempts.`)
+    bathroomCode()
 }
 
 const escape = () => {
-//     getCaught()
-// }
+//     gotoJail()
+//
 }
 
-const avoidPolice = () => {
+const bathroomCode = () => {
+    let attempts = 3
 
+    while(attempts > 0) {
+        let code = readline1.questionInt(`Enter code\n`)
+        
+        if (code === 3418){
+           console.log(`UNLOCKED`)
+            meetNick()
+        } else {
+           console.log(`LOCKED`)
+        }
+        attempts--
+    }
+    console.log(`You go back to the gas station attendant and police are waiting to arrest you`)
+    surrender()
 }
 
-const getCaught = () => {
-
+const meetNick = () => {
+ console.log(`You walk out the gas station and `)
 }
 
-const goToJail = () => {
-    // gameOver()
+const goToJail = () =>{
+    console.log("YOU GOT ARRESTED AGAIN")
+    console.log("You got caught ")
+    loseGame()
 }
 
-const gameOver = () => {
+const winGame = () => {
+    console.log(`You won! You escaped jail and avoided going back to jail!`)
+    restartGame()
+}
 
-    // restartGame()
+const loseGame = () => {
+    console.log(`You got caught by police again!`)
+    console.log(`You lost! Game over`)
+    restartGame()
 }
 
 const restartGame = () => {
