@@ -3,7 +3,7 @@ const rls = require("readline-sync");
 /// --LEAVE GAME
 const leaveGame = () => {
   console.log(
-    `--* Hmmm, you're no fun.
+    `\n--* Hmmm, Hope you had fun.
     So long ${nameInput}.`
   );
   //console.clear();
@@ -36,16 +36,28 @@ const incapacitated = () => {
 };
 
 ///--CHOICE 8 -- inside
-// const coffee = () => {};
- const coffee = () => {console.log("Testing, testing 1, 2, 3")};
+// const diner = () => {};
+// const decline = () => {}; --> hit in the head incapacitated
+const diner = () => {
+  console.log("Testing, testing 1, 2, 3");
+};
+const decline = () => {
+    console.log(
+        `\n--* You stumble your way to the bathroom to splash some cold water on your face.
+        Just as you turn the corner and take a few steps a door opens suddenly and
+        slams into your head knocking you out cold.\n`
+    );
+    console.log("--* ooooh. That's gonna leave a nasty bruise. \n");
+    incapacitated();
+};
 
 ///--CHOICE 7 -- inside
 // const wave = () => {}; --> coffee or leave by yourself
 // const hide = () => {}; --> loop to the basement
 const wave = () => {
-    let choice7;
-    console.log(
-        `\n--* Before you realize it, you are drowning in the most beautiful brown eyes you have ever seen.
+  let choice7;
+  console.log(
+    `\n--* Before you realize it, you are drowning in the most beautiful brown eyes you have ever seen.
         Beautiful One: That was quite a performance up there. 
         You: I'd offer an encore but .... 
         Beautiful One: You ok?
@@ -53,31 +65,31 @@ const wave = () => {
         Beautiful One: You look like you could use a cup of something not alcoholic and warm.
         There's a diner up the street. Come on. \n
         --* What do you do? 
-        Go for coffee or decline\n`
-        )
-    while(choice7 !== "coffee" && choice7 !== "walk") {
-        choice7 = rls.question("--* Go for Coffee or Go for a walk by yorself?\n")
-        choice7 = choice7.trim().toLowerCase();
-       if(choice7 !== "coffee" && choice7 !== "walk") {
-           console.log("\nSober up Dearie.")
-        } 
+        Go to the diner or decline\n`
+  );
+  while (choice7 !== "diner" && choice7 !== "decline") {
+    choice7 = rls.question("--* Go for diner or Go for a decline by yorself?\n");
+    choice7 = choice7.trim().toLowerCase();
+    if (choice7 !== "diner" && choice7 !== "decline") {
+      console.log("\nSober up Dearie.");
     }
-    if(choice7 === "coffee") {
-        coffee();
-    } else {
-        walk();
-    }
-}; 
+  }
+  if (choice7 === "diner") {
+    diner();
+  } else {
+    decline();
+  }
+};
 const hide = () => {
-    //add dialog
-    basement();
-}; 
+  //add dialog
+  basement();
+};
 
 /// --CHOICE 6 -- inside
 // const stay = () => {}; --> meet someone --> wave or hide?
 // const leave = () => {}; --> loop to function outside
 const stay = () => {
-    let choice6;
+  let choice6;
   console.log(
     `\n--* You give the ogre who took your spotlight a stank look and exit stage left as graceful 
     as only someone drunk can.
@@ -94,10 +106,10 @@ const stay = () => {
     }
   }
   if (choice6 === "wave") {
-      wave();
-    } else {
-      hide();
-    }
+    wave();
+  } else {
+    hide();
+  }
 };
 
 const leave = () => {
@@ -125,7 +137,7 @@ const sing = () => {
     A low rumble is building in the room but you are so drunk and happy that you could care less.
     Just as you are about to give them the grand finalie. 
     Someone grabs your mic and you hear the voice again. 
-    The Voice: You think this is the American Idol Audition?!
+    The Voice: You think this is American Idol Auditions?!
     Laughter erupts and you are mortified.\n
     Do you want to stay or leave?`
   );
@@ -147,7 +159,9 @@ const sing = () => {
 // const martini = () => {}; --> dance or sing
 // const box = () => {}; -->  takes you to ???
 /// --CHOICE 4 -- outside
- const walk = () => {console.log("Testing, testing 1, 2, 3");}; //-->
+const walk = () => {
+  console.log("Testing, testing 1, 2, 3");
+}; //-->
 // const drive = () => {console.log("Testing, testing 1, 2, 3");}; //--> CAR 1 or CAR 2
 // const enchanted = () => {console.log("Testing, testing 1, 2, 3");}; //-->
 // const woods = () => {console.log("Testing, testing 1, 2, 3");}; //-->
@@ -176,10 +190,10 @@ const martini = () => {
 
 const box = () => {
   console.log("Testing, testing 1, 2, 3");
-}; 
- const basement = () => {
-    console.log("Testing, testing 1, 2, 3")
- }; 
+};
+const basement = () => {
+  console.log("Testing, testing 1, 2, 3");
+};
 
 ///--CHOICE 3 -- inside
 // const door1 = () => {}; --> take you to the roof --> martini or mystery box
@@ -266,12 +280,12 @@ const country = () => {
 const inside = () => {
   let choice2;
   console.log(
-      `\n--* You step into a darkened room that is a bit overly warm when you hear a voice say.
+    `\n--* You step into a darkened room that is a bit overly warm when you hear a voice say.
       Welcome to my Parlor, ${nameInput} darling. 
-      You look around nervously but you still don't see who is speaking. 
+      You look around nervously but you can't see who is speaking. \n
       The Voice: Pick a door to begin your adventure darling. 
       Just tell me what number you want Door number 1 or Door number 2.`
-    );
+  );
   //console.log(" describe the room a bit");
   while (choice2 !== "1" && choice2 !== "2") {
     choice2 = rls.question("CHOOSE: 1? or 2? \n");
