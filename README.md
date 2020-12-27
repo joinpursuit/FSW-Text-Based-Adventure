@@ -51,7 +51,7 @@ let yourVariableHere = readline.question("Enter your name: ")
 
 #### Acceptance criteria
 
-- Invalid entires are re-prompted
+- Invalid entries are re-prompted
 - There are at least 10 opportunities to make a decision
 - The user must enter a string to make a decision
 - The user must enter a number to make a decision
