@@ -90,9 +90,8 @@ const escape = () => {
 }
 
 const bathroomCode = () => {
-    let attempts = 3
 
-    while(attempts > 0) {
+    for(let i = 0; i < 3; i++) {
         let code = readline1.questionInt(`Enter code\n`)
         
         if (code === 3418){
@@ -101,7 +100,6 @@ const bathroomCode = () => {
         } else {
            console.log(`LOCKED`)
         }
-        attempts--
     }
     console.log(`You go back to the gas station attendant and police are waiting to arrest you`)
     surrender()
