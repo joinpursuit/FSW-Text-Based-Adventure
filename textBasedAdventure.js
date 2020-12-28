@@ -1,5 +1,19 @@
-const readline1 = require('readline-sync')
+const readLineSync = require("readline-sync");
 
-let nameInput = readline.question("Enter your name: ")
+const leaveGame = () => {
+console.log("I don't blame you for wanting out! This adventure is not for the weak of heart!")
+process.exit();
+}
 
-console.log(`Hello ${nameInput}!  Welcome to my game.`)
+const name = readLineSync.question("What's your name?");
+
+console.log("hello " + name + " it's nice to meet you!");
+
+console.log("Welcome to my game!");
+
+if(readLineSync.keyInYN("Do you wish to begin?")){
+    startGame();
+} else {
+    leaveGame();
+}
+
