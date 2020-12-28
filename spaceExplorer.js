@@ -21,7 +21,7 @@ const gameLoop = () =>{
 
 const menu = () => {
     do {
-        gameMenu = readline.keyInSelect(menuOptions, 'Please choose your option',{cancel: 'Quit Game'});
+        let gameMenu = readline.keyInSelect(menuOptions, 'Please choose your option',{cancel: 'Quit Game'});
         switch(gameMenu) {
             case 1:
                 console.log('Let\'s start!');
