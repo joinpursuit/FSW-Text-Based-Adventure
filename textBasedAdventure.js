@@ -5,9 +5,22 @@ const leaveGame = () => {
   );
   process.exit();
 };
+
+let name =[];
+
+const greeting = () => {
+  console.log("Hello! Welcome to my adventure!");
+  name = readLineSync.question("What is your name? ");
+  if (readLineSync.keyInYN("Hello " + name + "! Would you like to begin?")) {
+    gameIntro();
+  } else {
+    leaveGame();
+  }
+};
+
 const gameIntro = () => {
   console.log(
-    "It is a blistering cold and snowy December evening in New York.\n"
+    "\n It is a blistering cold and snowy December evening in New York.\n"
   );
   console.log(
     "You are walking around midtown doing some last minute Christmas shopping\n"
@@ -27,7 +40,7 @@ const gameIntro = () => {
 };
 
 const youDied = () => {
-  console.log("YOU DIED");
+  console.log("\n YOU DIED");
   console.log("Better watch your step next time!");
   process.exit();
 };
@@ -50,7 +63,7 @@ const startGame = () => {
     talkOrJump !== "talk to the cloaked man"
   ) {
     talkOrJump = readLineSync.question(
-      "Do you jump into the portal or talk to the cloaked man? \n"
+      "\n Do you jump into the portal or talk to the cloaked man? \n"
     );
     talkOrJump = talkOrJump.trim().toLocaleLowerCase();
     if (
@@ -61,12 +74,27 @@ const startGame = () => {
       console.log("1. Jump into the portal\n");
       console.log("2. talk to the cloaked man");
     }
-    if (talkOrJump === "jump into the portal") {
-      youDied();
-    } else {
-      talkToYoda();
-    }
+  }
+  if (talkOrJump === "jump into the portal") {
+    youDied();
+  } else {
+    talkToYoda();
   }
 };
 
-gameIntro();
+const talkToYoda = () => {
+  
+  console.log("\n The cloaked man begins to speak in a familiar voice..");
+  console.log("\n Look lost you do young human");
+  console.log("\n great adventure it is obvious you seek..");
+  console.log("\n required your assistance is, a great battle awaits");
+  console.log("\n a fabled warrior the Republic seeks..");
+  console.log("\n this person's name has been foretold to me, it is " + name + "!")
+  
+  if (readLineSync.keyInYN("\n do you wish to fullfil your destiny and join the resistance? \n")){
+      orbSplitLevel ();
+    } else {
+        leaveGame();
+    };
+}
+greeting();
