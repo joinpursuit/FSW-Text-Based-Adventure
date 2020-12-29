@@ -71,8 +71,17 @@ const decline = () => {
 ///--CHOICE 7 -- inside
 // const wave = () => {}; --> diner or decline
 // const hide = () => {}; --> loop to the basement
+
+//const runMore = () => {}; --> incapacitated
+//const sword = () => {};
+//const chicken = () => {};
+const sword = () => {console.log("sword --Testing, testing 1, 2, 3");};
+const chicken = () => {
+    //"No. I'm gonna live to fight another day."
+    console.log("chicken --Testing, testing 1, 2, 3");};
+
 const wave = () => {
-  let choice7;
+  let choiceWave;
   console.log(
     `\n--* Before you realize it, you are drowning in the most beautiful brown eyes you have ever seen.
         Beautiful One: That was quite a performance up there. 
@@ -83,14 +92,14 @@ const wave = () => {
         There's a diner up the street. Come on. \n
         --* What do you do?\n`
   );
-  while (choice7 !== "diner" && choice7 !== "decline") {
-    choice7 = rls.question("--* Go to the diner or decline?\n");
-    choice7 = choice7.trim().toLowerCase();
-    if (choice7 !== "diner" && choice7 !== "decline") {
+  while (choiceWave !== "diner" && choiceWave !== "decline") {
+    choiceWave = rls.question("--* Go to the diner or decline?\n");
+    choiceWave = choiceWave.trim().toLowerCase();
+    if (choiceWave !== "diner" && choiceWave !== "decline") {
       console.log("\nSober up Dearie.");
     }
   }
-  if (choice7 === "diner") {
+  if (choiceWave === "diner") {
     diner();
   } else {
     decline();
@@ -106,11 +115,24 @@ const hide = () => {
   door2();
 };
 
+const runMore = () => {
+  console.log(
+    `--* You start running again picking up speed. You look back and you can't even see Ugly Mug now.
+        And then it happened.\n 
+        You fall into a whole in the ground with no way to get out. You are knocked out cold.
+    --* ooooh. That's gonna leave a nasty bruise. \n`
+  );
+  incapacitated();
+};
+
 /// --CHOICE 6 -- inside
 // const stay = () => {}; --> meet someone --> wave or hide?
 // const leave = () => {}; --> loop to function outside
+
+//const fight = () => {}; --> sword or chicken
+//const run = () => {}; --> turn back and fight or keep running --> incapacitated
 const stay = () => {
-  let choice6;
+  let choiceStay;
   console.log(
     `\n--* You give the ogre who took your spotlight a stank look and exit stage left as graceful 
     as only someone drunk can.
@@ -119,14 +141,14 @@ const stay = () => {
     What do you do?
     Wave and smile semi-soberly? or Find somewhere to hide?\n`
   );
-  while (choice6 !== "wave" && choice6 !== "hide") {
-    choice6 = rls.question("--* Wave? or Hide? \n");
-    choice6 = choice6.trim().toLowerCase();
-    if (choice6 !== "wave" && choice6 !== "hide") {
+  while (choiceStay !== "wave" && choiceStay !== "hide") {
+    choiceStay = rls.question("--* Wave? or Hide? \n");
+    choiceStay = choiceStay.trim().toLowerCase();
+    if (choiceStay !== "wave" && choiceStay !== "hide") {
       console.log("\nDo you need coffee or something?");
     }
   }
-  if (choice6 === "wave") {
+  if (choiceStay === "wave") {
     wave();
   } else {
     hide();
@@ -137,6 +159,52 @@ const leave = () => {
   outside();
 };
 
+const fight = () => {
+let choiceFight;
+console.log(
+    `\n--* You look arounnd and in the corner you see a sword and a chicken.
+    Which you do you choose to go into battle with?\n`
+    );
+    while(choiceFight !== "sword" && choiceFight !== "chicken") {
+        choiceFight = rls.question("CHOOSE: Sword? or Chicken?\n")
+        choiceFight = choiceFight.trim().toLowerCase();
+        if(choiceFight !== "sword" && choiceFight !== "chicken") {
+            console.log("\nYou're holding up progress here!")
+        };
+    };
+    if (choiceFight === "sword") {
+        sword();
+    } else {
+        chicken();
+    };
+}
+
+const run = () => {
+  let choiceRun;
+  console.log(
+    `\n--* You took one look at the Ugly Mug and said 
+    "Awww, hell nah! I'm outta here!"
+    You take of running like you the Road Runner.\n
+    After a few minutes you take a look back and realize Ugly Mug is not chasing you.
+    You think ... Maybe I CAN beat Ugly Mug.\n
+    Do you turn back and fight or do you keep running?\n
+    Enter 1 to turn back and fight
+    Enter 2 to keep running`
+  );
+  while (choiceRun !== "1" && choiceRun !== "2") {
+    choiceRun = rls.question("CHOOSE: 1? or 2?\n");
+    choiceRun = choiceRun.trim().toLowerCase();
+    if (choiceRun !== "1" && choiceRun !== "2") {
+      console.log("\nNope. Try again.");
+    }
+  }
+  if (choiceRun === "1") {
+    fight();
+  } else {
+    runMore();
+  }
+};
+
 /// --CHOICE 5 -- inside
 /// const dance = () => {}; --> fall down and hit your head --> incapacitated
 /// const sing = () => {}; --> embarass yourself --> stay or leave
@@ -144,7 +212,7 @@ const leave = () => {
 /// const fruit = () => {} --> hallucinate --> Enchanted Forrest
 /// const cake = () => {} --> hallucinate --> Dark Woods
 /// const friend = () => {};
-/// const foe = () => {};
+/// const foe = () => {}; --> fight or run
 /// const approach = () => {};
 /// const retreat = () => {};
 const dance = () => {
@@ -165,7 +233,7 @@ const sing = () => {
     A low rumble is building in the room but you are so drunk and happy that you could care less.
     Just as you are about to give them the grand finalie. 
     Someone grabs your mic and you hear the voice again. 
-    The Voice: You think this is American Idol Auditions?!
+    The Voice: "You think this is American Idol Auditions?!"
     Laughter erupts and you are mortified.\n
     Do you want to stay or leave?`
   );
@@ -184,13 +252,35 @@ const sing = () => {
 };
 
 const friend = () => {
+  let choiceRideFly;
   console.log(`\n--* friend text`);
   //console.log("Testing, testing 1, 2, 3");
+  if (choiceRideFly === "ride") {
+    ride();
+  } else {
+    fly();
+  }
 };
 
 const foe = () => {
-  console.log(`\n--* foe text`);
-  //console.log("Testing, testing 1, 2, 3");
+  let choiceRunFight;
+  console.log(
+      `\n--* Ugly Mug catches sight of you and let's out a ferocious growl.
+      Oh Snap! It's about to get live.
+      Do You want to run or fight?\n` 
+      );
+      while (choiceRunFight !== "run" && choiceRunFight !== "fight") {
+        choiceRunFight = rls.question("--* CHOOSE: Run? or Fight?\n");
+        choiceRunFight = choiceRunFight.trim().toLowerCase();
+        if (choiceRunFight !== "run" && choiceRunFight !== "fight") {
+          console.log("\n--* uhmmmm...");
+        }
+      }
+    if (choiceRunFight === "run") {
+        run();
+    } else {
+        fight();
+    }
 };
 
 const approach = () => {
@@ -215,8 +305,20 @@ const fruit = () => {
 
 const cake = () => {
   let choiceDarkWood;
-  console.log(`\n--* Welcome to the Dark Wood Forrest`);
-  //console.log("Testing, testing 1, 2, 3");
+  console.log(
+      `\n--* Welcome to the Dark Wood Forrest
+      Standing in front of you is the ugliest mug you have ever seen. 
+      And a whole lotta drooling too! Yuck!
+      What the hell was in that cake?\n
+      Is Ugly Mug a firend or foe?`
+      );
+  while(choiceDarkWood != "friend" && choiceDarkWood !== "foe") {
+      choiceDarkWood = rls.question("CHOOSE: Friend? or Foe?\n");
+      choiceDarkWood = choiceDarkWood.trim().toLowerCase();
+      if(choiceDarkWood != "friend" && choiceDarkWood !== "foe") {
+          console.log("\nIt's a simple question.")
+      };
+  }
   if (choiceDarkWood === "friend") {
     friend();
   } else {
@@ -227,25 +329,25 @@ const cake = () => {
 /// --CHOICE 4 --inside
 // const martini = () => {}; --> dance or sing
 // const box = () => {}; -->  fruit or cake
-// const laugh = () => {}
-// const cry = () => {}
+// const laugh = () => {} -->
+// const cry = () => {} -->
 /// --CHOICE 4 -- outside
 // const left = () => {} -->
 // const right = () => {} -->
 // const car1 = () => {} -->
 // const car2 = () => {} -->
 const left = () => {
-  console.log(`\n`);
+  console.log(`\n--* This is left`);
   console.log("Testing, testing 1, 2, 3");
 };
 
 const right = () => {
-  console.log(`\n`);
+  console.log(`\n--* This is right`);
   console.log("Testing, testing 1, 2, 3");
 };
 
 const car = () => {
-  console.log("Testing, testing 1, 2, 3");
+  console.log(`\n--* Vroom!`);
 }; //--> CAR 1 or CAR 2
 
 // ***UNKNOWN AS YET
@@ -253,21 +355,21 @@ const car = () => {
 // const woods = () => {console.log("Testing, testing 1, 2, 3");}; //-->
 
 const martini = () => {
-  let choice4;
+  let choiceDanceSing;
   console.log(
     `\n--* Looks like someone has had a few too many martinis. 
     They are pretty tasty.
     You decide to go with the flow and have some fun.
     Do want to dance? or sing? \n`
   );
-  while (choice4 !== "dance" && choice4 !== "sing") {
-    choice4 = rls.question("--* CHOOSE: Dance? or Sing?\n");
-    choice4 = choice4.trim().toLowerCase();
-    if (choice4 !== "dance" && choice4 !== "sing") {
+  while (choiceDanceSing !== "dance" && choiceDanceSing !== "sing") {
+    choiceDanceSing = rls.question("--* CHOOSE: Dance? or Sing?\n");
+    choiceDanceSing = choiceDanceSing.trim().toLowerCase();
+    if (choiceDanceSing !== "dance" && choiceDanceSing !== "sing") {
       console.log("\n--* I know you're a bit loopy but, FOCUS!");
     }
   }
-  if (choice4 === "dance") {
+  if (choiceDanceSing === "dance") {
     dance();
   } else {
     sing();
@@ -275,16 +377,21 @@ const martini = () => {
 };
 
 const box = () => {
-  let choice4Box;
-  console.log(`\n`);
-  while (choice4Box !== "fruit" && choice4Box !== "cake") {
-    choice4Box = rls.question("CHOOSE: fruit? or cake?\n");
-    choice4Box = choice4Box.trim().toLowerCase();
-    if (choice4Box !== "fruit" && choice4Box !== "cake") {
+  let choiceFruitCake;
+  console.log(
+      `\n--* You open the box and you see two beautiful bite sized food creations.
+      One is a fruit salad and the other is a mini cake.
+      Oh these look so very tasy. 
+      Which one do you choose?`
+      );
+  while (choiceFruitCake !== "fruit" && choiceFruitCake !== "cake") {
+    choiceFruitCake = rls.question("CHOOSE: fruit? or cake?\n");
+    choiceFruitCake = choiceFruitCake.trim().toLowerCase();
+    if (choiceFruitCake !== "fruit" && choiceFruitCake !== "cake") {
       console.log("\n Try Again.");
     }
   }
-  if (choice4Box === "fruit") {
+  if (choiceFruitCake === "fruit") {
     fruit();
   } else {
     cake();
@@ -313,20 +420,20 @@ const cry = () => {
 // const city = () => {}; --> left or right
 // const country = () => {}; --> car1 or car2
 const door1 = () => {
-  let choice3;
+  let choiceMartiniBox;
   console.log(
     `\n--* You are now at a rooftop party.
     A waiter approaches and offers you a tray of delectable martinis.
     In the middle of the tray is a box.`
   );
-  while (choice3 !== "martini" && choice3 !== "box") {
-    choice3 = rls.question("CHOOSE: Martini? or Box? \n");
-    choice3 = choice3.trim().toLowerCase();
-    if (choice3 !== "martini" && choice3 !== "box") {
+  while (choiceMartiniBox !== "martini" && choiceMartiniBox !== "box") {
+    choiceMartiniBox = rls.question("CHOOSE: Martini? or Box? \n");
+    choiceMartiniBox = choiceMartiniBox.trim().toLowerCase();
+    if (choiceMartiniBox !== "martini" && choiceMartiniBox !== "box") {
       console.log(`\n--* ${userName}, please pay attention.`);
     }
   }
-  if (choice3 === "martini") {
+  if (choiceMartiniBox === "martini") {
     martini();
   } else {
     box();
@@ -337,13 +444,13 @@ const door2 = () => {
   console.log(
     `\n--* You are now in a pitch black room. At least you think it's a room.
       You hear the faint drip, drip of liquid in the distance.
-      The Voice: Laughing... Oh we're about to have some real fun now.
+      The Voice: Laughing... "Oh we're about to have some real fun now."
       You feel like you are about to have a nervous breakdown.\n
       What do you do laugh or cry?`
   );
   while (choiceEmotion !== "laugh" && choiceEmotion !== "cry") {
     choiceEmotion = rls.question("CHOOSE: Laugh? or Cry?\n");
-    choiceEmotion = choice.trim().toLowerCase();
+    choiceEmotion = choiceEmotion.trim().toLowerCase();
     if (choiceEmotion !== "laugh" && choiceEmotion !== "cry") {
       console.log("Oh, come on!");
     }
@@ -397,10 +504,11 @@ const inside = () => {
   let choiceDoors;
   console.log(
     `\n--* You step into a darkened room that is a bit warm when you hear a voice say.
-      Welcome to my Parlor, ${userName} darling. 
-      You look around nervously but you can't see who is speaking. \n
-      The Voice: Pick a door to begin your adventure darling. 
-      Just tell me what number you want Door number 1 or Door number 2.`
+        "Welcome to my Parlor, ${userName} darling." 
+    You look around nervously but you can't see who is speaking. \n
+    The Voice: 
+        "Pick a door to begin your adventure darling.
+        Just tell me what number you want Door number 1 or Door number 2."`
   );
   while (choiceDoors !== "1" && choiceDoors !== "2") {
     choiceDoors = rls.question("CHOOSE: 1? or 2? \n");
