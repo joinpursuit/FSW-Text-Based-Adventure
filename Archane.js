@@ -67,6 +67,7 @@ const selectClass = () => {
             console.log("\nGreat! Here are your stats: ");
             playerStats();
             logPlayerStats();
+            console.log(`You can see your stats anytime by typing "stats" at any input opportunity (except for Y/N inputs).\n`)
             partOne();
         } else {
             console.log("Please reselect a class: ");
@@ -232,22 +233,138 @@ You should have picked a class, ${playerName}. \n`)
 
 const partOne = () => {
     console.log(`Your name is ${playerName} and you are a(n) ${playerClass}.
-You currently reside in the village of Archane at the Grande Inn, a hotspot for adventurers. 
-After signing up with the Adventurers' Guild, you receive your first mission: 
+You are a human currently residing in the village of Archane at the Grande Inn, a hotspot for adventurers. 
+After signing up with the Adventurers' Guild, you receive your first quest: 
 Retreive the Scroll of Resurrection from the Dragon Prince of Alistair, Ember Demir.
-You are detemined to complete this mission.`)   
+You are determined to complete this quest.
+
+You exit the Grande Inn and make your way to your destination.
+You enter the Archanian Forest. You are met with a fork in the road.\n`)
+    forkInRoad();
+}
+
+const forkInRoad = () => {
+    rightOrLeft = rls.question("Do you go right or left? \n")
+    rightOrLeft = rightOrLeft.trim().toLowerCase()
+    if (rightOrLeft === "right"){
+        rightPath();
+    } else if (rightOrLeft === "left"){
+        leftPath();
+    } else if (rightOrLeft === "stats"){
+        logPlayerStats();
+        forkInRoad();
+    } else {
+        forkInRoad();
+    }
 
 }
 
+const rightPath = () => {
+    console.log(`\nYou decide to take the path to the right.
+Upon walking down the path, you encounter a goblin!
+The goblin is about 3 feet in height, carrying a wooden axe!\n`)
+    console.log(`Roll for initiative!`)
+    rollForInitiative();
+}
 
+const leftPath = () => {
+    console.log(`\nYou decide to take the path to the left.
+Upon walking down the path, you encounter two mysterious potion bottles.
+One potion bottle has a green liquid that shimmers in the sunlight that peeks between the branches of the trees.
+The other potion bottle has a blue liquid. It appears to have glitter.\n`)
+    potionChoice();
+}
 
+const potionChoice = () => {
+    potion = rls.question(`Do you drink the green potion, the blue potion, or do you decide to not drink any at all? \n`)
+    potion = potion.trim().toLowerCase()
+    if (potion === "blue" || potion === "blue potion"){
+        console.log(`\nYou decide to drink the blue potion. 
+Your insides start burning as you ingest the blue liquid.
+Your blood pressure increases and you start to hear your heartbeat.
+Your vision becomes blurry, eventually fading to black.
+You collapse in the middle of the path as the potion circulates through your body, killing all of your organs.
+You lay there lifeless as the wildlife eventually feed on your body.
+You died.\n`)
+        restartGame();
+    } else if (potion === "green" || potion === "green potion"){
+        playerStrength += 5
+        playerIntelligence += 3
+        playerCharisma += 5
+        console.log(`\nYou decide to drink the green potion.
+Your body feels strong and healthy. (+5 Strength [Strength is now: ${playerStrength}])
+Your mind feels clear. (+3 Intelligence [Intelligence is now: ${playerIntelligence}])
+You feel sexier. (+5 Charisma [Charisma is now: ${playerCharisma}])\n`)
+        //dragonCastle();
+    } else if (potion === "none" || potion === "no" || potion === "do not drink" || potion === "do not drink any at all"){
+        console.log(`\nYou decide not to drink any potions.\n`)
+        //dragonCastle();
+    } else if (potion === "stats"){
+        logPlayerStats();
+        potionChoice();
+    } else {
+        potionChoice();
+    }
+}
 
+const rollForInitiative = () => {
+    goblinRoll = rollDieFour()
+    playerRoll = rollDieFour()
+    if (playerRoll > goblinRoll){
+        console.log(`You rolled ${playerRoll}! The goblin rolled ${goblinRoll}! You get the first hit!`)
+        goblinBattlePlayerAdvantage();
+    } else if (playerRoll < goblinRoll){
+        console.log(`You rolled ${playerRoll}! The goblin rolled ${goblinRoll}! The goblin gets the first hit!`)
+        //goblinBattleGoblinAdvantage();
+    } else {
+        rollForInitiative()
+    }
+}
+
+const goblinBattlePlayerAdvantage = () => {
+    let playerHealth = 20;
+    let goblinHealth = 10;
+    let rounds = 10
+    let playerOptions = ["Attack", "Surrender"]
+    while (goblinHealth > 0){
+        console.log(`Your health: ${playerHealth}
+Goblin's Health: ${goblinHealth}\n`)
+        let playerSelect = rls.keyInSelect(playerOptions)
+        playerOptionSelect = playerOptions[playerSelect]
+        if (playerOptionSelect === "Attack"){
+            if (playerStrength <= 3 ){
+                playerHitPoints = rollDieSix() + playerStrengthStatModifier(playerStrength)
+            } else {
+                playerHitPoints = rollDieFour() + playerStrengthStatModifier(playerStrength)
+            }
+            console.log(`You attack the goblin! The goblin gets ${playerHitPoints} damage!`)
+            if (playerHitPoints > 0){
+                goblinHealth -= playerHitPoints
+            } else{
+                continue;
+            }
+            goblinHitPoints = rollDieSix()
+            console.log(`The Goblin attacks you! You get ${goblinHitPoints} damage!`)
+            playerHealth -= goblinHitPoints
+            if (playerHealth === 0){
+                console.log("You died.\n")
+                restartGame()
+            }
+            } else if (playerOptionSelect === "Surrender"){
+                console.log("You let the goblin kill you.\n")
+                restartGame();
+            }
+     }
+}
+    
+
+            
 startGame()
 
 //Calling out Stat Modifiers to be used within code.
-playerStrengthModifier = playerStrengthStatModifier(playerStrength)
-playerDexterityModifier = playerDexterityStatModifier(playerDexterity)
-playerConstitutionModifier = playerConstitutionStatModifier(playerConstitution)
-playerIntelligenceModifier = playerIntelligenceStatModifier(playerIntelligence)
-playerWisdomModifier = playerWisdomStatModifier(playerWisdom)
-playerCharismaModifier = playerCharismaStatModifier(playerCharisma)
+// playerStrengthModifier = playerStrengthStatModifier(playerStrength)
+// playerDexterityModifier = playerDexterityStatModifier(playerDexterity)
+// playerConstitutionModifier = playerConstitutionStatModifier(playerConstitution)
+// playerIntelligenceModifier = playerIntelligenceStatModifier(playerIntelligence)
+// playerWisdomModifier = playerWisdomStatModifier(playerWisdom)
+// playerCharismaModifier = playerCharismaStatModifier(playerCharisma)
