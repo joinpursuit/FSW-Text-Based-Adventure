@@ -10,7 +10,7 @@ const exitGame = () => {
 }
 
 
-const createRandomRoom = () => {
+const enterRoom = () => {
     // let randomRoom = "";
     let whichRoom = readline.question("Please enter a room. \n")
     let area = ["bedroom", "living room", "kitchen", "basement" ]
@@ -29,13 +29,11 @@ const createRandomRoom = () => {
             break;
         } else {
             console.log ("Please move toward any of these rooms: bedroom, living room, kitchen, or basement to continue the game.")
+            break;
         }
     }
 
 }
-
-
-
 
 
 const gamePlay = () => {    
@@ -44,8 +42,8 @@ const gamePlay = () => {
     console.log("Santa has left a present for you last night, would you like to join me on a present hunt?")
     let answer = readline.keyInYN("Y or N")
     if (answer) {
-        console.log("Glad to hear! Where would you like to go next? bathroom? kitchen? living room or basement?")
-        createRandomRoom()
+        console.log("Glad to hear! Where would you like to go next? bedroom? kitchen? living room or basement?")
+        enterRoom()
     } else {
         exitGame ()
     }
@@ -58,7 +56,6 @@ if (ageInput >= 6) {
     exitGame()
 }
 
-gamePlay ()
 
 
 
