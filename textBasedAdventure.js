@@ -53,14 +53,14 @@ const passNote = () => {
     let surrenderOrGetaway = readline1.question(`Will you panic and surrender to the police or drive off in the getaway car? "surrender to the police" or "get in the getaway car"\n`)
 
     switch(surrenderOrGetaway.toLowerCase()){
-    case `surrender to the police`: 
-        surrender()
-    case `get in the getaway car`:
-        getawayCar()
-    break
-    default:
-        console.log("Please re-enter a valid answer.")
-        passNote()
+        case `surrender to the police`: 
+            surrender()
+        case `get in the getaway car`:
+            getawayCar()
+        break
+        default:
+            console.log("Please re-enter a valid answer.")
+            passNote()
     }
 }
 
@@ -71,8 +71,21 @@ const showGun = () => {
 const surrender = () => {
     console.log(`YOU'VE BEEN ARRESTED`)
     console.log(`but you have a chance to escape jail`)
-    //fight()
-    // escape()
+    console.log(`You sit next to your cellmate while you're watching TV and you get up to change the channel, \nhe tells you not to, but you do it anyway.`)
+    
+    let fightorBathroom = readline1.question(`Do you want to "fight" him or "go to the bathroom" to walk away from the argument?\n`)
+    switch (fightorBathroom.toLowerCase()){
+        case `fight`:
+            console.log(`You get into a fight with you cellmate and you have to be hospitalized.`)
+            fight()
+        case `go to the bathroom`:
+            console.log(`You go to the bathroom and type in the code: 3418`)
+            bathroomCode()
+        default:
+            console.log("Please re-enter a valid answer.")
+            surrender()
+    }
+
 }
 
 const getawayCar = () => {
@@ -89,9 +102,8 @@ const getawayCar = () => {
 }
 
 const fight = () => {
-    console.log(`hi`)
-    // escape()
-    // goToJail()
+    console.log(`You type in 3418 as the bathroom code to wash the blood off your face`)
+    bathroomCode()
 }
 
 const cleanUp = () => {
@@ -100,8 +112,7 @@ const cleanUp = () => {
 }
 
 const escape = () => {
-//     gotoJail()
-//
+    console.log(``)
 }
 
 const bathroomCode = () => {
@@ -111,18 +122,16 @@ const bathroomCode = () => {
         
         if (code === 3418){
            console.log(`UNLOCKED`)
-            meetNick()
+           console.log(`You see a window in the bathroom and you try to escape.`)
+           escape()
         } else {
            console.log(`LOCKED`)
         }
     }
-    console.log(`You go back to the gas station attendant and police are waiting to arrest you`)
-    surrender()
+    console.log(`You double check the passcode and it's 3418`)
+    bathroomCode()
 }
 
-const meetNick = () => {
- console.log(`You walk out the gas station and `)
-}
 
 const goToJail = () =>{
     console.log("YOU GOT ARRESTED AGAIN")
