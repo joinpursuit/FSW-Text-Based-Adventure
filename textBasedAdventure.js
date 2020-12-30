@@ -3,13 +3,28 @@ const readline1 = require('readline-sync')
 
 const beginGame = () => {
     console.log(`Welcome to my game.`)
-    let nameInput = readline1.question(`What is your name? \n`)
+    let nameInput = readline1.question(`What is your name?\n`)
    
-    console.log(`Hello ${nameInput}! In this game, you're a bank robber and the decisions that you enter in the console determine whether you will go to jail or not \nbut you don't know which path takes you where and you have one chance to escape. Good luck! (User input should be lowercase)`)
+    console.log(`\nHello ${nameInput}! In this game, you're a bank robber and the decisions that you enter in the console determine whether you will go to jail or not \nbut you don't know which path takes you where and you have one chance to escape. Good luck! (User input must be lowercase)`)
     if(readline1.keyInYNStrict(`Do you want to play?`)){
-        startGame()
+        ageRestriction()
     } else {
         console.log(`Maybe next time!`)
+        console.clear()
+        beginGame()
+    }
+}
+
+const ageRestriction = () => {
+    console.log(`WAIT A MINUTE!`)
+    
+    let age = readline1.questionInt(`How old are you?\n`)
+    
+    if(age >= 18){
+        console.log(`You are old enough to play.`)
+        startGame()
+    } else {
+        console.log(`Sorry, this game is rated R!`)
         console.clear()
         beginGame()
     }
