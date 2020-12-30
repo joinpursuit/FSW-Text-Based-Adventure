@@ -25,27 +25,6 @@ function startGame () {
     smallWindow();
 }
 }
-function metalHatch () {
-    console.log("The metal hatch leads down to what looks like a hosptial or a lab (clean and crisp).")
-    let yourChoice = readline.question("There are 3 doors in front of you. Left, right and straight ahead. Which do you choose?")
-    if (yourChoice === "Left") {
-        leftDoor ();
-    } else if (yourChoice === "Right") {
-        rightDoor();
-    } else {
-        straightAheadDoor();
-    }
-
-}
-function leftDoor () {
-    console.log("When entering the room, it appears to look like a normal break room. With lockers on the back wall you begin to search them.")
-    let yourChoice = readline.question("Searching through the lockers, you find a key card. Do you 'pick up' or 'leave it'")
-    if (yourChoice === "pick up") {
-        straightAheadDoorAccess()
-    } else {
-        straightAheadDoorNoAccess()
-    }
-}
 
 function smallWindow () {
     console.log("You break the window and place one of the costumes on the broken shards.")
@@ -57,7 +36,44 @@ function smallWindow () {
 }
 }
 
+function metalHatch () {
+    console.log("The metal hatch leads down to what looks like a hosptial or a lab (clean and crisp).")
+    let yourChoice = readline.question("There are 3 doors in front of you. A 'Wooden', 'Metal' and 'Bronze' doors. Which do you choose?")
+    if (yourChoice === "Wooden") {
+        WoodenDoor();
+    } else if (yourChoice === "Metal") {
+        MetalDoor();
+    } else if (yourChoice === "Bronze") {
+        BronzeDoor();
+    }
+}
+
+
+function BronzeDoor () {
+    console.log("When entering the room, it appears to look like a normal break room. With lockers on the back wall, you begin to search them.")
+    console.log("Searching through the lockers you find a key card")
+    if (readline.prompt("grab")) {
+        keyCard("Key card has been found, can be used on metal door.")
+    }
+    
+}
+
+function WoodenDoor () {
+    console.log("The door opens with ease, you look in and find ...")
+    console.log("A simple janitors closet, with no way out you turn back into the hallway and choose a new door.")
+    let yourChoice = readline.question("'Metal' door or 'Bronze' door?")
+    if (yourChoice === "Metal") {
+        MetalDoor();
+}   else if (yourChoice === "Bronze") {
+    BronzeDoor();
+}
+}
+
+function keyCard () {
+    
+}
+
 function leaveGame () {
   console.log("Guess you want to be stuck here forever. Good luck ;)");
   process.exit();
-};
+}
