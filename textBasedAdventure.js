@@ -26,6 +26,8 @@ function startGame () {
 }
 }
 
+inventory = ["phone"]
+
 function smallWindow () {
     console.log("You break the window and place one of the costumes on the broken shards.")
     console.log("Trying to wiggle your way out, you get stuck and the glass begins to dig into your skin. Stuck and with no way out, you begin to bleed out and die.")
@@ -38,40 +40,56 @@ function smallWindow () {
 
 function metalHatch () {
     console.log("The metal hatch leads down to what looks like a hosptial or a lab (clean and crisp).")
-    let yourChoice = readline.question("There are 3 doors in front of you. A 'Wooden', 'Metal' and 'Bronze' doors. Which do you choose?")
-    if (yourChoice === "Wooden") {
-        WoodenDoor();
-    } else if (yourChoice === "Metal") {
-        MetalDoor();
-    } else if (yourChoice === "Bronze") {
-        BronzeDoor();
+    let yourChoice = readline.question("There are 3 doors in front of you. A 'black', 'red' and 'blue' doors. Which do you choose?")
+    if (yourChoice === "black") {
+        blackDoor();
+    } else if (yourChoice === "red") {
+        redDoor();
+    } else if (yourChoice === "blue") {
+        blueDoor();
     }
 }
 
 
-function BronzeDoor () {
+function blueDoor () {
     console.log("When entering the room, it appears to look like a normal break room. With lockers on the back wall, you begin to search them.")
     console.log("Searching through the lockers you find a key card")
     if (readline.prompt("grab")) {
-        keyCard("Key card has been found, can be used on metal door.")
+        keyCard("Key card has been found, can be used on red door.")
     }
     
 }
 
-function WoodenDoor () {
+function blackDoor () {
     console.log("The door opens with ease, you look in and find ...")
     console.log("A simple janitors closet, with no way out you turn back into the hallway and choose a new door.")
-    let yourChoice = readline.question("'Metal' door or 'Bronze' door?")
-    if (yourChoice === "Metal") {
-        MetalDoor();
-}   else if (yourChoice === "Bronze") {
-    BronzeDoor();
+    let yourChoice = readline.question("'red' door or 'blue' door?")
+    if (yourChoice === "red") {
+        redDoor();
+}   else if (yourChoice === "blue") {
+    blueDoor();
 }
 }
 
-function keyCard () {
-    
+function getKeyCard () {
+    inventory.push("keycard")
+    for (element in inventory){
+        if (inventory[element] === "keycard"){
+            console.log("This is a keycard")
+        } else {
+            continue;
+        }
+    }
 }
+
+
+function redDoor () {
+    let yourAnswer = readline.keyInYN("This door requires a key card, Do you have the keycard?")
+    if (keyCard === yourAnswer) {
+
+    }
+}
+
 
 function leaveGame () {
   console.log("Guess you want to be stuck here forever. Good luck ;)");
