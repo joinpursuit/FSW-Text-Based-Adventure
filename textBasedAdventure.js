@@ -22,7 +22,7 @@ const ageRestriction = () => {
     
     if(age >= 18){
         console.log(`You are old enough to play.`)
-        startGame()
+        gamePlay()
     } else {
         console.log(`Sorry, this game is rated R!`)
         console.clear()
@@ -30,7 +30,7 @@ const ageRestriction = () => {
     }
 }
 
-const startGame = () => {
+const gamePlay = () => {
     console.log(`\nYou arrive at the bank and your choice is to either pass a note to the teller demanding all the money in the drawer or you can brandish your gun.`)
     
     let noteOrGun = readline1.question(`Which would you like to choose? "pass note" or "show gun"\n`)
@@ -41,7 +41,7 @@ const startGame = () => {
         showGun()
     } else {
         console.log("Please re-enter a valid answer.")
-        startGame()
+        gamePlay()
     }
         
 }
