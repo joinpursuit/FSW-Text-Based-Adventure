@@ -1,5 +1,6 @@
 const rls = require('readline-sync')
 
+let playerInventory = []
 
 //Introduction function
 const startGame = () => {
@@ -64,10 +65,13 @@ const selectClass = () => {
         }
     } else{
         if (rls.keyInYN(`You have selected to become a(n) ${playerClass}. Is that correct?`)){
-            console.log("\nGreat! Here are your stats: ");
+            console.log(`\nHere is your inventory: `)
+            playerWeapon(playerClass);
+            logplayerInventory();
+            console.log("\nHere are your stats: ");
             playerStats();
             logPlayerStats();
-            console.log(`You can see your stats anytime by typing "stats" at any input opportunity (except for Y/N inputs).\n`)
+            console.log(`You can see your stats/inventory anytime by typing "stats" or "inventory" at any input opportunity (except for Y/N inputs or number inputs).\n`)
             partOne();
         } else {
             console.log("Please reselect a class: ");
@@ -223,6 +227,18 @@ const playerCharismaStatModifier = (playerCharisma) => {
     return statModifier
 }
 
+const playerWeapon = (playerClass) => {
+    if (playerClass === "Bard"){
+        playerClassWeapon = "Whip"
+        playerInventory.push(playerClassWeapon)
+        return playerClassWeapon
+    }
+}
+
+const logplayerInventory = () => {
+    console.log(playerInventory)
+}
+
 //Side Ending if Player does not select class.
 const sideEndingOne = () => {
     console.log(`\nYou decide not to select a class. The village you and your family reside in has been torn into ruins by the goblins. 
@@ -253,6 +269,9 @@ const forkInRoad = () => {
     } else if (rightOrLeft === "stats"){
         logPlayerStats();
         forkInRoad();
+    } else if (rightOrLeft === "inventory"){
+        logplayerInventory();
+        forkInRoad();
     } else {
         forkInRoad();
     }
@@ -263,7 +282,7 @@ const rightPath = () => {
     console.log(`\nYou decide to take the path to the right.
 Upon walking down the path, you encounter a goblin!
 The goblin is about 3 feet in height, carrying a wooden axe!\n`)
-    goblinBattle();
+    rollforInitiative();
 }
 
 const leftPath = () => {
@@ -301,13 +320,32 @@ You feel sexier. (+5 Charisma [Charisma is now: ${playerCharisma}])\n`)
     } else if (potion === "stats"){
         logPlayerStats();
         potionChoice();
+    } else if (potion === "inventory"){
+        logplayerInventory(playerInventory);
+        potionChoice();
     } else {
         potionChoice();
     }
 }
 
+const rollforInitiative = () => {
+    playerRoll = rollDieTwenty() + playerDexterityStatModifier(playerDexterity)
+    goblinRoll = rollDieTwenty()
+    if (playerRoll > goblinRoll){
+        console.log(`\nYou rolled a ${playerRoll}! (Dexterity Modifier of ${playerDexterityStatModifier(playerDexterity)})`)
+        console.log(`The goblin rolled a ${goblinRoll}!`)
+        console.log(`You get the first hit!\n`)
+        goblinBattlePlayerAdvantage();
+    } else if (goblinRoll > playerRoll){
+        console.log(`\nYou rolled a ${playerRoll}! (Dexterity Modifier of ${playerDexterityStatModifier(playerDexterity)})`)
+        console.log(`The goblin rolled a ${goblinRoll}!`)
+        console.log(`The goblin gets the first hit!`)
+        goblinBattleGoblinAdvantage();
+    }
+}
+
 //Goblin Battle
-const goblinBattle = () => {
+const goblinBattlePlayerAdvantage = () => {
     let playerHealth = 20;
     let goblinHealth = 10;
     let playerOptions = ["Attack", "Surrender"]
@@ -322,7 +360,7 @@ Goblin's Health: ${goblinHealth}\n`)
             } else {
                 playerHitPoints = rollDieFour() + playerStrengthStatModifier(playerStrength)
             }
-            console.log(`\nYou attack the goblin! The goblin gets ${playerHitPoints} damage!`)
+            console.log(`\nYou attack the goblin! The goblin gets ${playerHitPoints} damage! (Strength Modifier of ${playerStrengthStatModifier(playerStrength)})`)
             if (playerHitPoints > 0){
                 goblinHealth -= playerHitPoints
             } 
@@ -330,10 +368,58 @@ Goblin's Health: ${goblinHealth}\n`)
             console.log(`The Goblin attacks you! You get ${goblinHitPoints} damage!\n`)
             playerHealth -= goblinHitPoints
             if (goblinHealth <= 0){
-                goblinDefeated()
+                console.log(`You defeated the goblin! 
+The goblin drops a pouch containing 1000 gold.`)
+                lootGoblin();
             } else if (playerHealth <= 0){
-                console.log("\nYou were defeated by the goblin!\n")
-                restartGame()
+                console.log(`You were defeated by the goblin!
+The goblin knocks you down and takes your ${playerWeapon(playerClass)}!\n`)
+                //dragonCastleNoWeapons();
+            }  
+        } else if (playerOptionSelect === "Surrender"){
+            console.log(`You surrender to the goblin!
+You give away your ${playerWeapon(playerClass)} to the goblin.
+The goblin happily runs off with your ${playerWeapon(playerClass)}.`)
+            //dragonCastleNoWeapons();
+        } 
+
+    }
+    
+}
+
+const goblinBattleGoblinAdvantage = () => {
+    let playerHealth = 20;
+    let goblinHealth = 10;
+    let playerOptions = ["Attack", "Surrender"]
+    goblinHitPoints = rollDieSix()
+    console.log(`The Goblin attacks you! You get ${goblinHitPoints} damage!\n`)
+    playerHealth -= goblinHitPoints
+    while (playerHealth > 0 && goblinHealth > 0){
+        console.log(`Your health: ${playerHealth}
+Goblin's Health: ${goblinHealth}\n`)
+        let playerSelect = rls.keyInSelect(playerOptions)
+        playerOptionSelect = playerOptions[playerSelect]
+        if (playerOptionSelect === "Attack"){
+            if (playerStrength <= 3 ){
+                playerHitPoints = rollDieSix() + playerStrengthStatModifier(playerStrength)
+            } else {
+                playerHitPoints = rollDieFour() + playerStrengthStatModifier(playerStrength)
+            }
+            console.log(`\nYou attack the goblin! The goblin gets ${playerHitPoints} damage! (Strength Modifier of ${playerStrengthStatModifier(playerStrength)})`)
+            goblinHitPoints = rollDieSix()
+            console.log(`The Goblin attacks you! You get ${goblinHitPoints} damage!\n`)
+            playerHealth -= goblinHitPoints
+            if (playerHitPoints > 0){
+                goblinHealth -= playerHitPoints
+            } 
+            if (goblinHealth <= 0){
+                console.log(`You defeated the goblin! 
+The goblin drops a pouch containing 1000 gold. The goblin also drops `)
+                lootGoblin();
+            } else if (playerHealth <= 0){
+                console.log(`\nYou were defeated by the goblin!
+The goblin knocks you down and takes your ${playerWeapon(playerClass)}!`)
+                
             }  
         } else if (playerOptionSelect === "Surrender"){
             console.log("You let the goblin kill you.\n")
@@ -344,8 +430,15 @@ Goblin's Health: ${goblinHealth}\n`)
     
 }
 
-const goblinDefeated = () => {
-    console.log("You defeated the Goblin!")
+const lootGoblin = () => {
+    if (rls.keyInYN("Do you take the pouch of 1000 gold?")){
+        console.log(`You decide to take the pouch, storing it in your inventory.`)
+        playerInventory.push(1000)
+        //dragonCastle();
+    } else {
+        console.log(`You decide not to take the pouch.`)
+        //dragonCastle();
+    }
 }
     
 
