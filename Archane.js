@@ -263,8 +263,7 @@ const rightPath = () => {
     console.log(`\nYou decide to take the path to the right.
 Upon walking down the path, you encounter a goblin!
 The goblin is about 3 feet in height, carrying a wooden axe!\n`)
-    console.log(`Roll for initiative!`)
-    rollForInitiative();
+    goblinBattle();
 }
 
 const leftPath = () => {
@@ -307,26 +306,12 @@ You feel sexier. (+5 Charisma [Charisma is now: ${playerCharisma}])\n`)
     }
 }
 
-const rollForInitiative = () => {
-    goblinRoll = rollDieFour()
-    playerRoll = rollDieFour()
-    if (playerRoll > goblinRoll){
-        console.log(`You rolled ${playerRoll}! The goblin rolled ${goblinRoll}! You get the first hit!`)
-        goblinBattlePlayerAdvantage();
-    } else if (playerRoll < goblinRoll){
-        console.log(`You rolled ${playerRoll}! The goblin rolled ${goblinRoll}! The goblin gets the first hit!`)
-        //goblinBattleGoblinAdvantage();
-    } else {
-        rollForInitiative()
-    }
-}
-
-const goblinBattlePlayerAdvantage = () => {
+//Goblin Battle
+const goblinBattle = () => {
     let playerHealth = 20;
     let goblinHealth = 10;
-    let rounds = 10
     let playerOptions = ["Attack", "Surrender"]
-    while (goblinHealth > 0){
+    while (playerHealth > 0 && goblinHealth > 0){
         console.log(`Your health: ${playerHealth}
 Goblin's Health: ${goblinHealth}\n`)
         let playerSelect = rls.keyInSelect(playerOptions)
@@ -337,24 +322,30 @@ Goblin's Health: ${goblinHealth}\n`)
             } else {
                 playerHitPoints = rollDieFour() + playerStrengthStatModifier(playerStrength)
             }
-            console.log(`You attack the goblin! The goblin gets ${playerHitPoints} damage!`)
+            console.log(`\nYou attack the goblin! The goblin gets ${playerHitPoints} damage!`)
             if (playerHitPoints > 0){
                 goblinHealth -= playerHitPoints
-            } else{
-                continue;
-            }
+            } 
             goblinHitPoints = rollDieSix()
-            console.log(`The Goblin attacks you! You get ${goblinHitPoints} damage!`)
+            console.log(`The Goblin attacks you! You get ${goblinHitPoints} damage!\n`)
             playerHealth -= goblinHitPoints
-            if (playerHealth === 0){
-                console.log("You died.\n")
+            if (goblinHealth <= 0){
+                goblinDefeated()
+            } else if (playerHealth <= 0){
+                console.log("\nYou were defeated by the goblin!\n")
                 restartGame()
-            }
-            } else if (playerOptionSelect === "Surrender"){
-                console.log("You let the goblin kill you.\n")
-                restartGame();
-            }
-     }
+            }  
+        } else if (playerOptionSelect === "Surrender"){
+            console.log("You let the goblin kill you.\n")
+            restartGame();
+        } 
+
+    }
+    
+}
+
+const goblinDefeated = () => {
+    console.log("You defeated the Goblin!")
 }
     
 
