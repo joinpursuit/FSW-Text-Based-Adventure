@@ -21,16 +21,16 @@ const quitGame = () => {
 }
 
 const gameLoop = () => {
-    input = readline.keyInYN('Would you like to play?');
-    if(!input){
-        quitGame();
-    }else{
-        getPlayerName();
-        console.log('You are on the Bridge');
+    // input = readline.keyInYN('Would you like to play?');
+    // if(!input){
+        // quitGame();
+    // }else{
+        // getPlayerName();
+        console.log(`You are in the ${mapBuild.map[0][0]} you see a door south that leads to the Conference Room`);
         while(initialX < 4 || initialY < 3){
             getPlayerLocation(initialX,initialY)
         }
-    }
+    // }
 }
 
 const getPlayerLocation = (initialX, initialY) => { 
@@ -42,7 +42,7 @@ const cantMove = () => {
     cantMoveOutput = console.log('You can\'t go that direction any more.');
 }
 const goToLocation = (x,y) => {
-    readline.setDefaultOptions({limit: ['north', 'south', 'east', 'west', 'ladder', 'exit']});
+    readline.setDefaultOptions({limit: ['north', 'south', 'east', 'west', 'ladder', 'exit', 'map']});
     input = (readline.question('What direction do you want to head to?\n')).toLowerCase();
     if(input === 'ladder'){
         useLadder(input);
@@ -55,7 +55,9 @@ const goToLocation = (x,y) => {
     }else if(input === 'west'){
         goWest(input);
     }else if(input === 'exit'){
-        exitShip(input)
+        exitShip(input);
+    }else if(input === 'map'){
+        showMap(input);
     }
 }
 const goNorth = input => {
@@ -260,23 +262,28 @@ const exitShip = input => {
         console.log('You need to head to the ramp to exit ship.');
     }
 }
+const showMap = input => {
+    if((x === 0 && y === 0) || (x === 0 && y === 1) || (x === 0 && y === 2)){
+        mapBuild.showUpperMap();
+    }else{
+        mapBuild.showLowerMap();
+    }
+}
 
 const isOnUpperLv = (x,y) => {
     if(y === 0){
-        console.log(`You are in ${x},${y}`);
-        console.log(mapBuild.map[0][0]);
+        console.log(`You are in the ${mapBuild.map[0][0]} you see a door south that leads to the Conference Room`);
         initialX = x;
         initialY = y;
         getPlayerLocation(initialX,initialY);
     }else if(y === 1){
-        console.log(`You are in ${x},${y}`);
-        console.log(mapBuild.map[0][1]);
+        console.log(`You are in the ${mapBuild.map[0][1]} you see a door north to the Bridge,`)
+        console.log(`a door south to the Captain's Quarters and a ladder leading down to the lower deck`);
         initialX = x;
         initialY = y;
         getPlayerLocation(initialX,initialY);
     }else if(y === 2){
-        console.log(`You are in ${x},${y}`);
-        console.log(mapBuild.map[0][2]);
+        console.log(`You are in the ${mapBuild.map[0][2]} you see a door north that leads to the Conference Room`);
         initialX = x;
         initialY = y;
         getPlayerLocation(initialX,initialY);
@@ -285,33 +292,32 @@ const isOnUpperLv = (x,y) => {
 
 const isOnLowerLv = (x, y) => {
     if(x === 1 && y === 0){
-        console.log(mapBuild.map[1][0]);
+        console.log(`You are in the ${mapBuild.map[1][0]}`);
         initialX = x;
         initialY = y;
         getPlayerLocation(initialX,initialY);
     }else if(x === 1 && y === 1){
-        console.log(`You are in the ${mapBuild.map[1][1]} you see a door north to the Bridge, a door south to the Captain's Quarters and a ladder leading down to the lower deck`);
-
+        console.log(`You are in the ${mapBuild.map[1][1]}`);
         initialX = x;
         initialY = y;
         getPlayerLocation(initialX,initialY);
     }else if(x === 1 && y === 2){
-        console.log(mapBuild.map[1][2]);
+        console.log(`You are in the ${mapBuild.map[1][2]}`);
         initialX = x;
         initialY = y;
         getPlayerLocation(initialX,initialY);
     }else if(x === 2 && y === 0){
-        console.log(mapBuild.map[2][0]);
+        console.log(`You are in the ${mapBuild.map[2][0]}`);
         initialX = x;
         initialY = y;
         getPlayerLocation(initialX,initialY);
     }else if(x === 2 && y === 1){
-        console.log(mapBuild.map[2][1]);
+        console.log(`You are in the ${mapBuild.map[2][1]}`);
         initialX = x;
         initialY = y;
         getPlayerLocation(initialX,initialY);
     }else if(x === 2 && y === 2){
-        console.log(mapBuild.map[2][2]);
+        console.log(`You are in the ${mapBuild.map[2][2]}`);
         initialX = x;
         initialY = y;
         getPlayerLocation(initialX,initialY);

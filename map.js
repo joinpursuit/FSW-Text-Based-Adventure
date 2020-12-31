@@ -53,13 +53,34 @@ const room = (x,y) => {
     } 
 }
 
+const showUpperMap = () => {
+    console.log(`|------------------|`);
+    console.log(`|      ${map[0][0]}      |`);
+    console.log(`|--------/ --------|`);
+    console.log(`|  ${map[0][1]} |`);
+    console.log(`|--------/ --------|`);
+    console.log(`|${map[0][2]}|`);
+    console.log(`|------------------|`);
+}
+const showLowerMap = () => {
+    console.log(`|-----------------|-------------|----------------|`);
+    console.log(`|   ${map[1][0]}   | ${map[1][1]} |   ${map[1][2]}   |`);
+    console.log(`|--------/ -------|------/ -----|-------/ -------|`);
+    console.log(`| ${map[2][0]} |  ${map[2][1]}  | ${map[2][2]} |`);
+    console.log(`|--------/ -------|------/ -----|-------/ -------|`);
+    console.log(`|   ${map[3][0]}    |    ${map[3][1]}     |  ${map[3][2]}  |`);
+    console.log(`|-----------------|------/ -----|----------------|`);
+}
+
 createMap();
-console.log(map);
+// console.log(map);
 
 module.exports = {
     createMap,
     room,
     addRoom,
+    showUpperMap,
+    showLowerMap,
     map
 };
 
