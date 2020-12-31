@@ -34,26 +34,32 @@ let ageInput = readline.question('How old are you?\n')
 };
 
 function howToPlay(){
-console.log('Here is how you play:')
-console.log('Type "r" or "right" to move in that direction')
-console.log('Type "l" or "left" to move in that direction')
-console.log('Type "u" or "up" to move in that direction')
-console.log('Type "d" or "down" to move in that direction')
-console.log('Type "g" or "grab" to grab an item')
-console.log('Type "s" or "swing" to swing your arm')
-console.log('Type "l" or "look" to see your surroundings \n')
+console.log('Here is how you play:');
+console.log('Type "r" or "right" to move in that direction.');
+console.log('Type "l" or "left" to move in that direction.');
+console.log('Type "u" or "up" to move in that direction.');
+console.log('Type "d" or "down" to move in that direction.');
+console.log('Type "g" or "grab" to grab an item.');
+console.log('Type "s" or "swing" to swing your arm');
+console.log('Type "l" or "look" to see your surroundings. \n');
+console.log('type "h" or "help" anytime for instructions.');
 };
 
 
 const story = () => {
  if(readline.keyInYN('Are you ready? \n')){
-    console.log('You wake up in pain in a room lit with red lighting')
-    console.log()
-    console.log()
-    console.log()
-    console.log()
-    console.log()
- }else{
+    console.log('You wake up alone in a room lit with red lighting');
+    console.log('As you move to look around, you notice pain in your body');
+    console.log('You hear beeping noises all around you');
+    console.log('You look down at your body and see different wires attached to it');
+    console.log('One wire for each organ');
+    console.log('HEART, LUNGS, KIDNEYS. \n');
+    console.log('You must get your organs so you can go home');
+    console.log('The building you\'re in only has electricity for a few hours \n');
+    console.log('There are 2 doors infront of you');
+    console.log('1 is an exit that leads you outside, the other leads to your victory.....');
+    console.log('The nearest hospital is miles away...');
+}else{
      leaveGame1()
  }
 };
