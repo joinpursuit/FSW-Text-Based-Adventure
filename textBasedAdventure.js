@@ -140,7 +140,7 @@ function startGame(){
                   else {
                     console.log( " you have lost the battle of the dice you must now work harder to find out how to get cake")
                     console.log( "you torture the human regardless to find out the secrets of the cake only to find out the cake is a lie :( ")
-                    rls.keyInYN("do you really wanna play again?") ? gameLoop() : quitGame()
+                    rls.keyInYN("oh common cant you just leave me alone ok do you wanna play this again little annoying human") ? gameLoop() : quitGame()
                   }
                }  
           
@@ -150,8 +150,27 @@ function startGame(){
             console.log ( nameInput + " nodes in agreement")
             let sayWord = rls.question("I say: \n ")
             wordSaid = backwards(sayWord)
-            console.log ( wordSaid )
-            rls.keyInYN("do you really wanna play again?") ? gameLoop() : quitGame()
+            console.log (nameInput + " says back " + wordSaid )
+            // now we prompt the dice game again if u loose u loose the game if u pass u move on to the next decision
+
+            console.log ("I like what you just said ok lets play a game of dice ")
+            console.log ("but a fair warning im pretty lucky wink* ")
+            let myDice = diceRoll()
+            let theirDice = diceRoll()
+            console.log( "I the Alien roll a " + myDice)
+            console.log( "The human roll a " + theirDice)
+
+            if(myDice > theirDice){
+              console.log ("HAHA I WIN now I am going to turn you into a cake weather you like it or not")
+              console.log (" Now I will turn you into a delicious human cake")
+              console.log (" you have won the game CONGRATS or have you!")
+              rls.keyInYN("sike the cake was a lie do you wanna play again to find the real cake cause real cakes dont got human in them") ? gameLoop() : quitGame()
+             
+            }
+            else {
+              console.log ("oh no I Lost Darn you human I will let you live for now but let play one more game ")
+              rls.keyInYN("do you really wanna play again?") ? gameLoop() : quitGame()
+            }
           }
            
 
