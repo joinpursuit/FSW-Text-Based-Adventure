@@ -48,7 +48,7 @@ const skeleton =   ["Skeleton",    46, 46, 38, 29, 27, 20, 170, 850]
 const chimera =    ["Chimera",     56, 56, 47, 38, 34, 10, 200, 1100]
 const gargoyle =   ["Gargoyle",    55, 55, 48, 39, 34, 10, 200, 1100]
 const darkdragon = ["Dark Dragon", 70, 70, 59, 54, 42,  0, 400, 2000]
-const swords = ["filler", ["Short Sword", 5],["Middle Sword", 15],["Long Sword", 25],["Omega Sword", 35],["Legendary Sword", 50]]//value atk
+const swords = ["filler", ["Short Sword", 5], ["Middle Sword", 15], ["Long Sword", 25], ["Omega Sword", 35], ["Legendary Sword", 50]]//value atk
 const armor = ["filler", ["Leather Armor", 8], ["Thin Plate Armor", 16], ["Heavy Plate Armor", 24], ["Full Plate Armor", 32], ["Battle Plate Armor", 40]]//value def
 const boots = ["filler", ["Leather Boots", 6], ["Light Boots", 12], ["Sturdy Boots", 18], ["Heavy Boots", 24], ["Battle Boots", 30]]//value spd
 const levelExp = [0, 45, 90, 140, 200, 270, 350, 440, 550, 700, 1000]
@@ -136,10 +136,10 @@ const gameWorld = () => {
     while(player[0] === "" || player[0].length > 15){
         player[0] = playerInput.question(textColorAction("What is your name?"))
         if(player[0] === ""){
-            textColorRed("Please enter a valid name.")
+            textColorRed("Please enter a valid name."); wait(seconds/2);
         }
         if(player[0].length > 15){
-            textColorRed("Please use a shorter name, limit to 15 characters.")
+            textColorRed("Please use a shorter name, limit to 15 characters."); wait(seconds/2);
         }
     }
     textColorWorld(`\n${player[0]}, thank you!`); wait(seconds);
@@ -157,14 +157,14 @@ const gameWorld = () => {
         textColorWorld("Thank you for saving me, hero!"); wait(seconds);
         textColorWorld("What is your name?")   ; wait(seconds);
         textColorWorld(`${player[0]}, thank you so much, please have this.`); wait(seconds);
-        textColorAction("You receive 2 health potions and 100 gold.\n"); wait(seconds);
+        textColorAction("You receive 2 health potions and 100 gold.\n"); wait(seconds*2);
         player[6] += 2
         player[9] += 100
     } else {
         textColorWorld("You heard more and more villagers screeming \"HELP\" behind you."); wait(seconds);
         textColorWorld("You are afraid to go back.\n"); wait(seconds);
     }
-    textColorWorld("You come across a shop.")
+    textColorWorld("You come across a shop."); wait(seconds);
     shopWorld(2)
     textColorWorld("You left the village, there are 2 paths. Upper path leads to Dark Forest, lower path leads to Cry Swamp."); wait(seconds);
     playerChoice = choiceMenuWorld()
@@ -267,8 +267,9 @@ const battlePhase = (mon) => {
     battleMon = [...mon]
 
     textColorBattle(`\nYou enter a battle.\n`); wait(seconds);
-    if(player[5] < battleMon[5])
+    if(player[5] < battleMon[5]){
         skipTurn = true
+    }
     while(!battleOver){
         if(!skipTurn){
             textColorBattle(`Turn ${++turnCount}`); wait(seconds);
