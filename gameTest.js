@@ -8,11 +8,45 @@ let lName;
 // set starting location in map
 let initialX;
 let initialY;
+let isNewStart = true;
 
 const startGame = () => {
     initialX = 0;
-    initialY = 0;
-    gameLoop();
+    initialY = 2;
+    menuOptions = [];
+    menuOptions[1] = "New Game";
+    menuOptions[2] = "Load Game(Work in Progress)";
+    menu();
+}
+
+const menu = () => {
+    while(menuOptions != 0){
+        let gameMenu = readline.keyInSelect(menuOptions, 'Please choose your option',{cancel: 'Quit Game'});
+        switch(gameMenu) {
+            case 1:
+                if(isNewStart === true){
+                    console.log('Let\'s start!');
+                    gameLoop();
+                    break;
+                }else{
+                    gameLoop();
+                    break;
+                }
+            case 2:
+                if(isNewStart === true){
+                    console.log('Load not working yet');
+                    break;
+                }else{
+                    console.log('Save not working yet');
+                    break;
+                }
+            case 3:
+                console.log('Load not working yet');
+                break;
+            default:
+                quitGame();
+        }
+    }
 }
 
 const quitGame = () => {
@@ -20,17 +54,29 @@ const quitGame = () => {
     process.exit();
 }
 
+const playIntro = () => {
+    console.log('Welcome to the Space Explorer');
+    console.log('While playing you can enter these command at anytime: ');
+    console.log('north, south, east, west, ladder, exit, map, help, quit');
+    console.log('Now let\'s begin.............');
+    console.log('......');
+    console.log('......');
+    console.log('......');
+    console.log('......');
+    console.log('......');
+    console.log('......');
+    console.log('You just woken up from a deep sleep after a long hyperspace trip.');
+    console.log(`You are in the ${mapBuild.map[0][2]} you see a door north that leads to the Conference Room`);
+}
+
 const gameLoop = () => {
-    // input = readline.keyInYN('Would you like to play?');
-    // if(!input){
-        // quitGame();
-    // }else{
-        // getPlayerName();
-        console.log(`You are in the ${mapBuild.map[0][0]} you see a door south that leads to the Conference Room`);
-        while(initialX < 4 || initialY < 3){
-            getPlayerLocation(initialX,initialY)
-        }
-    // }
+    if(isNewStart === true){
+        playIntro();
+        isNewStart = false;
+    }
+    while(initialX < 4 || initialY < 3){
+        getPlayerLocation(initialX,initialY)
+    }
 }
 
 const getPlayerLocation = (initialX, initialY) => { 
@@ -42,8 +88,8 @@ const cantMove = () => {
     cantMoveOutput = console.log('You can\'t go that direction any more.');
 }
 const goToLocation = (x,y) => {
-    readline.setDefaultOptions({limit: ['north', 'south', 'east', 'west', 'ladder', 'exit', 'map']});
-    input = (readline.question('What direction do you want to head to?\n')).toLowerCase();
+    readline.setDefaultOptions({limit: ['north', 'south', 'east', 'west', 'ladder', 'exit', 'map', 'menu', 'help', 'quit']});
+    input = (readline.prompt()).toLowerCase();
     if(input === 'ladder'){
         useLadder(input);
     }else if(input === 'north'){
@@ -58,6 +104,15 @@ const goToLocation = (x,y) => {
         exitShip(input);
     }else if(input === 'map'){
         showMap(input);
+    }else if(input === 'menu'){
+        menuOptions[1] = "Resume Game";
+        menuOptions[2] = "Save Game(Work in Progress)";
+        menuOptions[3] = "Load Game(Work in Progress)";
+        menu();
+    }else if(input === 'help'){
+        showHelp();
+    }else if(input === 'quit'){
+        quitGame();
     }
 }
 const goNorth = input => {
@@ -269,6 +324,11 @@ const showMap = input => {
         mapBuild.showLowerMap();
     }
 }
+const showHelp = () => {
+    console.log('Here is a list of commands you can enter: ')
+    console.log('north, south, east, west, ladder, exit, map, help, quit');
+    console.log('Only use \'quit\' if you wish to end the game without completing it.')
+}
 
 const isOnUpperLv = (x,y) => {
     if(y === 0){
@@ -327,7 +387,7 @@ const isOnLowerLv = (x, y) => {
         initialY = y;
         getPlayerLocation(initialX,initialY);
     }else if(x === 3 && y === 1){
-        console.log(`You have approached the ${mapBuild.map[3][1]}`);
+        console.log(`You have approached the ${mapBuild.map[3][1]} you can head north to the Main Hold or you can exit the ship`);
         initialX = x;
         initialY = y;
         getPlayerLocation(initialX,initialY);
@@ -352,11 +412,5 @@ module.exports = {
     getPlayerName
 };
 
-
-// readline.setDefaultOptions({limit: ['north', 'south', 'east', 'west','use']});
-// input = (readline.question('What direction do you want to head to?\n')).toLowerCase();
-// if(input === 'use'){
-//     x += 2;
-//     y++;
-//     isOnLowerLv(x,y);
-// }else{
+// Need Navicomputer in Bridge
+//
