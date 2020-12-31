@@ -3,7 +3,15 @@ const leaveGame = () => {
   console.log(
     "I don't blame you for wanting out! This adventure is not for the weak of heart!"
   );
-  process.exit();
+  tryAgain();
+};
+
+const tryAgain = () => {
+  if (readLineSync.keyInYN("Would you like to try again?")) {
+    greeting();
+  } else {
+    process.exit();
+  }
 };
 
 let name = [];
@@ -11,7 +19,12 @@ let name = [];
 const greeting = () => {
   console.log("Hello! Welcome to my adventure!");
   name = readLineSync.question("What is your name? ");
-  if (readLineSync.keyInYN("Hello " + name + "! Would you like to begin?")) {
+  console.log(
+    "Nice to meet you " +
+      name +
+      "! The instructions for my game are simple..DON'T DIE...and enjoy the show..."
+  );
+  if (readLineSync.keyInYN("Would you like to begin?")) {
     gameIntro();
   } else {
     leaveGame();
@@ -41,8 +54,8 @@ const gameIntro = () => {
 
 const youDied = () => {
   console.log("\n YOU DIED");
-  console.log("Better watch your step next time!");
-  process.exit();
+  console.log("\n Better watch your step next time!");
+  tryAgain();
 };
 
 const startGame = () => {
@@ -103,22 +116,20 @@ const talkToYoda = () => {
   }
 };
 
-
-
 const orbSplitLevel = () => {
   console.log("\n May the force be with you..");
   console.log("\n what was once one portal separates slowly into 3.. ");
   console.log("\n Yoda: your help each of these 3 worlds requires...");
   let storySelection = [
-    "Forests of Endor",
+    "Battle of Alderaan",
     "Podracing on Tatooine",
     "The Rescue",
   ];
   console.log("Where would you like to assist first?");
   storySelectionIndex = readLineSync.keyInSelect(storySelection);
   storySelectionChoice = storySelection[storySelectionIndex];
-  if (storySelectionChoice === "Forests of Endor") {
-    forestsOfEndorLevel();
+  if (storySelectionChoice === "Battle of Alderaan") {
+    battleOfAlderaanLevel();
   } else if (storySelectionChoice === "Podracing on Tatooine") {
     podracingOnTatooineLevel();
   } else if (storySelectionChoice === "The Rescue") {
@@ -128,13 +139,12 @@ const orbSplitLevel = () => {
   }
 };
 
-const forestsOfEndorLevel = () => {
-  console.log("\n Yoda: A wise choice..")
-  console.log("\n Godspeed to you on your journey " + name + "!")
-  console.log("\n and may the Force be with you..")
-
-
-}
-
+const battleOfAlderaanLevel = () => {
+  console.log("\n Yoda: A wise choice..");
+  console.log("\n Godspeed to you on your journey " + name + "!");
+  console.log("\n and may the Force be with you..");
+  console.log("\n\n ---------------------------------------------------");
+  console.log("_________________THE BATTLE OF ALDERAAN_______________");
+};
 
 greeting();
