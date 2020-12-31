@@ -9,6 +9,15 @@ const exitGame = () => {
 }
 
 
+const playAgain = () => {
+    let answerPlayAgain = readline.question("Would you like to play again?\n")
+    if (answerPlayAgain.toLowerCase === "yes" || answerPlayAgain.toLowerCase === "y") {
+        newGame()
+    } else {
+        exitGame
+    }
+}
+
 const nameInput = readline.question("Please enter your name: \n")
 const ageInput = readline.question ("Please enter your age: \n")
 
@@ -27,25 +36,28 @@ const newGame = () => {
 }
 
 
-const playAgain = () => {
-    let answerPlayAgain = readline.question("Would you like to play again?\n")
-    if (answerPlayAgain.toLowerCase === "yes" || answerPlayAgain.toLowerCase === "y") {
-        newGame()
-    } else {
-        exitGame
-    }
-}
-
-
 const livingRoomTemp = () => {
     let userInputTemp = readline.question(`${nameInput}. What temperature do you see on thermostat? (Input has to be a number)\n`)
     if (userInputTemp >= 32) {
-        console.log("The temp is warm enough for you to take a peek at the front porch! You slowly open the front door and CONGRATS!")
+        console.log("The temp is warm enough for you to take a peek outside the front porch in your PJs! You slowly open the front door and CONGRATS!")
         console.log("The present that Santa left is right infront of your eyes! Good job!~\n")
         playAgain()
     } else {
         console.log("It's too cold outside, even with jacket and gloves, you'll freeze! Staying indoor is a much better option.\n")
         enterRoom()
+    }
+}
+
+const lightInBasement = () => {
+    let userInputOnOff = readline.question(`${nameInput}. Would you like to turn on the lights?\n`)
+    if(userInputOnOff.toLowerCase === "on") {
+        console.log ("You reach and flip light switch. The fluorescent light flickers for a few second before turning on. Nothing but spider webs here")
+    } else if (userInputOnOff.toLowerCase === "off") {
+        console.log("Guess you aren't ready to face your fears\n")
+        enterRoom()
+    } else {
+        console.log ("Please enter: turn on or keep off")
+        lightInBasement()
     }
 }
 
@@ -55,21 +67,22 @@ const enterRoom = () => {
     let room = ["bedroom", "living room", "kitchen", "basement" ]
     for(let i = 0; i <= room.length - 1; i++){
         if (pickRoom === room[0]) {
-            console.log("You're already in bedroom. Nothing in here.\n")
+            console.log("\nYou're already in bedroom. No present in here.")
             break;
         } else if (pickRoom === room[1]){
-            console.log("You walk towards the living room. Infront of the fireplace, there are faint santa footprints.")
+            console.log("\nYou walk towards the living room. Infront of the fireplace, there are faint santa footprints.")
             console.log("Your eyes wander over to the temperature reading on the wall, you walk towards it.\n")
             livingRoomTemp()
             break;
         } else if (pickRoom === room[2]){
-            console.log("Walking towards the kitchen. The full plate of cookies you left on counter last night is now half emptied.\n")
+            console.log("\nWalking towards the kitchen. The full plate of cookies you left on counter last night is now half emptied with crumbs everywhere.")
             break;
         } else if (pickRoom === room[3]) {
-            console.log("You open the door that leds to the basement, it's pitch dark, you reach for the light switch. Nothing but spider webs here.\n")
+            console.log("\nYou open the door that leds to the basement, it's pitch dark.")
+            lightInBasement()
             break;
         } else {
-            console.log ("Please move toward any of these rooms: bedroom, living room, kitchen, or basement to continue the game.\n")
+            console.log ("\nPlease move toward any of these rooms: bedroom, living room, kitchen, or basement to continue the game.")
             break;
         }
     }
