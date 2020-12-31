@@ -269,7 +269,7 @@ const riddlePath = () => {
   riddleAnswer = riddleAnswer.trim().toLowerCase();
   if (riddleAnswer === "fortified pumpkins") {
     console.log(`You got the correct answer.`);
-    console.log("You used your Master Sword to destroy the the chains.");
+    console.log("The chains were magically broken and disappeared.");
     console.log(`You were successful and saved the princess.`);
     console.log(`Princess Zelda is very thankfull and names her personal guard.`);
     playAgain();
