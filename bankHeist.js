@@ -111,9 +111,9 @@ const cleanUp = () => {
     bathroomCode()
 }
 
-const bathroomCode = (n = 3) => {
+const bathroomCode = () => {
     
-    for(let i = 0; i < n; i++) {
+    for(let i = 0; i < 3; i++) {
         let code = readline1.questionInt(`Enter code\n`)
         
         if (code === 3418){
