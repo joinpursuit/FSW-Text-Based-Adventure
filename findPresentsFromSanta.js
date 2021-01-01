@@ -37,7 +37,7 @@ const livingRoomTemp = () => {
     let userInputTemp = readline.question(`${nameInput}. What temperature do you see on thermostat? [Input has to be a number]\n`)
     if (userInputTemp >= 32) {
         console.log("\nThe temp is warm enough for you to take a peek outside the front porch in your PJs! You slowly open the front door and CONGRATS!")
-        console.log("The present that Santa left is right infront of your eyes! Good job!~\n")
+        console.log("\x1b[33m%s\x1b[0m","Present #1 that Santa left is right infront of your eyes! Good job!~\n")
     } else if (userInputTemp < 32){
         console.log("It's too cold outside, even with jacket and gloves, you'll freeze! Staying indoor is a much better option.\n")
         enterRoom()
@@ -46,6 +46,28 @@ const livingRoomTemp = () => {
     }
     playAgain()
 }
+
+
+const searchInKitchen = () => {
+    let openCabinet = readline.question(`${nameInput}.` + "The cabinets looks like they been opened, would you like to check out the top or bottom cabinets?\n")
+    switch (openCabinet.toLowerCase()) {
+        case "top":
+            console.log("Opening the top cabinets, there are a few pots and pans, but you are too short to look behind it.\n")
+            break;
+        case "bottom":
+            console.log("Opening the bottom cabinets, there are only cleaning supplies in here.")
+        break; 
+        default:
+            console.log("Enter 'top' or 'bottom'.\n")
+    }
+    let lookInSink = readline.question (`${nameInput}` + "Would you like to look in the sink? [Enter Yes(Y) or No(N)]")
+    if (lookInSink.toLowerCase() === "yes" || lookInSink.toLowerCase() === "y") {
+        console.log("\x1b[33m%s\x1b[0m", "Instead of dirty dishes, you found present #2!")
+        playAgain()
+    } else {
+        enterRoom()
+    }
+} 
 
 
 const lightInBasement = () => {
@@ -105,6 +127,7 @@ const enterRoom = () => {
             break;
         } else if (pickRoom === room[2]){
             console.log("\nWalking towards the kitchen. The full plate of cookies you left on counter last night is now half emptied with crumbs everywhere.")
+            searchInKitchen()
             break;
         } else if (pickRoom === room[3]) {
             console.log("\nYou open the door that leds to the basement, it's pitch dark.")
