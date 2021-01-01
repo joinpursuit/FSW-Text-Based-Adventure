@@ -9,20 +9,11 @@ const exitGame = () => {
 }
 
 
-const playAgain = () => {
-    let answerPlayAgain = readline.question("Would you like to play again?\n")
-    if (answerPlayAgain.toLowerCase === "yes" || answerPlayAgain.toLowerCase === "y") {
-        newGame()
-    } else {
-        exitGame
-    }
-}
-
 const nameInput = readline.question("Please enter your name: \n")
-const ageInput = readline.question ("Please enter your age: \n")
+const ageInput = readline.question ("Please enter your age: (Input must be a number) \n")
 
 const newGame = () => {    
-    console.log("\x1b[33m%s\x1b[0m", `Hello, good morning ${nameInput}!~`)
+    console.log("\x1b[33m%s\x1b[0m", "Hello, good morning " + `${nameInput}` + "!~")
     console.log("\x1b[33m%s\x1b[0m", "Today is December 25th, Christmas day.")
     console.log("\x1b[33m%s\x1b[0m", "I have left a present for you last night, it is up to you to find where it is hidden!")
     console.log("\x1b[33m%s\x1b[0m", "With love, Santa! Ho! Ho! Ho!~\n")
@@ -35,11 +26,16 @@ const newGame = () => {
     }
 }
 
+const playAgain = () => {
+    let answerPlayAgain = readline.question("Would you like to play again?\n")
+    answerPlayAgain.toLowerCase() === "yes" || answerPlayAgain.toLowerCase() === "y" ? newGame() : exitGame()
+}
+
 
 const livingRoomTemp = () => {
     let userInputTemp = readline.question(`${nameInput}. What temperature do you see on thermostat? (Input has to be a number)\n`)
     if (userInputTemp >= 32) {
-        console.log("The temp is warm enough for you to take a peek outside the front porch in your PJs! You slowly open the front door and CONGRATS!")
+        console.log("\nThe temp is warm enough for you to take a peek outside the front porch in your PJs! You slowly open the front door and CONGRATS!")
         console.log("The present that Santa left is right infront of your eyes! Good job!~\n")
     } else if (userInputTemp < 32){
         console.log("It's too cold outside, even with jacket and gloves, you'll freeze! Staying indoor is a much better option.\n")
@@ -75,7 +71,7 @@ const lightInBasement = () => {
 const snackInCloset = () => {
     let eatOrNot = readline.question (`${nameInput}. You look pretty down, shall we eat a snack before we continue the search? (Input must be lowercase)\n`)
     if (eatOrNot === "yes" || eatOrNot === "y") {
-        console.log("You picked up a bag of gummy bears, just the right amount of sweet to keep you going.\n")
+        console.log("\nYou picked up a bag of gummy bears, just the right amount of sweet to keep you going.\n")
         enterRoom()
     } else if (eatOrNot === "no" || eatOrNot === "n") {
         console.log("You decided to keep it going, snacks will not deter you from the mission!\n")
@@ -117,9 +113,9 @@ const enterRoom = () => {
     enterRoom ()
 }
 
-const exitRoom = () => {
+// const exitRoom = () => {
 
-}
+// }
 
 
 
