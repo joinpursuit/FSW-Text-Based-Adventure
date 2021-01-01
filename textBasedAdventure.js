@@ -143,8 +143,82 @@ const battleOfAlderaanLevel = () => {
   console.log("\n Yoda: A wise choice..");
   console.log("\n Godspeed to you on your journey " + name + "!");
   console.log("\n and may the Force be with you..");
-  console.log("\n\n ---------------------------------------------------");
+  console.log("\n YOU JUMPED INTO THE PORTAL");
+  console.log("\n ---------------------------------------------------");
   console.log("_________________THE BATTLE OF ALDERAAN_______________");
+  console.log("\n IN A GALAXY FAR FAR AWAY..");
+  console.log(
+    "\n You are instantly transported to an X-wing hangar on Alderaan, Princess Leia's home planet"
+  );
+  console.log(
+    "\n A rebel alliance general is breifing a squadron of pilots preparing to go on their next mission"
+  );
+  console.log(
+    "\n\n General Jailene: Rebels, Alderaan is under grave threat by a new weapon created by the Empire"
+  );
+  console.log(
+    "\n This new weapon can destroy our planet with only one shot, it is called.. the Death Star"
+  );
+  console.log(
+    "\n We have only one way of saving our planet: Flying a device that can deliver an electromagnetic"
+  );
+  console.log(
+    "\n pulse strong enough to disable the Death Star temporarily so our full batallion of rebel X-wings"
+  );
+  console.log(
+    "\n can destroy it from the inside. This is our last chance people. Fail and it's over..."
+  );
+  if (readLineSync.keyInYN("\n Is that understood?")) {
+    console.log(
+      "\n Good. Good luck. Godspeed. And May the Force be with you.."
+    );
+    console.log(
+      "\n General Jailene now turns her attention to you. You there, " +
+        name +
+        " is it?"
+    );
+    if (readLineSync.keyInYN("\n You're a new pilot, right?")) {
+      console.log(
+        "\n Good. We need all the new pilots we can get. You're rear formation. You'll have more of a chance to breathe there."
+      );
+      console.log("\n Stay sharp. Don't die. Down with the Empire!");
+      if (readLineSync.keyInYN("\n Are you ready?")) {
+        battleOfAlderaanRearFormation();
+      } else {
+        leaveGame();
+      }
+    } else {
+      console.log(
+        "\n Interesting. I was told you had no prior battle experience. We need all the experience pilots"
+      );
+      console.log("\n we can get. We'll put you on the front line");
+      if (readLineSync.keyInYN("\n Are you ready?")) {
+        battleOfAlderaanFrontLine();
+      } else {
+        leaveGame();
+      }
+    }
+  } else {
+    console.log(
+      "\n" +
+        name +
+        " I know you. You're one of the new fighters we just picked up." +
+        name
+    );
+    if (readLineSync.keyInYN("Are we going to have a problem here?")) {
+      youDied();
+    } else {
+      console.log(
+        "\n Good. We need all the new pilots we can get. You're rear formation. You'll have more of a chance to breathe there."
+      );
+      console.log("\n Stay sharp. Don't die. Down with the Empire!");
+      if (readLineSync.keyInYN("\n Are you ready?")) {
+        battleOfAlderaanRearFormation();
+      } else {
+        leaveGame();
+      }
+    }
+  }
 };
 
 greeting();
