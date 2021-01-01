@@ -73,13 +73,13 @@ const surrender = () => {
     console.log(`but you have a chance to escape jail`)
     console.log(`You sit next to your cellmate while you're watching TV and you get up to change the channel, \nhe tells you not to, but you do it anyway.`)
     
-    let fightorBathroom = readline1.question(`Do you want to "fight" him or "go to the bathroom" to walk away from the argument?\n`)
+    let fightorBathroom = readline1.question(`Do you want to fight him or go to the bathroom to walk away from the argument? "fight" or "go to the bathroom" \n`)
     switch (fightorBathroom.toLowerCase()){
         case `fight`:
             console.log(`You get into a fight with you cellmate and you have to be hospitalized.`)
             fight()
         case `go to the bathroom`:
-            console.log(`You go to the bathroom and type in the code: 3418`)
+            console.log(`You go to the bathroom and type in the code: 3418.`)
             bathroomCode()
         default:
             console.log("Please re-enter a valid answer.")
@@ -102,7 +102,7 @@ const getawayCar = () => {
 }
 
 const fight = () => {
-    console.log(`You type in 3418 as the bathroom code to wash the blood off your face`)
+    console.log(`You type in 3418 as the bathroom code to wash the blood off your face.`)
     bathroomCode()
 }
 
@@ -111,30 +111,54 @@ const cleanUp = () => {
     bathroomCode()
 }
 
-const escape = () => {
-    console.log(``)
-}
-
-const bathroomCode = () => {
-
-    for(let i = 0; i < 3; i++) {
+const bathroomCode = (n = 3) => {
+    
+    for(let i = 0; i < n; i++) {
         let code = readline1.questionInt(`Enter code\n`)
         
         if (code === 3418){
-           console.log(`UNLOCKED`)
-           console.log(`You see a window in the bathroom and you try to escape.`)
-           escape()
+            console.log(`UNLOCKED`)
+            console.log(`You see a window in the bathroom and you try to escape.`)
+            escape()
         } else {
-           console.log(`LOCKED`)
+            console.log(`LOCKED`)
         }
     }
-    console.log(`You double check the passcode and it's 3418`)
+    console.log(`You must enter the code to continue the game.`)
     bathroomCode()
 }
 
+const escape = () => {
+    console.log(`You squeeze through the window and you're free!!`)
+    console.log(`You're a wanted criminal, so you still hear sirens! The police are looking for you`)
+    let input = readline1.question(`Do you want to go to the amusement park or hideout in the psychic parlor? "go to the amusement park" or "hideout in the psychic parlor" \n`)
+
+    input.toLowerCase() === `go to the amusement park` ? amusementPark()
+    : input.toLowerCase() === `hideout in the psychic parlor` ? psychic()
+    : console.log(`Please re-enter a valid answer.`)
+       escape()
+}
+
+const amusementPark = () => {
+    console.log(`You try to blend in with the crowd at Coney Island and you bump into your friend, Nick.`)
+    let avoidFriend = readline1.keyInYNStrict(`Do you avoid him? \n`)
+
+    if(avoidFriend){
+        console.log(`He sees you anyway and says hi`)
+        nick()
+        
+    } else {
+        console.log(`You say hi to him and `)
+    }
+    
+}
+
+const psychic = () => {
+    nick()
+}
 
 const goToJail = () =>{
-    console.log("YOU GOT ARRESTED AGAIN")
+    console.log("YOU GOT ARRESTED")
     console.log("You got caught ")
     loseGame()
 }
