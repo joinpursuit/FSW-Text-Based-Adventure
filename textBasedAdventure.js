@@ -10,14 +10,14 @@ const exitGame = () => {
 
 
 const nameInput = readline.question("Please enter your name: \n")
-const ageInput = readline.question ("Please enter your age: (Input must be a number) \n")
+const ageInput = readline.question ("Please enter your age: [Input must be a number] \n")
 
 const newGame = () => {    
     console.log("\x1b[33m%s\x1b[0m", "Hello, good morning " + `${nameInput}` + "!~")
     console.log("\x1b[33m%s\x1b[0m", "Today is December 25th, Christmas day.")
     console.log("\x1b[33m%s\x1b[0m", "I have left a present for you last night, it is up to you to find where it is hidden!")
     console.log("\x1b[33m%s\x1b[0m", "With love, Santa! Ho! Ho! Ho!~\n")
-    let answerPresentHunt = readline.question("Would you like to go on a present hunt? Yes[Y] or No[N]\n")
+    let answerPresentHunt = readline.question("Would you like to go on a present hunt? [Yes(Y) or No(N)]\n")
     if (answerPresentHunt.toLowerCase() === "yes" || answerPresentHunt.toLowerCase() === "y") {
         console.log("\nGlad to hear! Which room would you like to check out first?")
         enterRoom()
@@ -33,7 +33,7 @@ const playAgain = () => {
 
 
 const livingRoomTemp = () => {
-    let userInputTemp = readline.question(`${nameInput}. What temperature do you see on thermostat? (Input has to be a number)\n`)
+    let userInputTemp = readline.question(`${nameInput}. What temperature do you see on thermostat? [Input has to be a number]\n`)
     if (userInputTemp >= 32) {
         console.log("\nThe temp is warm enough for you to take a peek outside the front porch in your PJs! You slowly open the front door and CONGRATS!")
         console.log("The present that Santa left is right infront of your eyes! Good job!~\n")
@@ -48,16 +48,19 @@ const livingRoomTemp = () => {
 
 const lightInBasement = () => {
     let userInputOnOff = readline.question(`${nameInput}. Would you like to turn on the lights?\n`)
-    if(userInputOnOff.toLowerCase() === "turn on") {
-        console.log ("You reach and flip light switch. The fluorescent light flickers for a few second before turning on. You see nothing but spider webs from here.")
-    } else if (userInputOnOff.toLowerCase() === "keep off") {
-        console.log("Guess you aren't ready to face your fears...\n")
-        enterRoom()
-    } else {
-        console.log ("\nPlease enter: 'turn on' or 'keep off'")
+    switch (userInputOnOff.toLowerCase()){
+        case "turn on":
+            console.log("\nYou reach and flip light switch. The fluorescent light flickers for a few second before turning on. You see nothing but spider webs from here.");
+            break;
+        case "keep off":
+            console.log("Guess you aren't ready to face your fears...\n");
+            enterRoom()
+            break;
+        default: 
+        console.log ("\nPlease enter: 'turn on' or 'keep off'");
         lightInBasement()
     }
-    let userInputGoDown = readline.question(`${nameInput}. Do you want to walk down the stairs and take a look? (Enter yes(y) or no(n))\n`) 
+    let userInputGoDown = readline.question(`${nameInput}. Do you want to walk down the stairs and take a look? [Enter yes(y) or no(n)]\n`) 
     if(userInputGoDown.toLowerCase() === "yes" || userInputGoDown.toLowerCase() === "y") {
         console.log("\nHalfway down the dusty stairs, you see something sparkling to your left, and walk towards it...")
         console.log("There are boxes infront of the sparkly item, after moving things around, you pick up the star you could not find for your Christmas tree.")
@@ -68,13 +71,17 @@ const lightInBasement = () => {
     enterRoom()
 }
 
+
+
+
+
 const snackInCloset = () => {
     let eatOrNot = readline.question (`${nameInput}. You look pretty down, shall we eat a snack before we continue the search? (Input must be lowercase)\n`)
     if (eatOrNot === "yes" || eatOrNot === "y") {
         console.log("\nYou picked up a bag of gummy bears, just the right amount of sweet to keep you going.\n")
         enterRoom()
     } else if (eatOrNot === "no" || eatOrNot === "n") {
-        console.log("You decided to keep it going, snacks will not deter you from the mission!\n")
+        console.log("\nYou decided to keep it going, snacks will not deter you from the mission!\n")
     } else {
         console.log("\nPlease enter either yes(y) or no(n)")
         snackInCloset()
@@ -83,11 +90,11 @@ const snackInCloset = () => {
 
 
 const enterRoom = () => {
-    let pickRoom = readline.question("Please enter a room. (Input has to be lowercase) \n")
+    let pickRoom = readline.question("Please enter a room: [Input has to be lowercase] \n")
     let room = ["bedroom", "living room", "kitchen", "basement", "closet"]
     for(let i = 0; i <= room.length - 1; i++){
         if (pickRoom === room[0]) {
-            console.log("\nYou're already in bedroom. No present in here.")
+            console.log("\nYou were already in bedroom. No present in there, only the letter from Santa.")
             break;
         } else if (pickRoom === room[1]){
             console.log("\nYou walk towards the living room. Infront of the fireplace, there are faint santa footprints.")
@@ -112,10 +119,6 @@ const enterRoom = () => {
     }
     enterRoom ()
 }
-
-// const exitRoom = () => {
-
-// }
 
 
 
