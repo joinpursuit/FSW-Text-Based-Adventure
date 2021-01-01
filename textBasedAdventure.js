@@ -21,46 +21,54 @@ if (
 }
 
 function startGame() {
-  console.log(
-    "You begin to search the massive closet. After several minutes pass you find two options for escape."
-  );
-  let yourChoice = readline.question(
-    "A metal hatch on the floor or a small window. Which do you choose?"
-  );
-  if (yourChoice === "metal hatch") {
-    metalHatch();
-  } else if (yourChoice === "small window") {
-    smallWindow();
+  while (yourChoice !== "metal hatch" || yourChoice !== "small window") {
+    console.log(
+      "You begin to search the massive closet. After several minutes pass you find two options for escape."
+    );
+    let yourChoice = readline.question(
+      "A metal hatch on the floor or a small window. Which do you choose?"
+    );
+    if (yourChoice === "metal hatch") {
+      metalHatch();
+    } else if (yourChoice === "small window") {
+      smallWindow();
+    }
   }
-}
 
-function smallWindow() {
-  console.log(
-    "You break the window and place one of the costumes on the broken shards."
-  );
-  console.log(
-    "Trying to wiggle your way out, you get stuck and the glass begins to dig into your skin. Stuck and with no way out, you begin to bleed out and die."
-  );
-  if ((yourChoice = readline.keyInYN("Would you like to start over?"))) {
-    startGame();
-  } else {
-    leaveGame();
+  function smallWindow() {
+    console.log(
+      "You break the window and place one of the costumes on the broken shards."
+    );
+    console.log(
+      "Trying to wiggle your way out, you get stuck and the glass begins to dig into your skin. Stuck and with no way out, you bleed out and die."
+    );
+    if ((yourChoice = readline.keyInYN("Would you like to start over?"))) {
+      startGame();
+    } else {
+      leaveGame();
+    }
   }
-}
 
-function metalHatch() {
-  console.log(
-    "The metal hatch leads down to what looks like a hosptial or a lab (clean and crisp)."
-  );
-  let yourChoice = readline.question(
-    "There are 3 doors in front of you. A 'black', 'red' and 'blue' doors. Which do you choose?"
-  );
-  if (yourChoice === "black") {
-    blackDoor();
-  } else if (yourChoice === "red") {
-    redDoor();
-  } else if (yourChoice === "blue") {
-    blueDoor();
+  function metalHatch() {
+    while (
+      yourChoice !== "black" ||
+      yourChoice !== "red" ||
+      yourChoice !== "blue"
+    ) {
+      console.log(
+        "The metal hatch leads down to what looks like a hospital or a lab (clean and crisp)."
+      );
+      let yourChoice = readline.question(
+        "There are 3 doors in front of you. A 'black', 'red' and 'blue' doors. Which do you choose?"
+      );
+      if (yourChoice === "black") {
+        blackDoor();
+      } else if (yourChoice === "red") {
+        redDoor();
+      } else if (yourChoice === "blue") {
+        blueDoor();
+      }
+    }
   }
 }
 
@@ -68,7 +76,9 @@ function blueDoor() {
   console.log(
     "When entering the room, it appears to look like a normal break room. With lockers on the back wall, you begin to search them."
   );
-  console.log("Searching through the lockers you find a key card, 'grab' action is available now");
+  console.log(
+    "Searching through the lockers you find a key card, 'grab' action is available now"
+  );
   if (readline.prompt("grab")) {
     KeyCard();
   }
@@ -79,33 +89,37 @@ function KeyCard() {
   inventory.push("keycard");
   for (element in inventory) {
     if (inventory[element] === "keycard") {
-    console.log("key card found");
-    blueDoorRoom();
+      console.log("key card found");
+      blueDoorRoom();
     }
   }
 }
 
-function blueDoorRoom () {
-    console.log("With the key card found, you head back to the red door")
-    redDoor();
+function blueDoorRoom() {
+  console.log("With the key card found, you head back to the red door");
+  redDoor();
 }
 
-
 function blackDoor() {
-  console.log("The door opens with ease, you look in and find ...");
-  console.log(
-    "A simple janitors closet, with no way out you turn back into the hallway and choose a new door."
-  );
-  let yourChoice = readline.question("'red' door or 'blue' door?");
-  if (yourChoice === "red") {
-    redDoor();
-  } else if (yourChoice === "blue") {
-    blueDoor();
+  while (yourChoice !== "red" || yourChoice !== "blue") {
+    console.log("The door opens with ease, you look in and find ...");
+    console.log(
+      "A simple janitors closet, with no way out you turn back into the hallway and choose a new door."
+    );
+    let yourChoice = readline.question("'red' door or 'blue' door?");
+    if (yourChoice === "red") {
+      redDoor();
+    } else if (yourChoice === "blue") {
+      blueDoor();
+    }
   }
 }
 
 function redDoor() {
-  if ((yourAnswer = readline.keyInYN("This door requires a key card, Do you have the keycard?"))
+  if (
+    (yourAnswer = readline.keyInYN(
+      "This door requires a key card, Do you have the keycard?"
+    ))
   ) {
     redDoorAccess();
   } else {
@@ -114,27 +128,109 @@ function redDoor() {
 }
 
 function redDoorNoAccess() {
-  console.log("NO ACCESS, KEYCARD REQUIRED");
-  let yourChoice = readline.question("'black' door or 'blue' door?");
-  if (yourChoice === "black") {
-    blackDoor();
-  } else if (yourChoice === "blue") {
-    blueDoor();
+  while (yourChoice !== "black" || yourChoice !== "blue") {
+    console.log("NO ACCESS, KEYCARD REQUIRED");
+    let yourChoice = readline.question("'black' door or 'blue' door?");
+    if (yourChoice === "black") {
+      blackDoor();
+    } else if (yourChoice === "blue") {
+      blueDoor();
+    }
   }
 }
 
-function redDoorAccess () {
-    console.log ("ACCESS GRANTED")
-    console.log ("Walking into the large room, you see giant glass containers of humanoid versions of Disney characters.")
-    console.log ("Suddenly on the floor you see glass shards, you then hear snarling and as you down the room a hulked out Mickey Mouse is blocking the exit")
-    let yourChoice = readline.question("How will you find a way out? 'Hide', 'Distract', or 'Fight'?")
+function redDoorAccess() {
+  while (
+    yourChoice !== "hide" ||
+    yourChoice !== "distract" ||
+    yourChoice !== "fight"
+  ) {
+    console.log("ACCESS GRANTED");
+    console.log(
+      "Walking into the large room, you see giant glass containers of humanoid versions of Disney characters."
+    );
+    console.log(
+      "On the floor you see glass shards, you then hear snarling and as you look down the room a hulked out Mickey Mouse is blocking the exit"
+    );
+    let yourChoice = readline.question(
+      "How will you find a way out? 'Hide', 'Distract', or 'Fight'?"
+    );
     if (yourChoice === "hide") {
-        hideStory();
-    } else if (yourChoice ==="distract") {
-        distractStory();
+      hideStory();
+    } else if (yourChoice === "distract") {
+      distractStory();
     } else if (yourChoice === "fight") {
-        fightStory();
+      fightStory();
     }
+  }
+}
+
+function hideStory() {
+  console.log(
+    "You hide inside a cabinet, after several minutes, you do not hear the snarling anymore or any footsteps"
+  );
+  console.log(
+    "You decide to leave the cabinet, the minute you exit, Mickey Mouse pops out from the corner, grabs you and pulls you apart."
+  );
+  if (
+    (yourChoice = readline.keyInYN(
+      "YOU DIED. Would you like to start over from checkpoint?"
+    ))
+  ) {
+    redDoorAccess();
+  } else {
+    leaveGame();
+  }
+}
+
+function distractStory() {
+  console.log(
+    "You find a large metal pole on the ground, quietly you move closer to the creature"
+  );
+  console.log(
+    "You throw the pole towards the opposite side of the room, Mickey Mouse begins to run to the sound, you sprint towards the exist."
+  );
+  finalRoom();
+}
+
+function fightStory() {
+  while (yourChoice !== "trident" || yourChoice !== "staff" || yourChoice !== "light saber") {
+  console.log("On the wall you see Disney character weapons: Posiedons trident, Maleficents staff, and Lukes Light Saber");
+    let yourChoice = readline.question("Which weapon do you choose?");
+    if (yourChoice === "trident" || yourChoice === "staff") {
+        mickeyFight();
+    } else if (yourChoice === "light saber")
+        mickeyFightLoss()
+    }
+}
+
+function finalRoom() {
+  console.log(
+    "When you enter the room, you immediately run to the exit door, however, the door requires a 4 digit key code."
+  );
+  console.log(
+    "Searching through the cubicles in the room, you see a post it note that reads 'hey idiot, stop forgetting the exit pin code, heres a hint-"
+  );
+  console.log(
+    "The hint reads: A scar killed my father and I am to be king of my pride, What year was my story released?"
+  );
+  finalRoomDoor();
+}
+
+function finalRoomDoor() {
+  let triesCount = 3;
+  for (i = triesCount; i !== 0; i--) {
+    let yourAnswer = readline.question("Pin Code required, Enter Code: ");
+    if (yourAnswer === "1994") {
+      exitDoor();
+    } else {
+      triesCount--;
+      console.log("Invalid code, only " + triesCount + " tries left");
+      if (triesCount === 0) {
+        noMoreTriesScene();
+      }
+    }
+  }
 }
 
 function leaveGame() {
