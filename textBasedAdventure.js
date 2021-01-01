@@ -41,30 +41,54 @@ const livingRoomTemp = () => {
     if (userInputTemp >= 32) {
         console.log("The temp is warm enough for you to take a peek outside the front porch in your PJs! You slowly open the front door and CONGRATS!")
         console.log("The present that Santa left is right infront of your eyes! Good job!~\n")
-        playAgain()
-    } else {
+    } else if (userInputTemp < 32){
         console.log("It's too cold outside, even with jacket and gloves, you'll freeze! Staying indoor is a much better option.\n")
         enterRoom()
+    } else {
+        console.log("Please enter a number!");
     }
+    playAgain()
 }
 
 const lightInBasement = () => {
     let userInputOnOff = readline.question(`${nameInput}. Would you like to turn on the lights?\n`)
-    if(userInputOnOff.toLowerCase === "on") {
-        console.log ("You reach and flip light switch. The fluorescent light flickers for a few second before turning on. Nothing but spider webs here")
-    } else if (userInputOnOff.toLowerCase === "off") {
-        console.log("Guess you aren't ready to face your fears\n")
+    if(userInputOnOff.toLowerCase() === "turn on") {
+        console.log ("You reach and flip light switch. The fluorescent light flickers for a few second before turning on. You see nothing but spider webs from here.")
+    } else if (userInputOnOff.toLowerCase() === "keep off") {
+        console.log("Guess you aren't ready to face your fears...\n")
         enterRoom()
     } else {
-        console.log ("Please enter: turn on or keep off")
+        console.log ("\nPlease enter: 'turn on' or 'keep off'")
         lightInBasement()
+    }
+    let userInputGoDown = readline.question(`${nameInput}. Do you want to walk down the stairs and take a look? (Enter yes(y) or no(n))\n`) 
+    if(userInputGoDown.toLowerCase() === "yes" || userInputGoDown.toLowerCase() === "y") {
+        console.log("\nHalfway down the dusty stairs, you see something sparkling to your left, and walk towards it...")
+        console.log("There are boxes infront of the sparkly item, after moving things around, you pick up the star you could not find for your Christmas tree.")
+        console.log("Oh well, you know where it is now for next Christmas.\n")
+    } else {
+        console.log("Yea, I agree. Way too dusty and scary to keep going when you're alone.")
+    }
+    enterRoom()
+}
+
+const snackInCloset = () => {
+    let eatOrNot = readline.question (`${nameInput}. You look pretty down, shall we eat a snack before we continue the search? (Input must be lowercase)\n`)
+    if (eatOrNot === "yes" || eatOrNot === "y") {
+        console.log("You picked up a bag of gummy bears, just the right amount of sweet to keep you going.\n")
+        enterRoom()
+    } else if (eatOrNot === "no" || eatOrNot === "n") {
+        console.log("You decided to keep it going, snacks will not deter you from the mission!\n")
+    } else {
+        console.log("\nPlease enter either yes(y) or no(n)")
+        snackInCloset()
     }
 }
 
 
 const enterRoom = () => {
     let pickRoom = readline.question("Please enter a room. (Input has to be lowercase) \n")
-    let room = ["bedroom", "living room", "kitchen", "basement" ]
+    let room = ["bedroom", "living room", "kitchen", "basement", "closet"]
     for(let i = 0; i <= room.length - 1; i++){
         if (pickRoom === room[0]) {
             console.log("\nYou're already in bedroom. No present in here.")
@@ -81,14 +105,21 @@ const enterRoom = () => {
             console.log("\nYou open the door that leds to the basement, it's pitch dark.")
             lightInBasement()
             break;
+        } else if (pickRoom === room[4]) {
+            console.log("\nOpening up the closet door, there's a pile of your favorite snacks but no present.")
+            snackInCloset()
+            break;
         } else {
-            console.log ("\nPlease move toward any of these rooms: bedroom, living room, kitchen, or basement to continue the game.")
+            console.log ("\nPlease move toward any of these rooms: bedroom, living room, kitchen, basement or closet to continue the game.")
             break;
         }
     }
     enterRoom ()
 }
 
+const exitRoom = () => {
+
+}
 
 
 
