@@ -7,10 +7,46 @@ function quitGame() {
    console.log('Til next time '+ nameInput)
    if (restart === true) {
         start()
-   } else {console.log('Til next time '+ heroName)
+   } 
+   else {console.log('Til next time '+ heroName)
     return
    }
 }
+
+function dice(nat,min){
+    return Math.floor((Math.random()* nat)+min)//nest this globally
+}
+
+let heroStat = [1,1,1,10]
+let oppStat = []
+
+function addHealth(value, reward, risk){
+   console.log('+ You rolled '+(d6 = dice(6,1))+' !                         +')
+   if (d6 > value){
+        heroStat[3] = heroStat[3]+reward
+        console.log('+ You gain '+reward+' health!                                                                   +')
+        console.log('+ Your health is now '+heroStat[3]+'!                                                            +')
+    }
+    else if (d6 < value){
+        heroStat[3] = heroStat[3]-risk
+        console.log('+ You take '+risk+' damage!                                                           +')
+        console.log('+ Your health is now '+heroStat[3]+'!                                                   +')
+    } else {
+        console.log('+ Whoa someting went really wrong here!!!!!!!                                       +')
+    }
+}
+
+function minusHealth(value, risk){
+    d6 = dice(6,1)
+    if (d6 < value){
+        heroStat[3]= heroStat[3]-risk
+        
+    }
+    console.log('+--------------------------------------------------------------------------------------+')
+    console.log('+ You take '+heroStat[heroStat.length - 1]+' damage!                                   +')
+    console.log('+ Your health is now '+heroStat[3]+'.                                                  +')
+}
+
 
 function start() {
    console.log('+======================================================================================+')   
@@ -24,8 +60,8 @@ function start() {
    console.log('+ `---------’                                       `----\' `--‘                        +')
    console.log('+--------------------------------------------------------------------------------------+')
    console.log('+--------------------------------------------------------------------------------------+')
-   console.log('+ In the land of Phimiba on the black sand coast of the Banar provinces, there thrives +')
-   console.log('+ the small villageof Strinostra. A valley untouched by the wars of yore for an eon.   +')
+   console.log('+ In the land of Phimiba on the black sand coast of the Banar provinces, there lives   +')
+   console.log('+ the small village of Strinostra. A valley untouched by the wars of yore for an eon.   +')
    console.log('+ Great heroes and villians alike have wrecked and gone asunder in the bony beaches of +')
    console.log('+ Strinostra and ten thousand fold more in the windblown summit alps to the moutainous +')
    console.log('+ east. Here in Strinostra grows then mystic Ironbark tree. The last in fact. It\'s sap +')
@@ -48,41 +84,7 @@ function start() {
 
 start()
 
-
-//let dmg = function(lv, atk, def, roll, mod) {
-//     Math.floor((2(lv)+10/250)*(atk/def)*roll+2)*mod}
-// playerStat = [lv, atk, mod]
-// diceArr = [roll, ]
-
-// let mod = 0
-
-// let level = 0
-
-
-
-// let dice = function(bottom, top) {
-//     return Math.floor(Math.random() * top) + bottom}
-
-const heroStat = [1,1,1,10]
-oppStat = [lv,atk, def]
-
-let dice = function (nat,min){
-    return Math.floor((Math.random()* nat)+min)//nest this globally
-}
-let roll = dice(6,1)
-//console.log(dice(6,1))
-
-//let heroDmg = function(heroStat[0], heroStat[1], dice, mod) {
-
-   // return Math.floor((2(heroStat[0])+10/250)*(herotat[1]/oppStat[2])*dice+2)*mod}
-    
-//playerStat = [lv, atk, mod, lifepoints]
-
-// let attack = function(){
-
-// }
-
- function levelOne(){
+function levelOne(){
 
     console.log('+ Winged Light => Hero! Qeldrin, Eater Of All has taken nest in the great bastion of   +')
     console.log('+                 Heldana VII Crown, Castle Ironbark. Fight your way to Ironbark and   +')
@@ -95,7 +97,7 @@ let roll = dice(6,1)
     console.log('+ Qaspiel => I wilt beest thy companion then. I cannot assist thee on thy journey yet  +')
     console.log('+            I shall keep thee privy to all things proper and true. Qaspiel is mine    +')    
     console.log('+            name, PUKUKUKUKUKUKUKUKUKUKUKUU!                                       => +\n')
-    
+
     const rls1 = require('readline-sync')
         classPick = ['Sword', 'Wand', 'Rifle']
         index = rls1.keyInSelect(classPick, 'What weapon should I take?')
@@ -135,52 +137,75 @@ let roll = dice(6,1)
             quitGame()}
 
         function stageOne(){
-            console.log('im here')
-            function addHealth(){
-                console.log('im here too')
-                // if (roll > 3) {
-                //     heroStat[3]+10 
-                //     stageOneTwo()}
-                // else {
-                //     stageOneTwo()
-               // }
-            }
-            
-            
-            
+            console.log('im here')            
             console.log('+--------------------------------------------------------------------------------------+')
             console.log('+ '+nameInput+' => Shut up bird brain, lets kick some lizard booty!                     +')
             console.log('+ '+nameInput+' darts down the dirt path of the front garden and through the village to +') 
             console.log('+ the village center where a gaping pit wide enough to host four wagon abreast at its  +') 
             console.log('+ diameter. '+nameInput+' the hero stops right at its edge and Qaspien perches on your  +') 
             console.log('+ shoulder.                                                                            +') 
-            let help = keyInYN('+ Qaspiel => ~Psssssssst pssst pssssssst~                                            <=+\n+ [Do you answer?]                                                                    +')
+            let help = keyInYN('+ Qaspiel => ~Psssssssst pssst pssssssst~                                     <=+\n')
             if (help === true){
                 console.log('+--------------------------------------------------------------------------------------+')
                 console.log('+ Qaspiel => If you let me help you down into the tunnel you could gain some wisdown & +') 
                 console.log('+            wisdom is healthy for the body!                                           +') 
                 console.log('+--------------------------------------------------------------------------------------+')
-                let lift = keyInYN('+ Do you let Qaspiel assist you down, '+nameInput+'?                                    +\n+                                                                                     +')           
+                let lift = keyInYN('+ Do you let Qaspiel assist you down, '+nameInput+'?                                     +\n')           
                     if (lift === true){
-                        addHealth()
+                        console.log('+ Qaspiel hops on your shoulders and flaps their little wings as you decend.           +')
+                        addHealth(3,10,2)
                         stageOneTwo()}
                     else {
                         console.log('+--------------------------------------------------------------------------------------+')
-                        console.log('+ Qaspiel => (<_<) (>_>) (;_;) k then...                                               +')
-                        stageOneTwo()}
+                        console.log('+ Qaspiel => Ahh tough luck buddy...                                                   +')
+                        minusHealth(2,2)
+                        console.log('+ Your health is now '+heroStat[3]+'!         + ')                        
+                        stageOneTwo()
+                    }
                 }
 
             else {
                 console.log('+--------------------------------------------------------------------------------------+')
                 console.log('+ Qaspiel => (<_<) (>_>) (;_;) k then...                                               +')
+                console.log('+ You fall down the hole and take some damage +')
+                console.log('+ Your health is now '+heroStat[3]+'!         + ')
                 stageOneTwo()
             }    
-            function stageOneTwo(){
-
-            }
 
         }
- }
+
+        function stageOneTwo(){
+            console.log('+--------------------------------------------------------------------------------------+')
+            console.log('+ You find yourself in a dark tunnel. A faint glint pierces the darkness to your left. +')
+            investigate = 'Go left!', 'Go right!']
+            index = rls1.keyInSelect(investigate, 'Left or Right?')
+            if (investigate[index] === investigate[0]){
+                console.log('+--------------------------------------------------------------------------------------+')
+                console.log("+ You went left!                                                                       +")
+                console.log('+ Upon closer inspection, you find that the glint is reflecting off a metal surface as +')
+                console.log('+ Qaspiel\'s light dimly illuminates the tunnel.                                       +') 
+                console.log('+ '+nameInput+' => Aha! A mining cart! Its in great condition!                       <=+')
+                console.log('+ Qaspiel => I don\'t trust this rust bucket not one bit but hey I can fly so suit     +')
+                console.log('+            yourself! PUKUKUKUKUKUUU!                                               <=+')
+                stageOneThree()
+            }
+            else if (investigate[index] === incestigate[1]){
+                console.log('+--------------------------------------------------------------------------------------+')
+                console.log("+ You went right!                                                                       +")
+                console.log('+ As you approach the dripping, the air thickens with malice and the smell of iron      +')
+                console.log('+ permeates the darkness and dread.                                                     +') 
+                console.log('+ ?????????  => Feed? Feed! CATCH AND FEED!!!!!                                       <=+')
+                console.log('+ Qaspiel => Watch it kid! Close your eyeballs!                                       <=+\n')
+                console.log('+ The angel to takes to wing and air, their small but mighty wings growing brighter with+')
+                console.log('+ each wingbeat.                                                                        +')
+                console.log('+ The sconces of the tunnel wall blaze to life and cast an ugly orange aura on a bloody +')
+                console.log('+ mouthed Troll and the few remains of a villager that hung from the ceiling. How could +')
+                console.log('+ one have gotten this far to the surface? No matter, let\'s RUMBLE!!                    +')
+
+            }     
+            
+        }
+    }          
 
     
 
