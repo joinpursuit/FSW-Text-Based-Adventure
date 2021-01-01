@@ -89,14 +89,14 @@ const choices = () => {
 
     const userAnswer = () => {
       if (probSolve == solution) {
-         let nInput2 = say.speak('Access Granted')
+         let input2 = say.speak('Access Granted')
         console.log(
-           nInput2 + chalk.green("\nACCESS")
+           input2 + chalk.green("\nACCESS")
            );
       } else if (probSolve != solution) {
-         let nInput3 = say.speak('Warning! Warning!')
+         let input3 = say.speak('Warning! Warning!')
         console.log(
-          nInput3 + chalk.red("\nWARNING!") +
+          input3 + chalk.red("\nWARNING!") +
             "They have located you trying to access their servers. We must shut down now❗️❗️❗️"
         );
         process.exit;
@@ -128,6 +128,7 @@ const introGameSequence = () => {
     rules();
   } else if (age < x) {
     console.log("You are too young for the underbelly of the silver web");
+    process.exit
   }
 };
 
@@ -149,11 +150,22 @@ const beginGame = () => {
   } else quitGame();
 };
 
+const alphaNumeric = (code, characters) => {
+   let inviteCode = '';
+
+   for (let i = code; i > 0; --i)
+   inviteCode += characters[Math.floor(Math.random() * characters.length)]
+   return inviteCode
+}
+
 const choiceTwo = () => {
-   randomInvitationNumber = 
-   console.log(`\nGreat Work ${nameInput}! We are one step closer. \n Now that you have an invitation you can attend the event. \nYou press enter and a series on numbers that generate a invitation number where you see a waiting graphic of a red curtain and a very active participant chat of people saying 'We hope this is better than the last one`)
+  let randomInvitationNumber = (alphaNumeric(16, '01234456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'))
+
+   console.log(`\nGreat Work ${nameInput}! We are one step closer. \n\tNow that you have an invitation you can attend the event. \n\tYou press enter and a alpha-numeric code generates invitation access: \n\n\t` + chalk.red(randomInvitationNumber) + ` \n\n\tOnce the code is entered, you gain entry where you are met with a waiting graphic of a red curtain and a very active participant chat of people saying \n\t'We hope this is as good as the last one. \n\tAfter about a 5 minute wait a live feed starts to stream of a man covered in a butcher's apron and a mask pushing an operation table with a long white sheet covering something. \n\tHe begins to speak ...'You who have been lucky enough to be invited are in for a treat. \n\n\t He then unveils what's hidden under the sheet. \n\t `)
 };
 
 beginGame();
 
 choices();
+
+choiceTwo();
