@@ -5,7 +5,7 @@ let player2 = "";
 
 
 
-function playGame(){
+const  playGame = () => {
     box = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
     
     askNames();
@@ -118,7 +118,7 @@ function checkWin(){
     }else{
         return -1;
     }
-    
+
 }
 
 
