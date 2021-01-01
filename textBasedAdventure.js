@@ -6,7 +6,7 @@ console.log(`Hello ${nameInput}!  Welcome to my game.`);
 
 console.log("You awaken to the eyes of Donald Duck staring back at you.");
 console.log(
-  "You took a nap in one of the many Disney World costume closets, all the exists have been locked."
+  "You took a nap in one of the many Disney World costume closets, all the exits have been locked."
 );
 console.log(
   "You must find an escape since no one will find you for another four weeks due to the winter break."
@@ -59,7 +59,7 @@ function startGame() {
         "The metal hatch leads down to what looks like a hospital or a lab (clean and crisp)."
       );
       let yourChoice = readline.question(
-        "There are 3 doors in front of you. A 'black', 'red' and 'blue' doors. Which do you choose?"
+        "There are 3 doors in front of you. 'black', 'red' and 'blue' doors. Which do you choose?"
       );
       if (yourChoice === "black") {
         blackDoor();
@@ -188,7 +188,7 @@ function distractStory() {
     "You find a large metal pole on the ground, quietly you move closer to the creature"
   );
   console.log(
-    "You throw the pole towards the opposite side of the room, Mickey Mouse begins to run to the sound, you sprint towards the exist."
+    "You throw the pole towards the opposite side of the room, Mickey Mouse begins to run to the sound, you sprint towards the exit."
   );
   finalRoom();
 }
@@ -202,6 +202,23 @@ function fightStory() {
     } else if (yourChoice === "light saber")
         mickeyFightLoss()
     }
+}
+function mickeyFight() {
+    console.log(" After grabbing your weapon, you call for Mickey Mouse. It begins to run towards you")
+    console.log("Mickey mouse is inches from you, seconds before he reach you, you squat down and plunge the weapon into the creature")
+    console.log("You run towards the exit")
+    finalRoom()
+}
+
+function mickeyFightLoss() {
+    console.log("You grab the light saber and run towards the Mickey Mouse")
+    console.log("Just as you are about to reach the creature, you activate the sabers laser: ITS JUST A TOY")
+    console.log("The creature grabs you and rips you apart: YOU HAVE DIED")
+    if ((yourChoice = readline.keyInYN("HA HA HA, you thought light sabers are real. Would you like to start over from checkpoint?"))) {
+        redDoorAccess();
+      } else {
+        leaveGame();
+}
 }
 
 function finalRoom() {
@@ -231,6 +248,27 @@ function finalRoomDoor() {
       }
     }
   }
+}
+function exitDoor () {
+    while (yourChoice !== "ferry boat" || yourChoice !== "boat" || yourChoice !== "ferry" || yourChoice !== "bike") {
+    console.log("You exit through the door and realize that you exited out of the castle")
+    console.log("You run towards the entrance of the park")
+    let yourChoice = readline.question("You make it to the entrance, there are 2 vehicle options: 'ferry boat' or 'bike'")
+    if (yourChoice === "ferry boat" || yourChoice === "boat" || yourChoice === "ferry") {
+        ferryStory();
+    } else if (yourChoice === "bike") {
+        bikeStory ()
+    }
+}
+}
+function noMoreTriesScene() {
+    console.log ("NO MORE TRIES, THERE IS A TRESPASSER!, begins to blare ovehead")
+    console.log ("Next thing you know a trap door appears and you fall below into a grabage disposal and the walls close in, crushing you")
+    if ((yourChoice = readline.keyInYN("YOU HAVE DIED, Would you like to start over from checkpoint?"))) {
+        redDoorAccess();
+      } else {
+        leaveGame();
+}
 }
 
 function leaveGame() {
