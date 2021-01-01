@@ -1,15 +1,11 @@
 "use strict"; // prevents unintentional declaration of global const variables
 const readline = require("readline-sync");
 
-// let nameInput = readline1.question("Enter your name: ")
-
-// console.log(`Hello ${nameInput}!  Welcome to my game.`)
-
 //////////////////////// Arrays ////////////////////////
 
-let paths = ["cat", "dog", "kangaroo","bird", "lion", "frog"]
+let paths = ["cat", "dog", "kangaroo"]
 let verbs = ["climb", "hunt", "run", "jump", "dig", "hide", "fly", "soar", "walk"]
-let bodyParts = ["leg", "wing", "pouch", "ear", "eye", "arm", "toe", "finger", "lip"]
+// let bodyParts = ["leg", "wing", "pouch", "ear", "eye", "arm", "toe", "finger", "lip"]
 
 /////////////////////// Variables ////////////////////////////////
 let path;
@@ -23,24 +19,18 @@ let exclamation = "testing2"; ////////////////////////////
 
 //////////////////////// Functions //////////////////////////////
 
-let threeChoices = []
-// console.log(`This is verbs before function ${verbs}`)
+let threeChoices = [] // reset when function is called
 const randomArray = (array) => {
     for(let i = 0; i < 3; i++) {
         let indexRandom = Math.round(Math.random() * array.length - 1)
-        // console.log(`This indexRandom in the function ${indexRandom}`)
         threeChoices.push(array.splice(indexRandom,1))  
     }
 }
-// randomArray(verbs)
-// console.log(`This is verbs after function ${verbs}`)
-// console.log(threeChoices)
-
-// console.log(readline.keyInSelect(threeChoices,`Which do you choose?\n`, {cancel : `choose for me`}));
 
 ///////////////////////// Greeting //////////////////////////////////////
 
 let name = readline.question("Hi! What's your name?\n");
+
 console.log(`Thank you for coming ${name}.\n`);
 readline.keyInPause();
 console.log(`You will be one of the first to test out Wacky Mad Lib VR Adventure.\nAt the end, you will receive a personalized postcard for participating in the trial run.\n`);
@@ -63,17 +53,22 @@ const gameLoop = () => {
   console.log(`\nLook ahead, you should see a path.\nFollow it and your adventure begins.\nI will be with you all the way. Hope you enjoy.`);
   readline.keyInPause();
   console.log(`\nYou see THREE paths in front of you.\nTo mark each path, there is a wooden sign shaped as an arrow with an engraving.\nThe one on the left is marked cat,\nthe one in the middle dog and the one on the left bird.`);
-  randomArray(paths)
-  path = readline.keyInSelect(threeChoices,`Which do you choose?\n`, {cancel : `choose for me`});
+  path = readline.keyInSelect(paths,`Choose one:\n`, {cancel : `choose for me`});
   if (path === -1) {
     path = paths[Math.round(Math.random() * paths.length - 1)]
-    // console.log(path)
-    console.log(`\nApprehensive at the idea, you choose the path with the sign marked ${path}.\nYou think to yourself, this V/R experience would be the best time to get over your fears of ${paths[path]}s.\nHeistately, you start walking along the path. After sometime, You hear rustling in the bushes around you.`);
+    console.log(path)
+    console.log(`\nApprehensive at the idea, you choose the path with the sign marked ${path}.\nYou think to yourself, this V/R experience would be the best time to get over your fears of ${path}s.\nHeistately, you start walking along the path. After sometime, You hear rustling in the bushes around you.`);
   } else {console.log(`\nApprehensive at the idea, you choose the path with the sign marked ${paths[path]}.\nYou think to yourself, this V/R experience would be the best time to get over your fears of ${paths[path]}s.\nHeistately, you start walking along the path. After sometime, You hear rustling in the bushes around you.`);
-}  
-  verb = readline.question(`What action do you take? enter a verb:\n`);
-  // const woodenHouse = () => {
-  console.log(`\nYou ${verb}, then you see a small wooden house a short distance away. You approach the front door.`);
+  }  
+  randomArray(verbs)
+  verb = readline.keyInSelect(threeChoices,`Which do you choose?\n`, {cancel : `choose for me`});
+  if (verb === -1) {
+    verb = threeChoices[Math.round(Math.random() * threeChoices.length - 1)]
+    console.log(`\nYou ${verb}, then you see a small wooden house a short distance away. You approach the front door.`);
+  } else {
+    console.log(`\nYou ${threeChoices[verb]}, then you see a small wooden house a short distance away. You approach the front door.`);
+  }
+  //////////////// woodenHouse /////////////////////////////////
   let woodenHouse = readline.question(`Do you knock? Try the handle and go in? or go around the back?\n`,{limit: [`knock`, `go in`, `go around back`] });
 
   if (woodenHouse === "knock") {
@@ -94,7 +89,7 @@ const gameLoop = () => {
       console.log(`\nAs you ${houseOut} watching the man stir the pot, you see a/an`);
       bodyPart1 = readline.question(`enter a singular body part\n`); //???????????????WHY AREN'T YOU UPDATING???????????????????//
       console.log(`\nYou ask what's for dinner?\nThe ${adjective} old man replies, "Oh, it's my specialty."\nAs he continues, he is interrupted by the sound of a trap bell ringing. "I got another one! Damn ${paths[path]}s keep getting in my garden."\nYou start to ease your way out the house. And close the door.`);
-    readline.keyInPause();
+      readline.keyInPause();
     }
   }
   
@@ -116,7 +111,7 @@ const gameLoop = () => {
   adverb = readline.question(`enter a word ending with "ly")\n`);
   console.log(`\nThe rabbit ${adverb} hops down the path.\nCurious. You follow it. The rabbit starts moving faster and you lose sight of it.\n`);
   readline.keyInPause();
-  //     const diceGame = () => {
+  ///////////////////////// diceGame ////////////////////
   console.log(`The path leads to pavement. You see a couple of guys sitting on milk cartons by a basketball court playing dice.`);
 
   if (readline.keyInYNStrict(`Do you join?`)) {
@@ -146,22 +141,20 @@ const gameLoop = () => {
 ///////////////////////// Mad Libs ////////////////////////////////////
 
 const catMadLibs = () => {
-  console.log(`Here are some purr-fect reasons why cats make wonderful pets:\nCats come and ${verb} as they please, exploring the neighbor's yard, climbling tall trees, or basking in the midday sun.\nCats are mysterious.\nTake one look into a cat's diamond-shaped eyes, and you're sure it's reading your thoughts.\nCats are known for their extreme cleanliness.\nThey wash themselves by licking their fur with their scratchy ${bodyPart} .\nCats purr. It's truly soothing sound that can even win the heart of a non-cat lover.\nFinally, a cat is reputed to have ${number} lives, which makes it the cat's meow!`);
+  console.log(`Here are some purr-fect reasons why cats make wonderful pets:\nCats come and ${verb} as they please, exploring the neighbor's yard, climbling tall trees, or basking in the midday sun.\nCats are mysterious.\nTake one look into a cat's diamond-shaped eyes, and you're sure it's reading your thoughts.\nCats are known for their extreme cleanliness.\nThey wash themselves by licking their fur with their scratchy ${bodyPart} .\nCats purr. It's ${adverb} a soothing sound that can even win the heart of a non-cat lover.\nFinally, a cat is reputed to have ${number} lives, which makes it the cat's meow!`)
 };
 
 const dogMadLibs = () => {
-  console.log(`Here are few reasons why dogs are considered man's best friend:\nDogs are wonderful companions. They love to play.\nYou can ${verb} a rubber ball and a dog will ${adverb} chase it and carry it back to you in its mouth at least ${number} times.\nDogs can keep your house safe.\nTheir keen sense of hearing and sense of smell justify the term watchdog.\nThere are more than a hundred breeds of dogs and each will have its own personality.\nYou can't get a more loyal pet than a dog.\nJust rub a dog's ${bodyPart} and you will have a/an noun for life.\nAnd the good news - a dog's bark is usually worse than its bit!`);
+  console.log(`Here are few reasons why dogs are considered man's best friend:\nDogs are wonderful companions. They love to play.\nYou can ${verb} a rubber ball and a dog will ${adverb} chase it and carry it back to you in its mouth at least ${number} times.\nDogs can keep your house safe.\nTheir keen sense of hearing and sense of smell justify the term watchdog.\nThere are more than a hundred breeds of dogs and each will have its own personality.\nYou can't get a more loyal pet than a dog.\nJust rub a dog's ${bodyPart} and you will have a pal for life.\nAnd the good news - a dog's bark is usually worse than its bit!`)
 };
 
 const aussieMadLibs = () => {
-  console.log(`Australia, also known as the land Down Under, is famous for its unique wildlife.\nThe most famous animal is the kangaroo, which carries its baby in a/an pouch on its belly\nThe koala is another popular Australian animal.\nThis furry, creature loves to eat leaves from eucalyptus treesn.\nIf you are a bird-watcher, emu will ${verb} your socks off.\nIt is a bird that cannot fly, but it can run fast.\nPerhaps the strangest of all Australian animals is the platypus.\nIt has a bill that resembles a duck's bill.\nIt is one of only two mammals that lay eggs instead of giving birth to their young.\nIf you are a nature lover, you must put this exotic land Australia as number ${number} on your places-to-go list!`);
+  console.log(`Australia, also known as the land Down Under, is famous for its unique wildlife.\nThe most famous animal is the kangaroo, which carries its baby in a/an ${bodyPart} on its belly\nThe koala is another popular Australian animal.\nThis furry, creature loves to eat leaves from eucalyptus treesn.\nIf you are a bird-watcher, emu will ${verb} your socks off.\nIt is a bird that cannot fly, but it can run fast.\nPerhaps the strangest of all Australian animals is the platypus.\nIt has a bill that resembles a duck's bill.\nIt is one of only two mammals that lay eggs instead of giving birth to their young.\nIf you are a nature lover, you must put this exotic land Australia as number ${number} on your places-to-go list!`)
 };
 
 //////////////////////// Function Declarations /////////////////////////
 
 const choosenPath = () => {
-  console.log(`${adjective} ${bodyPart1} ${exclamation}`);
-  console.log(`${path}, ${verb}, ${adverb}, ${number}, ${bodyPart}, ${name}`);
   if (path === "cat") {
     console.log(catMadLibs());
   } else if (path === "dog") {
