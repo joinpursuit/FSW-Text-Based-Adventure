@@ -6,9 +6,10 @@ let player2 = "";
 
 
 function playGame(){
+    box = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
+    
     askNames();
 
-    box = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
     let player = 1;
     let i = -1;
     let choice;
@@ -16,12 +17,17 @@ function playGame(){
 
     do{
         board();
-        
+
         player = (player % 2 ) ? 1 : 2;
+        
         if(player == 1){
-            choice = rls.question(`Player ${player}: ${player1} \nEnter a Number: `);
+            choice = rls.question(`Player ${player}: ${player1} 
+                                    \nEnter a Number: `);
+            console.clear();
         }else{
-            choice = rls.question(`Player ${player}: ${player2} \nEnter a Number: `);
+            choice = rls.question(`Player ${player}: ${player2} 
+                                    \nEnter a Number: `);
+            console.clear();
         }
         
         mark = (player == 1) ? 'X' : 'O';
@@ -46,7 +52,8 @@ function playGame(){
             box[8] = mark;
         }else{
             console.clear()
-            console.log(`Invalid Move! Choose a Valid Move!\nTry Again:\n`);
+            console.log(`Invalid Move! Choose a Valid Move!
+                            \nTry Again:\n`);
             player -= 1;
         }
 
@@ -87,6 +94,7 @@ function quitGame(){
 }
 
 function checkWin(){
+
     if(box[0] === box[1] && box[1] === box[2]){
         return 1;
     }else if(box[3] === box[4] && box[4] === box[5]){
@@ -110,17 +118,37 @@ function checkWin(){
     }else{
         return -1;
     }
+    
 }
 
 
 function askNames(){
     console.clear();
+    
     console.log(`\t!!!!!!!!WELCOME TO TIC TAC TOE!!!!!!!!\n`);
-    console.log("\t!!!!!!This Game Will be Played by Two Players!!!!!!\n");
-    player1 = rls.question(`Enter Player 1 Name: `);
-    player1 = player1.toUpperCase();
-    player2 = rls.question(`\nEnter Player 2 Name: `);
-    player2 = player2.toUpperCase();
+    console.log("Rules:\n\t!!!!!!This Game Will be Played by Two Players!!!!!!\n");
+    console.log(`\t!!!!!!Use Numeric Keys To Play the Game!!!!!!\n`);
+    
+    console.log(`Sample Tic Tac Toe Board:`)
+    console.log(`\t\t_____ _____ _____ \n`);
+    console.log(`\t\t|  ${box[0]} |   ${box[1]} |  ${box[2]}  |`);
+
+    console.log(`\t\t_____ _____ _____ \n`);
+    console.log(`\t\t|  ${box[3]} |   ${box[4]} |  ${box[5]}  |`);
+
+    console.log(`\t\t_____ _____ _____ \n`);
+    console.log(`\t\t|  ${box[6]} |   ${box[7]} |  ${box[8]}  |`);
+    console.log(`\t\t_____ _____ _____ \n\n`);
+    
+    if(rls.keyInYN(`Are you ready?`)){
+        console.clear();
+        player1 = rls.question(`Enter Player 1 Name: `);
+        player1 = player1.toUpperCase();
+        player2 = rls.question(`\nEnter Player 2 Name: `);
+        player2 = player2.toUpperCase();
+    }else{
+        quitGame();
+    }
 }
 
 
@@ -142,7 +170,6 @@ function board(){
 
     console.log(`\t\t_____ _____ _____ \n`);
     console.log(`\t\t|  ${box[6]} |   ${box[7]} |  ${box[8]}  |`);
-
     console.log(`\t\t_____ _____ _____ \n\n`);
 
 }
