@@ -6,9 +6,9 @@ let age = " "
 
 const initialQ = () => {
     name = rls.question("Hi!\nWhat's your name? ")
-    setTimeout(function () { console.log("Hi " + name + " nice to meet you!") }, 300)
+    setTimeout(function () { console.log("Hi " + name + ". Nice to meet you!") }, 300)
 
-    setTimeout(function () { rls.keyInYN("Would you like to exercise?") ? exerciseGame() : shameQandA() }, 3000)
+    setTimeout(function () { rls.keyInYN("Would you like to exercise?") ? exerciseGame() : shameQandA() }, 1300)
 
 }
 //exercise game
@@ -34,7 +34,7 @@ const exerciseGame = () => {
             setTimeout(function () { minorLoop() }, 3000)
 
         } else if (age >= 5) {
-            console.log("Your just a kid.")
+            console.log("You're just a kid.")
             setTimeout(function () { console.log("Join a little leugue team.") }, 2000)
             setTimeout(function () { quitGame() }, 3500)
         } else {
@@ -72,7 +72,7 @@ const shameQandA = () => {
 
         } else {
             console.log("That is a good but you probably consume other saturated fats.")
-            rls.keyInYN("Can ask you more about your diet?") ? diet() : console.log("No worries") + quitGame()
+            rls.keyInYN("Can I ask you more about your diet?") ? diet() : console.log("No worries") + quitGame()
         }
     }, 4000)
 
@@ -80,8 +80,8 @@ const shameQandA = () => {
 
 }
 const diet = () => {
-    typeOfFood = ['Meat', 'Fish', 'Vegitables', 'Fruit', 'Pasta', 'Rice', 'Potatoes']
-    index = rls.keyInSelect(typeOfFood, 'Which food do you like most most?')
+    typeOfFood = ['Meat', 'Fish', 'Vegetable', 'Fruit', 'Pasta', 'Rice', 'Potatoes']
+    index = rls.keyInSelect(typeOfFood, 'Which food do you like the most?')
     console.log('Im happy you like ' + typeOfFood[index])
     setTimeout(function () { console.log(name + "! You have somewhat of a chance in life.") }, 1500)
     setTimeout(function () {  quitGame()}, 2500)
