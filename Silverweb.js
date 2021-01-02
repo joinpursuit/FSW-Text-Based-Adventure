@@ -1,5 +1,5 @@
 const rls = require("readline-sync");
-const say = require('say')
+const say = require("say");
 const chalk = require("chalk");
 const startTitle = require("figlet");
 
@@ -16,7 +16,7 @@ startTitle("Silver Web", function (err, data) {
 // Global variable for users stored named
 const nameInput = rls.question("Enter your name: \n");
 
-let nInput = say.speak(`Hello ${nameInput}`)
+let nInput = say.speak(`Hello ${nameInput}`);
 
 // users stored name and game greeting
 const intro = () => {
@@ -89,14 +89,13 @@ const choices = () => {
 
     const userAnswer = () => {
       if (probSolve == solution) {
-         let input2 = say.speak('Access Granted')
-        console.log(
-           input2 + chalk.green("\nACCESS")
-           );
+        let input2 = say.speak("Access Granted");
+        console.log(input2 + chalk.green("\nACCESS"));
       } else if (probSolve != solution) {
-         let input3 = say.speak('Warning! Warning!')
+        let input3 = say.speak("Warning! Warning!");
         console.log(
-          input3 + chalk.red("\nWARNING!") +
+          input3 +
+            chalk.red("\nWARNING!") +
             "They have located you trying to access their servers. We must shut down now❗️❗️❗️"
         );
         process.exit;
@@ -128,7 +127,7 @@ const introGameSequence = () => {
     rules();
   } else if (age < x) {
     console.log("You are too young for the underbelly of the silver web");
-    process.exit
+    process.exit;
   }
 };
 
@@ -139,8 +138,7 @@ const quitGame = () => {
 
   if (startLoop) {
     beginLoop();
-  } else 
-     process.exit;
+  } else process.exit;
 };
 
 const beginGame = () => {
@@ -150,18 +148,46 @@ const beginGame = () => {
   } else quitGame();
 };
 
-const alphaNumeric = (code, characters) => {
-   let inviteCode = '';
 
-   for (let i = code; i > 0; --i)
-   inviteCode += characters[Math.floor(Math.random() * characters.length)]
-   return inviteCode
-}
+const alphaNumeric = (code, characters) => {
+  let inviteCode = "";
+
+  for (let i = code; i > 0; --i)
+    inviteCode += characters[Math.floor(Math.random() * characters.length)];
+  return inviteCode;
+};
 
 const choiceTwo = () => {
-  let randomInvitationNumber = (alphaNumeric(16, '01234456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'))
+  let randomInvitationNumber = alphaNumeric(16,"01234456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ");
+  let decisionTwo = 'What do you want to do?'
+  let optionTwo = ['Place a bid', 'Try to shutdown stream']
+  
 
-   console.log(`\nGreat Work ${nameInput}! We are one step closer. \n\tNow that you have an invitation you can attend the event. \n\tYou press enter and a alpha-numeric code generates invitation access: \n\n\t` + chalk.red(randomInvitationNumber) + ` \n\n\tOnce the code is entered, you gain entry where you are met with a waiting graphic of a red curtain and a very active participant chat of people saying \n\t'We hope this is as good as the last one. \n\tAfter about a 5 minute wait a live feed starts to stream of a man covered in a butcher's apron and a mask pushing an operation table with a long white sheet covering something. \n\tHe begins to speak ...'You who have been lucky enough to be invited are in for a treat. \n\n\t He then unveils what's hidden under the sheet. \n\t `)
+  console.log(
+    `\n\t\tGreat Work ${nameInput}! \n\n\tWe are one step closer. \n\tNow that you have an invitation you can attend the event. \n\tYou press enter and a alpha-numeric code generates invitation access: \n\n\t` +
+      chalk.red(randomInvitationNumber) +
+      ` \n\n\tOnce the code is entered, you gain entry where you are met with a waiting graphic of a red curtain and a very active participant chat of people saying \n\t'We hope this is as good as the last one. \n\tAfter about a 5 minute wait a live feed starts to stream of a man covered in a butcher's apron and a mask pushing an operation table with a long white sheet covering something. \n\tHe begins to speak ...'You who have been lucky enough to be invited are in for a treat. \n\n\t He then unveils what's hidden under the sheet. \n\n\tWhats revealed is a person who appears scared and bound. Right as the person is revealed the participants of the chat begin placing their bids for auction.\n\n\t` + decisionTwo
+  );
+
+  let index = rls.keyInSelect(optionTwo)
+
+   if (index == [0]) {
+      let instrumentArr = ['Tonsil Guillotine', 'Ostetome', 'Lithotome Caché', 'Rectal Needle']
+
+      console.log(chalk.green('\n\tYou are the highest bidder!') + ' You are then private messaged to choose a tool for the "operation"')
+
+      let index2 = rls.keyInSelect(instrumentArr)
+
+      if (index2 == [0]) {
+         console.log(`\n\n\t${instrumentArr[0]} has been chosen. You then watch the butcher begin to tear out the victim\'s tonsils. As they scream in agony. `)
+      } else if (index2 == [1]) {
+         console.log(`\n\n\t${instrumentArr[1]} has been chosen. You see the butcher pick up the ostetome and start gliding it towards the bound subject. The butcher then starts cutting past the flesh and into the bone. `)
+      } else if (index2 == [2]) {
+         console.log(`\n\n\t${instrumentArr[2]} been chosen. The subject begins to scream `)
+      } else if (index2 == [3]) {
+         console.log(`\n\n\t${instrumentArr[3]} has been chosen.  `)
+      }
+   }
 };
 
 beginGame();
@@ -169,3 +195,4 @@ beginGame();
 choices();
 
 choiceTwo();
+
