@@ -12,6 +12,7 @@ const exitGame = () => {
 const nameInput = readline.question("Please enter your name: \n")
 const ageInput = readline.question ("Please enter your age: [Input must be a number] \n")
 
+
 const newGame = () => {    
     console.log("\x1b[33m%s\x1b[0m", "Hello, good morning " + `${nameInput}` + "!~")
     console.log("\x1b[33m%s\x1b[0m", "Today is December 25th, Christmas day.")
@@ -49,8 +50,30 @@ const lookInBedroomAgain = () => {
 }
 
 const livingRoomRingAlarm = () => {
-    let inputPasscode = readline.question(`${nameInput}. Santa has left clues around the house to unlock your home security alarm. Have you gather the numbers?\n`)
-    if (inputPasscode )
+    let answerToUnlock = readline.question(`${nameInput}. Santa has left clues around the house to help unlock your home security alarm. Have you gather the numbers?\n`)
+    if (answerToUnlock.toLowerCase() === "of course"){
+        let userInputPasscode = readline.question(`${nameInput}.` +" Please enter the 6-digit code.\n")
+        const correctPasscode = [8, 0, 9, 3, 1, 2]
+        for (let userInputPasscodeIndex = 0; userInputPasscodeIndex < userInputPasscode.length; userInputPasscode++) {
+            for (let correctPasscodeIndex = 0; correctPasscodeIndex < correctPasscode.length; correctPasscode++) {
+                if (userInputPasscode[userInputPasscodeIndex] === correctPasscode[correctPasscodeIndex]) {
+                    console.log("\x1b[33m%s\x1b[0m", "You unlocked the front door! The present Santa left is right infront of you!")
+                    playAgain()
+                } else if (userInputPasscode[userInputPasscodeIndex] === "String") {
+                    console.log("This is an invalid code. Please only enter numbers.\n")
+                    livingRoomRingAlarm()
+                } else {
+                    console.log("Are you sure that's the correct code? Come back and try again later.\n")
+                    enterRoom()
+                }
+            }
+        }
+    } else if (answerToUnlock.toLowerCase() === "nope") {
+        console.log("Come back when you have the 6-digit passcode.")
+        enterRoom()
+    } else {
+        console.log("Please enter either 'Of course' or 'Nope'.\n")
+        livingRoomRingAlarm()
     }
     playAgain()
 }
@@ -137,7 +160,8 @@ const enterRoom = () => {
             break;
         } else if (pickRoom === room[1]){
             console.log("\nYou walk towards the living room. Infront of the fireplace, there are faint santa footprints.")
-            console.log("Your eyes wander over to the temperature reading on the wall, you walk towards it.\n")
+            console.log("Your eyes wander over to the flashing red light ring alarm on the wall, you walk towards it." + " Another note!")
+            console.log("\x1b[33m%s\x1b[0m", "That was quick, now can you get the door to unlock? :)\n")
             livingRoomRingAlarm()
             break;
         } else if (pickRoom === room[2]){
