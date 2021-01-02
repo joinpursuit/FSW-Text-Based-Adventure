@@ -23,7 +23,7 @@ const endGame = () => {
 
 //Restart game function
 const restartGame = () => {
-    if (rls.keyInYN("Would you like to restart?")){
+    if (rls.keyInYNStrict("Would you like to restart?")){
         startGame();
     } else {
         endGame();
@@ -58,7 +58,7 @@ const selectClass = () => {
     classSelect = rls.keyInSelect(classOptions);
     playerClass = classOptions[classSelect];
     if (playerClass === undefined){
-        if (rls.keyInYN("Would you like to cancel selecting a class?")){
+        if (rls.keyInYNStrict("Would you like to cancel selecting a class?")){
             sideEndingOne();
         } else{
             console.log("Please select a class:")
@@ -380,7 +380,7 @@ const rollforInitiative = () => {
 const goblinBattlePlayerAdvantage = () => {
     let playerHealth = 20;
     let goblinHealth = 10;
-    let playerOptions = ["Attack"]
+    let playerOptions = ["Attack", "Surrender"]
     let playerSelect = rls.keyInSelect(playerOptions)
     playerOptionSelect = playerOptions[playerSelect]
     if (playerOptionSelect === "Attack"){
@@ -410,6 +410,13 @@ The goblin knocks you down and takes your Gold!\n`)
                 dragonCastle();
             }  
         } 
+    } else if (playerOptionSelect === "Surrender"){
+        playerInventory.pop()
+        console.log(`\nYou surrender to the goblin!
+The goblin loots you and runs off with your gold!`)
+        dragonCastle();
+    } else if (playerOptionSelect === undefined){
+        goblinBattlePlayerAdvantage();
     }
     
 }
@@ -451,6 +458,13 @@ The goblin knocks you down and takes your Gold!`)
                     dragonCastle();                
             }  
         }
+    } else if (playerOptionSelect === "Surrender"){
+        playerInventory.pop()
+        console.log(`You surrender to the goblin!
+The goblin loots you and runs off with your gold!`)
+        dragonCastle();
+    } else if (playerOptionSelect === undefined){
+        goblinBattleGoblinAdvantage();
     }
     
 }
@@ -468,7 +482,7 @@ const lootGoblin = () => {
 }
 
 const dragonCastle = () => {
-    console.log(`You make your way to down to the rest of the path.
+    console.log(`\nYou make your way to down to the rest of the path.
 Further down you see a large, black gated entrance with a Dragonborn guard standing in front.
 The guard is wielding a large spear. By their feet seems to be blood.
 It seems that someone has already met their demise.\n`)
@@ -505,12 +519,12 @@ const entranceOption = () => {
                     console.log(`You try to persuade the guard but unfortunately they do not believe one word you say.
 They immediately knock you unconscious. 
 While you are unconscious, the guard brings you straight to the Dragon Prince himself.`)
-                    //dragonPrince();
+                    dragonPrince();
                 } else {
                     playerCharisma += 10
                     console.log(`You were able to persuade the guard to let you in.
 You feel more confident in your ability to persuade. (+10 Charisma [Charisma is now: ${playerCharisma}]) `)
-                    //insideDragonCastle();
+                    insideDragonCastle();
                 }
             }
         } else {
@@ -520,7 +534,7 @@ You eventually find part of the gate that has been stretched wide that an averag
 You slip through the gate and find a side door to the castle. Surprisingly the door was unlocked.
 You make your way into the castle.
 You feel more confident in your ability to scope. (+10 Wisdom [Wisdom is now: ${playerWisdom}])`)
-            //insideDragonCastle();
+            insideDragonCastle();
         }
     } else if (playerEntranceChoice === "Attack"){
         console.log(`\nYou decide to attack the guard! Roll for Initiative!`)
@@ -533,14 +547,16 @@ You feel more confident in your ability to scope. (+10 Wisdom [Wisdom is now: ${
             console.log(`You try to persuade the guard but unfortunately they do not believe one word you say.
 They immediately knock you unconscious. 
 While you are unconscious, the guard brings you straight to the Dragon Prince himself.`)
-            //dragonPrince();
+            dragonPrince();
         } else {
            playerCharisma += 10
            console.log(`You were able to persuade the guard to let you in.
 You feel more confident in your ability to persuade. (+10 Charisma [Charisma is now: ${playerCharisma}]) `)
-           //insideDragonCastle();
+           insideDragonCastle();
         }
 
+    } else if (playerEntranceChoice === undefined){
+        entranceOption();
     }
 
 }
@@ -585,36 +601,203 @@ const dragonGuardBattlePlayerAdvantage = () => {
                 if (guardHealth <= 0){
                     playerStrength += 10
                     console.log(`You defeated the guard! 
-    The guard drops to the ground and lays there unconscious.
-    You make your way through the gate inside the Dragon Prince's Castle.`)
+The guard drops to the ground and lays there unconscious.
+You make your way through the gate inside the Dragon Prince's Castle.`)
                     insideDragonCastle();
             } else if (playerHealth <= 0){
                 console.log(`You were defeated by the guard!
 They immediately knock you unconscious. 
-While you are unconscious, the guard brings you straight to the Dragon Prince himself.`)
-                dragonPrince(); 
+While you are unconscious, the guard brings you straight to into the Dragon Castle..`)
+                insideDragonCastleTied(); 
             }  
         }
     } else if (playerOptionSelect === "Surrender"){
         console.log(`You surrender to the guard!
 They immediately knock you unconscious. 
-While you are unconscious, the guard brings you straight to the Dragon Prince himself.`)
-        dragonPrince();
+While you are unconscious, the guard brings you straight into the Dragon Castle.`)
+        insideDragonCastleTied();
         }
     
 }
 
 const dragonGuardBattleGuardAdvantage = () => {
+    let playerHealth = 20;
+    let guardHealth = 10;
+    let playerOptions = ["Attack", "Surrender"]
+    guardHitPoints = rollDieSix()
+    console.log(`The guard attacks you! You get ${guardHitPoints} damage!\n`)
+    playerHealth -= guardHitPoints
+    let playerSelect = rls.keyInSelect(playerOptions)
+    playerOptionSelect = playerOptions[playerSelect]
+    if (playerOptionSelect === "Attack"){
+            while (playerHealth > 0 && guardHealth > 0){
+                console.log(`Your health: ${playerHealth}
+                Guard's Health: ${guardHealth}\n`)
+                if (playerStrength <= 3 ){
+                    playerHitPoints = rollDieSix() + playerStrengthStatModifier(playerStrength)
+                } else {
+                    playerHitPoints = rollDieFour() + playerStrengthStatModifier(playerStrength)
+                }
+                console.log(`\nYou attack the guard! The guard gets ${playerHitPoints} damage! (Strength Modifier of ${playerStrengthStatModifier(playerStrength)})`)
+                if (playerHitPoints > 0){
+                    guardHealth -= playerHitPoints
+                } 
+                guardHitPoints = rollDieSix()
+                console.log(`The guard attacks you! You get ${guardHitPoints} damage!\n`)
+                playerHealth -= guardHitPoints
+                if (guardHealth <= 0){
+                    playerStrength += 10
+                    console.log(`\nYou defeated the guard! 
+    The guard drops to the ground and lays there unconscious.
+    You make your way through the gate inside the Dragon Prince's Castle.`)
+                    insideDragonCastle();
+            } else if (playerHealth <= 0){
+                console.log(`\nYou were defeated by the guard!
+They immediately knock you unconscious. 
+While you are unconscious, the guard brings you straight into the Dragon Castle.`)
+                insideDragonCastleTied(); 
+            }  
+        }
+    } else if (playerOptionSelect === "Surrender"){
+        console.log(`\nYou surrender to the guard!
+They immediately knock you unconscious. 
+While you are unconscious, the guard brings you straight into the Dragon Castle.`)
+        insideDragonCastleTied();
+    }
 
 }
 
 const insideDragonCastle = () => {
+    console.log(`\nYou make your way into the castle.
+After exploring the castle undetected, you reach a hallway with three doors.`)
+    threeDoors();
+}
+
+const insideDragonCastleTied = () => {
+    console.log(`\nYou wake up and find yourself tied up to a chair by rope.
+Your head continues to pound as you fix your bearings.
+You notice that you do not have your weapon on you.`)
+    console.log(`You can either try to release yourself from the ropes
+Or you can loosen the ropes to give the impression that you are bound even though you're able to slide out.`)
+    playerChairChoice();
 
 }
 
-const dragonPrince = () => {
+//Fun fact: The Dragonborn do not believe in locked doors.
+const playerChairChoice = () => {
+    playerChairChoices = rls.question("\nDo you try to release yourself fully or give an impression? (Release/Impression): ")
+    playerChairChoices.trim().toLowerCase()
+    if (playerChairChoices === "release"){
+        console.log(`\nYou decide to release yourself from the chair. Dexterity Check!`)
+        playerDexterityRoll = rollDieTwenty() + playerDexterityStatModifier(playerDexterity)
+        console.log(`You roll a ${playerDexterityRoll} (Dexterity Modifier of ${playerDexterityStatModifier(playerDexterity)})`)
+        if (playerDexterityRoll >= 11){
+            console.log(`\nYou release yourself from the chair. You make your way to the door.
+Surprisingly, the door is unlocked. You make your way out of the room into the hallway.`)
+            console.log(`Roll for Perception!`)
+            playerPerception = rollDieTwenty() + playerWisdomStatModifier(playerWisdom)
+            console.log(`You roll a ${playerPerception}! (Wisdom Modifier of ${playerWisdomStatModifier(playerWisdom)})`)
+            if (playerPerception >= 11 ){
+                console.log(`\nYou were able to scope the area and find three doors down the hallway.`)
+                threeDoors();
+            } else {
+                console.log(`\nYou tried scoping the area, however, you were unable to find anything.
+In this case, you decided to go with your second plan. Pretend that you are bound until the guard finds you.`)
+                console.log(`Roll for Deception!`)
+                playerDeceptionRoll = rollDieTwenty() + playerCharismaStatModifier(playerCharisma)
+                console.log(`You roll a ${playerDeceptionRoll} (Charisma Modifier of ${playerCharismaStatModifier(playerCharisma)})`)
+                if (playerDeceptionRoll >= 11) {
+                    console.log(`\nYou decide to go back to the room you were held in.
+You then wrap the rope back around you, but not tight so that you have room to escape if needed.
+You wait until the guard comes.`)
+                    guardAppearance();
+                } else {
+                    console.log(`\nYou decide to go back to the room you were held in.
+You then wrap the rope back around you, but it is obvious that the guard isn't going to believe you.`)
+                    guardAppearance();
+                }
+            }
+        } else {
+            console.log(`\nYou try to free yourself from the rope.
+You end up giving yourself a cramp in your arm.
+You also unintentonally made the rope tighter around you.`)
+            guardAppearance();
+        }
+    } else if (playerChairChoices === "impression"){
+        console.log(`\nRoll for Deception!`)
+        playerDeceptionRoll = rollDieTwenty() + playerCharismaStatModifier(playerCharisma)
+        console.log(`You roll a ${playerDeceptionRoll} (Charisma Modifier of ${playerCharismaStatModifier(playerCharisma)})`)
+        if (playerDeceptionRoll >= 11) {
+            console.log(`\nYou were able to loosen up the rope around you, giving the impression that you are still tied up but are able to slip out at any time.`)
+            guardAppearance();
+        } else {
+            console.log(`\nYou try to free yourself from the rope.
+You end up giving yourself a cramp in your arm.
+You also unintentonally made the rope tighter around you.`)
+            guardAppearance();
+        }
+    } else if (playerChairChoices === "stats") {
+        logPlayerStats();
+        playerChairChoice();
+    } else if (playerChairChoice === "inventory"){
+        logplayerInventory();
+        playerChairChoice();
+    } else{
+        playerChairChoice();
+    }
+}
+
+const threeDoors = () => {
+    doors = ["First Door", "Second Door", "Third Door"]
+    console.log(`Which door do you go through?`)
+    doorChoice = rls.keyInSelect(doors)
+    playerDoorChoice = doors[doorChoice]
+    if (playerDoorChoice = "First Door"){
+        console.log(`\nYou decided to go through the first door.
+When you walk in, you see an abundance of books. It's a library.
+On your immediate right there is a table with four books on top. The titles read:
+The Curse of The Magi (Vol. 2)
+Magic for Beginners (Vol. 8)
+The Best Cookbook for Dragonborns (Vol. 5)
+How To Train Your Pet Human (Vol. 3)
+
+You take a look around and realize there is nothing really useful here.
+You go back into the hallway.`)
+        doors.shift()
+        console.log("\nWhich door do you choose?")
+        doorChoice = rls.keyInSelect(doors)
+        playerDoorChoice = doors[doorChoice]
+        if (playerDoorChoice === "Second Door"){
+            console.log(`\nYou decided to go through the second door.
+When you walk in, you are greeted with the smell of delicious food... as well as a multitude of guards.
+They ended up killing you.
+You died. `)
+            restartGame();
+        } else if (playerDoorChoice === "Third Door"){
+            let numberOfTries = 3
+            if (playerInventory.includes(playerWeapon(playerClass))){
+                console.log(`\nYou decided to go through the third door.
+You see a chest that requires a code. 
+You try at opening the chest. (Hint: Pay attention to the volume numbers.)`)
+                for (i = 0; i < numberOfTries; i++ ){
+                    console.log()
+                }
+            }
+        }
+    } else if (playerDoorChoice === "Second Door") {
+        console.log(`\nYou decided to go through the second door.
+When you walk in, you are greeted with the smell of delicious food... as well as a multitude of guards.
+They ended up killing you.
+You died. `)
+        restartGame();
+    } else if (playerDoorChoice === "Third Door"){
+
+    }
+    
+}
+
+const guardAppearance = () => {
 
 }
 
 startGame()
-
