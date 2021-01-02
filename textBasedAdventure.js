@@ -305,7 +305,8 @@ function chooseYourDoor () {
 function playAgain () {
     console.log("\n"); 
     if(readline.keyInYN("Would you like to play again? ")) {
-         walkOrBike()
+         console.clear()
+      walkOrBike()
      } else {
          quitGame();
      }
