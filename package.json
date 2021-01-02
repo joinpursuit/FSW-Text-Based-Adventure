@@ -19,6 +19,7 @@
   "homepage": "https://github.com/joinpursuit/FSW-Text-Based-Adventure#readme",
   "dependencies": {
     "chalk": "^4.1.0",
+    "chalk-animation": "^1.6.0",
     "colors": "^1.4.0",
     "each-async": "^1.1.1",
     "indent-string": "^4.0.0",
