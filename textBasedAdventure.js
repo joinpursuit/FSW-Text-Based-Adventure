@@ -27,12 +27,13 @@ const randomArray = (array) => {
     }
 }
 
-///////////////////////// Greeting //////////////////////////////////////
+///////////////////////// Greeting/Instructions //////////////////////////////////////
 
 let name = readline.question("Hi! What's your name?\n", {limit: String, limitMessage: `STRANGER DANGER!!! STRANGER DANGER!!!\nPlease enter your name`});
-console.log(`Thank you for coming ${name}.\n`);
+console.log(`"Thank you for coming ${name}.\nMy name is Maggie and I will be assisting you, during your adventure."\n`); // greeting
 readline.keyInPause();
-console.log(`You will be one of the first to test out Wacky Mad Lib VR Adventure.\nAt the end, you will receive a personalized postcard for participating in the trial run.\n`);
+console.log(`You will be one of the first to test out Wacky Mad Lib VR Adventure.\nAt the end, you will receive a personalized postcard for participating in the trial run.\nShe continues, "Throughout your adventure things will appear\nthat will cause you to make decisions."\nThese events will personalize your adventure.`); // instructions
+readline.keyInPause();
 
 ///////////////////////////////  Game Loop ///////////////////////////////////////
 
@@ -40,27 +41,21 @@ const gameLoop = () => {
   console.log(`\nYou put on the V/R goggles and earbuds. Instantly, you are standing in the woods.\nYou hear Maggie in your ear, "Hey ${name}, can you hear me ok?"\nYou nod slowly, in shocked at how real everything looks.`);
   readline.keyInPause();
 
-  if (readline.keyInYNStrict(`\nShe ask you again, "Hey ${name}, can you hear me ok?’ You answer."`)) { // ternary
-    console.log(`\n"Great!", Maggie responds.`);
-  } else {
-    console.log(`"So how come you’re answering me? Ha, Ha, Ha, Just kidding", she says jokingly.`);
-    readline.keyInPause();
-  }
-
-  console.log(`\nShe continues, "Throughout your adventure things will appear\nthat will cause you to make decisions."\nThese events will personalize your adventure.`);
+  readline.keyInYNStrict(`\nShe ask you again, "Hey ${name}, can you hear me ok?’ You answer."`) ? console.log(`\n"Great!", Maggie responds.`) : console.log(`"So how come you’re answering me? Ha, Ha, Ha, Just kidding", she says jokingly.`); // decision 1 - user enters number
   readline.keyInPause();
+  
   console.log(`\nLook ahead, you should see a path.\nFollow it and your adventure begins.\nI will be with you all the way. Hope you enjoy.`);
   readline.keyInPause();
   console.log(`\nYou see THREE paths in front of you.\nTo mark each path, there is a wooden sign shaped as an arrow with an engraving.\nThe one on the left is marked cat,\nthe one in the middle dog and the one on the left bird.`);
-  path = readline.keyInSelect(paths,`Choose one:\n`, {cancel : `choose for me`});
+  path = readline.keyInSelect(paths,`Choose one:\n`, {cancel : `choose for me`}); // decision 2 - user enters number
   if (path === -1) {
-    path = paths[Math.round(Math.random() * paths.length - 1)]
+    path = paths[Math.floor(Math.random() * paths.length - 1)] // undefined
     console.log(path)
     console.log(`\nApprehensive at the idea, you choose the path with the sign marked ${path}.\nYou think to yourself, this V/R experience would be the best time to get over your fears of ${path}s.\nHeistately, you start walking along the path. After sometime, You hear rustling in the bushes around you.`);
   } else {console.log(`\nApprehensive at the idea, you choose the path with the sign marked ${paths[path]}.\nYou think to yourself, this V/R experience would be the best time to get over your fears of ${paths[path]}s.\nHeistately, you start walking along the path. After sometime, You hear rustling in the bushes around you.`);
   }  
   randomArray(verbs)
-  verb = readline.keyInSelect(threeChoices,`Which do you choose?\n`, {cancel : `choose for me`});
+  verb = readline.keyInSelect(threeChoices,`Which do you choose?\n`, {cancel : `choose for me`}); // decision 3 - user enters number
   if (verb === -1) {
     verb = threeChoices[Math.round(Math.random() * threeChoices.length - 1)]
     console.log(`\nYou ${verb}, then you see a small wooden house a short distance away. You approach the front door.`);
@@ -68,37 +63,35 @@ const gameLoop = () => {
     console.log(`\nYou ${threeChoices[verb]}, then you see a small wooden house a short distance away. You approach the front door.`);
   }
   //////////////// woodenHouse /////////////////////////////////
-  let woodenHouse = readline.question(`Do you knock? Try the handle and go in? or go around the back?\n`,{limit: [`knock`, `go in`, `go around back`] });
+  let woodenHouse = readline.question(`Do you knock? Try the handle and go in? or go around the back?\n`,{limit: [`knock`, `go in`, `go around back`]}); // decision 4 - user enters string
 
   if (woodenHouse === "knock") {
     console.log(`No one answers\n`);
-    woodenHouse = readline.question(  `Do you try the handle and go in? or go around the back?\n`,{limit:[`go in`, `go around back`]});
+    woodenHouse = readline.question(`Do you try the handle and go in? or go around the back?\n`,{limit:[`go in`, `go around back`]}); // decision 5 - user enters string
   }
 
   if (woodenHouse === `go in`) {
     console.log(`\nYou see a/an ...`);
-    adjective = readline.question(`enter an adjective\n`, {limit: String, limitMessage: "Please try again"}); //???????????????WHY AREN'T YOU UPDATING???????????????????//
+    adjective = readline.question(`enter an adjective\n`, {limit: String, limitMessage: "Please try again"}); // decision 6 - user enters string //???????????????WHY AREN'T YOU UPDATING???????????????????//
     console.log(`\nYou see a/an ${adjective} old man at a large black pot stirring something with a large wooden spoon.\nHe turns to you and says,`);
-    exclamation = readline.question("enter an exclamation\n", {limit: String, limitMessage: "Please try again"}); //???????????????WHY AREN'T YOU UPDATING???????????????????//
+    exclamation = readline.question("enter an exclamation\n", {limit: String, limitMessage: "Please try again"}); // decision 7 - user enters string //???????????????WHY AREN'T YOU UPDATING???????????????????//
     console.log(`\n${exclamation}! "You're just in time for dinner. Have a seat."`);
-    let houseOut = readline.question(  `\nDo you sit? Continue to stand? Or walk back out?\n`, {limit: ["sit", "stand", "walk"] });
+    let houseOut = readline.question(  `\nDo you sit? Continue to stand? Or walk back out?\n`, {limit: ["sit", "stand", "walk"]}); // decision 8 - user enters string
 
     if (houseOut === "sit" || houseOut === "stand") {
       console.log(`\nAs you ${houseOut} watching the man stir the pot, you see a/an`);
-      bodyPart1 = readline.question(`enter a singular body part\n`, {limit: String, limitMessage: "Please try again"}); //???????????????WHY AREN'T YOU UPDATING???????????????????//
+      bodyPart1 = readline.question(`enter a singular body part\n`, {limit: String, limitMessage: "Please try again"}); // decision 9 - user enters string //???????????????WHY AREN'T YOU UPDATING???????????????????//
       console.log(`\nYou ask what's for dinner?\nThe ${adjective} old man replies, "Oh, it's my specialty."\nAs he continues, he is interrupted by the sound of a trap bell ringing. "I got another one! Damn ${path}s keep getting in my garden."\nYou start to ease your way out the house. And close the door.`);
       readline.keyInPause();
     }
   }
-  
-  console.log(`${adjective} ${bodyPart1} ${exclamation}`);
-
+ 
   console.log(`\nAs you try to quietly walk around the back. You trip over a/an`);
-  bodyPart = readline.question(`enter a singular body part\n`, {limit: String, limitMessage: "Please try again"});
+  bodyPart = readline.question(`enter a singular body part\n`, {limit: String, limitMessage: "Please try again"}); // decision 10 - user enters string
   console.log(`\nYour immediate reaction is to scream.\nInstantly, you hear Maggie say, "Oh! You must have come across the snake pit."\n"Don't worry. It's not real. Remember you’re in a V/R experience."\n"We need to record all different emotions. You'll be fine. Just walk past it."\n`);
   readline.keyInPause();
   console.log(`\nYou reply to Maggie,`);
-  let end = readline.question(`"I would like to end the adventure now?" OR\n"You’re right. This is only V/R," you walk past the ${bodyPart} and continue.\n`,{limit: [`end now`, `continue`] });
+  let end = readline.question(`"I would like to end the adventure now?" OR\n"You’re right. This is only V/R," you walk past the ${bodyPart} and continue.\n`,{limit: [`end now`, `continue`]}); // decision 11
 
   if (end === `end now`) {
     console.log(  `\nYou hear Maggie repeat the same message, but this time it skips and you realize it’s a recording.\n`);
@@ -106,13 +99,13 @@ const gameLoop = () => {
   }
 
   console.log(`\nYou see a rabbit`);
-  adverb = readline.question(`enter a word ending with "ly")\n`, {limit: String, limitMessage: "Please try again"});
+  adverb = readline.question(`enter a word ending with "ly")\n`, {limit: String, limitMessage: "Please try again"}); // decision 12 - user enters string
   console.log(`\nThe rabbit ${adverb} hops down the path.\nCurious. You follow it. The rabbit starts moving faster and you lose sight of it.\n`);
   readline.keyInPause();
   ///////////////////////// diceGame ////////////////////
   console.log(`The path leads to pavement. You see a couple of guys sitting on milk cartons by a basketball court playing dice.`);
 
-  if (readline.keyInYNStrict(`Do you join?`)) {
+  if (readline.keyInYNStrict(`Do you join?`)) { // decision 13
     number = readline.question(`press enter to roll.\n`, {defaultInput: Math.floor(Math.random() * 12) + 2,});
     console.log(`You roll ${number}`);
     readline.keyInPause();
@@ -130,7 +123,7 @@ const gameLoop = () => {
   readline.keyInPause();
   console.log(`\nYou take it out of your bag. It’s an old fashioned postcard with a stamp post marked ‘February 2nd 2020\nYou read it out loud.`);
   readline.keyInPause();`\n`
-  choosenPath();
+  choosenPath(); // undefined after
   console.log(`Completely puzzled you continue on as you reach the same spot you first meet Maggie.\nThere she is standing with a smile and says.`);
 
   startGame();
@@ -173,7 +166,7 @@ const quitGame = () => {
 
 const startGame = () => {
   if (readline.keyInYNStrict("Ready to start your adventure?")) {
-    console.log(  `"Great! My name is Maggie and I will be assisting you, during your adventure."\nIn your bag, you’ll find a pair of V/R goggles and earbuds. Please, put them on now.`);
+    console.log(`"Great! In your bag, you’ll find a pair of V/R goggles and earbuds. Please, put them on now."`);
     readline.keyInPause();
     gameLoop();
   } else {
