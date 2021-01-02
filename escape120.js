@@ -32,9 +32,10 @@ const tryAgain = () => {
         quit3();
     }
 }
+  let answer = ""
 
-  let chooseDoor = (answer) => {
-     readLineSync.question("There are 4 doors. Two on the left and two on the right. Which door will you choose?")
+  let chooseDoor = () => {
+     answer = readLineSync.question("There are 4 doors. Two on the left and two on the right. Which door will you choose?")
     answer.trim().toLowerCase()
   }
     
@@ -43,7 +44,7 @@ const floor1 = () => {
     console.log(`You enter the building, there\'s barely enough light to see.\n"Okay, there are 4 doors on each floor.\nThe team cleared some of the rooms but not all. Be careful!\n There\'s one item you need on each floor before going to the next. Good luck!"`)
     chooseDoor()
 
-   if(chooseDoor === "left 1") {
+   if(answer === "left 1") {
     console.log("You slowly open the door and look inside. It\'s a bathroom.\n There is a dead soldier on the ground in a pool of blood.\nThere is nothing else here. You step back out.")
     chooseDoor()
     }
