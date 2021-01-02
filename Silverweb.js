@@ -1,5 +1,6 @@
 const rls = require("readline-sync");
 const say = require("say");
+const player = require('node-wav-player');
 const chalk = require("chalk");
 const startTitle = require("figlet");
 
@@ -122,7 +123,11 @@ const introGameSequence = () => {
 
   age;
   if (age >= x) {
-    console.log("PROCEED WITH CAUTION!");
+     player.play({
+        path: './Kani VO.wav',
+      })
+
+    console.log(`PROCEED WITH CAUTION!`);
     //loadingVisual()
     rules();
   } else if (age < x) {
@@ -164,7 +169,7 @@ const choiceTwo = () => {
   
 
   console.log(
-    `\n\t\tGreat Work ${nameInput}! \n\n\tWe are one step closer. \n\tNow that you have an invitation you can attend the event. \n\tYou press enter and a alpha-numeric code generates invitation access: \n\n\t` +
+    `\n\t\tGreat Work ${nameInput}! \n\n\tWe are one step closer. \n\tNow that you have an invitation you can attend the event. \n\tYou press enter and an alpha-numeric code generates invitation access: \n\n\t` +
       chalk.red(randomInvitationNumber) +
       ` \n\n\tOnce the code is entered, you gain entry where you are met with a waiting graphic of a red curtain and a very active participant chat of people saying \n\t'We hope this is as good as the last one. \n\tAfter about a 5 minute wait a live feed starts to stream of a man covered in a butcher's apron and a mask pushing an operation table with a long white sheet covering something. \n\tHe begins to speak ...'You who have been lucky enough to be invited are in for a treat. \n\n\t He then unveils what's hidden under the sheet. \n\n\tWhats revealed is a person who appears scared and bound. Right as the person is revealed the participants of the chat begin placing their bids for auction.\n\n\t` + decisionTwo
   );
@@ -179,7 +184,7 @@ const choiceTwo = () => {
       let index2 = rls.keyInSelect(instrumentArr)
 
       if (index2 == [0]) {
-         console.log(`\n\n\t${instrumentArr[0]} has been chosen. You then watch the butcher begin to tear out the victim\'s tonsils. As they scream in agony. `)
+         console.log(`\n\n\t${instrumentArr[0]} has been chosen. You then watch the butcher begin to tear out the victim\'s tonsils. As they attempt to scream in agony. `)
       } else if (index2 == [1]) {
          console.log(`\n\n\t${instrumentArr[1]} has been chosen. You see the butcher pick up the ostetome and start gliding it towards the bound subject. The butcher then starts cutting past the flesh and into the bone. `)
       } else if (index2 == [2]) {
