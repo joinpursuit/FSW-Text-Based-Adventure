@@ -16,10 +16,11 @@ const newGame = () => {
     console.log("\x1b[33m%s\x1b[0m", "Hello, good morning " + `${nameInput}` + "!~")
     console.log("\x1b[33m%s\x1b[0m", "Today is December 25th, Christmas day.")
     console.log("\x1b[33m%s\x1b[0m", "I have left a present for you last night, it is up to you to find where it is hidden!")
+    console.log("\x1b[33m%s\x1b[0m", "*Whispering* You should start low! *Whispering*")
     console.log("\x1b[33m%s\x1b[0m", "With love, Santa! Ho! Ho! Ho!~\n")
     let answerPresentHunt = readline.question("Would you like to go on a present hunt? [Yes(Y) or No(N)]\n")
     if (answerPresentHunt.toLowerCase() === "yes" || answerPresentHunt.toLowerCase() === "y") {
-        console.log("\nWelcome to the game! Which room would you like to check out first?")
+        console.log("\nWELCOME TO THE GAME!~ Which room would you like to check out first?")
         enterRoom()
     } else {
         exitGame ()
@@ -32,6 +33,20 @@ const playAgain = () => {
     answerPlayAgain.toLowerCase() === "yes" || answerPlayAgain.toLowerCase() === "y" ? newGame() : exitGame()
 }
 
+const lookInBedroomAgain = () => {
+    let lookOrNot = readline.question (`${nameInput}. Would you like to look in the bedroom again?\n`)
+    switch (lookOrNot.toLowerCase()) {
+        case "look again":
+            console.log("\nLooking in bedroom again, nothing but dirty socks... Maybe you should head down to the basement and wash them.");
+        break;
+        case "no need":
+            enterRoom()
+            break; 
+        default:
+            console.log ("\nPlease enter 'Look Again' or 'No Need'")
+            lookInBedroomAgain()
+    } 
+}
 
 const livingRoomTemp = () => {
     let userInputTemp = readline.question(`${nameInput}. What temperature do you see on thermostat? [Input has to be a number]\n`)
@@ -48,6 +63,8 @@ const livingRoomTemp = () => {
 }
 
 
+
+
 const searchInKitchen = () => {
     let openCabinet = readline.question(`${nameInput}.` + "The cabinets looks like they been opened, would you like to check out the top or bottom cabinets?\n")
     switch (openCabinet.toLowerCase()) {
@@ -62,7 +79,7 @@ const searchInKitchen = () => {
     }
     let lookInSink = readline.question (`${nameInput}` + "Would you like to look in the sink? [Enter Yes(Y) or No(N)]")
     if (lookInSink.toLowerCase() === "yes" || lookInSink.toLowerCase() === "y") {
-        console.log("\x1b[33m%s\x1b[0m", "Instead of dirty dishes, you found present #2!")
+        console.log("\x1b[33m%s\x1b[0m", "Check outside if the weather is not too cold :) -XX9XX2-")
         playAgain()
     } else {
         enterRoom()
@@ -70,11 +87,13 @@ const searchInKitchen = () => {
 } 
 
 
+
+
 const lightInBasement = () => {
     let userInputOnOff = readline.question(`${nameInput}. Would you like to turn on the lights?\n`)
     switch (userInputOnOff.toLowerCase()){
         case "turn on":
-            console.log("\nYou reach and flip light switch. The fluorescent light flickers for a few second before turning on. You see nothing but spider webs from here.");
+            console.log("\nYou reach and flip light switch. The fluorescent light flickers for a few seconds before turning on. You see nothing but spider webs from here.");
             break;
         case "keep off":
             console.log("Guess you aren't ready to face your fears...\n");
@@ -87,11 +106,14 @@ const lightInBasement = () => {
     let userInputGoDown = readline.question(`${nameInput}. Do you want to walk down the stairs and take a look? [Enter yes(y) or no(n)]\n`) 
     if(userInputGoDown.toLowerCase() === "yes" || userInputGoDown.toLowerCase() === "y") {
         console.log("\nHalfway down the dusty stairs, you see something sparkling to your left, and walk towards it...")
-        console.log("You pick up the star you could not find for your Christmas tree. Oh well, you know where it is now for next Christmas.\n")
+        console.log("You pick up the star you could not find for your Christmas tree. Oh well, you know where it is now for next Christmas.")
         console.log("A piece of paper slipped out...")
-        console.log("\x1b[33m%s\x1b[0m", 'You forgot to wash the dishes last night\n')
+        console.log("\x1b[33m%s\x1b[0m", 'Check the closet :) -X0XX1X-\n')
+    } else if (userInputGoDown.toLowerCase() === "no" || userInputGoDown.toLowerCase() === "n"){
+        console.log("\nYea, I agree. Way too dusty and scary to keep going when you're alone.")
     } else {
-        console.log("Yea, I agree. Way too dusty and scary to keep going when you're alone.")
+        console.log("Please enter yes(n) or no(n).\n")
+        lightInBasement(userInputGoDown)
     }
     enterRoom()
 }
@@ -102,8 +124,8 @@ const snackInCloset = () => {
     if (eatOrNot === "yes" || eatOrNot === "y") {
         console.log("\nYou picked up a bag of gummy bears, just the right amount of sweet to keep you going.")
         console.log("As you reach for the last gummy, you pull out a piece of paper.")
-        console.log("\x1b[33m%s\x1b[0m",'Check outside if the weather is not too cold\n')
-        enterRoom()
+        console.log("\x1b[33m%s\x1b[0m",'You forgot to wash the dishes last night :) -8XX3XX- \n')
+        enterRoom() 
     } else if (eatOrNot === "no" || eatOrNot === "n") {
         console.log("\nYou decided to keep it going, snacks will not deter you from the mission!\n")
     } else {
@@ -119,6 +141,7 @@ const enterRoom = () => {
     for(let i = 0; i <= room.length - 1; i++){
         if (pickRoom === room[0]) {
             console.log("\nYou were already in bedroom. No present in there, only the letter from Santa.")
+            lookInBedroomAgain()
             break;
         } else if (pickRoom === room[1]){
             console.log("\nYou walk towards the living room. Infront of the fireplace, there are faint santa footprints.")
@@ -146,7 +169,8 @@ const enterRoom = () => {
 }
 
 
-if (ageInput <= 12) {
+// && typeof(ageInput) === "number"
+if (ageInput <= 12 ) {
     console.log ("\nSlowly sitting up, you reach for the glass of water on your nightstand. Instead, you feel something else. A letter with your name on it. \n")
     console.log ("Opening the letter ...\n")
     newGame()
