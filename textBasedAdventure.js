@@ -73,14 +73,16 @@ function startGame() {
 }
 
 function blueDoor() {
-  console.log(
-    "When entering the room, it appears to look like a normal break room. With lockers on the back wall, you begin to search them."
-  );
-  console.log(
-    "Searching through the lockers you find a key card, 'grab' action is available now"
-  );
-  if (readline.prompt("grab")) {
-    KeyCard();
+  while (readline.prompt !== "grab") {
+    console.log(
+      "When entering the room, it appears to look like a normal break room. With lockers on the back wall, you begin to search them."
+    );
+    console.log(
+      "Searching through the lockers you find a key card, 'grab' action is available now"
+    );
+    if (readline.prompt("grab")) {
+      KeyCard();
+    }
   }
 }
 
@@ -194,31 +196,46 @@ function distractStory() {
 }
 
 function fightStory() {
-  while (yourChoice !== "trident" || yourChoice !== "staff" || yourChoice !== "light saber") {
-  console.log("On the wall you see Disney character weapons: Posiedons trident, Maleficents staff, and Lukes Light Saber");
+  while (
+    yourChoice !== "trident" ||
+    yourChoice !== "staff" ||
+    yourChoice !== "light saber"
+  ) {
+    console.log(
+      "On the wall you see Disney character weapons: Posiedons trident, Maleficents staff, and Lukes Light Saber"
+    );
     let yourChoice = readline.question("Which weapon do you choose?");
     if (yourChoice === "trident" || yourChoice === "staff") {
-        mickeyFight();
-    } else if (yourChoice === "light saber")
-        mickeyFightLoss()
-    }
+      mickeyFight();
+    } else if (yourChoice === "light saber") mickeyFightLoss();
+  }
 }
 function mickeyFight() {
-    console.log(" After grabbing your weapon, you call for Mickey Mouse. It begins to run towards you")
-    console.log("Mickey mouse is inches from you, seconds before he reach you, you squat down and plunge the weapon into the creature")
-    console.log("You run towards the exit")
-    finalRoom()
+  console.log(
+    " After grabbing your weapon, you call for Mickey Mouse. It begins to run towards you"
+  );
+  console.log(
+    "Mickey mouse is inches from you, seconds before he reach you, you squat down and plunge the weapon into the creature"
+  );
+  console.log("You run towards the exit");
+  finalRoom();
 }
 
 function mickeyFightLoss() {
-    console.log("You grab the light saber and run towards the Mickey Mouse")
-    console.log("Just as you are about to reach the creature, you activate the sabers laser: ITS JUST A TOY")
-    console.log("The creature grabs you and rips you apart: YOU HAVE DIED")
-    if ((yourChoice = readline.keyInYN("HA HA HA, you thought light sabers are real. Would you like to start over from checkpoint?"))) {
-        redDoorAccess();
-      } else {
-        leaveGame();
-}
+  console.log("You grab the light saber and run towards the Mickey Mouse");
+  console.log(
+    "Just as you are about to reach the creature, you activate the sabers laser: ITS JUST A TOY"
+  );
+  console.log("The creature grabs you and rips you apart: YOU HAVE DIED");
+  if (
+    (yourChoice = readline.keyInYN(
+      "HA HA HA, you thought light sabers are real. Would you like to start over from checkpoint?"
+    ))
+  ) {
+    redDoorAccess();
+  } else {
+    leaveGame();
+  }
 }
 
 function finalRoom() {
@@ -249,29 +266,89 @@ function finalRoomDoor() {
     }
   }
 }
-function exitDoor () {
-    while (yourChoice !== "ferry boat" || yourChoice !== "boat" || yourChoice !== "ferry" || yourChoice !== "bike") {
-    console.log("You exit through the door and realize that you exited out of the castle")
-    console.log("You run towards the entrance of the park")
-    let yourChoice = readline.question("You make it to the entrance, there are 2 vehicle options: 'ferry boat' or 'bike'")
-    if (yourChoice === "ferry boat" || yourChoice === "boat" || yourChoice === "ferry") {
-        ferryStory();
+function exitDoor() {
+  while (
+    yourChoice !== "ferry boat" ||
+    yourChoice !== "boat" ||
+    yourChoice !== "ferry" ||
+    yourChoice !== "bike"
+  ) {
+    console.log(
+      "You exit through the door and realize that you exited out of the castle"
+    );
+    console.log("You run towards the entrance of the park");
+    let yourChoice = readline.question(
+      "You make it to the entrance, there are 2 vehicle options: 'ferry boat' or 'bike'"
+    );
+    if (
+      yourChoice === "ferry boat" ||
+      yourChoice === "boat" ||
+      yourChoice === "ferry"
+    ) {
+      ferryStory();
     } else if (yourChoice === "bike") {
-        bikeStory ()
+      bikeStory();
     }
-}
+  }
 }
 function noMoreTriesScene() {
-    console.log ("NO MORE TRIES, THERE IS A TRESPASSER!, begins to blare ovehead")
-    console.log ("Next thing you know a trap door appears and you fall below into a grabage disposal and the walls close in, crushing you")
-    if ((yourChoice = readline.keyInYN("YOU HAVE DIED, Would you like to start over from checkpoint?"))) {
-        redDoorAccess();
-      } else {
-        leaveGame();
+  console.log("NO MORE TRIES, THERE IS A TRESPASSER!, begins to blare ovehead");
+  console.log(
+    "Next thing you know a trap door appears and you fall below into a grabage disposal and the walls close in, crushing you"
+  );
+  if (
+    (yourChoice = readline.keyInYN(
+      "YOU HAVE DIED, Would you like to start over from checkpoint?"
+    ))
+  ) {
+    redDoorAccess();
+  } else {
+    leaveGame();
+  }
 }
+
+function ferryStory() {
+  while (yourChoice !== "explain" || yourChoice !== "flee") {
+    console.log(
+      "You are able to steal the ferry and drive it out of the Disney's lagoon into a canal"
+    );
+    let yourChoice = readline.question(
+      "Eventually the coast guard spots you: What do you do,stop and 'explain' what you saw or 'flee'?"
+    );
+    if (yourChoice === "explain") {
+      explainEnding();
+    } else if (yourChoice === "flee") {
+      fleeEnding();
+    }
+  }
+}
+
+function fleeEnding() {
+  console.log(
+    "You are able to bike all the way to Downtown Disney and flag down a cab, and make it home"
+  );
+}
+
+function explainEnding() {
+  console.log(
+    "You flag down the coast guard and explain what you saw back at the park, they tell you take them and show them evidence"
+  );
+  console.log(
+    "When you head back the same way you left, everything has disappeared. With no evidence, the coast guard arrests you for theft."
+  );
+  if ((yourChoice = readline.keyIn("GAME OVER, Would you like to restart?"))) {
+    restartGame();
+  } else {
+    endGame();
+  }
 }
 
 function leaveGame() {
   console.log("Guess you want to be stuck here forever. Good luck ;)");
+  process.exit();
+}
+
+function endGame() {
+  console.log("Thank you for playing :)");
   process.exit();
 }
