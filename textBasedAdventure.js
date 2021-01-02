@@ -29,8 +29,7 @@ const randomArray = (array) => {
 
 ///////////////////////// Greeting //////////////////////////////////////
 
-let name = readline.question("Hi! What's your name?\n");
-
+let name = readline.question("Hi! What's your name?\n", {limit: String, limitMessage: `STRANGER DANGER!!! STRANGER DANGER!!!\nPlease enter your name`});
 console.log(`Thank you for coming ${name}.\n`);
 readline.keyInPause();
 console.log(`You will be one of the first to test out Wacky Mad Lib VR Adventure.\nAt the end, you will receive a personalized postcard for participating in the trial run.\n`);
@@ -75,20 +74,19 @@ const gameLoop = () => {
     console.log(`No one answers\n`);
     woodenHouse = readline.question(  `Do you try the handle and go in? or go around the back?\n`,{limit:[`go in`, `go around back`]});
   }
-  console.log(`${adjective} ${bodyPart1} ${exclamation}`);
 
   if (woodenHouse === `go in`) {
     console.log(`\nYou see a/an ...`);
-    adjective = readline.question(`enter an adjective\n`); //???????????????WHY AREN'T YOU UPDATING???????????????????//
+    adjective = readline.question(`enter an adjective\n`, {limit: String, limitMessage: "Please try again"}); //???????????????WHY AREN'T YOU UPDATING???????????????????//
     console.log(`\nYou see a/an ${adjective} old man at a large black pot stirring something with a large wooden spoon.\nHe turns to you and says,`);
-    exclamation = readline.question("enter an exclamation\n"); //???????????????WHY AREN'T YOU UPDATING???????????????????//
+    exclamation = readline.question("enter an exclamation\n", {limit: String, limitMessage: "Please try again"}); //???????????????WHY AREN'T YOU UPDATING???????????????????//
     console.log(`\n${exclamation}! "You're just in time for dinner. Have a seat."`);
     let houseOut = readline.question(  `\nDo you sit? Continue to stand? Or walk back out?\n`, {limit: ["sit", "stand", "walk"] });
 
     if (houseOut === "sit" || houseOut === "stand") {
       console.log(`\nAs you ${houseOut} watching the man stir the pot, you see a/an`);
-      bodyPart1 = readline.question(`enter a singular body part\n`); //???????????????WHY AREN'T YOU UPDATING???????????????????//
-      console.log(`\nYou ask what's for dinner?\nThe ${adjective} old man replies, "Oh, it's my specialty."\nAs he continues, he is interrupted by the sound of a trap bell ringing. "I got another one! Damn ${paths[path]}s keep getting in my garden."\nYou start to ease your way out the house. And close the door.`);
+      bodyPart1 = readline.question(`enter a singular body part\n`, {limit: String, limitMessage: "Please try again"}); //???????????????WHY AREN'T YOU UPDATING???????????????????//
+      console.log(`\nYou ask what's for dinner?\nThe ${adjective} old man replies, "Oh, it's my specialty."\nAs he continues, he is interrupted by the sound of a trap bell ringing. "I got another one! Damn ${path}s keep getting in my garden."\nYou start to ease your way out the house. And close the door.`);
       readline.keyInPause();
     }
   }
@@ -96,7 +94,7 @@ const gameLoop = () => {
   console.log(`${adjective} ${bodyPart1} ${exclamation}`);
 
   console.log(`\nAs you try to quietly walk around the back. You trip over a/an`);
-  bodyPart = readline.question(`enter a singular body part\n`);
+  bodyPart = readline.question(`enter a singular body part\n`, {limit: String, limitMessage: "Please try again"});
   console.log(`\nYour immediate reaction is to scream.\nInstantly, you hear Maggie say, "Oh! You must have come across the snake pit."\n"Don't worry. It's not real. Remember you’re in a V/R experience."\n"We need to record all different emotions. You'll be fine. Just walk past it."\n`);
   readline.keyInPause();
   console.log(`\nYou reply to Maggie,`);
@@ -108,7 +106,7 @@ const gameLoop = () => {
   }
 
   console.log(`\nYou see a rabbit`);
-  adverb = readline.question(`enter a word ending with "ly")\n`);
+  adverb = readline.question(`enter a word ending with "ly")\n`, {limit: String, limitMessage: "Please try again"});
   console.log(`\nThe rabbit ${adverb} hops down the path.\nCurious. You follow it. The rabbit starts moving faster and you lose sight of it.\n`);
   readline.keyInPause();
   ///////////////////////// diceGame ////////////////////
@@ -122,7 +120,7 @@ const gameLoop = () => {
     readline.keyInPause();
     console.log(  `\nAs you pick you the dice you hear a loud bang! The guys deburst.\nFrustrated, you yell out to Maggie.`);
     readline.keyInPause();
-    console.log(  `\n"What does any of this have to do with ${paths[path]}s?"\nShe responds, "Just relax. You’re doing great! The adventure is almost over"\n`);
+    console.log(  `\n"What does any of this have to do with ${path}s?"\nShe responds, "Just relax. You’re doing great! The adventure is almost over"\n`);
     readline.keyInPause();
   }
 
@@ -130,8 +128,8 @@ const gameLoop = () => {
   readline.keyInPause();
   console.log(`You reach in your bag, shifting things around to make room for the V/R gear.\nYou feel a piece of paper that you don’t recall being there before.`);
   readline.keyInPause();
-  console.log(`\nYou take it out of your bag. It’s an old fashioned postcard with a stamp post marked ‘February 2nd 2020\nYou read it out loud.\n`);
-  readline.keyInPause();
+  console.log(`\nYou take it out of your bag. It’s an old fashioned postcard with a stamp post marked ‘February 2nd 2020\nYou read it out loud.`);
+  readline.keyInPause();`\n`
   choosenPath();
   console.log(`Completely puzzled you continue on as you reach the same spot you first meet Maggie.\nThere she is standing with a smile and says.`);
 
@@ -149,7 +147,7 @@ const dogMadLibs = () => {
 };
 
 const aussieMadLibs = () => {
-  console.log(`Australia, also known as the land Down Under, is famous for its unique wildlife.\nThe most famous animal is the kangaroo, which carries its baby in a/an ${bodyPart} on its belly\nThe koala is another popular Australian animal.\nThis furry, creature loves to eat leaves from eucalyptus treesn.\nIf you are a bird-watcher, emu will ${verb} your socks off.\nIt is a bird that cannot fly, but it can run fast.\nPerhaps the strangest of all Australian animals is the platypus.\nIt has a bill that resembles a duck's bill.\nIt is one of only two mammals that lay eggs instead of giving birth to their young.\nIf you are a nature lover, you must put this exotic land Australia as number ${number} on your places-to-go list!`)
+  console.log(`Australia, also known as the land Down Under, is famous for its unique wildlife.\nThe most famous animal is the kangaroo, which carries its baby in a/an ${bodyPart} on its belly\nThe koala is another popular Australian animal.\nThis furry, creature loves to eat leaves from eucalyptus trees.\nIf you are a bird-watcher, emu will ${verb} your socks off.\nIt is a bird that cannot fly, but it can run fast.\nPerhaps the strangest of all Australian animals is the platypus.\nIt has a bill that resembles a duck's bill.\nIt is one of only two mammals that lay eggs instead of giving birth to their young.\nIf you are a nature lover, you must put this exotic land Australia as number ${number} on your places-to-go list!`)
 };
 
 //////////////////////// Function Declarations /////////////////////////
