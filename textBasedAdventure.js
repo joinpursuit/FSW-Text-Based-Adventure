@@ -31,7 +31,8 @@ const playloop = () => {
              console.log("Amazing" + " Let's go to Haiti")
              haitiTrip()
         }else if(answer === choice3){
-            startGame()
+            yourVariableHere = readline.question("Enter your name: \n ")
+            startGame() 
         }else{
              console.log("Sorry " + yourVariableHere)
              console.log("Unfortunally we don't have more tickets" )
@@ -62,10 +63,10 @@ const gameHistories = () => {
 }
 
 const canadaTrip =() =>{
-    console.log("History", "Traditions", "Religions"," Holidays"," Cuisine"," Place to Go", "Go Home")
+    console.log("History", "Traditions", "Religions"," Holidays"," Cuisine"," Place to Go", "Go Home", "Quiz")
 
     let answ = readline.question(yourVariableHere + " What would you like to know \n" )
-    let attractions = ["History", "Traditions", "Religions","Holidays","Cuisine","Place to Go", "Go Home"]
+    let attractions = ["History", "Traditions", "Religions","Holidays","Cuisine","Place to Go", "Go Home", "Quiz"]
     
 
     if (answ === attractions[0]){
@@ -82,12 +83,14 @@ const canadaTrip =() =>{
             placeToGoView("Canada")
     }else if(answ === attractions[6]){
             playloop()
+    }else if(answ === attractions[7]){
+            gameQuizCand()
     }
 
 }
 
 const haitiTrip =() =>{
-    let attractions = ["History", "Traditions", "Religions","Holidays","Cuisine","Place to Go","Go Home"]
+    let attractions = ["History", "Traditions", "Religions","Holidays","Cuisine","Place to Go","Go Home","Quiz"]
     console.log()
     console.log(attractions.toString())
     let answ = readline.question(yourVariableHere + " What would you like to know \n" )
@@ -106,6 +109,8 @@ const haitiTrip =() =>{
             placeToGoView("Haiti")
     }else if(answ === attractions[6]){
             playloop() 
+    }else if(answ === attractions[7]){
+          gameQuizHaiti()
     }
 }
 
@@ -264,8 +269,35 @@ const placeToGoView = (country) => {
     }
 } 
 
+const gameQuizCand = () => {
+    console.log('In what year was the concept of the CN Tower project generated?')
+    console.log(2013, 1968, 1972, 1400, 1986)
+    let quiz = ['1', '2', '3', '4', '5'];
+    let choi = readline.question(yourVariableHere + " Pick a number \n" )
+    for(let i = 0; i <= quiz.length; i++){
+        if(choi === quiz[0]){
+            console.log('Sorry!!!!')
+            console.log('Try again')
+            choi = readline.question(yourVariableHere + " Pick a number \n" )
+        }else if(choi === quiz[1]){
+            console.log('Yes, You Got it')
+            console.log('it\'s 1968')
+            console.log('You has earn 20 credit point')
+            console.log('Congrats')
+            startGame()
+        }else{
+            console.log('Go back and read again about Canada')
+            canadaTrip()
+        }
+    }
+}
+
+const gameQuizHaiti = () =>{
+
+}
+
 const quitGame = () => {
-    console.log("Good Bye " + yourVariableHere)
+    console.log("Good Bye ")
     process.exit()
 }
 
