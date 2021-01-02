@@ -1,5 +1,7 @@
-const readline1 = require('readline-sync')
 
-let nameInput = readline.question("Enter your name: ")
 
-console.log(`Hello ${nameInput}!  Welcome to my game.`)
+var readlineSync = require('readline-sync')
+  animals = ['Lion', 'Elephant', 'Crocodile', 'Giraffe', 'Hippo']
+  index = readlineSync.keyInSelect(animals, 'Which animal?')
+console.log('Ok, ' + animals[index] + ' goes to your room.')
+

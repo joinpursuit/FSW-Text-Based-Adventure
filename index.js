@@ -56,13 +56,16 @@ const shameQandA = () => {
         if (answer) {
             console.log("Ok.... Hmmm")
             setTimeout(function () {
-                fastFoodNumber = rls.questionInt("How many times a month do you eat fast food? ")
+                fastFoodNumber = rls.questionInt("How many times a week do you eat fast food? ")
                 if (fastFoodNumber >= 10) {
                     setTimeout(function () { console.log(name + "! You are going to die young.") }, 100)
                     setTimeout(function () { quitGame() }, 4000)
+
                 } else {
+                     rls.keyInYN("Can ask you more about your diet?") ?  diet()  : console.log("No worries") + quitGame()
+
                     console.log(name + "! You have somewhat of a chance in life.")
-                    quitGame()
+                    
 
                 }
             }, 2000)
@@ -75,6 +78,10 @@ const shameQandA = () => {
     }, 4000)
 
 
+
+}
+const diet = () => {
+    console.log("cool")
 
 }
 //Senior exercise loop 
@@ -205,6 +212,6 @@ initialQ()
 
 const quitGame = () => {
     //setTimeout(function () {
-    rls.keyInYN("Does someone else want to play?") ? initialQ() : console.log("Goodbye!"), process.exit()
+    rls.keyInYN("Does someone else want to play?") ? initialQ() : console.log("Goodbye!") + process.exit()
     //}, 2000)
 }
