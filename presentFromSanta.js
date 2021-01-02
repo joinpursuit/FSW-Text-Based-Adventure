@@ -1,11 +1,30 @@
 const readline = require('readline-sync')
 
-console.log("Beep Beep Beep! The sound of the neighborhood snow removal truck woke you up. Glancing outside your window, another 8 inches of snow has fallen since last night.")
-console.log ("The hill behind your backyard looks very much like Narnia, but a look-alike Santa's sleigh tracks caught your attention.\n")
+const openingLines = () => {
+    console.log("Beep Beep Beep! The sound of the neighborhood snow removal truck woke you up. Glancing outside your window, another 8 inches of snow has fallen since last night.")
+    console.log ("The hill behind your backyard looks very much like Narnia, but a look-alike Santa's sleigh tracks caught your attention.\n")
+}
+openingLines()
+
 
 const exitGame = () => {
     console.log(`Goodbye!`)
     process.exit()
+}
+
+const userInput = () =>{
+    openingLines()
+    const nameInput = readline.question("Please enter your name: \n")
+    const ageInput = readline.question ("Please enter your age: [Input must be a number] \n")
+    if (ageInput <= 12 ) {
+        console.log ("\nSlowly sitting up, you reach for the glass of water on your nightstand. Instead, you feel something else. A letter with your name on it. \n")
+        console.log ("Opening the letter ...\n")
+        newGame()
+    } else {
+        console.log("\nSowwie. You're old enough to know Santa is fake, dont pretend like he exists. :)")
+        exitGame()
+    }    
+    newGame()
 }
 
 
@@ -30,8 +49,12 @@ const newGame = () => {
 
 
 const playAgain = () => {
-    let answerPlayAgain = readline.question("Would you like to play again?\n")
-    answerPlayAgain.toLowerCase() === "yes" || answerPlayAgain.toLowerCase() === "y" ? newGame() : exitGame()
+    let answerPlayAgain = readline.keyInYN("\nWould you like to play again?")
+    if (answerPlayAgain){
+        userInput()
+    } else {
+        exitGame()
+    }
 }
 
 const lookInBedroomAgain = () => {
@@ -49,34 +72,31 @@ const lookInBedroomAgain = () => {
     } 
 }
 
+const userInputAlarmCode = () => {
+        let userInputPasscode = readline.question(`\n${nameInput}.` +" Please enter the 6-digit code.\n")
+        if (userInputPasscode === '809312') {
+            console.log("\x1b[33m%s\x1b[0m", "You unlocked the front door and stepped outside into the porch! The present Santa left is right infront of you!")
+            console.log("\x1b[33m%s\x1b[0m", "Congrats! You have finished the game!~")
+            playAgain()
+        } else {
+            console.log("This is an invalid code. Please only enter numbers and try again later.\n")
+            enterRoom()
+        }
+    }
+
 const livingRoomRingAlarm = () => {
     let answerToUnlock = readline.question(`${nameInput}. Santa has left clues around the house to help unlock your home security alarm. Have you gather the numbers?\n`)
     if (answerToUnlock.toLowerCase() === "of course"){
-        let userInputPasscode = readline.question(`${nameInput}.` +" Please enter the 6-digit code.\n")
-        const correctPasscode = [8, 0, 9, 3, 1, 2]
-        for (let userInputPasscodeIndex = 0; userInputPasscodeIndex < userInputPasscode.length; userInputPasscode++) {
-            for (let correctPasscodeIndex = 0; correctPasscodeIndex < correctPasscode.length; correctPasscode++) {
-                if (userInputPasscode[userInputPasscodeIndex] === correctPasscode[correctPasscodeIndex]) {
-                    console.log("\x1b[33m%s\x1b[0m", "You unlocked the front door! The present Santa left is right infront of you!")
-                    playAgain()
-                } else if (userInputPasscode[userInputPasscodeIndex] === "String") {
-                    console.log("This is an invalid code. Please only enter numbers.\n")
-                    livingRoomRingAlarm()
-                } else {
-                    console.log("Are you sure that's the correct code? Come back and try again later.\n")
-                    enterRoom()
-                }
-            }
-        }
+        userInputAlarmCode()
     } else if (answerToUnlock.toLowerCase() === "nope") {
-        console.log("Come back when you have the 6-digit passcode.")
+        console.log("\nCome back when you have the 6-digit passcode.")
         enterRoom()
     } else {
-        console.log("Please enter either 'Of course' or 'Nope'.\n")
+        console.log("\nPlease enter either 'Of course' or 'Nope'.")
         livingRoomRingAlarm()
     }
-    playAgain()
 }
+
 
 
 
@@ -102,22 +122,8 @@ const searchInKitchen = () => {
     enterRoom()
 } 
 
-
-const lightInBasement = () => {
-    let userInputOnOff = readline.question(`${nameInput}. Would you like to turn on the lights?\n`)
-    switch (userInputOnOff.toLowerCase()){
-        case "turn on":
-            console.log("\nYou reach and flip light switch. The fluorescent light flickers for a few seconds before turning on. You see nothing but spider webs from here.");
-            break;
-        case "keep off":
-            console.log("Guess you aren't ready to face your fears...\n");
-            enterRoom()
-            break;
-        default: 
-        console.log ("\nPlease enter: 'turn on' or 'keep off'");
-        lightInBasement()
-    }
-    let userInputGoDown = readline.question(`${nameInput}. Do you want to walk down the stairs and take a look? [Enter yes(y) or no(n)]\n`) 
+const goDownOrNot = () => {
+let userInputGoDown = readline.question(`${nameInput}. Do you want to walk down the stairs and take a look? [Enter yes(y) or no(n)]\n`) 
     if(userInputGoDown.toLowerCase() === "yes" || userInputGoDown.toLowerCase() === "y") {
         console.log("\nYou reached the bottom of the stairs, and see something sparkling to your left, and walk towards it...")
         console.log("Picking up a star you could not find for your Christmas tree. Oh well, now you know where it is for next year.")
@@ -128,7 +134,24 @@ const lightInBasement = () => {
         console.log("\nYea, I agree. Way too dusty and scary to keep going when you're alone.")
     } else {
         console.log("Please enter yes(n) or no(n).\n")
-        lightInBasement(userInputGoDown)
+        goDownOrNot()
+    }
+}
+
+const lightInBasement = () => {
+    let userInputOnOff = readline.question(`${nameInput}. Would you like to turn on the lights?\n`)
+    switch (userInputOnOff.toLowerCase()){
+        case "turn on":
+            console.log("\nYou reach and flip light switch. The fluorescent light flickers for a few seconds before turning on. You see nothing but spider webs from here.");
+            goDownOrNot()
+            break;
+        case "keep off":
+            console.log("Guess you aren't ready to face your fears...\n");
+            enterRoom()
+            break;
+        default: 
+            console.log ("\nPlease enter: 'turn on' or 'keep off'");
+            lightInBasement()
     }
     enterRoom()
 }
@@ -185,7 +208,6 @@ const enterRoom = () => {
 }
 
 
-// && typeof(ageInput) === "number"
 if (ageInput <= 12 ) {
     console.log ("\nSlowly sitting up, you reach for the glass of water on your nightstand. Instead, you feel something else. A letter with your name on it. \n")
     console.log ("Opening the letter ...\n")
@@ -194,10 +216,6 @@ if (ageInput <= 12 ) {
     console.log("\nSowwie. You're old enough to know Santa is fake, dont pretend like he exists. :)")
     exitGame()
 }
-
-
-
-
 
 
 
