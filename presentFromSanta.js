@@ -16,7 +16,7 @@ const newGame = () => {
     console.log("\x1b[33m%s\x1b[0m", "Hello, good morning " + `${nameInput}` + "!~")
     console.log("\x1b[33m%s\x1b[0m", "Today is December 25th, Christmas day.")
     console.log("\x1b[33m%s\x1b[0m", "I have left a present for you last night, it is up to you to find where it is hidden!")
-    console.log("\x1b[33m%s\x1b[0m", "*Whispering* You should start low! *Whispering*")
+    console.log("\x1b[33m%s\x1b[0m", "*Whispering* You should start low and take notes! *Whispering*")
     console.log("\x1b[33m%s\x1b[0m", "With love, Santa! Ho! Ho! Ho!~\n")
     let answerPresentHunt = readline.question("Would you like to go on a present hunt? [Yes(Y) or No(N)]\n")
     if (answerPresentHunt.toLowerCase() === "yes" || answerPresentHunt.toLowerCase() === "y") {
@@ -48,45 +48,36 @@ const lookInBedroomAgain = () => {
     } 
 }
 
-const livingRoomTemp = () => {
-    let userInputTemp = readline.question(`${nameInput}. What temperature do you see on thermostat? [Input has to be a number]\n`)
-    if (userInputTemp >= 32) {
-        console.log("\nThe temp is warm enough for you to take a peek outside the front porch in your PJs! You slowly open the front door and CONGRATS!")
-        console.log("\x1b[33m%s\x1b[0m","Present #1 that Santa left is right infront of your eyes! Good job!~\n")
-    } else if (userInputTemp < 32){
-        console.log("It's too cold outside, even with jacket and gloves, you'll freeze! Staying indoor is a much better option.\n")
-        enterRoom()
-    } else {
-        console.log("Please enter a number!");
+const livingRoomRingAlarm = () => {
+    let inputPasscode = readline.question(`${nameInput}. Santa has left clues around the house to unlock your home security alarm. Have you gather the numbers?\n`)
+    if (inputPasscode )
     }
     playAgain()
 }
 
 
 
-
 const searchInKitchen = () => {
-    let openCabinet = readline.question(`${nameInput}.` + "The cabinets looks like they been opened, would you like to check out the top or bottom cabinets?\n")
+    let openCabinet = readline.question(`${nameInput}.` + " Would you like to check the top cabinet, bottom cabinet, or the sink?\n")
     switch (openCabinet.toLowerCase()) {
         case "top":
-            console.log("Opening the top cabinets, there are a few pots and pans, but you are too short to look behind it.\n")
+            console.log("\nOpening the top cabinets, there are a few pots and pans, but you are too short to look behind it.")
+            searchInKitchen()
             break;
         case "bottom":
-            console.log("Opening the bottom cabinets, there are only cleaning supplies in here.")
+            console.log("\nOpening the bottom cabinets, there are only cleaning supplies in here.")
+            searchInKitchen()
         break; 
+        case "sink":
+            console.log("\nAnother note! We are getting closer!")
+            console.log("\x1b[33m%s\x1b[0m", "Check outside if the weather is not too cold :) -XX9XX2-\n");
+        break;
         default:
-            console.log("Enter 'top' or 'bottom'.\n")
+            console.log("\nEnter 'top' or 'bottom' or 'sink'.")
+            searchInKitchen()
     }
-    let lookInSink = readline.question (`${nameInput}` + "Would you like to look in the sink? [Enter Yes(Y) or No(N)]")
-    if (lookInSink.toLowerCase() === "yes" || lookInSink.toLowerCase() === "y") {
-        console.log("\x1b[33m%s\x1b[0m", "Check outside if the weather is not too cold :) -XX9XX2-")
-        playAgain()
-    } else {
-        enterRoom()
-    }
+    enterRoom()
 } 
-
-
 
 
 const lightInBasement = () => {
@@ -105,10 +96,11 @@ const lightInBasement = () => {
     }
     let userInputGoDown = readline.question(`${nameInput}. Do you want to walk down the stairs and take a look? [Enter yes(y) or no(n)]\n`) 
     if(userInputGoDown.toLowerCase() === "yes" || userInputGoDown.toLowerCase() === "y") {
-        console.log("\nHalfway down the dusty stairs, you see something sparkling to your left, and walk towards it...")
-        console.log("You pick up the star you could not find for your Christmas tree. Oh well, you know where it is now for next Christmas.")
-        console.log("A piece of paper slipped out...")
+        console.log("\nYou reached the bottom of the stairs, and see something sparkling to your left, and walk towards it...")
+        console.log("Picking up a star you could not find for your Christmas tree. Oh well, now you know where it is for next year.")
+        console.log("A piece of paper slipped out within the star...")
         console.log("\x1b[33m%s\x1b[0m", 'Check the closet :) -X0XX1X-\n')
+        console.log("Looks like I should remember the given numbers.")
     } else if (userInputGoDown.toLowerCase() === "no" || userInputGoDown.toLowerCase() === "n"){
         console.log("\nYea, I agree. Way too dusty and scary to keep going when you're alone.")
     } else {
@@ -146,7 +138,7 @@ const enterRoom = () => {
         } else if (pickRoom === room[1]){
             console.log("\nYou walk towards the living room. Infront of the fireplace, there are faint santa footprints.")
             console.log("Your eyes wander over to the temperature reading on the wall, you walk towards it.\n")
-            livingRoomTemp()
+            livingRoomRingAlarm()
             break;
         } else if (pickRoom === room[2]){
             console.log("\nWalking towards the kitchen. The full plate of cookies you left on counter last night is now half emptied with crumbs everywhere.")
