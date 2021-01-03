@@ -4,28 +4,11 @@ const readline = require("readline-sync");
 //////////////////////// Arrays ////////////////////////
 
 let paths = ["cat", "dog", "kangaroo"];
-let verbs = [
-  "climb",
-  "hunt",
-  "run",
-  "jump",
-  "dig",
-  "hide",
-  "fly",
-  "soar",
-  "walk",
-];
-let bodyParts = [
-  "leg",
-  "wing",
-  "pouch",
-  "ear",
-  "eye",
-  "arm",
-  "toe",
-  "finger",
-  "lip",
-];
+let verbs = ["climb","hunt","run","jump","dig","hide","strut","kick","hop",];
+let bodyParts = ["leg","foot","hand","ear","eye","arm","toe","finger","lip",];
+let adjectives = ["remarkable", "strange", "replusive", "magnificent", "energetic", "outrageous", "annoying", "strange", "terrible"]
+let adverbs = ["slowly", "rapidly", "angerly", "hastily", "cleverly", "lively", "briskly", "effortlessly", "akwardly",]
+let exclamations = ["Yikes", "Wow", "Yes", "Great", "Wonderful", "Awsome", "Bravo", "Kaboom", "Fantastic",]
 
 /////////////////////// Variables ////////////////////////////////
 let randomNum = Math.round(Math.random());
@@ -37,10 +20,15 @@ let number;
 let bodyPart1 = "testing1"; ///////////////////////////////
 let bodyPart;
 let exclamation = "testing2"; ////////////////////////////
+let threeChoices; // reset when function is called
 
 //////////////////////// Functions //////////////////////////////
 
-let threeChoices; // reset when function is called
+const quitGame = () => {
+  console.log(`Okay, see ya!`);
+  process.exit();
+};
+
 const randomArray = (array) => {
   threeChoices = [];
   for (let i = 0; i < 3; i++) {
@@ -51,6 +39,57 @@ const randomArray = (array) => {
 
 const roll = () => {
   return Math.floor(Math.random() * 12) + 2;
+};
+
+const choosenPath = () => {
+  if (path === "cat") {
+    console.log(catMadLibs());
+  } else if (path === "dog") {
+    console.log(dogMadLibs());
+  } else {
+    console.log(aussieMadLibs());
+  }
+};
+
+///////////////////////// Mad Libs Functions ////////////////////////////
+
+const catMadLibs = () => {
+  console.log(`
+  Here are some purr-fect reasons why cats make wonderful pets:
+  Cats come and ${verb} as they please, exploring the neighbor's yard, climbling tall trees, or basking in the midday sun.
+  Cats are mysterious.
+  Take one look into a cat's diamond-shaped eyes, and you're sure it's reading your thoughts.
+  Cats are known for their adjective cleanliness.
+  They wash themselves by licking their fur with their scratchy ${bodyPart} .
+  Cats purr. It's ${adverb} a soothing sound that can even win the heart of a non-cat lover.
+  Finally, a cat is reputed to have ${number} lives, which makes it the cat's meow!`);
+};
+
+const dogMadLibs = () => {
+  console.log(`
+  Here are few reasons why dogs are considered man's best friend:
+  Dogs are adjective companions. They love to play.
+  You can ${verb} a rubber ball and a dog will ${adverb} chase it and carry it back to you in its mouth at least ${number} times.
+  Dogs can keep your house safe.
+  Their keen sense of hearing and sense of smell justify the term watchdog.
+  There are more than a hundred breeds of dogs and each will have its own personality.
+  You can't get a more loyal pet than a dog.
+  Just rub a dog's ${bodyPart} and you will have a pal for life.
+  And the good news - a dog's bark is usually worse than its bit!`);
+};
+
+const aussieMadLibs = () => {
+  console.log(`
+  Australia, also known as the land Down Under, is famous for its unique wildlife.
+  The most famous animal is the kangaroo, which carries its baby in a/an ${bodyPart} on its belly
+  The koala is another popular Australian animal.
+  This furry, creature loves to eat leaves from eucalyptus trees.
+  If you are a bird-watcher, emu will ${verb} your socks off.
+  It is a bird that cannot fly, but it can run fast.
+  Perhaps the adjective of all Australian animals is the platypus.
+  It has a bill that resembles a duck's bill.
+  It is one of only two mammals that lay eggs instead of giving birth to their young.
+  If you are a nature lover, you must put this exotic land Australia as number ${number} on your places-to-go list!`);
 };
 
 ///////////////////////// Greeting/Instructions //////////////////////////////////////
@@ -118,7 +157,7 @@ You nod slowly, in shocked at how real everything looks.`);
     { cancel: `choose for me` }
   ); // decision 2 - user enters number
   if (path === -1) {
-    path = paths[randomNum * paths.length]; // undefined
+    path = paths[Math.round(Math.random()) * paths.length - 1]; // undefined
     console.log(path);
     console.log(`
     Apprehensive at the idea, you choose the path with the sign marked ${path}.
@@ -138,7 +177,7 @@ You nod slowly, in shocked at how real everything looks.`);
     { cancel: `choose for me` }
   ); // decision 3 - user enters number
   if (verb === -1) {
-    verb = threeChoices[randomNum * threeChoices.length]; // undefined
+    verb = threeChoices[Math.round(Math.random()) * threeChoices.length - 1]; // undefined
     console.log(`
     You ${verb}, then you see a small wooden house a short distance away. You approach the front door.`);
   } else {
@@ -163,18 +202,29 @@ You nod slowly, in shocked at how real everything looks.`);
   }
 
   if (woodenHouse === `go in`) {
+    ////////////////// add threeChoices //////////////////
     console.log(`
     You see a/an ...`);
-    adjective = readline.question(
-      `enter an adjective
+    randomArray(adjectives);
+    adjective = readline.keyInSelect(
+        threeChoices,
+      `choose an adjective
     `,
-      { limit: String, limitMessage: "Please try again" }
+      { cancel: `choose for me` }
     ); // decision 6 - user enters string //???????????????WHY AREN'T YOU UPDATING???????????????????//
+    if (adjective === -1) {
+    adjective = threeChoices[Math.round(Math.random()) * threeChoices.length - 1];
     console.log(`
     You see a/an ${adjective} old man at a large black pot stirring something with a large wooden spoon.
     He turns to you and says,`);
-    exclamation = readline.question(`"enter an exclamation"
-    , {limit: String, limitMessage: "Please try again"}`); // decision 7 - user enters string //???????????????WHY AREN'T YOU UPDATING???????????????????//
+} else {
+    console.log(`
+    You see a/an ${threeChoices[adjective]} old man at a large black pot stirring something with a large wooden spoon.
+    He turns to you and says,`);
+  }
+    
+    exclamation = readline.question("enter an exclamation word"
+    , {limit: String, limitMessage: "Please try again"}); // decision 7 - user enters string //???????????????WHY AREN'T YOU UPDATING???????????????????//
     console.log(`
     ${exclamation}! "You're just in time for dinner. Have a seat."`);
     let houseOut = readline.question(
@@ -238,10 +288,29 @@ You nod slowly, in shocked at how real everything looks.`);
   readline.keyInPause();
   console.clear();
 
+  // console.log(`
+  // You see a rabbit`);
+  // randomArray(adverbs);verb = readline.keyInSelect(
+  //     threeChoices,
+  //     `Which do you choose?
+  //   `,
+  //     { cancel: `choose for me` }
+  //   );
+  //   if (adverb === - 1) {
+  //     console.log(`
+  //     The rabbit ${adverb} hops down the path.
+  //     Curious. You follow it. The rabbit starts moving faster and you lose sight of it.
+  //   `)} // decision 12 - user enters string
+  // console.log(`
+  // The rabbit ${threeChoices[adverb]} hops down the path.
+  // Curious. You follow it. The rabbit starts moving faster and you lose sight of it.
+  // `);
+
+
   console.log(`
   You see a rabbit`);
   adverb = readline.question(
-    `enter a word ending with "ly")
+    `enter an adverb (word usually ending with "ly")
   `,
     { limit: String, limitMessage: "Please try again" }
   ); // decision 12 - user enters string
@@ -257,12 +326,6 @@ You nod slowly, in shocked at how real everything looks.`);
   console.log(
     `The path leads to pavement. You see a couple of guys sitting on milk cartons by a basketball court playing dice.`
   );
-
-  // let number;
-  // const roll = () => {
-  //   return Math.floor(Math.random() * 12) + 2;
-  // };
-
   if (readline.keyInYNStrict(`Do you join?`)) {
     for (let i = 0; i < 2; i++) {
       number = readline.question(`press enter to roll.`, {
@@ -318,66 +381,6 @@ You nod slowly, in shocked at how real everything looks.`);
   startGame();
 };
 
-///////////////////////// Mad Libs ////////////////////////////////////
-
-const catMadLibs = () => {
-  console.log(`
-  Here are some purr-fect reasons why cats make wonderful pets:
-  Cats come and ${verb} as they please, exploring the neighbor's yard, climbling tall trees, or basking in the midday sun.
-  Cats are mysterious.
-  Take one look into a cat's diamond-shaped eyes, and you're sure it's reading your thoughts.
-  Cats are known for their extreme cleanliness.
-  They wash themselves by licking their fur with their scratchy ${bodyPart} .
-  Cats purr. It's ${adverb} a soothing sound that can even win the heart of a non-cat lover.
-  Finally, a cat is reputed to have ${number} lives, which makes it the cat's meow!`);
-};
-
-const dogMadLibs = () => {
-  console.log(`
-  Here are few reasons why dogs are considered man's best friend:
-  Dogs are wonderful companions. They love to play.
-  You can ${verb} a rubber ball and a dog will ${adverb} chase it and carry it back to you in its mouth at least ${number} times.
-  Dogs can keep your house safe.
-  Their keen sense of hearing and sense of smell justify the term watchdog.
-  There are more than a hundred breeds of dogs and each will have its own personality.
-  You can't get a more loyal pet than a dog.
-  Just rub a dog's ${bodyPart} and you will have a pal for life.
-  And the good news - a dog's bark is usually worse than its bit!`);
-};
-
-const aussieMadLibs = () => {
-  console.log(`
-  Australia, also known as the land Down Under, is famous for its unique wildlife.
-  The most famous animal is the kangaroo, which carries its baby in a/an ${bodyPart} on its belly
-  The koala is another popular Australian animal.
-  This furry, creature loves to eat leaves from eucalyptus trees.
-  If you are a bird-watcher, emu will ${verb} your socks off.
-  It is a bird that cannot fly, but it can run fast.
-  Perhaps the strangest of all Australian animals is the platypus.
-  It has a bill that resembles a duck's bill.
-  It is one of only two mammals that lay eggs instead of giving birth to their young.
-  If you are a nature lover, you must put this exotic land Australia as number ${number} on your places-to-go list!`);
-};
-
-//////////////////////// Function Declarations /////////////////////////
-
-const choosenPath = () => {
-  if (path === "cat") {
-    console.log(catMadLibs());
-  } else if (path === "dog") {
-    console.log(dogMadLibs());
-  } else {
-    console.log(aussieMadLibs());
-  }
-};
-
-//////////////////////// Quit Game /////////////////////////////////////
-
-const quitGame = () => {
-  console.log(`Okay, see ya!`);
-  process.exit();
-};
-
 //////////////////////////// Start Game ////////////////////////////////
 
 const startGame = () => {
@@ -389,11 +392,9 @@ Ready to start your adventure?`)
 "Great! In your bag, you’ll find a pair of V/R goggles and earbuds. Please, put them on now."`);
     readline.keyInPause();
     console.clear();
-
     gameLoop();
   } else {
     quitGame();
   }
 };
-
 startGame();

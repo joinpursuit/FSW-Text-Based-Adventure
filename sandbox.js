@@ -68,21 +68,21 @@ const readline = require("readline-sync");
 
 //////////works add another if statement//////////////
 
-let number;
-const roll = () => {
-    return Math.floor(Math.random() * 12) + 2
-}
+// let number;
+// const roll = () => {
+//     return Math.floor(Math.random() * 12) + 2
+// }
 
-if (readline.keyInYNStrict(`Do you join?`)) {
-    for(let i = 0; i < 2; i++) {
-        number = readline.question(`press enter to roll.`, { defaultInput: roll()});
-        console.log(`You roll ${number}`);
-    }
-    console.log("bang!")
-} else {
-    number = roll()
-    console.log(`You continue to walk pass the court`);
-} 
+// if (readline.keyInYNStrict(`Do you join?`)) {
+//     for(let i = 0; i < 2; i++) {
+//         number = readline.question(`press enter to roll.`, { defaultInput: roll()});
+//         console.log(`You roll ${number}`);
+//     }
+//     console.log("bang!")
+// } else {
+//     number = roll()
+//     console.log(`You continue to walk pass the court`);
+// } 
 // console.log(number)
 
 /////////don't touch////////////
@@ -182,4 +182,41 @@ if (readline.keyInYNStrict(`Do you join?`)) {
 //     You ${threeChoices[verb]}, then you see a small wooden house a short distance away. You approach the front door.`);
 //   }
 
-//////////////////
+//////////////////randomize man adjectives ////////////////////////
+
+randomArray(verbs);
+verb = readline.keyInSelect(
+  threeChoices,
+  `Which do you choose?
+`,
+  { cancel: `choose for me` }
+); // decision 3 - user enters number
+if (verb === -1) {
+  verb = threeChoices[randomNum * threeChoices.length]; // undefined
+  console.log(`
+  You ${verb}, then you see a small wooden house a short distance away. You approach the front door.`);
+} else {
+  console.log(`
+  You ${threeChoices[verb]}, then you see a small wooden house a short distance away. You approach the front door.`);
+}
+
+/////////////////////////////////
+console.log(`
+You see a rabbit`);
+randomArray(adverbs);verb = readline.keyInSelect(
+    threeChoices,
+    `Which do you choose?
+  `,
+    { cancel: `choose for me` }
+  );
+  if (adverb === - 1) {
+    console.log(`
+    The rabbit ${adverb} hops down the path.
+    Curious. You follow it. The rabbit starts moving faster and you lose sight of it.
+  `)} // decision 12 - user enters string
+console.log(`
+The rabbit ${threeChoices[adverb]} hops down the path.
+Curious. You follow it. The rabbit starts moving faster and you lose sight of it.
+`);
+    
+    
