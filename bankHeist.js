@@ -125,8 +125,8 @@ const bathroomCode = () => {
             console.log(`LOCKED`)
         }
     }
-    console.log(`You must enter the code to continue the game.`)
-    bathroomCode()
+    console.log(`You entered the wrong passcode too many times! You broke the bathroom lock. 🔓`)
+    escape()
 }
 
 const escape = () => {
@@ -232,7 +232,7 @@ const loseGame = () => {
 }
 
 const restartGame = () => {
-    if(readline1.keyInYN(`Play again?`)){
+    if(readline1.keyInYNStrict(`Play again?`)){
         console.clear()
         beginGame()
     } else {
