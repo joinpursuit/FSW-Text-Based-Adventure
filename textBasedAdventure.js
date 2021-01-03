@@ -20,14 +20,14 @@ const tryAgain = () => {
 let name = [];
 
 const greeting = () => {
-  console.log("Hello! Welcome to my adventure!");
-  name = readLineSync.question("What is your name? ");
+  console.log("\n Hello! Welcome to my adventure!");
+  name = readLineSync.question("\n What is your name? ");
   console.log(
-    "Nice to meet you " +
+    "\n Nice to meet you " +
       name +
       "! The instructions for my game are simple..DON'T DIE...and enjoy the show..."
   );
-  if (readLineSync.keyInYN("Would you like to begin?")) {
+  if (readLineSync.keyInYN("\n Would you like to begin?")) {
     gameIntro();
   } else {
     leaveGame();
@@ -141,6 +141,16 @@ const orbSplitLevel = () => {
     leaveGame();
   }
 };
+
+const podracingOnTatooineLevel = () => {
+  console.log("\n Expansion pack story to be added at a future date!\n")
+  tryAgain();
+}
+
+const theRescueLevel = () => {
+  console.log("\n Expansion pack story to be added at a future date!\n")
+  tryAgain();
+}
 
 const battleOfAlderaanLevel = () => {
   console.log("\n Yoda: A wise choice..");
