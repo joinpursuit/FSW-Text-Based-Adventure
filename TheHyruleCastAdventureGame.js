@@ -50,7 +50,7 @@ const game = () => {
   console.log(
     chalk.magenta.bold(`I hope you're brave enough to play ${nameOfPlayer}.`)
   );
-  if (readlineSync.keyInYN(chalk.magenta.bold(`Are you ready ?`))) {
+  if (readlineSync.keyInYNStrict(chalk.magenta.bold(`Are you ready ?`))) {
     startGame();
   } else {
     leaveGame();
@@ -212,7 +212,7 @@ const kickedOutOfCastle = () => {
 
 const chamberChest = () => {
   console.log(chalk.redBright.italic(`Should you open the chest or no ?`));
-  if (readlineSync.keyInYN(chalk.magenta.bold(`What do you say?`))) {
+  if (readlineSync.keyInYNStrict(chalk.magenta.bold(`What do you say?`))) {
     console.log(
       chalk.redBright.italic(
         `You opened the chest, inside is the guards' body armor.`
@@ -348,7 +348,7 @@ thirdFloorHalfPower = () => {
     )
   );
   if (
-    readlineSync.keyInYN(
+    readlineSync.keyInYNStrict(
       `Would you like to start from the begining to improve your change of getting the sword or no ?`
     )
   ) {
@@ -375,7 +375,7 @@ thirdFloor = () => {
       `You try to take it out and the whole sword came out and makes you feel ready for whatever may come.`
     )
   );
-  if (readlineSync.keyInYN(chalk.magenta.bold(`Would you like to keep it`))) {
+  if (readlineSync.keyInYNStrict(chalk.magenta.bold(`Would you like to keep it`))) {
     console.log(chalk.redBright.italic(`You put the sword in your inventory.`));
     zeldaRoomSword();
   } else {
@@ -502,7 +502,7 @@ const swordPath = () => {
 
 const playAgain = () => {
   if (
-    readlineSync.keyInYN(
+    readlineSync.keyInYNStrict(
       chalk.magenta.bold(`would you like like to play again ?`)
     )
   ) {
