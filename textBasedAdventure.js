@@ -42,13 +42,13 @@ const phoenix = () => {
 
 const startGame = () => {
     console.log("Let's begin!")
-    console.log("The princess is captured by the Sphinx and there is a rumor that the Sphinxhides the princess inside the cave.")
-    console.log("The king choose you to rescue the princess from the Sphinx.");
-    console.log("Many knights have tried to rescue the princess but failed they are either killed or lost in the cave");
+    console.log("The princess is captured by the Sphinx and there is a rumor that the Sphinx hides the princess inside the cave.")
+    console.log("You are chosen by the king to rescue the princess from the Sphinx.");
+    console.log("Many knights have tried to rescue the princess but failed they are either get killed or lost in the cave.");
     console.log("The wizard warns you that only the wisest person can save the princess from the Sphinx");
     console.log("In order for you to save the princess and survive is to answer each riddle questions.");
-    console.log("The Sphinx will give you 3 chances to answer each question.");
-    console.log("If you failed to give a correct asnwer, you have to stay in the cave to be his slave or die.");
+    console.log("You 3 chances to answer each question.");
+    console.log("If you failed to give a correct answer, you have to stay in the cave to be his slave or die.");
     console.log("If you successfully answered all the questions, the Sphinx will leave the town and release the princess.");
     if(readLineSync.keyInYNStrict("Are you sure you're up to the challenge? ")) {
         console.clear();
@@ -101,18 +101,18 @@ const tenCaves = () =>{
 
 }
 const cave1 =() =>{
-    console.log("Cave 1 is full of insanely veomous snakes and there is no way out! Try again!")
+    console.log("Cave 1 is full of insanely venomous snakes and there is no way out! Try again!")
     gameOver(true);
     play(false);
 }
 
 const cave2= () => {
-    console.log("Cave 2 is a cage trap that looks like a regular cave. The Sphinx designed this kind of trap without harming their prey.")
-    console.log("Therefore, whoever try to enter this cave are either eaten alive or turn into slaves.")
+    console.log("Cave 2 is a cage trap that looks like a regular cave. The Sphinx designed this trap without harming their prey.")
+    console.log("Therefore, whoever tries to enter this cave is either eaten alive or turn into slaves.")
     gameOver(true);
 }
 const cave3 = () => {
-    console.log("Cave 3 is full of monsters! Try again!")
+    console.log("Cave 3 is a trap that is full of monster!")
     gameOver(true);
 }
 
@@ -151,14 +151,14 @@ const cave8 = () => {
 }
 
 const cave9 = () => {
-    console.log ("You are walking inside the cave when you hear something hissing, you thought it was snakes.")
+    console.log ("You are walking inside the cave when you hear something hissing, you thought it was a snakes.")
     console.log("It was too late when you realized that something is covering the entire cave and it was a poisonous gas.")
     console.log("You enhaled the gas and die from soffucation.")
     gameOver(true);
 }
 
 const cave10 =() =>{
-    console.log("You will see a Sphinx and ask you a questions. If you answer all the questions correctly the Sphinx will release the pincess and leave the town forever.")
+    console.log("You will see a Sphinx and ask you a question. If you answer all the questions correctly,  the Sphinx will release the princess and leave the town forever.")
     console.log("Here you go!")
     question1();
 }
@@ -170,7 +170,7 @@ const gameOver = (iWin) => {
 
      } else {
         console.log("Congrats, you have saved the princess!!!")
-        console.log("The Sphinx will leave and never coming back in the town!")
+        console.log("The Sphinx will leave and never coming back to the town!")
     }
     if(readLineSync.keyInYNStrict("Play again? ")) {
         console.clear();
@@ -200,7 +200,7 @@ const ogreQuestion = () =>{
 const phoenixQuestion = () =>{
     let attempts = 3;
         while(attempts > 0){
-         let question = readLineSync.question("You measure my life in hours and I serve you by expiring. I’m quick when I’m thin and slow when I’m fat. The wind is my enemy. What am I?" )
+         let question = readLineSync.question("You measure my life in hours and I serve you by expiring. I’m quick when I’m thin and slow when I’m fat. The wind is my enemy. What am I?")
         if(question === "candle" || question === "Candle") {
             console.clear();
             console.log("Your answer is correct!")
@@ -321,7 +321,7 @@ const question3 = () => {
 const question4 = () => {
     let attempts = 3;
         while(attempts > 0){
-            let question = readLineSync.question(" I am always hungry and will die if not fed, but whatever I touch will soon turn red. What am I?" )
+            let question = readLineSync.question("I am always hungry and will die if not fed, but whatever I touch will soon turn red. What am I?" )
         if(question === "fire" || question === "Fire") {
             console.clear();
             console.log("Your answer is correct!")
