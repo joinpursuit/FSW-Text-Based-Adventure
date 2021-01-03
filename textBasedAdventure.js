@@ -46,15 +46,15 @@ function chooseAnimalWhileWalking() {
     { limit: 'rdtlb'}
   ).toLowerCase();
   if (ind === "r") {
-    console.log("OK, you are following rabbit.");
+    console.log("OK, you are following a rabbit.");
   } else if (ind === "d") {
-    console.log("OK, you are following deer.");
+    console.log("OK, you are following a deer.");
   } else if (ind === "t") {
-    console.log("OK, you are following tiger.");
+    console.log("OK, you are following a tiger.");
   } else if (ind === "l") {
-    console.log("OK, you are following lion.");
+    console.log("OK, you are following a lion.");
   } else if (ind === "b") {
-    console.log("OK, you are following bear.");
+    console.log("OK, you are following a bear.");
   }
 
   inFrontOfLake();
