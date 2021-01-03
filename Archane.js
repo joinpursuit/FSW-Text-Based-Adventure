@@ -5,10 +5,11 @@ let playerInventory = []
 //Introduction function
 const startGame = () => {
     console.clear();
-    console.log("Welcome to Archane: A D&D Inspired Adventure Game!");
+    console.log("Welcome to Archane©: A D&D Inspired Adventure Game! ");
     console.log("This game has been developed by Jailene DeVine-Jones.");
+    console.log("All rights to characters, places, and story are reserved by Jailene DeVine-Jones")
     console.log("\nInstructions:\nUse the keyboard to type in/select your answers. Pretty simple, right?\n");
-    if (rls.keyInYN("Would you like to play?")){
+    if (rls.keyInYNStrict("Would you like to play?")) {
         playerNameInput();
     } else {
         endGame();
@@ -23,7 +24,7 @@ const endGame = () => {
 
 //Restart game function
 const restartGame = () => {
-    if (rls.keyInYNStrict("Would you like to restart?")){
+    if (rls.keyInYNStrict("Would you like to restart?")) {
         startGame();
     } else {
         endGame();
@@ -57,15 +58,15 @@ const selectClass = () => {
     let classOptions = ["Bard", "Wizard", "Assassin", "Warrior", "Mage"]
     classSelect = rls.keyInSelect(classOptions);
     playerClass = classOptions[classSelect];
-    if (playerClass === undefined){
-        if (rls.keyInYNStrict("Would you like to cancel selecting a class?")){
+    if (playerClass === undefined) {
+        if (rls.keyInYNStrict("Would you like to cancel selecting a class?")) {
             sideEndingOne();
-        } else{
+        } else {
             console.log("Please select a class:")
             selectClass();
         }
-    } else{
-        if (rls.keyInYN(`You have selected to become a(n) ${playerClass}. Is that correct?`)){
+    } else {
+        if (rls.keyInYN(`You have selected to become a(n) ${playerClass}. Is that correct?`)) {
             console.log(`You start off with a weapon and 100 Gold.`)
             console.log(`\nHere is your inventory: `)
             playerWeapon(playerClass);
@@ -78,7 +79,7 @@ const selectClass = () => {
         } else {
             console.log("Please reselect a class: ");
             selectClass();
-        } 
+        }
     }
 }
 
@@ -106,19 +107,19 @@ const logPlayerStats = () => {
 //Strength Stat Modifier
 const playerStrengthStatModifier = (playerStrength) => {
     //let playerStrength = playerStatArray[0]
-    if (playerStrength <= 3){
+    if (playerStrength <= 3) {
         statModifier = -5
-    } else if (playerStrength <= 6){
+    } else if (playerStrength <= 6) {
         statModifier = -3
-    } else if (playerStrength <= 9){
+    } else if (playerStrength <= 9) {
         statModifier = -1
-    } else if (playerStrength <= 12){
+    } else if (playerStrength <= 12) {
         statModifier = 0
-    } else if (playerStrength <= 15){
+    } else if (playerStrength <= 15) {
         statModifier = 1
-    } else if (playerStrength <= 18){
+    } else if (playerStrength <= 18) {
         statModifier = 3
-    } else if (playerStrength <= 20){
+    } else if (playerStrength <= 20) {
         statModifier = 5
     }
     return statModifier
@@ -127,19 +128,19 @@ const playerStrengthStatModifier = (playerStrength) => {
 //Dexterity Stat Modifier
 const playerDexterityStatModifier = (playerDexterity) => {
     //let playerDexterity = playerStatArray[1]
-    if (playerDexterity <= 3){
+    if (playerDexterity <= 3) {
         statModifier = -5
-    } else if (playerDexterity <= 6){
+    } else if (playerDexterity <= 6) {
         statModifier = -3
-    } else if (playerDexterity <= 9){
+    } else if (playerDexterity <= 9) {
         statModifier = -1
-    } else if (playerDexterity <= 12){
+    } else if (playerDexterity <= 12) {
         statModifier = 0
-    } else if (playerDexterity <= 15){
+    } else if (playerDexterity <= 15) {
         statModifier = 1
-    } else if (playerDexterity <= 18){
+    } else if (playerDexterity <= 18) {
         statModifier = 3
-    } else if (playerDexterity <= 20){
+    } else if (playerDexterity <= 20) {
         statModifier = 5
     }
     return statModifier
@@ -148,19 +149,19 @@ const playerDexterityStatModifier = (playerDexterity) => {
 //Constitution Stat Modifier
 const playerConstitutionStatModifier = (playerConstitution) => {
     //let playerConstitution = playerStatArray[2]
-    if (playerConstitution <= 3){
+    if (playerConstitution <= 3) {
         statModifier = -5
-    } else if (playerConstitution <= 6){
+    } else if (playerConstitution <= 6) {
         statModifier = -3
-    } else if (playerConstitution <= 9){
+    } else if (playerConstitution <= 9) {
         statModifier = -1
-    } else if (playerConstitution <= 12){
+    } else if (playerConstitution <= 12) {
         statModifier = 0
-    } else if (playerConstitution <= 15){
+    } else if (playerConstitution <= 15) {
         statModifier = 1
-    } else if (playerConstitution <= 18){
+    } else if (playerConstitution <= 18) {
         statModifier = 3
-    } else if (playerConstitution<= 20){
+    } else if (playerConstitution <= 20) {
         statModifier = 5
     }
     return statModifier
@@ -169,19 +170,19 @@ const playerConstitutionStatModifier = (playerConstitution) => {
 //Intelligence Stat Modifier
 const playerIntelligenceStatModifier = (playerIntelligence) => {
     //let playerIntelligence = playerStatArray[3]
-    if (playerIntelligence  <= 3){
+    if (playerIntelligence <= 3) {
         statModifier = -5
-    } else if (playerIntelligence <= 6){
+    } else if (playerIntelligence <= 6) {
         statModifier = -3
-    } else if (playerIntelligence <= 9){
+    } else if (playerIntelligence <= 9) {
         statModifier = -1
-    } else if (playerIntelligence <= 12){
+    } else if (playerIntelligence <= 12) {
         statModifier = 0
-    } else if (playerIntelligence <= 15){
+    } else if (playerIntelligence <= 15) {
         statModifier = 1
-    } else if (playerIntelligence <= 18){
+    } else if (playerIntelligence <= 18) {
         statModifier = 3
-    } else if (playerIntelligence <= 20){
+    } else if (playerIntelligence <= 20) {
         statModifier = 5
     }
     return statModifier
@@ -190,19 +191,19 @@ const playerIntelligenceStatModifier = (playerIntelligence) => {
 //Wisdom Stat Modifier
 const playerWisdomStatModifier = (playerWisdom) => {
     //let playerWisdom = playerStatArray[4]
-    if (playerWisdom  <= 3){
+    if (playerWisdom <= 3) {
         statModifier = -5
-    } else if (playerWisdom <= 6){
+    } else if (playerWisdom <= 6) {
         statModifier = -3
-    } else if (playerWisdom <= 9){
+    } else if (playerWisdom <= 9) {
         statModifier = -1
-    } else if (playerWisdom <= 12){
+    } else if (playerWisdom <= 12) {
         statModifier = 0
-    } else if (playerWisdom <= 15){
+    } else if (playerWisdom <= 15) {
         statModifier = 1
-    } else if (playerWisdom <= 18){
+    } else if (playerWisdom <= 18) {
         statModifier = 3
-    } else if (playerWisdom <= 20){
+    } else if (playerWisdom <= 20) {
         statModifier = 5
     }
     return statModifier
@@ -211,19 +212,19 @@ const playerWisdomStatModifier = (playerWisdom) => {
 //Charisma Stat Modifier
 const playerCharismaStatModifier = (playerCharisma) => {
     //let playerCharisma = playerStatArray[5]
-    if (playerCharisma <= 3){
+    if (playerCharisma <= 3) {
         statModifier = -5
-    } else if (playerCharisma <= 6){
+    } else if (playerCharisma <= 6) {
         statModifier = -3
-    } else if (playerCharisma <= 9){
+    } else if (playerCharisma <= 9) {
         statModifier = -1
-    } else if (playerCharisma <= 12){
+    } else if (playerCharisma <= 12) {
         statModifier = 0
-    } else if (playerCharisma <= 15){
+    } else if (playerCharisma <= 15) {
         statModifier = 1
-    } else if (playerCharisma <= 18){
+    } else if (playerCharisma <= 18) {
         statModifier = 3
-    } else if (playerCharisma <= 20){
+    } else if (playerCharisma <= 20) {
         statModifier = 5
     }
     return statModifier
@@ -231,27 +232,27 @@ const playerCharismaStatModifier = (playerCharisma) => {
 
 //Player Weapon depending on Player Class
 const playerWeapon = (playerClass) => {
-    if (playerClass === "Bard"){
+    if (playerClass === "Bard") {
         playerClassWeapon = "Whip"
         playerGold = 100
         playerInventory.push(playerClassWeapon, playerGold)
         return playerClassWeapon
-    } else if (playerClass === "Wizard"){
+    } else if (playerClass === "Wizard") {
         playerClassWeapon = "Quarterstaff"
         playerGold = 100
         playerInventory.push(playerClassWeapon, playerGold)
         return playerClassWeapon
-    } else if (playerClass === "Assassin"){
+    } else if (playerClass === "Assassin") {
         playerClassWeapon = "Daggers"
         playerGold = 100
         playerInventory.push(playerClassWeapon, playerGold)
         return playerClassWeapon
-    } else if (playerClass === "Warrior"){
+    } else if (playerClass === "Warrior") {
         playerClassWeapon = "Greatsword"
         playerGold = 100
         playerInventory.push(playerClassWeapon, playerGold)
         return playerClassWeapon
-    } else if (playerClass === "Mage"){
+    } else if (playerClass === "Mage") {
         playerClassWeapon = "Bracers"
         playerGold = 100
         playerInventory.push(playerClassWeapon, playerGold)
@@ -289,14 +290,14 @@ You enter the Archanian Forest. You are met with a fork in the road.\n`)
 const forkInRoad = () => {
     rightOrLeft = rls.question("Do you go right or left? \n")
     rightOrLeft = rightOrLeft.trim().toLowerCase()
-    if (rightOrLeft === "right"){
+    if (rightOrLeft === "right") {
         rightPath();
-    } else if (rightOrLeft === "left"){
+    } else if (rightOrLeft === "left") {
         leftPath();
-    } else if (rightOrLeft === "stats"){
+    } else if (rightOrLeft === "stats") {
         logPlayerStats();
         forkInRoad();
-    } else if (rightOrLeft === "inventory"){
+    } else if (rightOrLeft === "inventory") {
         logplayerInventory();
         forkInRoad();
     } else {
@@ -326,7 +327,7 @@ The other potion bottle has a blue liquid. It appears to have glitter.\n`)
 const potionChoice = () => {
     potion = rls.question(`Do you drink the green potion, the blue potion, or do you decide to not drink any at all? \n`)
     potion = potion.trim().toLowerCase()
-    if (potion === "blue" || potion === "blue potion"){
+    if (potion === "blue" || potion === "blue potion") {
         console.log(`\nYou decide to drink the blue potion. 
 Your insides start burning as you ingest the blue liquid.
 Your blood pressure increases and you start to hear your heartbeat.
@@ -335,7 +336,7 @@ You collapse in the middle of the path as the potion circulates through your bod
 You lay there lifeless as the wildlife eventually feed on your body.
 You died.\n`)
         restartGame();
-    } else if (potion === "green" || potion === "green potion"){
+    } else if (potion === "green" || potion === "green potion") {
         playerStrength += 5
         playerIntelligence += 3
         playerCharisma += 5
@@ -344,13 +345,13 @@ Your body feels strong and healthy. (+5 Strength [Strength is now: ${playerStren
 Your mind feels clear. (+3 Intelligence [Intelligence is now: ${playerIntelligence}])
 You feel sexier. (+5 Charisma [Charisma is now: ${playerCharisma}])\n`)
         dragonCastle();
-    } else if (potion === "none" || potion === "no" || potion === "do not drink" || potion === "do not drink any at all"){
+    } else if (potion === "none" || potion === "no" || potion === "do not drink" || potion === "do not drink any at all") {
         console.log(`\nYou decide not to drink any potions.\n`)
         dragonCastle();
-    } else if (potion === "stats"){
+    } else if (potion === "stats") {
         logPlayerStats();
         potionChoice();
-    } else if (potion === "inventory"){
+    } else if (potion === "inventory") {
         logplayerInventory(playerInventory);
         potionChoice();
     } else {
@@ -363,12 +364,12 @@ const rollforInitiative = () => {
     console.log(`Roll for initiative!`)
     playerRoll = rollDieTwenty() + playerDexterityStatModifier(playerDexterity)
     goblinRoll = rollDieTwenty()
-    if (playerRoll > goblinRoll){
+    if (playerRoll > goblinRoll) {
         console.log(`\nYou rolled a ${playerRoll}! (Dexterity Modifier of ${playerDexterityStatModifier(playerDexterity)})`)
         console.log(`The goblin rolled a ${goblinRoll}!`)
         console.log(`You get the first hit!\n`)
         goblinBattlePlayerAdvantage();
-    } else if (goblinRoll > playerRoll){
+    } else if (goblinRoll > playerRoll) {
         console.log(`\nYou rolled a ${playerRoll}! (Dexterity Modifier of ${playerDexterityStatModifier(playerDexterity)})`)
         console.log(`The goblin rolled a ${goblinRoll}!`)
         console.log(`The goblin gets the first hit!`)
@@ -383,95 +384,95 @@ const goblinBattlePlayerAdvantage = () => {
     let playerOptions = ["Attack", "Surrender"]
     let playerSelect = rls.keyInSelect(playerOptions)
     playerOptionSelect = playerOptions[playerSelect]
-    if (playerOptionSelect === "Attack"){
-        while (playerHealth > 0 && goblinHealth > 0){
+    if (playerOptionSelect === "Attack") {
+        while (playerHealth > 0 && goblinHealth > 0) {
             console.log(`Your health: ${playerHealth}
 Goblin's Health: ${goblinHealth}\n`)
-            if (playerStrength <= 3 ){
+            if (playerStrength <= 3) {
                 playerHitPoints = rollDieSix() + playerStrengthStatModifier(playerStrength)
             } else {
                 playerHitPoints = rollDieFour() + playerStrengthStatModifier(playerStrength)
             }
             console.log(`\nYou attack the goblin! The goblin gets ${playerHitPoints} damage! (Strength Modifier of ${playerStrengthStatModifier(playerStrength)})`)
-            if (playerHitPoints > 0){
+            if (playerHitPoints > 0) {
                 goblinHealth -= playerHitPoints
-            } 
+            }
             goblinHitPoints = rollDieSix()
             console.log(`The Goblin attacks you! You get ${goblinHitPoints} damage!\n`)
             playerHealth -= goblinHitPoints
-            if (goblinHealth <= 0){
+            if (goblinHealth <= 0) {
                 console.log(`You defeated the goblin! 
 The goblin drops a pouch containing 1000 gold.`)
                 lootGoblin();
-            } else if (playerHealth <= 0){
+            } else if (playerHealth <= 0) {
                 playerInventory.pop()
                 console.log(`You were defeated by the goblin!
 The goblin knocks you down and takes your Gold!\n`)
                 dragonCastle();
-            }  
-        } 
-    } else if (playerOptionSelect === "Surrender"){
+            }
+        }
+    } else if (playerOptionSelect === "Surrender") {
         playerInventory.pop()
         console.log(`\nYou surrender to the goblin!
 The goblin loots you and runs off with your gold!`)
         dragonCastle();
-    } else if (playerOptionSelect === undefined){
+    } else if (playerOptionSelect === undefined) {
         goblinBattlePlayerAdvantage();
     }
-    
+
 }
 
 //Goblin Battle. Goblin gets first hit
 const goblinBattleGoblinAdvantage = () => {
     let playerHealth = 20;
     let goblinHealth = 10;
-    let playerOptions = ["Attack"]
+    let playerOptions = ["Attack", "Surrender"]
     goblinHitPoints = rollDieSix()
     console.log(`The Goblin attacks you! You get ${goblinHitPoints} damage!\n`)
     playerHealth -= goblinHitPoints
     let playerSelect = rls.keyInSelect(playerOptions)
     playerOptionSelect = playerOptions[playerSelect]
-    if (playerOptionSelect === "Attack"){
-            while (playerHealth > 0 && goblinHealth > 0){
-                console.log(`Your health: ${playerHealth}
+    if (playerOptionSelect === "Attack") {
+        while (playerHealth > 0 && goblinHealth > 0) {
+            console.log(`Your health: ${playerHealth}
 Goblin's Health: ${goblinHealth}\n`)
-                if (playerStrength <= 3 ){
-                    playerHitPoints = rollDieSix() + playerStrengthStatModifier(playerStrength)
-                } else {
-                    playerHitPoints = rollDieFour() + playerStrengthStatModifier(playerStrength)
-                }
-                console.log(`\nYou attack the goblin! The goblin gets ${playerHitPoints} damage! (Strength Modifier of ${playerStrengthStatModifier(playerStrength)})`)
-                goblinHitPoints = rollDieSix()
-                console.log(`The Goblin attacks you! You get ${goblinHitPoints} damage!\n`)
-                playerHealth -= goblinHitPoints
-                if (playerHitPoints > 0){
-                    goblinHealth -= playerHitPoints
-                } 
-                if (goblinHealth <= 0){
-                    console.log(`You defeated the goblin! 
+            if (playerStrength <= 3) {
+                playerHitPoints = rollDieSix() + playerStrengthStatModifier(playerStrength)
+            } else {
+                playerHitPoints = rollDieFour() + playerStrengthStatModifier(playerStrength)
+            }
+            console.log(`\nYou attack the goblin! The goblin gets ${playerHitPoints} damage! (Strength Modifier of ${playerStrengthStatModifier(playerStrength)})`)
+            goblinHitPoints = rollDieSix()
+            console.log(`The Goblin attacks you! You get ${goblinHitPoints} damage!\n`)
+            playerHealth -= goblinHitPoints
+            if (playerHitPoints > 0) {
+                goblinHealth -= playerHitPoints
+            }
+            if (goblinHealth <= 0) {
+                console.log(`You defeated the goblin! 
 The goblin drops a pouch containing 1000 gold. The goblin also drops `)
-                    lootGoblin();
-                } else if (playerHealth <= 0){
-                    playerInventory.pop()
-                    console.log(`\nYou were defeated by the goblin!
+                lootGoblin();
+            } else if (playerHealth <= 0) {
+                playerInventory.pop()
+                console.log(`\nYou were defeated by the goblin!
 The goblin knocks you down and takes your Gold!`)
-                    dragonCastle();                
-            }  
+                dragonCastle();
+            }
         }
-    } else if (playerOptionSelect === "Surrender"){
+    } else if (playerOptionSelect === "Surrender") {
         playerInventory.pop()
         console.log(`You surrender to the goblin!
 The goblin loots you and runs off with your gold!`)
         dragonCastle();
-    } else if (playerOptionSelect === undefined){
+    } else if (playerOptionSelect === undefined) {
         goblinBattleGoblinAdvantage();
     }
-    
+
 }
 
 //Goblin pouch go kaching kaching
 const lootGoblin = () => {
-    if (rls.keyInYN("Do you take the pouch of 1000 gold?")){
+    if (rls.keyInYN("Do you take the pouch of 1000 gold?")) {
         console.log(`You decide to take the pouch, storing it in your inventory.\n`)
         playerInventory[1] += 1000
         dragonCastle();
@@ -498,28 +499,28 @@ const entranceOption = () => {
     console.log(`Which would you like to choose?\n`)
     playerEntranceChoices = rls.keyInSelect(entranceChoices)
     playerEntranceChoice = entranceChoices[playerEntranceChoices]
-    if (playerEntranceChoice === "Scope"){
+    if (playerEntranceChoice === "Scope") {
         console.log(`\nYou decide to scope the area. Roll for Perception!`)
         playerPerception = rollDieTwenty() + playerWisdomStatModifier(playerWisdom)
         console.log(`You roll a ${playerPerception}! (Wisdom modifier of ${playerWisdomStatModifier(playerWisdom)})`)
-        if (playerPerception <=10){
+        if (playerPerception <= 10) {
             console.log(`You scope out the area. However, you are unable to find a hidden entrance.`)
             entranceChoices.shift()
             console.log(`You now have two choices:`)
             playerEntranceChoices = rls.keyInSelect(entranceChoices)
             playerEntranceChoiceNoScope = entranceChoices[playerEntranceChoices]
-            if (playerEntranceChoiceNoScope === "Attack"){
+            if (playerEntranceChoiceNoScope === "Attack") {
                 console.log(`\nYou decide to attack the guard! Roll for Initiative!`)
                 rollforInitiativeGuardBattle();
-            } else if (playerEntranceChoiceNoScope === "Persuade"){
+            } else if (playerEntranceChoiceNoScope === "Persuade") {
                 console.log(`\nYou decide to persuade the guard. Roll for Persuasion!`)
                 playerPersuasion = rollDieTwenty() + playerCharismaStatModifier(playerCharisma)
                 console.log(`You roll a ${playerPersuasion}! (Charisma modifier of ${playerCharismaStatModifier(playerCharisma)})`)
-                if (playerPersuasion <= 10){
+                if (playerPersuasion <= 10) {
                     console.log(`You try to persuade the guard but unfortunately they do not believe one word you say.
 They immediately knock you unconscious. 
-While you are unconscious, the guard brings you straight to the Dragon Prince himself.`)
-                    dragonPrince();
+While you are unconscious, the guard brings you straight inside the Dragon Castle.`)
+                    insideDragonCastleTied();
                 } else {
                     playerCharisma += 10
                     console.log(`You were able to persuade the guard to let you in.
@@ -536,26 +537,26 @@ You make your way into the castle.
 You feel more confident in your ability to scope. (+10 Wisdom [Wisdom is now: ${playerWisdom}])`)
             insideDragonCastle();
         }
-    } else if (playerEntranceChoice === "Attack"){
+    } else if (playerEntranceChoice === "Attack") {
         console.log(`\nYou decide to attack the guard! Roll for Initiative!`)
         rollforInitiativeGuardBattle();
-    } else if (playerEntranceChoice === "Persuade"){
+    } else if (playerEntranceChoice === "Persuade") {
         console.log(`\nYou decide to persuade the guard. Roll for Persuasion!`)
         playerPersuasion = rollDieTwenty() + playerCharismaStatModifier(playerCharisma)
         console.log(`You roll a ${playerPersuasion}! (Charisma modifier of ${playerCharismaStatModifier(playerCharisma)})`)
-        if (playerPersuasion <= 10){
+        if (playerPersuasion <= 10) {
             console.log(`You try to persuade the guard but unfortunately they do not believe one word you say.
 They immediately knock you unconscious. 
-While you are unconscious, the guard brings you straight to the Dragon Prince himself.`)
-            dragonPrince();
+While you are unconscious, the guard brings you straight inside the Dragon Castle.`)
+            insideDragonCastleTied();
         } else {
-           playerCharisma += 10
-           console.log(`You were able to persuade the guard to let you in.
+            playerCharisma += 10
+            console.log(`You were able to persuade the guard to let you in.
 You feel more confident in your ability to persuade. (+10 Charisma [Charisma is now: ${playerCharisma}]) `)
-           insideDragonCastle();
+            insideDragonCastle();
         }
 
-    } else if (playerEntranceChoice === undefined){
+    } else if (playerEntranceChoice === undefined) {
         entranceOption();
     }
 
@@ -566,10 +567,10 @@ const rollforInitiativeGuardBattle = () => {
     dragonGuardRoll = rollDieTwenty()
     console.log(`\nYou rolled a ${playerRollGuardBattle}! (Dexterity modifier of ${playerDexterityStatModifier(playerDexterity)})`)
     console.log(`The guard rolled a ${dragonGuardRoll}!`)
-    if (playerRollGuardBattle > dragonGuardRoll){
+    if (playerRollGuardBattle > dragonGuardRoll) {
         console.log(`You get the first hit!`)
         dragonGuardBattlePlayerAdvantage();
-    } else if (dragonGuardRoll > playerRollGuardBattle){
+    } else if (dragonGuardRoll > playerRollGuardBattle) {
         console.log(`The guard gets the first hit!`)
         dragonGuardBattleGuardAdvantage();
 
@@ -582,42 +583,42 @@ const dragonGuardBattlePlayerAdvantage = () => {
     let playerOptions = ["Attack", "Surrender"]
     let playerSelect = rls.keyInSelect(playerOptions)
     playerOptionSelect = playerOptions[playerSelect]
-    if (playerOptionSelect === "Attack"){
-            while (playerHealth > 0 && guardHealth > 0){
-                console.log(`Your health: ${playerHealth}
+    if (playerOptionSelect === "Attack") {
+        while (playerHealth > 0 && guardHealth > 0) {
+            console.log(`Your health: ${playerHealth}
                 Guard's Health: ${guardHealth}\n`)
-                if (playerStrength <= 3 ){
-                    playerHitPoints = rollDieSix() + playerStrengthStatModifier(playerStrength)
-                } else {
-                    playerHitPoints = rollDieFour() + playerStrengthStatModifier(playerStrength)
-                }
-                console.log(`\nYou attack the guard! The guard gets ${playerHitPoints} damage! (Strength Modifier of ${playerStrengthStatModifier(playerStrength)})`)
-                if (playerHitPoints > 0){
-                    guardHealth -= playerHitPoints
-                } 
-                guardHitPoints = rollDieSix()
-                console.log(`The guard attacks you! You get ${guardHitPoints} damage!\n`)
-                playerHealth -= guardHitPoints
-                if (guardHealth <= 0){
-                    playerStrength += 10
-                    console.log(`You defeated the guard! 
+            if (playerStrength <= 3) {
+                playerHitPoints = rollDieSix() + playerStrengthStatModifier(playerStrength)
+            } else {
+                playerHitPoints = rollDieFour() + playerStrengthStatModifier(playerStrength)
+            }
+            console.log(`\nYou attack the guard! The guard gets ${playerHitPoints} damage! (Strength Modifier of ${playerStrengthStatModifier(playerStrength)})`)
+            if (playerHitPoints > 0) {
+                guardHealth -= playerHitPoints
+            }
+            guardHitPoints = rollDieSix()
+            console.log(`The guard attacks you! You get ${guardHitPoints} damage!\n`)
+            playerHealth -= guardHitPoints
+            if (guardHealth <= 0) {
+                playerStrength += 10
+                console.log(`You defeated the guard! 
 The guard drops to the ground and lays there unconscious.
 You make your way through the gate inside the Dragon Prince's Castle.`)
-                    insideDragonCastle();
-            } else if (playerHealth <= 0){
+                insideDragonCastle();
+            } else if (playerHealth <= 0) {
                 console.log(`You were defeated by the guard!
 They immediately knock you unconscious. 
 While you are unconscious, the guard brings you straight to into the Dragon Castle..`)
-                insideDragonCastleTied(); 
-            }  
+                insideDragonCastleTied();
+            }
         }
-    } else if (playerOptionSelect === "Surrender"){
+    } else if (playerOptionSelect === "Surrender") {
         console.log(`You surrender to the guard!
 They immediately knock you unconscious. 
 While you are unconscious, the guard brings you straight into the Dragon Castle.`)
         insideDragonCastleTied();
-        }
-    
+    }
+
 }
 
 const dragonGuardBattleGuardAdvantage = () => {
@@ -629,36 +630,36 @@ const dragonGuardBattleGuardAdvantage = () => {
     playerHealth -= guardHitPoints
     let playerSelect = rls.keyInSelect(playerOptions)
     playerOptionSelect = playerOptions[playerSelect]
-    if (playerOptionSelect === "Attack"){
-            while (playerHealth > 0 && guardHealth > 0){
-                console.log(`Your health: ${playerHealth}
-                Guard's Health: ${guardHealth}\n`)
-                if (playerStrength <= 3 ){
-                    playerHitPoints = rollDieSix() + playerStrengthStatModifier(playerStrength)
-                } else {
-                    playerHitPoints = rollDieFour() + playerStrengthStatModifier(playerStrength)
-                }
-                console.log(`\nYou attack the guard! The guard gets ${playerHitPoints} damage! (Strength Modifier of ${playerStrengthStatModifier(playerStrength)})`)
-                if (playerHitPoints > 0){
-                    guardHealth -= playerHitPoints
-                } 
-                guardHitPoints = rollDieSix()
-                console.log(`The guard attacks you! You get ${guardHitPoints} damage!\n`)
-                playerHealth -= guardHitPoints
-                if (guardHealth <= 0){
-                    playerStrength += 10
-                    console.log(`\nYou defeated the guard! 
-    The guard drops to the ground and lays there unconscious.
-    You make your way through the gate inside the Dragon Prince's Castle.`)
-                    insideDragonCastle();
-            } else if (playerHealth <= 0){
+    if (playerOptionSelect === "Attack") {
+        while (playerHealth > 0 && guardHealth > 0) {
+            console.log(`Your health: ${playerHealth}
+Guard's Health: ${guardHealth}\n`)
+            if (playerStrength <= 3) {
+                playerHitPoints = rollDieSix() + playerStrengthStatModifier(playerStrength)
+            } else {
+                playerHitPoints = rollDieFour() + playerStrengthStatModifier(playerStrength)
+            }
+            console.log(`\nYou attack the guard! The guard gets ${playerHitPoints} damage! (Strength Modifier of ${playerStrengthStatModifier(playerStrength)})`)
+            if (playerHitPoints > 0) {
+                guardHealth -= playerHitPoints
+            }
+            guardHitPoints = rollDieSix()
+            console.log(`The guard attacks you! You get ${guardHitPoints} damage!\n`)
+            playerHealth -= guardHitPoints
+            if (guardHealth <= 0) {
+                playerStrength += 10
+                console.log(`\nYou defeated the guard! 
+The guard drops to the ground and lays there unconscious.
+You make your way through the gate inside the Dragon Prince's Castle.`)
+                insideDragonCastle();
+            } else if (playerHealth <= 0) {
                 console.log(`\nYou were defeated by the guard!
 They immediately knock you unconscious. 
 While you are unconscious, the guard brings you straight into the Dragon Castle.`)
-                insideDragonCastleTied(); 
-            }  
+                insideDragonCastleTied();
+            }
         }
-    } else if (playerOptionSelect === "Surrender"){
+    } else if (playerOptionSelect === "Surrender") {
         console.log(`\nYou surrender to the guard!
 They immediately knock you unconscious. 
 While you are unconscious, the guard brings you straight into the Dragon Castle.`)
@@ -687,17 +688,17 @@ Or you can loosen the ropes to give the impression that you are bound even thoug
 const playerChairChoice = () => {
     playerChairChoices = rls.question("\nDo you try to release yourself fully or give an impression? (Release/Impression): ")
     playerChairChoices.trim().toLowerCase()
-    if (playerChairChoices === "release"){
+    if (playerChairChoices === "release") {
         console.log(`\nYou decide to release yourself from the chair. Dexterity Check!`)
         playerDexterityRoll = rollDieTwenty() + playerDexterityStatModifier(playerDexterity)
         console.log(`You roll a ${playerDexterityRoll} (Dexterity Modifier of ${playerDexterityStatModifier(playerDexterity)})`)
-        if (playerDexterityRoll >= 11){
+        if (playerDexterityRoll >= 11) {
             console.log(`\nYou release yourself from the chair. You make your way to the door.
 Surprisingly, the door is unlocked. You make your way out of the room into the hallway.`)
             console.log(`Roll for Perception!`)
             playerPerception = rollDieTwenty() + playerWisdomStatModifier(playerWisdom)
             console.log(`You roll a ${playerPerception}! (Wisdom Modifier of ${playerWisdomStatModifier(playerWisdom)})`)
-            if (playerPerception >= 11 ){
+            if (playerPerception >= 11) {
                 console.log(`\nYou were able to scope the area and find three doors down the hallway.`)
                 threeDoors();
             } else {
@@ -723,7 +724,7 @@ You end up giving yourself a cramp in your arm.
 You also unintentonally made the rope tighter around you.`)
             guardAppearance();
         }
-    } else if (playerChairChoices === "impression"){
+    } else if (playerChairChoices === "impression") {
         console.log(`\nRoll for Deception!`)
         playerDeceptionRoll = rollDieTwenty() + playerCharismaStatModifier(playerCharisma)
         console.log(`You roll a ${playerDeceptionRoll} (Charisma Modifier of ${playerCharismaStatModifier(playerCharisma)})`)
@@ -739,10 +740,10 @@ You also unintentonally made the rope tighter around you.`)
     } else if (playerChairChoices === "stats") {
         logPlayerStats();
         playerChairChoice();
-    } else if (playerChairChoice === "inventory"){
+    } else if (playerChairChoice === "inventory") {
         logplayerInventory();
         playerChairChoice();
-    } else{
+    } else {
         playerChairChoice();
     }
 }
@@ -752,10 +753,12 @@ const threeDoors = () => {
     console.log(`Which door do you go through?`)
     doorChoice = rls.keyInSelect(doors)
     playerDoorChoice = doors[doorChoice]
-    if (playerDoorChoice = "First Door"){
+    if (playerDoorChoice === "First Door") {
         console.log(`\nYou decided to go through the first door.
+
 When you walk in, you see an abundance of books. It's a library.
 On your immediate right there is a table with four books on top. The titles read:
+
 The Curse of The Magi (Vol. 2)
 Magic for Beginners (Vol. 8)
 The Best Cookbook for Dragonborns (Vol. 5)
@@ -767,20 +770,55 @@ You go back into the hallway.`)
         console.log("\nWhich door do you choose?")
         doorChoice = rls.keyInSelect(doors)
         playerDoorChoice = doors[doorChoice]
-        if (playerDoorChoice === "Second Door"){
+        if (playerDoorChoice === "Second Door") {
             console.log(`\nYou decided to go through the second door.
 When you walk in, you are greeted with the smell of delicious food... as well as a multitude of guards.
 They ended up killing you.
 You died. `)
             restartGame();
-        } else if (playerDoorChoice === "Third Door"){
+        } else if (playerDoorChoice === "Third Door") {
             let numberOfTries = 3
-            if (playerInventory.includes(playerWeapon(playerClass))){
+            if (playerInventory.includes(playerWeapon(playerClass))) {
                 console.log(`\nYou decided to go through the third door.
 You see a chest that requires a code. 
 You try at opening the chest. (Hint: Pay attention to the volume numbers.)`)
-                for (i = 0; i < numberOfTries; i++ ){
-                    console.log()
+                for (i = numberOfTries; i !== 0; i++) {
+                    console.log(`You have ${numberOfTries} tries left.`)
+                    playerCodeInput = rls.questionInt("What code do you try?: ")
+                    if (playerCodeInput === 2853) {
+                        chestOpen();
+                    } else {
+                        console.log("The chest remains locked.")
+                        numberOfTries--
+                        if (numberOfTries === 0) {
+                            console.log(`You are unsuccessful in opening the lock.
+You decide to leave the room and go back into the hallway.
+You decide to just find the Dragon Prince since he has the Scroll of Resurrection.`)
+                            dragonPrince()
+                        }
+                    }
+                }
+            }
+        } else {
+            playerInventory.push(playerWeapon(playerClass))
+            console.log(`\nYou decided to go through the third door.
+You find your weapon in the same room as the chest.
+You see a chest that requires a code. 
+You try at opening the chest. (Hint: Pay attention to the volume numbers.)`)
+            for (i = numberOfTries; i !== 0; i++) {
+                console.log(`You have ${numberOfTries} tries left.`)
+                playerCodeInput = rls.questionInt("What code do you try?: ")
+                if (playerCodeInput === 2853) {
+                    chestOpen();
+                } else {
+                    console.log("The chest remains locked.")
+                    numberOfTries--
+                    if (numberOfTries === 0) {
+                        console.log(`You are unsuccessful in opening the lock.
+You decide to leave the room and go back into the hallway.
+You decide to just find the Dragon Prince since he has the Scroll of Resurrection.`)
+                        dragonPrince();
+                    }
                 }
             }
         }
@@ -790,13 +828,330 @@ When you walk in, you are greeted with the smell of delicious food... as well as
 They ended up killing you.
 You died. `)
         restartGame();
-    } else if (playerDoorChoice === "Third Door"){
+    } else if (playerDoorChoice === "Third Door") {
+        let numberOfTries = 3
+        if (playerInventory.includes(playerWeapon(playerClass))) {
+            console.log(`\nYou decided to go through the third door.
+You see a chest that requires a code. 
+You try at opening the chest. (Hint: Pay attention to the volume numbers.)`)
+            for (i = numberOfTries; i !== 0; i++) {
+                console.log(`You have ${numberOfTries} tries left.`)
+                playerCodeInput = rls.questionInt("What code do you try?: ")
+                if (playerCodeInput === 2853) {
+                    chestOpen();
+                } else {
+                    console.log("The chest remains locked.")
+                    numberOfTries--
+                    if (numberOfTries === 0) {
+                        console.log(`You are unsuccessful in opening the lock.
+You decide to leave the room and go back into the hallway.
+You decide to just find the Dragon Prince since he has the Scroll of Resurrection.`)
+                        dragonPrince()
+                    }
+                }
+            }
+        } else if (playerInventory.includes(playerWeapon(playerClass)) === false) {
+            playerInventory.push(playerWeapon(playerClass))
+            console.log(`\nYou decided to go through the third door.
+You find your weapon in the same room as the chest.
+You see a chest that requires a code. 
+You try at opening the chest. (Hint: Pay attention to the volume numbers.)`)
+            for (i = numberOfTries; i !== 0; i++) {
+                console.log(`You have ${numberOfTries} tries left.`)
+                playerCodeInput = rls.questionInt("What code do you try?: ")
+                if (playerCodeInput === 2853) {
+                    chestOpen();
+                } else {
+                    console.log("The chest remains locked.")
+                    numberOfTries--
+                    if (numberOfTries === 0) {
+                        console.log(`\nYou are unsuccessful in opening the lock.
+You decide to leave the room and go back into the hallway.
+You decide to just find the Dragon Prince since he has the Scroll of Resurrection.`)
+                        dragonPrince();
+                    }
+                }
+
+            }
+        }
+
+    } else {
+        playerInventory.push(playerWeapon(playerClass))
+        console.log(`\nYou decided to go through the third door.
+You find your weapon in the same room as the chest.
+You see a chest that requires a code. 
+You try at opening the chest. (Hint: Pay attention to the volume numbers.)`)
+        for (i = numberOfTries; i !== 0; i++) {
+            console.log(`You have ${numberOfTries} tries left.`)
+            playerCodeInput = rls.questionInt("What code do you try?: ")
+            if (playerCodeInput === 2853) {
+                chestOpen();
+            } else {
+                console.log("The chest remains locked.")
+                numberOfTries--
+                if (numberOfTries === 0) {
+                    console.log(`\nYou are unsuccessful in opening the lock.
+You decide to leave the room and go back into the hallway.
+You decide to just find the Dragon Prince since he has the Scroll of Resurrection.`)
+                    dragonPrince();
+                }
+            }
+        }
 
     }
-    
+
 }
 
 const guardAppearance = () => {
+    console.log(`\nThe guard comes back and sees that you are still tied up.
+The guard proceeds to untie you from the chair and takes you to the Dragon Prince.`)
+    dragonPrince();
+
+}
+
+const chestOpen = () => {
+    playerInventory[1] += 10000
+    console.log(`\nYou were able to open the chest and find 1000 Gold.
+Without thought, you take the gold and make your way to see the Dragon Prince.`)
+    dragonPrince();
+
+}
+
+const dragonPrince = () => {
+    console.log(`You meet with the Dragon Prince of Alistair, Ember Demir.
+He looks at you from head to toe.
+
+"You are a very, very lucky person ${playerName}. I know exactly why you are here.
+In order to obtain the Scroll of Ressurection from me, you have three choices:
+Persuade me to give you the Scroll, fight me for the Scroll, or answer my riddle."`)
+    dragonPrincePlayerChoice()
+
+}
+
+const dragonPrincePlayerChoice = () => {
+    dpPlayerChoices = ["Persuade", "Attack", "Riddle"]
+    console.log(`\nWhich option do you choose?`)
+    dpPlayerChoice = rls.keyInSelect(dpPlayerChoices)
+    dpPlayerSelect = dpPlayerChoices[dpPlayerChoice]
+    if (dpPlayerSelect === "Persuade") {
+        console.log(`You decided to persuade the Dragon Prince! Roll for Persuasion!`)
+        playerPersuasion = rollDieTwenty() + playerCharismaStatModifier(playerCharisma)
+        console.log(`You rolled a ${playerPersuasion}! (Charisma Modifier of ${playerCharismaStatModifier(playerCharisma)})`)
+        if (playerPersuasion >= 11) {
+            console.log(`\nYou successfully persuaded the Dragon Prince as he hands you the Scroll of Resurrection.
+You leave the Dragon Castle and go back to the Grande Inn and return the Scroll to the Adventuer's Guild.
+You then find out, the Adventurer's Guild and the Dragon Prince were in cahoots to see if you were brave enough to face the Dragon Prince.
+The Dragon Prince is actually a very nice person.
+The actual villain is his wife, Miko Winters, the last Purple Heart Lycanthrope of Archane.
+
+The end.`)
+            restartGame();
+        } else {
+            dpPlayerChoices.shift()
+            console.log(`\nYou were unable to persuade the Dragon Prince.
+You have two options left: Attack or Answer the Riddle.`)
+            console.log(`Which option do you choose?`)
+            dpPlayerChoice = rls.keyInSelect(dpPlayerChoices)
+            dpPlayerSelect = dpPlayerChoices[dpPlayerChoice]
+            if (dpPlayerSelect === "Attack") {
+                dragonPrinceBattleInitiative();
+            } else if (dpPlayerSelect === "Riddle") {
+                numberOfTries = 3
+                console.log(`\nYou decide to answer the riddle.`)
+                for (i = numberOfTries; i !== 0; i++) {
+                    console.log(`You have ${numberOfTries} tries left.`)
+                    playerRiddleAnswer = rls.question("The more of this there is, the less you see. What is it?: ")
+                    playerRiddleAnswer.trim().toLowerCase()
+                    if (playerRiddleAnswer === "darkness") {
+                        console.log(`\nYou answer the riddle correctly.
+The Dragon Prince hands you the Scroll of Resurrection.
+You leave the Dragon Castle and go back to the Grande Inn and return the Scroll to the Adventuer's Guild.
+You then find out, the Adventurer's Guild and the Dragon Prince were in cahoots to see if you were brave enough to face the Dragon Prince.
+The Dragon Prince is actually a very nice person.
+The actual villain is his wife, Miko Winters, the last Purple Heart Lycan of Archane.
+
+The end.`)
+                    } else {
+                        console.log(`That's the incorrect answer.`)
+                        numberOfTries--
+                        if (numberOfTries === 0){
+                            console.log(`You were unable to answer the riddle.
+You go back to the Grande Inn empty-handed where you resign from being an adventurer.
+You decide to live out your days as a farmer instead.
+
+The end.`)
+                            restartGame();
+                        }
+                    }
+
+                }
+            }
+        }
+
+    } else if (dpPlayerSelect === "Attack") {
+        dragonPrinceBattleInitiative();
+    } else if (dpPlayerSelect === "Riddle") {
+        numberOfTries = 3
+        console.log(`\nYou decide to answer the riddle.`)
+        for (i = numberOfTries; i !== 0; i++) {
+            console.log(`You have ${numberOfTries} tries left.`)
+            playerRiddleAnswer = rls.question("The more of this there is, the less you see. What is it?: ")
+            playerRiddleAnswer.trim().toLowerCase()
+            if (playerRiddleAnswer === "darkness") {
+                console.log(`\nYou answer the riddle correctly.
+The Dragon Prince hands you the Scroll of Resurrection.
+You leave the Dragon Castle and go back to the Grande Inn and return the Scroll to the Adventuer's Guild.
+You then find out, the Adventurer's Guild and the Dragon Prince were in cahoots to see if you were brave enough to face the Dragon Prince.
+The Dragon Prince is actually a very nice person.
+The actual villain is his wife, Miko Winters, the last Purple Heart Lycan of Archane.
+
+The end.`)
+                restartGame();
+            } else {
+                console.log(`That's the incorrect answer.`)
+                numberOfTries--
+                if (numberOfTries === 0){
+                    console.log(`You were unable to answer the riddle.
+You go back to the Grande Inn empty-handed where you resign from being an adventurer.
+You decide to live out your days as a farmer instead.
+
+The end.`)
+                    restartGame();
+                }
+            }
+        }
+
+    } else if (dpPlayerSelect === undefined) {
+        dragonPrincePlayerChoice();
+    }
+}
+
+const dragonPrinceBattleInitiative = () => {
+    playerRollDPBattle === rollDieTwenty() + playerDexterityStatModifier(playerDexterity)
+    dragonPrinceRoll === rollDieTwenty()
+    console.log(`You rolled a ${playerRollDPBattle}! (Dexterity Modifier of ${playerDexterityStatModifier(playerDexterity)})`)
+    console.log(`The Dragon Prince rolled a ${dragonPrinceRoll}!`)
+    if (playerRollDPBattle > dragonPrinceRoll) {
+        console.log(`You get the first hit!`)
+        dragonPrinceBattlePlayerAdvantage();
+    } else if (dragonPrinceRoll > playerRollDPBattle) {
+        console.log(`The Dragon Prince gets the first hit!`)
+        dragonPrinceBattleDPAdvantage();
+    }
+}
+
+const dragonPrinceBattlePlayerAdvantage = () => {
+    let playerHealth = 20;
+    let dragonPrinceHealth = 20;
+    let playerOptions = ["Attack", "Surrender"]
+    let playerSelect = rls.keyInSelect(playerOptions)
+    playerOptionSelect = playerOptions[playerSelect]
+    if (playerOptionSelect === "Attack") {
+        while (playerHealth > 0 && dragonPrinceHealth > 0) {
+            console.log(`Your health: ${playerHealth}
+                Dragon Prince's Health: ${dragonPrinceHealth}\n`)
+            if (playerStrength <= 3) {
+                playerHitPoints = rollDieSix() + playerStrengthStatModifier(playerStrength)
+            } else {
+                playerHitPoints = rollDieFour() + playerStrengthStatModifier(playerStrength)
+            }
+            console.log(`\nYou attack the Dragon Prince! The Dragon Prince gets ${playerHitPoints} damage! (Strength Modifier of ${playerStrengthStatModifier(playerStrength)})`)
+            if (playerHitPoints > 0) {
+                dragonPrinceHealth -= playerHitPoints
+            }
+            dragonPrinceHitPoints = rollDieSix()
+            console.log(`The Dragon Prince attacks you! You get ${dragonPrinceHitPoints} damage!\n`)
+            playerHealth -= dragonPrinceHitPoints
+            if (dragonPrinceHealth <= 0) {
+                playerStrength += 10
+                console.log(`You defeated the Dragon Prince! 
+The Dragon Prince defeatedly hands you the Scroll of Resurrection.
+You leave the Dragon Castle and go back to the Grande Inn and return the Scroll to the Adventuer's Guild.
+You then find out, the Adventurer's Guild and the Dragon Prince were in cahoots to see if you were brave enough to face the Dragon Prince.
+The Dragon Prince is actually a very nice person.
+The actual villain is his wife, Miko Winters, the last Purple Heart Lycan of Archane.
+
+The end.`)
+                restartGame();
+            } else if (playerHealth <= 0) {
+                console.log(`You were defeated by the Dragon Prince!
+Unfortunately he deems you unfit to become a proper adventurer. 
+You go back to the Grande Inn empty-handed where you resign from being an adventurer.
+You decide to live out your days as a farmer instead.
+
+The end.`)
+                restartGame();
+            }
+        }
+    } else if (playerOptionSelect === "Surrender") {
+        console.log(`You surrender to the Dragon Prince!
+Unfortunately he deems you unfit to become a proper adventurer. 
+You go back to the Grande Inn empty-handed where you resign from being an adventurer.
+You decide to live out your days as a farmer instead.
+
+The end.`)
+        restartGame();
+    }
+
+
+}
+
+const dragonPrinceBattleDPAdvantage = () => {
+    let playerHealth = 20;
+    let dragonPrinceHealth = 20;
+    let playerOptions = ["Attack", "Surrender"]
+    dragonPrinceHitPoints = rollDieSix()
+    console.log(`The Goblin attacks you! You get ${dragonPrinceHitPoints} damage!\n`)
+    playerHealth -= dragonPrinceHitPoints
+    let playerSelect = rls.keyInSelect(playerOptions)
+    playerOptionSelect = playerOptions[playerSelect]
+    if (playerOptionSelect === "Attack") {
+        while (playerHealth > 0 && dragonPrinceHealth > 0) {
+            console.log(`Your health: ${playerHealth}
+                Dragon Prince's Health: ${dragonPrinceHealth}\n`)
+            if (playerStrength <= 3) {
+                playerHitPoints = rollDieSix() + playerStrengthStatModifier(playerStrength)
+            } else {
+                playerHitPoints = rollDieFour() + playerStrengthStatModifier(playerStrength)
+            }
+            console.log(`\nYou attack the Dragon Prince! The Dragon Prince gets ${playerHitPoints} damage! (Strength Modifier of ${playerStrengthStatModifier(playerStrength)})`)
+            if (playerHitPoints > 0) {
+                dragonPrinceHealth -= playerHitPoints
+            }
+            dragonPrinceHitPoints = rollDieSix()
+            console.log(`The Dragon Prince attacks you! You get ${dragonPrinceHitPoints} damage!\n`)
+            playerHealth -= dragonPrinceHitPoints
+            if (dragonPrinceHealth <= 0) {
+                playerStrength += 10
+                console.log(`You defeated the Dragon Prince! 
+The Dragon Prince defeatedly hands you the Scroll of Resurrection.
+You leave the Dragon Castle and go back to the Grande Inn and return the Scroll to the Adventuer's Guild.
+You then find out, the Adventurer's Guild and the Dragon Prince were in cahoots to see if you were brave enough to face the Dragon Prince.
+The Dragon Prince is actually a very nice person.
+The actual villain is his wife, Miko Winters, the last Purple Heart Lycan of Archane.
+
+The end.`)
+                restartGame();
+            } else if (playerHealth <= 0) {
+                console.log(`You were defeated by the Dragon Prince!
+Unfortunately he deems you unfit to become a proper adventurer. 
+You go back to the Grande Inn empty-handed where you resign from being an adventurer.
+You decide to live out your days as a farmer instead.
+
+The end.`)
+                restartGame();
+            }
+        }
+    } else if (playerOptionSelect === "Surrender") {
+        console.log(`You surrender to the Dragon Prince!
+Unfortunately he deems you unfit to become a proper adventurer. 
+You go back to the Grande Inn empty-handed where you resign from being an adventurer.
+You decide to live out your days as a farmer instead.
+
+The end.`)
+        restartGame();
+    }
+
 
 }
 
