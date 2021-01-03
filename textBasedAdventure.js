@@ -48,7 +48,7 @@ const playloop = () => {
 const gameHistories = () => {
     console.log(" June 28, 1856")
     console.log(" Welcome to the airport " +  " MATIAS PEREZ ")
-    console.log(" In this game you will have the opportunity to travel and learn more about the culture, and traditions of different countries.") 
+    console.log(" In this game you will have the opportunity to travel and learn more about the culture and traditions of different countries.") 
     readline.keyInPause("Press any key to Continue \n")  
     console.log(" To achieve this you will have to make decisions and choose what things you want to know and from where " )
     console.log( " Regardless of how much you learn from these countries, you will earn points that you can accumulate to obtain a discount on the tickets you can buy for other trips ")
