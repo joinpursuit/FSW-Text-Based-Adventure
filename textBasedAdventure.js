@@ -2,12 +2,13 @@ const readline1 = require('readline-sync')
 
 let nameInput = readline1.question("Enter your name: ")
     console.log(`I'm pleased to meet you ${nameInput}!`)
+    let askOen =  readline1.keyIn("Im ready to go around the world Lalalala, are you set?")
     console.log(` Nice! can't wait to show you cool fun Fact we learnt in each country`)
-    console.log("Each time we arrive at our destination we will need to unscabble the word ");
+    console.log("Each time we arrive at our destination we will need to Unscramble the word ");
     console.log("you will have up to three tries to get it RIGHT");
 
 function tryInGame () {
-    let question = readline1.keyInYN(`Do you want to play around the world Lalalala`)
+    let question = readline1.keyInYN(`Do you want to fly around the world Lalalala`)
     if( question === true) {
          playGame()
      }else {
@@ -19,8 +20,8 @@ tryInGame();
 function playGame () {
    
     console.log("It will be an amazing Journey");
-    console.log(" You will unscrabble the letter provided to find the correct country so we can advance you   throughout your amazing journey");
-    console.log("Each country you discover you will get to find out a secret gem fact about that country");
+    console.log(" You will Unscramble the letter provided to find the correct country so we can advance you throughout your amazing journey");
+    console.log("Each country you discover you will learn a secret fun fact about that country");
 
     if(readline1.keyInYN("Ready to hit the road!")) {
         firstCountry();
@@ -173,7 +174,7 @@ function ninthCountry () {
             question9 = readline1.question(`What Country is "hinca": `).trim().toLowerCase();    
     }
    if (question9 === "china") {
-    console.log(` China is correct! The world highest mountain 29,000 ft Mount Everest is on the border. Chinese writing is done top to bottom in a little symbols or signs, called characters of which ann adult usually knows about 8,000 of them.`)
+    console.log(` China is correct! The world highest mountain 29,000 ft Mount Everest is on the border. Chinese writing is done top to bottom in a little symbols or signs, called characters of which an adult usually knows about 8,000 of them.`)
     }else if ( question9 !== "china") {
             tryInGame()
   }
@@ -207,32 +208,25 @@ function eleventhCountry () {
             question11 = readline1.question(`What Country is "unitasi": `).trim().toLowerCase();    
     }
    if (question11 === "tunisia") {
-    onsole.log(`Tunisia is correct! El Djem Amphitheatre was built when Tunisia once belonged to the Roman Empire and is one the biggest amphitheatres in the world. It could seat over 30,000 spectators.`)
+    console.log(`Tunisia is correct! El Djem Amphitheatre was built when Tunisia once belonged to the Roman Empire and is one the biggest amphitheatres in the world. It could seat over 30,000 spectators.`)
     }else if ( question11 !== "tunisia") {
-            tryInGame()
-  }
-
+    }
+    tryInGame()
 }
 
-const gameOver = (AroundTheWorld) => {
-    if(play === true) {
-        console.log("Would you like a Deal or No Deal?")
-        console.log("If your Briefcase is more valuable than Bank offer")
-        console.log("I will reveal the answer")
-    }else {
-        console.log("Great deal your case is more valuable")
-    }
-
-    if(readLineSync.keyInYN("Ready for your answer?")) {
-       console.log(country);
-       play();
-    } else {
-        console.log("It's a small world we will meet again");
-         leaveGame();
-    }
-}   
 
 
+gameOver()
+
+function gameOver () {}
+
+
+leaveGame()
+
+function leaveGame() {
+    console.log (`It's a small world we will meet again!`)
+    process.exit();
+}
 
     
     
