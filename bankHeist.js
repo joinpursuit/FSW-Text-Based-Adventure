@@ -9,7 +9,7 @@ const beginGame = () => {
     if(readline1.keyInYNStrict(`Do you want to play? 🎮 `)){
         ageRestriction()
     } else {
-        console.log(`Maybe next time!`)
+        console.log(`Maybe next time! ✌🏽`)
         console.clear()
         beginGame()
     }
@@ -141,7 +141,7 @@ const escape = () => {
 }
 
 const amusementPark = () => {
-    console.log(`You try to blend in with the crowd at Coney Island and you bump into your brother, Nick.`)
+    console.log(`You try to blend in with the crowd at Coney Island and you bump into your brother, Nick. 🎡`)
     let avoidFriend = readline1.keyInYNStrict(`Do you avoid him? \n`)
 
     if(avoidFriend){
@@ -163,8 +163,8 @@ const nick = () => {
         helpNick()
         
     } else {
-        console.log(`That's a good idea. You decide to ask him for his car keys to drive home.`)
-        drive()
+        console.log(`That's a good idea, but he says no when you ask him for his car keys to drive home, so you help him find the bottle.`)
+        helpNick()
     }
 }
 
@@ -198,7 +198,7 @@ const psychic = () => {
         console.log(`Since the first number the fortune teller chose is even and the last number is odd, she sees handcuffs in her crystal ball`)
         doYouBelieveHer()
     } else {
-        console.log(`The fortune teller sees that you are at home in the future.`)
+        console.log(`The fortune teller sees that you are at home in the future. 🏡`)
         doYouBelieveHer()
     }
 }
@@ -236,7 +236,7 @@ const restartGame = () => {
         console.clear()
         beginGame()
     } else {
-        console.log(`Thanks for playing!`)
+        console.log(`Thanks for playing! 🙏🏽`)
         console.clear()
         process.exit()
     }
