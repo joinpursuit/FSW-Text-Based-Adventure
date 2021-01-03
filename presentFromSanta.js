@@ -129,7 +129,7 @@ let userInputGoDown = readline.question(`${nameInput}. Do you want to walk down 
     } else if (userInputGoDown.toLowerCase() === "no" || userInputGoDown.toLowerCase() === "n"){
         console.log("\nYea, I agree. Way too dusty and scary to keep going when you're alone.")
     } else {
-        console.log("Please enter: Yes(Y) or No(N).\n")
+        console.log("\nPlease enter: Yes(Y) or No(N).")
         goDownOrNot()
     }
     enterRoom()
@@ -143,7 +143,7 @@ const lightInBasement = () => {
             goDownOrNot()
             break;
         case "keep off":
-            console.log("Guess you aren't ready to face your fears...\n");
+            console.log("\nGuess you aren't ready to face your fears...");
             enterRoom()
             break;
         default: 
@@ -162,7 +162,7 @@ const snackInCloset = () => {
         console.log("\x1b[33m%s\x1b[0m",'You forgot to wash the dishes last night :) -8XX3XX- \n')
         enterRoom() 
     } else if (eatOrNot.toLowerCase() === "no" || eatOrNot.toLowerCase() === "n") {
-        console.log("\nYou decided to keep it going, snacks will not deter you from the mission!\n")
+        console.log("\nYou decided to keep it going, snacks will not deter you from the mission!")
     } else {
         console.log("\nPlease enter: Eat a snack or No(N)")
         snackInCloset()
