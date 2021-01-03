@@ -4,6 +4,7 @@ let yourVariableHere = readline.question("Enter your name: \n ")
  console.log( "Hello " + yourVariableHere + " It's a pleasure to have you here!")
   console.log("Welcome to Traveling the World in 80 Days!")
 
+  
 const startGame = () => {
 let user = readline.keyInYN("Do you wanna play \n")
  if(user){
