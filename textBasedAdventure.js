@@ -43,7 +43,7 @@ function firstCountry ()  {
         a newly- invented style in which objects were represented by cubes, cones and cylinders.`) 
      
      }else if ( question !== "spain") {
-         tryInGame()
+         tryInGame1()
     }
 }
 secondCountry()
@@ -58,7 +58,7 @@ function secondCountry () {
         console.log(` Hungary is correct! It is customary to celebrate the name day (Nevnapot)
         and the birthday of a person. Name days are based on religious traditions and Historical figures and events.`)
     }else if ( question2 !== "hungary") {
-        tryInGame()
+        tryInGame1()
    }
 }
 
@@ -75,7 +75,7 @@ function thirdCountry () {
        console.log(`  Mauritius is correct! The island of Mauritius was created by volcanic activity
              and emerged from the water more than 8 million years ago`)
     }else if ( question3 !== "mauritius") {
-            tryInGame()
+            tryInGame1()
   }
 
 }
@@ -92,7 +92,7 @@ function fourthCountry () {
    if (question4 === "kenya") {
     console.log(` Kenya is correct! There are 42 etcnic groups in Kenya, all with different languages and different customs. `)
     }else if ( question4 !== "kenya") {
-            tryInGame()
+            tryInGame1()
   }
 
 }
@@ -107,7 +107,8 @@ function fifthCountry () {
    if (question5 === "qatar") {
     console.log(` Qatar is correct! The work week in Qatar runs from Sundays to Thursday, as the shops are usually closed on Fridays and Saturdays`)
     }else if ( question5 !== "qatar") {
-            tryInGame()
+
+            tryInGame1()
   }
 
 }
@@ -124,7 +125,7 @@ function sixthCountry () {
    if (question6 === "switzerland") {
     console.log(` officially called the Swiss Federation, is a small country in Central Europe made up of 16,000 square miles of glacier-carved Alps, lakes and valleys. It’s one of the world’s wealthiest countries, and has been well-known for centuries for its neutrality. `)
     }else if ( question6 !== "switzerland") {
-            tryInGame()
+            tryInGame1()
   }
 
 }
@@ -142,7 +143,7 @@ function seventhCountry () {
     console.log(`Singapore is correct! The Singaporeans speak English with a local twist: 'Singlish' adds
     often a 'lah' or 'leh' at the end of a world. can lah means 'Yes it is possible' can can means 'Yes. Sure. Let's do this'.`)
     }else if ( question7 !== "singapore") {
-            tryInGame()
+            tryInGame1()
   }
 
 }
@@ -159,7 +160,7 @@ function eighthCountry () {
    if (question8 === "vanuatu") {
     console.log(` Vanuatu is correct! The water temperatures in Vanuatu range between 72 F in winter and 82 F in summer.`)
     }else if ( question8 !== "vanuatu") {
-            tryInGame()
+            tryInGame1()
   }
 
 }
@@ -176,7 +177,7 @@ function ninthCountry () {
    if (question9 === "china") {
     console.log(` China is correct! The world highest mountain 29,000 ft Mount Everest is on the border. Chinese writing is done top to bottom in a little symbols or signs, called characters of which an adult usually knows about 8,000 of them.`)
     }else if ( question9 !== "china") {
-            tryInGame()
+            tryInGame1()
   }
 
 }
@@ -193,7 +194,7 @@ function tenthCountry () {
    if (question10 === "panama") {
     console.log(` Panama is correct! The world's longest road, the Pan-American Highway, is interrupted in Panama by the Darien Gap which is dense jungle and rainforest at the border to columbia.`)
     }else if ( question10 !== "panama") {
-            tryInGame()
+            tryInGame1()
   }
 
 }
@@ -210,9 +211,10 @@ function eleventhCountry () {
    if (question11 === "tunisia") {
     console.log(`Tunisia is correct! El Djem Amphitheatre was built when Tunisia once belonged to the Roman Empire and is one the biggest amphitheatres in the world. It could seat over 30,000 spectators.`)
     }else if ( question11 !== "tunisia") {
+       tryGAme1()    
     }
-    tryInGame()
-}
+        tryInGame()
+    }
 
 
 
@@ -228,7 +230,14 @@ function leaveGame() {
     process.exit();
 }
 
-    
+function tryGAme1 () {
+    let max = 3;
+    let newNum = max--;
+    while ( max > 0) {
+        const trail = max--;
+        console.log("you are close but not Quite" + newNum + " try left!")
+    }
+}
     
     
 
