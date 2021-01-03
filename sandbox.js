@@ -1,6 +1,13 @@
 "use strict"; // prevents unintentional declaration of global const variables
 const readline = require("readline-sync");
 
+//////////////// Questions //////////////////////
+// variables - function nested if ()
+// undefined - after choosenPath()
+// keyInSelect - randomization undefined -1 or not
+// code is messy - help organize it - add a function 
+
+////////////////////////////////////////////////
 // function noOs(str) {
 //     let output = "";
 //     for(let i = 0; i < str.length; i++) { // i starts at 0
@@ -184,39 +191,39 @@ const readline = require("readline-sync");
 
 //////////////////randomize man adjectives ////////////////////////
 
-randomArray(verbs);
-verb = readline.keyInSelect(
-  threeChoices,
-  `Which do you choose?
-`,
-  { cancel: `choose for me` }
-); // decision 3 - user enters number
-if (verb === -1) {
-  verb = threeChoices[randomNum * threeChoices.length]; // undefined
-  console.log(`
-  You ${verb}, then you see a small wooden house a short distance away. You approach the front door.`);
-} else {
-  console.log(`
-  You ${threeChoices[verb]}, then you see a small wooden house a short distance away. You approach the front door.`);
-}
+// randomArray(verbs);
+// verb = readline.keyInSelect(
+//   threeChoices,
+//   `Which do you choose?
+// `,
+//   { cancel: `choose for me` }
+// ); // decision 3 - user enters number
+// if (verb === -1) {
+//   verb = threeChoices[randomNum * threeChoices.length]; // undefined
+//   console.log(`
+//   You ${verb}, then you see a small wooden house a short distance away. You approach the front door.`);
+// } else {
+//   console.log(`
+//   You ${threeChoices[verb]}, then you see a small wooden house a short distance away. You approach the front door.`);
+// }
 
-/////////////////////////////////
-console.log(`
-You see a rabbit`);
-randomArray(adverbs);verb = readline.keyInSelect(
-    threeChoices,
-    `Which do you choose?
-  `,
-    { cancel: `choose for me` }
-  );
-  if (adverb === - 1) {
-    console.log(`
-    The rabbit ${adverb} hops down the path.
-    Curious. You follow it. The rabbit starts moving faster and you lose sight of it.
-  `)} // decision 12 - user enters string
-console.log(`
-The rabbit ${threeChoices[adverb]} hops down the path.
-Curious. You follow it. The rabbit starts moving faster and you lose sight of it.
-`);
+// /////////////////////////////////
+// console.log(`
+// You see a rabbit`);
+// randomArray(adverbs);verb = readline.keyInSelect(
+//     threeChoices,
+//     `Which do you choose?
+//   `,
+//     { cancel: `choose for me` }
+//   );
+//   if (adverb === - 1) {
+//     console.log(`
+//     The rabbit ${adverb} hops down the path.
+//     Curious. You follow it. The rabbit starts moving faster and you lose sight of it.
+//   `)} // decision 12 - user enters string
+// console.log(`
+// The rabbit ${threeChoices[adverb]} hops down the path.
+// Curious. You follow it. The rabbit starts moving faster and you lose sight of it.
+// `);
     
     

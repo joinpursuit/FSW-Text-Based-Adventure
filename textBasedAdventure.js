@@ -1,5 +1,6 @@
 "use strict"; // prevents unintentional declaration of global const variables
 const readline = require("readline-sync");
+const chalk = require('chalk');
 
 //////////////////////// Arrays ////////////////////////
 
@@ -25,7 +26,7 @@ let threeChoices; // reset when function is called
 //////////////////////// Functions //////////////////////////////
 
 const quitGame = () => {
-  console.log(`Okay, see ya!`);
+  console.log(chalk.blue(`Okay, see ya!`));
   process.exit();
 };
 
@@ -43,11 +44,11 @@ const roll = () => {
 
 const choosenPath = () => {
   if (path === "cat") {
-    console.log(catMadLibs());
+    catMadLibs();
   } else if (path === "dog") {
-    console.log(dogMadLibs());
+    dogMadLibs();
   } else {
-    console.log(aussieMadLibs());
+    aussieMadLibs();
   }
 };
 
@@ -55,7 +56,7 @@ const choosenPath = () => {
 
 const catMadLibs = () => {
   console.log(`
-  Here are some purr-fect reasons why cats make wonderful pets:
+  ${exclamation} Here are some purr-fect reasons why cats make wonderful pets:
   Cats come and ${verb} as they please, exploring the neighbor's yard, climbling tall trees, or basking in the midday sun.
   Cats are mysterious.
   Take one look into a cat's diamond-shaped eyes, and you're sure it's reading your thoughts.
@@ -67,7 +68,7 @@ const catMadLibs = () => {
 
 const dogMadLibs = () => {
   console.log(`
-  Here are few reasons why dogs are considered man's best friend:
+  ${exclamation} Here are few reasons why dogs are considered man's best friend:
   Dogs are adjective companions. They love to play.
   You can ${verb} a rubber ball and a dog will ${adverb} chase it and carry it back to you in its mouth at least ${number} times.
   Dogs can keep your house safe.
@@ -81,7 +82,7 @@ const dogMadLibs = () => {
 const aussieMadLibs = () => {
   console.log(`
   Australia, also known as the land Down Under, is famous for its unique wildlife.
-  The most famous animal is the kangaroo, which carries its baby in a/an ${bodyPart} on its belly
+  The most ${exclamation} animal is the kangaroo, which carries its baby in a/an ${bodyPart} on its belly
   The koala is another popular Australian animal.
   This furry, creature loves to eat leaves from eucalyptus trees.
   If you are a bird-watcher, emu will ${verb} your socks off.
@@ -94,24 +95,23 @@ const aussieMadLibs = () => {
 
 ///////////////////////// Greeting/Instructions //////////////////////////////////////
 
-let name = readline.question(
-  `"Hi! What's your name?"
-`,
-  { limit: String, limitMessage: `STRANGER DANGER!!! STRANGER DANGER!!!` }
-);
+let name = readline.question(chalk.blue(`Hi! What's your name?\n`),{
+  limit: String, limitMessage: chalk.red(`STRANGER DANGER!!! STRANGER DANGER!!!\n`)});
 
-console.log(`
-"Thank you for coming ${name}."
-"My name is Maggie and I will be assisting you, during your adventure."`); // greeting
+console.clear();
+
+console.log(chalk.blue(`
+Thank you for coming ` + chalk.green(`${name}`) + `.
+My name is Maggie and I will be assisting you, during your adventure.`)); // greeting
 
 readline.keyInPause();
 console.clear();
 
-console.log(`
-"You will be one of the first to test out Wacky Mad Lib VR Adventure.
+console.log(chalk.blue(`
+You will be one of the first to test out Wacky Mad Lib VR Adventure.
 At the end, you will receive a personalized postcard for participating in the trial run.
 Throughout your adventure you will be confronted by different situations.
-These events will personalize your experience".`); // instructions
+These events will personalize your experience.`)); // instructions
 
 readline.keyInPause();
 console.clear();
@@ -119,36 +119,33 @@ console.clear();
 ///////////////////////////////  Game Loop ///////////////////////////////////////
 
 const gameLoop = () => {
-  console.log(`
-You put on the V/R goggles and earbuds. Instantly, you are standing in the woods.
-You hear Maggie in your ear, "Hey ${name}, can you hear me ok?"
-You nod slowly, in shocked at how real everything looks.`);
+
+console.log(`
+You put on the V/R goggles and earbuds.
+Instantly, you are standing in the woods.
+You hear Maggie in your ear,\n` + chalk.blue(`
+Hey `+ (chalk.green(`${name}`))) + chalk.blue(`, can you hear me ok?
+You nod slowly, in shocked at how real everything looks.`));
 
   readline.keyInPause();
   console.clear();
 
-  readline.keyInYNStrict(`
-  She ask you again, "Hey ${name}, can you hear me ok?’ You answer."`)
-    ? console.log(`
-  "Great!", Maggie responds.`)
-    : console.log(
-        `"So how come you’re answering me? Ha, Ha, Ha, Just kidding", she says jokingly.`
-      ); // decision 1 - user enters number
+  if (readline.keyInYNStrict(`She ask you again,\n` + chalk.blue(`Hey `+ (chalk.green(`${name}`))) + chalk.blue(`, can you hear me ok?`))) {
+    console.log(chalk.blue(`\nGreat!`) + `, Maggie responds.`)
+  } else {
+    console.clear()
+    console.log(chalk.blue(`So how come you’re answering me? Ha, Ha, Ha, Just kidding", she says jokingly.`));
+  }
 
   readline.keyInPause();
   console.clear();
 
-  console.log(`
-  Look ahead, you should see a path.
-  Follow it and your adventure begins.
-  I will be with you all the way. Hope you enjoy.`);
+  console.log(chalk.blue(`Look ahead, you should see a path.\nFollow it and your adventure begins.\nI will be with you all the way.\nHope you enjoy.`));
   readline.keyInPause();
   console.clear();
 
-  console.log(`
-  You see THREE paths in front of you.
-  To mark each path, there is a wooden sign shaped as an arrow with an engraving.
-  The one on the left is marked ${paths[0]},
+  console.log(`You see THREE paths in front of you.\nTo mark each path, there is a wooden sign shaped as an arrow with an engraving.\n
+The one on the left is marked ${paths[0]},
   the one in the middle ${paths[1]} and the one on the left ${paths[2]}.`);
   path = readline.keyInSelect(
     paths,
@@ -157,39 +154,40 @@ You nod slowly, in shocked at how real everything looks.`);
     { cancel: `choose for me` }
   ); // decision 2 - user enters number
   if (path === -1) {
-    path = paths[Math.round(Math.random()) * paths.length - 1]; // undefined
-    console.log(path);
+    let randomIndex = Math.floor(Math.random() * paths.length)
+    console.log(randomIndex)
+    path = paths[randomIndex]; // undefined
+ 
+    // console.clear();
+    
     console.log(`
-    Apprehensive at the idea, you choose the path with the sign marked ${path}.
-    You think to yourself, this V/R experience would be the best time to get over your fears of ${path}s.
-    Heistately, you start walking along the path. After sometime, You hear rustling in the bushes around you.`);
+Apprehensive at the idea, you choose the path with the sign marked ${path}.
+You think to yourself, this V/R experience would be the best time to get over your fears of ${path}s.
+Heistately, you start walking along the path. After sometime, You hear rustling in the bushes around you.`);
   } else {
     console.log(`
   Apprehensive at the idea, you choose the path with the sign marked ${paths[path]}.
   You think to yourself, this V/R experience would be the best time to get over your fears of ${paths[path]}s.
   Heistately, you start walking along the path. After sometime, You hear rustling in the bushes around you.`);
   }
+  // decision 3 - user enters number
   randomArray(verbs);
-  verb = readline.keyInSelect(
-    threeChoices,
-    `Which do you choose?
-  `,
-    { cancel: `choose for me` }
-  ); // decision 3 - user enters number
+  verb = readline.keyInSelect(threeChoices,`Which do you choose?`,{
+    cancel: `choose for me`
+  });
+
+  console.clear();
+
   if (verb === -1) {
     verb = threeChoices[Math.round(Math.random()) * threeChoices.length - 1]; // undefined
-    console.log(`
-    You ${verb}, then you see a small wooden house a short distance away. You approach the front door.`);
+    console.log(`You ${verb}, then you see a small wooden house a short distance away. You approach the front door.`);
   } else {
-    console.log(`
-    You ${threeChoices[verb]}, then you see a small wooden house a short distance away. You approach the front door.`);
+    console.log(`You ${threeChoices[verb]}, then you see a small wooden house a short distance away. You approach the front door.`);
   }
   //////////////// woodenHouse /////////////////////////////////
-  let woodenHouse = readline.question(
-    `Do you knock? Try the handle and go in? or go around the back?
-  `,
-    { limit: [`knock`, `go in`, `go around back`] }
-  ); // decision 4 - user enters string
+  let woodenHouse = readline.question(`Do you knock? Try the handle and go in? or go around the back?\n`,{
+    limit: [`knock`, `go in`, `go around back`]
+  }); // decision 4 - user enters string
 
   if (woodenHouse === "knock") {
     console.log(`No one answers
@@ -201,29 +199,23 @@ You nod slowly, in shocked at how real everything looks.`);
     ); // decision 5 - user enters string
   }
 
+  console.clear()
   if (woodenHouse === `go in`) {
-    ////////////////// add threeChoices //////////////////
-    console.log(`
-    You see a/an ...`);
+    console.log(`You see a/an ...`);
+    ////////////////// Random threeChoices //////////////////
+    //??WHY AREN'T YOU UPDATING???????NOT UPDATING IN MADLIB()????????????//
     randomArray(adjectives);
-    adjective = readline.keyInSelect(
-        threeChoices,
-      `choose an adjective
-    `,
-      { cancel: `choose for me` }
-    ); // decision 6 - user enters string //???????????????WHY AREN'T YOU UPDATING???????????????????//
+    adjective = readline.keyInSelect(threeChoices, `choose an adjective`,{cancel: `choose for me`});
+    console.clear()
+
     if (adjective === -1) {
-    adjective = threeChoices[Math.round(Math.random()) * threeChoices.length - 1];
-    console.log(`
-    You see a/an ${adjective} old man at a large black pot stirring something with a large wooden spoon.
-    He turns to you and says,`);
-} else {
-    console.log(`
-    You see a/an ${threeChoices[adjective]} old man at a large black pot stirring something with a large wooden spoon.
-    He turns to you and says,`);
+      adjective = threeChoices[Math.round(Math.random()) * threeChoices.length - 1];
+      console.log(`You see a/an ${adjective} old man at a large black\npot stirring something with a large wooden spoon.\nHe turns to you and says,`);
+    } else {
+    console.log(`You see a/an ${threeChoices[adjective]} old man at a large black\npot stirring something with a large wooden spoon.\nHe turns to you and says,`);
   }
     
-    exclamation = readline.question("enter an exclamation word"
+    exclamation = readline.question("enter an exclamation word\n"
     , {limit: String, limitMessage: "Please try again"}); // decision 7 - user enters string //???????????????WHY AREN'T YOU UPDATING???????????????????//
     console.log(`
     ${exclamation}! "You're just in time for dinner. Have a seat."`);
@@ -384,12 +376,9 @@ You nod slowly, in shocked at how real everything looks.`);
 //////////////////////////// Start Game ////////////////////////////////
 
 const startGame = () => {
-  if (
-    readline.keyInYNStrict(`
-Ready to start your adventure?`)
-  ) {
-    console.log(`
-"Great! In your bag, you’ll find a pair of V/R goggles and earbuds. Please, put them on now."`);
+  if (readline.keyInYNStrict(chalk.blue(`Ready to start your adventure?`))) {
+    console.clear();
+    console.log(chalk.blue(`Great!\nIn your bag, you’ll find a pair of V/R goggles and earbuds.\nPlease, put them on now.`));
     readline.keyInPause();
     console.clear();
     gameLoop();
