@@ -19,7 +19,8 @@ let user = readline.keyInYN("Do you wanna play \n")
 const playloop = () => {
     console.log("Sweden", "Canada", "China", "Haiti", "Brazil", "Austria", "Greece", "Chile", "Colombia", "Cuba")
     console.log("Restart-Game")
-    let answer = readline.question(yourVariableHere + " Where would you like to go \n" )  
+    let answer = readline.question(yourVariableHere + " Where would you like to go \n" ) 
+    console.log() 
 
     let choice = "Canada"
     let choice2 = "Haiti"
@@ -67,6 +68,7 @@ const canadaTrip =() =>{
 
     let answ = readline.question(yourVariableHere + " What would you like to know \n" )
     let attractions = ["History", "Traditions", "Religions","Holidays","Cuisine","Place to Go", "Go Home", "Quiz"]
+    console.log()
     
 
     if (answ === attractions[0]){
@@ -94,7 +96,7 @@ const haitiTrip =() =>{
     console.log()
     console.log(attractions.toString())
     let answ = readline.question(yourVariableHere + " What would you like to know \n" )
-    console.log(attractions.toString())
+    console.log()
     if (answ === attractions[0]){
        historyView("Haiti")
     }else if(answ === attractions[1]){
@@ -273,12 +275,13 @@ const gameQuizCand = () => {
     console.log('In what year was the concept of the CN Tower project generated?')
     console.log(2013, 1968, 1972, 1400, 1986)
     let quiz = ['1', '2', '3', '4', '5'];
-    let choi = readline.question(yourVariableHere + " Pick a number \n" )
+    let choi = readline.question(yourVariableHere + " Pick a number between 1 and 5\n" )
+    console.log()
     for(let i = 0; i <= quiz.length; i++){
         if(choi === quiz[0]){
             console.log('Sorry!!!!')
             console.log('Try again')
-            choi = readline.question(yourVariableHere + " Pick a number \n" )
+            choi = readline.question(yourVariableHere + " Pick a number between 1 and 5\n" )
         }else if(choi === quiz[1]){
             console.log('Yes, You Got it')
             console.log('it\'s 1968')
@@ -293,6 +296,31 @@ const gameQuizCand = () => {
 }
 
 const gameQuizHaiti = () =>{
+    console.log('In which city of Haiti is located "The Musee du Pantheon National Haitien?')
+    let quiz = ['Nord', 'Les Cayes', 'Nippes', 'Artibonite', 'Port-au-Prince'];
+    console.log(quiz.toString())
+    let choi = readline.question(yourVariableHere + " Choose a city \n" )
+    console.log()
+    for(let i = 0; i <= quiz.length; i++){
+        if(choi === quiz[0]){
+            console.log('Please ' + yourVariableHere +  ' don\'t guess')
+            choi = readline.question(yourVariableHere + " Choose a city \n" )
+        }else if(choi === quiz[1]){
+            console.log('You can do it better!')
+            console.log('This is your last chance!')
+            console.log('Try again')
+            choi = readline.question(yourVariableHere + " Choose a city \n" )
+        }else if(choi === quiz[4]){
+            console.log('Yes, you got it right!')
+            console.log('Port-au-Prince')
+            console.log('You has earn 20 credit point')
+            console.log('Congrats')
+            startGame()
+        }else{
+            console.log('Go back and read again about Haiti')
+            haitiTrip()
+        }
+    }
 
 }
 
