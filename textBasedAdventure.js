@@ -5,7 +5,7 @@ let nameInput = readline.question("Enter your name: ");
 console.log(`Hello ${nameInput}!  Welcome to my game.`);
 
 const startGame = () => {
-  if (readline.keyInYN("Do you want to play?")) {
+  if (readline.keyInYNStrict("Do you want to play?")) {
     console.log("Thank you for playing 'Choose your adventure' game.");
     console.log(
       "Throughout this game, you will get to make 10 choices to get to the ultimate adventure in the end."
@@ -217,7 +217,7 @@ function inChineseRest() {
     console.log("\n");  
     console.log("You've finished your food. It's time for some sightseeing.");
     let res = readline.keyIn(
-        "Would you go the history museum (m), amusement park (p) or an aquarium (a)? ",
+        "Would you go to the history museum (m), amusement park (p) or an aquarium (a)? ",
         { limit: 'mpa' }).toLowerCase();
         if(res === "m") {
             inMuseum();
@@ -231,7 +231,7 @@ function inChineseRest() {
 function inMuseum () {
     console.log("\n");
     console.log("You are in the line to the history museum. You need to choose the type of ticket you'll purchase. ");
-    let res = readline.keyIn("Would you like basic ticket (b) or pay one price ticket (p)? ", {limit: 'bp'}).toLowerCase();
+    let res = readline.keyIn("Would you like to buy the basic ticket (b) or pay one price ticket (p)? ", {limit: 'bp'}).toLowerCase();
     if(res === "b") {
         console.log("Enjoy!");
         chooseYourWay();
@@ -257,7 +257,7 @@ function inAmusementPark () {
 function inAquarium () {
     console.log("\n");
     console.log("You are in the line to an aquarium. You need to choose the type of ticket you'll purchase. ");
-    let res = readline.keyIn("Would you like basic ticket (b) or pay one price ticket (p)? " , {limit: 'bp'}).toLowerCase();
+    let res = readline.keyIn("Would you like to buy the basic ticket (b) or pay one price ticket (p)? " , {limit: 'bp'}).toLowerCase();
     if(res === "b") {
         console.log("Enjoy!");
         chooseYourWay();
@@ -304,7 +304,7 @@ function chooseYourDoor () {
 
 function playAgain () {
     console.log("\n"); 
-    if(readline.keyInYN("Would you like to play again? ")) {
+    if(readline.keyInYNStrict("Would you like to play again? ")) {
          console.clear()
       walkOrBike()
      } else {
