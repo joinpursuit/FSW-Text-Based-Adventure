@@ -169,7 +169,7 @@ const nick = () => {
 }
 
 const helpNick = () => {
-    console.log(`Nick finds the bottle and asks you to try it.`)
+    console.log(`Nick finds the bottle and asks you to try it. 🌀`)
     let tryIt = readline1.keyInYNStrict(`Do you want to try it?\n`)
     if(tryIt){
         console.log(`You try it and start hallucinating! Oh no! A cop sees you! You're too incoherent to avoid him.`)
