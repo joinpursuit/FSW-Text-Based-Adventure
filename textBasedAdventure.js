@@ -17,10 +17,8 @@ const startGame = () => {
     
         if(readLineSync.keyInYN("spain")) {
             play(secondCountry)
-
         } else if (readLineSync.keyInYN("hungary")) {
             play(thirdCountry)
-
         }else if (readLineSync.keyInYN("mauritius")) {
             play(fourthCountry)
         }else if (readLineSync.keyInYN("kenya")) {
@@ -82,7 +80,7 @@ const play = () => {
   }
 
 }
-const play = (firstCountry) => {
+const playOne = (firstCountry) => {
     
     console.log(" What country is " + "ipnsa")
 
@@ -104,7 +102,7 @@ const play = (firstCountry) => {
 
 const readLineSync = require("readline-sync")
 
-const play = (secondCountry) => {
+const playTwo = (secondCountry) => {
 
     console.log(" What country is " + "ahyngur")
 
@@ -124,7 +122,7 @@ const play = (secondCountry) => {
     }
 }
 
-const play = (thirdCountry) => {
+const playThree = (thirdCountry) => {
 
     console.log(" What country is " + "mtiisuaur")
 
@@ -144,7 +142,7 @@ const play = (thirdCountry) => {
     }
 }
 
-const play = (fourthCountry) => {
+const playFour = (fourthCountry) => {
     
     console.log(" What country is " + "yknae")
 
@@ -164,7 +162,7 @@ const play = (fourthCountry) => {
     }
 }
 
-const play = (fifthCountry) => {
+const playFive = (fifthCountry) => {
     
     console.log(" What country is " + "rqtaa")
 
@@ -186,7 +184,7 @@ const play = (fifthCountry) => {
 }
 
 
-const play = (sixthCountry) => {
+const playSix = (sixthCountry) => {
     
     console.log(" What country is " + "gaposinre")
 
@@ -206,7 +204,7 @@ const play = (sixthCountry) => {
     }
 }
 
-const play = (seventhCountry) => {
+const playSeven = (seventhCountry) => {
     
     console.log(" What country is " + "uatvanu")
 
@@ -224,7 +222,7 @@ const play = (seventhCountry) => {
         leaveGame()
     }
 }
-const play = (eightCountry) => {
+const playEight = (eightCountry) => {
     
     console.log(" What country is " + "hinca")
 
@@ -244,7 +242,7 @@ const play = (eightCountry) => {
     }
 }
 
-const play = (nineCountry) => {
+const playNine = (nineCountry) => {
     console.log(" What country is " + "napaam")
 
     const country = readLinesync.question ("Enter the country. \n")
@@ -263,7 +261,7 @@ const play = (nineCountry) => {
     }
 }
 
-const play = () => {
+const playTen = () => {
     (tenthCountry)
     console.log(" What country is " + "asiunit")
 
@@ -299,10 +297,6 @@ const gameOver = (AroundTheWorld) => {
         console.log("It's a small world we will meet again");
          leaveGame();
     }
-
-    
-
-}
-
-
+}    
+}   
 
