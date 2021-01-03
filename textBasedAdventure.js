@@ -2,7 +2,7 @@ const readline = require('readline-sync')
 
 
 const startGame = () => {
-if(readline.keyInYN("Do you want to play a game?")){
+if(readline.keyInYN(`${nameInput} do you want to play a game?`)){
     playGame()
 }else{
     leaveGame1()
@@ -16,7 +16,7 @@ const leaveGame1 = () => {
 };
 
 const leaveGame2 = () => {
-    console.log('Come back when you\'re 18. See ya later!');
+    console.log(`Come back when you're 18. See ya later ${nameInput}!`);
     process.exit()
 };
 
@@ -25,9 +25,9 @@ const leaveGame3 = () =>{
     process.exit()
 }
 
-const playGame = () => {
 let nameInput = readline.question("What is your name? \n")
-console.log(`Hello ${nameInput}! Welcome to my experiment muahaha!.....I mean...game. \n`);
+const playGame = () => {
+console.log(`Perfect! Welcome to my experiment ${nameInput}.....I mean...game. \n`);
 
 let ageInput = readline.question('How old are you?\n')
     if(ageInput < 18){
@@ -56,9 +56,8 @@ const story = () => {
     console.log('You wake up alone in a room lit with red lighting');
     console.log('As you move to look around, you notice pain in your body');
     console.log('You hear beeping noises all around you');
-    console.log('You look down at your body and see different wires attached to it');
-    console.log('One wire for each organ');
-    console.log('HEART, LUNGS, KIDNEYS. \n');
+    console.log('You look down at your body and see 2 wires attached to it');
+    console.log('One wire for each of your lungs');
     console.log('You must get your organs so you can go home');
     console.log('The building you\'re in only has electricity for a few hours \n');
     console.log('Before you are 2 doors');
@@ -73,18 +72,19 @@ const story = () => {
 const doorChoice = () => {
 console.log('The door you choose holds your destiny \n');
 let doorChoice = readline.question('Which door will you choose, 1 or 2? \n');
-let door1 = '1'
-let door2 = '2'
-if(doorChoice === door1){
+let firstDoor = '1'
+let SecondDoor = '2'
+if(doorChoice = firstDoor){   
     console.log('It smells disgusting');
     console.log('Must be your organs rotting');
     console.log('Hurry Up! \n');
-}else if(doorChoice === door2){
+}else if(doorChoice = SecondDoor){
     console.log('The door behind you is shut')
-    console.log('You never made it to the hospital')
+    console.log('The forest surrounds you on all sides')
+    console.log(`There is nowhere to go ${nameInput}`)
     leaveGame3();
 }else{
-    console.log("That wasn't a choice")
+    console.log(`That wasn't a choice ${nameInput}`)
     console.log('You don\'t listen')
     leaveGame1()
 }
@@ -98,23 +98,93 @@ let l = 'left'
 let move1 = readline.question('Which path will you take, right or left? \n')
     if(move1 === r){
 
-        console.log('I see that you like music');
+        console.log(`I see that you like music ${nameInput}`);
         console.log('Lets hope that love leads to your organs');
         console.log('The music gets louder with every step you take');
+        console.log("But you can't seem to find the source")
     }else if(move1 === l){
         console.log("You're walking the very long and dark hallway");
     }else{
-        console.log('You don\'t listen');
+        console.log(`You don\'t listen ${nameInput}`);
         leaveGame3();
     }
+};
+
+const move2 = () =>{
+console.log("You've reached anoter crossroads");
+console.log('Both paths are dark');
+if(readline.keyInYN('Do you want to keep walking?')){
+    console.log("You're so brave, that takes a lot of guts!")
+}else{
+    console.log(`This game isn't for scary cats like you ${nameInput}`)
+    leaveGame3()
 }
+    let r = 'right'
+    let l = 'left'
+    console.log('ADD') // add sonethibg here
+    let move2 = readline.question('Which path will you take, right or left? \n')
+        if(move2 === r){
+            console.log('It seems you like making the "right" choice');
+            console.log('Lets hope this leads to your organs');
+        }else if(move2 === l){
+            console.log('The floor is sliperry');
+            console.log('The smell of iron consumes you');
+            console.log('Moonlight comes in through the window');
+            console.log('you see a clear bloody glass box');
+            console.log('It\'s your lungs!')
+                if(readline.keyInYN('Are you ready to brake the glass, and get your lungs? \n')){
+                    console.log('You should make better choices')
+                    console.log('You have no object to brake the glass');
+                    console.log('You cut your arm while braking the class and bled out');
+                    leaveGame3()
+                }else{
+                    console.log('Great choice!');
+                    console.log('You need a hammer to brake the glass')
+                }
+        }else{
+            console.log(`You don\'t listen ${nameInput}`);
+            leaveGame3();
+        }
+    };
+
+const action = () =>{
+let choice1 = 'grab'
+let choice2 = 'leave'
+let choice3 = 'swing'
+console.log('The hammer is on the window sill');
+let action = readline.question('Will you grab or leave the hammer? \n')
+if(action === choice1){
+    console.log('If you swing your arm, you\'ll brake the glass')
+    console.log('You\'re so close to survival!');
+action = readline.question('Ready?..... Swing now!\n')
+    if(action === choice3){
+        console.log('congratulations, you\'ve acquired your lungs!');
+        console.log('You\'re determination is truly breathtaking')
+    }else{
+        console.log('You should have swang');
+        leaveGame3()
+    }
+}else if(action === choice2){
+    console.log('You don\'t really make good choices');
+    console.log('Why would you leave?')
+    leaveGame3()
+}else{
+    console.log('You don\'t listen');
+    leaveGame3()
+}
+
+};
+
+
+
 
 startGame();
 howToPlay();
 story();
 doorChoice();
 move1();
-
+move2();
+action();
 // if user types 'help', run the howToPlay function let input = help maybe?
 //  function for movements + things to log in movements 
 //functions for actions ''
