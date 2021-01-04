@@ -1,24 +1,29 @@
 const readline = require('readline-sync');
 
 //testing out import features
-const mapBuild = require('./maps');
-const directions = require('./directions');
+const mapBuild = require('./supportFiles/maps');
+// const directions = require('./directions');
+const thePlayer = require('./supportFiles/playerStats');
 
 // initialize starting location in map
 let initialX;
 let initialY;
-let isNewStart = true;
+let isNewStart;
+let shipRepaired;
 
 const startGame = () => {
+    readline.setDefaultOptions({limit: null});
+    isNewStart = true;
+    shipRepaired = false;
+    console.clear();
     // Set starting location on the map
     initialX = 0;
-    initialY = 2;
+    initialY = 0;
     menuOptions = [];
     menuOptions[1] = "New Game";
     menuOptions[2] = "Load Game(Work in Progress)";
     menu();
 }
-
 const menu = () => {
     // Only place that asks for a number
     while (menuOptions != 0) {
@@ -34,13 +39,16 @@ const menu = () => {
                 }
             case 2:
                 if (isNewStart === true) {
+                    console.clear();
                     console.log('Load not working yet');
                     break;
                 } else {
+                    console.clear();
                     console.log('Save not working yet');
                     break;
                 }
             case 3:
+                console.clear();
                 console.log('Load not working yet');
                 break;
             default:
@@ -48,25 +56,32 @@ const menu = () => {
         }
     }
 }
-
 const quitGame = () => {
     console.log('Have a nice life!');
     process.exit();
 }
-
 const playIntro = () => {
     console.log('\n');
-    console.log('Welcome to the Space Explorer');
+    console.log('Welcome to the Star Wars Explorer');
     console.log('Now let\'s begin.............');
     console.log('......');
     console.log('......');
     console.log('......');
     console.log('You just woken up from a deep sleep after a long hyperspace trip.');
-    console.log(`You are in the ${mapBuild.map[0][2]} you see a door \'north\' that leads to the Conference Room`);
+    console.log('Upon exiting hyperspace you encountered pirates and after a long battle,');
+    console.log('you were able to shoot them down and began to inpect your ship for damage')
+    console.log(`You are in the ${mapBuild.map[initialX][initialY]} you see a door \'south\' that leads to the Conference Room`);
+    console.log('or you can try to \'use\' the navicomputer');
 }
-
 const gameLoop = () => {
+    console.clear();
     if (isNewStart === true) {
+        thePlayer.createCharacter();
+        //calls the stats
+        playerStat = thePlayer.getCharacter();
+        console.clear();
+        console.log(`Your name is ${playerStat.firstName} ${playerStat.lastName}`);
+        console.log(`You're a ${playerStat.class} of the ${playerStat.species} species from the planet ${playerStat.homeWorld}\n`);
         showHelp();
         playIntro();
         isNewStart = false;
@@ -75,62 +90,87 @@ const gameLoop = () => {
         getPlayerLocation(initialX,initialY)
     }
 }
-
 const getPlayerLocation = (initialX, initialY) => { 
     x = initialX;
     y = initialY;
     actions(x,y);
 }
 const cantMove = () => {
+    console.clear();
     cantMoveOutput = console.log('You can\'t go that direction any more.');
+    console.log(`${mapBuild.map[initialX][initialY]}`);
 }
-
-const actions = (x,y) => {
+const actions = () => {
     avaliableActions = ['north', 'south', 'east', 'west', 'ladder', 'exit', 'use', 'map', 'menu', 'help', 'quit']
     readline.setDefaultOptions({limit: avaliableActions,  limitMessage: 'Please use \'north\',\'south\',\'east\',\'west\', or \'help\' for more commands'});
     input = (readline.prompt()).toLowerCase();
     if (input === 'north'){
+        console.clear();
         goNorth(input);
     } else if (input === 'south'){
-        goSouth(input);
+        console.clear();
+        goSouth();
     } else if (input === 'east') {
-        goEast(input);
+        console.clear();
+        goEast();
     } else if (input === 'west') {
-        goWest(input);
+        console.clear();
+        goWest();
     } else if (input === 'ladder') {
-        useLadder(input);
+        console.clear();
+        useLadder();
     } else if (input === 'exit') {
-        exitShip(input);
+        console.clear();
+        exitShip();
     } else if (input === 'use') {
-        useItem(input);
+        // console.clear();
+        useItem();
     } else if (input === 'map') {
-        showMap(input);
+        console.clear();
+        showMap();
+        console.log(`You are currently in the ${mapBuild.map[initialX][initialY]}`);
     } else if (input === 'menu') {
+        console.clear();
         menuOptions[1] = "Resume Game";
         menuOptions[2] = "Save Game(Work in Progress)";
         menuOptions[3] = "Load Game(Work in Progress)";
         menu();
     } else if (input === 'help') {
+        console.clear();
         showHelp();
     } else if (input === 'quit') {
+        console.clear();
         quitGame();
     }
 }
-
-const goNorth = input => {
-    if ((x === 0 && y === 0) || (x === 0 && y === 1) || (x === 0 && y === 2)) {
-        if (x === 0 && y === 1) {
+const goNorth = () => {
+    if ((mapBuild.map[initialX][initialY] === 'Bridge') || (mapBuild.map[initialX][initialY] === 'Conference Room') || (mapBuild.map[initialX][initialY] === 'Captain\'s Quarters')){
+        if (mapBuild.map[initialX][initialY] === 'Conference Room'){
             x;
             y--;
             isOnUpperLv(x,y);
-        } else if (x === 0 && y === 2) {
+        } else if (mapBuild.map[initialX][initialY] === 'Captain\'s Quarters') {
             x;
             y--;
             isOnUpperLv(x,y);
         } else {
             cantMove();
         }
-    } else {
+    }
+    /*
+    // if ((x === 0 && y === 0) || (x === 0 && y === 1) || (x === 0 && y === 2)) {
+    //     if (x === 0 && y === 1) {
+    //         x;
+    //         y--;
+    //         isOnUpperLv(x,y);
+    //     } else if (x === 0 && y === 2) {
+    //         x;
+    //         y--;
+    //         isOnUpperLv(x,y);
+    //     } else {
+    //         cantMove();
+    //     }
+    }*/ else {
         if ((x === 1 && y === 0) || (x === 1 && y === 1) || (x === 1 && y === 2)) {
             cantMove();
         } else {
@@ -168,7 +208,7 @@ const goNorth = input => {
         }
     }
 }
-const goSouth = input => {
+const goSouth = () => {
     if ((x === 0 && y === 0) || (x === 0 && y === 1) || (x === 0 && y === 2)) {
         if (x === 0 && y === 0) {
             x;
@@ -219,7 +259,7 @@ const goSouth = input => {
         }
     }
 }
-const goEast = input => {
+const goEast = () => {
     if (x === 1 && y === 0) {
         // if you are in Med Bay
         // you go east to Main Hold
@@ -235,17 +275,20 @@ const goEast = input => {
         readline.setDefaultOptions({limit: ['cargo', 'elevator', 'storage'], limitMessage: 'Please type \'cargo\', \'elevator\' or \'storage\'.'});
         let choiceDoor = (readline.question('Do you want to enter the Cargo Hold(cargo),Cargo Elevator(elevator), or the Storage Room(storage)?\n')).toLowerCase();
         if (choiceDoor === 'cargo') {
+            console.clear();
             // if you are in Main Hold
             // you go east to Cargo Hold
             x--;
             y++;
             isOnLowerLv(x,y);
         } else if (choiceDoor === 'elevator') {
+            console.clear();
             // if you are in Main Hold
             // you go east to Cargo Elevator
             y++;
             isOnLowerLv(x,y);
         } else if (choiceDoor === 'storage') {
+            console.clear();
             // if you are in Main Hold
             // you go east to Storage Room
             x++;
@@ -256,7 +299,7 @@ const goEast = input => {
         cantMove();
     }
 }
-const goWest = input => {
+const goWest = () => {
     if (x === 1 && y === 2) {
         // if you are in Cargo Hold
         // you go east to Main Hold
@@ -278,12 +321,14 @@ const goWest = input => {
         readline.setDefaultOptions({limit: ['med', 'crew' ],  limitMessage: 'Please type \'med\' or \'crew\'.'});
         let choiceDoor = (readline.question('Do you want to enter the Med Bay(med) or the Crew\'s Quarters(crew)?\n')).toLowerCase();
         if (choiceDoor === 'med') {
+            console.clear();
             // if you are in Main Hold
             // you go east to Med Bay
             x--;
             y--;
             isOnLowerLv(x,y);
         } else if (choiceDoor === 'crew') {
+            console.clear();
             // if you are in Main Hold
             // you go east to Crew Quarters
             y--;
@@ -293,7 +338,7 @@ const goWest = input => {
         cantMove();
     }
 }
-const useLadder = input => {
+const useLadder = () => {
     if (x === 0 && y === 1) {
         x+=2;
         y;
@@ -306,9 +351,9 @@ const useLadder = input => {
         console.log('There is no \'ladder\' in this room');
     }
 }
-const exitShip = input => {
-    if (x === 3 && y === 1) {
-        input = readline.keyInYN('Would you like to play again?');
+const exitShip = () => {
+    if (mapBuild.map[initialX][initialY] === mapBuild.map[3][1]) {
+        input = readline.keyInYNStrict('Would you like to play again?');
         if(!input){
             console.log('Thank you for playing!')
             quitGame();
@@ -319,7 +364,7 @@ const exitShip = input => {
         console.log('You need to head to the ramp to exit ship.');
     }
 }
-const showMap = input => {
+const showMap = () => {
     if ((x === 0 && y === 0) || (x === 0 && y === 1) || (x === 0 && y === 2)) {
         mapBuild.showUpperShipMap();
     } else {
@@ -327,31 +372,51 @@ const showMap = input => {
     }
 }
 const showHelp = () => {
-    console.log('\n');
     console.log('Here is a list of commands you can enter: ')
     console.log(`    Type 'north', 'south', 'east', 'west' to move on the map
     Type 'map' to see the current floor map you are on
     Type 'menu' to pause, save, load or quit the game
     In some areas you may need to perform these actions below inside a particular room: 
-    'ladder', 'exit', 'use'
-    Only use 'quit' if you wish to end the game without completing it.`);
+    'ladder', 'exit', 'use'`);
 }
 const useItem = () => {
-    console.log('Not yet in the game');
+    if (mapBuild.map[initialX][initialY] === mapBuild.map[0][0]) {
+        if (shipRepaired === true){
+            console.log('You used the navicomputer');
+            input = readline.keyInYNStrict('Would you like to play again?');
+            if(!input){
+                console.log('Thank you for playing!');
+                quitGame();
+            }else{
+                startGame();
+            }
+        } else {
+            console.log(`You still need to head to the ${mapBuild.map[1][1]} to fix the hyperdrive`);
+        }
+    } else if (mapBuild.map[initialX][initialY] === mapBuild.map[1][1]) { 
+        if (shipRepaired === false) {
+            console.log('You repaired the hyperdrive.')
+            shipRepaired = true;
+        } else {
+            console.log('The hyperdrive is working properly.')
+        }
+    } else {
+        console.log('Nothing is in this room you can use.')
+    }
 }
 const isOnUpperLv = (x,y) => {
-    if (y === 0) {
-        console.log(`You are in the ${mapBuild.map[0][0]} you see a door \'south\' that leads to the ${mapBuild.map[0][1]}`);
+    if (x === 0 && y === 0) {
+        console.log(`You are in the ${mapBuild.map[0][0]} you see a door 'south' that leads to the ${mapBuild.map[0][1]} or you can 'use' the Navicomputer to explore the galaxy`);
         initialX = x;
         initialY = y;
         getPlayerLocation(initialX,initialY);
-    } else if (y === 1) {
+    } else if (x === 0 && y === 1) {
         console.log(`You are in the ${mapBuild.map[0][1]} you see a door \'north\' to the ${mapBuild.map[0][0]},`)
         console.log(`a door \'south\' to the ${mapBuild.map[0][2]} and a \'ladder\' leading down to the lower deck`);
         initialX = x;
         initialY = y;
         getPlayerLocation(initialX,initialY);
-    } else if (y === 2) {
+    } else if (x === 0 && y === 2) {
         console.log(`You are in the ${mapBuild.map[0][2]} you see a door \'north\' that leads to the ${mapBuild.map[0][1]}`);
         initialX = x;
         initialY = y;
@@ -366,7 +431,12 @@ and a door 'east' to the ${mapBuild.map[2][1]}`);
         initialY = y;
         getPlayerLocation(initialX,initialY);
     } else if (x === 1 && y === 1) {
-        console.log(`You are in the ${mapBuild.map[1][1]} you see a door 'south' to the ${mapBuild.map[2][1]}`);
+        if (shipRepaired === false) {
+            console.log(`You are in the ${mapBuild.map[1][1]} you see a door 'south' to the ${mapBuild.map[2][1]}`);
+            console.log(`You can 'use' the hyperdrive to repair it`);
+        } else {
+            console.log(`You are in the ${mapBuild.map[1][1]} you see a door 'south' to the ${mapBuild.map[2][1]}`);
+        }
         initialX = x;
         initialY = y;
         getPlayerLocation(initialX,initialY);
@@ -385,7 +455,8 @@ a door 'south' to the ${mapBuild.map[3][0]}, and a door 'east' to the ${mapBuild
     } else if (x === 2 && y === 1) {
         console.log(`You are in the ${mapBuild.map[2][1]} there is a door 'north' to the Engine Room, \n` +
         '2 doors that head \'west\' to the Med Bay or Crew\'s Quarters, \n' + 
-        '3 doors that head \'east\' to the Cargo Hold, Cargo Elevator, or Storage Room \n' +
+        '3 doors that head \'east\' to the Cargo Hold, Cargo Elevator, or Storage Room, \n' +
+        'a \'ladder\' that leads up to the upper deck \n' +
         'and a Ramp \'south\' leads to outside the ship');
         initialX = x;
         initialY = y;
@@ -417,11 +488,3 @@ a door 'west' to the ${mapBuild.map[2][1]}`);
 }
 
 startGame();
-
-// testing out export features
-module.exports = {
-    gameLoop,
-    getPlayerName
-};
-
-// Need Navicomputer in Bridge

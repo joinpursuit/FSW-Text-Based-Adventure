@@ -1,10 +1,34 @@
 const readline = require('readline-sync');
 const mapBuild = require('./maps');
 
+let playerCharacter = {
+    firstName: '',
+    lastName: '',
+    species: '',
+    homeWorld: '',
+    class: ''
+};
+let classList;
 const createCharacter = () => {
-    let fName = readline.question('What would you like to name your character\'s first name?\n');
-    let lName = readline.question('What would you like to name your character\'s last name?\n');
+    let fName = readline.question('What would you like to name your character\'s first name?\n', {defaultInput: 'Zlek'});
+    let lName = readline.question('What would you like to name your character\'s last name?\n', {defaultInput: 'Oro'});
+    console.clear();
 
+    playerSpecies();
+    console.clear();
+    
+    classSelection();
+    console.clear();
+
+    playerCharacter = {
+        firstName: fName,
+        lastName: lName,
+        species: choiceSpecies[selectedSpecies],
+        homeWorld: homePlanet,
+        class: classList[selectedClass]
+    };
+}
+const playerSpecies = () => {
     choiceSpecies = [];
     choiceSpecies[0] = 'Bothan';
     choiceSpecies[1] = 'Chiss';
@@ -24,9 +48,9 @@ const createCharacter = () => {
     choiceSpecies[15] = 'Ugnaught';
     choiceSpecies[16] = 'Weequay';
     choiceSpecies[17] = 'Zabrak';
-    selectedSpecies = readline.keyInSelect(choiceSpecies, 'Select your species');
+    selectedSpecies = readline.keyInSelect( choiceSpecies, 'Select your species' );
 
-    switch(choiceSpecies[selectedSpecies]){
+    switch ( choiceSpecies[selectedSpecies] ) {
         case 'Bothan':
             // homePlanet = 'Bothawui';
             homePlanet = mapBuild.galaxyMap[0][1];
@@ -102,18 +126,32 @@ const createCharacter = () => {
         default:
             'Help'
     }
-
-    let playerCharacter = {
-        firstName: fName,
-        lastName: lName,
-        species: choiceSpecies[selectedSpecies],
-        homeWorld: homePlanet
-    };
-
-    console.log(playerCharacter.firstName);
-    console.log(playerCharacter.lastName);
-    console.log(playerCharacter.species);
-    console.log(playerCharacter.homeWorld);
+    return selectedSpecies;
 }
+const classSelection = () => {
+    classList = [];
+    classList[0] = 'Beast Master';
+    classList[1] = 'Bounty Hunter';
+    classList[2] = 'Chef';
+    classList[3] = 'Commando';
+    classList[4] = 'Craftsman';
+    classList[5] = 'Entertainer';
+    classList[6] = 'Jedi';
+    classList[7] = 'Medic';
+    classList[8] = 'Officer';
+    classList[9] = 'Politician';
+    classList[10] = 'Ranger';
+    classList[11] = 'Smuggler';
+    classList[12] = 'Spy';
+    classList[13] = 'Trader';
+    return selectedClass = readline.keyInSelect(classList, 'Select your starting class');
+}
+const getCharacter = () => {
+    return playerCharacter;
+}
+// console.log(playerCharacter.class)
 
-createCharacter();
+module.exports = {
+    createCharacter,
+    getCharacter,
+};

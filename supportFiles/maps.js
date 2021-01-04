@@ -1,5 +1,4 @@
 let map = [];
-
 const createShip = () => {
     for (let x = 0; x < 4; x++) {
     				map[x] = [];
@@ -8,11 +7,9 @@ const createShip = () => {
         }
     }
 }
-
 const addRoomShip = (x, y) => {
     map[x][y] = roomShip(x,y);
 }
-
 const roomShip = (x,y) => {
     // This is to name the rooms
     if(x === 0 && y === 0){
@@ -52,7 +49,6 @@ const roomShip = (x,y) => {
         return 'Storage Room';
     } 
 }
-
 const showUpperShipMap = () => {
     console.log(`|------------------|`);
     console.log(`|      ${map[0][0]}      |`);
@@ -71,9 +67,7 @@ const showLowerShipMap = () => {
     console.log(`|   ${map[3][0]}    |    ${map[3][1]}     |  ${map[3][2]}  |`);
     console.log(`|-----------------|------/ -----|----------------|`);
 }
-
 let galaxyMap = []
-
 const createGalaxyMap = () => {
     for (let x = 0; x < 6; x++) {
     				galaxyMap[x] = [];
@@ -82,11 +76,9 @@ const createGalaxyMap = () => {
         }
     }
 }
-
 const addMapCoords = (x, y) => {
     galaxyMap[x][y] = mapCoords(x,y);
 }
-
 const mapCoords = (x,y) => {
     // This is to name the rooms
     if(x === 0 && y === 0){
@@ -198,13 +190,11 @@ const mapCoords = (x,y) => {
         return 'Tython';
     } 
 }
-
 const showGalaxyMap = () => {
     console.log('|-------------------------------------------------|');
     console.log('|                                                 |');
     console.log('|-------------------------------------------------|');
 }
-
 createGalaxyMap();
 // console.log(galaxyMap);
 createShip();
@@ -218,6 +208,7 @@ module.exports = {
     createGalaxyMap,
     addMapCoords,
     mapCoords,
+    showGalaxyMap,
     map,
     galaxyMap,
 };
