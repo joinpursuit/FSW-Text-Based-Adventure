@@ -84,7 +84,7 @@ startTitle("Silver Web", function (err, data) {
  
        if (index == [0]) {
          console.log(
-           "\nYour message has been intercepted." + chalk.redBright("You've been compromised.") + " They won't let you out alive."
+           "\nYour message has been intercepted. " + chalk.redBright("You've been compromised.") + " They won't let you out alive."
          );
  
          startLoop()
@@ -113,7 +113,9 @@ startTitle("Silver Web", function (err, data) {
            }
          };
          userAnswer();
-       } 
+      } else if (index == [-1]) {
+        evacuate()
+      } 
      };
  
      const play = () => {
@@ -182,9 +184,11 @@ startTitle("Silver Web", function (err, data) {
            console.log(
              chalk.rgb(255, 136, 0).bold(`\n\n\t${instrumentArr[3]}` + ` has been chosen. The subject begs not to be torchered ::You look away:: `
            ));
+         } else if (index2 == [-1]) {
+           evacuate();
          }
        }
-       if (index == [1]) {
+       else if (index == [1]) {
          console.log(
            chalk.magenta("\n\tYou open a new terminal tab, but it appears someone has gained control of your command line"
          ));
@@ -199,8 +203,12 @@ startTitle("Silver Web", function (err, data) {
            startLoop();
          } else if (streamChoice == [1]) {
            choiceTwo();
+         } else if (streamChoice == [-1]) {
+           evacuate();
          }
-       } 
+       } else if (index == [-1]) {
+         evacuate();
+       }
  
      };
 
@@ -227,18 +235,24 @@ startTitle("Silver Web", function (err, data) {
                if (reboot == [0]) {
                   choiceThree()
                } else if (reboot == [1]) {
-                  startLoop()
+                  startLoop();
+               } else if (reboot == [-1]) {
+                 evacuate();
                }
             }
             checkPoint()
          } else if (auctionAnswer == [1]) {
             console.log(`Okay. Great to have you. Welcome to "The auction". Next event is in two minutes.`)
+         } else if (auctionAnswer == [-1]) {
+           evacuate();
          }
 
       } else if (afterAuctionDecision == [1]) {
-         console.log('\n\t"What is this?" ::You raise suspicion:: \n\nThe administrator comes into the chat and says: \n\n\t"All participants of the auction has been thoroughly vetted and invited personally. Unauthorized particiants will be removed from the chat." There\'s a knock on your door.' + chalk.redBright( 'you\'ve been compromised'))
+         console.log('\n\t"What is this?" ::You raise suspicion:: \n\n\tThe administrator comes into the chat and says: \n\n\t"All participants of the auction has been thoroughly vetted and invited personally. Unauthorized particiants will be removed from the chat." \n\n\t::There\'s a knock on your door::' + chalk.redBright( ' \n\n\tYou\'ve been compromised'))
          startLoop();
-      }
+      } else if (afterAuctionDecision == [-1]) {
+        evacuate();
+      } 
   }
 
   choiceThree();
@@ -255,7 +269,7 @@ startTitle("Silver Web", function (err, data) {
          let questTwo = Math.floor(Math.random() * 20 + 1);
  
          let solution = questOne * questTwo;
-         let probSolve = rls.question(chalk.magenta(`What is ${questOne} * ${questTwo}: \n`));
+         let probSolve = rls.question(chalk.magenta(`\nWhat is ${questOne} * ${questTwo}: \n`));
 
          if (probSolve == solution) {
             console.log(`\nThe agent tells you in another minute the event will start. \n"I've sent you the code for the shutdown. When it's your turn to bid you must input the code and it will shutdown the auction permanently. \nThe key is that you have to do it at the correct time, if not i'll be compromised."`)
@@ -288,6 +302,8 @@ startTitle("Silver Web", function (err, data) {
             checkPoint();
          }
 
+      } else if (responseAnswer == [-1]) {
+        evacuate();
       }
   }
   
@@ -331,10 +347,14 @@ startTitle("Silver Web", function (err, data) {
            startLoop();
         } else if (finalChoiceAnswer == [1]) {
            console.log(`Feed goes live and on the screen reads: \n\n\tWe here at the auction sincerely apologize for any inconveniences. We are taking time away to restructure and reorganize. \n\tWe want to assure you that all sensitive materials remain well protected and that no participant is in any actual danger of legal action. \n\tWe want to assure our participants that great lengths have been taken to ensure that this does not occur again, the chat reads: Stay tuned for our next event... (Your camera turns on) ::You see yourself in your room:: "We are looking forward to seeing you there."`)
+           startLoop();
         }
      } else if (timeChoiceAnswer == [2]) {
         console.log('\n\nAgents storm the room. A bloody shoot out insues. There is an explosion and the feed goes dark. After several moments a message appears in the group chat.')
       console.log(`Feed goes live and on the screen reads: \n\n\tWe here at the auction sincerely apologize for any inconveniences. We are taking time away to restructure and reorganize. \n\tWe want to assure you that all sensitive materials remain well protected. The events of today, though tragic proved enlightening. There have been several miscalculations made on our part and for that we apologize. \n\tWe want to assure our participants that great lengths have been taken to ensure that this does not occur again, the chat reads: Stay tuned for our next event... (Your camera turns on) ::You see yourself in your room:: "We are looking forward to seeing you there."`)
+      startLoop();
+     } else if (timeChoiceAnswer == [-1]) {
+       evacuate();
      }
   }
  
