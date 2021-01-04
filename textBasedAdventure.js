@@ -20,12 +20,14 @@ let user = readline.keyInYN("Do you wanna play \n")
 const playloop = () => {
     console.log("Sweden", "Canada", "China", "Haiti", "Brazil", "Austria", "Greece", "Chile", "Colombia", "Cuba")
     console.log("Restart-Game")
+    console.log("Start Again")
     let answer = readline.question(yourVariableHere + " Where would you like to go \n" ) 
     console.log() 
 
     let choice = "Canada"
     let choice2 = "Haiti"
     let choice3 = "Restart-Game"
+    let choice4 = "Start Again"
     if(answer === choice) {
         console.log("Amazing" + " Let's go to Canada")
          canadaTrip()
@@ -35,8 +37,10 @@ const playloop = () => {
         }else if(answer === choice3){
             yourVariableHere = readline.question("Enter your name: \n ")
             startGame() 
+        }else if(answer === choice4){
+             startGame()
         }else{
-             console.log("Sorry " + yourVariableHere)
+            console.log("Sorry " + yourVariableHere)
              console.log("Unfortunally we don't have more tickets" + " " + answer )
              console.log("However we still have others destinations")
               playloop()
