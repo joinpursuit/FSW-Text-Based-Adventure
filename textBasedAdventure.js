@@ -1,21 +1,78 @@
 const readline1 = require("readline-sync");
 
-let nameInput = readline1.question("Enter your name: ", {limit: String});
-let questionCounter = 15;
-let correctAnswer = 0;
-questionCounter--;
-correctAnswer++;
+let nameInput = readline1.question("Enter your name: ", { limit: String });
 let score = 0;
 
-// const startGame = () => {
+const restart = () => {
+  console.log(`Hope you enjoyed this game ${nameInput}. \n`);
+  if (readline1.keyInYNStrict(`Care to play again? `)) {
+    console.clear();
+    console.log(`Weclome back ${nameInput}. Let's go! \n \n`);
+    score = 0;
+    guessCount = 5;
+    question1();
+  } else {
+    leaveGame();
+  }
+};
+
+// const leaveGame = () => {
+//   console.log("Sad to see you go! Ta ta!");
+//   process.exit();
 // };
 
+// console.log(
+//     `Hello ${nameInput}!  Welcome to "Beverly Hills, What A Thrill!"   `
+//   );
+//   if (readline1.keyInYNStrict(`Do you want to know more?   `)) {
+//     introSection();
+//   } else {
+//     leaveGame();
+//   }
+
 const scoreTally = () => {
-  console.log(`Your current score is ${score}. \n`);
-  console.log(`Your current score is ${score}. \n`);
-  // let tally = score.console.log(score); // change this array into a string and then into numbers and then add to give thse score!!
-  // let score = "";  //need to
+  let patchOptions = [
+    "Grooming",
+    "Jewelry appraisal",
+    "Dance",
+    "CPR",
+    "Community Service",
+    "Divorce Court",
+    "International Affairs",
+    "Sushi Appreciation",
+    "Fire Prevention",
+    "Gardening with Glamour",
+  ];
+  let newArr = [];
+
+  for (let i = 0; i < score; i++) {
+    newArr.push(patchOptions[i]);
+  }
+  console.log(
+    `Your current score is ${score}. \n CONGRATULATIONS!!  You've earned all of these patches! ${newArr.join(
+      ", "
+    )} \n Be sure to decorate your sash! \n \n`
+  );
+  restart();
 };
+
+// const question8 = () => {
+// let patches = [];
+// // let i = 0
+// // let choosePatch = ""
+
+// // console.table(patchOptions, {index: "Key", values: "Choose your patches"});
+// let sash = readline1.keyInSelect(patchOptions, {index: "Key", values: "Choose your patches"});
+
+// for(let i = 0; patches.length < 4; sash++) {
+//     if (sash <= 9) {
+//         patches.push(sash)
+//     }
+//     return console.log(`Congratulations! We're so happy to present ${name} with the ${patches} patches`);
+// }
+
+// console.table(patchOptions);
+// }
 
 const question7 = () => {
   if (
@@ -26,7 +83,9 @@ const question7 = () => {
     console.log("That's right!");
     score += 1;
     console.clear();
+    // question8();
     scoreTally();
+    // newArr.push(patchOptions[1]);
   } else {
     console.log("Try again.");
     question7();
@@ -45,12 +104,11 @@ const question6 = () => {
     .toLowerCase();
 
   if (firstAppearQ === "carla") {
-    console.log(`That's right!`);
+    console.log(`That's right! \n`);
     console.log(
-      `Guigino was 16 and told the director after filming had already began.`
+      `Guigino was 16 and told the director after filming had already began. \n \n`
     );
     score += 1;
-    console.clear();
     question7();
   } else {
     console.clear();
@@ -59,26 +117,33 @@ const question6 = () => {
   }
 };
 
+const question5a = () => {
+  console.log(`For your last chance... \n`);
+  console.log("*Here's a hint* ... think of LeBron James' age \n");
+  let guessFivea = readline1.questionInt(
+    "How many patches did the girls earn? \n"
+  );
+  if (guessFivea === 36) {
+    console.log("That's right! And it only took them 3 weeks to do it!");
+    score += 1;
+    console.clear();
+    question6();
+  } else {
+    console.log(
+      "Oops, looks like you didn't get this one. No worries. Let's move on. \n \n"
+    );
+    question6();
+  }
+};
+
 let guessCount = 5;
 const question5 = () => {
-  console.log("Question 5: ");
-  console.log(`Now - you've got ${guessCount} guesses to figure out how many patches the girls earned. \n`);
-let guess = readline1.questionInt("How many patches did the girls earn? \n");
-  
-  
-  
-  
-  
-  
-  
-  
-  for (let guessCount = 5; guessCount > 1; guessCount--) {
-    console.log(
-      `Now - you've got ${guessCount} guesses to figure out how many patches the girls earned. \n`
-    );
-    let guess = readline1.questionInt(
-      "How many patches did the girls earn? \n"
-    );
+  console.log(
+    `Now - you've got ${guessCount} guesses to figure out how many patches the girls earned. \n`
+  );
+  let guess = readline1.questionInt("How many patches did the girls earn? \n");
+
+  if (guessCount >= 1.9) {
     if (guess === 36) {
       console.log("That's right! And it only took them 3 weeks to do it!");
       score += 1;
@@ -86,32 +151,19 @@ let guess = readline1.questionInt("How many patches did the girls earn? \n");
       question6();
     } else if (guess > 36) {
       console.log("Your guess is too high");
+      guessCount--;
+      question5();
     } else if (guess < 36) {
       console.log("Your guess is too low");
+      guessCount--;
+      question5();
     }
-  }
-  while ((guessCount = 1)) {
+  } else if (guessCount < 1.9) {
     console.clear();
-    console.log(`For your last chance... \n`);
-    console.log("*Here's a hint* ... think of LeBron James' age \n");
-    {
-      let guess = readline1.questionInt(
-        "How many patches did the girls earn? \n"
-      );
-      if (guess === 36) {
-        console.log(
-          "That's right! And it only took them 3 weeks to do it! \n \n "
-        );
-        score += 1;
-        console.clear();
-        question6();
-      } else {
-        console.log(
-          "Oops, looks like you didn't get this one. No worries. Let's move on. \n \n"
-        );
-        question6();
-      }
-    }
+    question5a();
+  } else {
+    console.clear();
+    question5();
   }
 };
 
@@ -135,6 +187,7 @@ const question4 = () => {
     console.log(`You're doing a great job. \n \n`);
     score += 1;
     console.clear();
+    console.log(`Question 5: `);
     question5();
   } else if (cameoAppear === "jane fonda") {
     console.clear();
@@ -239,8 +292,8 @@ const question2 = () => {
 };
 
 const question1 = () => {
-  let correctAnswer = 0;
-  let questionCounter = 15;
+  //   let correctAnswer = 0;
+  //   let questionCounter = 15;
   if (
     readline1.keyInYN(
       "Question 1: Leading lady, Phyllis Nefler claims to have a 'black belt in shopping'. \n Does she?  "
@@ -258,7 +311,7 @@ const question1 = () => {
 };
 
 const leaveGame = () => {
-  console.log("Sad to see you go! Ta ta!");
+  console.log("Sad to see you go! Ta ta! \n");
   process.exit();
 };
 
@@ -284,9 +337,9 @@ const introSection = () => {
 };
 
 console.log(
-  `Hello ${nameInput}!  Welcome to "Beverly Hills, What A Thrill!"   `
+  `Hello ${nameInput}!  Welcome to "Beverly Hills, What A Thrill!" \n  `
 );
-if (readline1.keyInYNStrict(`Do you want to know more?   `)) {
+if (readline1.keyInYNStrict(`Do you want to know more? \n  `)) {
   introSection();
 } else {
   leaveGame();
