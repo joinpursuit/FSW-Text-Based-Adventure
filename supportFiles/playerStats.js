@@ -2,11 +2,11 @@ const readline = require('readline-sync');
 const mapBuild = require('./maps');
 
 let playerCharacter = {
-    firstName: '',
-    lastName: '',
-    species: '',
-    homeWorld: '',
-    class: ''
+    firstName: 'ID-10T',
+    lastName: 'ID-10T',
+    species: 'ID-10T',
+    homeWorld: 'ID-10T',
+    class: 'ID-10T'
 };
 let classList;
 const createCharacter = () => {
@@ -48,7 +48,7 @@ const playerSpecies = () => {
     choiceSpecies[15] = 'Ugnaught';
     choiceSpecies[16] = 'Weequay';
     choiceSpecies[17] = 'Zabrak';
-    selectedSpecies = readline.keyInSelect( choiceSpecies, 'Select your species' );
+    selectedSpecies = readline.keyInSelect( choiceSpecies, 'Select your species', {cancel: 'Please choose a species from above'});
 
     switch ( choiceSpecies[selectedSpecies] ) {
         case 'Bothan':
@@ -124,7 +124,10 @@ const playerSpecies = () => {
             homePlanet = mapBuild.galaxyMap[2][1];
             break;
         default:
-            'Help'
+            console.clear();
+            console.log('You need to choice a species');
+            playerSpecies();
+            // homePlanet = 'ID-10T';
     }
     return selectedSpecies;
 }
@@ -144,11 +147,21 @@ const classSelection = () => {
     classList[11] = 'Smuggler';
     classList[12] = 'Spy';
     classList[13] = 'Trader';
-    return selectedClass = readline.keyInSelect(classList, 'Select your starting class');
+    selectedClass = readline.keyInSelect(classList, 'Select your starting class', {cancel: 'Please choose a class from above'});
+
+    if (selectedClass !== -1) {
+        return selectedClass;
+    } else {
+        console.clear();
+        console.log('You need to choice a class');
+        classSelection();
+    }
 }
 const getCharacter = () => {
     return playerCharacter;
 }
+
+// createCharacter();
 // console.log(playerCharacter.class)
 
 module.exports = {
