@@ -2,6 +2,16 @@ const readline = require('readline-sync');
 
 const chalk = require('chalk');
 
+const figlet = require('figlet')
+
+console.log(figlet.textSync('     FLAME RAGNAROK', {
+    font: 'Fire Font-k',
+    horizontalLayout: 'default',
+    verticalLayout: 'default',
+    width: 60,
+    whitespaceBreak: true
+}))
+
 let nameInput = readline.question(chalk.bold.yellowBright("Enter your name: "));
 
 console.log(chalk.bold.red(`Hello ` + chalk.bold.yellowBright(nameInput) + `! ` + `Welcome to The Flame Of Ragnarok.`));
@@ -116,7 +126,7 @@ console.log("After a few minutes you have reached The Thrudheim Caves \n")
 console.log("Thor stops and seems confused and says " + nameInput + " these four paths weren't here before, \n")
 console.log("You see " + nameInput + " why I called you here now? It's my brother Loki he is up to his no good deeds again.... \n")
 console.log("And it seems like this time he has gone too far!!! \n")
-console.log(nameInput + " It's up to you to stop him or Ragnorak will spread throughout Asgard and then to the rest of the multi-verse!!! \n")
+console.log(nameInput + " It's up to you to stop him or Ragnarok will spread throughout Asgard and then to the rest of the multi-verse!!! \n")
 console.log("He will be in the Cave of Time find him and stop him Young God!!!!!! \n")
 let path = readline.question("Which of the four paths would you like to take: path (1), path (2), path (3), or path (4); (Choose a number) \n")
 if(path === "1"){
@@ -437,26 +447,26 @@ function finalShowDown(){
     setTimeout(() => {  console.log("Just like that old wizard transported you outside The Cave of Time!!!!! \n"); }, 5000)
     setTimeout(() => {  console.log("Congrats!!!! " + nameInput + " I knew you can do it said Thor, by the way that old wizard is my father Odin himself!! \n"); }, 7000)
     setTimeout(() => {  console.log("He wanted to make sure you are worthy, he has done something similar to me in the past as well! \n"); }, 11000)
-    setTimeout(() => {  console.log("Now that you have Grungnir you have to throw it in the Flame of Ragnorak while I take care of my brother Loki... \n"); }, 15000)
-    setTimeout(() => { if(readline.keyInYN("Are you ready to stop Ragnorak? \n")){
+    setTimeout(() => {  console.log("Now that you have Gungnir you have to throw it in the Flame of Ragnarok while I take care of my brother Loki... \n"); }, 15000)
+    setTimeout(() => { if(readline.keyInYN("Are you ready to stop Ragnarok? \n")){
     console.log("With all your might during the epic fight between Thor and Loki..")
-    console.log("You threw Grungnir into the Flame of Ragnorak and saved the multiverse...")
+    console.log("You threw Gungnir into the Flame of Ragnarok and saved the multiverse...")
     console.log("Congratulations " + nameInput + " You beat the game!!!")
     restartGame()
     }
     else{
         console.log("You get caught in the crossfire between Thor and Loki!!!")
         console.log("The Staff of Odin flies from your hand, but you're not going to give up.")
-        console.log("With every ounce of energy you have left you get up and start looking for Grungnir.... \n")
+        console.log("With every ounce of energy you have left you get up and start looking for Gungnir.... \n")
         finalThrowItsAllOrNothing()
     }
  }, 19000)
 }
 
 function finalThrowItsAllOrNothing () {
-    console.log("After what seemed like an eternity you finally find Grungnir... \n")
+    console.log("After what seemed like an eternity you finally find Gungnir... \n")
     console.log("Asgard looks like a dead planet now due to Loki's actions, it was once a very beautiful place!!! \n")
-    setTimeout(() => {  console.log("It is now or never!! You take Grungnir and throw it with all your might right in the center of The Flame of Ragnorak!!! \n")}, 8000)
+    setTimeout(() => {  console.log("It is now or never!! You take Gungnir and throw it with all your might right in the center of The Flame of Ragnarok!!! \n")}, 8000)
     setTimeout(() => {  console.log("Congratulations " + nameInput + " You saved the multiverse and beat the game!!!! \n"); }, 14000)
     setTimeout(() => {  restartGame(); }, 17000)
 }
