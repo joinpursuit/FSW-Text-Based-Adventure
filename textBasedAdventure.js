@@ -37,7 +37,7 @@ const playloop = () => {
             startGame() 
         }else{
              console.log("Sorry " + yourVariableHere)
-             console.log("Unfortunally we don't have more tickets" )
+             console.log("Unfortunally we don't have more tickets" + " " + answer )
              console.log("However we still have others destinations")
               playloop()
         }
@@ -286,7 +286,7 @@ const gameQuizCand = () => {
         }else if(choi === quiz[1]){
             console.log('Yes, You Got it')
             console.log('it\'s 1968')
-            console.log('You has earn 20 credit point')
+            console.log('You have earned 20 point')
             console.log('Congrats')
             startGame()
         }else{
@@ -314,7 +314,7 @@ const gameQuizHaiti = () =>{
         }else if(choi === quiz[4]){
             console.log('Yes, you got it right!')
             console.log('Port-au-Prince')
-            console.log('You has earn 20 credit point')
+            console.log('You have earned 20 point')
             console.log('Congrats')
             startGame()
         }else{
