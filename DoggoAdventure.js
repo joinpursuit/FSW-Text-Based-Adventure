@@ -12,6 +12,8 @@ const answerTwo = () => {
     let responseTwo = readline.question("What do you do?\n")
     if (responseTwo.toLowerCase() === "walk closer"){
         console.log(chalk.blue("You move closer to the cage and look inside"))
+    } else if (responseTwo.toLowerCase() === "restart"){
+        game()
     } else {
         console.log(chalk.blue("try 'walk closer'"))
         answerTwo()
@@ -77,16 +79,9 @@ const answerSeven = () => {
     console.log(chalk.blue("He drops the toy at your feet and sits with a wagging tail"))
     console.log(chalk.blue("You look around and see a small bowl of treats."))
     console.log(chalk.blue("You decide to give him one"))
-    
-    let responseSeven = readline.question("How many do you want to give him?\n")
-    let i = []
-    for (let i = 0; i < 5 ; i++)
-    if ( i > 5 ) {
-        console.log("That might seem a bit much...let's try again!")
-        answerSeven()
-    }
-            else (i < 5 )
-            console.log("You give " + [i] + " to Pupperoni " )
+    let treatCount = [1 , 2 , 3 ]
+    let responseSeven = readline.keyInSelect(treatCount,"How many treats?\n")
+    console.log("You give " + treatCount[responseSeven] + " to Pupperoni " )
     
 }
 
@@ -141,36 +136,43 @@ const answerTen = () => {
         console.log(`"C'mon boy, let's head home!"`)
 
 }
-
 const restartGame = () => {
     let restart = readline.keyInYN("Would you like to play again?\n")
         if (restart){
-            startGame()
+            game()
         }
         else
         quitGame()
-
-
-let nameInput = readline.question("Enter your name: ")
-
-console.log(`Hello ${nameInput}!  Welcome to my game.`)
-let answer = readline.keyInYN ("Would you like to play?")
-if (answer) {
-    console.log(chalk.blue("You will be going on a fun adventure...by ADOPTING A PUPPY"))
-    startGame()
-    answerTwo()
-    answerThree()
-    answerFour()
-    answerFive()
-    answerSix()
-    answerSeven()
-    answerEight()
-    answerNine()
-    answerTen()
-    restartGame()
-
-} else {
-    quitGame()
+    }       
+const game = () => {
+    let nameInput = readline.question("Enter your name: ")
+    console.log(`Hello ${nameInput}!  Welcome to my game.`)
+    let answer = readline.keyInYN ("Would you like to play?")
+    if (answer) {
+        console.log(chalk.blue("You will be going on a fun adventure...by ADOPTING A PUPPY"))
+        startGame()
+        answerTwo()
+        answerThree()
+        answerFour()
+        answerFive()
+        answerSix()
+        answerSeven()
+        answerEight()
+        answerNine()
+        answerTen()
+        restartGame()
+    } else {
+        quitGame()
+    }
 }
-}
-
+game()
+//I would like to dedicate this first project to my first dog, Turbo
+//He lived to the golden age of 13. He was also an osteosarcoma survivor
+//He lived for a year with a leg amputation and was doing great.
+//On August 6, 2020, He was taken from me in a hit and run accident.
+//I had also found a dog that I wanted to adopt, also an amputee, but was denied
+//because I have a toddler. He is actually one of my
+//biggest reasons for applying to Pursuit
+//This game is just an "what if?" and hopefully,
+//I can adopt in the future. Thank you guys for taking the time to play this.
+//All constructive criticism is welcome. :)
