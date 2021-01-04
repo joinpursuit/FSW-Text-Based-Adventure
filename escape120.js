@@ -6,14 +6,6 @@ const quit3 = () => {
   process.exit();
 };
 
-const tryAgain = () => {
-  if (readLineSync.keyInYN("Would you like to try again?")) {
-    startGame();
-  } else {
-    quit3();
-  }
-};
-///////////////////////////////////////////////////////////QUITS
 const quit2 = () => {
   console.clear();
   console.log(
@@ -37,10 +29,36 @@ const gameOver = () => {
   tryAgain();
 };
 
-/////////////////////////////////////////////GAME FUNCTIONS
+/////////////////////////////////////////////VARIABLES
 let vaccs = 3;
 let input = "";
 let input2 = "";
+let input3 = "";
+let gunChoice = 0;
+/////////////////////////////////////////////GAME FUNCTIONS
+
+
+const tryAgain = () => {
+  this,vaccs = 3
+  if (readLineSync.keyInYN("Would you like to try again?")) {
+    startGame();
+  } else {
+    quit3();
+  }
+};
+
+const tryAgain2 = () => {
+  this,vaccs = 3
+  if (readLineSync.keyInYN("Would you like to play again?")) {    
+    startGame();
+  } else {
+    console.log("Good job. Play again next time.");
+    process.exit()
+  } 
+}
+
+///////////////////////////////////////////////////////////QUITS
+
 
 let bitten = () => {
   vaccs--;
@@ -49,23 +67,96 @@ let bitten = () => {
       "\n\nSearing pain runs up your body from where you were bitten. You dig in the backpack and pull out a vaccine before plunging it in to your thigh."
     );
     console.log(
-      `Seargent Pheonix: "Careful, kid. You only have ${vaccs} vaccines left...keep moving."\n\n`
+      `Sergeant Pheonix: "Careful, kid. You only have ${vaccs} vaccines left...keep moving."\n\n`
     );
   } else {
     gameOver();
   }
 };
+
 let floor2 = () => {
   console.clear();
   console.log(
-    "You peer up the stairs. There are no sounds.\nSeargent Phoenix: \"Okay kid, on the second floor you need to find the doctors notes and bluepronts.\nThey should be in a black folder in one of the rooms. Careful though, only 2 of the rooms were cleared. Good luck.\nYou climb up the stairs. There's blood everywhere. A dead soldier lays in the middle of the staircase.\n As you step over him you can see half of his face and brain is missing.\n You arrive at floor 2."
+    "You peer up the stairs. There are no sounds.\nSergeant Phoenix: \"Okay kid, on the second floor you need to find the doctors notes and bluepronts.\nThey should be in a black folder in one of the rooms. Careful though, only 2 of the rooms were cleared. Good luck.\nYou climb up the stairs. There's blood everywhere. A dead soldier lays in the middle of the staircase, it's legs are missing.\nAs you step over him you can see half of his face and brain is missing.\nYou arrive at floor 2.\n"
   );
   chooseDoor2();
 };
 
-let floor3 = () => {
-  console.log("floor 3");
-};
+let stairChoice = () => {
+    gunChoice = readLineSync.question("Which gun will you choose?");
+    gunChoice.trim().toLowerCase();
+
+    if (gunChoice === "1") {
+      console.clear();
+      console.log(
+        "You pick up the gun and aim for the head. You pull the trigger but the gun is empty!\nThe dead soldier grunts and tugs at your foot. You fall forward on to the step.\nThe dead soldier then bites at your calf. You let out a yelp of pain and kick him straight in the head.\nHe lets you go and you scramble up the steps as quick as you can leaving a trail of blood behind you.\n"
+      );
+      bitten();
+      chooseDoor3();
+    } else if (gunChoice === "2") {
+      console.clear();
+      console.log(
+        "You pick up the second gun you see, aim for the dead soldiers head and fire. His head bursts and you're covered in blood and he lays still on the ground.\nYou quickly wipe it from your face and shake your leg free before dashing up the steps.\n"
+      );
+      chooseDoor3();
+    } else {
+      console.log("Please choose either 1 or 2.");
+      stairChoice();
+    }
+  };
+
+  const roof = () => {
+    console.log("Before climbing you make sure the stairs are clear. You hear a thud behind you. With a racing heart you sprint up the stairs.\nYou take out the keys and groan as you realize you have to find the right one. Another thud behinds you makes you jump.\nLooking back you now see 3 groaning dead soliders all having various bite wounds on their faces and bodies.\nTurning your attention back you try key after key. The dead ones are almost to you.\nFinally you one of the keys turn and you open the door and step out.\nOne of the soldiers is right behind you as you sprint to the waiting helicopter.\nWhen you reach it, a soldier helps you come on. You turn to the man and he speaks as the helicopter takes off leaving the dead ones on the roof behind you. \nSergeant Phoenix: \"You did it! With these items and notes we\'ll be able to end this once and for all.\n\n");
+    tryAgain2()
+  };
+
+  let floor3 = () => {
+    console.log(
+      "At the foot of the stairs there's a dead body. It doesn't move. You step over it carefully. In the middle of the steps you come to a dead soldier.\nYou carefully push it aside so you can ascend. As you do he grabs your left calf with a snarl.\nThere are 2 guns on the floor beside him."
+    );
+    stairChoice();
+    
+  };
+
+  const chooseDoor3 = () => {
+    input3 = readLineSync.question(
+      "There are 4 doors. Two on the left and two on the right. Which door will you choose?"
+    );
+    input3.trim().toLowerCase();
+
+    if (input3 === "left 1") {
+      console.clear();
+      console.log(
+        "You open the door and immediately a dead man in a lab coat lunges at you. His skull is exposed and he has an eyeball missing.\nYou yell out and fall back on to the floor.\nHe lands on top of you and he bites down at your shoulder. Blood spills from your shoulder as you manage to wrestle him off.mYou take the chance while he's on the ground and stomp on his head.\nIt turns to mush and your foot is coated in blood. You shut the door behind him so nothing else comes out.\n"
+      );
+      bitten();
+      chooseDoor3();
+    } else if (input3 === "left 2") {
+      console.clear();
+      console.log(
+        "You take a deep breath and try to relax for a moment. After a moment you open the door. You're in a bathroonm.\nStepping in you take a look around. There are three stall and blood on the ground leading to the last stall.\nYou notice a gun on the ground and decide to check for the soldier with the key.\nReaching the stall you listen for any sounds. Slowly you open the stall.NYou're pushed back and somethinf heavy lands on top of you. A man in suit snarls as you try to get him off of you.\nYou manage to get him off but as you're getting up he sinks his teeth in to your forearm. Crying out, you scramble towards the door and shut it behind you.\n"
+      );
+      bitten();
+      chooseDoor3();
+    } else if (input3 === "right 1") {
+      console.clear();
+      console.log(
+        "At door 3 you pause for moment. When you muster the courage you swing it open but don't let go of the handle.\nNothing happens for a moment and when your eyes adjust you're looking at a pair of grey eye's on a bloody face. The creature lunges at you and grabs your shirt.\nYou struggle to pull out of it's grasp. While you attempt to push it back it bite's your hand.\nAdreneline kicks in and you opt to kick it square in the chest. It's arm disconnects from it's body and blood pools at your feet from it and your hand.\nThe creature lands on the floor in the room and you shut the door quickly.\n"
+      );
+      bitten();
+      chooseDoor3();
+    } else if (input3 === "right 2") {
+      console.clear();
+      console.log(
+        'Slowly, you open the door. The first thing you see is the dead soldier.\nHe\'s completely covered in bites and 2 dead women lay beside him. From the looks of it the solider was able to shoot them each in the eye but not before they took several chunks from his body.\nThere is also a bullet wound in his head from where he took his own life rather than turn. Kneeling down beside him you look through his pockets. You pull out a ring of keys.\n Sergeant Phoenix: "You did it! You got the keys! Now high-tail it out of there!"\n '
+      );
+      roof();
+    } else {
+      console.log("Please enter left or right followed by 1 or 2.");
+      chooseDoor3();
+    }
+  };
+
 
 const chooseDoor2 = () => {
   input2 = readLineSync.question(
@@ -75,7 +166,9 @@ const chooseDoor2 = () => {
 
   if (input2 === "left 1") {
     console.clear();
-    console.log("You brace yourself as you open the door. Nothing pops out and there are no noises inside.\nYou step into an office. The light above flickers every once in a while but you can see.\nThere\'s a desk with a computer and a chair. On the chair there is a dismembered body. Blood covers the white button up on the body.\nYou gag a bit before you push the chair aside with your foot.\nYou start to look through the paperwork on the desk in search of the folder. You step closer to check some files in a folder organizer.\nBefore you realize what\'s happening you feel a sharp pain on at your ankle. You yell and step back. A dismembered head with chomping jaws is under the desk.\nBlood starts running from your ankle. You dash out of the room.\n");
+    console.log(
+      "You brace yourself as you open the door. Nothing pops out and there are no noises inside.\nYou step into an office. The light above flickers every once in a while but you can see.\nThere's a desk with a computer and a chair. On the chair there is a dismembered body. Blood covers the white button up on the body.\nYou gag a bit before you push the chair aside with your foot.\nYou start to look through the paperwork on the desk in search of the folder. You step closer to check some files in a folder organizer.\nBefore you realize what's happening you feel a sharp pain on at your ankle. You yell and step back. A dismembered head with chomping jaws is under the desk.\nBlood starts running from your ankle. You dash out of the room.\n"
+    );
     bitten();
     chooseDoor2();
   } else if (input2 === "left 2") {
@@ -88,9 +181,12 @@ const chooseDoor2 = () => {
   } else if (input2 === "right 1") {
     console.clear();
     console.log(
-      "You open the door quickly, ready to close it if needed. This is the first time you can see what's ahead of your clearly.NYou're in what used to be an office of sorts. Theres a desk with a computer on the ground beside it.\nYou step further in to the room and notice there's a dead soldier behind the desk.\nYou gag at the sight. Most of his torso is gone and bloody. Besides him you spot a black folder.\nYou pick it up and look inside. You found the notes.\nSeargent Phoenix: \"Good job, you found the notes! Now up to the last floor. Now you just need to find the key for the roof door.\"\n"
+      "You open the door quickly, ready to close it if needed. This is the first time you can see what's ahead of your clearly.\nYou're in what used to be an office of sorts. Theres a desk with a computer on the ground beside it.\nYou step further in to the room and notice there's a dead soldier behind the desk.\nYou gag at the sight. Most of his torso is gone and bloody. Besides him you spot a black folder.\nYou pick it up and look inside. You found the notes.\nSergeant Phoenix: \"Good job, you found the notes! Now up to the last floor. Now you just need to find the key for the roof door.\"\n"
     );
-    floor3();
+    console.log(
+      '\nSergeant Pheonix: "Careful, I don\'t know if this stairwell is clear. I do however know only one room on floor was cleared."\n'
+    );
+    floor3()
   } else if (input2 === "right 2") {
     console.clear();
     console.log(
@@ -111,13 +207,13 @@ const chooseDoor1 = () => {
   if (input === "left 1") {
     console.clear();
     console.log(
-      "You slowly open the door and look inside. It's a bathroom.\n There is a dead soldier on the ground in a pool of blood.\nThere is nothing else here. You step back out.\n\n"
+      "You slowly open the door and look inside. It's a bathroom.\nThere is a dead soldier on the ground in a pool of blood.\nThere is nothing else here. You step back out.\n\n"
     );
     chooseDoor1();
   } else if (input === "left 2") {
     console.clear();
     console.log(
-      'You press your ear against the door and listen for any sounds. You then step inside.\nThe light above flickers on and off and in the flashes of light you see a man in a lab coat on the ground. His body is covered in blood and bitemarks.\nNext to his body you see a briefcase. You open it and inside are vials of red liquids.\n"You found the samples! Those are essential for our mission. That\'s it for this floor. Move on!" Sargeant Phoenix instructs through the walkie-talkie.\nYou leave the room and head for the stairs.'
+      'You press your ear against the door and listen for any sounds. You then step inside.\nThe light above flickers on and off and in the flashes of light you see a man in a lab coat on the ground. His body is covered in blood and bitemarks.\nNext to his body you see a briefcase. You open it and inside are vials of red liquids.\nSergeant Phoenix: "You found the samples! Those are essential for our mission. That\'s it for this floor. Move on!".\nYou leave the room and head for the stairs.'
     );
     floor2();
   } else if (input === "right 1") {
@@ -141,11 +237,12 @@ const chooseDoor1 = () => {
 
 const startGame = () => {
   console.clear();
+  let vaccs = 3
   console.log(
-    `Seargent Phoenix: "Okay, inside the backpack are three vaccines. If you get bitten, use them. Be careful though,\nthere are only three. I'll be helping you as much as I can with the information from my last communications with the team." \n`
+    `Sergeant Phoenix: "Okay, inside the backpack are three vaccines. If you get bitten, use them. Be careful though,\nthere are only three. I'll be helping you as much as I can with the information from my last communications with the team." \n`
   );
   console.log(
-    `You enter the building, there\'s barely enough light to see.\n\nSeargent Phoenix: "Okay, there are 4 doors on each floor.\nThe team cleared some of the rooms but not all. Be careful!\n There\'s one item you need on each floor before going to the next. Good luck!"\n`
+    `You enter the building, there\'s barely enough light to see.\n\nSeageant Phoenix: "Okay, there are 4 doors on each floor.\nThe team cleared some of the rooms but not all. Be careful!\n There\'s one item you need on each floor before going to the next. Good luck!"\n`
   );
   chooseDoor1();
 };
@@ -168,7 +265,6 @@ const intro = () => {
     }
   } else {
     quit1();
-  }
-};
+  }}
 
 intro();
