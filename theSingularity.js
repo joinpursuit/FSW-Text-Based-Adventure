@@ -1,17 +1,15 @@
-
 const readlineSync = require("readline-sync");
 const startGame = () => {
-    if (readlineSync.keyInYN("Would you like to play The Singularity?")) {
+  if (readlineSync.keyInYN("Would you like to play The Singularity?")) {
     let ageInput = readlineSync.question(
       "You must be 18+ to play. Enter your age: "
     );
     if (ageInput >= 18) {
-    console.log("Great you are old enough!");
-    
+      console.log("Great you are old enough!");
 
-    if (readlineSync.keyInYN("Ready to play?")) {
-      const nameInput = readlineSync.question("Enter your username: ");
-      console.log(`
+      if (readlineSync.keyInYN("Ready to play?")) {
+        const nameInput = readlineSync.question("Enter your username: ");
+        console.log(`
             ****HELLO ${nameInput}! WELCOME TO THE SINGULARITY**** 
 
             THE YEAR IS 2089. AI HAS TAKEN OVER THE WORLD! 
@@ -27,20 +25,16 @@ const startGame = () => {
             YOU WILL BE EXPLORING DIFFERENT LOCATIONS IN A MAP. THERE ARE ONLY FOUR DIRECTIONS
             YOUR GOAL IS TO MAKE IT BACK TO YOUR TRIBE IN SUN CITY
             
-            *****************************************************************************************`
-            
-            );
-            play();
-    } else console.log("Good bye!");
-    quitGame();
-  } else if (ageInput < 18) {
-    console.log("Come back when you are older");
-    quitGame();
-  } else console.log("Not a valid entry");
-  startGame();
-
-    }
- 
+            *****************************************************************************************`);
+        play();
+      } else console.log("Good bye!");
+      quitGame();
+    } else if (ageInput < 18) {
+      console.log("Come back when you are older");
+      quitGame();
+    } else console.log("Not a valid entry");
+    startGame();
+  }
 };
 
 const play = () => {
@@ -52,8 +46,7 @@ const play = () => {
             YOU TO THE SINGULAIRTY FOR RESOURCES. THE SINGULARITY WILL USE YOUR BODY TO HARVEST
             YOUR CELLS TO POWER IT'S SERVERS. YOUR MIND WILL BECOME PART OF THE SINGULARITY AND YOUR 
             HUMNAITY WILL VANISH!
-            YOU NEED TO ESCAPE!!!`
-  );
+            YOU NEED TO ESCAPE!!!`);
   console.log(`
             YOU ARE INSIDE A SELF DRIVEN TRUCK OWN BY THE REPTILES. 
             YOUR HANDS AND FEET ARE CHAINED TO THE ROOF AND THE FLOOR.
@@ -66,8 +59,7 @@ const play = () => {
             THIS MIGHT BE YOU CHANCE!
 
             *****************************************************************************************
-                `
-  )
+                `);
 
   let array = ["GUN", "RUN", "KEYS"];
   choices = readlineSync.keyInSelect(array, "HOW WOULD YOU ESCAPE?");
@@ -107,9 +99,11 @@ YOU WERE CAPTURED !
 };
 
 const goSomewhere = () => {
-  let directionInput = readlineSync.question("What direction would you like to take?\n ");
+  let directionInput = readlineSync.question(
+    "What direction would you like to take?\n "
+  );
   if (directionInput === "north") {
- console.log(`
+    console.log(`
  WELCOME TO THE CITY OF NOWHERE!
  YOU ARE NOT SUPPOSE TO BE HERE
  THERE IS A SHELTER 40 FT AWAY
@@ -137,19 +131,23 @@ const goSomewhere = () => {
   } else if (directionInput === "west") {
     console.log("West then!");
     console.log("WELCOME TO THE WILD WILD WEST!");
-  console.log("THE CITY OF REJECTS, OUTDATED A.I AND REPTILIANS");
-  console.log("YOU'll COME ACROSS SOME WAYS TO EARN RESOURCES");
-  console.log("BUT FIRST, YOU HAVE TO PROVE YOUR SELF");
-  console.log("MR T-REX, A REPTILIAN IS CHALLENGING YOU TO A FIGHT ");
-  console.log("HE REMAINS THE CHAMPION AND GUARDIAN OF SCRAP CITY!");
-  console.log("IF YOU WIN, YOU GET ACCESS TO THE CITY. IF YOU LOOSE YOU DON'T ENTER THE CITY");
+    console.log("THE CITY OF REJECTS, OUTDATED A.I AND REPTILIANS");
+    console.log("YOU'll COME ACROSS SOME WAYS TO EARN RESOURCES");
+    console.log("BUT FIRST, YOU HAVE TO PROVE YOUR SELF");
+    console.log("MR T-REX, A REPTILIAN IS CHALLENGING YOU TO A FIGHT ");
+    console.log("HE REMAINS THE CHAMPION AND GUARDIAN OF SCRAP CITY!");
+    console.log(
+      "IF YOU WIN, YOU GET ACCESS TO THE CITY. IF YOU LOOSE YOU DON'T ENTER THE CITY"
+    );
     directionWest();
   } else console.log("NOT A VALID DIRECTION");
   goSomewhere();
 };
 
 const directionNorth = () => {
-  let whereInNorth = readlineSync.question("Where would you like to go now?\n ");
+  let whereInNorth = readlineSync.question(
+    "Where would you like to go now?\n "
+  );
   if (whereInNorth === "shelter") {
     console.log("Shhh someone is in there...");
     console.log(
@@ -161,105 +159,94 @@ const directionNorth = () => {
 
     let northArray = ["Go inside", "Pick up rock", "Leave"];
     let northChoices = readlineSync.keyInSelect(northArray, "What to do?");
-    
+
     if (northArray[northChoices] === "Pick up rock") {
-        console.log(northArray[northChoices]);
+      console.log(northArray[northChoices]);
       console.log("Pow! Pow!");
       console.log(`You saved the girl!`);
       console.log("Little girl: Thank you for saving my life!");
       console.log("I have a code to help you get in Sun City");
-      console.log("The code is 132213")
+      console.log("The code is 132213");
       console.log("and here is some water. Let's go East!");
       goSomewhere();
     } else if (northArray[northChoices] === "Go inside") {
-        console.log(northArray[northChoices]);
+      console.log(northArray[northChoices]);
       console.log("You were spotted and have nothing to defend your self");
       if (readlineSync.keyInYN("Play Again?")) {
         play();
       } else console.log("This place is not for everyone!");
-       quitGame();
-    } else if ((northArray[northChoices] === "Leave")) {
-        console.log(northArray[northChoices]);
+      quitGame();
+    } else if (northArray[northChoices] === "Leave") {
+      console.log(northArray[northChoices]);
       console.log("lets get out of here!");
-      directionNorth()
+      directionNorth();
+    } else if (northArray[northChoices] === undefined) {
+      quitGame();
     }
-     else if (northArray[northChoices] === undefined){ 
-         quitGame()
-     }
-     
-  }
-  else if (whereInNorth === "GO BACK"){
-      console.log("LET'S GET OUT OF HERE")
-      goSomewhere()
-
-  }
-   else 
-    console.log("NOT A VALID ENTRY. TRY AGAIN")
-        directionNorth()
-
+  } else if (whereInNorth === "GO BACK") {
+    console.log("LET'S GET OUT OF HERE");
+    goSomewhere();
+  } else console.log("NOT A VALID ENTRY. TRY AGAIN");
+  directionNorth();
 };
 
 const directionSouth = () => {
-  
- let whereInSouth = readlineSync.question(`WHAT TO DO? : `);
-    switch(whereInSouth) {
-        case "cave":
-            console.log(`
+  let whereInSouth = readlineSync.question(`WHAT TO DO? : `);
+  switch (whereInSouth) {
+    case "cave":
+      console.log(`
             THERE IS AN AI ANDROID IN HERE 
             IT MIGHT BE COLLECTING DATA FOR THE SINGULARITY`);
-                let southArray = ["FIGHT", "TALK"];
-                let southChoices = readlineSync.keyInSelect(southArray, `X Æ A-12-AI: HUMAN WHAT ARE YOU DOING HERE?`);
-                  
-                    if (southArray[southChoices] === "FIGHT") {
-                        console.log(southArray[southChoices]);        
-                            let fightMoves = readlineSync.question("What's your move?(PUNCH, KICK)\n");
-                                if (fightMoves === "PUNCH") {
-                                    console.log(`
+      let southArray = ["FIGHT", "TALK"];
+      let southChoices = readlineSync.keyInSelect(
+        southArray,
+        `X Æ A-12-AI: HUMAN WHAT ARE YOU DOING HERE?`
+      );
+
+      if (southArray[southChoices] === "FIGHT") {
+        console.log(southArray[southChoices]);
+        let fightMoves = readlineSync.question(
+          "What's your move?(PUNCH, KICK)\n"
+        );
+        if (fightMoves === "PUNCH") {
+          console.log(`
                                     YOU MISSED! X Æ A-12-AI MOVES SUPER FAST
-                                    YOU THOUGHT YOU CAN HANDLE AN AI`)
-                                            intoSingularity()
-                                } else if ( fightMoves === "KICK"){
-                                        console.log("POW! YOU ARE DOWN!")
-                                            intoSingularity()
-                                    }  else {
-                                        console.log("THAT IS NOT HOW YOU FIGHT!")
-                                            intoSingularity()
-                                    }                    
-                        } 
-                        else if(southArray[southChoices] === "TALK"){
-                        console.log(southArray[southChoices]) 
-                          console.log(`
+                                    YOU THOUGHT YOU CAN HANDLE AN AI`);
+          intoSingularity();
+        } else if (fightMoves === "KICK") {
+          console.log("POW! YOU ARE DOWN!");
+          intoSingularity();
+        } else {
+          console.log("THAT IS NOT HOW YOU FIGHT!");
+          intoSingularity();
+        }
+      } else if (southArray[southChoices] === "TALK") {
+        console.log(southArray[southChoices]);
+        console.log(`
                           YOU: NEVER SEEN AN AI LIKE YOU
                           WHO ARE YOU? 
                           X Æ A-12-AI: THERE IS NOT A LOT OF TIME
                           YOU MUST FULFILL YOUR DESTINY
                           FIND THE GIRL. SHE HAS THE CODE TO SUN CITY
-                          `
+                          `);
+        goSomewhere();
+      } else if (southArray[southChoices] === undefined) quitGame();
 
-                          )
-                          goSomewhere()
-                        }
-                        else if(southArray[southChoices] === undefined)
-                        quitGame()
-                        
-                    
-                
-            break;
-        case "cabin":
-            console.log(`IS NOT A CABIN! IT WAS A HOLOGRAM BUILT BY THE SINGULARITY! IT HAS YOU NOW!`)
-            intoSingularity()
-            
-            break
-        default: 
-        console.log("NOT A VALID OPTION")
-        directionSouth();
-    }
-}
+      break;
+    case "cabin":
+      console.log(
+        `IS NOT A CABIN! IT WAS A HOLOGRAM BUILT BY THE SINGULARITY! IT HAS YOU NOW!`
+      );
+      intoSingularity();
 
-
+      break;
+    default:
+      console.log("NOT A VALID OPTION");
+      directionSouth();
+  }
+};
 
 const directionEast = () => {
-
   let whereInEast = readlineSync.question(`   Look around (hint:search): `);
   if (whereInEast === "search") {
     console.log("Lets see what we have here");
@@ -270,10 +257,10 @@ const directionEast = () => {
       if (eastArray[eastChoices] === "GO TO ENTRANCE") {
         console.log(eastArray[eastChoices]);
         let doorCode = readlineSync.question("ENTER CODE: ");
-        if (doorCode === 132213) {
+        if (doorCode === "132213") {
           console.log("WELCOME TO SUN CITY!!");
           console.log("YOU WON!");
-          console.log("STAY TUNE FOR A.I APOCA II: SURVIVING SUN CITY");
+          console.log("STAY TUNE FOR SUN CITY: REVOLUTION");
           if (readlineSync.keyInYN("Play Again?")) {
             play();
           } else console.log("YOU'RE A SURVIVOR! SEE YOU SOON!");
@@ -313,7 +300,7 @@ const directionEast = () => {
         if (readlineSync.keyInYN("Play Again?")) {
           play();
         } else console.log("THIS IS PLACE IS NOT FOR EVERYONE!");
-            quitGame();
+        quitGame();
       } else if (eastArray[eastChoices] === "LEAVE") {
         console.log(eastArray[eastChoices]);
         console.log("GOOD LUCK");
@@ -321,10 +308,9 @@ const directionEast = () => {
       } else if (eastArray[eastChoices] === undefined) {
         quitGame();
       }
-      
     }
   } else console.log("Not a valid entry");
-    directionEast();
+  directionEast();
 };
 
 const directionWest = () => {
@@ -363,7 +349,7 @@ const directionWest = () => {
 };
 
 const intoSingularity = () => {
-    console.log(`
+  console.log(`
                 YOU HAVE BEEN TAKEN BY THE SINGULARITY
                 YOU ARE ME NOW.
 
@@ -374,26 +360,23 @@ const intoSingularity = () => {
                 
                 **************
                 **GAME OVER!**
-                **************`)
-                if (readlineSync.keyInYN("Play Again?")) {
-                    play();
-                  } else console.log("THIS PLACE IS NOT FOR EVERYONE ");
-                  quitGame();
- 
-                
-}
+                **************`);
+  if (readlineSync.keyInYN("Play Again?")) {
+    play();
+  } else console.log("THIS PLACE IS NOT FOR EVERYONE ");
+  quitGame();
+};
 
 const quitGame = () => {
   process.exit();
 };
 const winGame = () => {
-  console.log(`    //////////////
+  console.log(`    
+                   //////////////
                   ///YOU WIN!///
-                 ////////////// `)
+                 ////////////// `);
   process.exit();
 };
-
-
 
 startGame();
 
