@@ -135,6 +135,17 @@ const answerTen = () => {
         console.log("You turn around and see Pupperoni, waiting with a ball, fitting snugly in his mouth")
         console.log(`"C'mon boy, let's head home!"`)
 
+        console.log(chalk.cyan("I would like to dedicate this first project to my first dog, Turbo"))
+        console.log(chalk.cyan("He lived to the golden age of 13. He was also an osteosarcoma survivor"))
+        console.log(chalk.cyan("He lived for a year with a leg amputation and was doing great"))
+        console.log(chalk.cyan("On August 6, 2020, He was taken from me in a hit and run accident."))
+        console.log(chalk.cyan("I had also found a dog that I wanted to adopt, also an amputee, but was denied"))
+        console.log(chalk.cyan("because I have a toddler. Turbo is actually one of my"))
+        console.log(chalk.cyan("biggest reasons for applying to Pursuit"))
+        console.log(chalk.cyan("This game is just an 'what if? and hopefully,"))
+        console.log(chalk.cyan("I can adopt in the future. Thank you guys for taking the time to play this."))
+        console.log(chalk.cyan("All constructive criticism is welcome. :)"))
+
 }
 const restartGame = () => {
     let restart = readline.keyInYN("Would you like to play again?\n")
