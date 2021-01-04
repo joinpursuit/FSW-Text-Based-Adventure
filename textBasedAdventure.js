@@ -16,24 +16,10 @@ const restart = () => {
   }
 };
 
-// const leaveGame = () => {
-//   console.log("Sad to see you go! Ta ta!");
-//   process.exit();
-// };
-
-// console.log(
-//     `Hello ${nameInput}!  Welcome to "Beverly Hills, What A Thrill!"   `
-//   );
-//   if (readline1.keyInYNStrict(`Do you want to know more?   `)) {
-//     introSection();
-//   } else {
-//     leaveGame();
-//   }
-
 const scoreTally = () => {
   let patchOptions = [
     "Grooming",
-    "Jewelry appraisal",
+    "Jewelry Appraisal",
     "Dance",
     "CPR",
     "Community Service",
@@ -45,7 +31,7 @@ const scoreTally = () => {
   ];
   let newArr = [];
 
-  for (let i = 0; i < score; i++) {
+  for (let i = 0; i < (score + 1); i++) {
     newArr.push(patchOptions[i]);
   }
   console.log(
@@ -56,23 +42,76 @@ const scoreTally = () => {
   restart();
 };
 
-// const question8 = () => {
-// let patches = [];
-// // let i = 0
-// // let choosePatch = ""
 
-// // console.table(patchOptions, {index: "Key", values: "Choose your patches"});
-// let sash = readline1.keyInSelect(patchOptions, {index: "Key", values: "Choose your patches"});
+const question10= () => {
+    if (
+      readline1.keyInYN(
+        `Question 7: Actor, Tasha Scott's vocals were recorded for the smash hit tune, "Cookie Time". `
+      )
+    ) {
+      console.log(`They sure did! \n So gather you friends of mine... \nWe're wilderness girls and it's "Cookie Time"!`);
+      score += 1;
+      console.clear();
+      scoreTally();
+    } else {
+      console.log("Try again.");
+      question10();
+    }
+  };
 
-// for(let i = 0; patches.length < 4; sash++) {
-//     if (sash <= 9) {
-//         patches.push(sash)
-//     }
-//     return console.log(`Congratulations! We're so happy to present ${name} with the ${patches} patches`);
+
+// QUESTION 9 IS NOT FUNCTIONING PROPERLY. I'VE COMMENTED IT OUT BECAUSE IT 
+// BLOCKS THE GAME AND I DON'T WANT IT TO STOP THE FUNCTIONALITY. I BELIEVE THERE ARE STILL 10 OPTIONS FOR MAKING CHOICES AND RE-ENTERING/EXITING THE GAME. VANESSA
+
+
+// const question9a = () => {
+//     console.clear()
+//     let troopMembersA = readline1.question("Question 9: There were ____ members of Troop Beverly Hills? ").trim();
+//   if (troopMembersA > "8") {
+//     console.log("Your guess is too high. \n Try again. \n");
+//     question9();
+//   } else if (troopMembersA < "8") {
+//     console.log("Your guess is too low \n Try again. \n");
+//     question9();
+//   }
+// };
+
+  
+//   const question9 = () => {
+//   console.clear()
+//   let troopMembers = readline1.question("Question 9: There were ____ members of Troop Beverly Hills? ").trim();
+//   if (troopMembers === "8") {
+//     console.log("You betcha! ");
+//     score += 1;
+//     question10();
+//   } else {
+//     question9a()
+//   }
 // }
+  
 
-// console.table(patchOptions);
-// }
+const question8 = () => {
+  let flavorOptions = ["peanut butter", "sugar & spice", "mint", "samoa"];
+  console.table(flavorOptions);
+  let flavorQuestion = readline1
+    .question(
+      "Question 8: Which flavor isn't a Wilderness Girl cookie option?   "
+    )
+    .trim()
+    .toLowerCase();
+
+  if (flavorQuestion === "samoa") {
+    console.log("BINGO! That flavor belongs to the Girl Scouts. \n");
+    score += 1;
+    question10();
+    // question9();
+  } else {
+    console.clear();
+    console.log("Try again \n");
+    console.log("*HINT*  Type the flavor name.");
+    question8();
+  }
+};
 
 const question7 = () => {
   if (
@@ -83,9 +122,7 @@ const question7 = () => {
     console.log("That's right!");
     score += 1;
     console.clear();
-    // question8();
-    scoreTally();
-    // newArr.push(patchOptions[1]);
+    question8();
   } else {
     console.log("Try again.");
     question7();
@@ -98,7 +135,7 @@ const question6 = () => {
 
   let firstAppearQ = readline1
     .question(
-      "Question 6: Each of these teen stars made their 'big break' in this film. Which of them lied about being 13 during casting when she was actually 16? \n** HINT ** TYPE THEIR FRIST NAMES ONLY  "
+      "Question 6: Each of these teen stars made their 'big break' in this film. Which of them lied about being 13 during casting when she was actually 16? \n** HINT ** TYPE THEIR FRIST NAME ONLY  "
     )
     .trim()
     .toLowerCase();
@@ -326,11 +363,11 @@ const introSection = () => {
   );
   console.log("Here's trivia game is based on that film. \n");
   console.log(
-    "There are 7 questions in total. Let's see if you can get them all. \n"
+    "Let's see which patches you can get. \n"
   );
   if (readline1.keyInYNStrict("Ready to play?   ")) {
     console.clear();
-    question1(); // I'M STARTING THE GAME HERE, BUT THE START GAME FUNCTION DOESN'T ACTUALLY HAVE ANYTHING IN IT....????
+    question1(); 
   } else {
     leaveGame();
   }
