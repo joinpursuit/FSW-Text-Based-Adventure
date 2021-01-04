@@ -24,35 +24,38 @@ const incapacitated = () => {
   );
   theEnd();
 };
-
+/// -- THE END --
 const theEnd = () => {
   let choiceEnd;
   console.log(`\n--* Do you want to play again?\n`);
   while (choiceEnd !== "yes" && choiceEnd !== "no") {
-    choiceEnd = rls.question("CHOOSE: Yes? or No? \n");
+    choiceEnd = rls.question("--* CHOOSE: Yes? or No? \n");
     choiceEnd = choiceEnd.trim().toLowerCase();
     if (choiceEnd !== "yes" && choiceEnd !== "no") {
-      console.log("--* Don't make me change my mind about you.\n");
+      console.log(`\n--* Don't make me change my mind about you ${userName}.\n`);
     }
   }
   if (choiceEnd === "yes") {
     console.clear();
     startGame();
   } else {
+    console.clear();
     leaveGame();
   }
 };
 
 const congratulations = () => {
+  console.clear();
   console.log(
-    `\n--* --* Congratulations, You have made a new friend!\n
-    Thank you for playing my Adventure Game.
+    `\n--* --* Congratulations, You have made a new friend! *-- *--\n
+    Thank you for playing my Text Adventure Game.
     Feel free to play again to find all the possibilities.\n`
   );
   theEnd();
 };
 
 const like = () => {
+  console.clear();
   console.log(
     `\n--* Mean Mug gobbled up that chicken before you could blink twice, 
     followed by the loudest belch you have ever heard in your life.
@@ -68,11 +71,12 @@ const like = () => {
 };
 
 const dontLike = () => {
+  console.clear();
   console.log(
     `\n--* You don't like it? ... What do you mean you don't like it?
     After I slaved away to make you this deliciousness. 
     WHAT DO YOU MEAN DON'T LIKE IT?!\n
-    Mean Mug: I'm just saying it's a bit salty. I didn't say it wasn't good.
+    MEAN MUG: I'm just saying it's a bit salty. I didn't say it wasn't good.
     (mumbling) I thought I was disagreeable when I'm hungry. Geez.\n
     You turn your back still in your feelings about your cooking.
     Mean Mug comes over and offers you to share a cool drink.
@@ -83,9 +87,10 @@ const dontLike = () => {
 };
 
 const grill = () => {
+  console.clear();
   let choiceGrill;
   console.log(
-    `\n--* Mean Mug: "I'm watching my cholesterol. Grilling is healthier."\n
+    `\n--* MEAN MUG: "I'm watching my cholesterol. Grilling is healthier."\n
     You whip up a delicious feast for you and Mean Mug.
     Proudly, you present your masterpiece, but Mamma didn't raise no fool so
     you move closer to the door ... you know, just in case.\n
@@ -104,6 +109,7 @@ const grill = () => {
 };
 
 const fry = () => {
+  console.clear();
   let choiceFry;
   console.log(
     `\n--* You whip up a delicious feast in no time.
@@ -124,6 +130,7 @@ const fry = () => {
 };
 
 const pathTwo = () => {
+  console.clear();
   let choicePathTwo;
   console.log("Are you sure you want to leave the game?\n");
   while (choicePathTwo !== "1" && choicePathTwo !== "2") {
@@ -141,6 +148,7 @@ const pathTwo = () => {
 };
 
 const path = () => {
+  console.clear();
   let choicePath;
   console.log("Are you sure you want to leave the game?\n");
   while (choicePath !== "1" && choicePath !== "2") {
@@ -158,6 +166,7 @@ const path = () => {
 };
 
 const cook = () => {
+  console.clear();
   let choiceCook;
   console.log(
     `\n--* Ooooh, luck must be on your side today.
@@ -177,11 +186,12 @@ const cook = () => {
       fry();
       break;
     case -1:
-      path(); //--> calls cook();
+      path(); 
   }
 };
 
 const diner = () => {
+  console.clear();
   let choiceDiner;
   console.log(
     `\n--* You are seated in a quaint little cafe with your new friend. Getting on just fine.
@@ -219,7 +229,7 @@ const ask = () => {
     `\n--* ${userName}: "Hey, hey ... no need for all that. 
           What's the matter? Why are you looking so mean? 
           Maybe I can help you."
-    Mean Mug (wails): "I'm just so hungry, I can't think straight!"
+    MEAN MUG (wails): "I'm just so hungry, I can't think straight!"
     ${userName}: "Well you're in luck! I know how to cook. Where's that chicken?"\n`
   );
   rls.keyInPause();
@@ -227,10 +237,11 @@ const ask = () => {
 };
 
 const attack = () => {
+  console.clear();
   let choiceAttack;
   console.log(
     `\n--* Shaky legs and all you get ready to strike. 
-  Then Mean Mug does something unexpected. 
+  Something utterly unexpected happens. 
   Mean Mug begins to cry.
   You are absolutely baffled.\n
   --* What do you do now?
@@ -251,8 +262,9 @@ const attack = () => {
 };
 
 const sword = () => {
+  console.clear();
   let choiceSword;
-  console.log(`\n--* You pick up the sword and approach Mean Mug.
+  console.log(`\n--* You pick up the sword and approach.
   Mean Mug take a look at you and growls even more ferociously?
   Your knees start shaking uncontrollably. \n
   --* What do you do now?\n`);
@@ -271,13 +283,14 @@ const sword = () => {
 };
 
 const chicken = () => {
+  console.clear();
   let choiceChicken;
   console.log(
     `\n--* Mean Mug takes a step towards you.
     ${userName}: "Listen! Let's be diplomatic here.
-    I have this chicken.  
-    How about I make us something to eat 
-    That way, you don't eat me?"\n
+    I have this chicken. Look!
+    How about I make us something to eat? 
+    That way, you don't eat me!"\n
   --* Does Mean Mug agree to eat the chicken?\n`
   );
   while (choiceChicken !== true && choiceChicken !== false) {
@@ -295,14 +308,15 @@ const chicken = () => {
 };
 
 const wave = () => {
+  console.clear();
   let choiceWave;
   console.log(
     `\n--* Before you realize it, you are drowning in the most beautiful brown eyes you have ever seen.
-        Beautiful One: That was quite a performance up there. 
+        BEAUTIFUL ONE: That was quite a performance up there. 
         ${userName}: I'd offer an encore but .... 
-        Beautiful One: You ok?
+        BEAUTIFUL ONE: You ok?
         ${userName}: Yup.
-        Beautiful One: You look like you could use a cup of something not alcoholic and warm.
+        BEAUTIFUL ONE: You look like you could use a cup of something not alcoholic and warm.
         There's a diner up the street. Come on. \n
   --* What do you do?
         Go to the diner or decline?\n`
@@ -322,6 +336,7 @@ const wave = () => {
 };
 
 const hide = () => {
+  console.clear();
   console.log(
     `\n--* You stumble your way as quickly as you can away from the table and head towards
     the back. Just as you get near the kitchen area you feel really sick.
@@ -346,6 +361,7 @@ const runMore = () => {
 };
 
 const stay = () => {
+  console.clear();
   let choiceStay;
   console.log(
     `\n--* You give the ogre who took your spotlight a stank look and exit stage left as graceful 
@@ -370,10 +386,11 @@ const stay = () => {
 };
 
 const fight = () => {
+  console.clear();
   let choiceFight;
   console.log(
-    `\n--* You look around and in the corner you see a sword and a chicken.
-  --* Which you do you choose to go into battle with?\n`
+    `\n--* You look around and in the corner you see a sword and a chicken.\n
+  --* Which you one do you go into battle with?\n`
   );
   while (choiceFight !== "sword" && choiceFight !== "chicken") {
     choiceFight = rls.question("\n--* CHOOSE: Sword? or Chicken?\n");
@@ -390,12 +407,13 @@ const fight = () => {
 };
 
 const run = () => {
+  console.clear();
   let choiceRun;
   console.log(
     `\n--* You took one look at the Mean Mug and said 
     "Awww, hell nah! I'm outta here!"
-    You take of running like you the Road Runner.\n
-    After a few minutes you take a look back and realize Mean Mug is not chasing you.
+    You take of running like you're the Road Runner.\n
+    After a few minutes you look back and realize Mean Mug is not chasing you.
     You think ... Maybe I CAN beat Mean Mug.\n
   --* Do you turn back and fight or do you keep running?\n
     Enter 1 to turn back and fight
@@ -429,24 +447,25 @@ const dance = () => {
 };
 
 const sing = () => {
-  let choice5;
+  console.clear();
+  let choiceSing;
   console.log(
     `\n--* You grab the mic and start to let the vibes flow.
     A low rumble is building in the room but you are so drunk and happy that you could care less.
     Just as you are about to give them the grand finalie. 
-    Someone grabs your mic and you hear the voice again. 
-    The Voice: "You think this is American Idol Auditions?!"
+    Someone grabs your mic and you hear the voice again.\n
+    The VOICE: "You think this is American Idol Auditions?!"
     Laughter erupts and you are mortified.\n
   --* Do you want to stay or leave?\n`
   );
-  while (choice5 !== "stay" && choice5 !== "leave") {
-    choice5 = rls.question("\n--* CHOOSE: Stay? or Leave? \n");
-    choice5 = choice5.trim().toLowerCase();
-    if (choice5 !== "stay" && choice5 !== "leave") {
+  while (choiceSing !== "stay" && choiceSing !== "leave") {
+    choiceSing = rls.question("\n--* CHOOSE: Stay? or Leave? \n");
+    choiceSing = choiceSing.trim().toLowerCase();
+    if (choiceSing !== "stay" && choiceSing !== "leave") {
       console.log("--* Get it together!\n");
     }
   }
-  if (choice5 === "stay") {
+  if (choiceSing === "stay") {
     stay();
   } else {
     outside();
@@ -466,7 +485,7 @@ const ride = () => {
   let choiceRide;
   console.log(
     `\n--* Mean Mug whistles sharply and a beautiful unicorn appears.
-  Mean Mug: "This is my friend Minx. She can take us there."\n
+  MEAN MUG: "This is my friend Minx. She can take us there."\n
   --* Do you get on?\n`
   );
   while (choiceRide !== true && choiceRide !== false) {
@@ -481,7 +500,7 @@ const ride = () => {
     console.log(
       `\n--* Mean Mug looks at you and grumbles loudly: "Ain't nobody got time for this!"
       Then grabs you by the neck and climbs onto Minx. 
-      Mean Mug: "Let's go!"\n`
+      MEAN MUG: "Let's go!"\n`
     );
     rls.keyInPause();
     go();
@@ -489,10 +508,9 @@ const ride = () => {
 };
 
 const go = () => {
-  let choiceGo;
   console.log(
     `\n--* Before you know it Minx gallops a few paces and does the most extrordinary thing.
-    Wings unfurl from Lord knows where and with a swift leap you are soaring into the sky.\n`
+    Wings unfurl from who knows where and with a swift leap you are soaring into the sky.\n`
   );
   cabin();
 };
@@ -501,7 +519,7 @@ const foe = () => {
   let choiceRunFight;
   console.log(
     `\n--* Mean Mug catches sight of you and let's out a ferocious growl.
-      Oh Snap! It's about to get live.
+      Oh Snap! It's about to get live.\n
   --* Do You want to run or fight?\n`
   );
   while (choiceRunFight !== "run" && choiceRunFight !== "fight") {
@@ -519,14 +537,15 @@ const foe = () => {
 };
 
 const friend = () => {
+  console.clear();
   let choiceFriend;
   console.log(
     `\n--* Because you are so very brave you nervously wave hello. 
     Mean Mug smiles back and looks so much better as a result.\n
     ${userName}: "Why are you looking so mean?"
-    Mean Mug: "Oh I'm not mean at all. I'm just starving!"
+    MEAN MUG: "Oh I'm not mean at all. I'm just starving!"
     ${userName}: "I know the feeling. Ok, let's find you something to eat."
-    Mean Mug: "Oh. you're so kind. There's a cabin not too far."\n
+    MEAN MUG: "Oh. you're so kind. There's a cabin not too far."\n
   --* Do you ride or fly?\n`
   );
   while (choiceFriend !== "ride" && choiceFriend !== "fly") {
@@ -545,30 +564,33 @@ const friend = () => {
 };
 
 const reunion = () => {
-  console.log(`--* Solara! a voice boomed. Lionel! I new I'd find you here.
-  This is our new friend ${userName}. Come on let's go eat before the Crumb-snatchers get here.\n`);
+  console.log(
+    `\n--* Solara! a voice boomed. Lionel! I new I'd find you here.
+    This is our new friend ${userName}. 
+    Come on let's go eat before the Crumb-snatchers get here.\n`
+    );
   congratulations();
 };
 
 const sugarLoaf = () => {
+  console.clear();
   console.log(
     `\n--* Welcome to the Feast of the SugarLoaf Queen!
-    nesteled under the canopy of trees was the most magical sight yet.
-    All the characters of this world were here dancing and singing. Fireflies lit the night sky
-    twinking all about. Little lanterns hung from from the trees and swayed in the cool night air. \n`
+    Nesteled under the canopy of trees was the most magical sight yet.
+    All the characters of this world are here dancing and singing. Fireflies light the night sky
+    twinking all about. Little paper lanterns swing from from the trees swaying in the cool night air. \n`
     );
   pass = rls.keyInYN("--* Have you looked in all 3 places?\n");
   if (pass === true) {
     reunion();
   } else {
-    console.log(
-      "--* Don't come back here until you've looked in all 3 places!\n"
-    );
+    console.log( "--* Don't come back here until you've looked in all 3 places!\n");
     yes();
   }
 };
 
 const tearDrop = () => {
+  console.clear();
   let tearDropDance;
   console.log(`\n--* You get magically whisked away to Teardrop Valley.
   At first look it seems a dark and glumy sort of place. Just grey and washed out.\n
@@ -612,6 +634,7 @@ const tearDrop = () => {
 };
 
 const cottonTail = () => {
+  console.clear();
   let cottonTailContest;
   console.log(
     `\n--* A blinding light appears and once your eyes readjust you are in a never ending beach of white 
@@ -637,6 +660,7 @@ const cottonTail = () => {
   }
 
   if (cottonTailContest === true) {
+    console.clear();
     console.log(
       `\n--* You get up on stage and strut your stuff. Soon you have bunny 
     groupies as your back up singers. The crowd goes wild. 
@@ -665,12 +689,13 @@ const cottonTail = () => {
 };
 
 const paperStraw = () => {
+  console.clear();
   let choicePaperStraw;
   console.log(
     `\n--* Paperstraw Tower was truely out of this world. Everywhere you looked 
     reaching far into the sky where these astoundingly tall structures made enitrely of
     all paper. They were designed in all hues and styles with different designs. Some 
-    twisted and looped around at odd angles. And they all swayed gently in the breeze.
+    twisted and looped around at odd angles. And they all swayed gently in the breeze.\n
     ${userName}: "Does anyone live in these towers?
     MAGICAL FRIEND: "You don't live in them. You have fun in them." 
     You take a lift to the top of a hill. You walk to the opening for one of the towers. 
@@ -710,6 +735,7 @@ const paperStraw = () => {
 };
 
 const yes = () => {
+  console.clear();
   let choiceYes;
   where = ["Teardrop Valley", "Cottontail Beach", "Paperstraw Tower"];
   console.log(
@@ -734,25 +760,25 @@ const yes = () => {
 
 const stillNo = () => {
   console.log(
-    `\n--* The Voice: You know, you really are beastly.
+    `\n--* The VOICE: You know, you really are beastly.
     Well you have no choice but to help. 
     But don't think I won't forget this when 
     we get to the Crumb-snatchers part.\n`
   );
   rls.keyInPause();
   console.log(`\n--* You get whisked away to catch up.
-  Magic Friend: "Well look who's back."\n`);
+  MAGICAL FRIEND: "Well look who's back."\n`);
   yes();
 };
 
 const no = () => {
   let choiceNo;
   console.log(
-    `--* Magic Friend: "Well you're a mean one aren't you, ${userName}?
+    `--* MAGICAL FRIEND: "Well you're a mean one aren't you, ${userName}?
     Good luck when the Crumb-snatchers come out tonight."\n
     ${userName}: "Crumb-snatcher? 
     Wait, what's a Crumb-snatcher?!"\n
-    The Voice: "Tsk, Tsk, Tsk. You're in a pickle.\n`
+    The VOICE: "Tsk, Tsk, Tsk. You're in a pickle.\n`
   );
   while (choiceNo !== true && choiceNo !== false) {
     choiceNo = rls.keyInYN("--* Do you want to help now?\n");
@@ -768,13 +794,14 @@ const no = () => {
 };
 
 const lion = () => {
+  console.clear();
   let choiceLion;
   console.log(
-    `--* Before you can help yourself you let out an undignified shriek.
+    `\n--* Before you can help yourself you let out an undignified shriek.
     ${userName}: "I must be dreaming. You can't be real." 
-    Lionel: "Hi, my name is Lionel."
+    LIONEL: "Hi, my name is Lionel."
     ${userName}: "You're a-a-a a talking lion?"
-    Lionel: "Well aren't a genius. 
+    LIONEL: "Well aren't a genius. 
           Can you help me look for my friend Solara? I seem to have misplaced her.\n"
   --* Do you help Lionel find his friend?\n`
   );
@@ -792,13 +819,14 @@ const lion = () => {
 };
 
 const fairy = () => {
+  console.clear();
   let choiceFairy;
   console.log(
     `\n--* Twirling about in mid air is what can only be called a fairy.
     ${userName}: "I'm going to need heart medication if this keeps up."
-    Solara: "Hi, My name is Soalra. You're a strange looking one. What are you doing here?"
+    SOLARA: "Hi, My name is Soalra. You're a strange looking one. What are you doing here?"
     ${userName}: "Acutally, I don't know. Did you just call ME strange?"
-    Solara: "Well, while you figure that out, can you help me look for my friend?"\n 
+    SOLARA: "Well, while you figure that out, can you help me look for my friend?"\n 
   --* Do you help Solara find her friend?\n`
   );
   while (choiceFairy !== true && choiceFairy !== false) {
@@ -815,6 +843,7 @@ const fairy = () => {
 };
 
 const fruit = () => {
+  console.clear();
   let choiceFruit;
   console.log(
     `\n--* You feel youself waking up even though you don't remember falling asleep.
@@ -841,6 +870,7 @@ const fruit = () => {
 };
 
 const cake = () => {
+  console.clear();
   let choiceDarkWood;
   console.log(
     `\n--* You feel youself waking up even though you don't remember falling asleep.
@@ -914,9 +944,9 @@ const approach = () => {
   let choiceApproach;
   console.log(
     `\n--* You walk closer and say hello.  
-    Old Lady: "Hello Dearie."
+    OLD LADY: "Hello Dearie."
     ${userName}: "I'm famished. Can I buy one of your treats?"
-    Old Lady: "No need for that dearie. I'll gladly share some new samples I am working on.
+    OLD LADY: "No need for that dearie. I'll gladly share some new samples I am working on.
     You can tell me if they taste good enough to sell."\n
     She brings you 2 dishes to try.
     One is a fruit salad and the other is a mini cake.
@@ -938,13 +968,14 @@ const approach = () => {
 };
 
 const lost = () => {
+  console.clear();
   console.log(
     `\n--* You keep walking and your stoamach is now cursing furiously at you.
-  Before long you have no idea where you are. You are officially lost.\n
-  Just as you are about to give, up your nose picks up that all to 
-  familiar smell of tasty delights.
-  I guess it's time to eat.\n
-  Again you follow your trusty nose back to the cabin.\n`
+    Before long you have no idea where you are. You are officially lost.\n
+    Just as you are about to give, up your nose picks up that all to 
+    familiar smell of tasty delights.
+    I guess it's time to eat.\n
+    Again you follow your trusty nose back to the cabin.\n`
   );
   rls.keyInPause();
   approach();
@@ -977,7 +1008,7 @@ const door2 = () => {
   console.log(
     `\n--* You are now in a pitch black room. At least you think it's a room.
       You hear the faint drip, drip of liquid in the distance.
-      The Voice: Laughing... "Oh we're about to have some real fun now."
+      The VOICE: Laughing... "Oh we're about to have some real fun now."
       You feel like you are about to have a nervous breakdown.\n
       Suddenly the lights come on and you see a tray with 2 beautiful 
       bite sized food creations.
@@ -1023,12 +1054,13 @@ const outside = () => {
 };
 
 const inside = () => {
+  console.clear();
   let choiceDoors;
   console.log(
     `\n--* You step into a darkened room that is a bit warm when you hear a voice say.
         "Welcome to my Parlor, ${userName} darling." 
     You look around nervously but you can't see who is speaking. \n
-    The Voice: "Pick a door to begin your adventure darling.
+    The VOICE: "Pick a door to begin your adventure darling.
     --* Door number 1? or Door number 2?"\n`
   );
   while (choiceDoors !== "1" && choiceDoors !== "2") {
@@ -1047,6 +1079,7 @@ const inside = () => {
 
 /// -- START GAME --
 const startGame = () => {
+  console.clear();
   let choice1;
   while (choice1 !== "inside" && choice1 !== "outside") {
     choice1 = rls.question("\n--* CHOOSE: Inside? or Outside? \n");
@@ -1065,6 +1098,7 @@ const startGame = () => {
 
 /// -- RULES --
 const rules = () => {
+  console.clear();
   let choiceRules;
   console.log(`--* Welcome to my Text Adventure Game.\n`);
   console.log(
@@ -1079,6 +1113,7 @@ const rules = () => {
 };
 
 /// -- INTRO --
+console.clear();
 let userName = rls.question("--* Hi there. What's your name?\n");
 console.log(`\n--* Nice to meet you ${userName}.\n`);
 
