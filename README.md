@@ -68,7 +68,9 @@ let yourVariableHere = readline.question("Enter your name: ")
 
 Replace the link below with the link to your Trello project:
 
-[Trello](https://trello.com/b/vbKtMOKj/text-based-adventure-project-plan)
+[Trello] https://github.com/joinpursuit/FSW-Text-Based-Adventure/pull/72
+
+
 
 
 ## Rubric
