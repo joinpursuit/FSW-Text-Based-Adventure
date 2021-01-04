@@ -106,9 +106,9 @@ const palmQuestion = () => {
         console.log("You Now Have The Power of Greyskull!!!")
         console.log("")
         console.log("Just kidding! LOL...I hope you're laughing. Greyskull is an old-school cartoon reference.")
-        console.log("On a serious note though, you now have the power of 'INSIGHT' and a 'GROUNGING' energy. You can carry 'INSIGHT' and 'GROUNDING' with \nyou everywhere you go.")
+        console.log("On a serious note though, you now have the power of 'INSIGHT' and a 'GROUNDING' energy. You can carry 'INSIGHT' and 'GROUNDING' with \nyou everywhere you go.")
     } else {
-        console.log("Palms face down help with groundedness. You now have the power of 'INSIGHT' and a 'GROUNGING' energy. You can carry 'INSIGHT' and 'GROUNDING' with \nyou everywhere you go.")
+        console.log("Palms face down help with groundedness. You now have the power of 'INSIGHT' and a 'GROUNDING' energy. You can carry 'INSIGHT' and 'GROUNDING' with \nyou everywhere you go.")
     } 
     }
 }
