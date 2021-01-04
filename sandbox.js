@@ -225,5 +225,15 @@ const readline = require("readline-sync");
 // The rabbit ${threeChoices[adverb]} hops down the path.
 // Curious. You follow it. The rabbit starts moving faster and you lose sight of it.
 // `);
-    
-    
+// 
+
+randomizeArray(exclamation);
+exclamation = readline.keyInSelect(threeChoices, `choose an exclamatory word`,{cancel: `choose for me`});
+// console.clear()
+
+if (exclamation === - 1) {
+    exclamation = threeChoices[Math.floor(Math.random() * threeChoices.length)];
+    console.log(chalk.green(`${exclamation}!`) + chalk.cyan(` You're just in time for dinner. Have a seat.`));
+} else {
+    console.log(chalk.green(`${threeChoices[exclamation]}!`) + chalk.cyan(` You're just in time for dinner. Have a seat.`));
+}
