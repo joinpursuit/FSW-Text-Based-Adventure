@@ -71,10 +71,10 @@ startTitle("Silver Web", function (err, data) {
      // First in game scenario
      const choices = () => {
        let optionOne = ["Report", "Invitation"];
-       let decisionOne = `\nWhich option will you be taking?`;
+       let decisionOne = `\n\tWhich option will you be taking?`;
  
        console.log(
-         `${nameInput} you have found an advertisement for an event that says ` +
+         `\n${nameInput} you have found an advertisement for an event that says ` +
            (chalk.underline.red(`invitation only.`) +
              ` You have the option to report your findings or try to get an invitation to this "exclusive" virtual gathering."`)
        );
@@ -84,7 +84,7 @@ startTitle("Silver Web", function (err, data) {
  
        if (index == [0]) {
          console.log(
-           "\nYour message has been intercepted. You've been compromised. They won't let you out alive."
+           "\nYour message has been intercepted." + chalk.redBright("You've been compromised.") + " They won't let you out alive."
          );
  
          startLoop()
@@ -96,7 +96,7 @@ startTitle("Silver Web", function (err, data) {
          let questTwo = Math.floor(Math.random() * 20 + 1);
  
          let solution = questOne * questTwo;
-         let probSolve = rls.question(`What is ${questOne} * ${questTwo}: \n`);
+         let probSolve = rls.question(chalk.magenta(`\tWhat is ${questOne} * ${questTwo}: \n`));
  
          const userAnswer = () => {
            if (probSolve == solution) {
@@ -106,7 +106,7 @@ startTitle("Silver Web", function (err, data) {
              let input3 = say.speak("Warning! Warning!");
              console.log(
                input3 +
-                 chalk.red("\nWARNING!") +
+                 chalk.redBright("\nWARNING!") +
                  "They have located you trying to access their servers. We must shut down now❗️❗️❗️"
              );
              evacuate();
@@ -143,9 +143,9 @@ startTitle("Silver Web", function (err, data) {
        let optionTwo = ["Place a bid", "Try to shutdown stream"];
  
        console.log(
-         `\n\t\tGreat Work ${nameInput}! \n\n\tWe are one step closer. \n\tNow that you have an invitation you can attend the event. \n\tYou press enter and an alpha-numeric code generates invitation access: \n\n\t` +
+         chalk.yellow(`\n\n\tGreat Work ${nameInput}!`) + `\n\n\tWe are one step closer. \n\tNow that you have an invitation you can attend the event. \n\tYou press enter and an alpha-numeric code generates invitation access: \n\n\t` +
            chalk.red(randomInvitationNumber) +
-           ` \n\n\tOnce the code is entered, you gain entry where you are met with a waiting graphic of a red curtain and a very active participant chat of people saying \n\n\t'We hope this is as good as the last one. \n\n\tAfter about a 5 minute wait a live feed starts to stream of a man covered in a butcher's apron and a mask pushing an operation table with a long white sheet covering something. \n\tHe begins to speak ..."You who have been lucky enough to be invited are in for a treat." \n\n\t He then unveils what's hidden under the sheet. \n\n\tWhats revealed is a person who appears scared and bound. Right as the person is revealed the participants of the chat begin placing their bids for auction.\n\n\t` +
+           ` \n\n\tOnce the code is entered, you gain entry where you are met with a waiting graphic of a red curtain and a very active participant chat of people saying \n\n\t\t"We hope this is as good as the last one." \n\n\tAfter about a 5 minute wait a live feed starts to stream of a man covered in a butcher's apron and a mask pushing an operation table with a long white sheet covering something. \n\tHe begins to speak ..."You who have been lucky enough to be invited are in for a treat." \n\n\t He then unveils what's hidden under the sheet. \n\n\tWhats revealed is a person who appears scared and bound. Right as the person is revealed the participants of the chat begin placing their bids for auction.\n\n\t` +
            chalk.magenta(decisionTwo)
        );
  
@@ -161,33 +161,33 @@ startTitle("Silver Web", function (err, data) {
  
          console.log(
            chalk.green("\n\tYou are the highest bidder!") +
-             ' You are then private messaged to choose a tool for the "operation"'
-         );
+             chalk.magenta('\n\n\tYou are then private messaged to choose a tool for the "operation"'
+         ));
  
          let index2 = rls.keyInSelect(instrumentArr);
  
          if (index2 == [0]) {
            console.log(
-             `\n\n\t${instrumentArr[0]} has been chosen. You then watch the butcher begin to tear out the victim\'s tonsils. As they attempt to scream in agony. `
-           );
+             chalk.rgb(255, 136, 0).bold(`\n\n\t${instrumentArr[0]}` + ` has been chosen. You then watch the butcher begin to tear out the victim\'s tonsils. As they attempt to scream in agony. `
+           ));
          } else if (index2 == [1]) {
            console.log(
-             `\n\n\t${instrumentArr[1]} has been chosen. You see the butcher pick up the ostetome and start gliding it towards the bound subject. The butcher then starts cutting past the flesh and into the bone. `
-           );
+             chalk.rgb(255, 136, 0).bold(`\n\n\t${instrumentArr[1]}` + ` has been chosen. You see the butcher pick up the ostetome and start gliding it towards the bound subject. The butcher then starts cutting past the flesh and into the bone. `
+           ));
          } else if (index2 == [2]) {
            console.log(
-             `\n\n\t${instrumentArr[2]} been chosen. The subject begins to scream `
-           );
+             chalk.rgb(255, 136, 0).bold(`\n\n\t${instrumentArr[2]}` + ` been chosen. The subject begins to scream `
+           ));
          } else if (index2 == [3]) {
            console.log(
-             `\n\n\t${instrumentArr[3]} has been chosen. The subject begs not to be torchered ::You look away:: `
-           );
+             chalk.rgb(255, 136, 0).bold(`\n\n\t${instrumentArr[3]}` + ` has been chosen. The subject begs not to be torchered ::You look away:: `
+           ));
          }
        }
        if (index == [1]) {
          console.log(
-           "\nYou open a new terminal tab, but it appears someone has gained control of your command line"
-         );
+           chalk.magenta("\n\tYou open a new terminal tab, but it appears someone has gained control of your command line"
+         ));
          let stream = [
            "Do you want to continue trying to stop the stream",
            "Do you want to return to place your bid",
@@ -195,7 +195,7 @@ startTitle("Silver Web", function (err, data) {
          let streamChoice = rls.keyInSelect(stream);
  
          if (streamChoice == [0]) {
-           console.log(chalk.red("You've been compromised"));
+           console.log(chalk.redBright("\tYou've been compromised"));
            startLoop();
          } else if (streamChoice == [1]) {
            choiceTwo();
@@ -207,19 +207,19 @@ startTitle("Silver Web", function (err, data) {
      choiceTwo();
 
      const choiceThree = () => {
-      console.log('\nAfter the auction you are invited to a private chatroom with other participants of the auction. \n Where they congratulate you on your win:')
+      console.log('\nAfter the auction you are invited to a private chatroom with other participants of the auction.' + chalk.magenta(`\n\n\tThey congratulate you on your win:`));
 
       let afterAuction = ['Continue with friendly banter', 'be direct and ask questions']
       let afterAuctionDecision = rls.keyInSelect(afterAuction);
 
       if (afterAuctionDecision == [0]) {
-         console.log('\n\tYou reply:\n\t"Beginners luck! Are the auctions always like this?"' + '\n\n\tResponse: Sometimes it\'s a fight to the death & Sometimes it\'s something else. We don\'t usually know until the day before.' + '\n\tYou reply: How are you notified? (You raise suspicion)' + '\n\tResponse: If you were invited you would know the answer to that question. How did you get your invite:')
+         console.log(chalk.rgb(52, 235, 232).bold('\n\tYou reply:') + '\n\t"Beginners luck! Are the auctions always like this?"' + chalk.rgb(52, 235, 128).bold('\n\n\tResponse:') + '\n\tSometimes it\'s a fight to the death & Sometimes it\'s something else. We don\'t usually know until the day before.' + chalk.rgb(52, 235, 232).bold('\n\n\tYou reply:') + '\n\tHow are you notified? (You raise suspicion)' + chalk.rgb(52, 235, 128).bold('\n\n\tResponse:') + '\n\tIf you were invited you would know the answer to that question. How did you get your invite:')
 
          let auctionQuestioning = ['My friend asked me to attend this event on his behalf', 'I put my email in a website and received this link']
          let auctionAnswer = rls.keyInSelect(auctionQuestioning)
 
          if (auctionAnswer == [0]) {
-            console.log(`Wrong Answer. You have been compromised. Event invites can not be shared.`)
+            console.log(`Wrong Answer.` + chalk.redBright(` You have been compromised.`) +` Event invites can not be shared.`)
             const checkPoint = () => {
                let continueFromHere = ['Do you want to replay private chatroom', 'Do you want to continue from start of game']
                let reboot = rls.keyInSelect(continueFromHere)
@@ -236,7 +236,7 @@ startTitle("Silver Web", function (err, data) {
          }
 
       } else if (afterAuctionDecision == [1]) {
-         console.log('"What is this?" (You raise suspicion) \n\nThe administrator comes into the chat and says: "All participants of the auction has been thoroughly vetted and invited personally. unauthorized particiants will be removed from the chat." There\'s a knock on your door. you\'ve been compromised.')
+         console.log('\n\t"What is this?" ::You raise suspicion:: \n\nThe administrator comes into the chat and says: \n\n\t"All participants of the auction has been thoroughly vetted and invited personally. Unauthorized particiants will be removed from the chat." There\'s a knock on your door.' + chalk.redBright( 'you\'ve been compromised'))
          startLoop();
       }
   }
@@ -244,27 +244,27 @@ startTitle("Silver Web", function (err, data) {
   choiceThree();
 
   const choiceFour = () => {
-     console.log('You receive a message on your phone : ')
+     console.log(chalk.magenta('\n\tYou receive a message on your phone : '))
       let response = ['Respond', 'Ignore']
       let responseAnswer = rls.keyInSelect(response)
 
       if (responseAnswer == [0]) {
-         console.log('The message is from an inside Agent that says everything is in place to end the auction. You ask the agent to verify who they are: ')
+         console.log('\tThe message is from an inside Agent that says everything is in place to end the auction. You ask the agent to verify who they are: ')
 
          let questOne = Math.floor(Math.random() * 20 + 1);
          let questTwo = Math.floor(Math.random() * 20 + 1);
  
          let solution = questOne * questTwo;
-         let probSolve = rls.question(`What is ${questOne} * ${questTwo}: \n`);
+         let probSolve = rls.question(chalk.magenta(`What is ${questOne} * ${questTwo}: \n`));
 
          if (probSolve == solution) {
-            console.log(`The agent tells you in another minute the event will start. \n"I've sent you the code for the shutdown. When it's your turn to bid you must input the code and it will shutdown the auction permanently. \nThe key is that you have to do it at the correct time, if not i'll be compromised."`)
+            console.log(`\nThe agent tells you in another minute the event will start. \n"I've sent you the code for the shutdown. When it's your turn to bid you must input the code and it will shutdown the auction permanently. \nThe key is that you have to do it at the correct time, if not i'll be compromised."`)
          } else if (probSolve != solution) {
             console.log('Got it wrong, try again') 
             choiceFour();
          }
       } else if (responseAnswer == [1]) {
-         console.log(`You receive another message. \nResponse: `)
+         console.log(`You receive another message.` + chalk.magenta(`\n\tResponse: `))
 
          let answr = ['Ready to respond', 'Don\'t respond again']
          let answrChoice = rls.keyInSelect(answr)
@@ -273,7 +273,7 @@ startTitle("Silver Web", function (err, data) {
             choiceFour();
             console.log('')
          } else if (answrChoice == [1]) {
-            console.log(`You didn't accept help from Agent. The live feed starts, your webcam turns on. You see yourself at your computer. You've been compromised.`)
+            console.log(`You didn't accept help from Agent. The live feed starts, your webcam turns on. You see yourself at your computer.` +  chalk.redBright(`You've been compromised.`));
 
             const checkPoint = () => {
                let continueFromHere = ['Do you want to replay private chatroom', 'Do you want to continue from start of game']
@@ -299,7 +299,7 @@ startTitle("Silver Web", function (err, data) {
      let timeChoiceAnswer = rls.keyInSelect(timeChoice)
 
      if (timeChoiceAnswer == [0]) {
-        console.log(`\nThe feed is cut short. \nGroup Message in the auction chat says: \n"We apologize for the inconvenience, the auction will resume at a later date." \n\n\tThe feed goes life again with a man wearing tactical gear and his badge showing is bound and bloodied and the chat resumes. "He failed to exercise discretion. He and his accomplice will featured at the next event." (He is the agent) You've been compromised.`)
+        console.log(`\nThe feed is cut short. \nGroup Message in the auction chat says: \n"We apologize for the inconvenience, the auction will resume at a later date." \n\n\tThe feed goes live again showing a man bloodied and bound. He is wearing tactical gear and an exposed badge.  \n\n\t\t::The chat resumes:: \n\n"He failed to exercise discretion. He and his accomplice will be featured at the next event." (He is the agent)` + chalk.redBright(` You've been compromised.`));
         const checkPoint = () => {
          let continueFromHere = ['Do you want to replay private chatroom', 'Do you want to continue from start of game']
          let reboot = rls.keyInSelect(continueFromHere)
