@@ -103,7 +103,7 @@ const aussieMadLibs = () => {
 let name = readline.question(chalk.blue(`Hi! What's your name?\n`),{
   limit: String, limitMessage: chalk.red(`STRANGER DANGER!!! STRANGER DANGER!!!\n`)});
 
-console.clear();
+// console.clear();
 
 console.log(chalk.blue(`Thank you for coming `) + chalk.green(`${name}`));
 
@@ -123,7 +123,7 @@ Throughout your adventure you will be confronted by different situations.
 These events will personalize your experience.`)); // instructions
 
 readline.keyInPause();
-console.clear();
+// console.clear();
 
 ///////////////////////////////  Game Loop ///////////////////////////////////////
 
@@ -136,7 +136,7 @@ You hear Maggie in your ear,\n` + chalk.blue(`
 Hey `+ (chalk.green(`${name}`))) + chalk.blue(`, can you hear me ok?
 You nod slowly, in shocked at how real everything looks.`));
 
-  // readline.keyInPause();
+  readline.keyInPause();
   // console.clear();
 
   if (readline.keyInYNStrict(`She ask you again,\n` + chalk.blue(`Hey `+ (chalk.green(`${name}`))) + chalk.blue(`, can you hear me ok?`))) {
@@ -156,9 +156,7 @@ You nod slowly, in shocked at how real everything looks.`));
 
   console.log(`You see THREE paths in front of you.\nTo mark each path, there is a wooden sign shaped as an arrow with an engraving.\nThe one on the left is marked ${paths[0]},\nthe one in the middle ${paths[1]} and the one on the left ${paths[2]}.`);
   path = readline.keyInSelect(paths,`Choose one:`,{cancel: `choose for me`}); 
-  console.log(path)////////////////returns the index of keyInSelect/////////////////
-  // console.log(paths[path])///////////returns the element at index///////////////////////////
-  // console.clear();
+  console.log(path)
 
   if (path === - 1) {
     path = paths[Math.floor(Math.random() * paths.length)];
@@ -185,22 +183,22 @@ You nod slowly, in shocked at how real everything looks.`));
   let woodenHouse = readline.question(`Do you knock?\nTry the handle and go in? or\nGo around the back?\n`, {
     limit: [`knock`, `go in`, `go around back`]
   });
-  console.clear();
+  // console.clear();
 
   if (woodenHouse === "knock") {
-    console.clear()
+    // console.clear()
     console.log(`No one answers`);
     woodenHouse = readline.question(`Do you try the handle and go in? or\nGo around the back?\n`, {limit: [`go in`, `go around back`]});
   }
 
-  console.clear()
+  // console.clear()
   if (woodenHouse === `go in`) {
     console.log(`You see...`);
     
   }
     randomizeArray(adjectives);
     adjective = readline.keyInSelect(threeChoices, `choose an adjective`,{cancel: `choose for me`});
-    console.clear()
+    // console.clear()
 
     if (adjective === - 1) {
       adjective = threeChoices[Math.floor(Math.random() * threeChoices.length)];
@@ -209,10 +207,10 @@ You nod slowly, in shocked at how real everything looks.`));
       console.log(`You see a/an ` + chalk.green(`${threeChoices[adjective]} `) + `old man at a large black\npot stirring something with a large wooden spoon.\nHe turns to you and says...`);
     
     exclamation = readline.question("enter an exclamation word\n", {limit: String, limitMessage: "Please try again"});
-    console.clear();
+    // console.clear();
     console.log(chalk.green(`${exclamation}!`) + chalk.cyan(` You're just in time for dinner. Have a seat.`));
     let woodenHouseExt = readline.question(`Do you sit?\nContinue to stand? or\nwalk back out?\n`, {limit: ["sit", "stand", "walk"]});
-    console.clear();
+    // console.clear();
 
     if (woodenHouseExt === "sit" || woodenHouseExt === "stand") {
       console.log(`As you ` +  chalk.green(`${woodenHouseExt}`) + ` watching the ` + chalk.green(`${threeChoices[adjective]}`) + ` old man stir the pot, you see a/an`);
@@ -227,7 +225,7 @@ You nod slowly, in shocked at how real everything looks.`));
       + `You start to ease your way out the house. And close the door.`);
 
       readline.keyInPause();
-      console.clear();
+      // console.clear();
     }
   }
 
@@ -241,18 +239,18 @@ You nod slowly, in shocked at how real everything looks.`));
   + chalk.blue(`Oh! You must have come across the snake pit.\nDon't worry. It's not real.\nRemember you’re in a VR experience.\nWe need to record all different emotions. You'll be fine. Just walk past it.`));
 
   readline.keyInPause();
-  console.clear();
+  // console.clear();
 
   console.log(`You reply to Maggie,`);
   let end = readline.question(`I would like to end the adventure now? or\nYou’re right. This is only VR," you walk past the `+ chalk.green(`${bodyPart} `)+ `and continue.\n`,{
     limit: [`end now`, `continue`]});
-  // console.clear();
+  console.clear();
 
   if (end === `end now`) {
     console.log(`You hear Maggie repeat the same message,\nbut this time it skips.\nYou realize it’s a recording.`);
   }
 
-  // console.clear();
+  console.clear();
 
   console.log(`You see a rabbit`);
   randomizeArray(adverbs);
@@ -266,40 +264,34 @@ You nod slowly, in shocked at how real everything looks.`));
       console.log(`The rabbit ` + chalk.green(`${threeChoices[adverb]}`) + ` hops down the path.\nCurious. You follow it.\nThe rabbit starts moving faster and you lose sight of it.`);
     }
 
-
-  // console.log(`You see a rabbit`);
-  // adverb = readline.question(`enter an adverb (word usually ending with "ly")`,{
-  //   limit: String, limitMessage: "Please try again"});
-  // console.log(`The rabbit` + chalk.green(`${adverb}`) + `hops down the path.\nCurious. You follow it.\nThe rabbit starts moving faster and you lose sight of it.`);
-
   readline.keyInPause();
-  console.clear();
+  // console.clear();
 
   ///////////////////////// diceGame ////////////////////
   console.log(`The path leads to pavement.\nYou see a couple of guys sitting on milk cartons by a basketball court playing dice.`);
   if (readline.keyInYNStrict(`Do you join?`)) {
-    console.clear();
+    // console.clear();
     for (let i = 0; i < 2; i++) {
       number = readline.question(`press enter to roll`, {defaultInput: roll(),});
-      console.clear();
+      // console.clear();
       console.log(`You roll ` + chalk.green(`${number}`));
     }
 
     console.log(`As you pick up the dice for your last roll...`);
     readline.keyInPause();
-    console.clear();
+    // console.clear();
 
     console.log(`you hear a loud Bang!\nThe guys deburst.`);
     readline.keyInPause();
-    console.clear();
+    // console.clear();
 
     console.log(`Frustrated, you yell out to Maggie...`);
     readline.keyInPause();
-    console.clear();
+    // console.clear();
 
     console.log(`What does any of this have to do with ` + chalk.green(`${paths[path]}s`) + `?\nShe responds, ` + chalk.blue(`Just relax. You’re doing great! The adventure is almost over`));
     readline.keyInPause();
-    console.clear();
+    // console.clear();
 
   } else {
     number = roll();
@@ -309,24 +301,24 @@ You nod slowly, in shocked at how real everything looks.`));
   console.clear()
   console.log(`As you continue walking, you see the sign for Mazey Mad Libs VR Experience.\nYou feel relieved and think, I’m glad this is over. I’ve had enough excitement for one day.`);
   readline.keyInPause();
-  console.clear();
+  // console.clear();
 
   console.log(`You reach in your bag, shifting things around to make room for the VR gear.\nYou feel a piece of paper that you don’t recall being there before.`);
   readline.keyInPause();
-  console.clear();
+  // console.clear();
 
   console.log(`You take it out of your bag.\nIt’s an old fashioned postcard with a stamp post marked "February 2nd 2020"\nYou read it out loud...`);
   readline.keyInPause();
-  console.clear();
+  // console.clear();
 
   choosePath();
   readline.keyInPause();
-  console.clear();
+  // console.clear();
 
   console.log(`Completely puzzled you continue on as you reach the same spot you first meet Maggie.\nThere she is standing with a smile and says.`);
 
   readline.keyInPause();
-  console.clear();
+  // console.clear();
   startGame();
 };
 
@@ -334,10 +326,10 @@ You nod slowly, in shocked at how real everything looks.`));
 
 const startGame = () => {
   if (readline.keyInYNStrict(chalk.blue(`Ready to start your adventure?`))) {
-    console.clear();
+    // console.clear();
     console.log(chalk.blue(`Great!\nIn your bag, you’ll find a pair of VR goggles and earbuds.\nPlease, put them on now.`));
     readline.keyInPause();
-    console.clear();
+    // console.clear();
     gameLoop();
   } else {
     quitGame();
