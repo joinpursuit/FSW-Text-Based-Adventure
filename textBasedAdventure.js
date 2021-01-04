@@ -46,7 +46,7 @@ const scoreTally = () => {
 const question10= () => {
     if (
       readline1.keyInYN(
-        `Question 7: Actor, Tasha Scott's vocals were recorded for the smash hit tune, "Cookie Time". `
+        `Question 10: Actor, Tasha Scott's vocals were recorded for the smash hit tune, "Cookie Time". `
       )
     ) {
       console.log(`They sure did! \n So gather you friends of mine... \nWe're wilderness girls and it's "Cookie Time"!`);
