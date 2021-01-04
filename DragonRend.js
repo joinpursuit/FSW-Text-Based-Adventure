@@ -15,12 +15,12 @@ function quitGame() {
 }
 
 function dice(nat,min){
-    return Math.floor((Math.random()* nat)+min)//nest this globally
+    return Math.floor((Math.random()* min)+nat)//nest this globally
 }
-//heroStat = health,atk,def,lvl,current exp
-//               0  1 2 3 4
-let heroStat = [10,10,5,1,0]
-//let oppStat = []
+
+let heroStat = [10,10,5,1,0]     //playerstats --> hP, atk, def, lvl, current exp
+let oppStatTroll = [10,10,2,1]//enemy stats --> enHP, enAtk, enDef, enLvl
+let oppStatEnt = [8,15,6,1]
 
 function addHealth(value, reward, risk){
    console.log('+--------------------------------------------------------------------------------------+')
@@ -49,7 +49,6 @@ function minusHealth(value, risk){
     d6 = dice(6,1)
     if (d6 < value){
         heroStat[0]= heroStat[0]-risk
-        
     }
     console.log('+--------------------------------------------------------------------------------------+')
     console.log('+ You take '+heroStat[0]-risk+' damage!                                                    +')
@@ -79,66 +78,53 @@ function dmg(level, atk, enDef, d6){//these stats are hosted in heroStat/oppStat
     } else if (d6 === 1){
         console.log('+--------------------------------------------------------------------------------------+')
         console.log('+ Your attack missed!                                                                  +')
-
     }
 }
 //dodge(d6)
-function dodge(d6){//if dodge roll is > 3, nullify damage
+function dodge(risk){//if dodge roll is > 3, nullify damage
     d6 = dice(6,1)
     if (d6 > 3){
-        heroStat[0]-(enDmg + enDmg)
-    } else {
-       return heroStat[0]-enDmg
+       console.log('+ Succesful dodge!                                              +')
+    } else if (d6 < 4) {
+       heroStat[0]-risk
+       console.log('+ You tripped during your dodge and took '+risk+' damage!       +')
+       console.log('+ Your health is now '+heroStat[0]+'!                                +')
     }
 }
 //spAtk()
-function spAtk(){
-    console.log('+ Qaspiel =>  No Special Attacks until you\'re level 3 ya lout!       +')
-}
-//enDmg(oppStat[3],oppStat[1],heroStat[2],d6)
-let enDmg = function (enLevel, enAtk, def, d6){//tell the comp the enemy stats for this fight via params
-    enLvl = (enLvl + 1)-1
-    enAtk = (enAtk +1)-1
-    def = heroStat[2]
-    d6 = dice (6,1)
-    oppStat = []
-    oppStat.push(enLvl,enArk,def,d6)
 
-    let damage = Math.ceil(
-        (((2(enLevel)+10)/150)*(enAtk/def)+2)*d6
-    )
-    if (d6 >= 3){
+//enDmg(oppStat[3],oppStat[1],heroStat[2],d6)
+function enDmg(enAtk,heroStat[0],){//enemyArr stat are held in oppStat
+   
+    d6 = dice (6,1)
+    d2 = dice (1,0)
+    let damage = Math.ceil( ( ( (2*enLvl+10) / 150) * (enAtk/def) +2) *d6)
+    if (d2 === 1){
         console.log('+ You took '+heroStat[0]-damage+' damage from the enemy!')
-        console.log('+ Health is now '+heroStat[0]+'!')
-    } else {
+        console.log('+ Your health is now '+heroStat[0]+'!')
+    } else if (d2 === 0) {
         console.log('+ The enemy missed! You take no damage.              +')
     }
 }
 
-function fight(enHealth, enAtk, enDef, enLvl){
-    enHealth = (enHealth+1)-1
-    enAtk = (enAtk+1)+ 1
-    enDef = (enDef+1)-1
-    enLvl = (enLvl+1)-1
-    oppStat = []
-    oppStat.push(enHealth,enAtk,enDef,enLvl)
-    while (heroStat[0] > 0 || oppStat[0] > 0){
+function fight(){
+       while (heroStat[0] > 0){
         const rls1 = require('readline-sync')
         options  = ['Attack', 'Dodge', 'Sp. Attack', 'Run']
-        index = rls1.keyInSelect(options, 'What do you do?')
+        index = rls1.keyInSelect(options, 'What do you do?') 
 
-        if (options[index]===options[0]){
-            damage = dmg(heroStat[3],heroStat[1],oppStat[2],[d6])
-            oppStat[0] - damage
-            fight(enHealth, enAtk, enDef, enLvl)
+        if (options[index] === options[0]){
+            damage = dmg(heroStat[3],heroStat[1],oppStat[2],dice(6,1))
+            finalDmg = oppStat[0] - damage
+           // fight()
 
         } else if (options[index] === options[1]) {
             dodge(d6)
-            fight(enHealth, enAtk, enDef, enLvl)
+           // fight()
 
         } else if (options[index] === options[2]) {
             spAtk()
-            fight(enHealth, enAtk, enDef, enLvl)
+           // fight()
 
         } else if (options[index] === options[3]) {
 
@@ -156,9 +142,14 @@ function fight(enHealth, enAtk, enDef, enLvl){
         } else {
             quitGame()
         }
-    }
+        console.log(heroStat)
+        console.log(oppStat)
+    }//while close
 }
 
+function spAtk(){
+    console.log('+ Qaspiel =>  No Special Attacks until you\'re level 3 ya lout!       +')
+}
 
 
 
@@ -322,6 +313,7 @@ function levelOne(){
                 }
             }  
 fight(10,10,2,1)
+
 }
         function stageOneThree(){
             console.log('you made it!')
