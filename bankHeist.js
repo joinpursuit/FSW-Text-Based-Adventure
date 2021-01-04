@@ -4,7 +4,7 @@ const readline1 = require('readline-sync')
 const beginGame = () => {
     console.log(`Welcome to my game.`)
     let nameInput = readline1.question(`What is your name?\n`)
-    console.log(`\nHello ${nameInput}! In this game, you're a bank robber and the decisions that you enter in the console determine whether you will go to jail or not \nbut you don't know which path takes you where and you might have a chance to escape. Good luck! 🍀 (User input must be lowercase)`)
+    console.log(`\nHello ${nameInput}! In this game, you're a bank robber and the decisions that you enter in the console determine whether or not you will go to jail, \nbut you don't know which path takes you where and you might have a chance to escape. Good luck! 🍀 (User input must be lowercase)`)
     playGame()
 }  
  
@@ -251,7 +251,7 @@ const loseGame = () => {
 }
 
 const restartGame = () => {
-    let playAgain = readline1.question(`Play again?\n`)
+    let playAgain = readline1.question(`Play again? "yes" or "no"\n`)
     if(playAgain.toLowerCase() === `yes`){
         console.clear()
         beginGame()
