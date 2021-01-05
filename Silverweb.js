@@ -18,7 +18,7 @@ startTitle("Silver Web", function (err, data) {
  };
  const startLoop = () => {
      let game = rls.keyInYN("\n\tDo you want to play again?\n\t");
- 
+
          if (game) {
            gameIntro();
          } else {
@@ -29,18 +29,18 @@ startTitle("Silver Web", function (err, data) {
  player.play({
    path: "./Hello and Welcome.wav",
  });
- 
- 
+
+
  const gameIntro = () => {
    let nameInput = rls.question("Enter your name: \n");
-   let nInput = say.speak(`${nameInput}`);
+   say.speak(`${nameInput}`);
    console.log(
-     `\nHello ` + nInput + chalk.red` ${nameInput} ` + `Welcome to the game.`
+     `\nHello` +  chalk.red` ${nameInput} ` + `Welcome to the game.`
    );
- 
+
    let x = 18;
    let age = rls.questionInt("\nVerify your age: \n");
- 
+
    age;
    if (age >= x) {
      player.play({
@@ -54,7 +54,7 @@ startTitle("Silver Web", function (err, data) {
          ` \tEach choice you make will send you deeper into the web where you will either choose to infiltrate until we can apprehend or risk getting caught. \n \tChoose wisely. They are always watching. \n`
      );
      rules;
- 
+
      console.log(
        "\n\tGame Rules:" +
          chalk.yellow(
@@ -67,26 +67,26 @@ startTitle("Silver Web", function (err, data) {
            "\n\tYou want to make the choice that gets you closes to revealing the master mind in the game and bring their crime to light."
          )
      );
- 
+
      // First in game scenario
      const choices = () => {
        let optionOne = ["Report", "Invitation"];
        let decisionOne = `\n\tWhich option will you be taking?`;
- 
+
        console.log(
          `\n${nameInput} you have found an advertisement for an event that says ` +
            (chalk.underline.red(`invitation only.`) +
              ` You have the option to report your findings or try to get an invitation to this "exclusive" virtual gathering."`)
        );
- 
+
        console.log(chalk.magenta(decisionOne));
        let index = rls.keyInSelect(optionOne);
- 
+
        if (index == [0]) {
          console.log(
            "\nYour message has been intercepted. " + chalk.redBright("You've been compromised.") + " They won't let you out alive."
          );
- 
+
          startLoop()
        } else if (index == [1]) {
          console.log(
@@ -94,18 +94,17 @@ startTitle("Silver Web", function (err, data) {
          );
          let questOne = Math.floor(Math.random() * 20 + 1);
          let questTwo = Math.floor(Math.random() * 20 + 1);
- 
+
          let solution = questOne * questTwo;
          let probSolve = rls.question(chalk.magenta(`\tWhat is ${questOne} * ${questTwo}: \n`));
- 
+
          const userAnswer = () => {
            if (probSolve == solution) {
-             let input2 = say.speak("Access Granted");
+             say.speak("Access Granted");
              console.log(input2 + chalk.green("\nACCESS"));
            } else if (probSolve != solution) {
-             let input3 = say.speak("Warning! Warning!");
+             say.speak("Warning! Warning!");
              console.log(
-               input3 +
                  chalk.redBright("\nWARNING!") +
                  "They have located you trying to access their servers. We must shut down now❗️❗️❗️"
              );
@@ -115,9 +114,9 @@ startTitle("Silver Web", function (err, data) {
          userAnswer();
       } else if (index == [-1]) {
         evacuate()
-      } 
+      }
      };
- 
+
      const play = () => {
        let startQuestion = rls.keyInYN("\n\tDo you want to continue?\n\n");
        if (startQuestion) {
@@ -125,17 +124,17 @@ startTitle("Silver Web", function (err, data) {
          choices();
        } else evacuate();
      };
- 
+
      play();
- 
+
      const alphaNumeric = (code, characters) => {
        let inviteCode = "";
- 
+
        for (let i = code; i > 0; --i)
          inviteCode += characters[Math.floor(Math.random() * characters.length)];
        return inviteCode;
      };
- 
+
      const choiceTwo = () => {
        let randomInvitationNumber = alphaNumeric(
          16,
@@ -143,16 +142,16 @@ startTitle("Silver Web", function (err, data) {
        );
        let decisionTwo = "What do you want to do?";
        let optionTwo = ["Place a bid", "Try to shutdown stream"];
- 
+
        console.log(
          chalk.yellow(`\n\n\tGreat Work ${nameInput}!`) + `\n\n\tWe are one step closer. \n\tNow that you have an invitation you can attend the event. \n\tYou press enter and an alpha-numeric code generates invitation access: \n\n\t` +
            chalk.red(randomInvitationNumber) +
            ` \n\n\tOnce the code is entered, you gain entry where you are met with a waiting graphic of a red curtain and a very active participant chat of people saying \n\n\t\t"We hope this is as good as the last one." \n\n\tAfter about a 5 minute wait a live feed starts to stream of a man covered in a butcher's apron and a mask pushing an operation table with a long white sheet covering something. \n\tHe begins to speak ..."You who have been lucky enough to be invited are in for a treat." \n\n\t He then unveils what's hidden under the sheet. \n\n\tWhats revealed is a person who appears scared and bound. Right as the person is revealed the participants of the chat begin placing their bids for auction.\n\n\t` +
            chalk.magenta(decisionTwo)
        );
- 
+
        let index = rls.keyInSelect(optionTwo);
- 
+
        if (index == [0]) {
          let instrumentArr = [
            "Tonsil Guillotine",
@@ -160,14 +159,14 @@ startTitle("Silver Web", function (err, data) {
            "Lithotome Caché",
            "Rectal Needle",
          ];
- 
+
          console.log(
            chalk.green("\n\tYou are the highest bidder!") +
              chalk.magenta('\n\n\tYou are then private messaged to choose a tool for the "operation"'
          ));
- 
+
          let index2 = rls.keyInSelect(instrumentArr);
- 
+
          if (index2 == [0]) {
            console.log(
              chalk.rgb(255, 136, 0).bold(`\n\n\t${instrumentArr[0]}` + ` has been chosen. You then watch the butcher begin to tear out the victim\'s tonsils. As they attempt to scream in agony. `
@@ -197,7 +196,7 @@ startTitle("Silver Web", function (err, data) {
            "Do you want to return to place your bid",
          ];
          let streamChoice = rls.keyInSelect(stream);
- 
+
          if (streamChoice == [0]) {
            console.log(chalk.redBright("\tYou've been compromised"));
            startLoop();
@@ -209,7 +208,7 @@ startTitle("Silver Web", function (err, data) {
        } else if (index == [-1]) {
          evacuate();
        }
- 
+
      };
 
      choiceTwo();
@@ -231,7 +230,7 @@ startTitle("Silver Web", function (err, data) {
             const checkPoint = () => {
                let continueFromHere = ['Do you want to replay private chatroom', 'Do you want to continue from start of game']
                let reboot = rls.keyInSelect(continueFromHere)
-           
+
                if (reboot == [0]) {
                   choiceThree()
                } else if (reboot == [1]) {
@@ -252,7 +251,7 @@ startTitle("Silver Web", function (err, data) {
          startLoop();
       } else if (afterAuctionDecision == [-1]) {
         evacuate();
-      } 
+      }
   }
 
   choiceThree();
@@ -267,14 +266,14 @@ startTitle("Silver Web", function (err, data) {
 
          let questOne = Math.floor(Math.random() * 20 + 1);
          let questTwo = Math.floor(Math.random() * 20 + 1);
- 
+
          let solution = questOne * questTwo;
          let probSolve = rls.question(chalk.magenta(`\nWhat is ${questOne} * ${questTwo}: \n`));
 
          if (probSolve == solution) {
             console.log(`\nThe agent tells you in another minute the event will start. \n"I've sent you the code for the shutdown. When it's your turn to bid you must input the code and it will shutdown the auction permanently. \nThe key is that you have to do it at the correct time, if not i'll be compromised."`)
          } else if (probSolve != solution) {
-            console.log('Got it wrong, try again') 
+            console.log('Got it wrong, try again')
             choiceFour();
          }
       } else if (responseAnswer == [1]) {
@@ -292,7 +291,7 @@ startTitle("Silver Web", function (err, data) {
             const checkPoint = () => {
                let continueFromHere = ['Do you want to replay private chatroom', 'Do you want to continue from start of game']
                let reboot = rls.keyInSelect(continueFromHere)
-           
+
                if (reboot == [0]) {
                   choiceFour()
                } else if (reboot == [1]) {
@@ -306,7 +305,7 @@ startTitle("Silver Web", function (err, data) {
         evacuate();
       }
   }
-  
+
   ;
   choiceFour();
 
@@ -319,7 +318,7 @@ startTitle("Silver Web", function (err, data) {
         const checkPoint = () => {
          let continueFromHere = ['Do you want to replay private chatroom', 'Do you want to continue from start of game']
          let reboot = rls.keyInSelect(continueFromHere)
-     
+
          if (reboot == [0]) {
             choiceFour()
          } else if (reboot == [1]) {
@@ -357,15 +356,15 @@ startTitle("Silver Web", function (err, data) {
        evacuate();
      }
   }
- 
+
   choiceFive();
 
-   
+
    } else if (age < x) {
      console.log("You are too young for the underbelly of the silver web");
      evacuate();
    }
 
  };
- 
+
  gameIntro();
