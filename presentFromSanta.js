@@ -1,57 +1,15 @@
 const readline = require('readline-sync')
 
-const openingLines = () => {
-    console.log("\nBeep Beep Beep! The sound of the neighborhood snow removal truck woke you up. Glancing outside your window, another 8 inches of snow has fallen since last night.")
-    console.log ("The hill behind your backyard looks very much like Narnia, but a look-alike Santa's sleigh tracks caught your attention.\n")
-}
-openingLines()
-
-
 const exitGame = () => {
     console.log(`Goodbye!`)
     process.exit()
 }
 
-const userInput = () =>{
-    openingLines()
-    let nameInput = readline.question("Please enter your name: \n")
-    let ageInput = readline.question ("Please enter your age: [Input must be a number] \n")
-    if (ageInput <= 12 ) {
-        console.log ("\nSlowly sitting up, you reach for the glass of water on your nightstand. Instead, you feel something else. A letter with your name on it. \n")
-        console.log ("Opening the letter ...\n")
-        newGame()
-    } else {
-        console.log("\nSowwie. You're old enough to know Santa is fake, dont pretend like he exists. :)")
-        exitGame()
-    }    
-}
-
-
-
-const nameInput = readline.question("Please enter your name: \n")
-let ageInput = readline.question ("Please enter your age: [Input must be a number] \n")
-
-
-const newGame = () => {    
-    console.log("\x1b[33m%s\x1b[0m", "Rise and shine " + `${nameInput}` + "!~")
-    console.log("\x1b[33m%s\x1b[0m", "Today is December 25th, Christmas day.")
-    console.log("\x1b[33m%s\x1b[0m", "I have left a present for you last night, it is up to you to find where it is hidden!")
-    console.log("\x1b[33m%s\x1b[0m", "With love, Santa! Ho! Ho! Ho!~\n")
-    console.log("\x1b[33m%s\x1b[0m", "Hint: You should start low and take notes!\n")
-    let answerPresentHunt = readline.question("Would you like to go on a present hunt? [Please enter: Yes(Y) or No(N)]\n")
-    if (answerPresentHunt.toLowerCase() === "yes" || answerPresentHunt.toLowerCase() === "y") {
-        console.log("\nWELCOME TO THE GAME!~ Which room would you like to check out first?")
-        enterRoom()
-    } else {
-        exitGame ()
-    }
-}
-
 const playAgain = () => {
     let answerPlayAgain = readline.question("Would you like to play again? [Please enter: Yes(Y) or No(N)]\n")
-    answerPlayAgain.toLowerCase() === "yes" || answerPlayAgain.toLowerCase() === "y" ? userInput() : exitGame()
-}
+    answerPlayAgain.toLowerCase() === "yes" || answerPlayAgain.toLowerCase() === "y" ? openingLines() : exitGame()
 
+}
 
 const lookInBedroomAgain = () => {
     let lookOrNot = readline.question (`${nameInput}. Would you like to look in the bedroom again?\n`)
@@ -60,6 +18,7 @@ const lookInBedroomAgain = () => {
             console.log("\nLooking in bedroom again, nothing but dirty socks... Maybe you should head down to the basement and wash them.");
         break;
         case "no need":
+            console.log()
             enterRoom()
             break; 
         default:
@@ -92,8 +51,6 @@ const livingRoomRingAlarm = () => {
         livingRoomRingAlarm()
     }
 }
-
-
 
 
 const searchInKitchen = () => {
@@ -175,29 +132,33 @@ const enterRoom = () => {
     let room = ["bedroom", "living room", "kitchen", "basement", "closet"]
     for(let i = 0; i <= room.length - 1; i++){
         if (pickRoom.toLowerCase() === room[0]) {
-            console.log("\nYou were already in bedroom. No present in there, only the letter from Santa.")
+            console.log("\nYou were already in the bedroom when you woke up earlier. No present in there, only the letter from Santa.")
             lookInBedroomAgain()
             break;
         } else if (pickRoom.toLowerCase() === room[1]){
-            console.log("\nYou walk towards the living room. Infront of the fireplace, there are faint santa footprints.")
-            console.log("Your eyes wander over to the flashing red light ring alarm on the wall, you walk towards it." + " Another note!")
+            let livingRoomScript = "\nYou walk towards the living room. Infront of the fireplace, there are faint santa footprints.\nYour eyes wander over to the flashing red light ring alarm on the wall, you walk towards it. Another note!\n"
+            console.log(livingRoomScript)
             console.log("\x1b[33m%s\x1b[0m", "That was quick, now can you get the door to unlock? :)\n")
             livingRoomRingAlarm()
             break;
         } else if (pickRoom.toLowerCase() === room[2]){
-            console.log("\nWalking towards the kitchen. The full plate of cookies you left on counter last night is now half emptied with crumbs everywhere.")
+            let kitchenScript = "\nWalking towards the kitchen. The full plate of cookies you left on counter last night is now half emptied with crumbs everywhere."
+            console.log(kitchenScript)
             searchInKitchen()
             break;
         } else if (pickRoom.toLowerCase() === room[3]) {
-            console.log("\nYou open the door that leds to the basement, it's pitch dark.")
+            let basementScript = "\nYou open the door that leds to the basement, it's pitch dark."
+            console.log(basementScript)
             lightInBasement()
             break;
         } else if (pickRoom.toLowerCase() === room[4]) {
-            console.log("\nOpening up the closet door, there's a pile of your favorite snacks but no present.")
+            let closetScript = "\nOpening up the closet door, there's a pile of your favorite snacks but no present."
+            console.log(closetScript)
             snackInCloset()
             break;
         } else {
-            console.log ("\nPlease move towards any of these rooms: Bedroom, Living room, Kitchen, Basement or Closet to continue the game.")
+            let roomScript = "\nPlease move towards any of these rooms: Bedroom, Living room, Kitchen, Basement or Closet to continue the game."
+            console.log (roomScript)
             break;
         }
     }
@@ -205,14 +166,52 @@ const enterRoom = () => {
 }
 
 
-if (ageInput <= 12 ) {
-    console.log ("\nSlowly sitting up, you reach for the glass of water on your nightstand. Instead, you feel something else. A letter with your name on it. \n")
-    console.log ("Opening the letter ...\n")
-    newGame()
-} else {
-    console.log("\nSowwie. You're old enough to know Santa is fake, dont pretend like he exists. :)")
-    exitGame()
+const newGame = () => {    
+    console.log("\x1b[33m%s\x1b[0m", "Rise and shine " + `${nameInput}` + "!~")
+    console.log("\x1b[33m%s\x1b[0m", "Today is December 25th, Christmas day.")
+    console.log("\x1b[33m%s\x1b[0m", "I have left a present for you last night, it is up to you to find where it is hidden!")
+    console.log("\x1b[33m%s\x1b[0m", "With love, Santa! Ho! Ho! Ho!~\n")
+    console.log("\x1b[33m%s\x1b[0m", "Hint: You should start low and take notes!\n")
+    let answerPresentHunt = readline.question("Would you like to go on a present hunt? [Please enter: Yes(Y) or No(N)]\n")
+    if (answerPresentHunt.toLowerCase() === "yes" || answerPresentHunt.toLowerCase() === "y") {
+        console.log("\nWELCOME TO THE GAME!~ Which room would you like to check out first?")
+        enterRoom()
+    } else {
+        exitGame ()
+    }
 }
+
+const ageRestriction = () => {
+    ageInput = readline.questionInt ("Please enter your age: [Input must be a number] \n")
+    if (ageInput <= 12 ) {
+        console.log ("\nSlowly sitting up, you reach for the glass of water on your nightstand. Instead, you feel something else. A letter with your name on it. \n")
+        console.log ("Opening the letter ...\n")
+        newGame()
+    } else {
+        console.log("\nSowwie. You're old enough to know Santa is fake, dont pretend like he exists. :)")
+        exitGame()
+    }
+}
+
+const openingLines = () => {
+    console.log("\nBeep Beep Beep! The sound of the neighborhood snow removal truck woke you up. Glancing outside your bedroom window, another 8 inches of snow has fallen since last night.")
+    console.log ("The hill behind your backyard looks very much like Narnia, but a look-alike Santa's sleigh tracks caught your attention.\n")
+    nameInput = readline.question("Please enter your name: \n")
+    ageRestriction()
+}
+
+openingLines()
+
+
+
+
+
+
+
+
+
+
+
 
 
 
