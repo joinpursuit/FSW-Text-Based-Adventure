@@ -30,10 +30,10 @@ const quitGame = () => {
   process.exit();
 };
 
-const randomizedArray = (array) => {
+const randomizeArray = (array) => {
   threeChoices = [];
   for (let i = 0; i < 3; i++) {
-    let indexRandom = randomNum * array.length - 1;
+    let indexRandom = Math.floor(Math.random()* array.length);
     threeChoices.push(array.splice(indexRandom, 1));
   }
 };
@@ -42,10 +42,14 @@ const roll = () => {
   return Math.floor(Math.random() * 12 + 2);
 };
 
-const choosenPath = () => {
-  if (path[0] === "cat" || path[1] === "cat" || path[2] === "cat") {
+
+ 
+const choosePath = () => {
+  if (path === 0) {
+    console.log(path)
     catMadLibs();
-  } else if (path[0] === "dog" || path[1] === "dog" || path[2] === "dog") {
+  } else if (path === 1 ) {
+    console.log(path)
     dogMadLibs();
   } else {
     aussieMadLibs();
@@ -57,7 +61,7 @@ const choosenPath = () => {
 const catMadLibs = () => {
   console.log(`
   ` + chalk.green(`${exclamation} `) + `Here are some purr-fect reasons why cats make wonderful pets:
-  Cats come and ` + chalk.green(`${threeChoices[verb]} `) + `as they please, exploring the neighbor's yard, climbling tall trees, or basking in the midday sun.
+  Cats come and ` + chalk.green(`${verb} `) + `as they please, exploring the neighbor's yard, climbling tall trees, or basking in the midday sun.
   Cats are mysterious.
   Take one look into a cat's diamond-shaped eyes, and you're sure it's reading your thoughts.
   Cats are known for their adjective cleanliness.
@@ -70,7 +74,7 @@ const dogMadLibs = () => {
   console.log(`
   ` + chalk.green(`${exclamation} `) + `Here are few reasons why dogs are considered man's best friend:
   Dogs are adjective companions. They love to play.
-  You can ` + chalk.green(`${threeChoices[verb]}`) + `a rubber ball and a dog will ` + chalk.green(`${adverb} `)
+  You can ` + chalk.green(` ${verb} `) + `a rubber ball and a dog will ` + chalk.green(`${adverb} `)
   + `chase it and carry it back to you in its mouth at least ` + chalk.green(`${number} `) + `times.
   Dogs can keep your house safe.
   Their keen sense of hearing and sense of smell justify the term watchdog.
@@ -86,7 +90,7 @@ const aussieMadLibs = () => {
   The most ` + chalk.green(`${exclamation} `) + `animal is the kangaroo, which carries its baby in a/an` + chalk.green(` ${bodyPart} `) + `on its belly
   The koala is another popular Australian animal.
   This furry, creature loves to eat leaves from eucalyptus trees.
-  If you are a bird-watcher, emu will` + chalk.green(`${threeChoices[verb]}`) + `your socks off.
+  If you are a bird-watcher, emu will` + chalk.green(` ${verb} `) + `your socks off.
   It is a bird that cannot fly, but it can run fast.
   Perhaps the adjective of all Australian animals is the platypus.
   It has a bill that resembles a duck's bill.
@@ -107,10 +111,10 @@ if( name.toLowerCase() === "maggie") {
   console.log(chalk.blue(`\nWow! What a coinkydink. My name is also Maggie.\nI will be assisting you, during your adventure.`))
 } else {
   console.log(chalk.blue(`My name is Maggie and I will be assisting you, during your adventure.`));
-} // greeting
+}
 
 readline.keyInPause();
-console.clear();
+// console.clear();
 
 console.log(chalk.blue(`
 You will be one of the first to test out Wacky Mad Lib VR Adventure.
@@ -132,8 +136,8 @@ You hear Maggie in your ear,\n` + chalk.blue(`
 Hey `+ (chalk.green(`${name}`))) + chalk.blue(`, can you hear me ok?
 You nod slowly, in shocked at how real everything looks.`));
 
-  readline.keyInPause();
-  console.clear();
+  // readline.keyInPause();
+  // console.clear();
 
   if (readline.keyInYNStrict(`She ask you again,\n` + chalk.blue(`Hey `+ (chalk.green(`${name}`))) + chalk.blue(`, can you hear me ok?`))) {
     console.clear()
@@ -144,27 +148,32 @@ You nod slowly, in shocked at how real everything looks.`));
   }
 
   readline.keyInPause();
-  console.clear();
+  // console.clear();
 
   console.log(chalk.blue(`Look ahead, you should see a path.\nFollow it and your adventure begins.\nI will be with you all the way.\nHope you enjoy.`));
   readline.keyInPause();
-  console.clear();
+  // console.clear();
 
   console.log(`You see THREE paths in front of you.\nTo mark each path, there is a wooden sign shaped as an arrow with an engraving.\nThe one on the left is marked ${paths[0]},\nthe one in the middle ${paths[1]} and the one on the left ${paths[2]}.`);
-  path = readline.keyInSelect(paths,`Choose one:`,{cancel: `choose for me`});
-  console.clear();
+  path = readline.keyInSelect(paths,`Choose one:`,{cancel: `choose for me`}); 
+  console.log(path)////////////////returns the index of keyInSelect/////////////////
+  // console.log(paths[path])///////////returns the element at index///////////////////////////
+  // console.clear();
 
   if (path === - 1) {
     path = paths[Math.floor(Math.random() * paths.length)];
+    console.log(path)
     console.log(`Apprehensive at the idea, you choose the path with the sign marked ` + chalk.green(`${path}`) + `.\nYou think to yourself, this VR experience would be the best time to get over your fears of ` + chalk.green(`${path}s`) + `.\nHesitatingly, you start walking along the path. After sometime, You hear rustling in the bushes around you.`);
   } else {
+    console.log(path)
     console.log(`Apprehensive at the idea, you choose the path with the sign marked ` + chalk.green(`${paths[path]}`) + `.\nYou think to yourself, this VR experience would be the best time to get over your fears of ` + chalk.green(`${paths[path]}s`) + `.\nHeistately, you start walking along the path. After sometime, You hear rustling in the bushes around you.`);
   }
   
-  randomizedArray(verbs);
+  randomizeArray(verbs);
   verb = readline.keyInSelect(threeChoices,`Which do you choose?`,{cancel: `choose for me`});
 
-  console.clear();
+
+  // console.clear();
 
   if (verb === - 1) {
     verb = threeChoices[Math.floor(Math.random() * threeChoices.length)];
@@ -189,13 +198,12 @@ You nod slowly, in shocked at how real everything looks.`));
     console.log(`You see...`);
     
   }
-    randomizedArray(adjectives);
+    randomizeArray(adjectives);
     adjective = readline.keyInSelect(threeChoices, `choose an adjective`,{cancel: `choose for me`});
     console.clear()
 
     if (adjective === - 1) {
       adjective = threeChoices[Math.floor(Math.random() * threeChoices.length)];
-      console.log(adjective);
       console.log(`You see a/an ` + chalk.green(`${adjective}`) + ` old man at a large black\npot stirring something with a large wooden spoon.\nHe turns to you and says...`);
     } else {
       console.log(`You see a/an ` + chalk.green(`${threeChoices[adjective]} `) + `old man at a large black\npot stirring something with a large wooden spoon.\nHe turns to you and says...`);
@@ -238,21 +246,22 @@ You nod slowly, in shocked at how real everything looks.`));
   console.log(`You reply to Maggie,`);
   let end = readline.question(`I would like to end the adventure now? or\nYou’re right. This is only VR," you walk past the `+ chalk.green(`${bodyPart} `)+ `and continue.\n`,{
     limit: [`end now`, `continue`]});
-  console.clear();
+  // console.clear();
 
   if (end === `end now`) {
     console.log(`You hear Maggie repeat the same message,\nbut this time it skips.\nYou realize it’s a recording.`);
   }
 
-  readline.keyInPause();
-  console.clear();
+  // console.clear();
 
   console.log(`You see a rabbit`);
-  randomizedArray(adverbs);
+  randomizeArray(adverbs);
   adverb = readline.keyInSelect(threeChoices, `Which do you choose?`, {cancel: `choose for me`});
-  console.clear()
+  
+  // console.clear()
     if (adverb === - 1) {
-      console.log(`The rabbit ` + chalk.green(`${adverb} `) + ` hops down the path.\nCurious. You follow it.\nThe rabbit starts moving faster and you lose sight of it.`)
+      adverb = threeChoices[Math.floor(Math.random() * threeChoices.length)];
+      console.log(`The rabbit ` + chalk.green(`${adverb}`) + ` hops down the path.\nCurious. You follow it.\nThe rabbit starts moving faster and you lose sight of it.`)
     } else {
       console.log(`The rabbit ` + chalk.green(`${threeChoices[adverb]}`) + ` hops down the path.\nCurious. You follow it.\nThe rabbit starts moving faster and you lose sight of it.`);
     }
@@ -310,7 +319,7 @@ You nod slowly, in shocked at how real everything looks.`));
   readline.keyInPause();
   console.clear();
 
-  choosenPath();
+  choosePath();
   readline.keyInPause();
   console.clear();
 
