@@ -299,7 +299,7 @@ const battlePhase = (mon) => {
                             textColorBattle(`You gain ${battleMon[8]} gold.`); wait(seconds);
                             player[7] += battleMon[7]
                             player[9] += battleMon[8]
-                            for(let j = player[7]; j >= levelExp[player[8]]; j -= levelExp[player[8] - 1]){
+                            while(player[7] >= levelExp[player[8]]){
                                 player[7] -= levelExp[player[8]]
                                 player[8]++
                                 textColorAction(`\nCongratulations! Your level is increased to ${player[8]}!`); wait(seconds);
@@ -468,20 +468,17 @@ const choiceMenuWorld = () => {
 }
 const usePotion = () => {
     if(player[1] + potionValue > player[2]){
-        textColorAction(`You have restored ${player[2] - player[1]} HP.\n`); wait(seconds);
+        textColorAction(`You have restored ${player[2] - player[1]} HP.`); wait(seconds);
         player[1] = player[2]
     } else {
-        textColorAction(`You have restored ${potionValue} HP.\n`); wait(seconds);
+        textColorAction(`You have restored ${potionValue} HP.`); wait(seconds);
         player[1] += potionValue
     }
+    textColorAction(`Now you have ${player[1]}/${player[2]} HP.\n`); wait(seconds);
     player[6]--
 }
 const setWorldMap = (choice = 11) => {
-    if(choice === 11){
-        route += "0"
-    } else {
-        route += "1"
-    }
+    choice === 11 ? route += "0" : route += "1"
     switch(route){
         case "00": worldMap = map00; break;
         case "01": worldMap = map01; break;
@@ -508,30 +505,30 @@ const setWorldMap = (choice = 11) => {
     }
 }
 const menuPlayer = () => {  // name, 1 hp, 2 maxHP, 3 attack, 4 defense, 5 speed, 6 potion, 7 exp, 8 level, 9 gold, 10 sword, 11 armor, 12 boots
-    textColorStatus(`\n${player[0]}  Lv ${player[8]}`); wait(seconds/2);
-    textColorStatus(`HP    ${player[1]}/${player[2]}`); wait(seconds/2);
-    textColorStatus(`Attack   ${player[3]}`); wait(seconds/2);
-    textColorStatus(`Defense  ${player[4]}`); wait(seconds/2);
-    textColorStatus(`Speed    ${player[5]}`); wait(seconds/2);
-    textColorStatus(`Exp   ${player[7]}/${levelExp[player[8]]}`); wait(seconds/2);
-    textColorStatus(`Gold     ${player[9]}`); wait(seconds/2);
-    textColorStatus(`Equipped: ${swords[player[10]][0]} (${swords[player[10]][1]} attack)`); wait(seconds/2);
-    textColorStatus(`Equipped: ${armor[player[11]][0]} (${armor[player[11]][1]} defense)  `); wait(seconds/2);
-    textColorStatus(`Equipped: ${boots[player[12]][0]} (${boots[player[12]][1]} speed)`); wait(seconds/2);
-    textColorStatus(`${player[6] > 1 ? "Potions" : "Potion"} ${player[6]}\n`); wait(seconds);
+    textColorStatus(`\n${player[0]}  Lv ${player[8]}`); wait(seconds/3);
+    textColorStatus(`HP    ${player[1]}/${player[2]}`); wait(seconds/3);
+    textColorStatus(`Attack   ${player[3]}`); wait(seconds/3);
+    textColorStatus(`Defense  ${player[4]}`); wait(seconds/3);
+    textColorStatus(`Speed    ${player[5]}`); wait(seconds/3);
+    textColorStatus(`Exp   ${player[7]}/${levelExp[player[8]]}`); wait(seconds/3);
+    textColorStatus(`Gold     ${player[9]}`); wait(seconds/3);
+    textColorStatus(`Equipped: ${swords[player[10]][0]} (${swords[player[10]][1]} attack)`); wait(seconds/3);
+    textColorStatus(`Equipped: ${armor[player[11]][0]} (${armor[player[11]][1]} defense)  `); wait(seconds/3);
+    textColorStatus(`Equipped: ${boots[player[12]][0]} (${boots[player[12]][1]} speed)`); wait(seconds/3);
+    textColorStatus(`Health ${player[6] > 1 ? "Potions" : "Potion"}: ${player[6]}\n`); wait(seconds);
 }
 const menuMap = () => {
     textColorStatus(worldMap); wait(seconds);
 }
 const menuHelp = (intro = false) => {
-    textColorWorld("\nYou can access following options at any time."); intro ? wait(seconds) : wait(seconds/2);
-    textColorStatus("status   shows player's current status"); intro ? wait(seconds) : wait(seconds/2);
-    textColorStatus("potion   use potion outside of battle"); intro ? wait(seconds) : wait(seconds/2);
-    textColorStatus("equip    change player's current equipments"); intro ? wait(seconds) : wait(seconds/2);
-    textColorStatus("map      shows player's current location"); intro ? wait(seconds) : wait(seconds/2);
-    textColorStatus("help     shows this manual"); intro ? wait(seconds) : wait(seconds/2);
-    textColorStatus("speed    change text scrolling speed"); intro ? wait(seconds) : wait(seconds/2);
-    textColorStatus("restart  restart the game"); intro ? wait(seconds) : wait(seconds/2);
+    textColorWorld("\nYou can access following options at any time."); intro ? wait(seconds) : wait(seconds/3);
+    textColorStatus("status   shows player's current status"); intro ? wait(seconds) : wait(seconds/3);
+    textColorStatus("potion   use potion outside of battle"); intro ? wait(seconds) : wait(seconds/3);
+    textColorStatus("equip    change player's current equipments"); intro ? wait(seconds) : wait(seconds/3);
+    textColorStatus("map      shows player's current location"); intro ? wait(seconds) : wait(seconds/3);
+    textColorStatus("help     shows this manual"); intro ? wait(seconds) : wait(seconds/3);
+    textColorStatus("speed    change text scrolling speed"); intro ? wait(seconds) : wait(seconds/3);
+    textColorStatus("restart  restart the game"); intro ? wait(seconds) : wait(seconds/3);
     textColorStatus("quit     exit the game\n"); wait(seconds);
 }
 const menuEquip = () => {
@@ -644,7 +641,7 @@ const menuEquip = () => {
     }
 }
 const shopWorld = (shopLv = 1) => { //shopLv reprensents also the index of swords/armor/boots
-    let nickName = ""
+    let nickName = "hero"
     let playerChoice = 0
     let potionQty = Math.ceil(shopLv / 2)
 
@@ -654,19 +651,17 @@ const shopWorld = (shopLv = 1) => { //shopLv reprensents also the index of sword
         nickName = "traveler"
     } else if(probability(50)){
         nickName = "my friend"
-    } else {
-        nickName = "hero"
     }
     textColorShop(`\nWelcome, ${nickName}. ${probability(50) ? "Take" : "Have"} a look at what I have.\n`); wait(seconds);
     while(playerChoice !== "goodbye"){
-        textColorShop(`You have ${player[9]} gold.`); wait(seconds/2);
-        textColorShop(`1️⃣  ${swords[shopLv][0]}  (${swords[shopLv][1]} attack)  ${60*shopLv} Gold`); wait(seconds/2);
-        textColorShop(`2️⃣  ${armor[shopLv][0]}  (${armor[shopLv][1]} defense)  ${50*shopLv} Gold`); wait(seconds/2);
-        textColorShop(`3️⃣  ${boots[shopLv][0]}  (${boots[shopLv][1]} speed)  ${40*shopLv} Gold`); wait(seconds/2);
+        textColorShop(`You have ${player[9]} gold.`); wait(seconds/3);
+        textColorShop(`1️⃣  ${swords[shopLv][0]}  (${swords[shopLv][1]} attack)  ${60*shopLv} Gold`); wait(seconds/3);
+        textColorShop(`2️⃣  ${armor[shopLv][0]}  (${armor[shopLv][1]} defense)  ${50*shopLv} Gold`); wait(seconds/3);
+        textColorShop(`3️⃣  ${boots[shopLv][0]}  (${boots[shopLv][1]} speed)  ${40*shopLv} Gold`); wait(seconds/3);
         if(potionQty === 0){
-            textColorShop(`4️⃣  Health Potion  SOLD OUT`); wait(seconds/2);
+            textColorRed(`4️⃣  Health Potion  SOLD OUT`); wait(seconds/3);
         } else {
-            textColorShop(`4️⃣  Health Potion  (Quantity: ${potionQty})  ${30 + 10 * (shopLv - 2)} Gold each`); wait(seconds/2);
+            textColorShop(`4️⃣  Health Potion  (Quantity: ${potionQty})  ${30 + 10 * (shopLv - 2)} Gold each`); wait(seconds/3);
         }
         playerChoice = playerInput.question(textColorShop("What do you like? If you want to go, say goodbye."))
         playerChoice = playerChoice.toLowerCase()
