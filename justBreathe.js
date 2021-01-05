@@ -1,7 +1,8 @@
 const readline = require('readline-sync');
+const chalk = require('chalk');
 
 const startGame = () => {
-if(wantToPlay = readline.keyInYN('Do you want to play a game?')){
+if(wantToPlay = readline.keyInYN(chalk.red.bold('Hello, do you want to play a game?'))){
     gameIntro();
 }else{
     leaveGame1();
@@ -10,7 +11,7 @@ if(wantToPlay = readline.keyInYN('Do you want to play a game?')){
 
 
 const leaveGame1 = () => {
-    console.log("You were a bad candidate anyway. Goodbye!");
+    console.log(chalk.blue.bold("You were a bad candidate anyway. Goodbye!"));
     process.exit();
 };
 
@@ -20,7 +21,7 @@ const leaveGame2 = () => {
 };
 
 const leaveGame3 = () =>{
-    console.log('You died. GAME OVER');
+    console.log('Seems you died. GAME OVER');
 }
 
 
@@ -28,18 +29,24 @@ let nameInput = readline.question("What is your name? \n")
 
 function gameIntro(){
     console.log(`Welcome to my experiment ${nameInput}!.....I mean...game. \n`);
-        let ageInput = readline.question('How old are you?\n')
-            if(ageInput < 18){
-                console.log("Oh no, you're just a baby! Enjoy your life!");
-                leaveGame2()
-             }else if(ageInput >= 18){
-                console.log("Yes! " + ageInput + "," + " you're old...the perfect candidate for my experi- .....game. \n")
-            }else{
-                console.log(`That was not a valid input ${nameInput}`);
-                console.log('Let\'s try this again');
-                console.log('I don\'t like repeating myself, but ahem')
-                gameIntro();
-            }
+};
+
+function howOld (){
+let ageInput = readline.question('How old are you?\n')
+    if(ageInput < 18){
+        console.log("Oh no, you're just a baby! Enjoy your life!");
+        leaveGame2()
+    }else if(ageInput >= 18){
+        console.log("Yes! " + ageInput + "," + " you're old...the perfect candidate for my experi- .....game. \n")
+    }else{
+        console.log(`That was not a valid input ${nameInput}`);
+        console.log('Let\'s try this again');
+        console.log('I don\'t like repeating myself, but ahem');
+        howOld();
+    }
+};
+
+function howToPlay(){
 console.log('Here is how you play:');
     let movement = ["'forward'", "'right'", "'left'", "'up'"]
         for(let i = 0; i < movement.length; i++){
@@ -47,6 +54,9 @@ console.log('Here is how you play:');
         }
             console.log("Type 'grab' to grab an item.");
             console.log("Type 'swing' to swing your arm");
+}
+
+function story (){
 if(readline.keyInYN('Are you ready? \n')){
     console.log('You wake up alone in a room lit with red lighting');
     console.log('As you move to look around, you notice pain in your body');
@@ -90,7 +100,7 @@ let SecondDoor = '2'
 
 
 const moveOne = () =>{
-console.log('To the right of you there is a long dark hallway with loud music');
+console.log('To the left of you there is a long dark hallway with loud music');
 console.log('Infront of you there is a staircase, that leads down to a long hallway with a very bright light at the end');
 let l = 'left'
 let f = 'forward'
@@ -188,13 +198,30 @@ if(action === choice1){
     }
 };
 
-const givenSurgeon = () => {
+function givenSurgeon () {
 console.log('You must be out of breath');
 console.log('Now that you have your lungs, you must choose a surgeon');
-console.log('I\'ll let you choose the surgeon of your liking');
+console.log('I\'ll let you choose the surgeon of your liking for now');
 let givenSurgeon = ['Butcher', 'Retired Clown', 'Award-Winning Surgeon', 'Magician']
-surgeon = readline.keyInSelect(givenSurgeon)
-}
+index = readline.keyInSelect(givenSurgeon, 'Which surgeon?')
+    if(index === -1){
+       process.exit()
+    }else if(index === 2){
+        console.log('I knew you would pick' + givenSurgeon[index]);
+        console.log('You can keep this, or try your luck with another surgeon')
+        console.log('this one will be appointed to you')
+            if(readline.keyInYN('Do you want to take your chances on another surgeon?')){
+                chooseSurgeon();
+            }else{
+                console.log(`Well, good luck ${nameInput}, see ya never`);
+                process.exit();
+            }
+    }else{
+        console.log('Your' + givenSurgeon[index] + '.')
+        console.log('Goodbye!');
+        process.exit();
+    }
+};
 
 const chooseSurgeon = () =>{
 console.log('Now that you have your lungs');
@@ -206,19 +233,23 @@ let surgeon = ['Butcher', 'Retired Clown', 'Award-Winning Surgeon', 'Magician'];
  let chosenSurgeon = surgeon[Math.floor(Math.random() * surgeon.length)]
     if(chosenSurgeon === surgeon[2]){
         console.log(`Seems luck was on your side.....the ${chosenSurgeon} will perform your surgery, and give you back the breath of life!`);
+        restartGame();
     }else{
-        console.log(`The ${chosenSurgeon} will perform your surgery, and try to give you back the breath of life!`)
+        console.log(`The ${chosenSurgeon} tried to give you back the breath of life but....`);
+        leaveGame3();
+        restartGame();
     }
 }else{
-    console.log('You waited too long')
-    leaveGame3();
-    restartGame();
+    console.log('How rude! What kind of person are you?')
+    console.log('Your surgeon was looking forward to meeting you')
+    leaveGame1();
 }
 };
 
 function restartGame (){
 if(readline.keyInYN('Play Again?')){
-    gameIntro();
+    howToPlay();
+    story();
     doorChoice();
     moveOne();
     moveTwo();
@@ -232,10 +263,14 @@ if(readline.keyInYN('Play Again?')){
 
 
 startGame();
+howOld();
+howToPlay();
+story();
 doorChoice();
 moveOne();
 moveTwo();
 moveThree();
 smashBox();
+givenSurgeon();
 chooseSurgeon();
 restartGame();
