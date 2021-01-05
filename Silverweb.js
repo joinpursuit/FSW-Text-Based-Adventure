@@ -101,7 +101,7 @@ startTitle("Silver Web", function (err, data) {
          const userAnswer = () => {
            if (probSolve == solution) {
              say.speak("Access Granted");
-             console.log(input2 + chalk.green("\nACCESS"));
+             console.log(chalk.green("\nACCESS"));
            } else if (probSolve != solution) {
              say.speak("Warning! Warning!");
              console.log(
