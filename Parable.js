@@ -88,7 +88,7 @@ function startGame(){
        else { choices[index] === 'Not Earth'
 
        sleep(2000)
-        console.log ( "you are a alien not the human named! " + nameInput )
+        console.log ( "you are a alien not the human named! " + nameInput)
 
 
         choices1 = ['Capture Humans', 'Save Humans'],
@@ -140,7 +140,7 @@ function startGame(){
                 console.log ( nameInput + " says: I will only tell you if you can beat me in a game of dice if you can roll a higher \n dice number then me I will make you the cake if you fail to You will have to go and make the cake your self ! ")
                 sleep(2000)
                 console.log ( " I agree to the amusing game")
-                sleep(4000)
+                sleep(2000)
 
 
                 let myDice = diceRoll()
@@ -184,7 +184,7 @@ function startGame(){
             console.log ("I like what you just said ok lets play a game of dice ")
             sleep(2000)
             console.log ("but a fair warning im pretty lucky wink* ")
-            sleep(4000)
+            sleep(2000)
             let myDice = diceRoll()
             let theirDice = diceRoll()
             console.log( "I the Alien roll a " + myDice)
@@ -262,7 +262,9 @@ function startGame(){
 
 
 
-// MY LOST DREAMS OF A BRANCH ALGORITHMIC  DIALOGUE BRANCH :'(
+
+
+
 
 
 
