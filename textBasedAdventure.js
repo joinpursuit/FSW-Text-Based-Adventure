@@ -84,7 +84,7 @@ const gameHistories = () => {
     let answer = readline.keyInYN("Are you ready? \n")  
     if (answer) {
         console.log( " Let's travel" )
-        timeInSet()
+        playloop()
     }else{
         console.log(" Come back when you're ready ")
         quitGame()
@@ -352,24 +352,12 @@ const gameQuizHaiti = () =>{
 
 }
 
-const timeInSet = () => {
-    let i = 1
-    setTimeout(() =>{
-        console.log("In each book of poetry there is a game of silences that helps us to release and develop our knowledge")
-        console.log()
-        playloop()
-    },i * 10000)
-    setTimeout(() =>{
-        console.log("There is no metadata that synthesizes the best sunset your own retinas have seen, as a traveler.")
-    },i*5000)
-    setTimeout(() =>{
-        console.log("There are no postcards or souvenirs, no selfies or drone videos, capable of \n capturing how a destination can transform us, and perhaps make us a little fairer, more honest, \n more courageous ...")
-    },i*1000)
-}
+
 
 const quitGame = () => {
-    console.log("Good Bye ")
+    console.log("Good Bye")
     process.exit()
+
 }
 
 startGame()
