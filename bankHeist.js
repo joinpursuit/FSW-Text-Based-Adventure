@@ -14,8 +14,7 @@ const playGame = () => {
         ageRestriction()
     } else if (play.toLowerCase() === `no`){
         console.log(`Maybe next time! ✌🏽`)
-        console.clear()
-        beginGame()
+        process.exit()
     } else {
         console.log(`Please re-enter a valid answer.`)
         playGame()
