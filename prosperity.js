@@ -71,9 +71,7 @@ play()
  }
 
  
- const gameLoop = () => {
 
- }
 
 
  const investmentTypes = () => {
@@ -196,7 +194,7 @@ const morningGreeting = ()=>{
             }else if (moolah === 'ipo-stocks'){
                 investmentsHelp('ipo-stocks')
                 invest()
-            }else {
+            }else if(moolah ==='no'){
         readline.keyInPause(chalk.green("Okay, What will you invest in today?"))
         
         let holdMessage = readline.question(chalk.green(`And how much money do you want to invest in ${investmentTypes()}? `))
@@ -205,6 +203,8 @@ const morningGreeting = ()=>{
       
         balance = balance - holdMessage
         readline.keyInPause(chalk.greenBright(`You now have ${balance} dollars left after purchasing ${holdMessage} dollars worth of ${investmentTypes(index)}.`))
+        } else {
+            invest()
         }
         
     }
@@ -216,7 +216,7 @@ const morningGreeting = ()=>{
 
 
 let mathFun = (balance)=>{
-    if(balance > 1800){
+    if(balance > 100){
     balance = balance + 200
     return balance}
     else {
@@ -237,7 +237,7 @@ const rulesInstructions =()=>{
         readline.keyInPause();
         console.log(chalk.greenBright("Again, choose wisely. You can get a brief explaination of each investment type by typing the investment name when you are asked if you want to bank. Example, type the word 'stocks' and you will be given a description of what stocks are"))
         readline.keyInPause();
-        console.log(chalk.greenBright("When you are ready to invest you can enter investment type then amount.  Or you can choose not to invest by answering yes when you are asked if you want to bank' Once you chose an investment type, you can no longer chose to bank your money"))
+        console.log(chalk.greenBright("When you are ready to invest you can enter investment type then amount(Numbers ONLY) example 200 dollars should be ented as onlyy 200.  Or you can choose not to invest by answering yes when you are asked if you want to bank' Once you chose an investment type, you can no longer chose to bank your money"))
         readline.keyInPause();
         console.log(chalk.greenBright("You can also type in '?' to get a reminder of the rules"))
         console.log(chalk.greenBright(" Well, thats all. Happy Investings!"))
@@ -249,14 +249,15 @@ const rulesInstructions =()=>{
 
 
 
-
+const beginingMessage = ()=> {
 secret = readline.question(`A stranger approaches you on....today..You check your phone... your phone tells you that today is ${today}. `, {
     hideEchoBack: true,
    
   });
-
+}
 
 const introduction = () => {
+    beginingMessage()
     scratch = 'Debonaire scratches her head as she ponders your name \n'
     sus = "That\'s not suspicous at all \n"
     money = 'ooh, money! \n'
@@ -276,7 +277,6 @@ const introduction = () => {
         readline.keyInPause(money.italic)
         console.log('')
     let playGame = readline.question(chalk.green("Are you interested in a portion of our family's wealth?:"))
-        console.log('')
     if(playGame){console.log(chalk.green("Of course you are. Who doesn't love free money"))} else{
         console.log(chalk.green("That's okay, I have a proposition for you either way"))
     } 
@@ -288,7 +288,7 @@ const introduction = () => {
         console.log(chalk.green(`I have a test for you, ${nameInput}. A game, if that suits you better \n`))
 
         answer = readline.keyInYN(plaOrNay.italic)
-    if ('y'){
+    if (answer){
         console.log(chalk.green('Great! Let me explain the rules'))
     }else{
         console.log(nah.italic)
@@ -397,10 +397,10 @@ const endOfDay = ()=>{
 
 const bankAccount =(balance)=>{
     
-    if(balance <= 0){
-        console.log(chalk.bgMagentaBright('Oh, sorry dear, looks like you ran out of money. Unfortunately You do not inherit any wealth'))
-        gameLoop()
-    } else if(balance >= 3800){
+    if(balance <= 3000){
+        console.log(chalk.bgBlueBright('Oh, sorry dear, looks like you ran out of money. Unfortunately You do not inherit any wealth'))
+        fun()
+    } else if(balance >= 3001){
         console.log(chalk.bgMagentaBright('Celebrate good times, comeon!! Congratulations you made it to $4000. You get to live it up with the filthy rich'))
         readline.keyInPause()
         console.log(chalk.greenBright("Those who are filthy rich in knowledge, that is! Here is our family secret, An investment in knowledge pays the best interest.” -Benjamin Franklin-  \n By playing my game you learned the first steps in a life long skill of investment. You know more now than you did before we met and therefor can build on what you've learned. Congratulations!! You are now wealthy in mind."))
@@ -416,6 +416,21 @@ const bankAccount =(balance)=>{
 
 
 
+const gameLoop = () => {
+    while(true){
+    let play = readline.keyInYN('Welcome to the game Prosperity. Would you like to play?')  
+    if(play === true){
+        startGame()
+    }  else {
+        quitGame()
+    }
+    }
+
+}
+
+
+
+
 
 // prosperity-game name OR Bank or Bust
 let fun = ()=> {
@@ -425,7 +440,7 @@ let fun = ()=> {
         if (answer){
             let yey = "Yey! Let's do it again!"
             console.log(yey.italic)
-            play()
+            gameLoop()
         }else {console.log(nah.italic)
         quitGame()
     }
@@ -435,13 +450,13 @@ const play = () => {
     introduction()
     rulesInstructions()
     today2()
-    bankAccount(2800)
-   
-   
-     
+    bankAccount(2000)   
 
 }
-startGame()
+gameLoop()
+
+
+//   startGame()
 
 
 
