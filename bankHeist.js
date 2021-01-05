@@ -9,7 +9,7 @@ const beginGame = () => {
 }  
  
 const playGame = () => {
-    let play = readline1.question(`Do you want to play? "yes" or "no" 🎮\n`)
+    let play = readline1.question(`\nDo you want to play? "yes" or "no" 🎮\n`)
     if(play.toLowerCase() === `yes`){
         ageRestriction()
     } else if (play.toLowerCase() === `no`){
@@ -24,7 +24,7 @@ const playGame = () => {
 const ageRestriction = () => {
     console.log(`WAIT A MINUTE! ✋🏽`)
     
-    let age = readline1.questionInt(`How old are you?\n`)
+    let age = readline1.questionInt(`\nHow old are you?\n`)
     
     if(age >= 18){
         console.log(`You are old enough to play.`)
@@ -54,7 +54,7 @@ const gamePlay = () => {
 }
 
 const passNote = () => {
-    console.log(`You give your empty backpack to the teller and she nervously puts all the money in the bag. 💰`)
+    console.log(`\nYou give your empty backpack to the teller and she nervously puts all the money in the bag. 💰`)
     console.log(`Oh no! You hear police sirens outside! 🚓`)
 
     let surrenderOrGetaway = readline1.question(`Will you panic and surrender to the police or drive off in the getaway car? "surrender" or "getaway car"\n`)
@@ -76,7 +76,7 @@ const showGun = () => {
 }
 
 const surrender = () => {
-    console.log(`YOU'VE BEEN ARRESTED`)
+    console.log(`\nYOU'VE BEEN ARRESTED`)
     console.log(`but you might have a chance to escape jail`)
     console.log(`You sit next to your cellmate while you're watching TV and you get up to change the channel, he tells you not to, but you do it anyway. 📺`)
     
@@ -96,10 +96,10 @@ const surrender = () => {
 }
 
 const getawayCar = () => {
-    console.log(`The dye pack explodes as you try to count the money in the backseat and the driver crashes. 💣`)
+    console.log(`\nThe dye pack explodes as you try to count the money in the backseat and the driver crashes. 💣`)
     console.log(`You get out of the car and still hear police sirens. Do you want to surrender or run into the gas station to clean the dye off your clothes?`)
     
-    const surrenderOrCleanUp = readline1.question(`"surrender" or "clean up"\n`)
+    let surrenderOrCleanUp = readline1.question(`"surrender" or "clean up"\n`)
     
     surrenderOrCleanUp.toLowerCase() === `surrender` ? surrender()
     : surrenderOrCleanUp.toLowerCase() === `clean up` ? cleanUp()
@@ -109,12 +109,12 @@ const getawayCar = () => {
 }
 
 const fight = () => {
-    console.log(`You type in 3418 as the bathroom code to wash the blood off your face. 🧼`)
+    console.log(`\nYou type in 3418 as the bathroom code to wash the blood off your face. 🧼`)
     bathroomCode()
 }
 
 const cleanUp = () => {
-    console.log(`The gas station attendant passes you a receipt with 3418 written on it when you ask for the bathroom passcode. You have 3 attempts.`)
+    console.log(`\nThe gas station attendant passes you a receipt with 3418 written on it when you ask for the bathroom passcode. You have 3 attempts.`)
     bathroomCode()
 }
 
@@ -125,7 +125,7 @@ const bathroomCode = () => {
         
         if (code === 3418){
             console.log(`UNLOCKED`)
-            console.log(`You see a window in the bathroom and you try to escape.`)
+            console.log(`\nYou see a window in the bathroom and you try to escape.`)
             escape()
         } else {
             console.log(`LOCKED`)
@@ -138,7 +138,7 @@ const bathroomCode = () => {
 const escape = () => {
     console.log(`You squeeze through the window and you're free!!`)
     console.log(`You're a wanted criminal, so you still hear sirens! The police are looking for you.`)
-    let input = readline1.question(`Do you want to go to the amusement park or hideout in the psychic parlor? "amusement park" or "hideout"\n`)
+    let input = readline1.question(`\nDo you want to go to the amusement park or hideout in the psychic parlor? "amusement park" or "hideout"\n`)
 
     input.toLowerCase() === `amusement park` ? amusementPark()
     : input.toLowerCase() === `hideout` ? psychic()
@@ -148,7 +148,7 @@ const escape = () => {
 
 const amusementPark = () => {
     console.log(`You try to blend in with the crowd at Coney Island and you bump into your brother, Nick. 🎡`)
-    let avoidFriend = readline1.question(`Do you avoid him? "yes" or "no"\n`)
+    let avoidFriend = readline1.question(`\nDo you avoid him? "yes" or "no"\n`)
 
     if(avoidFriend.toLowerCase() === `yes`){
         console.log(`He sees you sees that you're trying to avoid him and he asks you what you're doing at Adventureland.`)
@@ -165,7 +165,7 @@ const amusementPark = () => {
 
 const nick = () => {
     console.log(`He tells you to help him find a bottle of LSD solution he hid at the amusement park.`)
-    let help = readline1.question(`Do you want to help him? "yes" or "no"\n`)
+    let help = readline1.question(`\nDo you want to help him? "yes" or "no"\n`)
     
     if(help.toLowerCase() === `yes`){
         console.log(`That's not a good idea since the cops are still looking for you.`)
@@ -182,7 +182,7 @@ const nick = () => {
 
 const helpNick = () => {
     console.log(`Nick finds the bottle and asks you to try it. 🌀`)
-    let tryIt = readline1.question(`Do you want to try it? "yes" or "no"\n`)
+    let tryIt = readline1.question(`\nDo you want to try it? "yes" or "no"\n`)
     if(tryIt.toLowerCase() === `yes`){
         console.log(`You try it and start hallucinating! Oh no! A cop sees you! You're too incoherent to avoid him.`)
         goToJail()
@@ -207,7 +207,7 @@ const tarotCard = () => {
 }
   
 const psychic = () => {
-    console.log(`You walk into the parlor and take a seat, the fortune teller randomly gives you three numbers from 1 to 78 that you are most drawn to. 🔮`)
+    console.log(`\nYou walk into the parlor and take a seat, the fortune teller randomly gives you three numbers from 1 to 78 that you are most drawn to. 🔮`)
     console.log(`The numbers she chose for you are: ${tarotCard()[0]} ${tarotCard()[1]} ${tarotCard()[2]}`)
     if(tarotCard()[0] % 2 === 0 && tarotCard()[2] % 2 !== 0) {
         console.log(`Since the first number the fortune teller chose is even and the last number is odd, she sees handcuffs in her crystal ball`)
@@ -219,7 +219,7 @@ const psychic = () => {
 }
 
 const doYouBelieveHer = () => {
-    let believe = readline1.question(`Do you believe her? "yes" or "no"\n`)
+    let believe = readline1.question(`\nDo you believe her? "yes" or "no"\n`)
     
     if(believe.toLowerCase() === `yes`){
         console.log(`You tip her $10 and as you leave the parlor, you run into your brother, Nick.`)
@@ -234,12 +234,12 @@ const doYouBelieveHer = () => {
 }
 
 const goToJail = () =>{
-    console.log(`YOU GOT ARRESTED`)
+    console.log(`\nYOU GOT ARRESTED`)
     loseGame()
 }
 
 const winGame = () => {
-    console.log(`You won! You avoided going to jail!`)
+    console.log(`\nYou won! You avoided going to jail!`)
     restartGame()
 }
 
@@ -250,7 +250,7 @@ const loseGame = () => {
 }
 
 const restartGame = () => {
-    let playAgain = readline1.question(`Play again? "yes" or "no"\n`)
+    let playAgain = readline1.question(`\nPlay again? "yes" or "no"\n`)
     if(playAgain.toLowerCase() === `yes`){
         console.clear()
         beginGame()
