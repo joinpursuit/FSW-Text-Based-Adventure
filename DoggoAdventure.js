@@ -32,26 +32,29 @@ const answerThree = () => {
     }
 }
 const answerFour = () => {
-console.log(chalk.blue("While the pupper is licking your hand..."))
-console.log(chalk.blue("A shelter volunteer approaches you"))
-console.log(chalk.blue(' "I see you found Pupperoni!" '))
-console.log(chalk.blue(' "Did you have any questions about him?" '))
+    console.log(chalk.blue("While the pupper is licking your hand..."))
+    console.log(chalk.blue("A shelter volunteer approaches you"))
+    console.log(chalk.blue("I see you found Pupperoni!"))
+    console.log(chalk.blue("Did you have any questions about him?"))
     let responseFour = readline.question("You can ask how old is he, how long has he been here, what type of dog is he, or none\n")
-    if (responseFour.toLowerCase() === "how old is he?"){
-        console.log(` "He's only 3 years old. Any other questions?" `)
-        answerFour()
-        }
-    else if (responseFour.toLowerCase() === "how long has he been here?"){
-            console.log(` "He's been at the shelter for 6 months. Any other questions?"`)
+    switch (responseFour.toLowerCase()){
+        case "how old is he?":
+            console.log("He's only 3 years old. Any other questions?")
             answerFour()
-        }
-    else if (responseFour.toLowerCase() === "what type of dog is he?"){
-            console.log(` "We aren't entirely too sure, but he seems to be part Pembroke Welsh Corgi and Dachsund. Any other questions?" `)
+            break;
+        case "how long has he been here?":
+            console.log("He's been at the shelter for 6 months. Any other questions?")
             answerFour()
-        }
-    else    (responseFour.toLowerCase() === "none") 
-                  
-}
+            break;
+        case "what type of dog is he?":
+            console.log("We aren't entirely too sure, but he seems to be part Pembroke Welsh Corgi and Dachsund. Any other questions?")
+            answerFour()
+            break;
+        default: "none"
+           break;
+    }
+    }
+
 const answerFive = () => {
     console.log(chalk.blue("The Volunteer has noticed Pupperoni's change in behavior"))
     let responseFive = readline.keyInYN(chalk.blue("He asks 'He seems to have taken a liking to you. Would you like to play with him?' \n"))
@@ -67,7 +70,7 @@ const answerSix = () => {
     console.log(chalk.blue("and walks over to his toys"))
     console.log(chalk.blue("You laugh and think to yourself 'I guess I didn't have a choice anyway' "))
     console.log(chalk.blue("You look and see you have 3 options: a ball, a bone, and a rope. Which one do you choose?"))
-    let toys = ['ball' , 'bone', 'rope']
+    let toys = ['ball' , 'bone', 'rope',]
     let responseSix = readline.keyInSelect(toys,'Which toy?\n')
     console.log ('You pick up the ' + toys[responseSix] + ' and throw it across the room')
     console.log ('Pupperoni chases after the '+ toys[responseSix] + ' with delight!')
@@ -78,11 +81,16 @@ const answerSeven = () => {
     console.log(chalk.blue("Pupperoni prances back to you with the toy in his mouth."))
     console.log(chalk.blue("He drops the toy at your feet and sits with a wagging tail"))
     console.log(chalk.blue("You look around and see a small bowl of treats."))
-    console.log(chalk.blue("You decide to give him one"))
-    let treatCount = [1 , 2 , 3 ]
-    let responseSeven = readline.keyInSelect(treatCount,"How many treats?\n")
-    console.log("You give " + treatCount[responseSeven] + " to Pupperoni " )
-    
+    console.log(chalk.blue("You decide to give him some"))
+    let treatCount = readline.question("How many treats do you give?\n")
+    if (treatCount > 4){
+      console.log("That might be a bit much...let's try a smaller amount")
+      answerSeven()
+    } else {
+      for(let i = 1; i <= treatCount; i++){
+        console.log(`NOM!`)
+      }
+    }
 }
 
 const answerEight = () => {
