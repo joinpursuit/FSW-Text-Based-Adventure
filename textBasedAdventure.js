@@ -47,11 +47,34 @@ const playloop = () => {
         }
    
 } 
+const pause = (seconds) =>{
+    //Function comes from group review w MYra et.
+    let ms = seconds * 1000
+    let starttime = Date.now()
+    let now = Date.now()
+    let timeElapsed = now - starttime
+    while(now-starttime -ms){
+        now = Date.now()
+        timeElapsed = now - starttime
+    }
+}
 
 
 const gameHistories = () => {
     console.log(" June 28, 1856")
     console.log(" Welcome to the airport " +  " MATIAS PEREZ ")
+    pause(0.5)
+    console.log(    `                  /\\                   `)
+    pause(0.7)
+    console.log(    `                 /  \\                  `)
+    pause(0.9)
+    console.log(    `                /    \\                  `)
+    pause(1.1)
+    console.log(     `|\\             /      \\              /|          `    )
+    pause(1.3)
+    console.log(     `| \\___________/        \\____________/ |       `     )
+    pause(1.5)
+    console.log(`\n`)
     console.log(" In this game you will have the opportunity to travel and learn more about the culture and traditions of different countries.") 
     readline.keyInPause("Press any key to Continue \n")  
     console.log(" To achieve this you will have to make decisions and choose what things you want to know and from where " )
@@ -61,7 +84,7 @@ const gameHistories = () => {
     let answer = readline.keyInYN("Are you ready? \n")  
     if (answer) {
         console.log( " Let's travel" )
-        playloop()
+        timeInSet()
     }else{
         console.log(" Come back when you're ready ")
         quitGame()
@@ -327,6 +350,21 @@ const gameQuizHaiti = () =>{
         }
     }
 
+}
+
+const timeInSet = () => {
+    let i = 1
+    setTimeout(() =>{
+        console.log("In each book of poetry there is a game of silences that helps us to release and develop our knowledge")
+        console.log()
+        playloop()
+    },i * 10000)
+    setTimeout(() =>{
+        console.log("There is no metadata that synthesizes the best sunset your own retinas have seen, as a traveler.")
+    },i*5000)
+    setTimeout(() =>{
+        console.log("There are no postcards or souvenirs, no selfies or drone videos, capable of \n capturing how a destination can transform us, and perhaps make us a little fairer, more honest, \n more courageous ...")
+    },i*1000)
 }
 
 const quitGame = () => {
