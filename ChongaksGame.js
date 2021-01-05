@@ -150,7 +150,7 @@ const bossInfo = () => {
         console.log("That's fine lets finish setting up so we can end this nightmare.")
     }
 }
-let gold = 100_000 
+
 let playerWin = "CONGRATS YOU SLAYED HIM!"
 const fightScene = (fight) => {
     if(readLineSync.keyInYN("Alright you have all of the equipment needed to destroy Chongaks are you ready? \n")) {
