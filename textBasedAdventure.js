@@ -53,7 +53,7 @@ const startGame = () => {
   console.log(
     "\nThere are still a few minutes left until the countdown.\n\nYou continue to navigate your way through the throng when you realize your left shoelace has come untied.\nEnter 1 to fix your lace with a single knot, so you can hurry on your way.\nEnter 2 to fix your lace with a double knot to ensure you will not have to stop to tie it again."
   );
-
+function shoeLace() { 
   let knotType = readlineSync.question("\n1 or 2?\n");
   if (Number(knotType) === 1) {
     console.log(
@@ -65,8 +65,12 @@ const startGame = () => {
     );
   } else {
     console.log("\nYour entry is invalid.\n");
+    shoeLace()
     //re-prompt question here until valid entry received
   }
+
+}
+shoeLace()
 
   //Decision 5
 
