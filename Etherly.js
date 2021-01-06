@@ -12,7 +12,7 @@ console.log(
 
 const giveNickName=()=>{
   let nick= ''
-  for(let i = 0; i < nameInput.length; i ++) {
+  for(let i = 0; i <= nameInput.length; i ++) {
       if(nameInput.length >= 3){
       }
       else { 
@@ -72,7 +72,24 @@ function growUp() {
 }
 // A function that takes in a string. Decision(2)// restrict the answers? with array and .include?
 function fourSeasons() {
-  season = rls.question(`\nSo...tell me ${nameInput}, what is your favorite season?`);
+  let sea = rls.question("\nSo...tell me, what is your favorite season?");
+  let seasons =['autumn', 'fall', 'summer', 'spring', 'winter']
+  let season = []
+  sea = sea.toLowerCase()
+  
+  console.log(seasons.length)
+  console.log(sea)
+  let i = 0;
+  while(i < seasons.length) {
+      if(seasons[i] !== sea){
+      i++
+    } else{
+        season.push(seasons[i])
+      i++
+    }
+  }
+  season = season.join("")
+  console.log(season)
   console.log("\nWOW " + season.toUpperCase() + "! That's my favorite season too!");
   console.log("\nThe " + season + " is the time of the year when I like to use my coloring book.");
   let dec = rls.keyInYNStrict("Want to color with me now?");
@@ -332,7 +349,7 @@ function earthAffirm() {
   if (affirm) {
     console.clear()
     console.log(
-      "You are connected to earth. You are grounded. You are centered. You are confident"
+      `\n ${nameInput}, you are connected to earth. You are grounded. You are centered. You are confident`
     );
     restartGame()
   } else {
@@ -344,7 +361,7 @@ function waterAffirm() {
   if (affirm) {
     console.clear()
     console.log(
-      "You are connected to water. Water can mold to whatever form its in or even shatter that which contains it. You are a creator."
+      `\n ${nameInput}, you are connected to water. Water can mold to whatever form its in or even shatter that which contains it. You are a creator.`
     );
     restartGame()
   } else {
@@ -356,7 +373,7 @@ function fireAffirm() {
   if (affirm) {
     console.clear()
     console.log(
-      "You are connected to fire. Fire is energy, it can be warm and calming or hot and consuming. You bring vitality."
+      `\n ${nameInput}, you are connected to fire. Fire is energy, it can be warm and calming or hot and consuming. You bring vitality.`
     );
     restartGame()
   } else {
@@ -368,7 +385,7 @@ function airAffirm() {
   if (affirm) {
     console.clear()
     console.log(
-      "You are connected to air. Air is breathing, it is information of what is here and what is to come. You are wisdom and connection."
+      `\n ${nameInput}, you are connected to air. Air is breathing, it is information of what is here and what is to come. You are wisdom and connection.`
     );
     restartGame()
   } else{
