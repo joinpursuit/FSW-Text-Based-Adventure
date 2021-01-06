@@ -43,7 +43,7 @@ let yourVariableHere = readline.question("Enter your name: ")
 
 #### Acceptance criteria
 
-- Cloning your project, running `npm install` and `node YOURPROJECTNAMEHERE.js` will start a game
+- Cloning your project, running `npm install` and `node TraderDOS.js` will start a game
 - No errors are logged to the console
 - The game displays initial instructions about how to play and a welcome message
 
@@ -68,7 +68,7 @@ let yourVariableHere = readline.question("Enter your name: ")
 
 Replace the link below with the link to your Trello project:
 
-[Trello](https://trello.com/b/vbKtMOKj/text-based-adventure-project-plan)
+[Trello](https://trello.com/b/zTBYt0qg/trader-dos-game)
 
 
 ## Rubric
