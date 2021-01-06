@@ -131,7 +131,7 @@ function fightOrc() {
     console.log(chalk.hex("#ffff00")(
       "Congrats, you win. Also, you found 10 gold coins in Orc's pocket")
     );
-    playerGold += 15;
+    playerGold += 10;
     console.log(`You now have ${global.playerGold} gold coins`);
     forrestOrTown();
   } else {
