@@ -4,37 +4,41 @@ let nameInput = readline.question("Enter your name: ");
 
 console.log(`Hello ${nameInput}!  Welcome to my game.`);
 
-// const startGame = () => {
-//     // greet user and ask if they want to get a free car that comes with stimulus check
-//     console.log("This is the Luxuriy Car simulator where you can create your very own car!")
-//     console.log("Choose the car of your choice and fill out the customization of your FREE car!")
-//     if (readlineSync.keyInYN("Would you like a new car?\n")) {
-//          play ()
-//     } else {
-//          leaveGame ()
-//     }
+const startGame = () => {
+    // greet user and ask if they want to get a free car that comes with stimulus check
+    console.log("This is the Luxuriy Car simulator where you can create your very own car!")
+    console.log("Choose the car of your choice and fill out the customization for your FREE car!")
+    if (readline.keyInYN("Would you like a new car?\n")) {
+         play ()
+    } else {
+         leaveGame ()
+    }
 
-//     }
+    }
 
-//     startGame()
+    startGame()
 
-//     const leaveGame = () => {
-//         console.log("That's a shame...well enjoy walking!")
-//         process.exit()
-//     }
+function leaveGame() {
+        console.log("That's a shame...well enjoy walking!")
+        process.exit()
+    }
 
 function play() {
 
   let playerCarList = readline.question(
     "Our dealership has the following car brands: Mercedes-Benz , Audi , and BMW. Which would you like? Please enter the car brand of your choice.\n"
   );
-  if (playerCarList === "Mercedes-Benz") {
+  switch (playerCarList) {
+    case 'Mercedes-Benz':
     mercedesList();
-  } else if (playerCarList === "BMW") {
+    break;
+   case "BMW":
     bmwList();
-  } else if (playerCarList === "Audi") {
+    break;
+   case "Audi":
     audiList();
-  } else {
+    break;
+    default:
     playerCarList = readline.question(
       "Our dealership has the following car brands: Mercedes-Benz , Audi , and BMW. Which would you like? Please enter the car brand of your choice.\n"
     );
@@ -53,10 +57,7 @@ function play() {
       console.log("Here are your options from our line of SUVs");
       mercedesSuv = ["GLA SUV", "GLB SUV", "GLC SUV", "GLS SUV"];
       userMercedesSuv = readline.keyInSelect(mercedesSuv, "Pick your SUv!\n");
-      // add console.log that repeats the user's choice
       console.log("Great! You chose " + mercedesSuv[userMercedesSuv]);
-      // mercedesSuv[userMercedesSuv] = string
-      // return string
       return mercedesSuv[userMercedesSuv]
     } else if (newCarList === "Coupe") {
       console.log("Here are your options from our line of Coupes");
@@ -70,7 +71,6 @@ function play() {
         mercedesCoupe,
         "Pick your Coupe!\n"
       );
-      // add console.log that repeats the user's choice
       console.log("Great! You chose " + mercedesCoupe[userMercedesCoupe]);
       return mercedesCoupe[userMercedesCoupe]
     } else if (newCarList === "Sedan") {
@@ -85,13 +85,13 @@ function play() {
         mercedesSedan,
         "Pick your Sedan!\n"
       );
-      // add console.log that repeats the user's choice
       console.log("Great! You chose " + mercedesSedan[userMercedesSedan]);
       return mercedesCoupe[userMercedesCoupe]
     } else {
       mercedesList();
     }
   }
+  
     
   
 
@@ -102,34 +102,34 @@ function play() {
     );
     typeOfCar = ["SUV", "Coupe", "Sedan"];
     playerCar = readline.keyInSelect(typeOfCar, "Which Type do you want?\n");
-    //based on user choice make a switch to list of carBrandOption that gives corresponding questions
     console.log("Great! You chose " + typeOfCar[playerCar]);
     let newCarList = typeOfCar[playerCar];
     if (newCarList === "SUV") {
       console.log("Here are your options from our line of SUVs");
       bmwSuv = ["X1", "X5", "X6", "X7"];
       userBmwSuv = readline.keyInSelect(bmwSuv, "Pick your SUV!\n");
-      // add console.log that repeats the user's choice
+      
       console.log("Great! You chose " + bmwSuv[userBmwSuv]);
       return bmwSuv[userBmwSuv]
     } else if (newCarList === "Coupe") {
       console.log("Here are your options from our line of Coupes");
       bmwCoupe = ["2 Series", "4 Series", "8 series"];
       userBmwCoupe = readline.keyInSelect(bmwCoupe, "Pick your Coupe!\n");
-      // add console.log that repeats the user's choice
+      
       console.log("Great! You chose " + bmwCoupe[userBmwCoupe]);
       return bmwCoupe[userBmwCoupe]
     } else if (newCarList === "Sedan") {
       console.log("Here are your options from our line of Sedans");
       bmwSedan = ["3 Series", "5 series", "7 Series"];
       userBmwSedan = readline.keyInSelect(bmwSedan, "Pick your Sedan!\n");
-      // add console.log that repeats the user's choice
+      
       console.log("Great! You chose " + bmwSedan[userBmwSedan]);
       return bmwSedan[userBmwSedan]
     } else {
       bmwList();
     }
   }
+  
     
   
 
@@ -139,7 +139,7 @@ function play() {
     );
     typeOfCar = ["SUV", "Coupe", "Sedan"];
     playerCar = readline.keyInSelect(typeOfCar, "Which Type do you want?\n");
-    //based on user choice make a switch to list of carBrandOption that gives corresponding questions
+    
     console.log("Great! You chose " + typeOfCar[playerCar]);
     let newCarList = typeOfCar[playerCar];
     if (newCarList === "SUV") {
@@ -164,6 +164,7 @@ function play() {
       audiList();
     }
   }
+  
    
   
 
@@ -183,7 +184,7 @@ function play() {
   }
   wheelDrive();
 
-  // ask user if they want to have a manual or automatic car
+  
   function driverTransmission() {
     console.log(
       "Would you like your car to be manual or automatic? Fun fact: IF you can drive manual you will save money on gas."
@@ -198,7 +199,7 @@ function play() {
   }
   driverTransmission();
 
-  // ask user to pick what color they want their car
+  
   function carColor() {
     console.log('We have a large variety of colors for your car. Please choose from the list below:')
     carColors = ['White', 'Silver', 'Black', 'Dark Blue', 'Dark Grey', 'Red', 'Dark Green', 'Light Brown']
@@ -208,7 +209,7 @@ function play() {
   }
   carColor()
 
-  // ask user to input their custom license plate in form of string (Note: will only accept 7 character)
+
 function carLicense(){
     console.log("At no charge you can make your own license plate. You must enter 1-7 characters.")
     let userLicense = readline.question('Pease enter custom license:\n')
@@ -223,6 +224,16 @@ function carLicense(){
 }
     carLicense()
 
+
+function carHeadlights(){
+  console.log('Here is a list of our high-end headlights.')
+  headlightsInCar = ['LED headlights', 'Xenon headlights', 'Super blue halogen']
+  userHeadlight = readline.keyInSelect(headlightsInCar, 'Please choose you headlights.')
+  console.log('You have ' + headlightsInCar[userHeadlight])
+  return headlightsInCar[userHeadlight]
+}
+carHeadlights()
+
 function carInterior(){
     console.log("Because we specialize in luxury cars all our interior designs are based on high quality leather.")
     carIntDesign = ['Black', 'Pale', 'Grey-Tan', 'Black-Grey', 'White-Beige', 'Black-Red', 'Black-Silver']
@@ -233,10 +244,12 @@ function carInterior(){
 carInterior()
 
 function windowTint(){
-    carTint = ['Yes, I would like to tint my car?', 'No, I would prefer not to']
-     userTint = readline.keyInSelect(carTint, "would you like to tint your windows?")
-     let windowTint = carTint[userTint]
-    if (windowTint === 'Yes, I would like to tint my car?') {
+
+    // carTint = ['Yes, I would like to tint my car?', 'No, I would prefer not to']
+    //  userTint = readline.keyInSelect(carTint, "would you like to tint your windows?")
+    //  let windowTint = carTint[userTint]
+    // if (windowTint === 'Yes, I would like to tint my car?') {
+        if (readline.keyInYN('Would you like to tint your car windows?')) {
         tintPercent = ['50 % tint', '35 % tint', '20 % tint', '5 % tint']
         userTintPercent =readline.keyInSelect(tintPercent, 'What percentage of tinting would you like?\n ')
         if (tintPercent[userTintPercent] === '50 % tint') {
@@ -252,12 +265,13 @@ function windowTint(){
             console.log('Enjoy your tinted windows')
             return tintPercent[userTintPercent]
         } else {
-        console.log('Enjoy your ' + playerCarList + ' without tinted windows') 
+          windowTint() 
       }
     } else {
-      console.log('Enjoy your ' + playerCarList + ' without tinted windows') 
+      return 'Enjoy your ' + playerCarList + ' without tinted windows' 
     }
 } 
+
 windowTint()
 
 
@@ -269,33 +283,74 @@ windowTint()
 //     return mercedesSuv[userMercedesSuv]
 //   }
 // }
+function receiptBrand(){
+  let yourBenz = mercedesList()
+  let yourBmw = bmwList()
+  let yourAudi = audiList()
+  if (playerCarList === 'Mercedes-Benz') {
+      return 'Mercedes-Benz Model: ' + yourBenz + '\n'
+    } else if (playerCarList === 'BMW') {
+      return 'BMW Model: ' + yourBmw + '\n'
+    } else if (playerCarList === 'Audi') {
+      return 'Audi Model: ' + yourAudi + '\n'
+    } else {
+      console.log('N/A')
+    }
+}
+  
 
 
 function carReceipt() {
+  // let finalCar = receiptBrand()
+  // let yourWindow = windowTint()
     //write a loop that calls or returns the right value from wach function
-    console.log('Your car: ' + playerCarList)
-    // console.log('Car Model: ' + )
+    // let yourLicense = userLicense
     console.log('Here is your order summary:\n')
+    console.log('Brand: ' + playerCarList + '\n')
+    // console.log('Model: ' + finalCar + '\n')
     console.log('Wheel Drive: ' + carConfig[userCarConfig] + ' \n')
     console.log('Transmission: ' + carDriveType[userDriveType] + ' \n')
     console.log('Color: ' + carColors[userCarColor] + '\n')
-    // console.log('Custom License Plate: ' + userLicense + '\n')
-    console.log('Car Interior Color: ' + carIntDesign[userIntColor] + ' \n')
-    if (tintPercent[userTintPercent] === tintPercent[userTintPercent]) {
-        console.log('Car Tint Percent: ' + tintPercent[userTintPercent] + ' \n')
+    // console.log(`Custom License Plate:  ${yourLicense} `)
+    console.log('Headlights: ' + headlightsInCar[userHeadlight] + '\n')
+    console.log('Interior Color: ' + carIntDesign[userIntColor] + ' \n')
+    console.log(helperWindow())
+    function helperWindow(){
+    if (tintPercent[userTintPercent] === 'Enjoy your ' + playerCarList + ' without tinted windows') {
+        return 'Tint Percentage: N/A'
     } else {
-        console.log('Car Tint Percent: N/A')
+        
+        return 'Car Tint Percent: ' + tintPercent[userTintPercent] + ' \n'
     }
 
+  }
+
+  }
+carReceipt()
+
+if (readline.keyInYN('Congradulations on your new car!!! Would you like to play again?')) {
+  play()
+} else {
+  console.log('Bye!!!')
+  leaveGame()
+}
 
 }
-carReceipt()
-}
+
 
 play();
 
 
-
+// if (playerCarList === 'Mercedes-Benz') {
+    //   console.log('Mercedes-Benz Model: ' + yourBenz + '\n')
+    // } else if (playerCarList === 'BMW') {
+    //   console.log('BMW Model: ' + yourBmw + '\n')
+    // } else if (playerCarList === 'Audi') {
+    //   console.log('Audi Model: ' + yourAudi + '\n')
+    // } else {
+    //   console.log('N/A')
+    // }
+    // console.log('Car Model: ' + )
 
 
 // const startGame = () => {
@@ -316,3 +371,43 @@ play();
 // const leaveGame = () => {
 //     console.log("That's a shame...well enjoy walking!")
 //     process.exit()
+
+
+// let playerCarList = readline.question(
+//   "Our dealership has the following car brands: Mercedes-Benz , Audi , and BMW. Which would you like? Please enter the car brand of your choice.\n"
+// );
+// if (playerCarList === "Mercedes-Benz") {
+//   mercedesList();
+// } else if (playerCarList === "BMW") {
+//   bmwList();
+// } else if (playerCarList === "Audi") {
+//   audiList();
+// } else {
+//   playerCarList = readline.question(
+//     "Our dealership has the following car brands: Mercedes-Benz , Audi , and BMW. Which would you like? Please enter the car brand of your choice.\n"
+//   );
+  
+// }
+
+
+
+// function receiptBrand(){
+  //   let yourBenz = mercedesList()
+  //   let yourBmw = bmwList()
+  //   let yourAudi = audiList()
+  //   if (playerCarList === 'Mercedes-Benz') {
+  //       return 'Mercedes-Benz Model: ' + yourBenz + '\n'
+  //     } else if (playerCarList === 'BMW') {
+  //       return 'BMW Model: ' + yourBmw + '\n'
+  //     } else if (playerCarList === 'Audi') {
+  //       return 'Audi Model: ' + yourAudi + '\n'
+  //     } else {
+  //       console.log('N/A')
+  //     }
+  // }
+
+
+  //     const leaveGame = () => {
+//         console.log("That's a shame...well enjoy walking!")
+//         process.exit()
+//     }
