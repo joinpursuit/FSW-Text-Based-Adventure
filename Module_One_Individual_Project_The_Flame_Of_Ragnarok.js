@@ -329,7 +329,7 @@ function routePathOne(){
    quitGame()
 }
 else if(fall === "restart"){
-   restartGame()
+   caveOfTime()
 }
 else{
    console.log(chalk.redBright("Invalid response please select either: quit or restart, and try again!! \n"))
@@ -366,7 +366,7 @@ function routePathThree(){
    quitGame()
 }
 else if(sweep === "restart"){
-   restartGame()
+   caveOfTime()
 }
 else{
    console.log(chalk.redBright("Invalid response please select either: quit or restart, and try again!! \n"))
