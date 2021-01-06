@@ -8,8 +8,22 @@ const { read } = require('fs');
 const { kStringMaxLength } = require('buffer');
 
 
-const today = new Date().toLocaleDateString();
 
+const today = new Date().toLocaleDateString();
+say = '...says the stranger.'
+let balance = 2000
+const optionArray = (arr)=>{
+    if(arr == 0){
+        balance += 50
+    }else if (arr === 1){
+        balance -= 100
+    }else if (arr === 2){
+        balance += 100
+
+    }else if (arr === 3){
+        balance -= 50
+    }else{}
+} 
 
 const investmentsHelp = bid=>{
     switch(bid){
@@ -52,11 +66,9 @@ const investmentsHelp = bid=>{
 }
 }
 
-say = '...says the stranger.'
 
 
 
-let balance = 2000
 
 
  const startGame = () => {
@@ -72,13 +84,53 @@ play()
 
  
 
-
+index = ''
 
  const investmentTypes = () => {
-    investments = ["Stocks", "Bonds", "Options", "Annuities", "Precious-Metals", "Mutual-Fund", "Real-Estate", "REIT", "Cryptocurrency", "Forex", "IPO stocks"],
-    index = readline.keyInSelect(investments, 'Which invesetment type');
-    console.log('Nice! ' + investments[index] + ' is your investment of choice!')
-    return investments[index]
+    investments = ["Stocks", "Bonds", "Options", "Annuities", "Precious-Metals", "Mutual-Fund", "Real-Estate", "REIT", "Cryptocurrency", "Forex", "IPO stocks"]
+    
+    for(i=0;i<investments.length;i++){
+    console.log(investments[i])}
+    index = readline.question(chalk.greenBright('Which invesetment type?: '))
+    console.log(chalk.greenBright('Nice! ' + index + ' is your investment of choice!'))
+    index.toLocaleLowerCase
+    index = index
+    if(index === "stocks"){
+        balance += 150
+    }else if(index === "bonds"){
+        balance -= 100
+    }
+    else if(index === "Options"){
+        balance += 250
+    }
+    else if(index === "Annuities"){
+        balance += 300
+    }
+    else if(index === "Precious-Metals"){
+        balance += 350}
+    else if(index === "Mutual-Fund"){
+        balance -= 300
+    }
+    else if(investments === "Real-Estate"){
+        balance += 500
+    }
+    else if(index === "REIT"){
+        balance += 600
+    }
+    else if(index === "Cryptocurrency"){
+        balance += 480
+    }
+    else if(index === "Forex"){
+        balance -= 500
+    }
+    else if(index === 10){
+        balance += 555
+    }else {
+        console.log(chalk.greenBright("You didn't input a choice from the list. Unfortunetly time is money so it looks like you put a bid on nothing"))
+        index ='nothing'
+    }
+    
+    return index
 }
 
 
@@ -121,23 +173,26 @@ const breakfast = () => {
         breakfastFoods = ['Eggs', 'Cereal', 'Spinach','Bacon']
         let index = readline.keyInSelect(breakfastFoods, "I've made breakfast for you! which breakfask would you like?:") 
     if(index === 0){
-        console.log(chalk.greenBright('Delicious'))
-            } else if (index === 1){
-        console.log(chalk.green('Buget food. Perhaps you can work on changing old habits'))
-        // subtract 10 dollars from daily balance
+        console.log(chalk.greenBright('Delicious! You gained $50'))
+            } else if (index === -1){
+                console.log(chalk.greenBright("Did I ever tell you 'The Avatar' was my favorite childhood cartoon?"))
+            } else if(index === 1){
+        console.log(chalk.green('Buget food. \n Perhaps you can work on changing old habits. You lost $100'))
+        
 
             } else if (index === 2){
-        console.log(chalk.greenBright('Great choice! The food of wealth.'))
-        // Add 10 dollars to daily balance
+        console.log(chalk.greenBright('Great choice! The food of wealth. \n You gained $100'))
+        
 
             } else if(index === 3){
-                console.log(chalk.green('Mmmm..Bring home the bacon!'))
+                console.log(chalk.green('Mmmm..Bring home the bacon! \n Actual bacon not metaphorically. You lost $50'))
             }else {
         command = readline.prompt({
             limit: ['eggs', 'cereal', 'spinach', 'bacon'],
             limitMessage: `I can not accept ${index} . Please input another.`
         })
     }
+    optionArray(index)
 
 }
     
@@ -152,7 +207,7 @@ const morningGreeting = ()=>{
 
         watch = 'Debonaire checks her watch'
         readline.keyInPause(watch.italic);
-        console.log(chalk.greenBright(`It's 9:29am. Markets open at 9:30am. Your current balance is ` + mathFun()))
+        console.log(chalk.greenBright(`It's 9:29am. Markets open at 9:30am. Your current balance is ${balance}`))
     let invest =()=>{
         let moolah =readline.question(chalk.greenBright('Would you like to bank your money?'))
 
@@ -160,7 +215,7 @@ const morningGreeting = ()=>{
         console.log(chalk.greenBright('Okay, Your money will survive long enough to fight another day'))
     
         let note = 'Your current balance is '
-        console.log(note.italic + mathFun(balance))
+        console.log(note.italic + mathFun())
             } else if (moolah === 'stocks'){
                 investmentsHelp('stocks')
                 invest()
@@ -195,38 +250,45 @@ const morningGreeting = ()=>{
                 investmentsHelp('ipo-stocks')
                 invest()
             }else if(moolah ==='no'){
-        readline.keyInPause(chalk.green("Okay, What will you invest in today?"))
+        readline.keyInPause(chalk.green())
         
-        let holdMessage = readline.question(chalk.green(`And how much money do you want to invest in ${investmentTypes()}? `))
-        console.log(chalk.greenBright(`So you want to invest ${holdMessage} dollars in ${investmentTypes(index)}?`))
+        let holdMessage = readline.question(chalk.green(`And how much money do you want to invest? `))
+        investmentTypes()
+        console.log(chalk.greenBright(`So you want to invest ${holdMessage} dollars in ${index}?`))
         
       
         balance = balance - holdMessage
-        readline.keyInPause(chalk.greenBright(`You now have ${balance} dollars left after purchasing ${holdMessage} dollars worth of ${investmentTypes(index)}.`))
+        readline.keyInPause(chalk.greenBright(`Your Account has been reduced by ${holdMessage} dollars after you invested ${holdMessage} dollars in `+ index))
         } else {
             invest()
         }
         
     }
     invest()
-        return balance
+       
             
 }
     
 
 
-let mathFun = (balance)=>{
-    if(balance > 100){
-    balance = balance + 200
-    return balance}
-    else {
-    return balance 
-    }
+
+
+let mathFun = (num1,num2)=>{
+  if(num1 === typeof Number){
+      balance = balance + num1
+      return balance
+  }
+  if (num1 && num2 === typeof Number){
+      balance = balance + num1 + num2
+      return balance
+  }
+    
+    
 }
             
     
 const rulesInstructions =()=>{
-        console.log(chalk.greenBright('So, Its simple. I will test your skills as a day trader. A day trader is someone who buys and sells all their shares in a single day. Ill give you $2000 to start.\n You can bank all your money, invest all of it or invest any amount from $1 up to your current balance. Reguadless of what you do, you have 4 days to turn that $2000 into $3000 or more.'))
+        console.log(chalk.greenBright('So, Its simple. I will test your skills as a day trader. A day trader is someone who buys and sells shares of an an investment, such as stocks, in a single day. Ill give you $2000 to start.\n You can bank all your money, invest all of it or invest any amount from $1 up to your current balance. Reguadless of what you do, you have 4 days to turn that $2000 into $4000 or more.'))
         readline.keyInPause();
         console.log(chalk.greenBright('Each day you will be given a chance to choose what you want to invest in for that day and how much money you want to invest. Remeber, you dont have to invest'))
         readline.keyInPause();
@@ -237,7 +299,7 @@ const rulesInstructions =()=>{
         readline.keyInPause();
         console.log(chalk.greenBright("Again, choose wisely. You can get a brief explaination of each investment type by typing the investment name when you are asked if you want to bank. Example, type the word 'stocks' and you will be given a description of what stocks are"))
         readline.keyInPause();
-        console.log(chalk.greenBright("When you are ready to invest you can enter investment type then amount(Numbers ONLY) example 200 dollars should be ented as onlyy 200.  Or you can choose not to invest by answering yes when you are asked if you want to bank' Once you chose an investment type, you can no longer chose to bank your money"))
+        console.log(chalk.greenBright("When you are ready to invest you can enter investment type then amount(Numbers ONLY) example 200 dollars should be ented as only 200.  Or you can choose not to invest by answering yes when you are asked if you want to bank' Once you chose an investment type, you can no longer chose to bank your money"))
         readline.keyInPause();
         console.log(chalk.greenBright("You can also type in '?' to get a reminder of the rules"))
         console.log(chalk.greenBright(" Well, thats all. Happy Investings!"))
@@ -265,7 +327,7 @@ const introduction = () => {
     nah = 'Thats too bad. I was looking forward to watching you play'
     say = 'Says the lady who randomly approached YOU. \n'
 
-        console.log(chalk.green('Greetings!') + say.italic + chalk.green( ' My name is Debonaire'))
+        console.log(chalk.green('Greetings!') + chalk.green( ' My name is Debonaire'))
     let nameInput = readline.question(chalk.green("And your name dear?: "))
         console.log(chalk.green(`${nameInput}, ...${nameInput} I think I knew a ${nameInput} once.`,'Peculiar indivisual \n'))
         readline.keyInPause(scratch.italic);
@@ -276,24 +338,28 @@ const introduction = () => {
         console.log(chalk.green("My point is, you're family. And as family, I've been instructed to give you a portion of the family's wealth \n"))
         readline.keyInPause(money.italic)
         console.log('')
-    let playGame = readline.question(chalk.green("Are you interested in a portion of our family's wealth?:"))
-    if(playGame){console.log(chalk.green("Of course you are. Who doesn't love free money"))} else{
+    let playGame = readline.question(chalk.green("Are you interested in a portion of our family's wealth? Please answer Yes or No?:"))
+    if(playGame === "Yes"|| playGame === "yes" || playGame ==="YES"){console.log(chalk.green("Of course you are. Who doesn't love free money"))} else if (playGame === 'NO'|| playGame === "no"|| playGame ==="No"){
         console.log(chalk.green("That's okay, I have a proposition for you either way"))
-    } 
+    } else{
+        console.log(chalk.green(`${playGame}..You're funny. Humor runs in the family. Now let's get back to the subject of our family's wealth!`))
+    }
         console.log('')
         console.log(chalk.green("Unfortuantely, I can't just hand over the money, my dear. At least not without knowing if you're responsible enought to handle it \n"))
         console.log(chalk.green("You'll have to prove yourself. "))
         readline.keyInPause('Says the lady who randomly approached YOU. \n')
-        console.log(chalk.green("How do you prove yourself? I am glad you asks \n"))
+        console.log(chalk.green("How do you prove yourself? I am glad you asked \n"))
         console.log(chalk.green(`I have a test for you, ${nameInput}. A game, if that suits you better \n`))
 
         answer = readline.keyInYN(plaOrNay.italic)
-    if (answer){
+    if (answer === true){
         console.log(chalk.green('Great! Let me explain the rules'))
-    }else{
+    }else  if (answer === false){
         console.log(nah.italic)
         leaveGame()
-    }
+    } else if (answer === ''){
+        console.log('Ill accept that as a yes!')
+    } else {}
 }
     
 
@@ -319,16 +385,18 @@ const onTheJob = ()=>{
         jobTask = ['Work', 'Read', 'Chat','Dance']
         index = readline.keyInSelect(jobTask, chalk.greenBright(chalk.greenBright("So this is what you call work? Now that we are here, what will you do?"))) 
         if(index === 0||jobTask === 'word' ){
-        console.log(chalk.greenBright("*Yawn* Wake me up when you're done."))
+        console.log(chalk.greenBright("*Yawn* Wake me up when you're done. \n Gained $50 from working"))
+        } else if(index === -1){
+            console.log(chalk.greenBright(" My favorite character in 'The Avatar was Uncle"))
         } else if (index === 1){
-      let news = 'According to webnews.aw, Walmart will use fully driverless trucks to make deliveries in 2021'
+      let news = 'According to webnews.aw, Walmart will use fully driverless trucks to make deliveries in 2021. \n Unfortunately that was unproductive. You lose $100'
         console.log(chalk.green(news.italic))
 
         } else if (index=== 2){
-        console.log(chalk.greenBright('Oh, you rather chat with someone other than me...okay'))
+        console.log(chalk.greenBright('Oh, you rather chat with someone other than me...okay. \n Turns out, speaking to new people caused you to learn new things. You earned $100'))
     
         } else if(index === 3){
-            console.log(chalk.green('Dancing always bring up my spirits!'))
+            console.log(chalk.green("Dancing always bring up my spirits! \n Unfortunately you weren't dancing for money so you lost $50"))
         }else {
         command = readline.prompt({
         limit: ['Work', 'Read', 'Chat','leave-early', 'Check-Stock'],
@@ -336,8 +404,9 @@ const onTheJob = ()=>{
     })
     
 }
+        optionArray(index)
 }
-    jobAM()
+        jobAM()
     readline.keyInPause()
 }
 
@@ -353,17 +422,19 @@ const lunchBreak = ()=>{
         array = ['Kiss up to superiors', 'Have Lunch', 'Charm coworker', 'Work Through Lunch']
         index = readline.keyInSelect(array, chalk.greenBright(chalk.greenBright("Glad that whole work thing is over. What? This is only a lunch break? What do you do on your lunch break?"))) 
         if(index === 0 ){
-        console.log(chalk.greenBright("Nice, Now you're only 1999 kisses away from an actual raise!"))
+        console.log(chalk.greenBright("Nice, Now you're only 1999 kisses away from an actual raise! \n You gained $50 out of pity"))
         } else if (index === 1){
-        console.log(chalk.green(chalk.greenBright("Remmeber when you asked me what that smell was in the car? Well, it's your lunch! I made you a tuna sandwhich with onion and eggs! Enjoy!")))
+        console.log(chalk.green(chalk.greenBright("Remmeber when you asked me what that smell was in the car? Well, it's your lunch! I made you a tuna sandwhich with onion and eggs! Enjoy! \n You'll regret eating that later. You lose $100")))
     
 
-        } else if (index === 2){
-        console.log(chalk.greenBright("Aren't you the charmer"))
+        } else if (index === -1){
+            console.log(chalk.greenBright(" Uncle was apart of an ancient secret society called 'The Order of the white lotus' Which he gained access to by saying 'white lotus'"))
+        }else if(index === 2){
+        console.log(chalk.greenBright("Aren't you the charmer. Having charisma gets you everything. You gained $100 "))
     
 
         } else if(index === 3){
-            console.log(chalk.green("well, at least you'll have a job to return to if this investment plan doesn't work out for you."))
+            console.log(chalk.green("well, at least you'll have a job to return to if this investment plan doesn't work out for you. \n You lost $50 becuase...who works through lunch!"))
         }else {
         command = readline.prompt({
         limit: ['Kiss up to superiors', 'Have Lunch', 'Charm coworker','Sleep', 'Work Through Lunch'],
@@ -371,6 +442,7 @@ const lunchBreak = ()=>{
     })
    
 }
+optionArray(array)
 }
         midDay()
 }
@@ -387,23 +459,31 @@ const endOfDay = ()=>{
 
         watch = 'Debonaire checks her watch'
         readline.keyInPause(watch.italic);
-        console.log(chalk.greenBright(`It's 3:59am. Markets close at 4pm. After selling your shares, your current balance is ` + mathFun(balance)))
+        console.log(chalk.greenBright(`It's 3:59am. Markets close at 4pm. \n After selling all your shares, your current balance is ${balance}`))
 
-        readline.keyInPause(chalk.greenBright(`You should head home and get some sleep. Tomorrow will be a new day of investing.`))
+        readline.keyInPause(chalk.greenBright('Phew, what a day'))
+        let feelings = readline.question(chalk.green("How did you do in the market today? Great or Okay:"))
+        feelings.toLocaleLowerCase
+        if (feelings === 'great'){
+            console.log(chalk.greenBright('I knew you would be good at this'))
+        } else if (feelings === 'okay'){
+            console.log(chalk.greenBright("Just okay? Perhaps a joke will cheer you up.\n If you boil a funny bone it becomes a laughing stock. \n That's pretty humerus."))
+        } else {console.log(chalk.greenBright(`*in robot voice* Does not compute .."${feelings}" hehe again with your humor`))}
+        console.log(chalk.greenBright(`You should head home and get some sleep. Tomorrow will be a new day of investing.`))
 }
  
     
 
 
-const bankAccount =(balance)=>{
+const bankAccount =()=>{
     
-    if(balance <= 3000){
+    if(balance <= 4000){
         console.log(chalk.bgBlueBright('Oh, sorry dear, looks like you ran out of money. Unfortunately You do not inherit any wealth'))
         fun()
-    } else if(balance >= 3001){
-        console.log(chalk.bgMagentaBright('Celebrate good times, comeon!! Congratulations you made it to $4000. You get to live it up with the filthy rich'))
+    } else if(balance >= 4001){
+        console.log(chalk.bgMagentaBright("Cel-e-brate good times, C'mon!! Congratulations you made it to $4000. You get to live it up with the filthy rich"))
         readline.keyInPause()
-        console.log(chalk.greenBright("Those who are filthy rich in knowledge, that is! Here is our family secret, An investment in knowledge pays the best interest.” -Benjamin Franklin-  \n By playing my game you learned the first steps in a life long skill of investment. You know more now than you did before we met and therefor can build on what you've learned. Congratulations!! You are now wealthy in mind."))
+        console.log(chalk.greenBright("Those who are filthy rich in knowledge, that is! \n Here is our family secret, An investment in knowledge pays the best interest.” -Benjamin Franklin-  \n By playing my game you learned the first steps in a life long skill of investment. You know more now than you did before we met and therefor can build on what you've learned. Congratulations!! You are now wealthy in mind."))
         readline.keyInPause()
         console.log(chalk.greenBright('That was so much fun that I want to play again'))
         fun()
@@ -432,17 +512,19 @@ const gameLoop = () => {
 
 
 
-// prosperity-game name OR Bank or Bust
+
 let fun = ()=> {
     plaOrNay = 'Do you want to play?'
     nah = 'Thats too bad. I was looking forward to watching you play'
     answer = readline.keyInYN(plaOrNay.italic)
-        if (answer){
+        if (answer === true){
             let yey = "Yey! Let's do it again!"
             console.log(yey.italic)
             gameLoop()
-        }else {console.log(nah.italic)
+        }else if (answer === false ){console.log(nah.italic)
         quitGame()
+    } else if (answer === ''){
+        fun()
     }
 }
 
@@ -450,13 +532,20 @@ const play = () => {
     introduction()
     rulesInstructions()
     today2()
-    bankAccount(2000)   
+    bankAccount()   
 
 }
+
+password = readline.question("Interested in a game of Pai Sho?", {hideEchoBack: true});
+password.toLocaleLowerCase
+if(password === 'white lotus'){
+    console.log(chalk.greenBright('Welcome to the Order of the White Lotus. \n You are a member of the elite. You automatically win the game!'))
+    balance += 5000
+    bankAccount()
+} else{
 gameLoop()
+}
 
-
-//   startGame()
 
 
 
