@@ -8,8 +8,8 @@ function quitGame() {
    if (restart === true) {
         start()
 
-   } else {
-    console.log('Til next time '+ heroName)
+   } else if (restart === false) {
+    console.log('Til next time '+ nameInput)
     return
    }
 }
@@ -19,8 +19,12 @@ function dice(nat,min){
 }
 
 let heroStat = [10,10,5,1,0]     //playerstats --> hP, atk, def, lvl, current exp
-let oppStatTroll = [10,10,2,1]//enemy stats --> enHP, enAtk, enDef, enLvl
-let oppStatEnt = [8,15,6,1]
+
+let oppStat = [
+
+    [10,10,2,1]
+    [8,15,6,1]
+]
 
 function addHealth(value, reward, risk){
    console.log('+--------------------------------------------------------------------------------------+')
@@ -55,31 +59,45 @@ function minusHealth(value, risk){
     console.log('+ Your health is now '+heroStat[0]+'.                                                      +')
 }
 
-function dmg(level, atk, enDef, d6){//these stats are hosted in heroStat/oppStat respectively
+function dmg(atk, enDef,level){//these stats are hosted in heroStat/oppStat respectively
 //define oppStat here by filling in the enemy values --> oppStat[enHealth, enAtk, enDef, enlvl, expgain]
+//calc atk v resistance x level and return a number
     d6 = dice(6,1)
     crit = dice(3,1)
     let damage = Math.ceil( ( ( (2*level+10) /150) * (atk/enDef) +2) *d6)
+    let critical = Math.ceil( ( ( (2*level+10) /150) * (atk/enDef) +2) *crit)
 
     if (d6 !== 1 && d6 !== 6){
-        console.log('+--------------------------------------------------------------------------------------+')
+        // console.log('+--------------------------------------------------------------------------------------+')
 
-        console.log('+ You did '+heroStat[0]-damage+' damage to the  enemy!                                     +')
-        console.log('+ The enemy\'s health is now '+oppStat[0]+'!                   +')
+        // console.log('+ You did '+heroStat[0]-damage+' damage to the  enemy!                                     +')
+        return heroStat[0]-damage
 
     } else if (d6 === 6){
-        
-        d6 = dice(6,1)
-        damage   = Math.ceil( ( ( (2*level+10) /150) * (atk/enDef) +2) *d6)
-        critical = Math.ceil( ( ( (2*level+10) /150) * (atk/enDef) +2) *crit)
-        critHit  = damage + critical
-        console.log('+--------------------------------------------------------------------------------------+')
 
+        critHit  = damage + critical
+        // console.log('+--------------------------------------------------------------------------------------+')
+        return critHit
     } else if (d6 === 1){
-        console.log('+--------------------------------------------------------------------------------------+')
-        console.log('+ Your attack missed!                                                                  +')
+        // console.log('+--------------------------------------------------------------------------------------+')
+        // console.log('+ Your attack missed!                                                                  +')
+        return heroStat[0]-0
     }
 }
+
+function enDmg(enAtk,heroDef,enLvl){//enemyArr stat are held in oppStat
+    
+    d6 = dice (6,1)
+    d2 = dice (2,1)
+    let damage = Math.ceil( ( ( (2*enLvl+10) / 150) * (enAtk/heroDef) +2) *d6)
+    if (d2 === 2){
+        console.log('+ You took '+heroStat[0]-damage+' damage from the enemy!')
+        console.log('+ Your health is now '+heroStat[0]+'!')
+    } else if (d2 === 1) {
+        console.log('+ The enemy missed! You take no damage.              +')
+    }
+}
+
 //dodge(d6)
 function dodge(risk){//if dodge roll is > 3, nullify damage
     d6 = dice(6,1)
@@ -94,28 +112,17 @@ function dodge(risk){//if dodge roll is > 3, nullify damage
 //spAtk()
 
 //enDmg(oppStat[3],oppStat[1],heroStat[2],d6)
-function enDmg(enAtk,heroStat[0],){//enemyArr stat are held in oppStat
-   
-    d6 = dice (6,1)
-    d2 = dice (1,0)
-    let damage = Math.ceil( ( ( (2*enLvl+10) / 150) * (enAtk/def) +2) *d6)
-    if (d2 === 1){
-        console.log('+ You took '+heroStat[0]-damage+' damage from the enemy!')
-        console.log('+ Your health is now '+heroStat[0]+'!')
-    } else if (d2 === 0) {
-        console.log('+ The enemy missed! You take no damage.              +')
-    }
-}
 
-function fight(){
-       while (heroStat[0] > 0){
+function fightOne(heroHealth,heroAtk,enHealth, enDef){
+       while (heroHealth > 0 || enHealth > 0){
         const rls1 = require('readline-sync')
         options  = ['Attack', 'Dodge', 'Sp. Attack', 'Run']
         index = rls1.keyInSelect(options, 'What do you do?') 
 
         if (options[index] === options[0]){
-            damage = dmg(heroStat[3],heroStat[1],oppStat[2],dice(6,1))
-            finalDmg = oppStat[0] - damage
+            damage = dmg(heroStat[3],heroStat[1],oppStat[0][2],dice(6,1))
+            finalDmg = oppStat[0][0] - damage
+            enDmg()
            // fight()
 
         } else if (options[index] === options[1]) {
@@ -142,8 +149,6 @@ function fight(){
         } else {
             quitGame()
         }
-        console.log(heroStat)
-        console.log(oppStat)
     }//while close
 }
 
@@ -189,6 +194,7 @@ function start() {
 }
 
 start()
+console.log(dmg(10,2,1))
 
 function levelOne(){
 
@@ -312,7 +318,7 @@ function levelOne(){
                     console.log('+ one have gotten this far to the surface? No matter, let\'s RUMBLE!!                    +')
                 }
             }  
-fight(10,10,2,1)
+fightOne(heroStat[0],heroStat[1],oppStat[0][2])
 
 }
         function stageOneThree(){
