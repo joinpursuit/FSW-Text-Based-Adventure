@@ -28,10 +28,10 @@ const rls = require("readline-sync");
         console.log("Hi " + name + " nice to meet you!"); {
         console.log("")
         console.log("Let's make three different Pizzas!")
-        console.log("First, you will need to pick which Pizza you will make first.")
+        console.log("One for you and the other two for a friend/s")
         console.log("Your options are vegan, meatLover, and veggie.")
         console.log("You will need to add 3 toppings out of 5 options provided for you.")
-        console.log("Once you are done with one pizza, choose another until you have completed all three.")
+        console.log("Once you are done with all three pizzas, you can enjoy it for free .")
         console.log("")
         }    
         if (rls.keyInYN("Are you excited to create your 3 Pizza types?")) {
