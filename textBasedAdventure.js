@@ -2,13 +2,12 @@ const rls = require('readline-sync')
 
 const chalk = require('chalk')
 
+let yourName = rls.question("Enter your name: ")    
+    
+console.log(`Welcome to my game ${yourName}! \nI invite you to play this game with the intent of getting the best possible ending. Remember that - much like in real life - your choices matter! \nP.S. try to get the best ending before looking through the code ;)\n`)
 
 
 function gameStart() {
-    let yourName = rls.question("Enter your name: ")
-    
-    console.log(`Welcome to my game ${yourName}! \nI invite you to play this game with the intent of getting the best possible ending. Remember that - much like in real life - your choices matter! \nP.S. try to get the best ending before looking through the code ;)\n`)
-
     let startPrompt = rls.keyInYN(chalk.black.bgWhite.bold("Would you like to play my game? "))
         if (startPrompt) {
             gameLoop()
@@ -20,10 +19,10 @@ function gameStart() {
 
 function playAgain() {
     answer = rls.keyInYN("Would you like to play again?")
-    if (answer = true) {
+    if (answer === true) {
         gameLoop()
     }
-    else if (answer = false) {
+    else if (answer === false) {
         endGame()
     }
     else {
@@ -39,28 +38,30 @@ function endGame() {
 
 function gameLoop() {
 
-    scenarioOne()
-    console.log(`You currently have ${loveCounter} love points`)
-    console.log(`Time counter: ${timeCounter}`)
-    scenarioTwo()
-    console.log(`You currently have ${loveCounter} love points`)
-    console.log(`Time counter: ${timeCounter}`)
-    scenarioThree()
-    console.log(`You currently have ${loveCounter} love points`)
-    console.log(`Time counter: ${timeCounter}`)
-    scenarioFour()
-    console.log(`You currently have ${loveCounter} love points`)
-    console.log(`Time counter: ${timeCounter}`)
-    scenarioFive()
-    console.log(`You currently have ${loveCounter} love points`)
-    console.log(`Time counter: ${timeCounter}`)
-    scenarioSix()
-    console.log(`You currently have ${loveCounter} love points`)
-    console.log(`Time counter: ${timeCounter}`)
-    scenarioSeven()
-    console.log(`You currently have ${loveCounter} love points`)
-    console.log(`Time counter: ${timeCounter}`)
-    scenarioWalkHome()
+    //scenarioOne()
+    //console.log(`You currently have ${loveCounter} love points`)
+    //console.log(`Time counter: ${timeCounter}`)
+    // scenarioTwo()
+    // console.log(`You currently have ${loveCounter} love points`)
+    // console.log(`Time counter: ${timeCounter}`)
+    //  scenarioThree()
+    //  console.log(`You currently have ${loveCounter} love points`)
+    //  console.log(`Time counter: ${timeCounter}`)
+    // scenarioFour()
+    // console.log(`You currently have ${loveCounter} love points`)
+    // console.log(`Time counter: ${timeCounter}`)
+    //  scenarioFive()
+    //  console.log(`You currently have ${loveCounter} love points`)
+    //  console.log(`Time counter: ${timeCounter}`)
+    // scenarioSix()
+    // console.log(`You currently have ${loveCounter} love points`)
+    // console.log(`Time counter: ${timeCounter}`)
+    //  scenarioSeven()
+    //  console.log(`You currently have ${loveCounter} love points`)
+    //  console.log(`Time counter: ${timeCounter}`)
+    // scenarioWalkHome()
+    // transitionScenario()
+    survivalScenario()
 }
 
 
@@ -194,7 +195,7 @@ if (answer === 0) {
         let options2 = ["Oh, I love walking too. We get to talk AND enjoy the scenery.", "It was my second choice honestly. I'd rather sit on a bench and quietly joke about people who walk by"]
         let exitLoop = 0
         while (exitLoop < 1) {
-            answer2 = rls.keyInSelect(options2, "How will you respond?")
+            answer2 = rls.keyInSelect(options2, "How will you respond?", {cancel: false})
             if (answer2 === 0) {
                 console.log("A fellow lover of long walks? ^__^")
                 loveIncrement(2)
@@ -373,31 +374,45 @@ function scenarioSeven() {
             console.log("Invalid input. Please choose 1 or 2")
         }
     }
-    console.log("You enter the supermarket. Ella looks elated. She reminds you about that nice feeling she gets in her tummy. You can slightly understand what she's talking about. In fact, you can feel it yourself. Especially while you walk past the frozen foods section. Maybe it's something you've always felt but have never noticed. She tells you to pay special attention to the smells. You follow her instructions, and you understand what she means. This girl is amazing. As you loop back around near the front of the store after walking through every aisle, Ella asks if you'd like to buy anything before we leave. She said it in a tone the hinted she was craving something")
+    console.log("You enter the supermarket. Ella looks elated. She reminds you about that nice feeling she gets in her tummy. You can slightly understand what she's talking about. In fact, you can feel it yourself. Especially while you walk past the frozen foods section. Maybe it's something you've always felt but have never noticed. She tells you to pay special attention to the smells. You follow her instructions, and you understand what she means. This girl is amazing. As you loop back around near the front of the store after walking through every aisle, Ella asks if you'd like to buy anything before we leave. She said it in a tone that hinted she was craving something")
 
-    let foodOptions = ["cereal", "milk", "eggs", "fruits", "peanut butter", "bread"]
-    let exitLoop = 0
-    while (exitLoop < 1) {
-        let buyFood = rls.keyInSelect(foodOptions, "What would you like to buy? ")
-        if (buyFood === 3) {    
-            let fruits = ["bananas", "blueberries", "pears", "apples", "kiwis", "strawberries", "oranges"]
-            let buyFruit = rls.keyInSelect(fruits, "Which fruit will you buy? ")
-            if (buyFruit === 5) {
-                console.log("You tell her you have something in mind, but you won't tell her what it is. You tell her to wait. You walk to the produce section, and grab a case of strawberries. You walk toward her while holding the strawberries, and she hugs you. She looks at you with a huge smile on her face. She's so happy you remembered")
-                loveIncrement(4)
-            }
-            else {
-                console.log("You're going to enjoy these later! Ella looks dissapointed. You don't understand why.")
-                loveDecrement(2)
-            }
-            exitLoop++
-        }
-        else {
-            console.log("You're going to enjoy these later! Ella looks dissapointed. You don't understand why.")
-            loveDecrement(2)
-            exitLoop++
-        }
+    let fruits = rls.question("What will you buy? ")
+    if (fruits === "strawberries") {
+        console.log("You tell her you have something in mind, but you won't tell her what it is. You tell her to wait. You walk to the produce section, and grab a case of strawberries. You walk toward her while holding the strawberries, and she hugs you. She looks at you with a huge smile on her face. She's so happy you remembered")
+        loveIncrement(5)
     }
+    else if (fruits === "strawberry") {
+        console.log("You tell her you have something in mind, but you won't tell her what it is. You tell her to wait. You walk to the produce section, and grab a case of strawberries. You walk toward her while holding the strawberries, and she hugs you. She looks at you with a huge smile on her face. She's so happy you remembered")
+        loveIncrement(5)
+    }
+    else {
+        console.log("You're going to enjoy these later! Ella looks dissapointed. You don't understand why.")
+        loveDecrement()
+    }
+
+    // let foodOptions = ["cereal", "milk", "eggs", "fruits", "peanut butter", "bread"]
+    // let exitLoop = 0
+    // while (exitLoop < 1) {
+    //     let buyFood = rls.keyInSelect(foodOptions, "What would you like to buy? ")
+    //     if (buyFood === 3) {    
+    //         let fruits = ["bananas", "blueberries", "pears", "apples", "kiwis", "strawberries", "oranges"]
+    //         let buyFruit = rls.keyInSelect(fruits, "Which fruit will you buy? ")
+    //         if (buyFruit === 5) {
+    //             console.log("You tell her you have something in mind, but you won't tell her what it is. You tell her to wait. You walk to the produce section, and grab a case of strawberries. You walk toward her while holding the strawberries, and she hugs you. She looks at you with a huge smile on her face. She's so happy you remembered")
+    //             loveIncrement(4)
+    //         }
+    //         else {
+    //             console.log("You're going to enjoy these later! Ella looks dissapointed. You don't understand why.")
+    //             loveDecrement(2)
+    //         }
+    //         exitLoop++
+    //     }
+    //     else {
+    //         console.log("You're going to enjoy these later! Ella looks dissapointed. You don't understand why.")
+    //         loveDecrement(2)
+    //         exitLoop++
+    //     }
+    // }
 
     timeIncrement(2)
 }
@@ -408,7 +423,7 @@ function scenarioWalkHome() {
 
     if (loveCounter >= 9) {
         console.log("Today was such a great day! You think back at how great it was, but you snap out of it just as Ella leans in for a kiss. You're probably as shocked as I am, and I'm a narrator. I already knew what was going to happen!")
-        survivalScenario()
+        transitionScenario()
     }
     else {
         console.log("The day could've been so much better. You've never had an experience like this, where you happen to come across somebody you like this much by chance. You regret making certain choices in her presence. She shakes your hand and tells you she had a good day. She walks in. You'll probably never see her again. A nagging voice inside you says maybe it's for the best...")
@@ -417,8 +432,89 @@ function scenarioWalkHome() {
 }
 
 
-function survivalScenario() {
+
+function transitionScenario() {
+    console.log("You walk into her home. She lives in a house by herself? You ask what of her parents. She tells you that they died years ago, and she inherited the house. She asks you to sit, and offers you a drink.")
     
+    let drinks = ["pepsi", "wine", "orange juice", "water -- your favorite!"]
+    let drinkLoop = 0
+    while (drinkLoop < 1) {
+        let whichDrink = rls.keyInSelect(drinks, "Which drink will you choose? ")
+        
+        if (whichDrink < 3) {
+            console.log("She leaves and comes back with your drink. You take a couple of chugs. You didn't realize how parched you were until she brought the drink back.")
+            drinkLoop++
+        }
+        // else if (whichDrink === 1) {
+        //     console.log("She leaves and comes back with your drink. You take a couple of chugs. You didn't realize how parched you were until she brought the drink back.")
+        //     drinkLoop++
+        // }
+        // else if (whichDrink === 2) {
+        //     console.log("She leaves and comes back with your drink. You take a couple of chugs. You didn't realize how parched you were until she brought the drink back.")
+        //     drinkLoop++
+        //}
+        else if (whichDrink === 3) {
+            console.log("Sorry. The only water in the house is from the tap, and the plumbing has some issues so the water comes out dirty. Choose another drink")
+        }
+        else {
+            "Invalid input. Please choose numbers 1-4"
+        }
+    }
+    console.log("You ask if the drink is supposed to taste like this. She apologizes that it might be a bit stale. She tells you that it's been so long since she last met somebody she liked as much as you. She admits that she's falling in love with you. You think to yourself 'On the first day??' You start to feel lightheaded and weak.")
+    console.log("Ella: 'Everything will be ok, now that you're here with me.' You now understand why she didn't want to give you water earlier: you would taste the date rape drug. You try to stand up, but your body goes limp. You fall to the floor and black out.")
+}
+
+
+let hp = 4
+function loseHP(num) {
+    if (num === undefined) {
+        hp = hp - 1
+        console.log(`You've lost 1 hp`)
+    }
+    else {
+        hp = hp - num
+        console.log(`You've lost ${num} hp`)
+    }
+    if (hp < 1) {
+        youDied()
+    }
+}
+
+function youDied() {
+    console.log("You collapse as you draw your last breath. You hear Ella say 'You see what you made me do??'\nIt's the last thing you ever hear.")
+    playAgain()
+}
+
+
+function survivalScenario() {
+console.log("You wake up in what looks like a basement. It's dark. You briefly look around and there's nobody in sight. You feel a sharp pain behind your right ankle. You realize that Ella has cut across your achilles’ tendon. Your hands are bound with what feels like sash behind you, tied around a rusty radiator pipe. You see a bloody scapel about 6 feet away. It's probably what she used to cut across your tendon.")
+
+    let choices = ["Try to wriggle your hands free from the sash", "Reach for the scapel", "Yell for help as loud as you can",  "Look around some more"]
+    let wakeUpLoop = 0
+    while (wakeUpLoop < 1) {
+        let wakeUp = rls.keyInSelect(choices, "What will you do? ") 
+        if (wakeUp < 3) {
+            console.log("A figure rises from the dark corner. You didn't notice her earlier. Ella: 'You're trying to leave me?!' She leaves and returns with a hammer. She winds back and swings with all her power. She hits you across the head.")
+            loseHP()
+            console.log(`Surprisingly you don't feel much pain -- yet. Ella looks down at you. "I wanted to love you ${yourName}. And now do you see what you made me do?" You finally feel blood dripping down your face from the open gash in your head. The metallic smell fills your nostril as it runs past your nose. The numbness subsides, and the pain sets in. You begin to accept that you're about to die. You feel at peace.`) 
+            console.log("I didn't want to do this. Ella winds the hammer back again.")
+            let awakeLoop = 0
+            let choices2 = ["It's inevitable. Accept your fate.", "A second wind of survival instinct. Jerk your head to the side"]
+            while (awakeLoop < 1) {
+                if (choices2 === 1) {
+                    console.log("All you can think before your life is snuffed out is that you'll never get to see the next episode of your favorite anime.")
+                    loseHP(4)
+                }
+                else if (choices2 === 2) {
+                    console.log("One final effort. ")
+                }
+            }
+        }
+        else if (wakeUp === 3) {
+            console.log(`You decide to take a closer look around the room. First looks can be decieving. You notice a figure crouched down in the dark corner. After 3 seconds of silence, the figure rises. "I'm so happy you're here with me now. You didn't try to escape. I love you ${yourName}." Ella steps toward you with a dead smile on her face. `)
+        }
+
+    }
 }
 
 
