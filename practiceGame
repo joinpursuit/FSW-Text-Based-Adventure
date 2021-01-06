@@ -1,3 +1,0 @@
-const rls = require('readline-sync')
-const chalk = require('chalk');
-
