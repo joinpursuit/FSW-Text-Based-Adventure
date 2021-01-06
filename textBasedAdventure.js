@@ -31,7 +31,7 @@ const play = () => {
       console.log("Welcome to what may be your last day standing")
       console.log("You awake on a beach. It's cold and dark. You reach into your pocket and find a lighter as well as a match.")
       let decision1 = readLineSync.question("Which one would you like to use? Match or Lighter?")
-      if(decision1 === "Match"){
+      if(decision1 === "Match" || decision1 === "match"){
           console.clear()
           match()
       }else if (decision1 === "Lighter"){
