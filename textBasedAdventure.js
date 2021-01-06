@@ -29,9 +29,9 @@ const wannaPlay = () => {
 //GAME
 function startGame() {
  
-  console.log(
-    "You have been travelling for a long time and find yourself on a meadow near a forrest. Nearby you can see a small town. You can go to the forrest where you will have to fight monsters. If you win, you might find cold coins. Then you can go to town and spend it allll"
-  );
+  console.log(chalk.hex("#f9f2ec")(
+    "You have been travelling for a long time and find yourself on a meadow near a forrest. \n Nearby you can see a small town. You can go to the forrest where you will have to fight monsters. \n If you win, you might find cold coins. Then you can go to town and spend it allll"
+  ));
   forrestOrTown();
 }
 
@@ -96,7 +96,7 @@ function chooseFight() {
 
 //fight Troll (DONE)
 function fightTroll() {
-  console.log("You have encountered a Troll.");
+  console.log(chalk.hex("#ff3333")("You have encountered a Troll."));
   let playerHP = 15;
   for (let i = 0; i < 3; i++) {
     let attack = rls.keyIn("Press a to attack \n", { limit: "a" });
@@ -111,7 +111,7 @@ function fightTroll() {
     console.log(`You now have ${global.playerGold} gold coins`);
     forrestOrTown();
   } else {
-    console.log("Sorry, the Troll knocked you out! \n You wake up several hours later, and discover that while you were out someone stole your gold...");
+    console.log(chalk.hex("#ccd9ff")("Sorry, the Troll knocked you out! \n You wake up several hours later, and discover that while you were out someone stole your gold..."));
     playerGold = 0
     console.log(`You now have ${global.playerGold} gold coins`);
     forrestOrTown();
@@ -120,7 +120,7 @@ function fightTroll() {
 
 //fight Orc (DONE)
 function fightOrc() {
-  console.log("You have encountered an Orc.");
+  console.log(chalk.hex("#ff3333")("You have encountered an Orc."));
   let playerHP = 15;
   for (let i = 0; i < 3; i++) {
     let attack = rls.keyIn("Press a to attack \n", { limit: "a" });
@@ -135,7 +135,7 @@ function fightOrc() {
     console.log(`You now have ${global.playerGold} gold coins`);
     forrestOrTown();
   } else {
-    console.log("Sorry, the Orc knocked you out! \n You wake up several hours later, and discover that while you were out someone stole your gold...");
+    console.log(chalk.hex("#ccd9ff")("Sorry, the Orc knocked you out! \n You wake up several hours later, and discover that while you were out someone stole your gold..."));
     playerGold = 0
     console.log(`You now have ${global.playerGold} gold coins`);
     forrestOrTown();
@@ -144,7 +144,7 @@ function fightOrc() {
 
 //fight Goblin
 function fightGoblin() {
-  console.log("You have encountered a Goblin.");
+  console.log(chalk.hex("#ff3333")("You have encountered a Goblin."));
   let playerHP = 15;
   for (let i = 0; i < 3; i++) {
     let attack = rls.keyIn("Press a to attack \n", { limit: "a" });
@@ -159,7 +159,7 @@ function fightGoblin() {
     console.log(`You now have ${global.playerGold} gold coins`);
     forrestOrTown();
   } else {
-    console.log("Sorry, the Goblin knocked you out! \n You wake up several hours later, and discover that while you were out someone stole your gold...");
+    console.log(chalk.hex("#ccd9ff")("Sorry, the Goblin knocked you out! \n You wake up several hours later, and discover that while you were out someone stole your gold..."));
     playerGold = 0
     console.log(`You now have ${global.playerGold} gold coins`);
     forrestOrTown();
@@ -168,7 +168,7 @@ function fightGoblin() {
 
 //fight Ogre and most likely lose
 function fightOgre() {
-  console.log("Oh oh, you have encountered an Ogre");
+  console.log(chalk.hex("#ff3333")("Oh oh, you have encountered an Ogre"));
   let playerHP = 15;
 
   while (playerHP > 0) {
@@ -182,7 +182,7 @@ function fightOgre() {
     console.log(`You now have ${global.playerGold} gold coins`);
     forrestOrTown();
   } else {
-    console.log("Sorry, the Ogre knocked you out! \n You wake up several hours later, and discover that while you were out someone stole your gold...");
+    console.log(chalk.hex("#ccd9ff")("Sorry, the Ogre knocked you out! \n You wake up several hours later, and discover that while you were out someone stole your gold..."));
     playerGold = 0
     console.log(`You now have ${global.playerGold} gold coins`);
     forrestOrTown();
@@ -192,7 +192,7 @@ function fightOgre() {
 //choose what to visit
 function chooseVisit() {
   (places = ["Church", "Tavern", "Market", "City Gates"]),
-    (index = rls.keyInSelect(places, "You walk to the town to see what it has to offer. \n The local tavern has artisanal beer for Ξ5 or you could stay the night for only Ξ8. \n Nearby marketplace has a variety of shops to browse, e.g. an armory stocked with all sorts of swords for Ξ7 a piece or leather armor for Ξ4. \n You can also see the steeple of a a local church. \n Where would you like to go?"));
+    (index = rls.keyInSelect(places, "You walk to the town to see what it has to offer. \n The local tavern has artisanal beer and rooms to rest.  \n Nearby marketplace has a variety of shops to browse, e.g. an armory stocked with all sorts of swords and leather armor. \n You can also see the steeple of a a local church. \n A little bit further down you can see the high towers of city gates where you can leave the town and continue your journey. \n Where would you like to go?"));
 
   switch (index) {
     case 0:
@@ -220,7 +220,7 @@ function chooseVisit() {
 // make a donation?
 function visitChurch() {
   let answer = rls.keyInYN(
-    `Welcome to our church. Would you like to make a donation? (You have ${global.playerGold} coins) \n`
+    `The church is quiet. The priest asks you if you would like to make a donation. You have ${global.playerGold} coins \n`
   );
   if (answer) {
     let donation = rls.question("How much would you like to donate? \n");
@@ -247,7 +247,7 @@ function visitChurch() {
 function visitTavern() {
   console.log(playerGold);
   let answer = rls.question(
-    "Welcome to our tavern. Here you can spend a night or drink some artisanal beer. So, what would you like to do, sleep or drink? \n"
+    "The tavern is bustling with the local folk. Here they offer artisanal beer for Ξ5 or you could stay the night for only Ξ8. So, what would you like to do, sleep or drink? \n"
   );
   console.log(`You now have ${global.playerGold} gold coins`);
   if (answer === "sleep") {
@@ -285,7 +285,7 @@ function visitTavern() {
 //buy leather armor
 function visitMarket() {
   let answer = rls.question(
-    "Welcome to our armory. Here you can buy a sword or a leather armor. \n So, what would you like to buy, sword or armor? \n"
+    "The marketplace is booming with activity. The armory is stocked with wide selection of swords for Ξ7 a piece or leather armor for Ξ4 \n So, what would you like to buy, sword or armor? \n"
   );
   console.log(`You now have ${global.playerGold} gold coins`);
   if (answer === "sword") {
