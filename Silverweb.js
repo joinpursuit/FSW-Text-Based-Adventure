@@ -58,7 +58,7 @@ startTitle("Silver Web", function (err, data) {
      console.log(
        "\n\tGame Rules:" +
          chalk.yellow(
-           "\n\tYou will be met with a series of questions and decisions that progress the story."
+           "\n\tYou will be met with a series of questions and decisions that progress the story. \n\t\t\t(Game best played in full screen.)"
          )
      );
      console.log(
@@ -177,7 +177,7 @@ startTitle("Silver Web", function (err, data) {
            ));
          } else if (index2 == [2]) {
            console.log(
-             chalk.rgb(255, 136, 0).bold(`\n\n\t${instrumentArr[2]}` + ` been chosen. The subject begins to scream `
+             chalk.rgb(255, 136, 0).bold(`\n\n\t${instrumentArr[2]}` + ` been chosen. The subject begins to scream. As you hear the chisel of bone. `
            ));
          } else if (index2 == [3]) {
            console.log(
@@ -192,7 +192,7 @@ startTitle("Silver Web", function (err, data) {
            chalk.magenta("\n\tYou open a new terminal tab, but it appears someone has gained control of your command line"
          ));
          let stream = [
-           "Do you want to continue trying to stop the stream",
+           "Do you want to continue trying to stop the stream,",
            "Do you want to return to place your bid",
          ];
          let streamChoice = rls.keyInSelect(stream);
