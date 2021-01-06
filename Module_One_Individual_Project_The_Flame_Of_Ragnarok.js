@@ -35,7 +35,7 @@ const startGame = () => {
   }
 
 function runOrFly(){
-   console.log(chalk.green("You wake up in the Castle of Asgard. \n"))
+ console.log(chalk.green("You wake up in the Castle of Asgard. \n"))
    console.log(chalk.green("You just got word that Thor, The God of Thunder himself wants to speak to you about a very important quest! \n"))
    console.log(chalk.green("He is waiting for you in Thrudheim. Would you like to run or fly?"))
    let ability
