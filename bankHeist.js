@@ -146,21 +146,19 @@ const escape = () => {
        escape()
 }
 
-const amusementPark = () => {
-    console.log(`You try to blend in with the crowd at Coney Island and you bump into your brother, Nick. 🎡`)
-    let avoidFriend = readline1.question(`\nDo you avoid him? "yes" or "no"\n`)
-
-    if(avoidFriend.toLowerCase() === `yes`){
-        console.log(`He sees you sees that you're trying to avoid him and he asks you what you're doing at Adventureland.`)
-        nick()
-    } else if (avoidFriend.toLowerCase() === `no`) {
-        console.log(`You ask him what he's doing at Adventureland.`)
-        nick()
+const helpNick = () => {
+    console.log(`Nick finds the bottle and asks you to try it. 🌀`)
+    let tryIt = readline1.question(`\nDo you want to try it? "yes" or "no"\n`)
+    if(tryIt.toLowerCase() === `yes`){
+        console.log(`You try it and start hallucinating! Oh no! A cop sees you! You're too incoherent to avoid him.`)
+        goToJail()
+    } else if (tryIt.toLowerCase() === `no`){
+        console.log(`You refuse to try it and he drives you home`)
+        winGame()
     } else {
         console.log(`Please re-enter a valid answer.`)
-        amusementPark()
+        helpNick()
     }
-    
 }
 
 const nick = () => {
@@ -179,20 +177,21 @@ const nick = () => {
         nick()
     }
 }
+const amusementPark = () => {
+    console.log(`You try to blend in with the crowd at Coney Island and you bump into your brother, Nick. 🎡`)
+    let avoidFriend = readline1.question(`\nDo you avoid him? "yes" or "no"\n`)
 
-const helpNick = () => {
-    console.log(`Nick finds the bottle and asks you to try it. 🌀`)
-    let tryIt = readline1.question(`\nDo you want to try it? "yes" or "no"\n`)
-    if(tryIt.toLowerCase() === `yes`){
-        console.log(`You try it and start hallucinating! Oh no! A cop sees you! You're too incoherent to avoid him.`)
-        goToJail()
-    } else if (tryIt.toLowerCase() === `no`){
-        console.log(`You refuse to try it and he drives you home`)
-        winGame()
+    if(avoidFriend.toLowerCase() === `yes`){
+        console.log(`He sees you sees that you're trying to avoid him and he asks you what you're doing at Adventureland.`)
+        nick()
+    } else if (avoidFriend.toLowerCase() === `no`) {
+        console.log(`You ask him what he's doing at Adventureland.`)
+        nick()
     } else {
         console.log(`Please re-enter a valid answer.`)
-        helpNick()
+        amusementPark()
     }
+    
 }
 
 const tarotCard = () => {
