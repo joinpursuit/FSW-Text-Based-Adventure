@@ -1,0 +1,57 @@
+/* Game gist, You're an Uber driver with a magical secret. You read your tarot for the day.
+ It say's "You will meet someone that can kill you or bring you great fortune"
+ Do you want to drive tonight? Y/N
+ 
+ If yes What is your magical secret, dont worry I wont tell aynyone. 
+ A)Create fire - most powerfull attack , weak defense
+ b)Create water - even defense and attac
+ c)Manipulate earth - high defense, low attack 
+ d)Make things invisible - high defense, no attack, can escape
+
+ if no gameover
+ 
+1)Do you want to prepare food before leaving, or just buy food once you're outside?
+A) Prepare = Make some sandwiches, grabs some snacks, fill up your water bottle. Fill your gas tank before starting. keeps car when being chased. 
+B) Eventually will get low on gas when being chased will lose car
+
+2)Where do you want to  turn on the app and start your shift? 
+( Goals is to get a long trip) Do Math.random and perecentage? if below .5 then short trip, 
+a) Start where your car is parked. You have a 50/50 chance of getting a long or short trip with a small wait time. 50 percent chance
+b) Start in a rich area where you most likely wait a while to get long distance trips. 75 percent chance
+c) Start in a populated area where youre likely to get multiple short trips and make more money quicker 10 percent chance
+
+3)If short trip: you pick up what looks like a couple with their two cute kids. Thankfully they all have mask.
+"Hi, for Angel?"
+The man says yes and loudly tells the two kids to hurry up getting in. You put the radio on. 103.5ktu cause its more kid friendly
+Looking in the passenger window expecatantly he ask, "Can I sit in the front?" 
+You tell him:
+A) Sure, just keep the window open.- Once sitting he ask "Busy day?"
+"Not really, but it's a beautiful day out here, hows your day going?"
+He ends up coughing heavily , taking off his mask, saying man, "I cant breathe we these things on."
+1)Do you tell him to put it on? yes/no
+a)yes- You end up having a day of averegae trips, thinking of course the tarot was balogney, and up getting covid. 
+B)No, Uber made a rule for covid that no one can sit in the front - he angrily sits in the back with a kid on his lap. 
+His energy feels very off. But you can't pinpoint it, so you feel uneasy the whole ride. 
+You end up having a productive day of average trips, but think the tarot was balogney
+
+4)If long trip:
+Looks like you got a long trip, says 1hr 33 mins. This is a great way to start your day! You happily drive to the pick up location. 
+A women with a powerful aura gets into your car. She's dressed to the nines and her perfume is lovely. 
+    "Hi, for Jema?"
+   "Yes, Hi, how are you?" 
+   "Good, good, and you? Any music you prefer?" 
+   "No, play want you want."
+   "Cool, I'm listening to the real catch me if you can guy tell his story." 
+    She chuckles, "Ah, I saw that movie with Leonadrio Decaprio, sounds good!" 
+
+You notice she radiates a strong magical aura and it's starting to make you feel uneasy. 
+You wonder if your magic could fend her off is she tries to kill you, but quickly dismiss the thought. She was polite. 
+Her phone rings, so you lower your podcast.
+
+You hear her say, " Yes...no...I'm leaving...someone's after me?...How long?...Now that you mention it...I'll figure it out. Thank you! Bye!" 
+You put your podcast back up to act like you werent listening, but you hear her sigh deeply. 
+
+Suddenly time slows down immensly. You see as every objects looks like it was stuck in jello. 
+
+
+So much */
