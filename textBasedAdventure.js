@@ -441,7 +441,7 @@ const playGame = () => {
             readline1.question('-S "Ra... Ra... RAAAGNAAAAAA!!!..."\n')
         }
         else {
-            readline1.question('-S "Ra... Ra... RAAAGNAAAAAA!!!..."\n')
+            readline1.question('It\'s impossible for Saeko to think about anything else other than Ragna\'s departure. \n-S "Ra... Ra... RAAAGNAAAAAA!!!..."\n')
         }
         readline1.question("And thus, Ragna continued forth on his mission to put an end to the dimensional loops... Never to return...")
         gameFinish()
