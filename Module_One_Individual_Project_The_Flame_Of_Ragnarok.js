@@ -441,11 +441,7 @@ function cavePathRight(){
       cavePathRight()
     }
 }
-else{
-    console.log(chalk.magenta("It is recommended that you play the fate of the multi-verse lies in your hands after all ") + chalk.bold.yellowBright(nameInput) + chalk.magenta("!! \n"))
-    cavePathRight()
-}
-}
+ }
 
 function cavePathLeft(){
   console.log(chalk.green("You are starting to grow weary and tired you didn't expect that the Cave of Time would be this big... \n"))
