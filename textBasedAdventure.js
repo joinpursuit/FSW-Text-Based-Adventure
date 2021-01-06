@@ -4,26 +4,25 @@ let nameInput = readLineSync.question("Enter your name: ")
 
 const ageVerification = () =>{
     console.log('This game is for players that are 18 and over because this story gets pretty graphic')
-    let ageQuest = Number (readLineSync.question("How old are you?"))
+    let ageQuest = Number (readLineSync.questionInt("How old are you?"))
     if(ageQuest >= 18){
         console.clear()
         startGame()
     }else if(ageQuest < 18){
         console.log("Sorry you're too young! So Scram!")
         quitGame()
-    }else if(!ageQuest){
+    }else(!ageQuest)
         console.clear()
         console.log("Not a valid number my friend")
         ageVerification()
     }
-}
+
 const play = () => {
     console.log(`Hello ${nameInput}!  Welcome to Survival Island.`)
     console.log('The rules of the game are simple. You will be presented with options choose the correct one and you will advance, otherwise you will not make it to the end.' )
     if(readLineSync.keyInYNStrict("Sound good? ")) {
         console.clear()
         ageVerification()
-        startGame();
     } else {
         quitGame();
     }
@@ -53,11 +52,11 @@ const play = () => {
           console.clear()
           console.log("The wind blows and the match goes out. Your only chance of staying warm is gone. You eventually freeze to death.")
           gameOver()
-      }else if(decision2 !== "Yes" && decision2 !== "No"){
+      }else(decision2 !== "Yes" && decision2 !== "No")
           console.clear()
           match()
       }
-  }
+  
   
   const lighter = () =>{
       console.log("The lighter has no fluid left.")
