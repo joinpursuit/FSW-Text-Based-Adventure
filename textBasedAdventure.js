@@ -4,18 +4,15 @@ let nameInput = readLineSync.question("Enter your name: ")
 
 const ageVerification = () =>{
     console.log('This game is for players that are 18 and over because this story gets pretty graphic')
-    let ageQuest = Number (readLineSync.questionInt("How old are you?"))
+    let ageQuest = (readLineSync.questionInt("How old are you?"))
     if(ageQuest >= 18){
         console.clear()
         startGame()
     }else if(ageQuest < 18){
         console.log("Sorry you're too young! So Scram!")
         quitGame()
-    }else(!ageQuest)
-        console.clear()
-        console.log("Not a valid number my friend")
-        ageVerification()
     }
+}
 
 const play = () => {
     console.log(`Hello ${nameInput}!  Welcome to Survival Island.`)
