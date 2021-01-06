@@ -33,9 +33,11 @@ function startGame() {
         startApp()
         firstPassenger()
         secondPassenger()
+        thirdPassenger()
+        gameOver()
 
     }else { 
-        leaveGame()
+        gameOver()
     }
 
 }
@@ -325,25 +327,35 @@ conversationOptions = ["start","wait","no conversation"]
 
 
 //whethere you get a long or short trip
-function trips(){
+// function trips(){
 
-}
+// }
 
-function quota(){  
-    while (money < 300) {
-    (totalTripCount *= moneyLuck)
-    money
-}
+// function quota(){  
+    
+// }
 
 
-}
+
 
 function gameOver(){
+    if (money < 300) {  
     console.log("Seems you didnt meet you quota!")
     if(rls.keyInYNStrict("Would you like to try again?")){
         restartGame()
-    }else {
+    }else leaveGame()
+
+    }else 
+        console.log("YOU MADE ITTTT, Yeahhh Yeaahhh!")
        leaveGame()
+}
+
+function restartGame(){
+    if(true){
+         money = 0
+         startGame()
+    
+    }else{
     }
 }
 
@@ -351,20 +363,7 @@ function leaveGame() {
     console.log(`\nGuess luck wasn't on your side. See you next time!\n`)
     process.exit()
 
+
 }
 
-function restartGame(){
-     passengers = 0
-     money = 0
-     longTrips = 0
-     shortTrips = 0
-     waitTime = 0
-     luck = 0
-     music = 0
-     podcast = 0
-     noConvo = 0
-     convo = 0
-     startGame()
 
-}  
-   
