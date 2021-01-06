@@ -439,6 +439,7 @@ let fun = ()=> {
         if (answer === true){
             let yey = "Yey! Let's do it again!"
             console.log(yey.italic)
+            console.clear()
             gameLoop()
         }else if (answer === false ){console.log(nah.italic)
         quitGame()
