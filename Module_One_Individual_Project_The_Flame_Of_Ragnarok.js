@@ -245,7 +245,8 @@ function healthPotion(){
         quitGame()
     }
     else {
-        console.log(chalk.red("Invalid choice, Please remember to choose one of the options and Spell it exactly how you see it!!!"))
+        console.log(chalk.red("Invalid choice, Please remember to choose one of the options and Spell it exactly how you see it!!! Please choose the path again!!"))
+        thrudheimCaves()
     }
 }
 
@@ -270,7 +271,8 @@ function vitalityPotion(){
         quitGame()
     }
     else {
-        console.log(chalk.red("Invalid choice, Please remember to choose one of the options and Spell it exactly how you see it!!!"))
+        console.log(chalk.red("Invalid choice, Please remember to choose one of the options and Spell it exactly how you see it!!! Please choose the path again!!"))
+        thrudheimCaves()
     }
     }
 
@@ -295,7 +297,8 @@ function staminaPotion(){
         quitGame()
     }
     else {
-        console.log(chalk.red("Invalid choice, Please remember to choose one of the options and Spell it exactly how you see it!!!"))
+        console.log(chalk.red("Invalid choice, Please remember to choose one of the options and Spell it exactly how you see it!!! Please choose the path again!!"))
+        thrudheimCaves()
     }
 }
     
@@ -435,7 +438,8 @@ function cavePathRight(){
   }
   else{
       console.log(chalk.magenta("He's a tricky wizard, Please try again Remember to Type 'Chest' with the number!! \n"))
-  }
+      cavePathRight()
+    }
 }
 else{
     console.log(chalk.magenta("It is recommended that you play the fate of the multi-verse lies in your hands after all ") + chalk.bold.yellowBright(nameInput) + chalk.magenta("!! \n"))
@@ -463,7 +467,7 @@ function finalShowDown(){
     console.log(chalk.green("Congratulations ") + chalk.bold.yellowBright(nameInput) + chalk.green(" You beat the game!!!"))
     restartGame()
     }
-    else{
+    else {
         console.log(chalk.magenta("You get caught in the crossfire between Thor and Loki!!!"))
         console.log(chalk.magenta("The Staff of Odin flies from your hand, but you're not going to give up."))
         console.log(chalk.magenta("With every ounce of energy you have left you get up and start looking for Gungnir.... \n"))
