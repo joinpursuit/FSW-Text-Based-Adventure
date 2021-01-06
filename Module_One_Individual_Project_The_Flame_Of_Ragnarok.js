@@ -244,6 +244,10 @@ function healthPotion(){
         console.log(chalk.red("Until next time remember that the fate of the multi-verse is in your hands!! \n"))
         quitGame()
     }
+    else {
+        console.log(chalk.red("Invalid choice, Please remember to choose one of the options and Spell it exactly how you see it!!!"))
+
+    }
 }
 
 function vitalityPotion(){
@@ -266,6 +270,8 @@ function vitalityPotion(){
         console.log(chalk.red("Until next time remember that the fate of the multi-verse is in your hands!! \n"))
         quitGame()
     }
+    else {
+        console.log(chalk.red("Invalid choice, Please remember to choose one of the options and Spell it exactly how you see it!!!"))
 }
 
 function staminaPotion(){
@@ -288,6 +294,8 @@ function staminaPotion(){
         console.log(chalk.red("Until next time remember that the fate of the multi-verse is in your hands!! \n"))
         quitGame()
     }
+    else {
+        console.log(chalk.red("Invalid choice, Please remember to choose one of the options and Spell it exactly how you see it!!!"))
 }
     
 function caveOfTime(){
