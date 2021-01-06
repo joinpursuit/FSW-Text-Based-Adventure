@@ -246,7 +246,6 @@ function healthPotion(){
     }
     else {
         console.log(chalk.red("Invalid choice, Please remember to choose one of the options and Spell it exactly how you see it!!!"))
-
     }
 }
 
@@ -272,7 +271,8 @@ function vitalityPotion(){
     }
     else {
         console.log(chalk.red("Invalid choice, Please remember to choose one of the options and Spell it exactly how you see it!!!"))
-}
+    }
+    }
 
 function staminaPotion(){
     console.log(chalk.green("You chose the Stamina Potion that is a very wise choice!! \n"))
@@ -296,6 +296,7 @@ function staminaPotion(){
     }
     else {
         console.log(chalk.red("Invalid choice, Please remember to choose one of the options and Spell it exactly how you see it!!!"))
+    }
 }
     
 function caveOfTime(){
