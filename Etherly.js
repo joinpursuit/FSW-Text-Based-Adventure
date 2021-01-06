@@ -1,13 +1,44 @@
 const rls = require("readline-sync");
 //This line of code is welcoming the user to the game//
 console.clear();
-let nameInput = rls.question("Hey wassup, what's your name: ");
+let nameInput = rls.question("\nHey wassup, what's your name: ");
 console.log(`\nHello ${nameInput}!  Welcome to Etherly.`); //Insert name of Game!//
 //Possibly an age requirement//
 //This line of code is describing to the user how to play//
 console.log(
-  "\nTo play, you will be asked to input some answers or pick one of the options.\nAnswer as truthfully as you can! \nPlease do not think too hard, just go with your gut!"
+  "\nTo participate, you will be asked to input some answers or pick one of many options.\nRemember to answer as truthfully as you can! \nPlease do not think too hard, just go with your gut!"
 );
+
+
+const giveNickName=()=>{
+  let nick= ''
+  for(let i = 0; i < nameInput.length; i ++) {
+      if(nameInput.length >= 3){
+      }
+      else { 
+        nick += (nameInput[i] + 'a')
+       }
+}
+return nick
+}
+
+function nickName(){
+  console.log(`\nYou know, ${nameInput}, I love giving people nicknames.`)
+  let input = rls.keyInYNStrict('Can I please give you a nickname?')
+  if(input){
+    console.log(giveNickName())
+    let like = rls.keyInYNStrict('Do you like it?')
+      if(like){
+        console.log(`You are so nice but, ${nameInput}, just sounds better.`)
+        startGame()
+      } else{ console.log(`I agree, I don't think I know you enough to call you that.`)}
+        startGame()
+
+  } else{
+    console.log('I agreee, I do not know you too well yet')
+    startGame()
+  }
+}
 
 /** Game Loop Section
  * Decision One: The user must enter a string to make a decision
@@ -18,36 +49,38 @@ console.log(
 //A function that takes in a number user age and returns a value representing how old they basically are to young people. Decision(1)//
 function growUp() {
   console.log(
-    "Many people who consider themselves young are now considered old."
+    `\nWe are in different times ${nameInput}. \nApparently, people who may consider themselves young, are now actually considered old. \nLet's find out where you fall.`
   );
   let actualAge = rls.questionInt("How old are you now?:");
-  let realAge = actualAge * 3;
-  let dec = rls.keyInYNStrict(
-    "\nAccording to young people, specifically Gen-Z, you are " +
-      realAge +
-      " and that is apparently disgusting! \nWould you like to keep living?"
-  );
-  if (dec) {
-    console.log(
-      "Smart thinking, you should not care about what those kids have to say!"
-    );
-    fourSeasons();
+  let realAge = actualAge * 3; // while loop for age requirement ?
+  if(realAge < 40) {
+    console.log("I dont think you should be playing this game kid")
+    quitGame()
   } else {
-    console.log("You seem to be an ageist and I do not like it!");
-    restartGame();
-  }
+  console.log(`\nAccording to young people, specifically Gen-Z, you are ${realAge}. \n${realAge}! I know "How?!" right. Sorry to break it to you, they think we are disgusting!`)
+  let dec = rls.keyInYNStrict(`\nWould you like to continue living?`);
+    if (dec) {
+      console.log(
+        "\nSmart thinking, you should not care about what those kids have to say. \nWe are in our prime! \nThey cannot wait to be like us!"
+      );
+      fourSeasons();
+    } else {
+      console.log("\nYou seem to be an ageist and I do not like it!");
+      restartGame();
+    }
 }
-// A function that takes in a string. Decision(2)//
+}
+// A function that takes in a string. Decision(2)// restrict the answers? with array and .include?
 function fourSeasons() {
-  season = rls.question("\nWhat is your favorite season?");
-  console.log("\nWow " + season + "! That's my favorite season too!");
-  console.log("\nIn the " + season + ", I like to use my coloring book most.");
-  let dec = rls.keyInYNStrict("Want to join me?");
+  season = rls.question(`\nSo...tell me ${nameInput}, what is your favorite season?`);
+  console.log("\nWOW " + season.toUpperCase() + "! That's my favorite season too!");
+  console.log("\nThe " + season + " is the time of the year when I like to use my coloring book.");
+  let dec = rls.keyInYNStrict("Want to color with me now?");
   if (dec) {
     pickColor();
   } else {
     console.log("I dont think you know how to have fun.");
-    quitGame();
+    restartGame();
   }
 }
 //Function that uses KeyInSelect to allow th user to pick between multiple options. Followed by switch  that takes them to 4 differenct scenarios. Decision(3)//
@@ -205,7 +238,10 @@ function fireBender() {
 function amIRight() {
   answer = rls.keyInYNStrict("Did I get it right?");
   if (answer) {
-    restartGame();
+    console.log('\nMy work is done here.')
+      if(answer){
+      restartGame();
+      }
   } else {
     experience();
   }
@@ -346,7 +382,7 @@ function airAffirm() {
  *
  */
 const startGame = () => {
-  let answer = rls.keyInYN("\nWould you like to play?");
+  let answer = rls.keyInYN("\nReady to begin?");
   if (answer) {
     console.log("Let's start!");
     console.clear();
@@ -367,17 +403,16 @@ const quitGame = () => {
  * No, says goodbye then terminates game.
  *  */
 const restartGame = () => {
-  let answer = rls.keyInYN("Would you like to play again?");
+  let answer = rls.keyInYN("Hmm okay, you are interesting. \nLet's try this one more time. Would you like to play again?!");
   if (answer) {
-    console.log("Okay, one more time!");
     console.clear();
     growUp();
   } else {
     console.log(
-      "Sad to see you go, but you chose what was right for you. \nSee you soon!"
+      "\nSad to see you go, but you chose what was right for you. \nSee you soon!"
     );
     quitGame();
   }
 };
 
-startGame();
+nickName();
