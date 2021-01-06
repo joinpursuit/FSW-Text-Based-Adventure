@@ -26,7 +26,7 @@ function heroStat(health,atk,def,lvl,exp){
     this.exp = exp
 }
 
-let heroStat = new heroStat(10,10,5,1,0) 
+//let heroStat = new heroStat(10,10,5,1,0) 
 
 function oppStat(enHealth, enAtk,enDef,enLvl, expGain){
     this.enHealth = enHealth
@@ -116,6 +116,7 @@ function dodge(risk){//if dodge roll is > 3, nullify damage
        console.log('+ Succesful dodge!                                              +')
        enDmg(enAtk,def,enlvl)
     } else if (d6 < 4) {
+
        heroStat.health-risk
        console.log('+ You tripped during your dodge and took '+risk+' damage!       +')
        console.log('+ Your health is now '+heroStat.health+'!                                +')
@@ -123,7 +124,7 @@ function dodge(risk){//if dodge roll is > 3, nullify damage
 }
 
 
-function fightOne(health,atk,lvl,enHealth,enDef,enLvl,dodgeRisk){
+function fightOne(health,atk,def,lvl,enHealth,enAtk,enDef,enLvl,dodgeRisk){
        while (health > 0 || enHealth > 0){
         const rls1 = require('readline-sync')
         options  = ['Attack', 'Dodge', 'Sp. Attack', 'Run']
@@ -326,7 +327,8 @@ function levelOne(){
                     console.log('+ one have gotten this far to the surface? No matter, let\'s RUMBLE!!                    +')
                 }
             }  
-fightOne(heroStat.health,heroStat[1],oppStat[0][2])
+          
+fightOne(heroStat.health,heroStat.atk,heroStat.lvl,oppStatTroll.enHealth,oppStatTroll.enAtk,oppStatTroll.enDef,oppStatTroll.enLvl,3)
 
 }
         function stageOneThree(){
