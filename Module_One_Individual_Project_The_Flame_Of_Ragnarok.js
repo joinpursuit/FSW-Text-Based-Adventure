@@ -324,12 +324,12 @@ function routePathOne(){
      setTimeout(() => {  console.log(chalk.cyanBright("...")); }, 8000)
      setTimeout(() => {  console.log(chalk.cyanBright("....")); }, 10000)
      setTimeout(() => {  console.log(chalk.cyanBright(".....")); }, 12000)
- setTimeout(() => { let fall = chalk.blueBright(readline.question("What would you like to do: quit or restart? \n"))
+ setTimeout(() => { let fall = readline.question("What would you like to do: quit or restart? \n")
  if (fall === "quit"){
    quitGame()
 }
 else if(fall === "restart"){
-   caveOfTime()
+   restartGame()
 }
 else{
    console.log(chalk.redBright("Invalid response please select either: quit or restart, and try again!! \n"))
@@ -366,7 +366,7 @@ function routePathThree(){
    quitGame()
 }
 else if(sweep === "restart"){
-   caveOfTime()
+   restartGame()
 }
 else{
    console.log(chalk.redBright("Invalid response please select either: quit or restart, and try again!! \n"))
