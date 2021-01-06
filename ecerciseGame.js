@@ -60,26 +60,43 @@ const shameQandA = () => {
                     setTimeout(function () { quitGame() }, 4000)
 
                 } else {
-                    
 
 
 
-                   answer = rls.question("Can I ask you more about your diet?\nType 'sure' if you would like to else type anything to quit ")
-                        if (answer === 'sure') {
-                            diet()
-                        } else {
-                            console.log("No worries") + quitGame()
 
-                        }
-                    
+                    answer = rls.question("\n Can I ask you more about your diet?\n Type 'sure' for yes \n else type something random \n if you are giving up on life. ")
+                    if (answer === 'sure') {
+                        diet()
+                    } else {
+                        console.log("No worries") + quitGame()
+
+                    }
+
 
 
                 }
             }, 2000)
 
         } else {
+
+
+
+
             console.log("That is a good but you probably consume other saturated fats.")
-            setTimeout(function () {rls.keyInYNStrict("Can I ask you more about your diet?") ? diet() : console.log("No worries") + quitGame()}, 2000)
+            setTimeout(function () {
+                answer = rls.question("\n Can I ask you more about your diet?\n Type 'sure' for yes \n else type something random \n if you are giving up on life. ")
+                if (answer === 'sure') {
+                    diet()
+                } else {
+                    console.log("No worries") + quitGame()
+
+                }
+
+            }, 2000)
+
+
+
+
         }
     }, 4000)
 }
