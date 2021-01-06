@@ -640,9 +640,9 @@ function firstFloorScenario() {
         }
     }
     rls.question("You hear the cops finally break the door down. Just as Ella pulls the axe back for a final swing. You hear gunshots and see the exit wounds penetrate holes through her torso. The blood spurts out and soaks your face. Ella drops to her knees, and with her eyes locked on you. Her eyes roll back and she falls to the side.")
-    rls.question("You've survived. The next time you knock a beautiful woman over, you will just keep on running.")
+    rls.question("\nYou've survived. The next time you knock a beautiful woman over, you will just keep on running.\n")
 
-
+    playAgain()
 }
 
 
