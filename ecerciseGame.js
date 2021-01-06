@@ -60,10 +60,6 @@ const shameQandA = () => {
                     setTimeout(function () { quitGame() }, 4000)
 
                 } else {
-
-
-
-
                     answer = rls.question("\n Can I ask you more about your diet?\n Type 'sure' for yes \n else type something random \n if you are giving up on life. ")
                     if (answer === 'sure') {
                         diet()
@@ -71,17 +67,10 @@ const shameQandA = () => {
                         console.log("No worries") + quitGame()
 
                     }
-
-
-
                 }
             }, 2000)
 
         } else {
-
-
-
-
             console.log("That is a good but you probably consume other saturated fats.")
             setTimeout(function () {
                 answer = rls.question("\n Can I ask you more about your diet?\n Type 'sure' for yes \n else type something random \n if you are giving up on life. ")
@@ -89,14 +78,8 @@ const shameQandA = () => {
                     diet()
                 } else {
                     console.log("No worries") + quitGame()
-
                 }
-
             }, 2000)
-
-
-
-
         }
     }, 4000)
 }
