@@ -60,7 +60,20 @@ const shameQandA = () => {
                     setTimeout(function () { quitGame() }, 4000)
 
                 } else {
-                    rls.keyInYNStrict("Can I ask you more about your diet?") ? diet() : console.log("No worries") + quitGame()
+                    
+
+
+
+                   answer = rls.question("Can I ask you more about your diet?\nType 'sure' if you would like to else type anything to quit ")
+                        if (answer === 'sure') {
+                            diet()
+                        } else {
+                            console.log("No worries") + quitGame()
+
+                        }
+                    
+
+
                 }
             }, 2000)
 
