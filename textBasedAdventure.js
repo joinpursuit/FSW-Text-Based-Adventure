@@ -71,12 +71,15 @@ const  playGame = () => {
 
         if(player == 1){
             console.log(`==> Player ${player}: ${player1} Wins`);
-
-            rls.keyInYN(`Do you want to play again?`) ? playGame() : quitGame();
+            let feedback = rls.question(`${player1} is requested to give a feedback about the game: `);
+            rls.keyInYN(`${player1} says, "${feedback}"\nWould ${player1} like to play again?`) ? playGame() : quitGame();
         }else{
             console.log(`==> Player ${player}: ${player2} Wins`);
 
-            rls.keyInYN(`Do you want to play again?`) ? playGame() : quitGame();
+            let feedback = rls.question(`${player2} is requested to give a feedback about the game: `);
+            rls.keyInYN(`${player2} says, "${feedback}"\nWould ${player2} like to play again?`) ? playGame() : quitGame();
+            
+            //rls.keyInYN(`Do you want to play again?`) ? playGame() : quitGame();
         }
     
     }else{
