@@ -349,8 +349,10 @@ romanceStory();
 romSetting();
 perfectNumRom();
 tooManyCharRom();
-
-
-
+cityDate();
+fiveStarResturant();
+streetVendor();
+homeCooked();
+stayAtHomeDate();
 leaveGame();
 
