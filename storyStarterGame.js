@@ -77,6 +77,22 @@ const darkWoodsStoryLine = () => {
     }
 }
 
+//campOut
+const campOut = () => {
+    console.log("Your character was brutally murder in their sleep! ") 
+    array = ["avenge death", "haunt criminals", "rest peacefully"] 
+    let afterLife = readLineSync.keyInSelect (array)
+   let yourchoice = array[afterLife] 
+    if (yourchoice === "avenge death") {
+    avengeDeath ();
+} else if (yourchoice === "haunt criminals") {
+    hauntCriminals();
+} else if (yourchoice === "rest peacefully") {
+    restPeacefully();
+} else {
+    leaveGame();
+}
+}
 
 
 // walkTheWoodsAlone
@@ -191,7 +207,7 @@ const romSetting = () => {
     }
 }
     
-//perfectNum
+//perfectNumRom
 const perfectNumRom = () => {
     console.log ("Perfect!!!")
     console.log ("You will now have to choose your storyline!")
@@ -263,7 +279,7 @@ const fiveStarResturant = () => {
 const streetVendor = () => {
     console.log("Oooooo! New York Hot Dogs! It's one of your chacter's favorite!")
         for (i = 0; i < array.length; i++) {
-            if (array[i] === "street vendor") {
+            if (array[i] === "street vendors") {
                 array.splice(i,1)
             }
         }
@@ -281,7 +297,7 @@ const streetVendor = () => {
 
 //homeCooked
 const homeCooked = () => {
-    console.log("Damn! Neither your character or their date can cook! They burnt down the house! Now your character is homeless!")
+    console.log("Damn! Neither your character or their date can cook! They burnt down the house! Now your character is homeless! \nPick another option.")
         for (i = 0; i < array.length; i++) {
             if (array[i] === "home-cooked meal") {
                 array.splice(i,1)
@@ -317,5 +333,18 @@ const leaveGame = () => {
 
 welcome();
 startGame();
+suspenseStory();
+perfectNum();
+tooManyChar();
+darkWoodsStoryLine();
+campOut();
+walkTheWoodsAlone();
+leftPath();
+middlePath();
+rightPath();
+darkRoadStoryLine();
+
+
+
 leaveGame();
 
