@@ -316,10 +316,12 @@ const homeCooked = () => {
 //homeDate
 const stayAtHomeDate = () => {
     console.log("Stay at home dates are so hard to write because there little to no drama")
-    if (readLineSync.keyInYN ("Would you like to try another storyline?")){
-        cityDate();
+    if (readLineSync.keyInYN ("Would you like to try another romantic story?")){
+        romanceStory();
+    } else if (readLineSync.keyInYN("Would you like to start the game all over?")) {
+        startGame();
     } else {
-        leaveGame();
+        leaveGame(); 
     }
 }
 
@@ -343,6 +345,10 @@ leftPath();
 middlePath();
 rightPath();
 darkRoadStoryLine();
+romanceStory();
+romSetting();
+perfectNumRom();
+tooManyCharRom();
 
 
 
