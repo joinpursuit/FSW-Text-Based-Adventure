@@ -22,7 +22,9 @@ console.log(chalk.green("In your exploration you will need to find " + chalk.bol
 
 const startGame = () => {
     console.log(chalk.red.bold("Welcome " + chalk.bold.yellowBright(nameInput) + "!"))
-     if (chalk.blueBright(readline.keyInYN('Would you like to start your adventure? \n'))) {
+    
+    let answer = readline.keyInYN('Would you like to start your adventure? \n')
+    if (answer){
       console.log(chalk.green("Let's Begin!"))
       console.log(chalk.green("This will be an epic adventure ") + chalk.bold.yellowBright(nameInput) + chalk.green(", may the odds be your favor!!!"))
       console.log(chalk.green("Good luck!!!! \n"))
@@ -30,8 +32,7 @@ const startGame = () => {
     }
     else{
       quitGame()
-      }
-      
+      }   
   }
 
 function runOrFly(){
@@ -479,10 +480,6 @@ function finalThrowItsAllOrNothing () {
     setTimeout(() => {  console.log(chalk.cyanBright("Congratulations " + chalk.bold.yellowBright(nameInput) + " You saved the multiverse and beat the game!!!! \n")); }, 14000)
     setTimeout(() => {  restartGame(); }, 17000)
 }
-
-
-
-
 
 
 
