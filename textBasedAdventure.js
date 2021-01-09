@@ -1,190 +1,224 @@
 const readlineSync = require("readline-sync");
-
+let chances;
 const playGameAgain = () => {
-    if(readlineSync.keyInYN("Play again? ")) {
-        console.clear();
-        startGame();
-    } else {
-        leaveGame();
-        Process.exit();
-    }
-}
+  if (readlineSync.keyInYN("\n Play again? \n ")) {
+    console.clear();
+    startGame();
+  } else {
+    leaveGame();
+    Process.exit();
+  }
+};
 
-//  Play Again 
+//  Play Again
 // // Question Twelve
 const isQuestionTwelve = () => {
   let first;
-  let second;
-  let chances;
-  while (first !== "true" && first !== "false") {
-        first = readlineSync.question("12A. Is the world round? \n");
-        console.log(" ");
-        first = first.trim().toLowerCase();
-        if (first !== "true" && first !== "false") {
-        console.log(" ");
-        console.log("Oh man that was an easy one.");
-        }
+  first = readlineSync.keyInYNStrict(
+    "\n 12. Covid 19 is from a family of viruses called corona viruses? \n"
+  );
+  if (first === true) {
+    console.log("\n You won! Is your IQ 2000 or something? \n");
+    playGameAgain();
+  } else {
+    console.log("\n Oh man that was an easy one. \n");
+    chances--;
+    if(chances === 0){
+      console.log("No more chances, have a good life!")
+      leaveGame();
     }
-        if (first === "true") {
-            while (second !== "true" && second !== "false") {
-            second = readlineSync.question("12B. Is the sky blue? \n");
-            console.log(" ");
-            second = second.trim().toLowerCase();
-                if (second !== "true" && second !== "false") {
-                    console.log(" ");
-                    console.log("Oh man , that was an easy one.");
-                    console.log(" ");
-                }
-            }
-            if (second === "true")
-            console.log(" ");
-            console.log("You won! Is your IQ 2000 or something?");
-            console.log(" ");
-            playGameAgain();
-        } else {
-            // chances--
-            console.log("You lose! Keep trying!");
-            console.log(" ");
-            playGameAgain();
-        }
+    console.log(`\n You have ${chances} chances left!\n`);
+    answer = readlineSync.keyInYN(
+      "\n That's incorrect, do you want to try again?\n"
+    );
+    if (answer === true) {
+      isQuestionTwelve();
+    }
+  }
 };
 
 // // Question Eleven
 const questionEleven = () => {
   let impeachedPres;
-  let chances;
   while (impeachedPres !== "3" && impeachedPres !== "three") {
     impeachedPres = readlineSync.question(
-      "11. How many presidents have been impeached? \n"
+      "\n 11. How many presidents have been impeached? \n"
     );
     impeachedPres = impeachedPres.trim().toLowerCase();
     if (impeachedPres !== "3" && impeachedPres !== "three") {
-        console.log(" ");
-      console.log("I know , i know who cares");
-      console.log(" ");
+      console.log("\n I know , i know who cares\n");
+      chances--;
+      if(chances === 0){
+        console.log("No more chances, have a good life!")
+        leaveGame();
+      }
+      console.log(`\n You have ${chances} chances left!\n`);
+      answer = readlineSync.keyInYN(
+        "\n That's incorrect, do you want to try again?\n"
+      );
+      if (answer === true) {
+        questionEleven();
+      }
     }
-  }
-  if (impeachedPres === "3" || impeachedPres === "three") {
-      console.log(" ");
-    isQuestionTwelve();
-  } else {
-    // chances--
-    isQuestionEleven();
+    if (impeachedPres === "3" || impeachedPres === "three") {
+      isQuestionTwelve();
+    } else {
+      isQuestionTwelve();
+    }
   }
 };
 
 // // Question Ten
 const questionTen = () => {
   let cartoonCharacter;
-  let chances;
   while (cartoonCharacter !== "sponge bob") {
     cartoonCharacter = readlineSync.question(
-      "10. Which cartoon character lives in a pineapple under the sea? \n"
+      "\n 10. Which cartoon character lives in a pineapple under the sea? \n"
     );
     cartoonCharacter = cartoonCharacter.trim().toLowerCase();
     if (cartoonCharacter !== "sponge bob") {
-        console.log(" ");
-      console.log("Whoooo lives in a pineapple under the sea...sponge bob square pants!");
-      console.log(" ");
+      console.log(
+        "\n Whoooo lives in a pineapple under the sea...sponge bob square pants!\n"
+      );
+      chances--;
+      if(chances === 0){
+        console.log("No more chances, have a good life!")
+        leaveGame();
+      }
+      console.log(`\n You have ${chances} chances left!\n`);
+      answer = readlineSync.keyInYN(
+        "\n That's incorrect, do you want to try again?\n"
+      );
+      if (answer === true) {
+        questionTen();
+      }
     }
-  }
-  if (cartoonCharacter === "sponge bob") {
-      console.log(" ");
-    questionEleven();
-  } else {
-    // chances--
-    questionTen();
+    if (cartoonCharacter === "sponge bob") {
+      questionEleven();
+    } else {
+      questionEleven();
+    }
   }
 };
 
 // // Question Nine
 const questionNine = () => {
   let numberOfFlims;
-  let chances;
   while (numberOfFlims !== "3") {
     numberOfFlims = readlineSync.question(
-      "9. How many Lord of The Rings Films are there? \n"
+      "\n 9. How many Lord of The Rings Films are there? \n"
     );
     numberOfFlims = numberOfFlims.trim().toLowerCase();
     if (numberOfFlims !== "3") {
-        console.log(" ");
-      console.log("Better luck next time...");
-      console.log(" ");
+      console.log("\n Better luck next time...\n");
+      chances--;
+      if(chances === 0){
+        console.log("No more chances, have a good life!")
+        leaveGame();
+      }
+      console.log(`\n You have ${chances} chances left!\n`);
+      answer = readlineSync.keyInYN(
+        "\n That's incorrect, do you want to try again?\n"
+      );
+      if (answer === true) {
+        questionNine();
+      }
     }
-  }
-  if (numberOfFlims === "3") {
-      console.log(" ");
-    questionTen();
-  } else {
-    // chances--
-    questionNine();
+    if (numberOfFlims === "3") {
+      questionTen();
+    } else {
+      questionTen();
+    }
   }
 };
 // // Question eight
 const questionEight = () => {
   let literature;
-  let chances;
   while (literature !== "william shakespeare") {
-    literature = readlineSync.question("8. Who wrote Merchant of Venice?\n");
+    literature = readlineSync.question("\n 8. Who wrote Merchant of Venice?\n");
     literature = literature.trim().toLowerCase();
     if (literature !== "william shakespeare") {
-        console.log(" ");
-      console.log("Not a vaild answer, dont you know your literature? sheesh");
-      console.log(" ");
+      console.log(
+        "\n Not a vaild answer, dont you know your literature? sheesh\n"
+      );
+      chances--;
+      if(chances === 0){
+        console.log("No more chances, have a good life!")
+        leaveGame();
+      }
+      console.log(`\n You have ${chances} chances left!\n`);
+      answer = readlineSync.keyInYN(
+        "\n That's incorrect, do you want to try again?\n"
+      );
+      if (answer === true) {
+        questionEight();
+      }
     }
     if (literature === "william shakespeare") {
-        console.log(" ");
       questionNine();
     } else {
-      // chances--
-      questionEight();
+      questionNine();
     }
   }
 };
 // question seven
 const questionSeven = () => {
   let fabricOfOurLives;
-  let chances;
   while (fabricOfOurLives !== "cotton" && fabricOfOurLives !== "cotton") {
     fabricOfOurLives = readlineSync.question(
-      "7. According to the commerical: What is the fabric of our lives? \n"
+      "\n 7. According to the commerical: What is the fabric of our lives? \n"
     );
     fabricOfOurLives = fabricOfOurLives.trim().toLowerCase();
     if (fabricOfOurLives !== "cotton" && fabricOfOurLives !== "cotton") {
-        console.log(" ");
-      console.log("Watch somemore TV or not, your choice");
-      console.log(" ");
+      console.log("\n Watch somemore TV or not, your choice\n");
+      chances--;
+      if(chances === 0){
+        console.log("No more chances, have a good life!")
+        leaveGame();
+      }
+      console.log(`\n You have ${chances} chances left!\n`);
+      answer = readlineSync.keyInYN(
+        "\n That's incorrect, do you want to try again?\n"
+      );
+      if (answer === true) {
+        questionSeven();
+      }
     }
-  }
-  if (fabricOfOurLives === "cotton") {
-      console.log(" ");
-    questionEight();
-  } else {
-    // chances--
-    questionSeven();
+    if (fabricOfOurLives === "cotton") {
+      questionEight();
+    } else {
+      questionEight();
+    }
   }
 };
 // // question six
 const questionSix = () => {
   let number;
-  let chances;
   while (number !== "10" && number !== "ten") {
     number = readlineSync.question(
-      "6. How many Grammy awards did John Legend win? \n"
+      "\n 6. How many Grammy awards did John Legend win? \n"
     );
     number = number.trim().toLowerCase();
     if (number !== "10" && number !== "ten") {
-        console.log(" ");
-      console.log("Better luck on your next try buddy!");
-      console.log(" ");
+      console.log("\n Better luck on your next try buddy!\n");
+      chances--;
+      if(chances === 0){
+        console.log("No more chances, have a good life!")
+        leaveGame();
+      }
+      console.log(`\n You have ${chances} chances left!\n`);
+      answer = readlineSync.keyInYN(
+        "\n That's incorrect, do you want to try again?\n"
+      );
+      if (answer === true) {
+        questionSix();
+      }
     }
-  }
-  if (number === "10" || number === "ten") {
-      console.log(" ");
-    questionSeven();
-  } else {
-    // chances--
-    questionSix();
+    if (number === "10" || number === "ten") {
+      questionSeven();
+    } else {
+      questionSeven();
+    }
   }
 };
 
@@ -192,164 +226,187 @@ const questionSix = () => {
 const questionFive = () => {
   let choice1;
   let choice2;
-  let chances;
   while (choice1 !== "10000" && choice2 !== "4000") {
-    choice1 = readlineSync.question("5. How many taste buds do humans have? \n");
+    choice1 = readlineSync.question(
+      "\n 5. How many taste buds do humans have? \n"
+    );
     choice1 = choice1.trim().toLowerCase();
     if (choice1 !== "10000" && choice2 !== "4000") {
-        console.log(" ");
-      console.log("dum da dum dummmm..");
-      console.log(" ");
+      console.log("\n dum da dum dummmm...\n");
+      chances--;
+      if(chances === 0){
+        console.log("No more chances, have a good life!")
+        leaveGame();
+      }
+      console.log(`\n You have ${chances} chances left!\n`);
+      answer = readlineSync.keyInYN(
+        "\n That's incorrect, do you want to try again?\n"
+      );
+      if (answer === true) {
+        questionFive();
+      }
     }
-  }
-  if (choice1 === "10000") {
-      console.log(" ");
-    questionSix();
-  } else {
-    // chances--
-    questionFive();
+    if (choice1 === "10000") {
+      questionSix();
+    } else {
+      questionSix();
+    }
   }
 };
 // // question four
 const questionFour = () => {
   let ans;
-  let chances;
   while (ans !== "oyster") {
-    ans = readlineSync.question("4. Pearls are found in which animal? \n");
+    ans = readlineSync.question("\n 4. Pearls are found in which animal? \n");
     ans = ans.trim().toLowerCase();
     if (ans !== "oyster") {
-        console.log(" ");
-      console.log("Come on, explore the ocean a bit!");
-      console.log(" ");
+      console.log("\n Come on, explore the ocean a bit!\n");
+      chances--;
+      if(chances === 0){
+        console.log("No more chances, have a good life!")
+        leaveGame();
+      }
+      console.log(`\n You have ${chances} chances left!\n`);
+      answer = readlineSync.keyInYN(
+        "\n That's incorrect, do you want to try again?\n"
+      );
+      if (answer === true) {
+        questionFour();
+      }
     }
-  }
-  if (ans === "oyster") {
-      console.log(" ");
-    questionFive();
-  } else {
-    // chances--
-    questionFour();
+    if (ans === "oyster") {
+      questionFive();
+    } else {
+      questionFive();
+    }
   }
 };
 // // // Question Three
 const questionThree = () => {
   let response;
-  let chances;
   while (response !== "web browsers") {
     response = readlineSync.question(
-      "3. Google Chrome, Safari, Firefox, and Explorer are different types of what? \n"
+      "\n 3. Google Chrome, Safari, Firefox, and Explorer are different types of what? \n"
     );
     response = response.trim().toLowerCase();
     if (response !== "web browsers") {
-        console.log(" ");
-      console.log("oOppsey");
-      console.log(" ");
+      console.log("\n oOppsey \n");
+      chances--;
+      if(chances === 0){
+        console.log("No more chances, have a good life!")
+        leaveGame();
+      }
+      console.log(`\n You have ${chances} chances left!\n`);
+      answer = readlineSync.keyInYN(
+        "\n That's incorrect, do you want to try again?\n"
+      );
+      if (answer === true) {
+        questionThree();
+      }
     }
-  }
-  if (response === "web browsers") {
-      console.log(" ");
-    questionFour();
-  } else {
-    // chances--
-    questionThree();
+    if (response === "\n web browsers \n") {
+      questionFour();
+    } else {
+      questionFour();
+    }
   }
 };
 
-// Question Two 
+// Question Two
 const questionTwo = () => {
   let numberOfContinents;
-  let chances;
   while (numberOfContinents !== "seven" && numberOfContinents !== "7") {
     numberOfContinents = readlineSync.question(
-      "2. How many continents are there? \n"
+      "\n 2. How many continents are there? \n"
     );
     numberOfContinents = numberOfContinents.trim();
+    if (
+      numberOfContinents === "seven" ||
+      numberOfContinents === "7" ||
+      numberOfContinents === 7
+    ) {
+      questionThree();
+    }
     if (numberOfContinents !== "seven" && numberOfContinents !== "7") {
-        console.log(" ");
-      console.log("yikes!");
-      console.log(" ");
+      console.log("\n yikes!\n");
+      chances--;
+      if(chances === 0){
+        console.log("No more chances, have a good life!")
+        leaveGame();
+      }
+      console.log(`\n You have ${chances} chances left!\n`);
+      answer = readlineSync.keyInYN(
+        "\n That's incorrect, do you want to try again?\n"
+      );
+      if (answer === true) {
+        questionTwo();
+      } else {
+        questionThree();
+      }
     }
   }
-  if (
-    numberOfContinents === "seven" ||
-    numberOfContinents === "7" ||
-    numberOfContinents === 7
-  ) {
-      console.log(" ");
-    questionThree();
-  } else {
-    answer = readlineSync.keyInYN("Thats incorrect, do you want to try again?");
-    if (answer === true ){
-        questionTwo()
-    }else{
-        bottom = chances + 1;
-    questionThree();
-    }
-  }                      
-};  
+};
 
 // START GAME
 const startGame = () => {
-    console.log("Lets begin!");
-    console.log(" ");
-    let chances = 12;
-    let bottom = 1;
-    let top = 12;
-//     switch(chances){
-//         case 1:
-//         questionOne();
-//         break
-//     }
-    
-            questionOne();
-//         }else{
-//             chances--;
-//             console.log("Yikes, i only have " + chances + " left!")
-//         }
-           
-//     }
-    
+  console.log("\n Let's begin! \n");
+  chances = 12;
+  questionOne();
 };
 
-// Question one 
+// Question one
 const questionOne = () => {
-    let chances;
   let yesOrNo;
-  while (yesOrNo !== "yes" && yesOrNo !== "no") {
-    yesOrNo = readlineSync.question("1. Is Kamla Harris the first female vice president? \n");
-    yesOrNo = yesOrNo.trim().toLowerCase();
-    if (yesOrNo !== "yes" && yesOrNo !== "no") {
+  let answerWrong;
+  while (yesOrNo !== true && yesOrNo !== false) {
+    yesOrNo = readlineSync.keyInYN(
+      "\n 1. Is Kamla Harris the first female vice president? \n"
+    );
+    if (yesOrNo !== true && yesOrNo !== false) {
       console.log("\n oopsey \n");
+      chances--;
+      if(chances === 0){
+      console.log("No more chances, have a good life!")
+        leaveGame();
+      }
+      console.log(`\n You have ${chances} chances left!\n`);
+      answer = readlineSync.keyInYN(
+        "\n That's incorrect, do you want to try again?\n"
+      );
+      if (answer === true) {
+        questionOne();
+      }
     }
   }
-  if (yesOrNo === "yes") {
-      top = chances - 1;
-      console.log(" ");
+  if (yesOrNo === true) {
     questionTwo();
   } else {
-    answer = readlineSync.keyInYN("That's incorrect, do you want to try again?");
-    if (answer === true ){
-        questionOne()
+    chances--;
+    if(chances === 0){
+      console.log("No more chances, have a good life!")
+      leaveGame();
+    }
+    console.log(`\n You have ${chances} chances left!\n`);
+    answerWrong = readlineSync.keyInYN(
+      "\n That's incorrect, do you want to try again?\n"
+    );
+    if (answerWrong === true) {
+      questionOne();
     }else{
-        bottom = chances + 1;
-    questionTwo();
+      questionTwo();
     }
-  }                      
+  }
 };
-// Leave Game 
+// Leave Game
 const leaveGame = () => {
-    let finishGame;
-    let chances = 12;
-    while (finishGame !== "No" && finishGame !== "no") {
-    //   finishGame = readlineSync.question("Are you ready to leave? \n");
-    //   finishGame = finishGame.trim().toLowerCase();
-      if (finishGame !== "No" && finishGame !== "no") {
-          console.log(" ");
-          console.log("Byeee!");
-          process.exit();
-        }
+  let finishGame;
+  while (finishGame !== "No" && finishGame !== "no") {
+    if (finishGame !== "No" && finishGame !== "no") {
+      console.log(" ");
+      console.log("\n Byeee!\n");
+      process.exit();
     }
-    
+  }
 };
 
 // NAME INTRO
@@ -360,29 +417,26 @@ console.log(" ");
 
 // INTRO TO GAME AND RULES
 const intro = () => {
-  console.log("The Fact Checker!");
+  console.log("\n The Fact Checker! \n");
   console.log(
-    "This game ask random questions about topics from different categories"
+    "\n This game ask random questions about topics from different categories \n"
   );
   console.log(" ");
   console.log(
-    "Rules:You have 12 questions and 12 chances to guess the correct answer!\nIf you get a question correct you move on with all your chances intact! If you get a question wrong your chances decrease by one each time!"
+    "Rules:You have 12 questions and 12 chances to guess the correct answer! \nIf you get a question correct you move on with all your chances intact! If you get a question wrong your chances decrease by one each time!"
   );
-  console.log(" ");
-  console.log("Lets get ready to check the facts!");
-  console.log(" ");
+  console.log("\n Let's get ready to check the facts! \n");
 };
 intro();
-console.log(" ");
 
 //  Play y or n
 if (readlineSync.keyInYN("Do you want to play ")) {
-    console.log(" ");
+  console.log(" ");
   console.log("Game starts now!");
   console.log(" ");
   startGame();
 } else {
-    console.log(" ");
+  console.log(" ");
   console.log("Come back soon!");
   leaveGame();
 }
