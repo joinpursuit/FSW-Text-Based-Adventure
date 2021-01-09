@@ -73,15 +73,16 @@ const darkWoodsStoryLine = () => {
     if (darkWood === "walk through the woods" || darkWood === "walk") {
         walkTheWoodsAlone()
     } else if (darkWood === "camp out" || darkWood === "camp") {
-        suspenseCharName()
+        campOut();
     } else {
-        leaveGame()
+        leaveGame();
     }
 }
 
 //campOut
 const campOut = () => {
-    console.log("Your character was brutally murder in their sleep! ") 
+    let charMainName = readLineSync.question ("What's your main character's name?")
+    console.log(`${charMainName} was brutally murder in their sleep!`) 
     array = ["avenge death", "haunt criminals", "rest peacefully"] 
     let afterLife = readLineSync.keyInSelect (array)
    let yourchoice = array[afterLife] 
@@ -95,6 +96,7 @@ const campOut = () => {
     leaveGame();
 }
 }
+
 
 
 // walkTheWoodsAlone
