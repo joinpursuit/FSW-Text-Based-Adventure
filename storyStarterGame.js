@@ -95,8 +95,23 @@ const campOut = () => {
 } else {
     leaveGame();
 }
-}
+} 
 
+
+ // avengeDeath 
+ const avengeDeath = () => {
+
+ }
+
+ //hauntCriminals 
+ const hauntCriminals = () => {
+
+ }
+
+ //restPeacefully
+ const restPeacefully = () => {
+
+ }
 
 
 // walkTheWoodsAlone
@@ -112,13 +127,14 @@ const walkTheWoodsAlone = () => {
     middlePath();
 } else if (youchoose === "right") {
     rightPath();
-} else {
+} else if (youchoose === undefined){
     leaveGame();
 }
 }
 
 //leftPath 
 const leftPath = () => {
+    array = ["left", "middle", "right"]
     console.log ("Your character is walking through the thickets of poison ivy. \nBy the time they noticed they it already got everywhere and I mean EVERYWHERE!!") 
     for (i = 0; i < array.length; i++) {
         if (array[i] === "left") {
@@ -132,7 +148,15 @@ const leftPath = () => {
    } else if (youchoose === "right"){
        rightPath();
    } else if (youchoose === undefined){
-       leaveGame();
+    if (readLineSync.keyInYN ("Are you sure you want to CANCEL?")) {
+        leaveGame();
+    } else {
+        if (readLineSync.keyInYN ("Would you like you start again?")) {
+            welcome();
+        } else {
+            leaveGame();
+        }
+    }
    }
    // if the player choose middle path call middle path function 
    // need both if statements for middle and right 
@@ -141,6 +165,7 @@ const leftPath = () => {
 
 //middlePath
 const middlePath = () => {
+    array = ["left", "middle", "right"]
     console.log("Your character finds a beheaded chicken in the middle of the road! \nAaaaaahhhhh, screams are being heard from further." )
     for (i = 0; i < array.length; i++) {
         if (array[i] === "middle") {
@@ -154,12 +179,22 @@ const middlePath = () => {
 } else if (youchoose === "right"){
     rightPath();
 } else if (youchoose === undefined){
-    leaveGame();
+    if (readLineSync.keyInYN ("Are you sure you want to CANCEL?")) {
+        leaveGame();
+    } else {
+        if (readLineSync.keyInYN ("Would you like you start again?")) {
+            welcome();
+        } else {
+            leaveGame();
+        }
+    }
+   
 }
 } // if statments left and right and undefined
 
 //rightPath
 const rightPath = () => {
+    array = ["left", "middle", "right"]
     console.log("Your character reached a cliff. If they're not careful they will fall!")
     for (i = 0; i < array.length; i++) {
         if (array[i] === "right") {
@@ -173,9 +208,20 @@ const rightPath = () => {
 } else if (youchoose === "left"){
     leftPath();
 } else if (youchoose === undefined){
-    leaveGame();
+    if (readLineSync.keyInYN ("Are you sure you want to CANCEL?")) {
+        leaveGame();
+    } else {
+        if (readLineSync.keyInYN ("Would you like you start again?")) {
+            welcome();
+        } else {
+            leaveGame();
+        }
+    }
+    
 }
-} // if statemt left amnd middle and undefined 
+} // if statemt left amnd middle and undefined
+// THERE IS A BUG IN THE LOOPS AND I CANNOT FIND IT 
+
 
 
 // darkRoadStoryLine
@@ -278,7 +324,7 @@ const fiveStarResturant = () => {
 //streetVendor
 const streetVendor = () => {
     console.log("Oooooo! New York Hot Dogs! It's one of your character's favorite! \nYour character just ate three hot dogs and now is very thirsty!")
-    let 
+    let successfulDate = readLineSync.keyInSelect (array)
     //     for (i = 0; i < array.length; i++) {
     //         if (array[i] === "street vendors") {
     //             array.splice(i,1)
@@ -356,4 +402,3 @@ streetVendor();
 homeCooked();
 stayAtHomeDate();
 leaveGame();
-
