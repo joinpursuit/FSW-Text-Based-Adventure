@@ -247,11 +247,7 @@ const cityDate = () => {
     } else if (youChooseFood === "home-cooked meal") {
         homeCooked();
     } else if (youChooseFood === undefined){ 
-        if (readLineSync.keyInYN("Would you like to choose another story?")) {
-            startGame();
-        } else {
-            leaveGame();
-        }
+        console.log("Listen that's not an availible choice")
 
     }
     
@@ -277,21 +273,21 @@ const fiveStarResturant = () => {
 
 //streetVendor
 const streetVendor = () => {
-    console.log("Oooooo! New York Hot Dogs! It's one of your chacter's favorite!")
-        for (i = 0; i < array.length; i++) {
-            if (array[i] === "street vendors") {
-                array.splice(i,1)
-            }
-        }
-        let eatingDate = readLineSync.keyInSelect (array)
-       let youChooseFood = array[eatingDate]
-       if (youChooseFood === "5 star resturant"){
-           fiveStarResturant();
-       } else if (youChooseFood === "home-cooked meal") {
-           homeCooked();
-       } else if (youChooseFood === undefined) {
-           leaveGame();
-       }
+    console.log("Oooooo! New York Hot Dogs! It's one of your character's favorite!")
+    //     for (i = 0; i < array.length; i++) {
+    //         if (array[i] === "street vendors") {
+    //             array.splice(i,1)
+    //         }
+    //     }
+    //     let eatingDate = readLineSync.keyInSelect (array)
+    //    let youChooseFood = array[eatingDate]
+    //    if (youChooseFood === "5 star resturant"){
+    //        fiveStarResturant();
+    //    } else if (youChooseFood === "home-cooked meal") {
+    //        homeCooked();
+    //    } else if (youChooseFood === undefined) {
+    //        leaveGame();
+    //    }
     
 }
 
