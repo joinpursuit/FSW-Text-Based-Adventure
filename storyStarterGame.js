@@ -2,16 +2,16 @@ const readLineSync = require('readline-sync');
 let array = []
     
 const welcome = () => {
-    let nameInput = readLineSync.question("What is your name?")
+    let nameInput = readLineSync.question("What is your name?") // Ask the player what is their name. 
 
-console.log (`Hello ${nameInput}!  It's nice to meet you.`)
-console.log ("Welcome to Story Generator Game!")
-    console.log ("Where I will help you write the next best seller!")
-    if (readLineSync.keyInYN("Are you ready to begin?")) {
-        console.clear()
-        startGame();
+console.log (`Hello ${nameInput}!  It's nice to meet you.`) // Using the information gotten above, this line prints a greeting with the player's name 
+console.log ("Welcome to Story Generator Game!") // Welcoming the player to the game
+    console.log ("Where I will help you write the next best seller!") // Stating the purpose of the game
+    if (readLineSync.keyInYN("Are you ready to begin?")) { // This line ask asks the player if they are ready to begin the game. 
+        console.clear() // This clears all of the previous lines 
+        startGame(); // If the player presses Y then the game will go straight to this function, starting the game!
     } else {
-        leaveGame();
+        leaveGame(); // If the player presses N then the game will go straight to this function, ending the game!
     }
 }
 
@@ -54,7 +54,7 @@ const perfectNum = () => {
 }
 //tooManyChar
 const tooManyChar = () => {
-    let characterNum = readLineSync.question ("How many character you want in this story?") 
+    let characterNum = readLineSync.question (" You need to choose less characters! How many character you want in this story?") 
     if (characterNum <= 3) { 
         console.clear();
         perfectNum();
@@ -273,7 +273,8 @@ const fiveStarResturant = () => {
 
 //streetVendor
 const streetVendor = () => {
-    console.log("Oooooo! New York Hot Dogs! It's one of your character's favorite!")
+    console.log("Oooooo! New York Hot Dogs! It's one of your character's favorite! \nYour character just ate three hot dogs and now is very thirsty!")
+    let 
     //     for (i = 0; i < array.length; i++) {
     //         if (array[i] === "street vendors") {
     //             array.splice(i,1)
@@ -289,7 +290,7 @@ const streetVendor = () => {
     //        leaveGame();
     //    }
     
-}
+};
 
 //homeCooked
 const homeCooked = () => {
