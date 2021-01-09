@@ -18,13 +18,15 @@ console.log ("Welcome to Story Generator Game!") // Welcoming the player to the 
 
     // Starting Story Game 
 const startGame = () => {
-    console.log ("There are two genres we will be working with today")
-    let res = readLineSync.question("The choices are Romance and Suspense! Which would you like to choose to be your genre?")
-    if (res === "Suspense") {
-        console.clear();
-        suspenseStory();
+    console.log ("There are two genres we will be working with today") // Letting the player know that there are going to be two chocies here. 
+    let choice = readLineSync.question("The choices are Romance and Suspense! Which would you like to choose to be your genre?") // Asking whether or not the player wants a romance story or a suspense story
+    if (choice === "Suspense" || choice === "suspense") { // if the choice that was made equal to the input "Suspense" 
+        console.clear(); // Clears all of the previous lines 
+        suspenseStory(); // If player's input equals to "suspense" than it will run into the next function.
+    } else if (choice === "Romance" || choice === "romance"){ // if the choice that was made equal to "romance"
+        romanceStory(); // If the player's input equals to "romance" than it will run into the next funtion 
     } else {
-        romanceStory();
+        leaveGame(); // If the player's input is anything else then it will leave the game. 
     }
 } 
 
