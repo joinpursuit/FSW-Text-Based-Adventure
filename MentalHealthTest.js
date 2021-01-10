@@ -34,11 +34,11 @@ const mentalQuestions = () => {
     let drugAnswers = ["never", "a few times a year", "a few times a month", "a few times a week", "daily"]
     console.log("In the last year, have you used the following substances? If so, how often?")
     //create test for alcohol
-    const alcohol = () => {
+    const drugTest = (drugResponse) => {
         //repeat the loop until a proper answer is given
         while (true) {
             //match answer to options and decide what points to be stored
-            let substanceUseDisorder1 = readline1.question("Alcohol (never, a few times a year, a few times a month, a few times a week, daily)\n")
+            let substanceUseDisorder1 = readline1.question(drugResponse)
             if (substanceUseDisorder1 === drugAnswers[0]) {
                 //replace the drug score when answer matches the option
                 drugScore = drugScore + 0
@@ -66,153 +66,23 @@ const mentalQuestions = () => {
         }
     }
     //run the function
-    alcohol()
+    drugTest("Alcohol (never, a few times a year, a few times a month, a few times a week, daily)\n")
     //create cannabuis question
-    const cannabis = () => {
-        //repeat until proper answer is given
-        while (true) {
-            //ask the user for an answer
-            const substanceUseDisorder2 = readline1.question("Cannabis (never, a few times a year, a few times a month, a few times a week, daily)\n")
-            //check if answer matches option
-            if (substanceUseDisorder2 === drugAnswers[0]) {
-                //store answer
-                drugScore = drugScore + 0
-                return drugScore
-            }
-            else if (substanceUseDisorder2 === drugAnswers[1]) {
-                drugScore = drugScore + 1
-                return drugScore
-            }
-            else if (substanceUseDisorder2 === drugAnswers[2]) {
-                drugScore = drugScore + 2
-                return drugScore
-            }
-            else if (substanceUseDisorder2 === drugAnswers[3]) {
-                drugScore = drugScore + 3
-                return drugScore
-            }
-            else if (substanceUseDisorder2 === drugAnswers[4]) {
-                drugScore = drugScore + 4
-                return drugScore
-            }
-            else {
-                //ask for repeat answer
-                console.log("Please give an acceptable answer23!")
-            }
-        }
-    }
-    //run the function
-    cannabis()
+    drugTest("Cannabis (never, a few times a year, a few times a month, a few times a week, daily)\n")
     //create hallucinogen question
-    const hallucinogens = () => {
-        //repeat until proper answer is given
-        while (true) {
-            //ask for answer
-            const substanceUseDisorder3 = readline1.question("LSD, Peyote, Psilocybin, PCP (never, a few times a year, a few times a month, a few times a week, daily)\n")
-            if (substanceUseDisorder3 === drugAnswers[0]) {
-                drugScore = drugScore + 0
-                return drugScore
-            }
-            else if (substanceUseDisorder3 === drugAnswers[1]) {
-                drugScore = drugScore + 1
-                return drugScore
-            }
-            else if (substanceUseDisorder3 === drugAnswers[2]) {
-                drugScore = drugScore + 2
-                return drugScore
-            }
-            else if (substanceUseDisorder3 === drugAnswers[3]) {
-                drugScore = drugScore + 3
-                return drugScore
-            }
-            else if (substanceUseDisorder3 === drugAnswers[4]) {
-                drugScore = drugScore + 4
-                return drugScore
-            }
-            else {
-                //ask for a repeat answer
-                console.log("Please give an acceptable answer!")
-            }
-        }
-    }
-    //run the function
-    hallucinogens()
-
-    const inhalants = () => {
-        //repeat until proper answer is given
-        while (true) {
-            //ask for answer
-            const substanceUseDisorder4 = readline1.question("glue, aerosols, lighter fuilds, gasoline (never, a few times a year, a few times a month, a few times a week, daily)\n")
-            //check if answer matches option
-            if (substanceUseDisorder4 === drugAnswers[0]) {
-                drugScore = drugScore + 0
-                return drugScore
-            }
-            else if (substanceUseDisorder4 === drugAnswers[1]) {
-                drugScore = drugScore + 1
-                return drugScore
-            }
-            else if (substanceUseDisorder4 === drugAnswers[2]) {
-                drugScore = drugScore + 2
-                return drugScore
-            }
-            else if (substanceUseDisorder4 === drugAnswers[3]) {
-                drugScore = drugScore + 3
-                return drugScore
-            }
-            else if (substanceUseDisorder4 === drugAnswers[4]) {
-                drugScore = drugScore + 4
-                return drugScore
-            }
-            else {
-                //ask for acceptable answer
-                console.log("Please give an acceptable answer!")
-            }
-        }
-    }
-    //run the function
-    inhalants()
-
-    const cocaine = () => {
-        //repeat until proper answer is given
-        while (true) {
-            //ask for answer
-            const substanceUseDisorder5 = readline1.question("Cocaine or heroin (never, a few times a year, a few times a month, a few times a week, daily)\n")
-            if (substanceUseDisorder5 === drugAnswers[0]) {
-                drugScore = drugScore + 0
-                return drugScore
-            }
-            else if (substanceUseDisorder5 === drugAnswers[1]) {
-                drugScore = drugScore + 1
-                return drugScore
-            }
-            else if (substanceUseDisorder5 === drugAnswers[2]) {
-                drugScore = drugScore + 2
-                return drugScore
-            }
-            else if (substanceUseDisorder5 === drugAnswers[3]) {
-                drugScore = drugScore + 3
-                return drugScore
-            }
-            else if (substanceUseDisorder5 === drugAnswers[4]) {
-                drugScore = drugScore + 4
-                return drugScore
-            }
-            else {
-                console.log("Please give an acceptable answer!")
-            }
-        }
-    }
-    //run the function
-    cocaine()
+    drugTest("LSD, Peyote, Psilocybin, PCP (never, a few times a year, a few times a month, a few times a week, daily)\n")
+    //create inhalant question
+    drugTest("glue, aerosols, lighter fuilds, gasoline (never, a few times a year, a few times a month, a few times a week, daily)\n")
+    //create cocaine question
+    drugTest("Cocaine or heroin (never, a few times a year, a few times a month, a few times a week, daily)\n")
 
     let mddScore = 0
     let majorDepressiveDisorderAnswers = ["not at all", "mild", "moderate", "severe"]
-    const mddQuestion1 = () => {
+    const mddQuestions = (mddResponses) => {
         //repeat until proper answer is given
         while (true) {
             //ask for answer
-            const mddAnswer1 = readline1.question("I felt exhausted. (not at all, mild, moderate, severe)\n")
+            const mddAnswer1 = readline1.question(mddResponses)
             if (mddAnswer1 === majorDepressiveDisorderAnswers[0]) {
                 mddScore = mddScore + 0
                 return mddScore
@@ -234,130 +104,17 @@ const mentalQuestions = () => {
             }
         }
     }
-    //run the function
-    mddQuestion1()
-    //start the second question function
-    const mddQuestion2 = () => {
-        //ask until proper answer is given
-        while (true) {
-            //repeat until proper answer is given
-            const mddAnswer2 = readline1.question("I kept thinking about death or taking my own life. (not at all, mild, moderate, severe)\n")
-            //match answer to options
-            if (mddAnswer2 === majorDepressiveDisorderAnswers[0]) {
-                //rewrite the score
-                mddScore = mddScore + 0
-                return mddScore
-            }
-            else if (mddAnswer2 === majorDepressiveDisorderAnswers[1]) {
-                mddScore = mddScore + 3.3
-                return mddScore
-            }
-            else if (mddAnswer2 === majorDepressiveDisorderAnswers[2]) {
-                mddScore = mddScore + 6.6
-                return mddScore
-            }
-            else if (mddAnswer2 === majorDepressiveDisorderAnswers[3]) {
-                mddScore = mddScore + 10
-                return mddScore
-            }
-            else {
-                //ask for proper answer
-                console.log("Please give an acceptable answer!")
-            }
-        }
-    }
-    mddQuestion2()
-
-    const mddQuestion3 = () => {
-        //repeat until proper answer is given
-        while (true) {
-            //ask for an answer
-            const mddAnswer3 = readline1.question("The sadness I was feeling made it difficult for me to function in my personal, social, or work life. (not at all, mild, moderate, severe)\n")
-            //match answer to option
-            if (mddAnswer3 === majorDepressiveDisorderAnswers[0]) {
-                mddScore = mddScore + 0
-                return mddScore
-            }
-            else if (mddAnswer3 === majorDepressiveDisorderAnswers[1]) {
-                mddScore = mddScore + 3.3
-                return mddScore
-            }
-            else if (mddAnswer3 === majorDepressiveDisorderAnswers[2]) {
-                mddScore = mddScore + 6.6
-                return mddScore
-            }
-            else if (mddAnswer3 === majorDepressiveDisorderAnswers[3]) {
-                mddScore = mddScore + 10
-                return mddScore
-            }
-            else {
-                console.log("Please give an acceptable answer!")
-            }
-        }
-    }
-    //call function to activiate the question
-    mddQuestion3()    
-    //write variable for question 4
-    const mddQuestion4 = () => {
-        //repeat until proper answer is given
-        while (true) {
-            //ask the question and get response
-            const mddAnswer4 = readline1.question("I felt slowed down compared to my usual pace. (not at all, mild, moderate, severe)\n")
-            //match reponse to options
-            if (mddAnswer4 === majorDepressiveDisorderAnswers[0]) {
-                mddScore = mddScore + 0
-                return mddScore
-            }
-            else if (mddAnswer4 === majorDepressiveDisorderAnswers[1]) {
-                mddScore = mddScore + 3.3
-                return mddScore
-            }
-            else if (mddAnswer4 === majorDepressiveDisorderAnswers[2]) {
-                mddScore = mddScore + 6.6
-                return mddScore
-            }
-            else if (mddAnswer4 === majorDepressiveDisorderAnswers[3]) {
-                mddScore = mddScore + 10
-                return mddScore
-            }
-            else {
-                console.log("Please give an acceptable answer!")
-            }
-        }
-    }
-    //call question 4
-    mddQuestion4()    
-    //create function for mmd Question 5
-    const mddQuestion5 = () => {
-        //repeat until proper answer is given
-        while (true) {
-            //ask for the response
-            const mddAnswer5 = readline1.question("I stopped having fun doing things that I used to enjoy. (not at all, mild, moderate, severe)\n")
-            //match reponse to options
-            if (mddAnswer5 === majorDepressiveDisorderAnswers[0]) {
-                mddScore = mddScore + 0
-                return mddScore
-            }
-            else if (mddAnswer5 === majorDepressiveDisorderAnswers[1]) {
-                mddScore = mddScore + 3.3
-                return mddScore
-            }
-            else if (mddAnswer5 === majorDepressiveDisorderAnswers[2]) {
-                mddScore = mddScore + 6.6
-                return mddScore
-            }
-            else if (mddAnswer5 === majorDepressiveDisorderAnswers[3]) {
-                mddScore = mddScore + 10
-                return mddScore
-            }
-            else {
-                console.log("Please give an acceptable answer!")
-            }
-        }
-    }
-    //call mddQuestion5 
-    mddQuestion5()    
-
+    //run the function for mddQuestion 1
+    mddQuestions("I felt exhausted. (not at all, mild, moderate, severe)\n")
+    //run the function for mddQuestion 2
+    mddQuestions("I kept thinking about death or taking my own life. (not at all, mild, moderate, severe)\n")
+    //run the function for mddQuestion 3
+    mddQuestions("The sadness I was feeling made it difficult for me to function in my personal, social, or work life. (not at all, mild, moderate, severe)\n")
+    //run the function for mddQuestion 4
+    mddQuestions("I felt slowed down compared to my usual pace. (not at all, mild, moderate, severe)\n")
+    //run the function for mddQuestion 5
+    mddQuestions("I stopped having fun doing things that I used to enjoy. (not at all, mild, moderate, severe)\n")
+    
     //create pstdScore
     let ptsdScore = 0
     //create a set of questions for ptsd in a function
@@ -366,11 +123,11 @@ const mentalQuestions = () => {
         console.log("In the last month, did you experience any of the following symptoms caused by a traumatic event?")
         console.log("Please answer with (yes/no)")
         //create the function for the first question
-        const ptsdQuestion1 = () => {
+        const ptsdQuestions = (ptsdResponse) => {
             //repeat until proper answer is given
             while (true) {
                 //ask the first ptsd question
-                let ptsdAnswer1 = readline1.question("I became reckless or took unncessary risks. \n")
+                let ptsdAnswer1 = readline1.question(ptsdResponse)
                 if (ptsdAnswer1 === 'yes') {
                     ptsdScore = ptsdScore + 10
                     return ptsdScore
@@ -385,98 +142,16 @@ const mentalQuestions = () => {
                 }
             }
         }
-        //call the function
-        ptsdQuestion1()
-        //create the second question function
-        const ptsdQuestion2 = () => {
-            //repeat until proper answer is given
-            while (true) {
-                //ask the second question
-                let ptsdAnswer2 = readline1.question('I became excessively vigilant, tense, or jumpy. \n')
-                //create yes or no response
-                if (ptsdAnswer2 === 'yes') {
-                    //change the score value
-                    ptsdScore = ptsdScore + 10
-                    return ptsdScore
-                }
-                else if (ptsdAnswer2 === 'no') {
-                    ptsdScore = ptsdScore + 0
-                    return ptsdScore
-                }
-                else {
-                    //ask for a proper answer
-                    console.log("Please give an acceptable answer!")
-                }
-            }
-        }
-        //call for the function
-        ptsdQuestion2()    
-        //create ptsd question 3 function
-        const ptsdQuestion3 = () => {
-            //repeat until proper answer is given
-            while (true) {
-                //ask the third question
-                let ptsdAnswer3 = readline1.question('I had trouble focusing, concentrating, or remembering things. \n')
-                if (ptsdAnswer3 === 'yes') {
-                    ptsdScore = ptsdScore + 10
-                    return ptsdScore
-                }
-                else if (ptsdAnswer3 === 'no') {
-                    ptsdScore = ptsdScore + 0
-                    return ptsdScore
-                }
-                else {
-                    console.log("Please give an acceptable answer!")
-                }
-            }
-        }
-        //call the function
-        ptsdQuestion3()  
-        //create fourth question function
-        const ptsdQuestion4 = () => {
-            //repeat until proper answer is given
-            while (true) {
-                //ask the question
-                let ptsdAnswer4 = readline1.question('I purposely avoided anything that reminded me of the event \n')
-                //create yes or no response
-                if (ptsdAnswer4 === 'yes') {
-                    ptsdScore = ptsdScore + 10
-                    return ptsdScore
-                }
-                else if (ptsdAnswer4 === 'no') {
-                    ptsdScore = ptsdScore + 0
-                    return ptsdScore
-                }
-                else {
-                    console.log("Please give an acceptable answer!")
-                }
-            }
-        }
-        //call the function
-        ptsdQuestion4()  
-
-        const ptsdQuestion5 = () => {
-            //repeat until proper answer is given
-            while (true) {
-                //ask the fifth question
-                let ptsdAnswer5 = readline1.question('I was unable to feel happiness, contentment, joy, or love, or had trouble connecting with people. \n')
-                //create yes or no match response
-                if (ptsdAnswer5 === 'yes') {
-                    //store the score
-                    ptsdScore = ptsdScore + 10
-                    return ptsdScore
-                }
-                else if (ptsdAnswer5 === 'no') {
-                    ptsdScore = ptsdScore + 0
-                    return ptsdScore
-                }
-                else {
-                    console.log("Please give an acceptable answer!")
-                }
-            }
-        }
-        //call the fifth question function
-        ptsdQuestion5()  
+        //call the ptsd Question 1
+        ptsdQuestions("I became reckless or took unncessary risks. \n")
+        //call the ptsd Question 2
+        ptsdQuestions('I became excessively vigilant, tense, or jumpy. \n')
+        //call the ptsd Question 3
+        ptsdQuestions('I had trouble focusing, concentrating, or remembering things. \n')
+        //call the ptsd Question 4
+        ptsdQuestions('I purposely avoided anything that reminded me of the event \n')
+        //call the ptsd Question 5
+        ptsdQuestions('I was unable to feel happiness, contentment, joy, or love, or had trouble connecting with people. \n')
     }
     //call the ptsd questions
     ptsdQuestions()
@@ -489,12 +164,13 @@ const mentalQuestions = () => {
     const generatizedAnxietyDisorderTest = () => {
         console.log("In the last 6 months, did you experience any of the following symptoms? If so, how strong?")
         console.log("Please answer with a number from 0 - 10 (Not at all to very strong)")
-        const gadQuestion1 = () => {
+        const gadQuestions = (gadResponse) => {
             //repeat until proper answer is given
             while (true) {
                 //ask the gad question
-                let gadAnswer1 = readline1.question("I had pain in my chest, almost like I was having a heart attack. \n")
+                let gadAnswer1 = readline1.question(gadResponse)
                 //only accept numbers less than or equal to 10
+                gadAnswer1 = Number(gadAnswer1)
                 if (gadAnswer1 <= 10) {
                     //create loop to compare the answer to all answer choices for a match
                     for (let i = 0; i < gadResponses.length; i++) {
@@ -512,106 +188,15 @@ const mentalQuestions = () => {
             }
         }
         //call the gadQuestion1 function
-        gadQuestion1()
-        //create gadQuestion2 function
-        const gadQuestion2 = () => {
-            //repeat until proper answer is given
-            while (true) {
-                //ask gad question
-                let gadAnswer2 = readline1.question("I felt sick to my stomach, like I was going to throw up, or had diarrhea. \n")
-                //only accepts numbers less than and equal to 10
-                if (gadAnswer2 <= 10) {
-                    //match answer to options
-                    for (let i = 0; i < gadResponses.length; i++) {
-                        if (gadAnswer2 === gadResponses[i]) {
-                            gadScore = gadScore + i
-                            return gadScore
-                        }
-                    }
-                    break
-                }
-                else {
-                    //ask for repeat if answer is not acceptable
-                    console.log("Please give an acceptable answer!")
-                }
-            }
-        }
-        //call the function
-        gadQuestion2()
-
-        const gadQuestion3 = () => {
-            //repeat until proper answer is given
-            while (true) {
-                //ask the question
-                let gadAnswer3 = readline1.question("I felt dizzy, my head was spinning, or felt like I was going to faint. \n")
-                //check answer within the options
-                if (gadAnswer3 <= 10) {
-                    for (let i = 0; i < gadResponses.length; i++) {
-                        if (gadAnswer3 === gadResponses[i]) {
-                            gadScore = gadScore + i
-                            return gadScore
-                        }
-                    }
-                    break
-                }
-                else {
-                    //ask for acceptable answer
-                    console.log("Please give an acceptable answer!")
-                }
-            }
-        }
-        //call the function
-        gadQuestion3()
-
-        const gadQuestion4 = () => {
-            //repeat until proper answer is given
-            while (true) {
-                //ask for gad answer
-                let gadAnswer4 = readline1.question("I had cold or hot flashes. \n")
-                //check if the answer is number less than or equal to 10
-                if (gadAnswer4 <= 10) {
-                    //check answer within the options
-                    for (let i = 0; i < gadResponses.length; i++) {
-                        if (gadAnswer4 === gadResponses[i]) {
-                            gadScore = gadScore + i
-                            return gadScore
-                        }
-                    }
-                    break
-
-                }
-                else {
-                    //ask for acceptable answer
-                    console.log("Please give an acceptable answer!")
-                }
-            }
-        }
-        //call the function
-        gadQuestion4()
-
-        const gadQuestion5 = () => {
-            //repeat until proper answer is given
-            while (true) {
-                //ask the question
-                let gadAnswer5 = readline1.question("I was scared that I would lose control, go crazy, or die. \n")
-                //make sure the answer is less than or equal to 10
-                if (gadAnswer5 <= 10) {
-                    //check answer within the options
-                    for (let i = 0; i < gadResponses.length; i++) {
-                        if (gadAnswer5 === gadResponses[i]) {
-                            gadScore = gadScore + i
-                            return gadScore
-                        }
-                    }
-                    break
-                }
-                else {
-                    console.log("Please give an acceptable answer!")
-                }
-            }
-        }
-        //call the function
-        gadQuestion5()
+        gadQuestions("I had pain in my chest, almost like I was having a heart attack. \n")
+        //call the gadQuestion2 function
+        gadQuestions("I felt sick to my stomach, like I was going to throw up, or had diarrhea. \n")
+        //call the gadQuestion3 function
+        gadQuestions("I felt dizzy, my head was spinning, or felt like I was going to faint. \n")
+        //call the gadQuestion4 function
+        gadQuestions("I had cold or hot flashes. \n")
+        //call the gadQuestion5 function
+        gadQuestions("I was scared that I would lose control, go crazy, or die. \n")
     }
     //call the Generatized Anxiety Disorder test
     generatizedAnxietyDisorderTest()
