@@ -6,6 +6,7 @@ const figlet = require('figlet')
 
 let armor 
 let merchant
+let mixedPotions
 
 console.log(chalk.redBright(figlet.textSync('THE FLAME ' + '   OF' + ' RAGNAROK', {
     font: 'Fire Font-k',
@@ -111,7 +112,7 @@ function goingThroughPathOne(){
     console.log(chalk.green("While walking along the path you notice that there is a vendor selling goods. \n"))
     console.log(chalk.green("Hoping that he has something to help you along your journey you carefully approach. \n"))
      merchant = readline.question("Would you like to buy: Health Potions, Vitality Potions, or Stamina Potions? \n")
-    salesMerchant(merchant)
+     salesMerchant(merchant)
 }
 
 function goingThroughPathTwo(){
@@ -147,78 +148,24 @@ function healthPotion(){
     console.log(chalk.green("You chose the Health Potion that is a very wise choice!! \n"))
     console.log(chalk.green("I would recommend that you use it wisely.. \n"))
     console.log(chalk.green("Now that you have everything you need, you need to decide what you want to do to continue your path. \n"))
-    let continuedPath = readline.question("Would you like to: Rest, Carry On, or Quit? \n")
-    if (continuedPath === "Rest"){
-        console.log(chalk.green("You rested for a bit and then drank the Health Potion. \n"))
-        console.log(chalk.green("You then carried on the path feeling full of energy, it was hard but you got the feeling that it's only the begining. \n"))
-        caveOfTime()
-    }
-    else if (continuedPath === "Carry On"){
-        console.log(chalk.green("You then carried on the path feeling full of energy. \n"))
-        console.log(chalk.green("It was a long and hard path but you got the feeling that it's only the begining, but so far you have managed to overcome every obstacle!! \n"))
-        caveOfTime()
-    }
-    else if (continuedPath === "Quit"){
-        console.log(chalk.red("It's a shame that you decided not to continue your adventure Young God... \n"))
-        console.log(chalk.red("Until next time remember that the fate of the multi-verse is in your hands!! \n"))
-        quitGame()
-    }
-    else {
-        console.log(chalk.red("Invalid choice, Please remember to choose one of the options and Spell it exactly how you see it!!! Please choose the path again!!"))
-        thrudheimCaves()
-    }
+    mixedPotions = readline.question("Would you like to: Rest, Carry On, or Quit? \n")
+    potionMix(mixedPotions)
 }
 
 function vitalityPotion(){
     console.log(chalk.green("You chose the Vitality Potion that is a very wise choice!! \n"))
     console.log(chalk.green("I would recommend that you use it wisely.. \n"))
     console.log(chalk.green("Now that you have everything you need, you need to decide what you want to do to continue your path. \n"))
-    let continuedPath = readline.question("Would you like to: Rest, Carry On, or Quit? \n")
-    if (continuedPath === "Rest"){
-        console.log(chalk.green("You rested for a bit and then drank the Vitality Potion. \n"))
-        console.log(chalk.green("You then carried on the path feeling full of magic energy, this magic is powerful making you unstoppable!! \n"))
-        caveOfTime()
-    }
-    else if (continuedPath === "Carry On"){
-        console.log(chalk.green("You then carried on the path feeling full of magic energy. \n"))
-        console.log(chalk.green("The path was long but using the magic potion really helped and made it a little easier!! \n"))
-        caveOfTime()
-    }
-    else if (continuedPath === "Quit"){
-        console.log(chalk.red("It's a shame that you decided not to continue your adventure Young God... \n"))
-        console.log(chalk.red("Until next time remember that the fate of the multi-verse is in your hands!! \n"))
-        quitGame()
-    }
-    else {
-        console.log(chalk.red("Invalid choice, Please remember to choose one of the options and Spell it exactly how you see it!!! Please choose the path again!!"))
-        thrudheimCaves()
-    }
+    mixedPotions = readline.question("Would you like to: Rest, Carry On, or Quit? \n")
+  potionMix(mixedPotions)
     }
 
 function staminaPotion(){
     console.log(chalk.green("You chose the Stamina Potion that is a very wise choice!! \n"))
     console.log(chalk.green("I would recommend that you use it wisely.. \n"))
     console.log(chalk.green("Now that you have everything you need, you need to decide what you want to do to continue your path. \n"))
-    let continuedPath = readline.question("Would you like to: Rest, Carry On, or Quit? \n")
-    if (continuedPath === "Rest"){
-        console.log(chalk.green("You rested for a bit and then drank the Stamina Potion. \n"))
-        console.log(chalk.green("You then carried on the path feeling full of stamina, it was quick and easy, wow these potions are amazing!! \n"))
-        caveOfTime()
-    }
-    else if (continuedPath === "Carry On"){
-        console.log(chalk.green("You then carried on the path feeling full of energy. \n"))
-        console.log(chalk.green("The path was long but so far you have managed to overcome every obstacle quickly!! \n"))
-        caveOfTime()
-    }
-    else if (continuedPath === "Quit"){
-        console.log(chalk.red("It's a shame that you decided not to continue your adventure Young God... \n"))
-        console.log(chalk.red("Until next time remember that the fate of the multi-verse is in your hands!! \n"))
-        quitGame()
-    }
-    else {
-        console.log(chalk.red("Invalid choice, Please remember to choose one of the options and Spell it exactly how you see it!!! Please choose the path again!!"))
-        thrudheimCaves()
-    }
+    mixedPotions = readline.question("Would you like to: Rest, Carry On, or Quit? \n")
+   potionMix(mixedPotions)
 }
     
 function caveOfTime(){
@@ -456,7 +403,27 @@ function salesMerchant(merchant){
     }
 }
 
-
+function potionMix(mixedPotions){
+    if (mixedPotions === "Rest"){
+        console.log(chalk.green("You rested for a bit and then drank the Health Potion. \n"))
+        console.log(chalk.green("You then carried on the path feeling full of energy, it was hard but you got the feeling that it's only the begining. \n"))
+        caveOfTime()
+    }
+    else if (mixedPotions === "Carry On"){
+        console.log(chalk.green("You then carried on the path feeling full of energy. \n"))
+        console.log(chalk.green("It was a long and hard path but you got the feeling that it's only the begining, but so far you have managed to overcome every obstacle!! \n"))
+        caveOfTime()
+    }
+    else if (mixedPotions === "Quit"){
+        console.log(chalk.red("It's a shame that you decided not to continue your adventure Young God... \n"))
+        console.log(chalk.red("Until next time remember that the fate of the multi-verse is in your hands!! \n"))
+        quitGame()
+    }
+    else {
+        console.log(chalk.red("Invalid choice, Please remember to choose one of the options and Spell it exactly how you see it!!! Please choose the path again!!"))
+        thrudheimCaves()
+    }
+}
 
 
 
