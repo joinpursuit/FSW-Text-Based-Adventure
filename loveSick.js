@@ -24,7 +24,8 @@ function gameStart() {
 function playAgain() {
     answer = rls.keyInYN("Would you like to play again?")
     if (answer === true) {
-        hp = 4
+        hp = 4;
+        loveCounter = 0;
         gameLoop()
     }
     else if (answer === false) {
