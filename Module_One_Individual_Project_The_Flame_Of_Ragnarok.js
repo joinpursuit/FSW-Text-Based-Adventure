@@ -4,6 +4,9 @@ const chalk = require('chalk');
 
 const figlet = require('figlet')
 
+let armor 
+let merchant
+
 console.log(chalk.redBright(figlet.textSync('THE FLAME ' + '   OF' + ' RAGNAROK', {
     font: 'Fire Font-k',
     horizontalLayout: 'default',
@@ -23,7 +26,7 @@ console.log(chalk.green("In your exploration you will need to find " + chalk.bol
 const startGame = () => {
     console.log(chalk.red.bold("Welcome " + chalk.bold.yellowBright(nameInput) + "!"))
     
-    let answer = readline.keyInYN('Would you like to start your adventure? \n')
+    let answer = readline.keyInYN(chalk.red('Would you like to start your adventure? \n'))
     if (answer){
       console.log(chalk.green("Let's Begin!"))
       console.log(chalk.green("This will be an epic adventure ") + chalk.bold.yellowBright(nameInput) + chalk.green(", may the odds be your favor!!!"))
@@ -57,31 +60,8 @@ function runOrFly(){
 
 function chooseArmorInCastle(){
     console.log(chalk.green("Before heading to Thrudheim, you see a few armor sets that are element based: Fire, Earth, Water, Thunder, & Steel \n"))
-let armor = readline.question("Which armor would you like to wear? (Choose only the Element) \n")
-if(armor === "Fire"){
-    console.log(chalk.green("Wow you chose the Fire Armor! You feel like an unstoppable Inferno!! \n" ))
-    console.log(chalk.green("You now head to Thrudheim \n"))
-}
-else if(armor === "Earth"){
-    console.log(chalk.green("Wow you chose the Earth Armor! You feel like Mother Nature will always protect you!! \n"))
-    console.log(chalk.green("You now head to Thrudheim \n"))
-}
-else if(armor === "Water"){
-    console.log(chalk.green("Wow you chose the Water Armor! You feel calm and focused, Just like the calm before the storm!! \n "))
-    console.log(chalk.green("You now head to Thrudheim \n"))
-}
-else if(armor === "Thunder"){
-    console.log(chalk.green("Wow you chose the Thunder Armor! You feel powerful just like a Thunder storm or even Thor himself!! \n"))
-    console.log(chalk.green("You now head to Thrudheim \n"))
-}
-else if(armor === "Steel"){
-    console.log(chalk.green("Wow you chose the Steel Armor! You feel invincible, just like an indestructible force!! \n"))
-    console.log(chalk.green("You now head to Thrudheim \n"))
-}
-else{
-console.log(chalk.redBright("Invalid Choice, Remember that you can only choose the elements and Pay close attention to how the element is written, Please try again... \n"))
-chooseArmorInCastle()
-}
+armor = readline.question("Which armor would you like to wear? (Choose only the Element) \n")
+chooseArmor(armor)
 
 thrudheimCaves()
 }
@@ -93,33 +73,11 @@ function chooseArmorThorOffers(){
     console.log(chalk.bold.yellowBright(nameInput) + chalk.green(" what's taking you so long he asks? I asked to speak with you over an hour ago!! \n"))
     console.log(chalk.green("Also where is your armor?!?!?!?! You know that God needs their armor without it can be very dangerous!! \n"))
     console.log(chalk.green("Luckily I brought a few armor sets with me just in case they are element based: Fire, Earth, Water, Thunder, & Steel \n"))
-let armor = readline.question("Which armor would you like to wear? (Choose only the Element) \n")
-if(armor === "Fire"){
-    console.log(chalk.green("Wow you chose the Fire Armor! You feel like an unstoppable Inferno!! \n" ))
-    console.log(chalk.green("You now head to Thrudheim together with Thor \n"))
-}
-else if(armor === "Earth"){
-    console.log(chalk.green("Wow you chose the Earth Armor! You feel like Mother Nature will always protect you!! \n"))
-    console.log(chalk.green("You now head to Thrudheim together with Thor \n"))
-}
-else if(armor === "Water"){
-    console.log(chalk.green("Wow you chose the Water Armor! You feel calm and focused, Just like the calm before the storm!! \n "))
-    console.log(chalk.green("You now head to Thrudheim together with Thor \n"))
-}
-else if(armor === "Thunder"){
-    console.log(chalk.green("Wow you chose the Thunder Armor! You feel powerful just like a Thunder storm or even Thor himself!! \n"))
-    console.log(chalk.green("You now head to Thrudheim together with Thor \n"))
-}
-else if(armor === "Steel"){
-    console.log(chalk.green("Wow you chose the Steel Armor! You feel invincible, just like an indestructible force!! \n"))
-    console.log(chalk.green("You now head to Thrudheim together with Thor \n"))
-}
-else{
-console.log(chalk.redBright("Invalid Choice, Remember that you can only choose the elements and Pay close attention to how the element is written, Please try again... \n"))
-chooseArmorThorOffers()
-}
+ armor = readline.question("Which armor would you like to wear? (Choose only the Element) \n")
+ 
+ chooseArmor(armor)
 
-thrudheimCaves()
+ thrudheimCaves()
 }
 
 function thrudheimCaves(){
@@ -152,77 +110,37 @@ function goingThroughPathOne(){
     console.log(chalk.green("You decided to take the first path. \n"))
     console.log(chalk.green("While walking along the path you notice that there is a vendor selling goods. \n"))
     console.log(chalk.green("Hoping that he has something to help you along your journey you carefully approach. \n"))
-    let merchant = readline.question("Would you like to buy: Health Potions, Vitality Potions, or Stamina Potions? \n")
-    if (merchant === "Health Potions"){
-        healthPotion()
-    }
-    else if (merchant === "Vitality Potions"){
-        vitalityPotion()
-    }
-    else if(merchant === "Stamina Potions"){
-        staminaPotion()
-    }
-    else{
-        console.log(chalk.redBright("Wrong entry please choose one of the following Health Potions, Vitality Potions, or Stamina Potions and try again. \n"))
-        goingThroughPathOne()
-    }
+     merchant = readline.question("Would you like to buy: Health Potions, Vitality Potions, or Stamina Potions? \n")
+    salesMerchant(merchant)
 }
 
 function goingThroughPathTwo(){
     console.log(chalk.green("You decided to take the second path. \n"))
     console.log(chalk.green("While walking along the path you notice that there is a vendor selling goods. \n"))
     console.log(chalk.green("Hoping that he has something to help you along your journey you carefully approach. \n"))
-    let merchant = readline.question("Would you like to buy: Health Potions, Vitality Potions, or Stamina Potions? \n")
-    if (merchant === "Health Potions"){
-        healthPotion()
-    }
-    else if (merchant === "Vitality Potions"){
-        vitalityPotion()
-    }
-    else if(merchant === "Stamina Potions"){
-        staminaPotion()
-    }
-    else{
-        console.log(chalk.redBright("Wrong entry please choose one of the following Health Potions, Vitality Potions, or Stamina Potions and try again. \n"))
-        goingThroughPathTwo()
-    }
+     merchant = readline.question("Would you like to buy: Health Potions, Vitality Potions, or Stamina Potions? \n")
+    salesMerchant(merchant)
 }
 
-function goingThroughPathThree(){
+function goingThroughPathThree(armor){
     console.log(chalk.green("You decided to take the third path. \n"))
     console.log(chalk.green("While walking through this path all of a sudden you hear a loud sinister laugh!!!"))
     console.log(chalk.green("Oh no it's Loki!! He brings down the boulder right on top of you!! \n"))
-    let blocked = readline.question("What would you like to do: quit or restart? \n")
-if (blocked === "quit"){
-    quitGame()
-}
-else if(blocked === "restart"){
-    restartGame()
-}
-else{
-    console.log(chalk.redBright("Invalid response please select either: quit or restart, and try again!! \n"))
-    goingThroughPathThree()
-}
+    
+    setTimeout(() => {console.log(chalk.redBright("He then disappears thinking that he won and nothing can stop him now! \n"))}, 3000)
+    setTimeout((armor) => {console.log(chalk.redBright("What he didn't realize is that you have the element " + armor + " armor!! \n"))}, 5000)
+    setTimeout(() => {console.log(chalk.redBright("It will take much more than a mere boulder to stop you " + nameInput + "!!! \n"))}, 7000)
+    setTimeout(() => {console.log(chalk.redBright("Now that the coast is clear you carry on ready for anything!! \n"))}, 9000)
+    setTimeout(() => {caveOfTime()}, 13000)
+
 }
 
 function goingThroughPathFour(){
     console.log(chalk.green("You decided to take the fourth path. \n"))
     console.log(chalk.green("While walking along the path you notice that there is a vendor selling goods. \n"))
     console.log(chalk.green("Hoping that he has something to help you along your journey you carefully approach. \n"))
-    let merchant = readline.question("Would you like to buy: Health Potions, Vitality Potions, or Stamina Potions? \n")
-    if (merchant === "Health Potions"){
-        healthPotion()
-    }
-    else if (merchant === "Vitality Potions"){
-        vitalityPotion()
-    }
-    else if(merchant === "Stamina Potions"){
-        staminaPotion()
-    }
-    else{
-        console.log(chalk.redBright("Wrong entry please choose one of the following Health Potions, Vitality Potions, or Stamina Potions and try again. \n"))
-        goingThroughPathFourth()
-    }
+     merchant = readline.question("Would you like to buy: Health Potions, Vitality Potions, or Stamina Potions? \n")
+   salesMerchant(merchant)
 }
 
 function healthPotion(){
@@ -470,7 +388,7 @@ function finalShowDown(){
         console.log(chalk.magenta("With every ounce of energy you have left you get up and start looking for Gungnir.... \n"))
         finalThrowItsAllOrNothing()
     }
- }, 19000)
+ }, 19000)  
 }
 
 function finalThrowItsAllOrNothing () {
@@ -480,6 +398,68 @@ function finalThrowItsAllOrNothing () {
     setTimeout(() => {  console.log(chalk.cyanBright("Congratulations " + chalk.bold.yellowBright(nameInput) + " You saved the multiverse and beat the game!!!! \n")); }, 14000)
     setTimeout(() => {  restartGame(); }, 17000)
 }
+
+
+
+function chooseArmor(armor){
+    if(armor === "Fire"){
+        console.log(chalk.green("Wow you chose the Fire Armor! You feel like an unstoppable Inferno!! \n" ))
+        console.log(chalk.green("You now head to Thrudheim together with Thor \n"))
+    }
+    else if(armor === "Earth"){
+        console.log(chalk.green("Wow you chose the Earth Armor! You feel like Mother Nature will always protect you!! \n"))
+        console.log(chalk.green("You now head to Thrudheim together with Thor \n"))
+    }
+    else if(armor === "Water"){
+        console.log(chalk.green("Wow you chose the Water Armor! You feel calm and focused, Just like the calm before the storm!! \n "))
+        console.log(chalk.green("You now head to Thrudheim together with Thor \n"))
+    }
+    else if(armor === "Thunder"){
+        console.log(chalk.green("Wow you chose the Thunder Armor! You feel powerful just like a Thunder storm or even Thor himself!! \n"))
+        console.log(chalk.green("You now head to Thrudheim together with Thor \n"))
+    }
+    else if(armor === "Steel"){
+        console.log(chalk.green("Wow you chose the Steel Armor! You feel invincible, just like an indestructible force!! \n"))
+        console.log(chalk.green("You now head to Thrudheim together with Thor \n"))
+    }
+    else{
+    console.log(chalk.redBright("Invalid Choice, Remember that you can only choose the elements and Pay close attention to how the element is written, Please try again... \n"))
+    if (chooseArmorInCastle){
+        chooseArmorInCastle()
+    }else{
+        chooseArmorThorOffers()
+    }
+}
+}
+
+function salesMerchant(merchant){
+    if (merchant === "Health Potions"){
+        healthPotion()
+    }
+    else if (merchant === "Vitality Potions"){
+        vitalityPotion()
+    }
+    else if(merchant === "Stamina Potions"){
+        staminaPotion()
+    }
+    else{
+        console.log(chalk.redBright("Wrong entry please choose one of the following Health Potions, Vitality Potions, or Stamina Potions and try again. \n"))
+        if(goingThroughPathOne){
+            goingThroughPathOne()
+        }
+        else if (goingThroughPathTwo){
+            goingThroughPathTwo()
+        }
+        else{
+            goingThroughPathFour()
+        }
+    }
+}
+
+
+
+
+
 
 
 
