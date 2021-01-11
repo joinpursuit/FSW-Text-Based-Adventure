@@ -7,6 +7,7 @@ const figlet = require('figlet')
 let armor 
 let merchant
 let mixedPotions
+let cavePathLeftOrRight
 
 console.log(chalk.redBright(figlet.textSync('THE FLAME ' + '   OF' + ' RAGNAROK', {
     font: 'Fire Font-k',
@@ -219,19 +220,8 @@ else{
 function routePathTwo(){
     console.log(chalk.green("You decided to take the second path..."))
     console.log(chalk.green("You walk deep into the cave and just you thought this is taking a long time... \n"))
-    let cavePathLeftOrRight = readline.question("Deep inside The Cave of Time you come across another two paths that Thor never mentioned: A path to the (Right) and a path to the (Left), which would you like to choose? \n")
-    if (cavePathLeftOrRight === "Right"){
-    console.log("You entered the right path of the cave..")
-    cavePathRight()
-    }
-    else if (cavePathLeftOrRight === "Left"){
-    console.log("You entered the left path of the cave..")
-    cavePathLeft()
-    }
-    else{
-        console.log(chalk.redBright("Invalid Entry Please choose: Right or Left, try again!"))
-        routePathTwo()
-    }
+     cavePathLeftOrRight = readline.question("Deep inside The Cave of Time you come across another two paths that Thor never mentioned: A path to the (Right) and a path to the (Left), which would you like to choose? \n")
+    cave(cavePathLeftOrRight)
 }
 
 function routePathThree(){
@@ -256,19 +246,8 @@ else{
 function routePathFour(){
     console.log(chalk.green("You decided to take the fourth path..."))
     console.log(chalk.green("You walk deep into the cave and just you thought this is taking a long time... \n"))
-    let cavePathLeftOrRight = readline.question("Deep inside The Cave of Time you come across another two paths that Thor never mentioned: A path to the (Right) and a path to the (Left), which would you like to choose? \n")
-    if (cavePathLeftOrRight === "Right"){
-    console.log("You entered the right path of the cave.. \n")
-    cavePathRight()
-    }
-    else if (cavePathLeftOrRight === "Left"){
-    console.log("You entered the left path of the cave.. \n")
-    cavePathLeft()
-    }
-    else{
-        console.log(chalk.redBright("Invalid Entry Please choose: Right or Left, try again! \n"))
-        routePathFour()
-    }
+     cavePathLeftOrRight = readline.question("Deep inside The Cave of Time you come across another two paths that Thor never mentioned: A path to the (Right) and a path to the (Left), which would you like to choose? \n")
+    cave(cavePathLeftOrRight)
 }
 
 function cavePathRight(){
@@ -425,6 +404,25 @@ function potionMix(mixedPotions){
     }
 }
 
+function cave(cavePathLeftOrRight){
+    if (cavePathLeftOrRight === "Right"){
+        console.log("You entered the right path of the cave..")
+        cavePathRight()
+        }
+        else if (cavePathLeftOrRight === "Left"){
+        console.log("You entered the left path of the cave..")
+        cavePathLeft()
+        }
+        else{
+            console.log(chalk.redBright("Invalid Entry Please choose: Right or Left, try again!"))
+            if(routePathTwo){
+                routePathTwo()
+            }
+            else{
+                routePathFour()
+            }
+        }
+}
 
 
 
