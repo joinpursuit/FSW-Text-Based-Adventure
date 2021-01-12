@@ -20,7 +20,7 @@ const exerciseGame = () => {
     setTimeout(function () {
         if (age >= 65) {
             console.log("My elder.")
-            setTimeout(function () { console.log("Let's do some sit-ups.") }, 1000)
+            setTimeout(function () { console.log("Let's do some squats.") }, 1000)
             setTimeout(function () { seniorLoop() }, 2000)
 
         } else if (age >= 21) {
@@ -58,18 +58,15 @@ const shameQandA = () => {
                 if (fastFoodNumber >= 10) {
                     setTimeout(function () { console.log(name + "! You are going to die young.") }, 100)
                     setTimeout(function () { quitGame() }, 4000)
-
                 } else {
                     answer = rls.question("\n Can I ask you more about your diet?\n Type 'sure' for yes \n else type something random \n if you are giving up on life. ")
                     if (answer === 'sure') {
                         diet()
                     } else {
                         console.log("No worries") + quitGame()
-
                     }
                 }
             }, 2000)
-
         } else {
             console.log("That is a good but you probably consume other saturated fats.")
             setTimeout(function () {
@@ -100,115 +97,79 @@ const diet = () => {
     }
 }
 //Senior exercise loop 
-const seniorLoop = () => {
+const seniorLoop = () => { 
+    let squats = rls.questionInt("How many squats do you want to do in this rep? ")
+    let onePush = 1000 * (rls.questionInt("How many seconds per a squat? "))
+    if (((squats * onePush) / 1000) === 1) {
+        console.log(`You have ${(squats * onePush) / 1000} second to do ${squats} squat!`)
+    } else if (squats === 0 || onePush === 0) {
+        console.log("This will be quick")
+    } else {
+        console.log(`You have ${(squats * onePush) / 1000} seconds to do ${squats} squats!`)
+    }
     setTimeout(function () {
         let answer = rls.keyInYNStrict("Are you ready? ")
         if (answer) {
-            for (let i = 1; i <= 6; i++) {
-                let sitUp = i
-                if (i === 1) {
-                    setTimeout(function () { console.log(sitUp + "! sit-up") }, 3000)
-
-                } else if (i === 2) {
-                    setTimeout(function () { console.log(sitUp + "!") }, 6000)
-
-                } else if (i === 3) {
-                    setTimeout(function () { console.log(sitUp + "! sit-ups") }, 9000)
-                } else if (i === 4) {
-                    setTimeout(function () { console.log(sitUp + "!") }, 12000)
-
-
-                } else if (i === 5) {
-                    setTimeout(function () { console.log(sitUp + "!") }, 15000)
-                } else {
-                    setTimeout(function () { console.log(sitUp + "! sit-ups"); }, 18000)
-                    setTimeout(function () { console.log("Wow" + name) }, 19000)
-                    setTimeout(function () { console.log("You look younger already!") }, 19500)
-                    setTimeout(function () { rls.keyInYNStrict("Can you do 6 more?") ? seniorLoop() : quitGame() }, 20500)
-                }
+            for (let i = 1; i <= squats; i++) {
+                setTimeout(function () { console.log(i + "!") }, (i * onePush))
             }
+            setTimeout(function () { rls.keyInYNStrict(`Wow ${name}!\nWould you like to do some more?`) ? seniorLoop() : console.log(`You did great ${name}!\nYou look younger already.`) + quitGame() }, ((squats * onePush) + onePush))
+
         } else {
-            rls.keyInYNStrict("Do you want to quit?") ? quitGame() : console.log("Great"), setTimeout(function () { seniorLoop() }, 650)
+            rls.keyInYNStrict("Do you want to try again?") ? seniorLoop() : quitGame()
         }
     }, 1000)
+
 }
 //Adult exercise loop 
 const adultLoop = () => {
+
+    let pushups = rls.questionInt("How many push ups do you want to do in this rep? ")
+    let onePush = 1000 * (rls.questionInt("How many seconds per a push-up? "))
+    if (((pushups * onePush) / 1000) === 1) {
+        console.log(`You have ${(pushups * onePush) / 1000} second to do ${pushups} push-up!`)
+    } else if (pushups === 0 || onePush === 0) {
+        console.log("This will be quick")
+    } else {
+        console.log(`You have ${(pushups * onePush) / 1000} seconds to do ${pushups} push-ups!`)
+    }
     setTimeout(function () {
         let answer = rls.keyInYNStrict("Are you ready? ")
         if (answer) {
-            for (let i = 1; i <= 10; i++) {
-                let pushUp = i
-                if (i === 1) {
-                    setTimeout(function () { console.log(pushUp + "!") }, 1500)
-                } else if (i === 2) {
-                    setTimeout(function () { console.log(pushUp + "!") }, 3000)
-                } else if (i === 3) {
-                    setTimeout(function () { console.log(pushUp + "!") }, 4500)
-                } else if (i === 4) {
-                    setTimeout(function () { console.log(pushUp + "!") }, 6000)
-                } else if (i === 5) {
-                    setTimeout(function () { console.log(pushUp + "!") }, 7500)
-                } else if (i === 6) {
-                    setTimeout(function () { console.log(pushUp + "!") }, 9000)
-                } else if (i === 7) {
-                    setTimeout(function () { console.log(pushUp + "!") }, 10500)
-                } else if (i === 8) {
-                    setTimeout(function () { console.log(pushUp + "!") }, 12000)
-                } else if (i === 9) {
-                    setTimeout(function () { console.log(pushUp + "!") }, 13500)
-
-                } else {
-                    setTimeout(function () { console.log(pushUp + "! push-ups") }, 15000)
-                    setTimeout(function () { console.log("Great job " + name + "!") }, 16000)
-                    setTimeout(function () { rls.keyInYNStrict("Another rep?") ? adultLoop() : quitGame() }, 17000)
-
-                }
+            for (let i = 1; i <= pushups; i++) {
+                setTimeout(function () { console.log(i + "!") }, (i * onePush))
             }
+            setTimeout(function () { rls.keyInYNStrict("Another rep?") ? adultLoop() : quitGame() }, ((pushups * onePush) + onePush))
+
         } else {
-
-            rls.keyInYNStrict("Do you want to quit?") ? quitGame() : console.log("Great"), setTimeout(function () { adultLoop() }, 650)
-
+            rls.keyInYNStrict("Do you want to try again?") ? adultLoop() : console.log(`You did great ${name}!\nNow get back to your job.`) + quitGame()
         }
     }, 1000)
 
 }
 //Minor exercise loop 
-const minorLoop = () => {
-
-    let answer = rls.keyInYNStrict("Are you ready? ")
-    if (answer) {
-        for (let i = 1; i <= 10; i++) {
-            let pullUp = i
-            if (i === 1) {
-                setTimeout(function () { console.log(pullUp + "!") }, 1000)
-            } else if (i === 2) {
-                setTimeout(function () { console.log(pullUp + "!") }, 2000)
-            } else if (i === 3) {
-                setTimeout(function () { console.log(pullUp + "!") }, 3000)
-            } else if (i === 4) {
-                setTimeout(function () { console.log(pullUp + "!") }, 4000)
-            } else if (i === 5) {
-                setTimeout(function () { console.log(pullUp + "!") }, 5000)
-            } else if (i === 6) {
-                setTimeout(function () { console.log(pullUp + "!") }, 6000)
-            } else if (i === 7) {
-                setTimeout(function () { console.log(pullUp + "!") }, 7000)
-            } else if (i === 8) {
-                setTimeout(function () { console.log(pullUp + "!") }, 8000)
-            } else if (i === 9) {
-                setTimeout(function () { console.log(pullUp + "!") }, 9000)
-
-            } else {
-                setTimeout(function () { console.log(pullUp + "! pull-ups") }, 10000)
-                setTimeout(function () { console.log("Great job " + name + "!") }, 11000)
-                setTimeout(function () { rls.keyInYNStrict("Another rep?") ? minorLoop() : quitGame() }, 13000)
-            }
-        }
+const minorLoop  = () => {  
+    let pullUps = rls.questionInt("How many pull-ups do you want to do in this rep? ")
+    let onePush = 1000 * (rls.questionInt("How many seconds per a pull-up? "))
+    if (((pullUps * onePush) / 1000) === 1) {
+        console.log(`You have ${(pullUps * onePush) / 1000} second to do ${pullUps} pull-up!`)
+    } else if (pullUps === 0 || onePush === 0) {
+        console.log("This will be quick")
     } else {
-        rls.keyInYNStrict("Do you want to quit?") ? quitGame() : console.log("Great"), setTimeout(function () { minorLoop() }, 650)
-
+        console.log(`You have ${(pullUps * onePush) / 1000} seconds to do ${pullUps} pull-ups!`)
     }
+    setTimeout(function () {
+        let answer = rls.keyInYNStrict("Are you ready? ")
+        if (answer) {
+            for (let i = 1; i <= pullUps; i++) {
+                setTimeout(function () { console.log(i + "!") }, (i * onePush))
+            }
+            setTimeout(function () { rls.keyInYNStrict(`Wow ${name}!\nWould you like to do some more?`) ? minorLoop () : console.log(`${name}, you are young\nThis was expected.\nYou will need to do more reps to impress me.`) + quitGame() }, ((pullUps * onePush) + onePush))
+
+        } else {
+            rls.keyInYNStrict("Do you want to try again?") ? minorLoop () : quitGame()
+        }
+    }, 1000)
 }
 
 //Quit game and say goodbye 
