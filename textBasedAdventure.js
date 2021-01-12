@@ -23,21 +23,18 @@ const playloop = () => {
     console.log("Start Again")
     let answer = readline.question(yourVariableHere + " Where would you like to go \n" ) 
     console.log() 
-
-    let choice = "Canada"
-    let choice2 = "Haiti"
-    let choice3 = "Restart-Game"
-    let choice4 = "Start Again"
-    if(answer === choice) {
+//crear un for loop que me permita ir dentro del array
+// crear una opcion que permita que si el user escribe algo que no esta en el juego , el juego le repondodera como que eso no existe
+    if(answer === "Canada") {
         console.log("Amazing" + " Let's go to Canada")
          canadaTrip()
-    }else if( answer === choice2){
+    }else if( answer === "Haiti"){
              console.log("Amazing" + " Let's go to Haiti")
              haitiTrip()
-        }else if(answer === choice3){
+        }else if(answer === "Restart-Game"){
             yourVariableHere = readline.question("Enter your name: \n ")
             startGame() 
-        }else if(answer === choice4){
+        }else if(answer === "Start Again"){
              startGame()
         }else{
             console.log("Sorry " + yourVariableHere)
