@@ -15,7 +15,7 @@ const startGame = () => {
 
 const intro = () =>{
     console.clear()
-    console.log("Trying your luck comes at a cost and you must leave behind three worldly possessions")
+    console.log("Trying your luck comes at a cost and you must leave behind  worldly possessions")
     let decision1=readLineSync.question("Do you want to leave behind your phone or glasses? ").toLowerCase()
     if (decision1 === 'phone'){
         console.log('The dimension in which you are entering has no cellular connection so your phone won\'t be of much help anyways.')
@@ -32,7 +32,7 @@ const intro = () =>{
 
 const intro2 = () => {
     console.clear()
-    let decision2 = readLineSync.question("Do you want to leave behind your pet or your sibling? ")
+    let decision2 = readLineSync.question("Do you want to leave behind your pet or your sibling? ").toLowerCase()
     if (decision2 === "pet"){
         console.log('This dimension has no room for a pet anyways.')
         readLineSync.keyInPause()
@@ -41,26 +41,40 @@ const intro2 = () => {
         console.log('There is only room for one person to walk tha path of this dimension! YOU.')
         readLineSync.keyInPause()
         intro3()
+    } else {
+        intro2()
     }
  }
 
- const intro3 = () => {
+const intro3 = () =>{
     console.clear()
-   let decision3 = readLineSync.question("How much money do you want to leave behind?")
-    if(typeof decision3 === 'number'){
-        while (decision3<100){
-            console.log("Don't be stingy, the place you are entering is bound to reward you triple in which you leave behind.")
-        }
-        console.log("Decent amount and just your luck! You have encountered a magic wallet!")
-        if(readLineSync.keyInYNStrict("The magic wallet lets you buy anything your heart desires. Are you ready to gamble with destiny?")){
-            gameFlow()
-        } else {
-            quitGame()
-        }
+    let decision3 = readLineSync.question("Do you want to leave behind your favorite food or favorite drink? ").toLowerCase()
+    if (decision3 ===  "favorite food" || decision3 === "favorite drink" || decision3 === "food" || decision3 === "drink"){
+        console.log("No food or drinks allowed!")
+        readLineSync.keyInPause()
+        intro4()
     } else {
         intro3()
     }
+}
+
+ const intro4 = () => {
+    console.clear()
+    let answer = true 
+        while (answer){
+            let decision4 = readLineSync.question("How much money do you want to leave behind? ")
+            if(decision4 > 100) {
+                if(readLineSync.keyInYNStrict("Congrats! You have been rewarded with a magic wallet that lets you buy anything your heart desires. Are you ready to gamble with destiny?")){
+                    gameFlow()
+                } else {
+                    quitGame()
+                }
+            }else {
+                console.log("Don't be stingy, the place you are entering is bound to reward you triple in which you leave behind.")
+            }
+        }
  }
+     
 
 const gameFlow = () => {
     console.clear()
