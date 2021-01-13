@@ -97,7 +97,7 @@ else if(path === "2"){
     goingThroughPathTwo()
 }
 else if(path === "3"){
-    goingThroughPathThree()
+    goingThroughPathThree(armor)
 }
 else if(path === "4"){
     goingThroughPathFour()
@@ -130,7 +130,7 @@ function goingThroughPathThree(armor){
     console.log(chalk.green("Oh no it's Loki!! He brings down the boulder right on top of you!! \n"))
     
     setTimeout(() => {console.log(chalk.redBright("He then disappears thinking that he won and nothing can stop him now! \n"))}, 3000)
-    setTimeout((armor) => {console.log(chalk.redBright("What he didn't realize is that you have the element " + armor + " armor!! \n"))}, 5000)
+    setTimeout(() => {console.log(chalk.redBright("What he didn't realize is that you have the element " + armor + " armor!! \n"))}, 5000)
     setTimeout(() => {console.log(chalk.redBright("It will take much more than a mere boulder to stop you " + nameInput + "!!! \n"))}, 7000)
     setTimeout(() => {console.log(chalk.redBright("Now that the coast is clear you carry on ready for anything!! \n"))}, 9000)
     setTimeout(() => {caveOfTime()}, 13000)
