@@ -1,5 +1,7 @@
 const readline = require('readline-sync')
 
+let nameInput = ""
+
 const exitGame = () => {
     console.log(`Goodbye!`)
     process.exit()
@@ -182,7 +184,7 @@ const newGame = () => {
 }
 
 const ageRestriction = () => {
-    ageInput = readline.questionInt ("Please enter your age: [Input must be a number] \n")
+    let ageInput = readline.questionInt ("Please enter your age: [Input must be a number] \n")
     if (ageInput <= 12 ) {
         console.log ("\nSlowly sitting up, you reach for the glass of water on your nightstand. Instead, you feel something else. A letter with your name on it. \n")
         console.log ("Opening the letter ...\n")
@@ -199,6 +201,9 @@ const openingLines = () => {
     nameInput = readline.question("Please enter your name: \n")
     ageRestriction()
 }
+
+
+
 
 openingLines()
 
