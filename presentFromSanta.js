@@ -46,7 +46,7 @@ const livingRoomRingAlarm = () => {
     if (answerToUnlock.toLowerCase() === "of course"){
         userInputAlarmCode()
     } else if (answerToUnlock.toLowerCase() === "nope") {
-        console.log("\nCome back when you have the 6-digit passcode.")
+        console.log("\nCome back when you have the 6-digit passcode.\n")
         enterRoom()
     } else {
         console.log("\nPlease enter: 'Of course' or 'Nope'.")
@@ -130,40 +130,60 @@ const snackInCloset = () => {
 
 
 const enterRoom = () => {
-    let pickRoom = readline.question("Please enter a room:\n")
+    let pickRoom = readline.question("Please enter a room: Bedroom, Living room, Kitchen, Basement or Closet\n")
     let room = ["bedroom", "living room", "kitchen", "basement", "closet"]
-    for(let i = 0; i <= room.length - 1; i++){
-        if (pickRoom.toLowerCase() === room[0]) {
-            console.log("\nYou were already in the bedroom when you woke up earlier. No present in there, only the letter from Santa.")
-            lookInBedroomAgain()
-            break;
-        } else if (pickRoom.toLowerCase() === room[1]){
-            let livingRoomScript = "\nYou walk towards the living room. Infront of the fireplace, there are faint santa footprints.\nYour eyes wander over to the flashing red light ring alarm on the wall, you walk towards it. Another note!\n"
-            console.log(livingRoomScript)
-            console.log("\x1b[33m%s\x1b[0m", "That was quick, now can you get the door to unlock? :)\n")
-            livingRoomRingAlarm()
-            break;
-        } else if (pickRoom.toLowerCase() === room[2]){
-            let kitchenScript = "\nWalking towards the kitchen. The full plate of cookies you left on counter last night is now half emptied with crumbs everywhere."
-            console.log(kitchenScript)
-            searchInKitchen()
-            break;
-        } else if (pickRoom.toLowerCase() === room[3]) {
-            let basementScript = "\nYou open the door that leds to the basement, it's pitch dark."
-            console.log(basementScript)
-            lightInBasement()
-            break;
-        } else if (pickRoom.toLowerCase() === room[4]) {
-            let closetScript = "\nOpening up the closet door, there's a pile of your favorite snacks but no present."
-            console.log(closetScript)
-            snackInCloset()
-            break;
-        } else {
-            let roomScript = "\nPlease move towards any of these rooms: Bedroom, Living room, Kitchen, Basement or Closet to continue the game."
-            console.log (roomScript)
-            break;
+    let messages = [
+        "\nYou were already in the bedroom when you woke up earlier. No present in there, only the letter from Santa.",
+        "\nYou walk towards the living room. Infront of the fireplace, there are faint santa footprints.\nYour eyes wander over to the flashing red light ring alarm on the wall, you walk towards it. Another note!\n    \nThat was quick, now can you get the door to unlock? :)\n",
+        "\nWalking towards the kitchen. The full plate of cookies you left on counter last night is now half emptied with crumbs everywhere.",
+        "\nYou open the door that leds to the basement, it's pitch dark.",
+        "\nOpening up the closet door, there's a pile of your favorite snacks but no present.",
+    ]
+    let doNext = [
+        lookInBedroomAgain,
+        livingRoomRingAlarm,
+        searchInKitchen,
+        lightInBasement,
+        snackInCloset
+    ]
+    for (let i = 0; i < room.length; i++) {
+        if (pickRoom.toLowerCase() === room[i]) {
+            console.log(messages[i])
+            doNext[i]()
         }
     }
+    // for(let i = 0; i <= room.length - 1; i++){
+        // if (pickRoom.toLowerCase() === room[0]) {
+        //     console.log("\nYou were already in the bedroom when you woke up earlier. No present in there, only the letter from Santa.")
+        //     lookInBedroomAgain()
+        //     // break;
+        // } else if (pickRoom.toLowerCase() === room[1]){
+        //     let livingRoomScript = "\nYou walk towards the living room. Infront of the fireplace, there are faint santa footprints.\nYour eyes wander over to the flashing red light ring alarm on the wall, you walk towards it. Another note!\n"
+        //     console.log(livingRoomScript)
+        //     console.log("\x1b[33m%s\x1b[0m", "That was quick, now can you get the door to unlock? :)\n")
+        //     livingRoomRingAlarm()
+        //     // break;
+        // } else if (pickRoom.toLowerCase() === room[2]){
+        //     let kitchenScript = "\nWalking towards the kitchen. The full plate of cookies you left on counter last night is now half emptied with crumbs everywhere."
+        //     console.log(kitchenScript)
+        //     searchInKitchen()
+        //     // break;
+        // } else if (pickRoom.toLowerCase() === room[3]) {
+        //     let basementScript = "\nYou open the door that leds to the basement, it's pitch dark."
+        //     console.log(basementScript)
+        //     lightInBasement()
+        //     // break;
+        // } else if (pickRoom.toLowerCase() === room[4]) {
+        //     let closetScript = "\nOpening up the closet door, there's a pile of your favorite snacks but no present."
+        //     console.log(closetScript)
+        //     snackInCloset()
+        //     // break;
+        // } else {
+        //     let roomScript = "\nPlease move towards any of these rooms: Bedroom, Living room, Kitchen, Basement or Closet to continue the game."
+        //     console.log (roomScript)
+        //     // break;
+        // }
+    // }
     enterRoom ()
 }
 
@@ -201,7 +221,6 @@ const openingLines = () => {
     nameInput = readline.question("Please enter your name: \n")
     ageRestriction()
 }
-
 
 
 
