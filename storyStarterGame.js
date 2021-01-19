@@ -99,9 +99,29 @@ const campOut = () => {
 
 
  // avengeDeath 
- const avengeDeath = () => {
+ const avengeDeath = (charMainName) => {
+console.log(`${charMainName} could not just rest! They want to find out who killed them.`)
+console.log (`Now after endless searching, finally ${charMainName} has found the killer and its their own brother!!!`)
+console.log(`You must choose for what ${charMainName}`)
+array = ["kill the brother", "investegate more"]
+let avengerOption = readLineSync.keyInSelect(array)
+let avengerAnswer = array[avengerOption]
+if (avengerAnswer === "investegate more") {
+    investegateTheBrother();
+} else {
+} (avengerAnswer === "kill the brother") 
+    console.log(`Your character have killed their own brother. However! \nThey have gain nothing but more regret because ${charMainName} did not investegate more! \nIf they had, ${charMainName} would have found out their brother was trying to save them from fully turning into a zombie! \nWhen ${charMainName}'s brother found them it was far too late on the outside to save them so he did what he thought was a good choice`)
+    replayTheGame(); 
+}
 
+
+ // investagateTheBrother
+ const investegateTheBrother = () => {
+     console.log("Wow our brother carried such a painful duty for the country upon his shoulder")
+     console.log("Now listen I provided you with golden materials, however you must now write the story on your own! ")
+     replayTheGame();
  }
+ 
 
  //hauntCriminals 
  const hauntCriminals = () => {
@@ -134,13 +154,15 @@ const walkTheWoodsAlone = () => {
 
 //leftPath 
 const leftPath = () => {
-    array = ["left", "middle", "right"]
+    
     console.log ("Your character is walking through the thickets of poison ivy. \nBy the time they noticed they it already got everywhere and I mean EVERYWHERE!!") 
     for (i = 0; i < array.length; i++) {
         if (array[i] === "left") {
             array.splice(i,1)
+            break
         }
     }
+    
     let woodsPaths = readLineSync.keyInSelect (array)
    let youchoose = array[woodsPaths]
    if (youchoose === "middle") {
@@ -165,13 +187,14 @@ const leftPath = () => {
 
 //middlePath
 const middlePath = () => {
-    array = ["left", "middle", "right"]
     console.log("Your character finds a beheaded chicken in the middle of the road! \nAaaaaahhhhh, screams are being heard from further." )
     for (i = 0; i < array.length; i++) {
         if (array[i] === "middle") {
             array.splice(i,1)
+            break
         }
     }
+    
     let woodsPaths = readLineSync.keyInSelect(array)
    let youchoose = array[woodsPaths]
    if (youchoose === "left") {
@@ -194,13 +217,14 @@ const middlePath = () => {
 
 //rightPath
 const rightPath = () => {
-    array = ["left", "middle", "right"]
     console.log("Your character reached a cliff. If they're not careful they will fall!")
     for (i = 0; i < array.length; i++) {
         if (array[i] === "right") {
             array.splice(i,1)
-        }
+            break
+        } 
     }
+    
     let woodsPaths = readLineSync.keyInSelect(array)
    let youchoose = array[woodsPaths]
    if (youchoose === "middle") {
@@ -287,8 +311,8 @@ const tooManyCharRom = () => {
 const cityDate = () => {
    let charMainName = readLineSync.question("What's your main character's name?")
      console.log(`${charMainName} is on a date! The first time in so long! \nWalking through the city and enjoying their date's company. \nNow they're getting hungry from all the walking and talking! \n"Let's grab something to eat", says ${charMainName}`)
-        array = ["5 star resturant", "street vendors", "home-cooked meal"]
-       let eatingDate = readLineSync.keyInSelect (array)
+        resturant = ["5 star resturant", "street vendors", "home-cooked meal"]
+       let eatingDate = readLineSync.keyInSelect (resturant)
        let youChooseFood = array[eatingDate] 
         if (youChooseFood === "5 star resturant") {
         fiveStarResturant ();
@@ -305,13 +329,13 @@ const cityDate = () => {
 // fiveStarResturant
 const fiveStarResturant = () => {
         console.log("Your character ate bad oyster! Your character got food poisioning!")
-        for (i = 0; i < array.length; i++) {
-            if (array[i] === "5 star resturant") {
-                array.splice(i,1)
+        for (i = 0; i < resturant.length; i++) {
+            if (resturant[i] === "5 star resturant") {
+                resturant.splice(i,1)
             }
         }
         let eatingDate = readLineSync.keyInSelect (array)
-       let youChooseFood = array[eatingDate]
+       let youChooseFood = resturant[eatingDate]
        if (youChooseFood === "street vendor"){
            streetVendor();
        } else if (youChooseFood === "home-cooked meal") {
@@ -345,13 +369,13 @@ const streetVendor = () => {
 //homeCooked
 const homeCooked = () => {
     console.log("Damn! Neither your character or their date can cook! They burnt down the house! Now your character is homeless! \nPick another option.")
-        for (i = 0; i < array.length; i++) {
-            if (array[i] === "home-cooked meal") {
-                array.splice(i,1)
+        for (i = 0; i < resturant.length; i++) {
+            if (resturant[i] === "home-cooked meal") {
+                resturant.splice(i,1)
             }
         }
         let eatingDate = readLineSync.keyInSelect (array)
-       let youChooseFood = array[eatingDate]
+       let youChooseFood = resturant[eatingDate]
        if (youChooseFood === "5 star resturant"){
            fiveStarResturant();
        } else if (youChooseFood === "street vendor") {
@@ -371,34 +395,23 @@ const stayAtHomeDate = () => {
         leaveGame(); 
     }
 }
-
+//replayTheGame
+const replayTheGame = () => {
+    console.log("There are endless ideas to start a story and you just finished one!")
+    if(readLineSync.keyInYN("Would you like the replay this game to get another story idea?")){
+        startGame();
+    } else {
+        leaveGame();
+    }
+}
 //leaveGame
 const leaveGame = () => {
-    console.log("Awww, it's really sad to see you go! Good luck writing your book by yourself!")
+    console.log("Good luck writing your book by on your own with my ideas! MUAHAHAHA! HA! ")
     process.exit()
 }
 
 
 
 welcome();
-startGame();
-suspenseStory();
-perfectNum();
-tooManyChar();
-darkWoodsStoryLine();
-campOut();
-walkTheWoodsAlone();
-leftPath();
-middlePath();
-rightPath();
-darkRoadStoryLine();
-romanceStory();
-romSetting();
-perfectNumRom();
-tooManyCharRom();
-cityDate();
-fiveStarResturant();
-streetVendor();
-homeCooked();
-stayAtHomeDate();
-leaveGame();
+
+
