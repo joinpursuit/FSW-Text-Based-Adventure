@@ -3,11 +3,7 @@ const readline1 = require("readline-sync");
 let nameInput = readline1.question("Enter your name: ");
 
 console.log(`Hello ${nameInput}! \nWelcome to Mystery Inc.`);
-
-function quitGame() {
-  console.log("Sorry to hear, enjoy not knowing");
-  process.exit();
-}
+game();
 
 
 function game() {
@@ -17,6 +13,13 @@ function game() {
     quitGame();
   }
 }
+
+function quitGame() {
+  console.log("Sorry to hear, enjoy not knowing");
+  process.exit();
+}
+
+
 
 
 function intro(){
@@ -34,7 +37,7 @@ function startGame() {
     readline1.setDefaultOptions({
       limit: answer1,
       limitMessage:
-        "PLEASE CHOOSE ONE OF THE OPTION,OR JUST WILL NEVER FULLFILL YOU DESTINY",
+        "PLEASE CHOOSE ONE OF THE OPTION,OR YOU WILL NEVER FULLFILL YOUR DESTINY",
     });
     let location = readline1
       .question(
@@ -59,7 +62,7 @@ function startGame() {
 }
 
 
-const toSchool = () => {
+function toSchool(){
     if (readline1.keyInYN("You open the door and notice that the Hallways are all empty.There's an ominous presence in the air. Would you still like to enter? ")) {
       hallway();
     } else {
@@ -67,69 +70,81 @@ const toSchool = () => {
     }
   };
   
+
 //Options do you walk into the empty school Y/N
 //Adventure: Has player wall down the hallway and has a fork in the road should they go L or R. One could decide if you live or they die. 
 //Adventure: Create Variable (Left) = Gym  (Right) = Lunchroom
 // 
-// function stayHome() {
-//   let answer1 = ["1", "2"];
-//   while (answer1 !== null) {
-//     readline1.setDefaultOptions({
-//       limit: answer1,
-//       limitMessage:
-//         "HURRY UP BEFORE IT MEANS YOUR LIFE",
-//     });
-//     let location = readline1
-//       .question(
-//          "You go back to bed. You being to dose off and all of a sudden you hear the wooden floors begin to creek towards you... Somone is in the house. Do you hide in the 1:closet or under the 2:bed?"
-//         ).toUpperCase();
-      
-//       }
+function stayHome() {
+  let answer1 = ["1", "2"];
+  while (answer1 !== null) {
+    readline1.setDefaultOptions({
+      limit: answer1,
+      limitMessage:
+        "HURRY UP BEFORE IT MEANS YOUR LIFE",
+    });
+    location = readline1
+      .question(
+         "You go back to bed. You being to dose off and all of a sudden you hear the wooden floors begin to creek towards you... Somone is in the house. Do you hide in the 1:closet or under the 2:bed?"
+        ).toUpperCase();
+        switch (location) {
+          case "1":
+            Closet();
+            break;
+          case "2":
+            Bed();
+            break; 
+          }
+          break;
+      }
+    }
+
+    function Closet(){}
+
+    function Bed(){}
+  
   
 // the creeking is getting louder towards your bedroom. Do you hide in the closet or under the bed?
 //Adventure: Create Variable (Closet)= Life  (Bed)= Death
-function hangWithFriends() {}
-// You begin walking to the park and you see a whole bunch of people walking towards you do you walk towards then or away from them.
-//Adventure: Create Variable (Toward)= Life  (Away)=Life
-game();
+function hangWithFriends(){
+  let answer1=["A","B"];
+  while(answer1 !== null){
+    readline1.setDefaultOptions({
+      limit:answer1,
+      limitMessage:
+      "HURRY UP BEFORE IT MEANS YOUR LIFE",
+    });
+    let location = readline1
+    .question("You begin walking to the park and you see a whole bunch of people walking towards you. \nDo you walk A:towards them or B: Away from them.")
+    switch (location) {
+      case "A":
+        Toward();
+        break;
+      case "B":
+        Away();
+        break;
+      default:
+    }
+  }
 
-
-
-
-function hallway(){
-  //You walk down the hallway and hear a scream to your right do you go head to the right and try to be a hero, head left to save your own skin or head back towards the building exit?"
-}
-// function printArray(){
-//   let arr=[ 2,3,4,5,6]
-//   for (let i = 0; i < arr )}
-
-
-// write a function that takes in an array and returns a 
-// new array with every element in the array doubled. 
-
-// const doubleArr = (arr)=>{
-//   let newArray=[]
-//   arr.forEach((element) => {
-//     newArray.push(element*2)
-//     }); 
-//     return newArray
-//}
-
-
-
-//doubleArr([1, 2, 3]) // => [2, 4, 6]
-
-
-//write a function that takes in an array 
-// and returns a new array with only words that were already capitialized.
-
-// const onlyCaps = (arr) => {
-//   return arr.filter((el)=>{
-//     return el.toCapitalCase
-//   })
-
-//   }
-
-// console.log(onlyCaps(["Hello", "CAT", "word"])) // => ["CAT"]
   
 
+ 
+
+
+
+// // You begin walking to the park and you see a whole bunch of people walking towards you do you walk towards then or away from them.
+// //Adventure: Create Variable (A: Toward)= Death  (B: Away)=Life
+
+
+
+
+// function hallway(){
+  //   You walk down the hallway and hear a scream to your right do you go head to the right and try to be a hero, head left to save your own skin or head back towards the building exit?"
+  // }
+
+    
+    
+    
+    game();
+}
