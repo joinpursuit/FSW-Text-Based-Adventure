@@ -11,6 +11,11 @@ let nameInput = readlineSync.question('Please enter your name: ');
 console.log(chalk.yellow(`Hello ${nameInput}!  Welcome to my game.`))
 gameStart2()
 }
+//Game loop
+const gameLoop = () => {
+    let tryCount = 3;
+    for(let i = 3; i < tryCount.length; i--)
+}
 //Game Start
 const gameStart2 = () => {
 if (readlineSync.question('Would you like to play? ')) {
