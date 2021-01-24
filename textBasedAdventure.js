@@ -1,12 +1,31 @@
 const readlineSync = require('readline-sync')
 
+const name = readlineSync.question("What is your name? \n")
+
 function startGame() {
-    console.log("Welcome to Quick Tarot Reading! Tarot decks date back to the 1400s, and were originally used for games rather than prediction. This game engages in fortune-telling through the use of playing cards. In this game, you will draw three random cards from the deck. The first card will be used to reflect from your past. The second card will be used to observe your present, and the third card will be used to predict your future. You will be given words to help you draw upon your own intuition. Use the words to ask yourself, What do the words mean to you? How is it related to my past, present, or future?")
-    let answer = readlineSync.keyInYN("Do you want to play? \n")
-    if (answer) { play() } else { leaveGame() }
+    console.log("\nWelcome to Quick Tarot Reading! Tarot decks date back to the 1400s, and were originally used for games rather than prediction. This game engages in fortune-telling through the use of playing cards. In this game, you will draw three random cards from the deck. The first card will be used to reflect from your past. The second card will be used to observe your present, and the third card will be used to predict your future. You will be given words to help you draw upon your own intuition. Use the words to ask yourself, What do the words mean to you? How is it related to my past, present, or future?\n")
+    let answer = readlineSync.keyInYN("\nDo you want to play? \n")
+    if (answer) { prePlay() } else { leaveGame() }
 }
 
-const play = () => {
+function prePlay() {
+    console.log("\nHi " + name + "! You must be at least 18 years old to play this game.\n")
+    let age = readlineSync.questionInt("How old are you? \n")
+
+    while (age >= 18)
+        if (age >= 18) {
+            console.log("\n" + name + " you are " + age + " years old and eligible to play. Please draw three cards. The cards you draw will either be faced up or faced down. Each will have a different result and/or interpretation. Draw the first card. The card you draw will be based upon your past. \n")
+            if (age) {
+                play()
+            } else {
+                process.exit()
+            }
+        }
+    age++
+}
+
+
+function play() {
 
     let upMagician = "The Magician faced up: willpower, desire, creation, manifestation"
     let downMagician = "The Magician faced down: trickery, illusions, out of touch"
@@ -192,42 +211,37 @@ const play = () => {
     // let swordsL = Swords.length;
     // let pentaclesL = Pentacles.length;
 
-    const name = readlineSync.question("What is your name? \n")
-    console.log("Hi " + name + "! You must be at least 18 years old to play this game.")
-
-    const age = readlineSync.question("How old are you? \n")
-    if (age >= 18) {
-        console.log(name + " you are " + age + " years old and eligible to play. Please draw three cards. The cards you draw will either be faced up or faced down. Each will have a different result and/or interpretation. Draw the first card. The card you draw will be based upon your past. \n")
-    } else { leaveGame() }
-
     const past = readlineSync.keyInYN("Are you ready to draw on the Tarot Card deck to reflect on your past? \n")
-    if (past) { console.log(" This is the card and words that best describes your past " + random1, card[random1]); } else {
+    if (past) {
+        console.log("\nThis is the card and words that best describes your past " + random1, card[random1] +
+            "\n");
+    } else {
         play(past)
 
     }
 
     const past2 = readlineSync.keyInYN("What do you think about the card you've drawn? Would you like the opportunity to draw again? \n")
     if (past2) {
-        console.log(" This is the card and words that best describes your past " + random4, card[random4]);
+        console.log("This is the card and words that best describes your past " + random4, card[random4] + "\n");
 
     }
 
-    const present = readlineSync.keyInYN("Draw the second card. The card you draw will be based upon your present. Do you want to draw on the Tarot Card deck to observe on your present? \n")
-    if (present) { console.log(" This is the card and words that best describes your present " + random2, card[random2]); } else {
+    const present = readlineSync.keyInYN("\nDraw the second card. The card you draw will be based upon your present. Do you want to draw on the Tarot Card deck to observe on your present? \n")
+    if (present) { console.log("This is the card and words that best describes your present " + random2, card[random2] + "\n"); } else {
         restart()
     }
 
     const present2 = readlineSync.keyInYN("What do you think about the card you've drawn? Would you like the opportunity to draw again? \n")
-    if (present2) { console.log(" This is the card and words that best describes your past " + random5, card[random5]); }
+    if (present2) { console.log("This is the card and words that best describes your past " + random5, card[random5] + "\n"); }
 
 
-    const future = readlineSync.keyInYN("Draw the third card. The card you draw will be based upon your future. Do you want to draw on the Tarot Card deck to predict your future? \n")
-    if (future) { console.log(" This is the card and words that best describes your future " + random3, card[random3]); } else {
+    const future = readlineSync.keyInYN("\nDraw the third card. The card you draw will be based upon your future. Do you want to draw on the Tarot Card deck to predict your future? \n")
+    if (future) { console.log("This is the card and words that best describes your future " + random3, card[random3] + "\n"); } else {
         restart()
     }
 
     const future2 = readlineSync.keyInYN("What do you think about the card you've drawn? Would you like the opportunity to draw again? \n")
-    if (future2) { console.log(" This is the card and words that best describes your past " + random4, card[random4]); } else {
+    if (future2) { console.log("This is the card and words that best describes your past " + random4, card[random4] + "\n"); } else {
         restart()
 
     }
@@ -237,20 +251,13 @@ const play = () => {
 
 const restart = () => {
 
-    const reset = readlineSync.keyInYN("Would you like to restart the game? \n")
-    if (reset) { console.log(" The game will restart now... "), startGame() } else { fun() }
+    const reset = readlineSync.keyInYN("\nWould you like to restart the game? \n")
+    if (reset) { console.log("The game will restart now... + \n"), startGame() } else { leaveGame() }
 
-}
-
-const fun = () => {
-    const rate = readlineSync.question("What would you rate this game from 1 to 10? \n")
-    if (rate >= 5) {
-        console.log("Your rating was " + rate + " and we're glad you've had a good time! \n"), leaveGame()
-    } else { leaveGame() }
 }
 
 const leaveGame = () => {
-    console.log("Quick Tarot Game is not responsible for unlucky past, present, or future results. If you are not at least 18 years old, you need a parent present to play the game. Goodbye!")
+    console.log("Thank you for playing! Quick Tarot Game is not responsible for unlucky past, present, or future results. Goodbye!")
     process.exit()
 }
 
