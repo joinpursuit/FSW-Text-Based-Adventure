@@ -3,8 +3,8 @@ const readline= require('readline-sync')
 let yourVariableHere = readline.question("Enter your name: \n ")
  console.log( "Hello " + yourVariableHere + " It's a pleasure to have you here!")
   console.log("Welcome to Traveling the World in 80 Days!")
-
-  
+const reprompt = (`Sorry ${yourVariableHere},  but  that is not a valid enter`)
+const breaK = `\n` 
 const startGame = () => {
 let user = readline.keyInYN("Do you wanna play \n")
  if(user){
@@ -18,31 +18,37 @@ let user = readline.keyInYN("Do you wanna play \n")
 
 
 const playloop = () => {
-    console.log("Sweden", "Canada", "China", "Haiti", "Brazil", "Austria", "Greece", "Chile", "Colombia", "Cuba")
-    console.log("Restart-Game")
-    console.log("Start Again")
-    let answer = readline.question(yourVariableHere + " Where would you like to go \n" ) 
+    console.log(`\n "Sweden", "Canada", "China", "Haiti", "Brazil", "Austria", "Greece", "Chile", "Colombia", "Cuba"`)
+    console.log(" Restart-Game "     +     "        "  +   "          "   +  "Start Again")
+    let answer = readline.question(yourVariableHere + " Where would you like to go? \n" ) 
     console.log() 
-//crear un for loop que me permita ir dentro del array
-// crear una opcion que permita que si el user escribe algo que no esta en el juego , el juego le repondodera como que eso no existe
-    if(answer === "Canada") {
+    let country = ["Sweden", "Canada", "China", "Haiti", "Brazil", "Austria", "Greece", "Chile", "Colombia", "Cuba"]
+
+for (let i = 0; i <= country.length; i ++){
+    if ( country[0] !== country[i]){
+    }if(answer === "Canada"){
         console.log("Amazing" + " Let's go to Canada")
          canadaTrip()
-    }else if( answer === "Haiti"){
-             console.log("Amazing" + " Let's go to Haiti")
+    }else if(answer==="Haiti"){
+        console.log("Amazing" + " Let's go to Haiti")
              haitiTrip()
-        }else if(answer === "Restart-Game"){
-            yourVariableHere = readline.question("Enter your name: \n ")
-            startGame() 
-        }else if(answer === "Start Again"){
-             startGame()
-        }else{
-            console.log("Sorry " + yourVariableHere)
-             console.log("Unfortunally we don't have more tickets" + " " + answer )
-             console.log("However we still have others destinations")
-              playloop()
-        }
-   
+    }else if(answer === "Restart-Game") {
+        yourVariableHere = readline.question("Enter your name: \n ")
+                startGame()
+    }else if(answer === "Start Again"){
+                 startGame()
+    }else if(answer == "Sweden" || answer== "Cuba" || answer=="China" || answer== "Brazil" || answer=="Austria"|| answer== "Greece" || answer=="Chile" || answer=="Colombia"){
+        console.log("Sorry " + yourVariableHere)
+        console.log("Unfortunally we don't have more tickets to " + " " + answer )
+        console.log("However we still have others destinations")
+        playloop()
+    }else{
+        console.log(reprompt)
+        console.log(breaK)
+        playloop()
+    }
+}
+    
 } 
 const pause = (seconds) =>{
     //Function comes from group review w MYra et.
@@ -112,6 +118,8 @@ const canadaTrip =() =>{
             playloop()
     }else if(answ === attractions[7]){
             gameQuizCand()
+    }else{
+        console.log(reprompt)
     }
 
 }
@@ -138,6 +146,8 @@ const haitiTrip =() =>{
             playloop() 
     }else if(answ === attractions[7]){
           gameQuizHaiti()
+    }else{
+        console.log(reprompt)
     }
 }
 
@@ -302,8 +312,8 @@ const gameQuizCand = () => {
     let quiz = ['1', '2', '3', '4', '5'];
     let choi = readline.question(yourVariableHere + " Pick a number between 1 and 5\n" )
     console.log()
-    for(let i = 0; i <= quiz.length; i++){
-        if(choi === quiz[0]){
+    for(let b = 0; b <= quiz.length; b++){
+        if(choi === quiz[0] ){
             console.log('Sorry!!!!')
             console.log('Try again')
             choi = readline.question(yourVariableHere + " Pick a number between 1 and 5\n" )
@@ -313,9 +323,13 @@ const gameQuizCand = () => {
             console.log('You have earned 20 point')
             console.log('Congrats')
             startGame()
+        }else if(choi == quiz[2]){
+            console.log('You can do it better!')
+            console.log('This is your last chance!')
+            console.log('Try again')
         }else{
-            console.log('Go back and read again about Canada')
-            canadaTrip()
+            console.log(reprompt)
+            choi = readline.question(yourVariableHere + " Pick a number between 1 and 5\n" )
         }
     }
 }
@@ -341,9 +355,12 @@ const gameQuizHaiti = () =>{
             console.log('You have earned 20 point')
             console.log('Congrats')
             startGame()
-        }else{
+        }else if(choi == quiz[2] || choi == quiz[3]|| choi== quiz[0] ){
             console.log('Go back and read again about Haiti')
             haitiTrip()
+        }else {
+            console.log(reprompt)
+            choi = readline.question(yourVariableHere + " Choose a city \n" )
         }
     }
 
