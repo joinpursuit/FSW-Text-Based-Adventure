@@ -10,19 +10,21 @@ console.log(chalk.green('Enjoy!'));
 let nameInput = readlineSync.question('Please enter your name: ');
 console.log(chalk.yellow(`Hello ${nameInput}!  Welcome to my game.`))
 gameStart2()
+gameLoop()
 }
 //Game loop
 const gameLoop = () => {
     let tryCount = 3;
     for(let i = tryCount; i !== 0; i--) {
-        if(tryCount === 3) {
-            gameLoop()
+        if(!tryCount === 3) {
+            endGme()
         }else{
             tryCount --;
             console.log("Number of remaing tries left" + tryCount)
             if(tryCount === 0) {
                 gameLoop();
             }
+            break;
         }
     }
 }
