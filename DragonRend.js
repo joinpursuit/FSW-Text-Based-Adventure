@@ -6,93 +6,77 @@ function quitGame() {
    let restart = keyInYN('To the well-organised mind, death is but the next great adventure. Restart?')
    console.log('Til next time '+ nameInput)
    if (restart === true) {
-        start()
-
+    start()
    } else if (restart === false) {
     console.log('Til next time '+ nameInput)
     return
    }
 }
 
-function dice(nat,min){
-    return Math.floor((Math.random()* min)+nat)//nest this globally
-}
+function dice(nat,min){ return Math.floor((Math.random()* min)+nat) }
 
-function heroStat(health,atk,def,lvl,exp){
-    this.health = health
-    this.atk = atk
-    this.def = def
-    this.lvl = lvl
-    this.exp = exp
-}
+let heroStat = [10, 10, 8, 1, 0]
 
-//let heroStat = new heroStat(10,10,5,1,0) 
+let oppStat = [
+    [10, 8, 5, 1, 0],
+    [12, 5, 5, 1, 0]
+]
 
-function oppStat(enHealth, enAtk,enDef,enLvl, expGain){
-    this.enHealth = enHealth
-    this.enAtk = enAtk
-    this.enDef = enDef
-    this.enLvl = enLvl
-    this.expGain = expGain
-}
-let oppStatTroll = new oppStat(10,5,2,1,3)
-
-function addHealth(value, reward, risk){
+function addHealth(value, reward, risk) {
    console.log('+--------------------------------------------------------------------------------------+')
    console.log('+ You rolled '+(d6 = dice(6,1))+' !                                                             +')
    if (d6 >= value){
-        heroStat.health = heroStat.health+reward
+    heroStat[0] = heroStat[0]+reward
+    console.log('+--------------------------------------------------------------------------------------+')
+    console.log('+ You gain '+reward+' health!                                                                   +')
+    console.log('+ Your health is now '+heroStat[0]+'!                                                            +')
+   } else if (d6 < value) {
+        heroStat[0] = heroStat[0]-risk
         console.log('+--------------------------------------------------------------------------------------+')
-
-        console.log('+ You gain '+reward+' health!                                                                   +')
-        console.log('+ Your health is now '+heroStat.health+'!                                                            +')
-    }
-    else if (d6 < value){
-        heroStat.health = heroStat.health-risk
-        console.log('+--------------------------------------------------------------------------------------+')
-
         console.log('+ You take '+risk+' damage!                                                                 +')
-        console.log('+ Your health is now '+heroStat.health+'!                                                   +')
-    } else {
+        console.log('+ Your health is now '+heroStat[0]+'!                                                   +')
+   } else {
         console.log('+--------------------------------------------------------------------------------------+')
-
         console.log('+ Whoa someting went really wrong here!!!!!!!                                       +')
-    }
+   }
 }
 
-function minusHealth(value, risk){
+function minusHealth(value, risk) {
     d6 = dice(6,1)
     if (d6 < value){
-        heroStat.health= heroStat.health-risk
+        heroStat[0]= heroStat[0]-risk
     }
     console.log('+--------------------------------------------------------------------------------------+')
-    console.log('+ You take '+heroStat.health-risk+' damage!                                                    +')
-    console.log('+ Your health is now '+heroStat.health+'.                                                      +')
+    console.log('+ You take '+heroStat[0]-risk+' damage!                                                    +')
+    console.log('+ Your health is now '+heroStat[0]+'.                                                      +')
 }
 
 function dmg(atk, enDef,level){//these stats are hosted in heroStat/oppStat respectively
 //define oppStat here by filling in the enemy values --> oppStat[enHealth, enAtk, enDef, enlvl, expgain]
 //calc atk v resistance x level and return a number
-    d6 = dice(6,1)
-    crit = dice(3,1)
-    let damage = Math.ceil( ( ( (2*level+10) /150) * (atk/enDef) +2) *d6)
-    let critical = Math.ceil( ( ( (2*level+10) /150) * (atk/enDef) +2) *crit)
+    d6 = dice(6, 1)
+    
+    crit = dice(3, 1)
+    
+    let damage = Math.ceil((((2 * level + 10) / 150) * (atk / enDef) + 2) * d6)
+    
+    let critical = Math.ceil((((2 * level + 10) / 150) * (atk / enDef) + 2) * crit)
+    
 
-    if (d6 !== 1 && d6 !== 6){
-        // console.log('+--------------------------------------------------------------------------------------+')
+    if (d6 !== 1 && d6 !== 6) {
+        console.log('+--------------------------------------------------------------------------------------+')       
+        return damage
 
-        // console.log('+ You did '+heroStat.health-damage+' damage to the  enemy!                                     +')
-        return heroStat.health-damage
+    } else if (d6 === 6) {
 
-    } else if (d6 === 6){
-
-        critHit  = damage + critical
+        critHit = damage + critical
+        console.log(critHit)
         // console.log('+--------------------------------------------------------------------------------------+')
         return critHit
-    } else if (d6 === 1){
+    } else if (d6 === 1) {
         // console.log('+--------------------------------------------------------------------------------------+')
-        // console.log('+ Your attack missed!                                                                  +')
-        return heroStat.health-0
+        console.log('+ Your attack missed!                                                                  +')
+        return 0
     }
 }
 
@@ -102,42 +86,43 @@ function enDmg(enAtk,def,enLvl){//enemyArr stat are held in oppStat
     d2 = dice (2,1)
     let damage = Math.ceil( ( ( (2*enLvl+10) / 150) * (enAtk/def) +2) *d6)
     if (d2 === 2){
-        console.log('+ You took '+heroStat.health-damage+' damage from the enemy!')
-        console.log('+ Your health is now '+heroStat.health+'!')
+        console.log(`+ You took ${heroStat[0]-damage} damage from the enemy! +`)
+        console.log(`+ Your health is now ${heroStat[0]}!                    +`)
     } else if (d2 === 1) {
         console.log('+ The enemy missed! You take no damage.              +')
     }
 }
 
-
-function dodge(risk){//if dodge roll is > 3, nullify damage
+function dodge(risk,enAtk1,def2,){//if dodge roll is > 3, nullify damage
     d6 = dice(6,1)
     if (d6 > 3){
        console.log('+ Succesful dodge!                                              +')
-       enDmg(enAtk,def,enlvl)
+       enDmg(enAtk1,def2,enlvl3)
     } else if (d6 < 4) {
 
-       heroStat.health-risk
+      dodgeFail =  heroStat[0]-risk
        console.log('+ You tripped during your dodge and took '+risk+' damage!       +')
        console.log('+ Your health is now '+heroStat.health+'!                                +')
     }
 }
 
-
-function fightOne(health,atk,def,lvl,enHealth,enAtk,enDef,enLvl,dodgeRisk){
-       while (health > 0 || enHealth > 0){
+function fightOne(health0,atk1,def2,lvl4,enHealth0,enAtk1,enDef2,enLvl3,dodgeRisk){
+    
+    while (health > 0 || enHealth > 0) {
         const rls1 = require('readline-sync')
         options  = ['Attack', 'Dodge', 'Sp. Attack', 'Run']
         index = rls1.keyInSelect(options, 'What do you do?') 
 
         if (options[index] === options[0]){
-            damage = dmg(lvl,atk,enDef)
-            finalDmg = enHealth - damage
-            enDmg(enAtk,def,enLvl)
+            damage = dmg(lvl4,atk1,enDef2)
+            finalDmg = enHealth0 - damage
+            //enDmg(enAtk, def, enLvl)
+            //iterate randomly through an array and return and indx of the array
+            //array contains options = ['Attack', 'Dodge', 'Sp. Attack', 'Run']
+            //then do that thing 
 
         } else if (options[index] === options[1]) {
            dodge(dodgeRisk)
-
 
         } else if (options[index] === options[2]) {
             spAtk()
@@ -147,11 +132,11 @@ function fightOne(health,atk,def,lvl,enHealth,enAtk,enDef,enLvl,dodgeRisk){
             d6 = dmg(6,1)
             d6two = dmg(6,1)
 
-            if (d6 !== d6two){ stageTwo()
+            if (d6 !== d6two) {
+                stageTwo()
             }
             else { console.log('fill this')
             }
-
         } else if (options[index] === options[4]){
             stageOneThree()
 
@@ -164,8 +149,6 @@ function fightOne(health,atk,def,lvl,enHealth,enAtk,enDef,enLvl,dodgeRisk){
 function spAtk(){
     console.log('+ Qaspiel =>  No Special Attacks until you\'re level 3 ya lout!       +')
 }
-
-
 
 function start() {
    console.log('+=======================================================================================+')   
@@ -242,9 +225,7 @@ function levelOne(){
             console.log('+    soooooo overdone. Blame Gabriel. Don\'t even get me started on that guy. 200% total +')
             console.log('+    toolbag. Remember you didn\'t hear that from me!                               => +\n')
             stageOne()
-        }
-        
-        else if (classPick[index] === classPick[2]) {
+        } else if (classPick[index] === classPick[2]) {
             console.log('+ You grab your rifle!                                                              \n +')
             console.log('+ Qaspiel => A mage?? In these parts? I thought only the university could train mages! +')
             console.log('+            Watch where you point those Fireballs!                                 => +\n')
@@ -254,9 +235,7 @@ function levelOne(){
             console.log('+            isn\'t soooooo overdone. Blame Gabriel. Don\'t even get me started on that +')
             console.log('+            guy. 200% total toolbag. Remember you didn\'t hear that from me!       => +\n')
             stageOne()
-        }
-            
-        else {
+        } else {
             quitGame()
         }
 
@@ -285,9 +264,7 @@ function levelOne(){
                     console.log('+ Your health is now '+heroStat.health+'!         + ')                        
                     stageOneTwo()
                 }
-            }
-
-            else {
+            } else {
                 console.log('+--------------------------------------------------------------------------------------+')
                 console.log('+ Qaspiel => (<_<) (>_>) (;_;) k then...                                               +')
                 console.log('+ You fall down the hole and take some damage +')
@@ -312,8 +289,7 @@ function levelOne(){
                     console.log('+ Qaspiel => I don\'t trust this rust bucket not one bit but hey I can fly so suit     +')
                     console.log('+            yourself! PUKUKUKUKUKUUU!                                               <=+')
                     stageOneThree()
-                }
-                else if (investigate[index] === investigate[1]){
+                } else if (investigate[index] === investigate[1]){
                     console.log('+--------------------------------------------------------------------------------------+')
                     console.log("+ You went right!                                                                       +")
                     console.log('+ As you approach the dripping, the air thickens with malice and the smell of iron      +')
@@ -328,8 +304,7 @@ function levelOne(){
                 }
             }  
           
-fightOne(heroStat.health,heroStat.atk,heroStat.lvl,oppStatTroll.enHealth,oppStatTroll.enAtk,oppStatTroll.enDef,oppStatTroll.enLvl,3)
-
+fightOne(heroStat[0],heroStat[1],heroStat[3],oppStatTroll[0][0],oppStatTroll[0][1],oppStatTroll[0][2],oppStatTroll[0][3],3)
 }
         function stageOneThree(){
             console.log('you made it!')
