@@ -14,7 +14,17 @@ gameStart2()
 //Game loop
 const gameLoop = () => {
     let tryCount = 3;
-    for(let i = 3; i < tryCount.length; i--)
+    for(let i = tryCount; i !== 0; i--) {
+        if(tryCount === 3) {
+            gameLoop()
+        }else{
+            tryCount --;
+            console.log("Number of remaing tries left" + tryCount)
+            if(tryCount === 0) {
+                gameLoop();
+            }
+        }
+    }
 }
 //Game Start
 const gameStart2 = () => {
@@ -32,7 +42,7 @@ let gameQues1 = readlineSync.question('How many letters are in the alphabet? ');
     gameSecond()
     } else {
         console.log(chalk.red('Try Again '));
-    gameFirst()
+    gameLoop()
     }   
 
 }
