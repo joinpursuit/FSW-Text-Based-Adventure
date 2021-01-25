@@ -1,3 +1,10 @@
+### Silver Web Game Play
+
+![SilverWeb-gif](/Users/candiceagard/Pursuit/Repos/FSW-Text-Based-Adventure/Assets/Silver-web-giphy.gif)
+
+
+
+
 # Text-Based-Adventure
 
 ## Introduction
@@ -8,7 +15,7 @@ This project will build on the skills that you've learned after your first coupl
 
 Look [here](https://classicreload.com/zork-i.html) and [here](http://www.bbc.co.uk/programmes/articles/1g84m0sXpnNCv84GpN2PLZG/the-hitchhikers-guide-to-the-galaxy-game-30th-anniversary-edition) for a couple examples of the genre.  Be creative!
 
-A fun Google easter egg is to Google search `text adventure`. From the results page right click on the page and inspect the console. You should find a game by Google. 
+A fun Google easter egg is to Google search `text adventure`. From the results page right click on the page and inspect the console. You should find a game by Google.
 
 ### Reading input
 
