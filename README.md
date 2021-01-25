@@ -1,6 +1,6 @@
 ### Silver Web Game Play
 
-![SilverWeb-gif](/Users/candiceagard/Pursuit/Repos/FSW-Text-Based-Adventure/Assets/Silver-web-giphy.gif)
+![SilverWeb-gif](Assets/Silver-web-giphy.gif)
 
 
 
