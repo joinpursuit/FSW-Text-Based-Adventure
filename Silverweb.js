@@ -108,7 +108,7 @@ startTitle("Silver Web", function (err, data) {
                  chalk.redBright("\nWARNING!") +
                  "They have located you trying to access their servers. We must shut down now❗️❗️❗️"
              );
-             evacuate();
+             startLoop();
            }
          };
          userAnswer();
@@ -287,6 +287,7 @@ startTitle("Silver Web", function (err, data) {
             console.log('')
          } else if (answrChoice == [1]) {
             console.log(`You didn't accept help from Agent. The live feed starts, your webcam turns on. You see yourself at your computer.` +  chalk.redBright(`You've been compromised.`));
+            startLoop();
 
             const checkPoint = () => {
                let continueFromHere = ['Do you want to replay private chatroom', 'Do you want to continue from start of game']
