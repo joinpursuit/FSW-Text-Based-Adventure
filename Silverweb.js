@@ -286,7 +286,7 @@ startTitle("Silver Web", function (err, data) {
             choiceFour();
             console.log('')
          } else if (answrChoice == [1]) {
-            console.log(`You didn't accept help from Agent. The live feed starts, your webcam turns on. You see yourself at your computer.` +  chalk.redBright(`You've been compromised.`));
+            console.log(`You didn't accept help from Agent. The live feed starts, your webcam turns on. You see yourself at your computer.` +  chalk.redBright(` You've been compromised.`));
             startLoop();
 
             const checkPoint = () => {
