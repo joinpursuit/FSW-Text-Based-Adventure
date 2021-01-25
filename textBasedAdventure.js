@@ -323,10 +323,11 @@ const gameQuizCand = () => {
             console.log('You have earned 20 point')
             console.log('Congrats')
             startGame()
-        }else if(choi == quiz[2]){
+        }else if(choi == quiz[2] || choi == quiz[3] || choi == quiz[4]){
             console.log('You can do it better!')
             console.log('This is your last chance!')
             console.log('Try again')
+            choi = readline.question(yourVariableHere + " Pick a number between 1 and 5\n" )
         }else{
             console.log(reprompt)
             choi = readline.question(yourVariableHere + " Pick a number between 1 and 5\n" )
