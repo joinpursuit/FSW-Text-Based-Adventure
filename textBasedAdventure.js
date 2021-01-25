@@ -15,14 +15,15 @@ gameLoop()
 //Game loop
 const gameLoop = () => {
     let tryCount = 3;
-    for(let i = tryCount; i !== 0; i--) {
-        if(!tryCount === 3) {
-            endGme()
+    for(let i = 10; i > 5; i--) {
+        if(tryCount < 3) {
+            gameLoop()
+            
         }else{
             tryCount --;
-            console.log("Number of remaing tries left" + tryCount)
+            console.log("Number of remaing tries left " + tryCount)
             if(tryCount === 0) {
-                gameLoop();
+                gameFirst();
             }
             break;
         }
@@ -33,7 +34,7 @@ const gameStart2 = () => {
 if (readlineSync.question('Would you like to play? ')) {
     gameFirst()
    } else {
-     endGame()
+     gameLoop()
    }
 }
 //Game First Question
