@@ -15,13 +15,13 @@ gameLoop()
 //Game loop
 const gameLoop = () => {
     let tryCount = 3;
-    for(let i = 10; i > 5; i--) {
-        if(tryCount < 3) {
+    for(i = tryCount; i !== 0; i--) {
+        if(tryCount > 3) {
             gameLoop()
             
         }else{
             tryCount --;
-            console.log("Number of remaing tries left " + tryCount)
+            console.log("Number of remaing attempts left " + tryCount)
             if(tryCount === 0) {
                 gameFirst();
             }
