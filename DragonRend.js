@@ -2,6 +2,9 @@ const {question, keyInYN}=require('readline-sync')
 let nameInput = question("Enter your name: ")
 console.log(`Hello ${nameInput}!  Welcome to my game.`)
 
+neverSayDie = () => {
+    
+}
 function quitGame() {
    let restart = keyInYN('To the well-organised mind, death is but the next great adventure. Restart?')
    console.log('Til next time '+ nameInput)
@@ -80,14 +83,14 @@ function dmg(atk, enDef,level){//these stats are hosted in heroStat/oppStat resp
     }
 }
 
-function enDmg(enAtk,def,enLvl){//enemyArr stat are held in oppStat
+function enDmg(enAtk1,def2,enLvl3){//enemyArr stat are held in oppStat
     
     d6 = dice (6,1)
     d2 = dice (2,1)
-    let damage = Math.ceil( ( ( (2*enLvl+10) / 150) * (enAtk/def) +2) *d6)
-    if (d2 === 2){
-        console.log(`+ You took ${heroStat[0]-damage} damage from the enemy! +`)
-        console.log(`+ Your health is now ${heroStat[0]}!                    +`)
+    let damage = Math.ceil( ( ( (2*enLvl3+10) / 150) * (enAtk1/def2) +2) *d6)
+    if (d2 === 2) {
+        let hit = heroStat[0]-damage
+        return hit
     } else if (d2 === 1) {
         console.log('+ The enemy missed! You take no damage.              +')
     }
@@ -106,15 +109,15 @@ function dodge(risk,enAtk1,def2,){//if dodge roll is > 3, nullify damage
     }
 }
 
-function fightOne(health0,atk1,def2,lvl4,enHealth0,enAtk1,enDef2,enLvl3,dodgeRisk){
+function fight(health0,atk1,def2,lvl3,enHealth0,enAtk1,enDef2,enLvl3,dodgeRisk){
     
-    while (health > 0 || enHealth > 0) {
+    while (health0 > 0 || enHealth0 > 0) {
         const rls1 = require('readline-sync')
         options  = ['Attack', 'Dodge', 'Sp. Attack', 'Run']
         index = rls1.keyInSelect(options, 'What do you do?') 
 
         if (options[index] === options[0]){
-            damage = dmg(lvl4,atk1,enDef2)
+            damage = dmg(lvl3,atk1,enDef2)
             finalDmg = enHealth0 - damage
             //enDmg(enAtk, def, enLvl)
             //iterate randomly through an array and return and indx of the array
@@ -134,9 +137,7 @@ function fightOne(health0,atk1,def2,lvl4,enHealth0,enAtk1,enDef2,enLvl3,dodgeRis
 
             if (d6 !== d6two) {
                 stageTwo()
-            }
-            else { console.log('fill this')
-            }
+            } else { console.log('fill this') }
         } else if (options[index] === options[4]){
             stageOneThree()
 
@@ -144,6 +145,14 @@ function fightOne(health0,atk1,def2,lvl4,enHealth0,enAtk1,enDef2,enLvl3,dodgeRis
             quitGame()
         }
     }//while close
+    if (heroStat[0] === 0) {
+        console.log(` ||=====\\ ======== //=====+= ||=====\\ `)
+        console.log(` ||  -   |    ||    ||        ||  -   | `)
+        console.log(` ||  |   |    ||    ||---|    ||  |   | `)
+        console.log(` ||  1   |    ||    ||        ||  1   | `)
+        console.log(` ||=====// ======*= ||======\\||=====// `)
+        start()
+    }
 }
 
 function spAtk(){
@@ -261,14 +270,14 @@ function levelOne(){
                     console.log('+--------------------------------------------------------------------------------------+')
                     console.log('+ Qaspiel => Ahh tough luck buddy...                                                   +')
                     minusHealth(2,2)
-                    console.log('+ Your health is now '+heroStat.health+'!         + ')                        
+                    console.log('+ Your health is now '+heroStat[0]+'!         + ')                        
                     stageOneTwo()
                 }
             } else {
                 console.log('+--------------------------------------------------------------------------------------+')
                 console.log('+ Qaspiel => (<_<) (>_>) (;_;) k then...                                               +')
                 console.log('+ You fall down the hole and take some damage +')
-                console.log('+ Your health is now '+heroStat.health+'!         + ')
+                console.log(`+ Your health is now ${heroStat[0]}!         + `)
                 stageOneTwo()
             }    
         }
@@ -303,8 +312,8 @@ function levelOne(){
                     console.log('+ one have gotten this far to the surface? No matter, let\'s RUMBLE!!                    +')
                 }
             }  
-          
-fightOne(heroStat[0],heroStat[1],heroStat[3],oppStatTroll[0][0],oppStatTroll[0][1],oppStatTroll[0][2],oppStatTroll[0][3],3)
+//      (health0,          atk1,    def2,   lvl3,             enHealth0,      enAtk1,      enDef2,             enLvl3,dodgeRisk)           
+fight(heroStat[0],heroStat[1],heroStat[2],heroStat[3],oppStat[0][0],oppStat[0][1],oppStat[0][2],oppStat[0][3],3)
 }
         function stageOneThree(){
             console.log('you made it!')
