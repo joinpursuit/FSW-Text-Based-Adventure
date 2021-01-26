@@ -2,12 +2,12 @@ const readline1 = require('readline-sync')
 const chalk = require('chalk')
 
 let nameInput = readline1.question("Enter your name: \n")
-
-console.log(`\nHello ${nameInput}!  Welcome to The Golden Coin!\nAll your decisions matter.\nBe careful!\nYou can die at any moment, and you will restart the game again\n`)
+console.clear()
+console.log(`\nHello ${nameInput}!  Welcome to ` + chalk.yellow(`The Golden Coin!\n`) + `All your decisions matter.\n\nBe careful!\nYou can die at any moment, and you will restart the game again\n`)
 
 const startGame = () => {
     if (readline1.keyInYN("Are you ready to inmerse yourself in this adventure?")) {
-        console.log("\n");
+        console.clear()
         console.log("Let's go!!\n");
         gamePlay()
     } else {
@@ -16,7 +16,8 @@ const startGame = () => {
 }
 
 const quitGame = () => {
-    console.log("Perfect!! See you next time!!");
+    console.clear()
+    console.log("Perfect!! See you next time!!\n");
     process.exit()
 }
 
@@ -31,13 +32,13 @@ const gamePlay = () => {
 
 const genericInput1 = () => {
     
-    console.log("You are surrounded by flowers!! You see a path to the east, a cow to the south and a village to the north.\n");
+    console.log("You are surrounded by flowers!! You see a path to the east, and a village to the north.\n");
 
-    let genericInput1 = ["north", "south", "east"]
+    let genericInput1 = ["north", "east"]
     
-    while (genericInput1 !== "north" || genericInput1 !== "south" || genericInput1 !== "east") {
+    while (genericInput1 !== "north" || genericInput1 !== "east") {
 
-    readline1.setDefaultOptions({limit:genericInput1, limitMessage:"\nInvalid move! Use 'north', 'south' or 'east'"})
+    readline1.setDefaultOptions({limit:genericInput1, limitMessage:"\nInvalid move! Use 'north' or 'east'"})
 
     let input1 = readline1.question("Where do you want to go?\n")
     
@@ -46,12 +47,6 @@ const genericInput1 = () => {
                 console.log("\n");
                 console.log("You ran into the village and you are surrounded by 3 houses: one on your left, one on your right and one in front of you.\n");
                 genericInput1North()
-                break;
-            case "south":
-                console.log("\n");
-                console.log("You encounter a cow and it looks familiar?\n");
-                console.log(chalk.yellow("Cow:")) + console.log(`${nameInput}, what happened to you? Why are you looking me with those eyes? I'm your friend, ` + chalk.yellow("Milky") + "!!\n");
-                genericInput1South()
                 break;
             case "east":
                 console.log("\n");
@@ -109,48 +104,7 @@ const genericInput1North = () => {
 
 }
 
-const genericInput1South = () => {
-   
-    console.log("You are so confused right now\n");
 
-    let genericInput1South = ["Why are you able to talk?", `Wait, you say my name is ${nameInput}?`] 
-    let input3 = readline1.keyInSelect(genericInput1South, "Choose an option")
-    let input4 = genericInput1South[input3]
-
-    if (input4 === "Why are you able to talk?") {
-       console.log("\n");
-       console.log(chalk.yellow("Milky:")) + console.log("It doesn't matter!! What matters is that you are my best friend.\nIt seems that you dont remember anything.\n");
-       for( var i = 0; i < genericInput1South.length; i++){ 
-            if (genericInput1South[i] === "Why are you able to talk?") {
-                genericInput1South.splice(i, 1); 
-             }
-        }
-
-        input3 = readline1.keyInSelect(genericInput1South, "1 option left")
-        input4 = genericInput1South[input3]
-
-        if (input4 === `Wait, you say my name is ${nameInput}?`) {
-            console.log("\nYes, it is!! You have been living in the village for 8 years.\nYou went to look for the Golden Coin two weeks ago!! What happened?");
-        }
-
-    } else if (input4 === `Wait, you say my name is ${nameInput}?`) {
-        console.log("\nYes, it is!! You have been living in the village for 8 years.\nYou went to look for the Golden Coin two weeks ago!! What happened?");
-        for( var i = 0; i < genericInput1South.length; i++){ 
-             if (genericInput1South[i] === `Wait, you say my name is ${nameInput}?`) {
-                 genericInput1South.splice(i, 1); 
-              }
-         }
-
-         input3 = readline1.keyInSelect(genericInput1South, "1 option left")
-         input4 = genericInput1South[input3]
-
-         if (input4 === "Why are you able to talk?") {
-            console.log("\n");
-            console.log(chalk.yellow("Milky:")) + console.log("It doesn't matter!! What matters is that you are my best friend.\nIt seems that you dont remember anything.\n");
-         }
-     }
-
-}
 
 const genericInput1NorthLeft = () => {
 
@@ -296,13 +250,13 @@ const genericInput1NorthFrontToOutsideLeftToOutside = () => {
 
 const genericInput1Back1 = () => {
     console.log("Now you remember your name\n");
-    console.log("You are surrounded by flowers!! You see a path to the east, a cow to the south and a village to the north\n");
+    console.log("You are surrounded by flowers!! You see a path to the east and a village to the north\n");
 
-    let genericInput1Back1 = ["north", "south", "east"]
+    let genericInput1Back1 = ["north", "east"]
     
-    while (genericInput1Back1 !== "north" || genericInput1Back1 !== "south" || genericInput1Back1 !== "east") {
+    while (genericInput1Back1 !== "north" || genericInput1Back1 !== "east") {
 
-    readline1.setDefaultOptions({limit:genericInput1Back1, limitMessage:"\nInvalid move! Use 'north', 'south' or 'east'"})
+    readline1.setDefaultOptions({limit:genericInput1Back1, limitMessage:"\nInvalid move! Use 'north' or 'east'"})
 
     let input13 = readline1.question("Where do you want to go?\n")
     
@@ -310,12 +264,6 @@ const genericInput1Back1 = () => {
             case "north":
                 console.log("\n");
                 genericInput1NorthFrontToOutside()
-                break;
-            case "south":
-                console.log("\n");
-                console.log("You encounter a cow and it looks familiar?\n");
-                console.log(chalk.yellow("Cow:")) + console.log(`${nameInput}, what happened to you? Why are you looking me with those eyes? I'm your friend, ` + chalk.yellow("Milky") + "!!\n");
-                genericInput1South2()
                 break;
             case "east":
                 console.log("\n");
@@ -407,7 +355,6 @@ const genericInput1NorthLeftToOutside = () => {
 
 const genericInput1NorthLeftToOutsideFront = () => {
     console.log(`\nYou are shocked!! You remembered that ${nameInput} is your name!! So, this is your house and you have a collection of coins.\n`);
-    console.log("Now you added the coins you founded in your collection\n");
 
     let genericInput1NorthLeftToOutsideFront = ["Go back outside"]
     let input16 = readline1.keyInSelect(genericInput1NorthLeftToOutsideFront, "What do you want to do now?")
@@ -421,13 +368,13 @@ const genericInput1NorthLeftToOutsideFront = () => {
 
 const genericInput1Back3 = () => {
     console.log("Now you have 10 coins\n");
-    console.log("You are surrounded by flowers!! You see a path to the east, a cow to the south and a village to the north\n");
+    console.log("You are surrounded by flowers!! You see a path to the east and a village to the north\n");
 
     let genericInput1Back3 = ["north", "south", "east"]
     
-    while (genericInput1Back3 !== "north" || genericInput1Back3 !== "south" || genericInput1Back3 !== "east") {
+    while (genericInput1Back3 !== "north"  || genericInput1Back3 !== "east") {
 
-    readline1.setDefaultOptions({limit:genericInput1Back3, limitMessage:"\nInvalid move! Use 'north', 'south' or 'east'"})
+    readline1.setDefaultOptions({limit:genericInput1Back3, limitMessage:"\nInvalid move! Use 'north' or 'east'"})
 
     let input18 = readline1.question("Where do you want to go?\n")
     
@@ -435,12 +382,6 @@ const genericInput1Back3 = () => {
             case "north":
                 console.log("\n");
                 genericInput1NorthLeftToOutside()
-                break;
-            case "south":
-                console.log("\n");
-                console.log("You encounter a cow and it looks familiar?\n");
-                console.log(chalk.yellow("Cow:")) + console.log(`${nameInput}, what happened to you? Why are you looking me with those eyes? I'm your friend, ` + chalk.yellow("Milky") + "!!\n");
-                genericInput1South()
                 break;
             case "east":
                 console.log("\n");
@@ -469,7 +410,7 @@ const genericInput1South2 = () => {
 
     if (input20 === "Why are you able to talk?") {
        console.log("\n");
-       console.log(chalk.yellow("Milky:")) + console.log("It doesn't matter!! What matters is that you are my best friend.\nIt seems that you dont remember anything.\n");
+       console.log(chalk.yellow("Milky:")) + console.log("It doesn't matter!! What matters is that you are my best friend.\nIt seems that you don't remember anything.\n");
        for( var i = 0; i < genericInput1South2.length; i++){ 
             if (genericInput1South2[i] === "Why are you able to talk?") {
                 genericInput1South2.splice(i, 1); 
@@ -480,11 +421,12 @@ const genericInput1South2 = () => {
         input20 = genericInput1South2[input19]
 
         if (input20 === `Wait, do you know me?`) {
-            console.log("\nYes, it is!! You have been living in the village for 8 years.\nYou went to look for the Golden Coin two weeks ago!! What happened?");
+            console.log("\nSure!! Good luck finding it!!\n");
+            genericInput1South3()
         }
 
     } else if (input20 === `Wait, do you know me?`) {
-        console.log("\nYes, it is!! You have been living in the village for 8 years.\nYou went to look for the Golden Coin two weeks ago!! What happened?");
+        console.log("\nYes, it is!! You have been living in the village for 8 years.\nYou went to look for the Golden Coin two weeks ago!! What happened?\n");
         for( var i = 0; i < genericInput1South2.length; i++){ 
              if (genericInput1South2[i] === `Wait, do you know me?`) {
                  genericInput1South2.splice(i, 1); 
@@ -496,10 +438,148 @@ const genericInput1South2 = () => {
 
          if (input20 === "Why are you able to talk?") {
             console.log("\n");
-            console.log(chalk.yellow("Milky:")) + console.log("It doesn't matter!! What matters is that you are my best friend.\nIt seems that you dont remember anything.\n");
+            console.log(chalk.yellow("Milky:")) + console.log("It doesn't matter!! What matters is that you are my best friend.\nIt seems that you don't remember anything.\n");
+            genericInput1South3()
          }
      }
 }
+
+
+const genericInput1South3 = () => {
+   
+    console.log(chalk.yellow(`Milky:`)) + console.log("Where is the Golden Coin?\n");
+    
+
+    let genericInput1South3 = ["That's the thing!! I don't remember", `Maybe, it's in my house.`] 
+    let input21 = readline1.keyInSelect(genericInput1South3, "Choose an option")
+    let input22 = genericInput1South3[input21]
+
+    if (input22 === "That's the thing!! I don't remember") {
+       console.log("\n");
+       console.log(chalk.yellow("Milky:")) + console.log("It has to be somewhere!! I know you have it!!\n");
+       for( var i = 0; i < genericInput1South3.length; i++){ 
+            if (genericInput1South3[i] === "That's the thing!! I don't remember") {
+                genericInput1South3.splice(i, 1); 
+             }
+        }
+
+        input21 = readline1.keyInSelect(genericInput1South3, "1 option left")
+        input22 = genericInput1South3[input21]
+
+        if (input22 === `Maybe, it's in my house.`) {
+            console.log("\nSure!! Good luck finding it!!\n");
+            genericInput1Back4()
+        }
+
+    } else if (input22 === `Maybe, it's in my house.`) {
+        console.log("\nYes, it is!! You have been living in the village for 8 years.\nYou went to look for the Golden Coin two weeks ago!! What happened?");
+        for( var i = 0; i < genericInput1South3.length; i++){ 
+             if (genericInput1South3[i] === `Maybe, it's in my house.`) {
+                 genericInput1South3.splice(i, 1); 
+              }
+         }
+
+         input21 = readline1.keyInSelect(genericInput1South3, "1 option left")
+         input22 = genericInput1South3[input21]
+
+         if (input22 === "That's the thing!! I don't remember") {
+            console.log("\n");
+            console.log(chalk.yellow("Milky:")) + console.log("It has to be somewhere!! I know you have it!!\n");
+            genericInput1Back4()
+         }
+     }
+}
+
+
+const genericInput1Back4 = () => {
+    console.log("Now, You have to go to your house. \n");
+    console.log("You are surrounded by flowers!! You see a path to the east and a village to the north\n");
+
+    let genericInput1Back4 = ["north", "east"]
+    
+    while (genericInput1Back4 !== "north"  || genericInput1Back4 !== "east") {
+
+    readline1.setDefaultOptions({limit:genericInput1Back4, limitMessage:"\nInvalid move! Use 'north' or 'east'"})
+
+    let input23 = readline1.question("Where do you want to go?\n")
+    
+        switch (input23) {
+            case "north":
+                console.log("\n");
+                genericInput1NorthLeftToOutside2()
+                break;
+            case "east":
+                console.log("\n");
+                console.log("You are walking through the path, the path breaks and you fall into a hole!! Oh no!!\n");
+                if (readline1.keyInYN("Do you want to try again?")) {
+                    console.log("\n");
+                    gamePlay()
+                } else {
+                    console.log("\n");
+                    quitGame()
+                }
+                break;
+            default: 
+        } 
+    break;
+    } 
+}
+
+
+const genericInput1NorthLeftToOutside2 = () => {
+    
+    console.log("Now, you are only 2 options: home and the house on the right\n");
+
+    let genericInput1NorthLeftToOutside2 = ["home", "right"]
+    
+    while (genericInput1NorthLeftToOutside2 !== "home" || genericInput1NorthLeftToOutside2 !== "right") {
+    readline1.setDefaultOptions({limit:genericInput1NorthLeftToOutside2})
+    let input24 = readline1.question("Which one do you want to enter?\n")
+        switch (input24) {
+            case "home":
+                console.log("\nYou enter your house. You added all the coins you found to your collections!!\n");
+                finalInput()
+                break;
+            case "right":
+                console.log("\nYou enter the right house. It's a private property . Oh no!!");
+                if (readline1.keyInYN("Do you want to try again?")) {
+                    console.log("\n");
+                    gamePlay()
+                } else {
+                    console.log("\n");
+                    quitGame()
+                }
+                break;
+            default:       
+        }
+        break;
+    }
+
+}
+
+const finalInput = () => {
+    console.log(`\nBut wait!!\n`);
+
+    let genericInput1NorthFront = ["Look inside your pocket"]
+    let input25 = readline1.keyInSelect(genericInput1NorthFront, "What is this?")
+    let input26 = genericInput1NorthFront[input25]
+
+    if (input26 === "Look inside your pocket") {
+        console.log("\nIt's the Golden Coin!! It was inside of your pocket this whole time!!\n");
+        console.log("This game is a little reminder on always keep notes of everything you have to do\n");
+        console.log("I hope you like it!!\n");
+        console.log("\nSee you next time!!\n");
+        
+        if (readline1.keyInYN("Do you want to play again?")) {
+            console.log("\n");
+            gamePlay()
+        } else {
+            console.log("\n");
+            quitGame()
+        }
+    }
+}
+
 
 
 
