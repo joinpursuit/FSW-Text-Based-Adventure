@@ -8,6 +8,16 @@ function sleep(milliseconds) {
   } while (currentDate - date < milliseconds);
 }
 
+
+
+
+
+
+
+
+
+
+
 // FUNCTION FOR ROLLING SOME DICE
 function diceRoll() {
   let variable = Math.floor(Math.random() * 6) + 1;
@@ -16,12 +26,20 @@ function diceRoll() {
 
 // Function for reversing words
 function backwards(words) {
-  return words.split("").reverse().join("");
+  emptystring = ''
+  for(i = 0 ; i <= 1 ; i++){
+   emptystring += words[i] + words.split("").reverse().join("");
+  return emptystring;
+  }
 }
 
 // Starting the game
 function startGame() {
   let answer = rls.keyInYN("Ready player one?");
+
+
+  
+
 
   if (answer) {
     gameLoop();
@@ -290,3 +308,5 @@ function quitGame() {
 startGame();
 
 quitGame();
+
+
