@@ -409,14 +409,20 @@ const zeldaRoomSword = () => {
     )
   );
   swordOrRiddle = swordOrRiddle.trim().toLowerCase();
-  if (swordOrRiddle === "sword") {
-    swordPath();
-  } else if (swordOrRiddle === "riddle") {
-    riddlePath();
-  } else {
-    console.log(chalk.redBright.italic(`Please choose the correct answer`));
-    zeldaRoomSword();
+  switch(swordOrRiddle) {
+    case 'sword':
+      swordPath();
+     case 'riddle':
+      riddlePath();  
   }
+  // if (swordOrRiddle === "sword") {
+  //   swordPath();
+  // } else if (swordOrRiddle === "riddle") {
+  //   riddlePath();
+  // } else {
+  //   console.log(chalk.redBright.italic(`Please choose the correct answer`));
+  //   zeldaRoomSword();
+  // }
 };
 
 const zeldaRoomNosword = () => {
