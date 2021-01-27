@@ -125,17 +125,28 @@ const dinningHallDoors = () => {
     chalk.magenta.bold(`Which door do you want to go through ?\n`)
   );
   doorChoiceOne = doorChoiceOne.trim().toLowerCase();
-  if (doorChoiceOne === "left") {
+  //changed like 127-137 to a while loop
+  while (doorChoiceOne === "left") {
     dinningHallLeftDoor();
-  } else if (doorChoiceOne === "right") {
+  } while (doorChoiceOne === "right") {
     dinningHallRightDoor();
-  } else if (doorChoiceOne === "forward") {
+  } while (doorChoiceOne === "forward") {
     dinningHallForwardDoor();
-  } else {
+  } 
     console.log(chalk.redBright.italic(`Please choose a correct answer`));
     dinningHallDoors();
-  }
 };
+  // if (doorChoiceOne === "left") {
+  //   dinningHallLeftDoor();
+  // } else if (doorChoiceOne === "right") {
+  //   dinningHallRightDoor();
+  // } else if (doorChoiceOne === "forward") {
+  //   dinningHallForwardDoor();
+  // } else {
+  //   console.log(chalk.redBright.italic(`Please choose a correct answer`));
+  //   dinningHallDoors();
+  // }
+//};
 
 const dinningHallForwardDoor = () => {
   console.log(
