@@ -1,9 +1,9 @@
 const readline= require('readline-sync')
-
+const chalk = require(`chalk`)
 let yourVariableHere = readline.question("Enter your name: \n ")
  console.log( "Hello " + yourVariableHere + " It's a pleasure to have you here!")
   console.log("Welcome to Traveling the World in 80 Days!")
-const reprompt = (`Sorry ${yourVariableHere},  but  that is not a valid enter`)
+const reprompt = (chalk.red(`WRONG...\n`) + chalk.green(`Sorry ${yourVariableHere},  but  that is not a valid enter`) )
 const breaK = `\n` 
 const startGame = () => {
 let user = readline.keyInYN("Do you wanna play \n")
@@ -12,16 +12,16 @@ let user = readline.keyInYN("Do you wanna play \n")
     console.log(" June 28, 1856")
     console.log(" Welcome to the airport " +  " MATIAS PEREZ ")
     pause(0.5)
-    console.log(    `                  /\\                   `)
-    pause(0.7)
-    console.log(    `                 /  \\                  `)
-    pause(0.9)
-    console.log(    `                /    \\                  `)
-    pause(1.1)
+    console.log(chalk.red    (`                  /\\                   `))
+    pause(0.5)
+    console.log(chalk.blue    (`                 /  \\                  `))
+    pause(0.5)
+    console.log(chalk.yellow    (`                /    \\                  `))
+    pause(0.5)
     console.log(     `|\\             /      \\              /|          `    )
-    pause(1.3)
+    pause(0.5)
     console.log(     `| \\___________/        \\____________/ |       `     )
-    pause(1.5)
+    pause(0.5)
     console.log(`\n`)
     console.log(" In this game you will have the opportunity to travel and learn more about the culture and traditions of different countries.") 
     readline.keyInPause("Press any key to Continue \n")  
@@ -37,7 +37,7 @@ let user = readline.keyInYN("Do you wanna play \n")
         console.log(" Come back when you're ready ")
         quitGame()
     }
-    gameHistories()
+    
   }else{
         console.log("Have a nice Day "  + yourVariableHere)
         quitGame()
@@ -50,11 +50,9 @@ const playloop = () => {
     console.log(" Restart-Game "     +     "        "  +   "          "   +  "Start Again")
     let answer = readline.question(yourVariableHere + " Where would you like to go? \n" ) 
     console.log() 
-    let country = ["Sweden", "Canada", "China", "Haiti", "Brazil", "Austria", "Greece", "Chile", "Colombia", "Cuba"]
+    //let country = ["Sweden", "Canada", "China", "Haiti", "Brazil", "Austria", "Greece", "Chile", "Colombia", "Cuba"]
 
-for (let i = 0; i <= country.length; i ++){
-    if ( country[0] !== country[i]){
-    }if(answer === "Canada"){
+    if(answer === "Canada"){
         console.log("Amazing" + " Let's go to Canada")
          canadaTrip()
     }else if(answer==="Haiti"){
@@ -65,11 +63,46 @@ for (let i = 0; i <= country.length; i ++){
                 startGame()
     }else if(answer === "Start Again"){
                  startGame()
-    }else if(answer == "Sweden" || answer== "Cuba" || answer=="China" || answer== "Brazil" || answer=="Austria"|| answer== "Greece" || answer=="Chile" || answer=="Colombia"){
+    }else if(answer == "Sweden" || answer=="China" || answer== "Brazil" || answer=="Austria"|| answer== "Greece" || answer=="Chile" || answer=="Colombia"){
         console.log("Sorry " + yourVariableHere)
         console.log("Unfortunally we don't have more tickets to " + " " + answer )
         console.log("However we still have others destinations")
         playloop()
+    }else if(answer == "Cuba"){
+        console.log(`... \n .... \n .....\n`)
+        console.log(`We regret your wait, but due to national security problems ${answer} it has been put back on the list of terrorist countries by the previous president. `)
+        console.log(`You can only travel to ${answer} if you have a Cuban passport`)
+        let userAnswer = readline.keyInYN(`Do you have Cuban passport: \n`)
+        if(userAnswer){
+            console.log(`Perfect.\n` )
+            let days = [`Winter `, `Spring `, `Summer `, `Fall `]
+            console.log(days)
+            let decision = readline.question(`When do you want to go: \n`)
+            if(decision === "Winter"){
+                console.log(`Ok. let's see ${decision} `)
+                year("winter")
+            }else if(decision == "Spring"){
+                console.log(`Ok. let's see ${decision} `)
+                year("spring")
+            }else if(decision == "Summer"){
+                console.log(`Ok. let's see ${decision} `)
+                year("summer")
+            }else if(decision == "Fall"){
+                console.log(`Ok. let's see ${decision} `)
+                year("fall")
+            }else{
+                console.log(reprompt)
+                console.log(readline.question(`When do you want to go: \n`))
+            }
+        }else if(!userAnswer){
+            console.log(`Ok`)
+            playloop()
+        }else{
+            console.log(reprompt)
+            console.log(readline.question(`Do you have Cuban passport: \n`))
+        }
+
+
     }else{
         console.log(reprompt)
         console.log(breaK)
@@ -77,7 +110,7 @@ for (let i = 0; i <= country.length; i ++){
     }
 }
     
-} 
+
 const pause = (seconds) =>{
     //Function comes from group review w MYra et.
     let ms = seconds * 1000
@@ -91,37 +124,6 @@ const pause = (seconds) =>{
 }
 
 
-const gameHistories = () => {
-    // console.log(" June 28, 1856")
-    // console.log(" Welcome to the airport " +  " MATIAS PEREZ ")
-    // pause(0.5)
-    // console.log(    `                  /\\                   `)
-    // pause(0.7)
-    // console.log(    `                 /  \\                  `)
-    // pause(0.9)
-    // console.log(    `                /    \\                  `)
-    // pause(1.1)
-    // console.log(     `|\\             /      \\              /|          `    )
-    // pause(1.3)
-    // console.log(     `| \\___________/        \\____________/ |       `     )
-    // pause(1.5)
-    // console.log(`\n`)
-    // console.log(" In this game you will have the opportunity to travel and learn more about the culture and traditions of different countries.") 
-    // readline.keyInPause("Press any key to Continue \n")  
-    // console.log(" To achieve this you will have to make decisions and choose what things you want to know and from where " )
-    // console.log( " Regardless of how much you learn from these countries, you will earn points that you can accumulate to obtain a discount on the tickets you can buy for other trips ")
-    // console.log(" If you are ready, go to the other platform to obtain your flight ticket. ")
-    
-    // let answer = readline.keyInYN("Are you ready? \n")  
-    // if (answer) {
-    //     console.log( " Let's travel" )
-    //     playloop()
-    // }else{
-    //     console.log(" Come back when you're ready ")
-    //     quitGame()
-    // }
-}
-
 const canadaTrip =() =>{
     console.log("History", "Traditions", "Religions"," Holidays"," Cuisine"," Place to Go", "Go Home", "Quiz")
 
@@ -129,7 +131,6 @@ const canadaTrip =() =>{
     let attractions = ["History", "Traditions", "Religions","Holidays","Cuisine","Place to Go", "Go Home", "Quiz"]
     console.log()
     
-
     if (answ === attractions[0]){
        historyView("Canada")
     }else if(answ === attractions[1]){
@@ -333,6 +334,36 @@ const placeToGoView = (country) => {
             default:
     }
 } 
+
+const year = (season) =>{
+let winter = `December - February`
+let spring = `March - May`
+let summer = `June - August`
+let fall = `September - November` 
+ switch(season){
+     case "winter":
+         console.log(`${winter}`)
+         console.log()
+         readline.keyInPause("Press any key to Continue \n") 
+         playloop()
+         break;
+         case "spring":
+             console.log(`${spring}`)
+             playloop()
+             break;
+             case "summer":
+                 console.log(`${summer}`)
+                 playloop()
+                 break;
+                 case "fall":
+                     console.log(`${fall}`)
+                     playloop()
+                     break;
+                     default:
+                         console.log(reprompt)
+                         
+ }  
+}
 
 const gameQuizCand = () => {
     console.log('In what year was the concept of the CN Tower project generated?')
