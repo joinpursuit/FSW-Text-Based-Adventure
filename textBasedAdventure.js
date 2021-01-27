@@ -9,7 +9,35 @@ const startGame = () => {
 let user = readline.keyInYN("Do you wanna play \n")
  if(user){
     console.log("Let's play")
-        gameHistories()
+    console.log(" June 28, 1856")
+    console.log(" Welcome to the airport " +  " MATIAS PEREZ ")
+    pause(0.5)
+    console.log(    `                  /\\                   `)
+    pause(0.7)
+    console.log(    `                 /  \\                  `)
+    pause(0.9)
+    console.log(    `                /    \\                  `)
+    pause(1.1)
+    console.log(     `|\\             /      \\              /|          `    )
+    pause(1.3)
+    console.log(     `| \\___________/        \\____________/ |       `     )
+    pause(1.5)
+    console.log(`\n`)
+    console.log(" In this game you will have the opportunity to travel and learn more about the culture and traditions of different countries.") 
+    readline.keyInPause("Press any key to Continue \n")  
+    console.log(" To achieve this you will have to make decisions and choose what things you want to know and from where " )
+    console.log( " Regardless of how much you learn from these countries, you will earn points that you can accumulate to obtain a discount on the tickets you can buy for other trips ")
+    console.log(" If you are ready, go to the other platform to obtain your flight ticket. ")
+    
+    let answer = readline.keyInYN("Are you ready? \n")  
+    if (answer) {
+        console.log( " Let's travel" )
+        playloop()
+    }else{
+        console.log(" Come back when you're ready ")
+        quitGame()
+    }
+    gameHistories()
   }else{
         console.log("Have a nice Day "  + yourVariableHere)
         quitGame()
@@ -64,34 +92,34 @@ const pause = (seconds) =>{
 
 
 const gameHistories = () => {
-    console.log(" June 28, 1856")
-    console.log(" Welcome to the airport " +  " MATIAS PEREZ ")
-    pause(0.5)
-    console.log(    `                  /\\                   `)
-    pause(0.7)
-    console.log(    `                 /  \\                  `)
-    pause(0.9)
-    console.log(    `                /    \\                  `)
-    pause(1.1)
-    console.log(     `|\\             /      \\              /|          `    )
-    pause(1.3)
-    console.log(     `| \\___________/        \\____________/ |       `     )
-    pause(1.5)
-    console.log(`\n`)
-    console.log(" In this game you will have the opportunity to travel and learn more about the culture and traditions of different countries.") 
-    readline.keyInPause("Press any key to Continue \n")  
-    console.log(" To achieve this you will have to make decisions and choose what things you want to know and from where " )
-    console.log( " Regardless of how much you learn from these countries, you will earn points that you can accumulate to obtain a discount on the tickets you can buy for other trips ")
-    console.log(" If you are ready, go to the other platform to obtain your flight ticket. ")
+    // console.log(" June 28, 1856")
+    // console.log(" Welcome to the airport " +  " MATIAS PEREZ ")
+    // pause(0.5)
+    // console.log(    `                  /\\                   `)
+    // pause(0.7)
+    // console.log(    `                 /  \\                  `)
+    // pause(0.9)
+    // console.log(    `                /    \\                  `)
+    // pause(1.1)
+    // console.log(     `|\\             /      \\              /|          `    )
+    // pause(1.3)
+    // console.log(     `| \\___________/        \\____________/ |       `     )
+    // pause(1.5)
+    // console.log(`\n`)
+    // console.log(" In this game you will have the opportunity to travel and learn more about the culture and traditions of different countries.") 
+    // readline.keyInPause("Press any key to Continue \n")  
+    // console.log(" To achieve this you will have to make decisions and choose what things you want to know and from where " )
+    // console.log( " Regardless of how much you learn from these countries, you will earn points that you can accumulate to obtain a discount on the tickets you can buy for other trips ")
+    // console.log(" If you are ready, go to the other platform to obtain your flight ticket. ")
     
-    let answer = readline.keyInYN("Are you ready? \n")  
-    if (answer) {
-        console.log( " Let's travel" )
-        playloop()
-    }else{
-        console.log(" Come back when you're ready ")
-        quitGame()
-    }
+    // let answer = readline.keyInYN("Are you ready? \n")  
+    // if (answer) {
+    //     console.log( " Let's travel" )
+    //     playloop()
+    // }else{
+    //     console.log(" Come back when you're ready ")
+    //     quitGame()
+    // }
 }
 
 const canadaTrip =() =>{
@@ -195,7 +223,7 @@ const historyView = (country) => {
             canadaTrip() 
             break;
             case "Haiti":
-                console.log("-After Columbus's discovery of Hispaniola, the Spanish established the first permanent European settlement on the island. Just before the turn of the 18th century, Spain ceded the western part of Hispaniola—a region that later adopted the name Haiti—to France, and thus began a century of French control in Haiti.The colony became independent from France under the name of Haiti. It is the second American nation to become independent, after the United States. It is also considered the world's first " + " Black" + " republic and one of the few successful slave rebellions. Slavery, the basis of the economy, is abolished.")
+                console.log("- After Columbus's discovery of Hispaniola, the Spanish established the first permanent European settlement on the island. Just before the turn of the 18th century, Spain ceded the western part of Hispaniola—a region that later adopted the name Haiti—to France, and thus began a century of French control in Haiti.The colony became independent from France under the name of Haiti. It is the second American nation to become independent, after the United States. It is also considered the world's first " + " Black" + " republic and one of the few successful slave rebellions. Slavery, the basis of the economy, is abolished.")
                 haitiTrip()
                 break;
                 default:
