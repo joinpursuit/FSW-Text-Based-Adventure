@@ -74,7 +74,7 @@ const genericInput1North = () => {
     let genericInput1North = ["left", "right", "front", "back"]
     
     while (genericInput1North !== "left" || genericInput1North !== "right" || genericInput1North !== "front" || genericInput1North !== "back") {
-    readline1.setDefaultOptions({limit:genericInput1North})
+    readline1.setDefaultOptions({limit:genericInput1North, limitMessage:"\nInvalid move!! Use 'left', 'right', 'front' or 'back'"})
     let input2 = readline1.question("Which one do you want to enter?\n").toLowerCase()
         switch (input2) {
             case "left":
@@ -167,7 +167,7 @@ const genericInput1NorthFrontToOutside = () => {
     let genericInput1NorthFrontToOutside = ["left", "right", "back"]
     
     while (genericInput1NorthFrontToOutside !== "left" || genericInput1NorthFrontToOutside !== "right"  || genericInput1NorthFrontToOutside !== "back") {
-    readline1.setDefaultOptions({limit:genericInput1NorthFrontToOutside})
+    readline1.setDefaultOptions({limit:genericInput1NorthFrontToOutside, limitMessage:"\nInvalid move!! Use 'left', 'right' or 'back'"})
     let input9 = readline1.question("Which one do you want to enter?\n").toLowerCase()
         switch (input9) {
             case "left":
@@ -238,7 +238,7 @@ const genericInput1NorthFrontToOutsideLeftToOutside = () => {
     let genericInput1NorthFrontToOutsideLeftToOutside = ["right", "back"]
     
     while (genericInput1NorthFrontToOutsideLeftToOutside !== "right"  || genericInput1NorthFrontToOutsideLeftToOutside !== "back") {
-    readline1.setDefaultOptions({limit:genericInput1NorthFrontToOutsideLeftToOutside})
+    readline1.setDefaultOptions({limit:genericInput1NorthFrontToOutsideLeftToOutside, limitMessage:"\nInvalid move!! Use 'right' or 'back'"})
     let input12 = readline1.question("Which one do you want to enter?\n").toLowerCase()
         switch (input12) {
             case "right":
@@ -340,7 +340,7 @@ const genericInput1NorthLeftToOutside = () => {
     let genericInput1NorthLeftToOutside = ["front", "right", "back"]
     
     while (genericInput1NorthLeftToOutside !== "front" || genericInput1NorthLeftToOutside !== "right"  || genericInput1NorthLeftToOutside !== "back") {
-    readline1.setDefaultOptions({limit:genericInput1NorthLeftToOutside})
+    readline1.setDefaultOptions({limit:genericInput1NorthLeftToOutside, limitMessage:"\nInvalid move!! Use 'front', 'right' or 'back'"})
     let input15 = readline1.question("Which one do you want to enter?\n").toLowerCase()
         switch (input15) {
             case "front":
@@ -555,7 +555,7 @@ const genericInput1NorthLeftToOutside2 = () => {
     let genericInput1NorthLeftToOutside2 = ["home", "right"]
     
     while (genericInput1NorthLeftToOutside2 !== "home" || genericInput1NorthLeftToOutside2 !== "right") {
-    readline1.setDefaultOptions({limit:genericInput1NorthLeftToOutside2})
+    readline1.setDefaultOptions({limit:genericInput1NorthLeftToOutside2, limitMessage:"\nInvalid move!! Use 'home' or 'right'"})
     let input24 = readline1.question("Which one do you want to enter?\n").toLowerCase()
         switch (input24) {
             case "home":
