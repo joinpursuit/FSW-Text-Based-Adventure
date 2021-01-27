@@ -1,28 +1,19 @@
 const readline = require('readline-sync');
 const chalk = require('chalk');
-const { bold } = require('chalk');
 
 const startGame = () => {
 if(wantToPlay = readline.keyInYN(chalk.red.bold(`Hello ${nameInput}, do you want to play a game?\n`))){
     gameIntro();
 }else{
-    leaveGame1();
+    leaveGame();
 }
 };
 
-const leaveGame1 = () => {
-    console.log(chalk.blue.bold("You were a bad candidate anyway. Goodbye!"));
+const leaveGame = (goodbyeMessage) => {
+goodbyeMessage = `You were a bad candidate anyway. Goodbye!`
+    console.log(chalk.blue.bold(goodbyeMessage));
     process.exit();
 };
-
-const leaveGame2 = () => {
-    console.log(chalk.blue.bold(`Come back when you're 18. See ya later ${nameInput}!`));
-    process.exit();
-};
-
-const leaveGame3 = () =>{
-    console.log(chalk.blue.bold('Seems you died my friend. GAME OVER'));
-}
 
 
 let nameInput = readline.question(chalk.red.bold("What is your name?\n"));
@@ -30,19 +21,22 @@ let nameInput = readline.question(chalk.red.bold("What is your name?\n"));
 function gameIntro(){
     console.log(chalk.magenta.bold(`Welcome to my experiment ${nameInput}!.....I mean...game.\n`));
 };
+//if I out the while loop first, it keeps looping. If I oput it in the end, it kept looping
 
 function howOld (){
 let ageInput = readline.question(chalk.red.bold('How old are you?\n'));
-    if(ageInput < 18){
-        console.log(chalk.magenta.bold("Oh no, you're just a baby! Enjoy your life!\n"));
-        leaveGame2()
-    }else if(ageInput >= 18){
-        console.log(chalk.magenta.bold("Yes! " + ageInput + "," + " you're old...the perfect candidate for my experi- .....game. \n"));
-    }else{
-        console.log(chalk.green.italic(`That was not a valid input ${nameInput}\n`));
-        console.log(chalk.green.italic('I don\'t usually like repeating myself, but ahemmm.'));
-        howOld();
-    }
+if(ageInput < 18){
+    console.log(chalk.magenta.bold(`Oh no, you're just a baby!\nCome back when you're 18. See ya later ${nameInput}!`));
+    leaveGame()
+}else if(ageInput >= 18){
+    console.log(chalk.magenta.bold("Yes! " + ageInput + "," + " you're old...the perfect candidate for my experi- .....game. \n"));
+    howToPlay();
+}
+// while(ageInput !== typeof Number){
+//     console.log(chalk.green.italic(`That was not a valid input ${nameInput}\n`));
+//     console.log(chalk.green.italic('I don\'t usually like repeating myself, but ahemmm.'));
+//     howOld();
+// }
 };
 
 function howToPlay(){
@@ -52,24 +46,21 @@ console.log(chalk.red.bold('Here is how you play:'));
             console.log(chalk.yellow.bold(`Type ${movement[i]} to move in that direction.\n`));
         }
             console.log(chalk.yellow.bold("Type 'grab' to grab an item.\n"));
-            console.log(chalk.yellow.bold("Type 'swing' to swing your arm.\n"));
+            console.log(chalk.yellow.bold("Type 'swing' to swing your arm."));
 };
 
 const story = () => {
 if(readline.keyInYN(chalk.red.bold('Are you ready? \n'))){
-    console.log(chalk.magenta.bold('You woke up alone in a cold, dimly lit room.'));
-    console.log(chalk.magenta.bold('As you move to look around, you feel pain in your body.'));
+    console.log(chalk.magenta.bold('You woke up alone in a cold, dimly lit room.\nAs you move to look around, you feel pain in your body'));
     console.log(chalk.magenta.bold('You hear beeping noises all around you...you look down at your body and notice two wires attached to it.\n'));
     console.log(chalk.magenta.bold('One wire for each of your beautiful lungs.\n'));
     console.log(chalk.magenta.bold('Your goal here is to get your organs back so that you can go home to your family.'));
     console.log(chalk.magenta.bold('The building you\'re in only has electricity for the next few hours.\n'));
-    console.log(chalk.magenta.italic('Before you are two doors:\n'));
-    console.log(chalk.magenta.bold('Door 1 leads to your organs...'));
-    console.log(chalk.magenta.bold('Door 2 leads you to the outside world...\n'));
+    console.log(chalk.magenta.bold('Before you are two doors:\nDoor 1 leads to your organs...\nDoor 2 leads you to the outside world...\n'));
     console.log(chalk.magenta.bold('Just remember that the nearest hospital is miles away...'));
     console.log(chalk.magenta.bold('If you choose to stay, however, just know there are traps all througout the building.\n'));
 }else{
-    leaveGame1();
+    leaveGame();
 }
 };
 
@@ -79,17 +70,13 @@ let choice = readline.question(chalk.red.bold('Which door will you choose, 1 or 
 let firstDoor = '1'
 let SecondDoor = '2'
     if(choice === firstDoor){   
-        console.log(chalk.magenta.bold('It smells disgusting in here! Must be your organs rotting.'));
-        console.log(chalk.magenta.bold('Hurry Up! \n'));
+        console.log(chalk.magenta.bold('It smells disgusting in here! Must be your organs rotting.\nHurry Up!'));
     }else if(choice === SecondDoor){
-        console.log(chalk.magenta.bold('The door behind you just locked.'));
-        console.log(chalk.magenta.bold('The forest surrounds you on all sides!'));
-        console.log(chalk.magenta.bold(`There is nowhere to go ${nameInput}.\n`));
-        leaveGame3();
+        console.log(chalk.magenta.bold(`The door behind you just locked.\nThe forest surrounds you on all sides!\nThere is nowhere to go ${nameInput}.\n`));
+        console.log(chalk.blue.bold('Seems you died my friend. GAME OVER'));
         restartGame();
     }else{
-        console.log(chalk.green.italic(`That wasn't a choice ${nameInput}. You don't really listen.`));
-        console.log(chalk.green.italic('I don\'t usually like repeating myself, but ahemmm.'));
+        console.log(chalk.green.italic(`That wasn't a choice ${nameInput}. You don't really listen.\nI don\'t usually like repeating myself, but ahemmm.`));
         doorChoice();
     }
 };
@@ -103,27 +90,22 @@ let f = 'forward'
 let firstMove = readline.question(chalk.red.bold('Which path will you take, left or forward? \n'));
     if(firstMove === l){
         console.log(chalk.magenta.bold(`I see that you like music ${nameInput}. Lets hope that love leads to your organs!\n`));
-        console.log(chalk.magenta.bold('As you\'re walking, you notice the music gets louder and louder with every step you take.'));
-        console.log(chalk.magenta.bold("However, you can't seem to find the source.\n"));
+        console.log(chalk.magenta.bold('As you\'re walking, you notice the music gets louder and louder with every step you take.\nHowever, you can\'t seem to find the source.\n'));
     }else if(firstMove === f){
         console.log(chalk.magenta.bold(`You're walking the very long and dark hallway. You might start feeling out of breath ${nameInput}.\n`));
     }else{
-        console.log(chalk.green.italic(`You don\'t listen much ${nameInput}.`));
-        console.log(chalk.green.italic('That was not a valid input.'));
-        console.log(chalk.green.italic("I don't like repeating myself, but ahemmmm."));
+        console.log(chalk.green.italic(`You don\'t listen much ${nameInput}.\nThat was not a valid input!\nI don't like repeating myself, but ahemmmm.`));
         moveOne();
     }
 };
 
 const moveTwo = () =>{
-console.log(chalk.magenta.bold(`Looks like you've reached another crossroads ${nameInput}.`));
-console.log(chalk.magenta.bold('Both paths are dark.'));
+console.log(chalk.magenta.bold(`Looks like you've reached another crossroads ${nameInput}.\nBoth paths are dark.`));
 if(readline.keyInYN(chalk.red.bold('Do you want to keep walking?\n'))){
     console.log(chalk.magenta.bold('Your bravery takes my breath away. That takes a lot of guts!\n'));
 }else{
     console.log(chalk.magenta.bold(`Unfortunately this game isn't for scary cats like you ${nameInput}!`));
-    leaveGame3()
-    restartGame();
+    leaveGame()
     };
 };
 
@@ -135,9 +117,8 @@ let u = 'up'
     console.log(chalk.magenta.bold(`Let's hope you choose the right path this time ${nameInput}.\n`));
     let thirdMove = readline.question(chalk.red.bold('Which way will you go, right or up? \n'));
         if(thirdMove === r){
-            console.log(chalk.magenta.bold('It seems you like making the "right" choice.'));
-            console.log(chalk.magenta.bold(`Except this time, the "right" choice, wasn\'t right ${nameInput}!\n`));
-            leaveGame3();
+            console.log(chalk.magenta.bold(`It seems you like making the "right" choice.\nExcept this time, the "right" choice, wasn\'t right ${nameInput}!\n`));
+            console.log(chalk.blue.bold('Seems you died my friend. GAME OVER'));
             restartGame();
         }else if(thirdMove === u){
             console.log(chalk.magenta.bold('The stairs are sliperry, and the smell of iron consumes you.'));
@@ -146,15 +127,14 @@ let u = 'up'
                 if(readline.keyInYN(chalk.red.bold('Are you ready to brake the glass, and get your lungs? \n'))){
                     console.log(chalk.magenta.bold(`You should make better choices ${nameInput}. You have no object to brake the glass with.\n`));
                     console.log(chalk.red.bold('You cut your arm while braking the class and bled out. What a bloody mess....\n'));
-                    leaveGame3();
+                    console.log(chalk.blue.bold('Seems you died my friend. GAME OVER'));
                     restartGame();
                 }else{
                     console.log(chalk.red.italic('\nGreat choice!\n'));
                     console.log(chalk.magenta.bold('You will need a hammer to brake the glass!'));
                 }
         }else{
-            console.log(chalk.green.italic(`You don\'t listen much ${nameInput}. That was not a choice`));
-            console.log(chalk.green.italic('I don\'t like repeating myself, but here goes nothing...'));
+            console.log(chalk.green.italic(`You don\'t listen much ${nameInput}. That was not a choice.\nI don\'t like repeating myself, but here goes nothing...`));
             moveThree();
             }
         };
@@ -167,22 +147,20 @@ console.log(chalk.magenta.bold('The hammer is on the window sill.\n'));
 let action = readline.question(chalk.red.bold('Will you grab or leave the hammer? \n'));
 if(action === choiceOne){
     console.log(chalk.red.italic('\nGreat choice!\n'));
-    console.log(chalk.magenta.bold('If you swing your arm, you\'ll brake the glass.'));
-    console.log(chalk.magenta.bold('You can almost smell the victory! You\'re so close to survival!'));
+    console.log(chalk.magenta.bold('If you swing your arm, you\'ll brake the glass.\nYou can almost smell the victory! You\'re so close to survival!'));
     action = readline.question(chalk.red.bold('Ready?..... Swing now!\n'));
         if(action === choiceThree){
             console.log(chalk.red.italic('\ncongratulations, you\'ve acquired your lungs!\n'));
             console.log(chalk.magenta.bold('Your determination is truly breathtaking.\n'));
         }else{
             console.log(chalk.magenta.bold(`You should have swang ${nameInput}.`));
-            leaveGame3();
+            console.log(chalk.blue.bold('Seems you died my friend. GAME OVER'));
             restartGame();
             }
 }else if(action === choiceTwo){
     console.log(chalk.magenta.bold(`You don\'t really make good choices ${nameInput}.`));
     console.log(chalk.magenta.bold('Why would you leave?'));
-    leaveGame3();
-    restartGame(); 
+    leaveGame()
 }else{
     console.log(chalk.green.italic('You don\'t listen'));
     console.log(chalk.green.italic(`That wasn\'t a choice ${nameInput}.`));
@@ -211,6 +189,7 @@ index = readline.keyInSelect(surgeonChoice, 'Which surgeon woudld you like?\n');
                 givenSurgeon();
             }else{
                 console.log(chalk.magenta.bold(`\nWell, then I guess...good luck ${nameInput}, see ya never.`));
+                console.log(chalk.blue.bold('Seems you died my friend. GAME OVER'));
                 restartGame();
             }
     }else if(index === 0){
@@ -222,6 +201,7 @@ index = readline.keyInSelect(surgeonChoice, 'Which surgeon woudld you like?\n');
     }else{
         console.log(chalk.magenta.bold('The ' + surgeonChoice[index] + ' will be your surgeon and try to give you back the breath of life!\n'));
         console.log(chalk.magenta.bold('Good luck! ' + nameInput + '.' + ' You\'ll need it!'));
+        console.log(chalk.blue.bold('Seems you died my friend. GAME OVER'));
         restartGame();
     }
 };
@@ -235,6 +215,7 @@ let surgeon = ['Butcher', 'Retired Clown', 'Award-Winning Surgeon', 'Magician'];
     if(giveSurgeon === surgeon[2]){
         console.log(chalk.green.bold(`Seems luck is just not on your side ${nameInput}.....the ${giveSurgeon} will still perform your surgery.\n`));
         console.log(chalk.green.bold('See ya never!'));
+        console.log(chalk.blue.bold('Seems you died my friend. GAME OVER'));
         restartGame();
     }else if(giveSurgeon === surgeon[0]){
         console.log(chalk.red.italic('The ' + giveSurgeon + '!' + ' You\'re in luck!\n'));
@@ -245,13 +226,12 @@ let surgeon = ['Butcher', 'Retired Clown', 'Award-Winning Surgeon', 'Magician'];
     }else{
         console.log(chalk.magenta.bold(`The ${giveSurgeon} will be your surgeon and try to give you back the breath of life!\n`));
         console.log(chalk.magenta.bold('Good luck! ' + nameInput + '.' + ' You\'ll need it!'));
+        console.log(chalk.blue.bold('Seems you died my friend. GAME OVER'));
         restartGame();
     }
 }else{
-    console.log(chalk.cyan.bold('How rude! What kind of person are you?'));
-    console.log(chalk.cyan.bold('The surgeon was looking forward to meeting you!\n'));
-    console.log(chalk.cyan.bold('There are no more surgeons availble for your procedure'));
-    leaveGame1();
+    console.log(chalk.cyan.bold('How rude! What kind of person are you?\nThe surgeon was looking forward to meeting you!\nThere are no more surgeons availble for your procedure.'));
+    leaveGame();
 }
 };
 
@@ -267,14 +247,13 @@ if(readline.keyInYN(chalk.red.bold('Play Again?\n'))){
     chooseSurgeon();
     givenSurgeon();
 }else{
-    leaveGame1();
+    leaveGame();
 }
 }
 
 
 startGame();
 howOld();
-howToPlay();
 story();
 doorChoice();
 moveOne();
