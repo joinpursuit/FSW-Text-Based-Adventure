@@ -1,9 +1,11 @@
 const readline1 = require('readline-sync')
 const chalk = require('chalk')
 
+console.log(`The Golden Coin.`);
+console.log(chalk.gray(`Created by Jordan Bobadilla\n`));
 let nameInput = readline1.question("Enter your name: \n")
 console.clear()
-console.log(`\nHello ${nameInput}!  Welcome to ` + chalk.yellow(`The Golden Coin!\n`) + `All your decisions matter.\n\nBe careful!\nYou can die at any moment, and you will restart the game again\n`)
+console.log(`Hello ${nameInput}!  Welcome to ` + chalk.yellow(`The Golden Coin!\n`) + `All your decisions matter.\n\nBe careful!\nYou can die at any moment, and you will restart the game again\n`)
 
 const startGame = () => {
     if (readline1.keyInYN("Are you ready to inmerse yourself in this adventure?")) {
@@ -40,22 +42,22 @@ const genericInput1 = () => {
 
     readline1.setDefaultOptions({limit:genericInput1, limitMessage:"\nInvalid move! Use 'north' or 'east'"})
 
-    let input1 = readline1.question("Where do you want to go?\n")
+    let input1 = readline1.question("Where do you want to go?\n").toLowerCase()
     
         switch (input1) {
             case "north":
-                console.log("\n");
+                console.clear()
                 console.log("You ran into the village and you are surrounded by 3 houses: one on your left, one on your right and one in front of you.\n");
                 genericInput1North()
                 break;
             case "east":
-                console.log("\n");
+                console.clear()
                 console.log("You are walking through the path, the path breaks and you fall into a hole!! Oh no!!\n");
                 if (readline1.keyInYN("Do you want to try again?")) {
-                    console.log("\n");
+                    console.clear()
                     gamePlay()
                 } else {
-                    console.log("\n");
+                    console.clear()
                     quitGame()
                 }
                 break;
@@ -73,28 +75,32 @@ const genericInput1North = () => {
     
     while (genericInput1North !== "left" || genericInput1North !== "right" || genericInput1North !== "front" || genericInput1North !== "back") {
     readline1.setDefaultOptions({limit:genericInput1North})
-    let input2 = readline1.question("Which one do you want to enter?\n")
+    let input2 = readline1.question("Which one do you want to enter?\n").toLowerCase()
         switch (input2) {
             case "left":
+                console.clear()
                 console.log("Your enter the left house. There's bag with 10 coins in it");
                 genericInput1NorthLeft()
                 break;
             case "right":
-                console.log("\nYou enter the right house. It's a private property . Oh no!!");
+                console.clear()
+                console.log("You enter the right house. It's a private property . Oh no!!\n");
                 if (readline1.keyInYN("Do you want to try again?")) {
-                    console.log("\n");
+                    console.clear()
                     gamePlay()
                 } else {
-                    console.log("\n");
+                    console.clear()
                     quitGame()
                 }
                 break;
             case "front":
-                console.log("\nYou enter the front house. You found a big portrait inside the house that says: " + `'${nameInput}'s House'`);
+                console.clear()
+                console.log("You enter the front house. You found a big portrait inside the house that says: " + `'${nameInput}'s House'`);
                 genericInput1NorthFront();
                 break;
             case "back":
-                console.log("\nYou came back to the beginning\n");
+                console.clear()
+                console.log("You came back to the beginning\n");
                 genericInput1()
                 break;
             default:       
@@ -115,7 +121,7 @@ const genericInput1NorthLeft = () => {
     let input6 = genericInput1NorthLeft[input5]
 
     if (input6 === "Take the bag") {
-        console.log("\n");
+        console.clear()
         console.log("Amazing!! You got 10 silver coins!!");
         for( var i = 0; i < genericInput1NorthLeft.length; i++){ 
              if (genericInput1NorthLeft[i] === "Take the bag") {
@@ -127,12 +133,14 @@ const genericInput1NorthLeft = () => {
          input6 = genericInput1NorthLeft[input5]
  
          if (input6 === "Go back outside") {
-            console.log("\nYou are outside now\n");
+            console.clear()
+            console.log("You are outside now\n");
             genericInput1NorthLeftToOutside();
 
          }
  
      } else if (input6 === "Go back outside") {
+        console.clear()
         console.log("\nYou are outside now\n");
         genericInput1North();
       }
@@ -146,7 +154,8 @@ const genericInput1NorthFront = () => {
     let input8 = genericInput1NorthFront[input7]
 
     if (input8 === "Go back outside") {
-        console.log("\nYou are outside now\n");
+        console.clear()
+        console.log("You are outside now\n");
         genericInput1NorthFrontToOutside()
     }
 }
@@ -159,24 +168,27 @@ const genericInput1NorthFrontToOutside = () => {
     
     while (genericInput1NorthFrontToOutside !== "left" || genericInput1NorthFrontToOutside !== "right"  || genericInput1NorthFrontToOutside !== "back") {
     readline1.setDefaultOptions({limit:genericInput1NorthFrontToOutside})
-    let input9 = readline1.question("Which one do you want to enter?\n")
+    let input9 = readline1.question("Which one do you want to enter?\n").toLowerCase()
         switch (input9) {
             case "left":
-                console.log("Your enter the left house. There's bag with 10 coins in it");
+                console.clear()
+                console.log("Your enter the left house. There's bag with 10 coins in it\n");
                 genericInput1NorthFrontToOutsideLeft()
                 break;
             case "right":
-                console.log("\nYou enter the right house. It's a private property . Oh no!!");
+                console.clear()
+                console.log("You enter the right house. It's a private property . Oh no!!\n");
                 if (readline1.keyInYN("Do you want to try again?")) {
-                    console.log("\n");
+                    console.clear()
                     gamePlay()
                 } else {
-                    console.log("\n");
+                    console.clear()
                     quitGame()
                 }
                 break;
             case "back":
-                console.log("\nYou came back to the beginning\n");
+                console.clear()
+                console.log("You came back to the beginning\n");
                 genericInput1Back1()
                 break;
             default:       
@@ -195,7 +207,7 @@ const genericInput1NorthFrontToOutsideLeft = () => {
     let input11 = genericInput1NorthFrontToOutsideLeft[input10]
 
     if (input11 === "Take the bag") {
-        console.log("\n");
+        console.clear()
         console.log("Amazing!! You got 10 silver coins!!");
         for( var i = 0; i < genericInput1NorthFrontToOutsideLeft.length; i++){ 
              if (genericInput1NorthFrontToOutsideLeft[i] === "Take the bag") {
@@ -207,13 +219,15 @@ const genericInput1NorthFrontToOutsideLeft = () => {
          input11 = genericInput1NorthFrontToOutsideLeft[input10]
  
          if (input11 === "Go back outside") {
+             console.clear()
              console.log("\nYou are outside now\n");
              genericInput1NorthFrontToOutsideLeftToOutside()
          }
  
      } else if (input11 === "Go back outside") {
-        console.log("\nYou are outside now\n");
-        genericInput1NorthFrontToOutsideLeftToOutside()
+        console.clear()
+        console.log("You are outside now\n");
+        genericInput1NorthFrontToOutside()
       }
 }
 
@@ -225,20 +239,21 @@ const genericInput1NorthFrontToOutsideLeftToOutside = () => {
     
     while (genericInput1NorthFrontToOutsideLeftToOutside !== "right"  || genericInput1NorthFrontToOutsideLeftToOutside !== "back") {
     readline1.setDefaultOptions({limit:genericInput1NorthFrontToOutsideLeftToOutside})
-    let input12 = readline1.question("Which one do you want to enter?\n")
+    let input12 = readline1.question("Which one do you want to enter?\n").toLowerCase()
         switch (input12) {
             case "right":
                 console.log("\nYou enter the right house. It's a private property . Oh no!!");
                 if (readline1.keyInYN("Do you want to try again?")) {
-                    console.log("\n");
+                    console.clear()
                     gamePlay()
                 } else {
-                    console.log("\n");
+                    console.clear()
                     quitGame()
                 }
                 break;
             case "back":
-                console.log("\nYou came back to the beginning\n");
+                console.clear()
+                console.log("You came back to the beginning\n");
                 genericInput1Back2()
                 break;
             default:       
@@ -258,21 +273,21 @@ const genericInput1Back1 = () => {
 
     readline1.setDefaultOptions({limit:genericInput1Back1, limitMessage:"\nInvalid move! Use 'north' or 'east'"})
 
-    let input13 = readline1.question("Where do you want to go?\n")
+    let input13 = readline1.question("Where do you want to go?\n").toLowerCase()
     
         switch (input13) {
             case "north":
-                console.log("\n");
+                console.clear()
                 genericInput1NorthFrontToOutside()
                 break;
             case "east":
-                console.log("\n");
+                console.clear()
                 console.log("You are walking through the path, the path breaks and you fall into a hole!! Oh no!!\n");
                 if (readline1.keyInYN("Do you want to try again?")) {
-                    console.log("\n");
+                    console.clear()
                     gamePlay()
                 } else {
-                    console.log("\n");
+                    console.clear()
                     quitGame()
                 }
                 break;
@@ -283,7 +298,7 @@ const genericInput1Back1 = () => {
 }
 
 const genericInput1Back2 = () => {
-    console.log("Now you remember your name and got your coins. You don't need to go north anymore\n");
+    console.log("Now, you remember your name and got your coins. You don't need to go north anymore\n");
     console.log("You are surrounded by flowers!! You see a path to the east and a cow to the south\n");
 
     let genericInput1Back2 = ["south", "east"]
@@ -292,23 +307,23 @@ const genericInput1Back2 = () => {
 
     readline1.setDefaultOptions({limit:genericInput1Back2, limitMessage:"\nInvalid move! Use 'south' or 'east'"})
 
-    let input14 = readline1.question("Where do you want to go?\n")
+    let input14 = readline1.question("Where do you want to go?\n").toLowerCase()
     
         switch (input14) {
             case "south":
-                console.log("\n");
+                console.clear()
                 console.log("You encounter a cow and it looks familiar?\n");
                 console.log(chalk.yellow("Cow:")) + console.log(`${nameInput}, what happened to you? Why are you looking me with those eyes? I'm your friend, ` + chalk.yellow("Milky") + "!!\n");
                 genericInput1South2()
                 break;
             case "east":
-                console.log("\n");
+                console.clear()
                 console.log("You are walking through the path, the path breaks and you fall into a hole!! Oh no!!\n");
                 if (readline1.keyInYN("Do you want to try again?")) {
-                    console.log("\n");
+                    console.clear()
                     gamePlay()
                 } else {
-                    console.log("\n");
+                    console.clear()
                     quitGame()
                 }
                 break;
@@ -326,31 +341,33 @@ const genericInput1NorthLeftToOutside = () => {
     
     while (genericInput1NorthLeftToOutside !== "front" || genericInput1NorthLeftToOutside !== "right"  || genericInput1NorthLeftToOutside !== "back") {
     readline1.setDefaultOptions({limit:genericInput1NorthLeftToOutside})
-    let input15 = readline1.question("Which one do you want to enter?\n")
+    let input15 = readline1.question("Which one do you want to enter?\n").toLowerCase()
         switch (input15) {
             case "front":
-                console.log("\nYou enter the front house. You found a big portrait inside the house that says: " + `'${nameInput}'s House'`);
+                console.clear()
+                console.log("You enter the front house. You found a big portrait inside the house that says: " + `'${nameInput}'s House'`);
                 genericInput1NorthLeftToOutsideFront();
                 break;
             case "right":
-                console.log("\nYou enter the right house. It's a private property . Oh no!!");
+                console.clear()
+                console.log("You enter the right house. It's a private property . Oh no!!");
                 if (readline1.keyInYN("Do you want to try again?")) {
-                    console.log("\n");
+                    console.clear()
                     gamePlay()
                 } else {
-                    console.log("\n");
+                    console.clear()
                     quitGame()
                 }
                 break;
             case "back":
-                console.log("\nYou came back to the beginning\n");
+                console.clear()
+                console.log("You came back to the beginning\n");
                 genericInput1Back3()
                 break;
             default:       
         }
         break;
     }
-
 }
 
 const genericInput1NorthLeftToOutsideFront = () => {
@@ -361,7 +378,8 @@ const genericInput1NorthLeftToOutsideFront = () => {
     let input17 = genericInput1NorthLeftToOutsideFront[input16]
 
     if (input17 === "Go back outside") {
-        console.log("\nYou are outside now\n");
+        console.clear()
+        console.log("You are outside now\n");
         genericInput1NorthFrontToOutsideLeftToOutside()
     }
 }
@@ -376,21 +394,21 @@ const genericInput1Back3 = () => {
 
     readline1.setDefaultOptions({limit:genericInput1Back3, limitMessage:"\nInvalid move! Use 'north' or 'east'"})
 
-    let input18 = readline1.question("Where do you want to go?\n")
+    let input18 = readline1.question("Where do you want to go?\n").toLowerCase()
     
         switch (input18) {
             case "north":
-                console.log("\n");
+                console.clear()
                 genericInput1NorthLeftToOutside()
                 break;
             case "east":
-                console.log("\n");
+                console.clear()
                 console.log("You are walking through the path, the path breaks and you fall into a hole!! Oh no!!\n");
                 if (readline1.keyInYN("Do you want to try again?")) {
-                    console.log("\n");
+                    console.clear()
                     gamePlay()
                 } else {
-                    console.log("\n");
+                    console.clear()
                     quitGame()
                 }
                 break;
@@ -409,7 +427,7 @@ const genericInput1South2 = () => {
     let input20 = genericInput1South2[input19]
 
     if (input20 === "Why are you able to talk?") {
-       console.log("\n");
+       console.clear()
        console.log(chalk.yellow("Milky:")) + console.log("It doesn't matter!! What matters is that you are my best friend.\nIt seems that you don't remember anything.\n");
        for( var i = 0; i < genericInput1South2.length; i++){ 
             if (genericInput1South2[i] === "Why are you able to talk?") {
@@ -421,12 +439,14 @@ const genericInput1South2 = () => {
         input20 = genericInput1South2[input19]
 
         if (input20 === `Wait, do you know me?`) {
-            console.log("\nSure!! Good luck finding it!!\n");
+            console.clear()
+            console.log("Yes, I do!! You have been living in the village for 8 years.\nYou went to look for the Golden Coin two weeks ago!! What happened?\n");
             genericInput1South3()
         }
 
     } else if (input20 === `Wait, do you know me?`) {
-        console.log("\nYes, it is!! You have been living in the village for 8 years.\nYou went to look for the Golden Coin two weeks ago!! What happened?\n");
+        console.clear()
+        console.log("Yes, I do!! You have been living in the village for 8 years.\nYou went to look for the Golden Coin two weeks ago!! What happened?\n");
         for( var i = 0; i < genericInput1South2.length; i++){ 
              if (genericInput1South2[i] === `Wait, do you know me?`) {
                  genericInput1South2.splice(i, 1); 
@@ -437,7 +457,7 @@ const genericInput1South2 = () => {
          input20 = genericInput1South2[input19]
 
          if (input20 === "Why are you able to talk?") {
-            console.log("\n");
+            console.clear()
             console.log(chalk.yellow("Milky:")) + console.log("It doesn't matter!! What matters is that you are my best friend.\nIt seems that you don't remember anything.\n");
             genericInput1South3()
          }
@@ -447,7 +467,7 @@ const genericInput1South2 = () => {
 
 const genericInput1South3 = () => {
    
-    console.log(chalk.yellow(`Milky:`)) + console.log("Where is the Golden Coin?\n");
+    console.log("Where is the Golden Coin?\n");
     
 
     let genericInput1South3 = ["That's the thing!! I don't remember", `Maybe, it's in my house.`] 
@@ -455,7 +475,7 @@ const genericInput1South3 = () => {
     let input22 = genericInput1South3[input21]
 
     if (input22 === "That's the thing!! I don't remember") {
-       console.log("\n");
+       console.clear()
        console.log(chalk.yellow("Milky:")) + console.log("It has to be somewhere!! I know you have it!!\n");
        for( var i = 0; i < genericInput1South3.length; i++){ 
             if (genericInput1South3[i] === "That's the thing!! I don't remember") {
@@ -467,12 +487,14 @@ const genericInput1South3 = () => {
         input22 = genericInput1South3[input21]
 
         if (input22 === `Maybe, it's in my house.`) {
+            console.clear()
             console.log("\nSure!! Good luck finding it!!\n");
             genericInput1Back4()
         }
 
     } else if (input22 === `Maybe, it's in my house.`) {
-        console.log("\nYes, it is!! You have been living in the village for 8 years.\nYou went to look for the Golden Coin two weeks ago!! What happened?");
+        console.clear()
+        console.log("Yes, it is!! You have been living in the village for 8 years.\nYou went to look for the Golden Coin two weeks ago!! What happened?");
         for( var i = 0; i < genericInput1South3.length; i++){ 
              if (genericInput1South3[i] === `Maybe, it's in my house.`) {
                  genericInput1South3.splice(i, 1); 
@@ -483,7 +505,7 @@ const genericInput1South3 = () => {
          input22 = genericInput1South3[input21]
 
          if (input22 === "That's the thing!! I don't remember") {
-            console.log("\n");
+            console.clear()
             console.log(chalk.yellow("Milky:")) + console.log("It has to be somewhere!! I know you have it!!\n");
             genericInput1Back4()
          }
@@ -492,7 +514,7 @@ const genericInput1South3 = () => {
 
 
 const genericInput1Back4 = () => {
-    console.log("Now, You have to go to your house. \n");
+    console.log("Now, you have to go to your house. \n");
     console.log("You are surrounded by flowers!! You see a path to the east and a village to the north\n");
 
     let genericInput1Back4 = ["north", "east"]
@@ -501,21 +523,21 @@ const genericInput1Back4 = () => {
 
     readline1.setDefaultOptions({limit:genericInput1Back4, limitMessage:"\nInvalid move! Use 'north' or 'east'"})
 
-    let input23 = readline1.question("Where do you want to go?\n")
+    let input23 = readline1.question("Where do you want to go?\n").toLowerCase()
     
         switch (input23) {
             case "north":
-                console.log("\n");
+                console.clear()
                 genericInput1NorthLeftToOutside2()
                 break;
             case "east":
-                console.log("\n");
+                console.clear()
                 console.log("You are walking through the path, the path breaks and you fall into a hole!! Oh no!!\n");
                 if (readline1.keyInYN("Do you want to try again?")) {
-                    console.log("\n");
+                    console.clear()
                     gamePlay()
                 } else {
-                    console.log("\n");
+                    console.clear()
                     quitGame()
                 }
                 break;
@@ -534,19 +556,20 @@ const genericInput1NorthLeftToOutside2 = () => {
     
     while (genericInput1NorthLeftToOutside2 !== "home" || genericInput1NorthLeftToOutside2 !== "right") {
     readline1.setDefaultOptions({limit:genericInput1NorthLeftToOutside2})
-    let input24 = readline1.question("Which one do you want to enter?\n")
+    let input24 = readline1.question("Which one do you want to enter?\n").toLowerCase()
         switch (input24) {
             case "home":
-                console.log("\nYou enter your house. You added all the coins you found to your collections!!\n");
+                console.clear()
+                console.log("You enter your house. You added all the coins you found to your collections!!\n");
                 finalInput()
                 break;
             case "right":
                 console.log("\nYou enter the right house. It's a private property . Oh no!!");
                 if (readline1.keyInYN("Do you want to try again?")) {
-                    console.log("\n");
+                    console.clear()
                     gamePlay()
                 } else {
-                    console.log("\n");
+                    console.clear()
                     quitGame()
                 }
                 break;
@@ -558,23 +581,24 @@ const genericInput1NorthLeftToOutside2 = () => {
 }
 
 const finalInput = () => {
-    console.log(`\nBut wait!!\n`);
+    console.log(`But wait!!\n`);
 
     let genericInput1NorthFront = ["Look inside your pocket"]
     let input25 = readline1.keyInSelect(genericInput1NorthFront, "What is this?")
     let input26 = genericInput1NorthFront[input25]
 
     if (input26 === "Look inside your pocket") {
-        console.log("\nIt's the Golden Coin!! It was inside of your pocket this whole time!!\n");
+        console.clear()
+        console.log("It's the Golden Coin!! It was inside of your pocket this whole time!!\n");
         console.log("This game is a little reminder on always keep notes of everything you have to do\n");
         console.log("I hope you like it!!\n");
         console.log("\nSee you next time!!\n");
         
         if (readline1.keyInYN("Do you want to play again?")) {
-            console.log("\n");
+            console.clear()
             gamePlay()
         } else {
-            console.log("\n");
+            console.clear9
             quitGame()
         }
     }
