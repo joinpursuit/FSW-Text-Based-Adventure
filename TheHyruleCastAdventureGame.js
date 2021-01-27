@@ -187,16 +187,25 @@ const libraryFullPower = () => {
   console.log(chalk.magenta.bold(`Who is the princess you're trying to save?`));
   quizzanswer = readlineSync.keyInSelect(array);
   playerChoice = array[quizzanswer];
-  if (playerChoice === array[0]) {
+  //changed code to while loop 
+  while (playerChoice === "Zelda") {
     console.log(
-      chalk.redBright.italic(`The door opened and you walked through it`)
-    );
+         chalk.redBright.italic(`The door opened and you walked through it`)
+        );
     thirdFloor();
-  } else {
-    console.log(chalk.redBright.italic(`Wrong answer choose again.`));
-    libraryFullPower();
-  }
-};
+   } 
+       console.log(chalk.redBright.italic(`Wrong answer choose again.`));
+       libraryFullPower();
+      };
+  // if (playerChoice === array[0]) {
+  //   console.log(
+  //     chalk.redBright.italic(`The door opened and you walked through it`)
+  //   );
+  //   thirdFloor();
+  // } else {
+  //   console.log(chalk.redBright.italic(`Wrong answer choose again.`));
+  //   libraryFullPower();
+  // }
 
 const kickedOutOfCastle = () => {
   console.log(
