@@ -63,7 +63,6 @@ function preparePizza(type, pizzaToppings) {
 
 function startGame() {
   numOfToppings = 3;
-  console.log(toppings);
   const index = rls.keyInSelect(pizzaType, "Which pizza would you like?");
   console.log("You have selected " + pizzaType[index] + " pizza.");
   if (pizzaType[index] === "vegan") {
