@@ -1,48 +1,25 @@
 const readlineSync = require("readline-sync");
 const chalk = require("chalk");
-
+//changed it into an easier code to read
 console.log(
   chalk.redBright.italic(
-    `You awaken in the middle of what seems\nto look like Central Hyrule.`
+    `You awaken in the middle of what seems to look like Central Hyrule.
+     Far away, you can see The Hyrule Castle standing in front of you with a weird red energy surrounding it.
+     it sounds like Princess Zelda but you can't see her.`
   )
-);
-console.log(
-  chalk.redBright.italic(
-    `Far away, you can see The Hyrule Castle standing in front of you with a weird red energy surrounding it.`
-  )
-);
-console.log(
-  chalk.redBright.italic(`it sounds like Princess Zelda but you can't see her.`)
 );
 let nameOfPlayer = readlineSync.question(
   chalk.magenta.bold(`What is your name hero ?`)
 );
 console.log(
   chalk.redBright.italic(
-    `${nameOfPlayer}!  It's me Zelda, Ganon has me captive in The Study Hall in my quarters.\nPlease help me ${nameOfPlayer}!!!!`
-  )
-);
-console.log(
-  chalk.redBright.italic(
-    `the voice fades away with the words "Please Help me" echoing over and over`
-  )
-);
-console.log(
-  chalk.redBright.italic(`Welcome to The Hyrule Castle Adventure Game`)
-);
-console.log(
-  chalk.redBright.italic(
-    `In this game ${nameOfPlayer}, you will have to go through the castle and try to save princess Zelda.`
-  )
-);
-console.log(
-  chalk.redBright.italic(
-    `Your choices in this game are very important as you can either save the princess easily or you might not...`
-  )
-);
-console.log(
-  chalk.redBright.italic(
-    `Be careful of deadends and ways that sends you flying out of the castle.`
+    `${nameOfPlayer}!  It's me Zelda, Ganon has me captive in The Study Hall in my quarters.
+   Please help me ${nameOfPlayer}!!!!
+   the voice fades away with the words "Please Help me" echoing over and over
+   Welcome to The Hyrule Castle Adventure Game
+   In this game ${nameOfPlayer}, you will have to go through the castle and try to save princess Zelda.
+   Your choices in this game are very important as you can either save the princess easily or you might not...
+   Be careful of deadends and ways that sends you flying out of the castle.`
   )
 );
 
@@ -128,24 +105,26 @@ const dinningHallDoors = () => {
   //changed like 127-137 to a while loop
   while (doorChoiceOne === "left") {
     dinningHallLeftDoor();
-  } while (doorChoiceOne === "right") {
+  }
+  while (doorChoiceOne === "right") {
     dinningHallRightDoor();
-  } while (doorChoiceOne === "forward") {
+  }
+  while (doorChoiceOne === "forward") {
     dinningHallForwardDoor();
-  } 
-    console.log(chalk.redBright.italic(`Please choose a correct answer`));
-    dinningHallDoors();
+  }
+  console.log(chalk.redBright.italic(`Please choose a correct answer`));
+  dinningHallDoors();
 };
-  // if (doorChoiceOne === "left") {
-  //   dinningHallLeftDoor();
-  // } else if (doorChoiceOne === "right") {
-  //   dinningHallRightDoor();
-  // } else if (doorChoiceOne === "forward") {
-  //   dinningHallForwardDoor();
-  // } else {
-  //   console.log(chalk.redBright.italic(`Please choose a correct answer`));
-  //   dinningHallDoors();
-  // }
+// if (doorChoiceOne === "left") {
+//   dinningHallLeftDoor();
+// } else if (doorChoiceOne === "right") {
+//   dinningHallRightDoor();
+// } else if (doorChoiceOne === "forward") {
+//   dinningHallForwardDoor();
+// } else {
+//   console.log(chalk.redBright.italic(`Please choose a correct answer`));
+//   dinningHallDoors();
+// }
 //};
 
 const dinningHallForwardDoor = () => {
@@ -198,25 +177,25 @@ const libraryFullPower = () => {
   console.log(chalk.magenta.bold(`Who is the princess you're trying to save?`));
   quizzanswer = readlineSync.keyInSelect(array);
   playerChoice = array[quizzanswer];
-  //changed code to while loop 
+  //changed code to while loop
   while (playerChoice === "Zelda") {
     console.log(
-         chalk.redBright.italic(`The door opened and you walked through it`)
-        );
+      chalk.redBright.italic(`The door opened and you walked through it`)
+    );
     thirdFloor();
-   } 
-       console.log(chalk.redBright.italic(`Wrong answer choose again.`));
-       libraryFullPower();
-      };
-  // if (playerChoice === array[0]) {
-  //   console.log(
-  //     chalk.redBright.italic(`The door opened and you walked through it`)
-  //   );
-  //   thirdFloor();
-  // } else {
-  //   console.log(chalk.redBright.italic(`Wrong answer choose again.`));
-  //   libraryFullPower();
-  // }
+  }
+  console.log(chalk.redBright.italic(`Wrong answer choose again.`));
+  libraryFullPower();
+};
+// if (playerChoice === array[0]) {
+//   console.log(
+//     chalk.redBright.italic(`The door opened and you walked through it`)
+//   );
+//   thirdFloor();
+// } else {
+//   console.log(chalk.redBright.italic(`Wrong answer choose again.`));
+//   libraryFullPower();
+// }
 
 const kickedOutOfCastle = () => {
   console.log(
@@ -395,7 +374,9 @@ thirdFloor = () => {
       `You try to take it out and the whole sword came out and makes you feel ready for whatever may come.`
     )
   );
-  if (readlineSync.keyInYNStrict(chalk.magenta.bold(`Would you like to keep it`))) {
+  if (
+    readlineSync.keyInYNStrict(chalk.magenta.bold(`Would you like to keep it`))
+  ) {
     console.log(chalk.redBright.italic(`You put the sword in your inventory.`));
     zeldaRoomSword();
   } else {
@@ -429,11 +410,11 @@ const zeldaRoomSword = () => {
     )
   );
   swordOrRiddle = swordOrRiddle.trim().toLowerCase();
-  switch(swordOrRiddle) {
-    case 'sword':
+  switch (swordOrRiddle) {
+    case "sword":
       swordPath();
-     case 'riddle':
-      riddlePath();  
+    case "riddle":
+      riddlePath();
   }
   // if (swordOrRiddle === "sword") {
   //   swordPath();
