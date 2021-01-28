@@ -7,6 +7,7 @@ const figlet = require('figlet')
 let armor 
 let merchant
 let mixedPotions
+let advice
 let cavePathLeftOrRight
 
 console.log(chalk.redBright(figlet.textSync('THE FLAME ' + '   OF' + ' RAGNAROK', {
@@ -145,28 +146,22 @@ function goingThroughPathFour(){
    salesMerchant(merchant)
 }
 
-function healthPotion(){
+function healthPotion(advice){
     console.log(chalk.green("You chose the Health Potion that is a very wise choice!! \n"))
-    console.log(chalk.green("I would recommend that you use it wisely.. \n"))
-    console.log(chalk.green("Now that you have everything you need, you need to decide what you want to do to continue your path. \n"))
-    mixedPotions = readline.question("Would you like to: Rest, Carry On, or Quit? \n")
-    potionMix(mixedPotions)
-}
+    
+    merchantAdvice(advice)
+   }
 
-function vitalityPotion(){
+function vitalityPotion(advice){
     console.log(chalk.green("You chose the Vitality Potion that is a very wise choice!! \n"))
-    console.log(chalk.green("I would recommend that you use it wisely.. \n"))
-    console.log(chalk.green("Now that you have everything you need, you need to decide what you want to do to continue your path. \n"))
-    mixedPotions = readline.question("Would you like to: Rest, Carry On, or Quit? \n")
-  potionMix(mixedPotions)
-    }
+   
+    merchantAdvice(advice)
+   }
 
-function staminaPotion(){
+function staminaPotion(advice){
     console.log(chalk.green("You chose the Stamina Potion that is a very wise choice!! \n"))
-    console.log(chalk.green("I would recommend that you use it wisely.. \n"))
-    console.log(chalk.green("Now that you have everything you need, you need to decide what you want to do to continue your path. \n"))
-    mixedPotions = readline.question("Would you like to: Rest, Carry On, or Quit? \n")
-   potionMix(mixedPotions)
+    
+    merchantAdvice(advice)
 }
     
 function caveOfTime(){
@@ -402,6 +397,13 @@ function potionMix(mixedPotions){
         console.log(chalk.red("Invalid choice, Please remember to choose one of the options and Spell it exactly how you see it!!! Please choose the path again!!"))
         thrudheimCaves()
     }
+}
+
+function merchantAdvice(_advice){
+    console.log(chalk.green("I would recommend that you use it wisely.. \n"))
+    console.log(chalk.green("Now that you have everything you need, you need to decide what you want to do to continue your path. \n"))
+    mixedPotions = readline.question("Would you like to: Rest, Carry On, or Quit? \n")
+    potionMix(mixedPotions)
 }
 
 function cave(cavePathLeftOrRight){
