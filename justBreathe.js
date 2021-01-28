@@ -21,7 +21,6 @@ let nameInput = readline.question(chalk.red.bold("What is your name?\n"));
 function gameIntro(){
     console.log(chalk.magenta.bold(`Welcome to my experiment ${nameInput}!.....I mean...game.\n`));
 };
-//if I out the while loop first, it keeps looping. If I oput it in the end, it kept looping
 
 function howOld (){
 let ageInput = readline.question(chalk.red.bold('How old are you?\n'));
@@ -31,12 +30,11 @@ if(ageInput < 18){
 }else if(ageInput >= 18){
     console.log(chalk.magenta.bold("Yes! " + ageInput + "," + " you're old...the perfect candidate for my experi- .....game. \n"));
     howToPlay();
+}else{
+    console.log(chalk.green.italic(`That was not a valid input ${nameInput}\n`));
+    console.log(chalk.green.italic('I don\'t usually like repeating myself, but ahemmm.'));
+    howOld();
 }
-// while(ageInput !== typeof Number){
-//     console.log(chalk.green.italic(`That was not a valid input ${nameInput}\n`));
-//     console.log(chalk.green.italic('I don\'t usually like repeating myself, but ahemmm.'));
-//     howOld();
-// }
 };
 
 function howToPlay(){
@@ -69,16 +67,21 @@ console.log(chalk.magenta.bold('The door you choose holds your destiny my friend
 let choice = readline.question(chalk.red.bold('Which door will you choose, 1 or 2? \n'));
 let firstDoor = '1'
 let SecondDoor = '2'
-    if(choice === firstDoor){   
+while(choice){
+    if(choice === firstDoor){
         console.log(chalk.magenta.bold('It smells disgusting in here! Must be your organs rotting.\nHurry Up!'));
+        choice = false
+        break;
     }else if(choice === SecondDoor){
         console.log(chalk.magenta.bold(`The door behind you just locked.\nThe forest surrounds you on all sides!\nThere is nowhere to go ${nameInput}.\n`));
         console.log(chalk.blue.bold('Seems you died my friend. GAME OVER'));
-        restartGame();
+        choice = false
+        restartGame()
     }else{
         console.log(chalk.green.italic(`That wasn't a choice ${nameInput}. You don't really listen.\nI don\'t usually like repeating myself, but ahemmm.`));
-        doorChoice();
+        choice = readline.question(chalk.red.bold('Which door will you choose, 1 or 2? \n'))
     }
+}
 };
 
 
