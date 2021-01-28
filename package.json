@@ -18,6 +18,9 @@
   },
   "homepage": "https://github.com/joinpursuit/FSW-Text-Based-Adventure#readme",
   "dependencies": {
+    "chalk": "^4.1.0",
+    "chalklet": "^1.0.0",
+    "figlet": "^1.5.0",
     "readline-sync": "^1.4.10"
   }
 }
