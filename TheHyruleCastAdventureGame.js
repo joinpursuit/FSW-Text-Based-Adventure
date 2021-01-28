@@ -103,18 +103,33 @@ const dinningHallDoors = () => {
   );
   doorChoiceOne = doorChoiceOne.trim().toLowerCase();
   //changed like 127-137 to a while loop
-  while (doorChoiceOne === "left") {
-    dinningHallLeftDoor();
+  let answers = ['left', 'right', 'forward']
+  while(answers.includes(doorChoiceOne)) {
+    if (doorChoiceOne === "left") {
+         dinningHallLeftDoor();
+       } else if (doorChoiceOne === "right") {
+         dinningHallRightDoor();
+       } else if (doorChoiceOne === "forward") {
+         dinningHallForwardDoor();
+       } 
   }
-  while (doorChoiceOne === "right") {
-    dinningHallRightDoor();
+  while(!answers.includes(doorOneChoice)){
+    console.log(chalk.redBright.italic(`Please choose a correct answer`));
+      dinningHallDoors();
+   }
   }
-  while (doorChoiceOne === "forward") {
-    dinningHallForwardDoor();
-  }
-  console.log(chalk.redBright.italic(`Please choose a correct answer`));
-  dinningHallDoors();
-};
+//   while (doorChoiceOne === "left") {
+//     dinningHallLeftDoor();
+//   }
+//   while (doorChoiceOne === "right") {
+//     dinningHallRightDoor();
+//   }
+//   while (doorChoiceOne === "forward") {
+//     dinningHallForwardDoor();
+//   }
+//   console.log(chalk.redBright.italic(`Please choose a correct answer`));
+//   dinningHallDoors();
+// };
 // if (doorChoiceOne === "left") {
 //   dinningHallLeftDoor();
 // } else if (doorChoiceOne === "right") {
