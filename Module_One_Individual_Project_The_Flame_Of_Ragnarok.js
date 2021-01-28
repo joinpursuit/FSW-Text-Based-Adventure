@@ -404,6 +404,7 @@ function merchantAdvice(_advice){
     console.log(chalk.green("Now that you have everything you need, you need to decide what you want to do to continue your path. \n"))
     mixedPotions = readline.question("Would you like to: Rest, Carry On, or Quit? \n")
     potionMix(mixedPotions)
+   
 }
 
 function cave(cavePathLeftOrRight){
