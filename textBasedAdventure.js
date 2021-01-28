@@ -7,6 +7,7 @@ const play = () => {
 
   console.log("You’re standing on the corner of Broadway and W 47th Street.\nIt is 11:50pm on New Year’s Eve.\nYour view of the ball is currently obstructed.\nMake it to the front of the crowd before midnight.");
   //Decision 1
+
   if (readlineSync.keyInYNStrict("\nReady to start?\n")) {
     console.log("\nLet's begin, goodluck!\n");
     startGame();
@@ -104,7 +105,11 @@ const startGame = () => {
 
   if (languagePreference === "english") {
     //decrement from 10
-    console.log("\n10\n9\n8\n7\n6\n4\n3\n2\n1\nHAPPY NEW YEAR");
+    for (let i = 10; i >= 0; i--) {
+      console.log(i + "...");
+    }
+    console.log("HAPPY NEW YEAR!");
+    //console.log("\n10\n9\n8\n7\n6\n4\n3\n2\n1\nHAPPY NEW YEAR");
   } else if (languagePreference === "spanish") {
     console.log("\nDiez\nNueve\nOcho\nSiete\nSeis\nCinco\nCuatro\nDos\nUno\nFELIZ AÑO NUEVO");
   }
