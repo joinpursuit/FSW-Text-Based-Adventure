@@ -1,3 +1,4 @@
+//Game Foundation
 const readline1 = require("readline-sync");
 
 let nameInput = readline1.question("Enter your name: ");
@@ -20,6 +21,19 @@ function quitGame() {
   process.exit();
 }
 
+//Would you like to try again
+function resetGame(){
+  if (readline1.keyInYN("Would you like to play again?")){
+    console.clear()
+    console.log(`Hello Again ${nameInput}!`)
+    console.log(
+      "Life is a mystery and things are always changing.\nEvery ACTION has a REACTION so BE CAREFUL it could cost you your LIFE. \nIt's raining and dark outside, the fog clouds your vision as you open the front door. The hairs on the back of your neck begin to stand, something is wrong. What do you do?"
+    )
+    startGame();
+  } else {
+    quitGame();
+  }
+}
 
 function intro(){
   console.log(
@@ -27,6 +41,9 @@ function intro(){
   )
   startGame()
 }
+//Game Foundation
+
+//First Decision
 
 function startGame() {
   
@@ -35,42 +52,102 @@ function startGame() {
     readline1.setDefaultOptions({
       limit: answer1,
       limitMessage:
-        "PLEASE CHOOSE ONE OF THE OPTION,OR YOU WILL NEVER FULLFILL YOUR DESTINY",
+      "PLEASE CHOOSE ONE OF THE OPTION,OR YOU WILL NEVER FULLFILL YOUR DESTINY",
     });
     let location = readline1
-      .question(
-        "Do you want to go to, A: School, B: Stay Home or C: Hangout with Friends\n"
+    .question(
+      "Do you want to go to, A: School, B: Stay Home or C: Hangout with Friends\n"
       )
       .toUpperCase();
+      
+      switch (location) {
+        case "A":
+          console.clear()
+          toSchool();
+          break;
+          case "B":
+            console.clear()
+            stayHome();
+            break;
+            case "C":
+              console.clear()
+              hangWithFriends();
+              break;
+              default:
+              }
+              break;
+    }
+ }
 
-    switch (location) {
-      case "A":
-        console.clear()
-        toSchool();
-        break;
-      case "B":
-        console.clear()
-        stayHome();
-        break;
-      case "C":
-        console.clear()
-        hangWithFriends();
-        break;
-      default:
+ //First Decision
+
+
+//Decisions to change option and without running through the entire senerio.
+//1. Options: backHome or hangWithFriends      
+function chooseDifferentOption1(){
+  answer1=["A","B"];
+  while(answer1 !== null){
+    readline1.setDefaultOptions({
+    limit:answer1,
+    limitMessage:
+   "HURRY UP BEFORE IT MEANS YOUR LIFE",
+     });
+  location = readline1
+  .question("You decided to turn back you only have two options now \n A:To School B: Back Home.\n")
+  .toUpperCase()
+  switch (location) {
+    case "A":
+    backHome();
+    break;
+    case "B":
+    hangWithFriends();
+    break;
     }
     break;
-  }
+   }
 }
+
+
+
+function Away(){
+    answer1=["A","B"];
+    while(answer1 !== null){
+      readline1.setDefaultOptions({
+        limit:answer1,
+        limitMessage:
+        "HURRY UP BEFORE IT MEANS YOUR LIFE",
+      });
+     location = readline1
+      .question("You decided to turn back you only have two options now \n A:To School B: Back Home.\n")
+      .toUpperCase()
+      switch (location) {
+        case "A":
+          toSchool();
+          break;
+          case "B":
+          backHome();
+            break;
+           // default:
+       }
+            break;
+      }
+}
+
+//Decisions to change option and without running through the entire senerio.
+
+
+
+//Primary Branching
 
 function toSchool(){
     if (readline1.keyInYN("You open the door and notice that the Hallways are all empty.There's an ominous presence in the air. Would you still like to enter? ")) {
       hallway();
     } else {
-      resetGame();
+      chooseDifferentOption1();
     }
   };
   
-
+  
 //Options do you walk into the empty school Y/N
 //Adventure: Has player wall down the hallway and has a fork in the road should they go L or R. One could decide if you live or they die. 
 //Adventure: Create Variable (Left) = Gym  (Right) = Lunchroom
@@ -101,22 +178,9 @@ function stayHome() {
       }
     }
 
-    function Closet(){
-      if (readline1.keyInYN("You open the door and notice that the Hallways are all empty. There's an ominous presence in the air. Would you still like to enter? ")) {
-        hallway();
-      } else {
-        resetGame();
-      }
-    }
 
-    function Bed(){
-      
-    }
-  
-// the creeking is getting louder towards your bedroom. Do you hide in the closet or under the bed?
-//Adventure: Create Variable (Closet)= Life  (Bed)= Death
-  
-    function hangWithFriends(){
+
+function hangWithFriends(){
       answer1=["A","B"];
       while(answer1 !== null){
         readline1.setDefaultOptions({
@@ -139,7 +203,31 @@ function stayHome() {
               break;
             }
           }
-          
+//Primary Branching
+
+
+
+//Secondary Branching
+
+function Closet(){
+  if (readline1.keyInYN("You open the door and notice that the Hallways are all empty. There's an ominous presence in the air. Would you still like to enter? ")) {
+        hallway();
+      } else {
+        ;
+      }
+    }
+
+
+function Bed(){
+      
+    }
+  
+// the creeking is getting louder towards your bedroom. Do you hide in the closet or under the bed?
+//Adventure: Create Variable (Closet)= Life  (Bed)= Death
+  
+         
+
+
 // // You begin walking to the park and you see a whole bunch of people walking towards you do you walk towards then or away from them.
 // //Adventure: Create Variable (A: Toward)= Death  (B: Away)=Life
 function Toward(){
@@ -149,31 +237,6 @@ function Toward(){
   // create a function that allows the program to reset giving the player the chance to replay 
 }
 
-function Away(){
-    answer1=["A","B"];
-    while(answer1 !== null){
-      readline1.setDefaultOptions({
-        limit:answer1,
-        limitMessage:
-        "HURRY UP BEFORE IT MEANS YOUR LIFE",
-      });
-     location = readline1
-      .question("You decided to turn back you only have two options now \n A:To School B: Back Home.\n")
-      .toUpperCase()
-      switch (location) {
-        case "A":
-          Toward();
-          break;
-          case "B":
-            Away();
-            break;
-           // default:
-       }
-            break;
-      }
-}
-
-
 
 
 function hallway(){
@@ -182,19 +245,8 @@ function hallway(){
 
     
     
-    //Would you like to try again
-  function resetGame(){
-      if (readline1.keyInYN("Would you like to play again?")){
-        console.clear()
-        console.log(`Hello Again ${nameInput}!`)
-        console.log(
-          "Life is a mystery and things are always changing.\nEvery ACTION has a REACTION so BE CAREFUL it could cost you your LIFE. \nIt's raining and dark outside, the fog clouds your vision as you open the front door. The hairs on the back of your neck begin to stand, something is wrong. What do you do?"
-        )
-        startGame();
-      } else {
-        quitGame();
-      }
-    }
     
+//Secondary Branch
+  
 
 // Create hidden path that allows the player to identify certain details within the text to choose correct direction.
