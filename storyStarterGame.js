@@ -83,12 +83,25 @@ const darkWoodsStoryLine = () => {
 const campOut = () => {
     let charMainName = readLineSync.question ("What's your main character's name?")
     console.log(`${charMainName} was brutally murder in their sleep!`) 
+//     arr1 = ["avenge death", "haunt criminals", "rest peacefully"] 
+//     let afterLife = readLineSync.keyInSelect (arr1)
+//    let yourchoice = arr1[afterLife] 
+//     if (yourchoice === "avenge death") {
+//     avengeDeath ();
+// } else if (yourchoice === "haunt criminals") {
+//     hauntCriminals();
+// } else if (yourchoice === "rest peacefully") {
+//     restPeacefully();
+// } else {
+//     leaveGame();
+// }
+// } 
 let i =0
 let i2=1
 arr1 = ["avenge death", "haunt criminals", "rest peacefully"]
 if (arr1.length===1) {
     if (arr1[i]==="avenge death"){
-        let afterLife=readLineSync.keyInSelect(arr1, "Do you want to avenge their death? ", {cancel:"Must choose above option"})
+        let afterLife =readLineSync.keyInSelect(arr1, "Do you want to avenge their death? ", {cancel:"Must choose above option"})
         if (arr1[afterLife] === "avenge death") {
             arr1.splice(0,1)
             avengeDeath()
