@@ -1,5 +1,5 @@
 const readLineSync = require('readline-sync');
-let array = []
+
     
 const welcome = () => {
     let nameInput = readLineSync.question("What is your name?") // Ask the player what is their name. 
@@ -83,19 +83,63 @@ const darkWoodsStoryLine = () => {
 const campOut = () => {
     let charMainName = readLineSync.question ("What's your main character's name?")
     console.log(`${charMainName} was brutally murder in their sleep!`) 
-    array = ["avenge death", "haunt criminals", "rest peacefully"] 
-    let afterLife = readLineSync.keyInSelect (array)
-   let yourchoice = array[afterLife] 
-    if (yourchoice === "avenge death") {
-    avengeDeath ();
-} else if (yourchoice === "haunt criminals") {
-    hauntCriminals();
-} else if (yourchoice === "rest peacefully") {
-    restPeacefully();
-} else {
-    leaveGame();
+let i =0
+let i2=1
+arr1 = ["avenge death", "haunt criminals", "rest peacefully"]
+if (arr1.length===1) {
+    if (arr1[i]==="avenge death"){
+        let afterLife=readLineSync.keyInSelect(arr1, "Do you want to avenge their death? ", {cancel:"Must choose above option"})
+        if (arr1[afterLife] === "avenge death") {
+            arr1.splice(0,1)
+            avengeDeath()
+        }
+    }else if (arr1[i] === "haunt criminals") {
+        let afterLife = readLineSync.keyInSelect(arr1, "Do you want to haunt criminals? ", {cancel:"Must choose above option"})
+        if (arr1[afterLife]=== "haunt criminals") {
+            arr1.splice(0,1)
+            hauntCriminals()
+        }
+    }else if (arr1[i] === "rest peacefully") {
+        let afterLife=readLineSync.keyInSelect(arr1, "Do you want them to rest peacefully?", {cancel: "Must choose above option"})
+        if (arr1[afterLife] === "rest peacefully") {
+            arr1.splice(0,1)
+            restPeacefully()
+        }
+    }
+} else if (arr1.length===2){
+     if (arr1[i] === "avenge death" && arr1[i2] === "haunt criminals"){
+        let afterLife = readLineSync.keyInSelect(arr1, "Do you want them to avenge their death or haunt criminals ? ", {cancel: "Must choose above options"})
+         if (arr1[afterLife]==="avenge death") {
+            arr1.splice(afterLife,1) 
+            avengeDeath()
+         }else if (arr1[afterLife] === "haunt criminals") {
+            arr1.splice(afterLife,1)
+            hauntCriminals()
+         }
+     } else if (arr1[i] === "rest peacefully" && arr1[i2] === "haunt criminals") {
+         let afterLife = readLineSync.keyInSelect(arr1, "Do you want them to haunt criminals or rest peacefully? ", {cancel: "Must choose above options"})
+         if (arr1[afterLife] === "haunt criminals") {
+             arr1.splice(afterLife,1)
+             hauntCriminals()
+         } else if (arr1[afterLife] === "rest peacefully") {
+             arr1.splice(afterLife,1)
+             restPeacefully()
+         }
+     } else if (arr1[i] === "avenge death" && arr1[i2] === "rest peacefully") {
+         let afterLife = readLineSync.keyInSelect(arr1, "Do you want them to avenge their death or rest peacefully? ", {cancel: "Must choose above options"})
+         if (arr1[afterLife] === "rest peacefully") {
+             arr1.splice(afterLife,1)
+             restPeacefully()
+         } else if (arr1[afterLife] === "avenge death") {
+             arr1.splice(afterLife, 1)
+             avengeDeath()
+         }
+     }
+} else if (arr1.length=== 0) {
+    replayTheGame()
 }
-} 
+}
+
 
 
  // avengeDeath 
@@ -103,15 +147,14 @@ const campOut = () => {
 console.log(`${charMainName} could not just rest! They want to find out who killed them.`)
 console.log (`Now after endless searching, finally ${charMainName} has found the killer and its their own brother!!!`)
 console.log(`You must choose for what ${charMainName}`)
-array = ["kill the brother", "investegate more"]
-let avengerOption = readLineSync.keyInSelect(array)
-let avengerAnswer = array[avengerOption]
+let avengerAnswer = readLineSync.question("Do you want to kill your character's brother or do you want to investegate more on the brother?")
+
 if (avengerAnswer === "investegate more") {
     investegateTheBrother();
 } else {
 } (avengerAnswer === "kill the brother") 
     console.log(`Your character have killed their own brother. However! \nThey have gain nothing but more regret because ${charMainName} did not investegate more! \nIf they had, ${charMainName} would have found out their brother was trying to save them from fully turning into a zombie! \nWhen ${charMainName}'s brother found them it was far too late on the outside to save them so he did what he thought was a good choice`)
-    replayTheGame(); 
+    campOutArrOptions(); 
 }
 
 
@@ -133,14 +176,18 @@ if (avengerAnswer === "investegate more") {
 
  }
 
+ //campOutArrOptions
+ const campOutArrOptions = () => {
 
+ }
 // walkTheWoodsAlone
 const walkTheWoodsAlone = () => {
     let charMainName = readLineSync.question("What's your main character's name?")
     console.log(`${charMainName} is walking through the dark woods and they hit a path of three.You have to select the path that ${charMainName} will take.`)
-    array = ["left", "middle", "right"]
-   let woodsPaths = readLineSync.keyInSelect (array)
-   let youchoose = array[woodsPaths] 
+    arr3 = ["left", "middle", "right"]
+   let woodsPaths = readLineSync.keyInSelect (arr3)
+   let youchoose = arr3[woodsPaths] 
+   for (i = 0; i < arr3.length; i++)
     if (youchoose === "left") {
     leftPath ();
 } else if (youchoose === "middle") {
@@ -156,30 +203,7 @@ const walkTheWoodsAlone = () => {
 const leftPath = () => {
     
     console.log ("Your character is walking through the thickets of poison ivy. \nBy the time they noticed they it already got everywhere and I mean EVERYWHERE!!") 
-    for (i = 0; i < array.length; i++) {
-        if (array[i] === "left") {
-            array.splice(i,1)
-            break
-        }
-    }
-    
-    let woodsPaths = readLineSync.keyInSelect (array)
-   let youchoose = array[woodsPaths]
-   if (youchoose === "middle") {
-       middlePath();
-   } else if (youchoose === "right"){
-       rightPath();
-   } else if (youchoose === undefined){
-    if (readLineSync.keyInYN ("Are you sure you want to CANCEL?")) {
-        leaveGame();
-    } else {
-        if (readLineSync.keyInYN ("Would you like you start again?")) {
-            welcome();
-        } else {
-            leaveGame();
-        }
-    }
-   }
+    woodsPathsOptions()
    // if the player choose middle path call middle path function 
    // need both if statements for middle and right 
    // need extra if statment for cancel : if youchoose = undefined 
@@ -188,66 +212,82 @@ const leftPath = () => {
 //middlePath
 const middlePath = () => {
     console.log("Your character finds a beheaded chicken in the middle of the road! \nAaaaaahhhhh, screams are being heard from further." )
-    for (i = 0; i < array.length; i++) {
-        if (array[i] === "middle") {
-            array.splice(i,1)
-            break
-        }
-    }
-    
-    let woodsPaths = readLineSync.keyInSelect(array)
-   let youchoose = array[woodsPaths]
-   if (youchoose === "left") {
-    leftPath();
-} else if (youchoose === "right"){
-    rightPath();
-} else if (youchoose === undefined){
-    if (readLineSync.keyInYN ("Are you sure you want to CANCEL?")) {
-        leaveGame();
-    } else {
-        if (readLineSync.keyInYN ("Would you like you start again?")) {
-            welcome();
-        } else {
-            leaveGame();
-        }
-    }
-   
-}
+    woodsPathsOptions()
+
 } // if statments left and right and undefined
 
 //rightPath
 const rightPath = () => {
     console.log("Your character reached a cliff. If they're not careful they will fall!")
-    for (i = 0; i < array.length; i++) {
-        if (array[i] === "right") {
-            array.splice(i,1)
-            break
-        } 
-    }
-    
-    let woodsPaths = readLineSync.keyInSelect(array)
-   let youchoose = array[woodsPaths]
-   if (youchoose === "middle") {
-    middlePath();
-} else if (youchoose === "left"){
-    leftPath();
-} else if (youchoose === undefined){
-    if (readLineSync.keyInYN ("Are you sure you want to CANCEL?")) {
-        leaveGame();
-    } else {
-        if (readLineSync.keyInYN ("Would you like you start again?")) {
-            welcome();
-        } else {
-            leaveGame();
-        }
-    }
-    
-}
+    woodsPathsOptions()
+
 } // if statemt left amnd middle and undefined
 // THERE IS A BUG IN THE LOOPS AND I CANNOT FIND IT 
 
+//woodsPathsOptions
+const woodsPathsOptions = () => {
+    console.clear()
+    let i =0
+    let i2=1
+    if (arr3.length===1) {
+        if (arr3[i]==="left"){
+            let woodsPaths=readLineSync.keyInSelect(arr3, "Do you want to take the left path? ", {cancel:"Must choose above option"})
+            if (arr3[woodsPaths] === "left") {
+                arr3.splice(0,1)
+                leftPath()
+            }
+        }else if (arr3[i] === "middle") {
+            let woodsPaths=readLineSync.keyInSelect(arr3, "Do you want to take the middle path? ", {cancel:"Must choose above option"})
+            if (arr3[woodsPaths]=== "middle") {
+                arr3.splice(0,1)
+                middlePath()
+            }
+        }else if (arr3[i] === "right") {
+            let woodsPaths=readLineSync.keyInSelect(arr3, "Do you want to take the right path?", {cancel: "Must choose above option"})
+            if (arr3[woodsPaths] === "right") {
+                arr3.splice(0,1)
+                rightPath()
+            }
+        }
+    } else if (arr3.length===2){
+         if (arr3[i] === "left" && arr3[i2] === "middle"){
+            let woodsPaths = readLineSync.keyInSelect(arr3, "Do you want to take the left path or middle? ", {cancel: "Must choose above options"})
+             if (arr3[woodsPaths]==="left") {
+                arr3.splice(woodsPaths,1) 
+                leftPath()
+             }else if (arr3[woodsPaths] === "middle") {
+                arr3.splice(woodsPaths,1)
+                middlePath()
+             }
+         } else if (arr3[i] === "right" && arr3[i2] === "middle") {
+             let woodsPaths = readLineSync.keyInSelect(arr3, "Do you want to take the middle or right path? ", {cancel: "Must choose above options"})
+             if (arr3[woodsPaths] === "middle") {
+                 arr3.splice(woodsPaths,1)
+                middlePath()
+             } else if (arr3[woodsPaths] === "right") {
+                 arr3.splice(woodsPaths,1)
+                 rightPath()
+             }
+         } else if (arr3[i] === "left" && arr3[i2] === "right") {
+             let woodsPaths = readLineSync.keyInSelect(arr3, "Do you want to take the right path or left path? ", {cancel: "Must choose above options"})
+             if (arr3[woodsPaths] === "right") {
+                 arr3.splice(woodsPaths,1)
+                 rightPath()
+             } else if (arr3[woodsPaths] === "left") {
+                 arr3.splice(woodsPaths, 1)
+                 leftPath()
+             }
+         }
+    // } else if (arr3.length=== 0) {
+    //     if (readLineSync.keyInYNStrict("Do you want to restart game?")) {
+    //         console.clear()
+    //         startGame()
+    //     } else {
+    //         quitGame()
+    //     }
+    } 
 
-
+}
 // darkRoadStoryLine
 const darkRoadStoryLine = () => {
     console.log ("Unfortunely the road was so too dark and your character died from a car crashing into them.") 
@@ -406,7 +446,7 @@ const replayTheGame = () => {
 }
 //leaveGame
 const leaveGame = () => {
-    console.log("Good luck writing your book by on your own with my ideas! MUAHAHAHA! HA! ")
+    console.log("Good luck writing the book by on your own with my ideas! MUAHAHAHA! HA! ")
     process.exit()
 }
 
