@@ -8,6 +8,8 @@ let poss ="1234567890"
 let arr =[]
 let userAns 
 let gameArr = [];
+let hiddenArray = [];
+let theShuffledNumbers = [];
 
 
 const gameLoop = () => {
@@ -19,13 +21,13 @@ const gameLoop = () => {
     tell you which one is higher and which one is lower of the two values
     ...The catch is you only have a limited amount of tries...(10)`)
     
-    let str = rls.question("Please enter four single-digit numbers in a row \n") //will add non repeating later on
-   
+    let originalInput = rls.question("Please enter four single-digit numbers in a row \n") //will add non repeating later on
     
     while( tries > 0){
-        if( correctOriginal(str)){
+        if( correctOriginal(originalInput)){
             
             gameArr = gameArrayAssign(arr)
+
             console.log("Now your numbers have been duplicated and randomly assigned")
             console.log("to an empty line with 8 available slots")
             console.log("Now we are dealing with 8 numbers which are in a random order \n")
@@ -62,44 +64,28 @@ const endGame = () => {
     process.exit()
 }
 
-const correctOriginal =(str) =>{
-    if(str.length === 4){
-    let arrStr = str.split("")
-    arr = arrStr.map(String)
-    console.log(typeof arr)    // to test 
-    console.log(arr)            // to test 
+const correctOriginal =(originalInput) =>{
+    if(originalInput.length === 4){
+    arr = originalInput.split("")
         for( i = 0; i< arr.length; i++){
-            if(poss.includes(arr[i])){
-
-                for(i = 1 ; i < arr.length; i++){
-
-                    if (arr[0]===arr[i]){
-
-                        console.clear()
-                        console.log("Typo? if not, lets read the fineprint too!")
-                        gameLoop()
-                    } 
-                }
-            }else{
-
-                console.log("Only numbers please now you have to start all over!")
+            if(!poss.includes(arr[i])){
+               console.log("Only numbers please now you have to start all over!")
                 gameLoop()
             }
         }
-        return arr
     }    
-    
+    return arr
 }
 
 const gameArrayAssign = (arr) =>{
-    console.log(shuffleArray(arr.concat(arr)))       // to test
-    return shuffleArray(arr.concat(arr))
+    theShuffledNumbers = shuffleArray(arr.concat(shuffleArray(arr)))
+    return theShuffledNumbers
      
 }
 
 const shuffleArray = (arr) =>{
     for ( i = arr.length - 1; i > 0; i--) {
-        let j = Math.floor(Math.random() * (i + 1));
+        let j = Math.floor(Math.random() * i );
         let temp = arr[i];
         arr[i] = arr[j]
         arr[j] = temp
@@ -136,6 +122,10 @@ const correctInput = (userAns ) => {
             userInput()
         }    
     }    
+}
+
+const hideNumber = () =>{
+
 }
 
 const checkCorrect =() => {
