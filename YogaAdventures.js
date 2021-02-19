@@ -99,7 +99,7 @@ const heelPose = () => {
 const palmQuestion = () => {
     let palmUpDownResp = ""
     do {
-        palmUpDownResp = rls.question("During HEEL POSE, were your palms FACE UP (UP) or FACE DOWN (DOWN)?")
+        palmUpDownResp = rls.question("During HEEL POSE, were your palms FACE UP (UP) or FACE DOWN (DOWN)?").toLowerCase().toUpperCase().trim()
     }
     while (palmUpDownResp !== "UP" && palmUpDownResp !== "DOWN") {
     if(palmUpDownResp === "UP") {
