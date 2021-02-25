@@ -264,8 +264,9 @@ function windowTint(){
         } else if (tintPercent[userTintPercent] === '5 % tint') {
             console.log('Enjoy your tinted windows')
             return tintPercent[userTintPercent]
-        } else {
-          windowTint() 
+        } 
+        // else {
+        //   windowTint() 
       }
     } else {
       return 'Enjoy your ' + playerCarList + ' without tinted windows' 
@@ -340,74 +341,3 @@ if (readline.keyInYN('Congradulations on your new car!!! Would you like to play 
 
 play();
 
-
-// if (playerCarList === 'Mercedes-Benz') {
-    //   console.log('Mercedes-Benz Model: ' + yourBenz + '\n')
-    // } else if (playerCarList === 'BMW') {
-    //   console.log('BMW Model: ' + yourBmw + '\n')
-    // } else if (playerCarList === 'Audi') {
-    //   console.log('Audi Model: ' + yourAudi + '\n')
-    // } else {
-    //   console.log('N/A')
-    // }
-    // console.log('Car Model: ' + )
-
-
-// const startGame = () => {
-// // greet user and ask if they want to get a free car that comes with stimulus check
-// console.log("This is the Luxuriy Car simulator where you can create your very own car!")
-// console.log("Choose the car of your choice and fill out the customization of your FREE car!")
-// console.log("Take your time looking through what is offered...we have some SPECIAL choices.")
-// if (readlineSync.keyInYN("Would you like a new car?")) {
-//     play ()
-// } else {
-//     leaveGame ()
-// }
-
-// }
-
-// startGame()
-
-// const leaveGame = () => {
-//     console.log("That's a shame...well enjoy walking!")
-//     process.exit()
-
-
-// let playerCarList = readline.question(
-//   "Our dealership has the following car brands: Mercedes-Benz , Audi , and BMW. Which would you like? Please enter the car brand of your choice.\n"
-// );
-// if (playerCarList === "Mercedes-Benz") {
-//   mercedesList();
-// } else if (playerCarList === "BMW") {
-//   bmwList();
-// } else if (playerCarList === "Audi") {
-//   audiList();
-// } else {
-//   playerCarList = readline.question(
-//     "Our dealership has the following car brands: Mercedes-Benz , Audi , and BMW. Which would you like? Please enter the car brand of your choice.\n"
-//   );
-  
-// }
-
-
-
-// function receiptBrand(){
-  //   let yourBenz = mercedesList()
-  //   let yourBmw = bmwList()
-  //   let yourAudi = audiList()
-  //   if (playerCarList === 'Mercedes-Benz') {
-  //       return 'Mercedes-Benz Model: ' + yourBenz + '\n'
-  //     } else if (playerCarList === 'BMW') {
-  //       return 'BMW Model: ' + yourBmw + '\n'
-  //     } else if (playerCarList === 'Audi') {
-  //       return 'Audi Model: ' + yourAudi + '\n'
-  //     } else {
-  //       console.log('N/A')
-  //     }
-  // }
-
-
-  //     const leaveGame = () => {
-//         console.log("That's a shame...well enjoy walking!")
-//         process.exit()
-//     }
