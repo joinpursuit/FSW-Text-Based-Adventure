@@ -8,13 +8,13 @@ A fun  easter egg is to Google search: Avatar The last Airbender.
 
 
 
-## Player Story
+# Player Story
 
-# As a player, You can begin a game
+ As a player, You can begin a game
 
-# As a player, You can make decisions during the game
+ As a player, You can make decisions during the game
 
-# As a player, You can restart a game
+ As a player, You can restart a game
 
 
 
