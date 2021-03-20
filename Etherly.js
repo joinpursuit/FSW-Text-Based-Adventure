@@ -13,7 +13,7 @@ console.log(
 const giveNickName=()=>{
   let nick= ''
   for(let i = 0; i <= nameInput.length; i ++) {
-      if(nameInput.length >= 3){
+      if(nameInput.length <= 1){
       }
       else { 
         nick += (nameInput[i] + 'a')
