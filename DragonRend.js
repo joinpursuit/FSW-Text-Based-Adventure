@@ -16,10 +16,19 @@ function quitGame() {
    }
 }
 
-function dice(nat,min){ return Math.floor((Math.random()* min)+nat) }
+
+function dice(nat, min) { return Math.floor((Math.random() * min) + nat) } \
+
+const heroStats = {
+    health: 10,
+    attack: 10,
+    defense: 8,
+    level: 1,
+    experience: 0
+}
 
 let heroStat = [10, 10, 8, 1, 0]
-
+heroStat[2]
 let oppStat = [
     [10, 8, 5, 1, 0],
     [12, 5, 5, 1, 0]
