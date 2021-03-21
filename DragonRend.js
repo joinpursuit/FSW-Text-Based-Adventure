@@ -2,22 +2,25 @@ const {question, keyInYN}=require('readline-sync')
 let nameInput = question("Enter your name: ")
 console.log(`Hello ${nameInput}!  Welcome to my game.`)
 
-neverSayDie = () => {
+// neverSayDie = () => {
     
-}
-function quitGame() {
-   let restart = keyInYN('To the well-organised mind, death is but the next great adventure. Restart?')
-   console.log('Til next time '+ nameInput)
-   if (restart === true) {
-    start()
-   } else if (restart === false) {
+// }
+
+const quitGame = () => {
+    let restart = keyInYN('To the well-organised mind, death is but the next great adventure. Restart?')
     console.log('Til next time '+ nameInput)
-    return
-   }
+    if (restart === true) {
+     start()
+    } else if (restart === false) {
+     console.log('Til next time '+ nameInput)
+     return
+    }
 }
 
 
-function dice(nat, min) { return Math.floor((Math.random() * min) + nat) } \
+const dice = () => {
+    return Math.floor((Math.random() * min) + nat)
+}
 
 const heroStats = {
     health: 10,
@@ -27,30 +30,72 @@ const heroStats = {
     experience: 0
 }
 
-let heroStat = [10, 10, 8, 1, 0]
-heroStat[2]
-let oppStat = [
-    [10, 8, 5, 1, 0],
-    [12, 5, 5, 1, 0]
-]
+const oppStats = {
+    troll: {
+        health: 10,
+        attack: 10,
+        defense: 10,
+        level: 1,
+        experince: 0
+    },
+    enemy: {
+        health: 12,
+        attack: 5,
+        defense: 5,
+        level: 1,
+        experience: 0
+    },
+    enemy: {
+        health: 0,
+        attack: 0,
+        defense:0 ,
+        level: 0,
+        experience: 0
+    }
+}
 
-function addHealth(value, reward, risk) {
-   console.log('+--------------------------------------------------------------------------------------+')
-   console.log('+ You rolled '+(d6 = dice(6,1))+' !                                                             +')
-   if (d6 >= value){
-    heroStat[0] = heroStat[0]+reward
-    console.log('+--------------------------------------------------------------------------------------+')
-    console.log('+ You gain '+reward+' health!                                                                   +')
-    console.log('+ Your health is now '+heroStat[0]+'!                                                            +')
-   } else if (d6 < value) {
-        heroStat[0] = heroStat[0]-risk
+// let oppStat = [
+//     [10, 8, 5, 1, 0],
+//     [12, 5, 5, 1, 0]
+// ]
+
+
+const constitutionRoll = (passVal, reward, risk) => {
+    let roll = dice(6, 1)
+    if (roll > passVal) {
+        heroStat.health+reward
         console.log('+--------------------------------------------------------------------------------------+')
-        console.log('+ You take '+risk+' damage!                                                                 +')
-        console.log('+ Your health is now '+heroStat[0]+'!                                                   +')
-   } else {
+        console.log(`+ You rolled ${roll}`)
+        console.log(`+ You gain ${reward} heart points. Health is now ${heroStat.health} +`)
+    } else if (roll < passVal) {
+        heroStat.health - risk
         console.log('+--------------------------------------------------------------------------------------+')
-        console.log('+ Whoa someting went really wrong here!!!!!!!                                       +')
-   }
+        console.log('+ You rolled ${roll}+')
+        console.log('+ you lose ${reward} heart points. Health is now ${heroStat.health}+')
+        return heroStat.health-risk
+    } else {
+        console.log('+--------------------------------------------------------------------------------------+')
+        console.log(`Whoa something went really wrong here`)
+    }
+}
+
+// function addHealth(value, reward, risk) {
+//    console.log('+--------------------------------------------------------------------------------------+')
+//    console.log('+ You rolled '+(d6 = dice(6,1))+' !                                                             +')
+//    if (d6 >= value){
+//     heroStat[0] = heroStat[0]+reward
+//     console.log('+--------------------------------------------------------------------------------------+')
+//     console.log('+ You gain '+reward+' health!                                                                   +')
+//     console.log('+ Your health is now '+heroStat[0]+'!                                                            +')
+//    } else if (d6 < value) {
+//         heroStat[0] = heroStat[0]-risk
+//         console.log('+--------------------------------------------------------------------------------------+')
+//         console.log('+ You take '+risk+' damage!                                                                 +')
+//         console.log('+ Your health is now '+heroStat[0]+'!                                                   +')
+//    } else {
+//         console.log('+--------------------------------------------------------------------------------------+')
+//         console.log('+ Whoa someting went really wrong here!!!!!!!                                       +')
+//    }
 }
 
 function minusHealth(value, risk) {
