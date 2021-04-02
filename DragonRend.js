@@ -2,10 +2,6 @@ const {question, keyInYN}=require('readline-sync')
 let nameInput = question("Enter your name: ")
 console.log(`Hello ${nameInput}!  Welcome to my game.`)
 
-// neverSayDie = () => {
-    
-// }
-
 const quitGame = () => {
     let restart = keyInYN('To the well-organised mind, death is but the next great adventure. Restart?')
     console.log('Til next time '+ nameInput)
@@ -17,12 +13,11 @@ const quitGame = () => {
     }
 }
 
-
-const dice = () => {
-    return Math.floor((Math.random() * min) + nat)
+const dice = (nat,min) => {
+    return Math.floor((Math.random() * nat) + min)
 }
 
-const heroStats = {
+const heroStat = {
     health: 10,
     attack: 10,
     defense: 8,
@@ -30,7 +25,7 @@ const heroStats = {
     experience: 0
 }
 
-const oppStats = {
+const oppStat = {
     troll: {
         health: 10,
         attack: 10,
@@ -38,7 +33,7 @@ const oppStats = {
         level: 1,
         experince: 0
     },
-    enemy: {
+    ent: {
         health: 12,
         attack: 5,
         defense: 5,
@@ -53,12 +48,6 @@ const oppStats = {
         experience: 0
     }
 }
-
-// let oppStat = [
-//     [10, 8, 5, 1, 0],
-//     [12, 5, 5, 1, 0]
-// ]
-
 
 const constitutionRoll = (passVal, reward, risk) => {
     let roll = dice(6, 1)
@@ -107,74 +96,40 @@ const constitutionRoll = (passVal, reward, risk) => {
 //     console.log('+ Your health is now '+heroStat[0]+'.                                                      +')
 // }
 
-
 const dmg = (atk, enemyDef, level) => {
     const d6Roll = dice(6,1)
     const critRoll = dice(3, 1)
+    console.log(d6Roll, critRoll)
 
-    let damage = Math.ceil((((2 * level + 10) / 150) * (atk / enDef) + 2) * d6)
-    
-    let critical = Math.ceil((((2 * level + 10) / 150) * (atk / enDef) + 2) * crit)
-    
-    if (d6 !== 1 && d6 !== 6) {
+    let damage = Math.ceil((((2 * level + 10) / 150) * (atk / enemyDef) + 2) * d6Roll)    
+    let critical = Math.ceil((((2 * level + 10) / 150) * (atk / enemyDef) + 2) * critRoll)
+    console.log(damage, critical)
+
+
+    if (d6Roll !== 1 && d6Roll !== 6) {        
         console.log('+--------------------------------------------------------------------------------------+')
-        heroStat.health - damage
-        //console.log()
-        return damage
-    } else if (d6 === 6) {
+        oppStat.troll.health - damage
+        console.log(oppStat.troll.health)
+        console.log('normal hit')
+    } else if (d6Roll === 6) {        
         let critDmg = damage + critical
+        let troll = oppStat.troll.health
+        troll - critDmg
         console.log(critDmg)
-        return damage
-    } else if (d6 === 1) {
-        console.log(`Your attack missed                      `)
-        return 0
+        console.log(troll)
+        console.log('Critical hit!')
+
+    } else if (d6Roll === 1) {
+        console.log(`Your attack missed                      `)        
     }
 }
 
-// function dmg(atk, enDef,level){//these stats are hosted in heroStat/oppStat respectively
-// //define oppStat here by filling in the enemy values --> oppStat[enHealth, enAtk, enDef, enlvl, expgain]
-// //calc atk v resistance x level and return a number
-//     d6 = dice(6, 1)
+// const enDmg =  (enemyAtk, def, enemyLvl) = () => {
+//     const d6 = dice(6, 1)
+//     const d1 = dice(2, 1)
     
-//     crit = dice(3, 1)
-    
-//     let damage = Math.ceil(
-//         (((2 * level + 10) / 150) * (atk / enDef) + 2) * d6)
-    
-//     let critical = Math.ceil((((2 * level + 10) / 150) * (atk / enDef) + 2) * crit)
-    
-
-//     if (d6 !== 1 && d6 !== 6) {
-//         console.log('+--------------------------------------------------------------------------------------+')       
-//         return damage
-
-//     } else if (d6 === 6) {
-
-//         critHit = damage + critical
-//         console.log(critHit)
-//         // console.log('+--------------------------------------------------------------------------------------+')
-//         return critHit
-//     } else if (d6 === 1) {
-//         // console.log('+--------------------------------------------------------------------------------------+')
-//         console.log('+ Your attack missed!                                                                  +')
-//         return 0
-//     }
+//     let damage = Math.ceil((((2*enemyLvl+10)/150)* (enemyAtk/def)))
 // }
-
-
-
-
-const enDmg =  (enemyAtk, def, enemyLvl) = () => {
-    const d6 = dice(6, 1)
-    const d1 = dice(2, 1)
-    
-    let damage = Math.ceil((((2*enemyLvl+10)/150)* (enemyAtk/def)))
-}
-
-
-
-
-
 
 function enDmg(enAtk1, def2, enLvl3) {//enemyArr stat are held in oppStat
     
