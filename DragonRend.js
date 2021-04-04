@@ -6,10 +6,10 @@ const quitGame = () => {
     let restart = keyInYN('To the well-organised mind, death is but the next great adventure. Restart?')
     console.log('Til next time '+ nameInput)
     if (restart === true) {
-     start()
+        start()
     } else if (restart === false) {
-     console.log('Til next time '+ nameInput)
-     return
+        console.log('Til next time '+ nameInput)
+        process.exit()
     }
 }
 
@@ -56,104 +56,68 @@ const constitutionRoll = (passVal, reward, risk) => {
         console.log('+--------------------------------------------------------------------------------------+')
         console.log(`+ You rolled ${roll}`)
         console.log(`+ You gain ${reward} heart points. Health is now ${heroStat.health} +`)
+
     } else if (roll < passVal) {
         heroStat.health - risk
         console.log('+--------------------------------------------------------------------------------------+')
         console.log('+ You rolled ${roll}+')
-        console.log('+ you lose ${reward} heart points. Health is now ${heroStat.health}+')
-        return heroStat.health-risk
+        console.log(`+ you lose ${reward} heart points. Health is now ${heroStat.health}+`)
+       
     } else {
         console.log('+--------------------------------------------------------------------------------------+')
         console.log(`Whoa something went really wrong here`)
     }
 }
 
-// function addHealth(value, reward, risk) {
-//    console.log('+--------------------------------------------------------------------------------------+')
-//    console.log('+ You rolled '+(d6 = dice(6,1))+' !                                                             +')
-//    if (d6 >= value){
-//     heroStat[0] = heroStat[0]+reward
-//     console.log('+--------------------------------------------------------------------------------------+')
-//     console.log('+ You gain '+reward+' health!                                                                   +')
-//     console.log('+ Your health is now '+heroStat[0]+'!                                                            +')
-//    } else if (d6 < value) {
-//         heroStat[0] = heroStat[0]-risk
-//         console.log('+--------------------------------------------------------------------------------------+')
-//         console.log('+ You take '+risk+' damage!                                                                 +')
-//         console.log('+ Your health is now '+heroStat[0]+'!                                                   +')
-//    } else {
-//         console.log('+--------------------------------------------------------------------------------------+')
-//         console.log('+ Whoa someting went really wrong here!!!!!!!                                       +')
-//    }
-
-// function minusHealth(value, risk) {
-//     d6 = dice(6,1)
-//     if (d6 < value){
-//         heroStat[0]= heroStat[0]-risk
-//     }
-//     console.log('+--------------------------------------------------------------------------------------+')
-//     console.log('+ You take '+heroStat[0]-risk+' damage!                                                    +')
-//     console.log('+ Your health is now '+heroStat[0]+'.                                                      +')
-// }
-
-const dmg = (atk, enemyDef, level) => {
+const dmg = (atk, enemyDef, level, enemy) => {
     const d6Roll = dice(6,1)
     const critRoll = dice(3, 1)
-    console.log(d6Roll, critRoll)
+    // console.log(d6Roll, critRoll)
 
     let damage = Math.ceil((((2 * level + 10) / 150) * (atk / enemyDef) + 2) * d6Roll)    
     let critical = Math.ceil((((2 * level + 10) / 150) * (atk / enemyDef) + 2) * critRoll)
-    console.log(damage, critical)
-
+    // console.log(damage, critical)
 
     if (d6Roll !== 1 && d6Roll !== 6) {        
-        console.log('+--------------------------------------------------------------------------------------+')
-        oppStat.troll.health - damage
-        console.log(oppStat.troll.health)
+        console.log('+--------------------------------------------------------------------------------------+')         
         console.log('normal hit')
+        return enemy.health - damage
+
     } else if (d6Roll === 6) {        
         let critDmg = damage + critical
-        let troll = oppStat.troll.health
-        troll - critDmg
-        console.log(critDmg)
-        console.log(troll)
+        let troll = enemy.health                
         console.log('Critical hit!')
+        return troll - critDmg
 
     } else if (d6Roll === 1) {
-        console.log(`Your attack missed                      `)        
+        console.log(`Your attack missed                      `)
+        return 0
     }
 }
 
-// const enDmg =  (enemyAtk, def, enemyLvl) = () => {
-//     const d6 = dice(6, 1)
-//     const d1 = dice(2, 1)
-    
-//     let damage = Math.ceil((((2*enemyLvl+10)/150)* (enemyAtk/def)))
-// }
+const enDmg = (enemyAtk, def, enemyLvl) => {
+    const d6Roll = dice(6, 1)
+    const d2Roll = dice(2, 1)
 
-function enDmg(enAtk1, def2, enLvl3) {//enemyArr stat are held in oppStat
-    
-    d6 = dice (6,1)
-    d2 = dice (2,1)
-    let damage = Math.ceil( ( ( (2*enLvl3+10) / 150) * (enAtk1/def2) +2) *d6)
-    if (d2 === 2) {
-        let hit = heroStat[0]-damage
+    let damage = Math.ceil( ( ( (2*enemyLvl+10) / 150) * (enemyAtk/def) +2) *d6Roll)
+    if (d2Roll === 2) {
+        let hit = heroStat.health - damage
         return hit
     } else if (d2 === 1) {
         console.log('+ The enemy missed! You take no damage.              +')
+        return 0
     }
 }
 
-function dodge(risk,enAtk1,def2,){//if dodge roll is > 3, nullify damage
-    d6 = dice(6,1)
+const dodge = (risk,enemyAtk,def) => {//if dodge roll is > 3, nullify damage
+    const d6 = dice(6,1)
     if (d6 > 3){
-       console.log('+ Succesful dodge!                                              +')
-       enDmg(enAtk1,def2,enlvl3)
-    } else if (d6 < 4) {
+        console.log('+ Succesful dodge!                                              +')
+        return 1;
 
-      dodgeFail =  heroStat[0]-risk
+    } else if (d6 < 4) {
        console.log('+ You tripped during your dodge and took '+risk+' damage!       +')
-       console.log('+ Your health is now '+heroStat.health+'!                                +')
+       console.log(`+ Your health is now ${heroStat.health}!                        +`)
     }
 }
 
