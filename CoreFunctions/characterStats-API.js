@@ -28,4 +28,4 @@ const characterStats = {
 console.log(characterStats.ent.description)
 
 
-module.exports = oppStat;
+module.exports = characterStats;
