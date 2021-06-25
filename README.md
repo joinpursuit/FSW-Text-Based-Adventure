@@ -4,9 +4,11 @@ Follow my progress here: [Trello](https://trello.com/b/rhEqDedM/dragonrend)
 
 ## Project setup
 
-`git clone https://github.com/Rvndyr/FSW-Text-Based-Adventure.git`
-`cd FSW-Text-Based-Adventure`
-`npm install`
+```
+git clone https://github.com/Rvndyr/FSW-Text-Based-Adventure.git
+cd FSW-Text-Based-Adventure`
+npm install
+```
 
 ## Run Dragon Rend
 
