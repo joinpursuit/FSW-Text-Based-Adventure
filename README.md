@@ -1,4 +1,12 @@
-# Text-Based-Adventure
+# Dragon Rend
+
+Follow my progress here: [Trello](https://trello.com/b/rhEqDedM/dragonrend)
+
+## Project setup
+
+`git clone https://github.com/Rvndyr/FSW-Text-Based-Adventure.git`
+
+<!-- # Text-Based-Adventure
 
 ## Introduction
 
@@ -8,7 +16,7 @@ This project will build on the skills that you've learned after your first coupl
 
 Look [here](https://classicreload.com/zork-i.html) and [here](http://www.bbc.co.uk/programmes/articles/1g84m0sXpnNCv84GpN2PLZG/the-hitchhikers-guide-to-the-galaxy-game-30th-anniversary-edition) for a couple examples of the genre.  Be creative!
 
-A fun Google easter egg is to Google search `text adventure`. From the results page right click on the page and inspect the console. You should find a game by Google. 
+A fun Google easter egg is to Google search `text adventure`. From the results page right click on the page and inspect the console. You should find a game by Google.
 
 ### Reading input
 
@@ -18,8 +26,7 @@ Use the following line to get user input:
 
 ```js
 let yourVariableHere = readline.question("Enter your name: ")
-```
-
+````
 
 ## Setup Instructions
 
@@ -35,7 +42,6 @@ let yourVariableHere = readline.question("Enter your name: ")
 1. Commit and Push your changes to your fork
 1. Submit a Pull Request back to the assignment repo
 1. Paste a link to your Pull Request (not your fork!) on Canvas and submit
-
 
 ## User Stories
 
@@ -70,8 +76,7 @@ Replace the link below with the link to your Trello project:
 
 [Trello](https://trello.com/b/vbKtMOKj/text-based-adventure-project-plan)
 
-
 ## Rubric
 
 ![outcomesRubric.png](./outcomesRubric.png)
-![acRubric.png](./acRubric.png)
+![acRubric.png](./acRubric.png) -->
