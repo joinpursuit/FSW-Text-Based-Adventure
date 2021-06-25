@@ -243,3 +243,71 @@
 
 
 
+
+
+
+
+// const reverse = (x) => {
+//     const arr = String(x).split("")
+//     if (x >= Number.MAX_SAFE_INTEGER || x <= Number.MIN_SAFE_INTEGER) {
+//            return 0
+//     }
+//     else if (arr.includes('-')) {
+//         console.log(`else if ran!`)
+//         arr.shift()
+//         arr.reverse().unshift('-')
+//         return Number(arr.join(''))
+//     }
+//     else {
+//         console.log(`else ran!`)
+//         arr.reverse()
+//         console.log(arr)
+        
+//     }
+//     return Number(arr.join(''))
+// }
+
+// console.log(reverse(Number.MAX_SAFE_INTEGER))
+
+// var isPalindrome = function(x) {
+//     const arr = Array.from(String(x))
+//     let neuArr = []
+//     for (let i=arr.length-1; i >= 0; i--){
+//         neuArr.push(arr[i])
+//         console.log(neuArr)
+//     }
+//     if (arr.join('') === neuArr.join('')) {
+//         return true;
+//     }
+//     else {
+//         return false;
+//     }
+// };
+
+// var isPalindrome = function(x) {
+//     const arr = Number(String(x).split('').reverse().join(''))
+//     return arr === x ? true : false;
+// };
+
+const twoSum = (nums, target) => {
+    const neuArr = []
+    const resultNums = nums.map(x => {
+        for (let i = 0; i < nums.length - 1; i++) {
+            if (x + nums[i] === target) {
+                neuArr.push([x, nums[i]])
+                console.log(neuArr)
+            }
+            // (x + nums[i] === target) ? neuArr.push(x, nums[i]) : null;
+        }
+    })
+    index = 0
+
+    while (index < neuArr.length){
+        console.log(neuArr[index])
+    }
+    return neuArr
+}
+//input: [1,2,3] 5
+//output: [2,3]
+
+console.log(twoSum([1,2,3,4,5], 5))
