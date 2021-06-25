@@ -5,6 +5,16 @@ Follow my progress here: [Trello](https://trello.com/b/rhEqDedM/dragonrend)
 ## Project setup
 
 `git clone https://github.com/Rvndyr/FSW-Text-Based-Adventure.git`
+`cd FSW-Text-Based-Adventure`
+`npm install`
+
+## Run Dragon Rend
+
+`node DragonRend.js`
+
+## Notes
+
+- Refactoring the functions into 'components' to organize code and make it more readable. Feel free to contribute!
 
 <!-- # Text-Based-Adventure
 
@@ -14,7 +24,7 @@ This project will build on the skills that you've learned after your first coupl
 
 ### Examples
 
-Look [here](https://classicreload.com/zork-i.html) and [here](http://www.bbc.co.uk/programmes/articles/1g84m0sXpnNCv84GpN2PLZG/the-hitchhikers-guide-to-the-galaxy-game-30th-anniversary-edition) for a couple examples of the genre.  Be creative!
+Look [here](https://classicreload.com/zork-i.html) and [here](http://www.bbc.co.uk/programmes/articles/1g84m0sXpnNCv84GpN2PLZG/the-hitchhikers-guide-to-the-galaxy-game-30th-anniversary-edition) for a couple examples of the genre. Be creative!
 
 A fun Google easter egg is to Google search `text adventure`. From the results page right click on the page and inspect the console. You should find a game by Google.
 
@@ -25,8 +35,8 @@ This project imports an npm module called `readline-sync` that allows the user t
 Use the following line to get user input:
 
 ```js
-let yourVariableHere = readline.question("Enter your name: ")
-````
+let yourVariableHere = readline.question("Enter your name: ");
+```
 
 ## Setup Instructions
 
