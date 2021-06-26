@@ -1,7 +1,7 @@
 const dice = require('./CoreFunctions/dice.js')
 const characterStats = require('./CoreFunctions/characterStats.js')
 
-const dmg = (atk, enemyDef, level, enemy) => {
+const attack = (atk, enemyDef, level, enemy) => {
     const d6Roll = dice(6,1)
     const critRoll = dice(3, 1)
     
@@ -26,4 +26,5 @@ const dmg = (atk, enemyDef, level, enemy) => {
     }
     
 }
-console.log(dmg())
+
+module.exports = attack
