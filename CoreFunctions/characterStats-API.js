@@ -25,7 +25,4 @@ const characterStats = {
     }
 }
 
-console.log(characterStats.ent.description)
-
-
 module.exports = characterStats;
