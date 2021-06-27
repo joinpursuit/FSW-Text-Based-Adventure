@@ -1,7 +1,6 @@
 const dice = require(`./dice.js`)
 
-// const enDmg = (enemyAtk, def, enemyLvl) => {
-const enDmg = (herostat, enemy) => {
+const enemyDmg = (herostat, enemy) => {
     //dice dependencies
     const d6Roll = dice(6, 1)
     const d2Roll = dice(2, 1)
@@ -18,3 +17,5 @@ const enDmg = (herostat, enemy) => {
         ? damage
         : 0
 }
+
+module.exports = enemyDmg

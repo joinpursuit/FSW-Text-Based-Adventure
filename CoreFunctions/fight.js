@@ -1,5 +1,7 @@
 //import dice,
 const dice = require("./dice.js");
+const dmg = require("./dmg.js")
+const enemyDmg = require("./enemyDmg.js")
 const characterStats = require("./characterStats-API.js");
 const { question, keyInYN } = require("readline-sync");
 
@@ -14,9 +16,11 @@ const fight = (herostat, enemy, risk, experience) => {
 
     if (options[i] === options[0]) {
       const damage = dmg(herostat, enemy);
-      const enDmg = enDmg(herostat, enemy);
-      enemy.health - damage;
-      herostat.health - enDmg.health;
+      // const enDmg = enDmg(herostat, enemy);
+      // const result = enemy.health - damage;
+      console.log(enemy.health - damage)
+      // console.log(result)
+      // herostat.health - enDmg.health;
     } else if (options[i] === options[1]) {
       let dodge = dodge(risk);
       return dodge;
