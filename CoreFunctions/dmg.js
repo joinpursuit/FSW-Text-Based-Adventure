@@ -11,7 +11,7 @@ const dmg = (herostat, enemy) => {
     
     let damage = Math.ceil(((
         (2 * level + 10) / 150) * (atk / enemyDef) + 2) * d6Roll)
-    console.log(damage)
+    
     let critical = Math.ceil(((
         (2 * level + 10) / 150) * (atk / enemyDef) + 2) * critRoll)
     

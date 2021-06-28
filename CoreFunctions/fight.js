@@ -1,7 +1,7 @@
 //import dice,
 const dice = require("./dice.js");
-const dmg = require("./dmg.js")
-const enemyDmg = require("./enemyDmg.js")
+const dmg = require("./dmg.js");
+const enemyDmg = require("./enemyDmg.js");
 const characterStats = require("./characterStats-API.js");
 const { question, keyInYN, keyInSelect } = require("readline-sync");
 const { hero, troll } = require("./characterStats-API.js");
@@ -10,30 +10,34 @@ const { hero, troll } = require("./characterStats-API.js");
 //Destructure the hero's stats off the characterStats obj when passing the hero's health stat as an argument
 
 const fight = (herostat, enemy, risk, experience) => {
-  
   while (herostat.health > 0 || enemy.health > 0) {
     const options = ["Attack", "Dodge", "Special Attack", "Run"];
     let index = keyInSelect(options, `What's your move?`);
 
     if (options[index] === options[0]) {
-      const damage = dmg(herostat, enemy)
-      console.log(`hero did ${enemy.health - damage} damage to the enemy`)
-      enemy.health - damage
+      const damage = dmg(herostat, enemy);
+      enemy.health - damage;
+      console.log(
+        `hero did ${damage} damage to the enemy \n${hero.health}❤️ \n${enemy.health}🖤`
+      );
 
-      const enDamage = enemyDmg(herostat, enemy)
-      console.log(`enemy did ${hero.health - enDamage} damage to our hero`)
-      // console.log(result)
-      // herostat.health - enDmg.health;
-    } else if (options[index] === options[1]) {
+      const enDamage = enemyDmg(herostat, enemy);
+      console.log(
+        `Enemy did ${enDamage} damage to our hero \n${hero.health}❤️ \n${enemy.health}🖤`
+      );
+    }
+    else if (options[index] === options[1]) {
       let dodge = dodge(risk);
       return dodge;
-    } else if (options[index] === options[2]) {
+    }
+    else if (options[index] === options[2]) {
       if (herostat.level > 3) {
         return true;
       } else {
         console.log(`Do you even lift? Your level is too low, scrub.`);
       }
-    } else if (options[index] === options[3]) {
+    }
+    else if (options[index] === options[3]) {
       const d2 = dice(2, 1);
       if (d2 === 1) {
         console.log(`How could 1 tail beat 2 heads? `);
@@ -54,12 +58,11 @@ const fight = (herostat, enemy, risk, experience) => {
     console.log(` ||=====// ======*= ||======\\||=====// `);
     start();
   } else if (enemy.health === 0) {
-    return 'Win!'
+    return "Win!";
   }
 };
 
-console.log(fight(hero,troll))
-
+console.log(fight(hero, troll));
 
 // const dmg = (atk, enemyDef, level, enemy) => {
 //   const d6Roll = dice(6,1)

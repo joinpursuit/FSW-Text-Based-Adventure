@@ -11,10 +11,10 @@ const enemyDmg = (herostat, enemy) => {
     
     let enemyAtk, enemyLvl;
     [enemyAtk, enemyLvl] = [enemy.attack, enemy.level]
-    console.log(enemyAtk, enemyLvl)
+    // console.log(enemyAtk, enemyLvl)
   let damage = Math.ceil(((
     (2 * enemyLvl + 10) / 150) * (enemyAtk / heroDef) + 2) * d6)
-console.log(damage)
+// console.log(damage)
    return d2 === 2
         ? damage
         : 0
