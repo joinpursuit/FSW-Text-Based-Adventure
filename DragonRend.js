@@ -61,9 +61,12 @@ const constitutionRoll = (passVal, reward, risk) => {
   }
 };
 
-const { question, keyInYN } = require("readline-sync");
-let nameInput = question("Enter your name: ");
-console.log(`Hello ${nameInput}!  Welcome to my game.`);
+// const { question, keyInYN } = require("readline-sync");
+// let nameInput = question("Enter your name: ");
+// console.log(`Hello ${nameInput}!  Welcome to my game.`);
+
+const name = require('./HeroName.js')
+name()
 
 const quitGame = () => {
   let restart = keyInYN(
@@ -112,19 +115,20 @@ const dice = (nat, min) => {
 //     }
 // }
 
-// const enDmg = (enemyAtk, def, enemyLvl) => {
-//     const d6Roll = dice(6, 1)
-//     const d2Roll = dice(2, 1)
+const enDmg = (enemyAtk, def, enemyLvl) => {
+    const d6Roll = dice(6, 1)
+    const d2Roll = dice(2, 1)
 
-//     let damage = Math.ceil( ( ( (2*enemyLvl+10) / 150) * (enemyAtk/def) +2) *d6Roll)
-//     if (d2Roll === 2) {
-//         let hit = heroStat.health - damage
-//         return hit
-//     } else if (d2 === 1) {
-//         console.log('+ The enemy missed! You take no damage.              +')
-//         return 0
-//     }
-// }
+  let damage = Math.ceil(((
+    (2 * enemyLvl + 10) / 150) * (enemyAtk / def) + 2) * d6Roll)
+    if (d2Roll === 2) {
+        let hit = heroStat.health - damage
+        return hit
+    } else if (d2 === 1) {
+        console.log('+ The enemy missed! You take no damage.              +')
+        return 0
+    }
+}
 
 // const dodge = (risk,enemyAtk,def) => {//if dodge roll is > 3, nullify damage
 //     const d6 = dice(6,1)
@@ -263,7 +267,7 @@ const dodge = (risk) => {
 
 /*
     herostat -> reference the heroStat object
-    enemy -> reference the oppStat object !! be sure to specify what opponent the player is fighting !!
+    enemy    -> reference the oppStat object !! be sure to specify what opponent the player is fighting !!
     risk     -> integer value tbd by the dev
     next     -> move ahead to next stage
     */
@@ -275,7 +279,6 @@ const fight = (herostat, enemy, risk, next) => {
 
     if (options[i] === options[0]) {
       const damage = dmg(herostat, enemy);
-      const enDmg = enDmg(herostat, enemy);
       enemy.health - damage;
       herostat.health - enDmg.health;
     } else if (options[i] === options[1]) {

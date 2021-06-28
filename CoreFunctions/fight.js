@@ -6,6 +6,7 @@ const characterStats = require("./characterStats-API.js");
 const { question, keyInYN, keyInSelect } = require("readline-sync");
 const { hero, troll } = require("./characterStats-API.js");
 
+
 // F I G H T
 //Destructure the hero's stats off the characterStats obj when passing the hero's health stat as an argument
 
@@ -16,14 +17,18 @@ const fight = (herostat, enemy, risk, experience) => {
 
     if (options[index] === options[0]) {
       const damage = dmg(herostat, enemy);
-      enemy.health - damage;
+   
+      const dmgToEnemy = enemy.health - damage;
+   
       console.log(
-        `hero did ${damage} damage to the enemy \n${hero.health}❤️ \n${enemy.health}🖤`
-      );
+        // `hero did ${damage} damage to the enemy \n${hero.health}❤️ \n${enemy.health}🖤`
+        `Hero did ${dmgToEnemy} damage to the enemy \n${hero.health}❤️ \n${enemy.health}🖤`
+        );
 
       const enDamage = enemyDmg(herostat, enemy);
       console.log(
         `Enemy did ${enDamage} damage to our hero \n${hero.health}❤️ \n${enemy.health}🖤`
+        `hero did ${dmgToEnemy} damage to the enemy \n${hero.health}❤️ \n${enemy.health}🖤`
       );
     }
     else if (options[index] === options[1]) {
