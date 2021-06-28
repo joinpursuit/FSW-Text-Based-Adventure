@@ -4,7 +4,7 @@ const dmg = require("./dmg.js")
 const enemyDmg = require("./enemyDmg.js")
 const characterStats = require("./characterStats-API.js");
 const { question, keyInYN, keyInSelect } = require("readline-sync");
-const { hero } = require("./characterStats-API.js");
+const { hero, troll } = require("./characterStats-API.js");
 
 // F I G H T
 //Destructure the hero's stats off the characterStats obj when passing the hero's health stat as an argument
@@ -16,12 +16,10 @@ const fight = (herostat, enemy, risk, experience) => {
     let index = keyInSelect(options, `What's your move?`);
 
     if (options[index] === options[0]) {
-      const damage = dmg(herostat, enemy);
-      // const enDmg = enDmg(herostat, enemy);
-      // const result = enemy.health - damage;
-      // console.log(enemy.health - damage)
+      const damage = dmg(herostat, enemy)
       console.log(`hero did ${enemy.health - damage} damage to the enemy`)
       enemy.health - damage
+
       const enDamage = enemyDmg(herostat, enemy)
       console.log(`enemy did ${hero.health - enDamage} damage to our hero`)
       // console.log(result)
@@ -59,7 +57,9 @@ const fight = (herostat, enemy, risk, experience) => {
     return 'Win!'
   }
 };
-console.log(fight(hero));
+
+console.log(fight(hero,troll))
+
 
 // const dmg = (atk, enemyDef, level, enemy) => {
 //   const d6Roll = dice(6,1)
