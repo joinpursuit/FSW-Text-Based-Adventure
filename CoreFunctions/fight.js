@@ -3,7 +3,8 @@ const dice = require("./dice.js");
 const dmg = require("./dmg.js")
 const enemyDmg = require("./enemyDmg.js")
 const characterStats = require("./characterStats-API.js");
-const { question, keyInYN } = require("readline-sync");
+const { question, keyInYN, keyInSelect } = require("readline-sync");
+const { hero } = require("./characterStats-API.js");
 
 // F I G H T
 //Destructure the hero's stats off the characterStats obj when passing the hero's health stat as an argument
@@ -12,25 +13,29 @@ const fight = (herostat, enemy, risk, experience) => {
   
   while (herostat.health > 0 || enemy.health > 0) {
     const options = ["Attack", "Dodge", "Special Attack", "Run"];
-    let index = rls1.keyInSelect(options, `What's your move?`);
+    let index = keyInSelect(options, `What's your move?`);
 
-    if (options[i] === options[0]) {
+    if (options[index] === options[0]) {
       const damage = dmg(herostat, enemy);
       // const enDmg = enDmg(herostat, enemy);
       // const result = enemy.health - damage;
-      console.log(enemy.health - damage)
+      // console.log(enemy.health - damage)
+      console.log(`hero did ${enemy.health - damage} damage to the enemy`)
+      enemy.health - damage
+      const enDamage = enemyDmg(herostat, enemy)
+      console.log(`enemy did ${hero.health - enDamage} damage to our hero`)
       // console.log(result)
       // herostat.health - enDmg.health;
-    } else if (options[i] === options[1]) {
+    } else if (options[index] === options[1]) {
       let dodge = dodge(risk);
       return dodge;
-    } else if (options[i] === options[2]) {
+    } else if (options[index] === options[2]) {
       if (herostat.level > 3) {
         return true;
       } else {
         console.log(`Do you even lift? Your level is too low, scrub.`);
       }
-    } else if (options[i] === options[3]) {
+    } else if (options[index] === options[3]) {
       const d2 = dice(2, 1);
       if (d2 === 1) {
         console.log(`How could 1 tail beat 2 heads? `);
@@ -51,7 +56,7 @@ const fight = (herostat, enemy, risk, experience) => {
     console.log(` ||=====// ======*= ||======\\||=====// `);
     start();
   } else if (enemy.health === 0) {
-    next;
+    return 'Win!'
   }
 };
 console.log(fight(hero));
