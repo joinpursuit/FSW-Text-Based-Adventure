@@ -1,4 +1,4 @@
-const characterStats = {
+let characterStats = {
     hero: {
         health: 10,
         attack: 10,

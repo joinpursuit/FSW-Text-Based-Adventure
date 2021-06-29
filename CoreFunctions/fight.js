@@ -2,33 +2,42 @@
 const dice = require("./dice.js");
 const dmg = require("./dmg.js");
 const enemyDmg = require("./enemyDmg.js");
-const characterStats = require("./characterStats-API.js");
-const { question, keyInYN, keyInSelect } = require("readline-sync");
+
+const { keyInSelect } = require("readline-sync");
 const { hero, troll } = require("./characterStats-API.js");
 
-
-// F I G H T
-//Destructure the hero's stats off the characterStats obj when passing the hero's health stat as an argument
-
 const fight = (herostat, enemy, risk, experience) => {
+  console.log(herostat, enemy)
   while (herostat.health > 0 || enemy.health > 0) {
     const options = ["Attack", "Dodge", "Special Attack", "Run"];
     let index = keyInSelect(options, `What's your move?`);
 
     if (options[index] === options[0]) {
       const damage = dmg(herostat, enemy);
-   
-      const dmgToEnemy = enemy.health - damage;
-   
+
+      //can i change herostat or enemystat?
+
+      //this works
+      // herostat.health = 20
+      console.log(herostat)
+      // console.log('hero heath:',hero.health)
+      
+      //this doesn't???
+      // const dmgToEnemy = enemy.health - damage;
+      console.log(enemy.health,'before hit')
+      enemy.health =- damage;
+      console.log(enemy.health, 'after hit')
+
       console.log(
-        // `hero did ${damage} damage to the enemy \n${hero.health}❤️ \n${enemy.health}🖤`
-        `Hero did ${dmgToEnemy} damage to the enemy \n${hero.health}❤️ \n${enemy.health}🖤`
+        `hero did ${damage} damage to the enemy \n${herostat.health}❤️ \n${enemy.health}🖤`
+        // `Hero did ${dmgToEnemy} damage to the enemy \n${hero.health}❤️ \n${enemy.health}🖤`
         );
 
       const enDamage = enemyDmg(herostat, enemy);
+      hero.health =- enDamage
       console.log(
         `Enemy did ${enDamage} damage to our hero \n${hero.health}❤️ \n${enemy.health}🖤`
-        `hero did ${dmgToEnemy} damage to the enemy \n${hero.health}❤️ \n${enemy.health}🖤`
+        // `Enemy did ${dmgToHero} damage to our hero \n${herostat.health}❤️ \n${enemy.health}🖤`
       );
     }
     else if (options[index] === options[1]) {
@@ -66,7 +75,8 @@ const fight = (herostat, enemy, risk, experience) => {
     return "Win!";
   }
 };
-
+// hero.health = 20
+console.log(hero.health)
 console.log(fight(hero, troll));
 
 // const dmg = (atk, enemyDef, level, enemy) => {
