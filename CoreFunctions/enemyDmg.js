@@ -1,5 +1,5 @@
 const dice = require(`./dice.js`)
-// const statsAPI = require('./characterStats-API.js')
+const statsAPI = require('./characterStats-API.js')
 
 const enemyDmg = (herostat, enemy) => {
     //dice dependencies
@@ -13,12 +13,19 @@ const enemyDmg = (herostat, enemy) => {
     [enemyAtk, enemyLvl] = [enemy.attack, enemy.level]
     // console.log(enemyAtk, enemyLvl)
   let damage = Math.ceil(((
-    (2 * enemyLvl + 10) / 150) * (enemyAtk / heroDef) + 2) * d6)
+    (2 * enemyLvl + 10) / 50) * (enemyAtk / heroDef) + 2) * d6)
 // console.log(damage)
    return d2 === 2
         ? damage
         : 0
 }
 
-// console.log(enemyDmg(statsAPI.hero,statsAPI.troll))
+console.log(enemyDmg(statsAPI.hero,statsAPI.troll))
 module.exports = enemyDmg
+
+
+
+
+
+
+

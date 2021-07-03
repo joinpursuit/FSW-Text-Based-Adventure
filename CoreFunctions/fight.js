@@ -7,38 +7,28 @@ const { keyInSelect } = require("readline-sync");
 const { hero, troll } = require("./characterStats-API.js");
 
 const fight = (herostat, enemy, risk, experience) => {
-  console.log(herostat, enemy)
+  
   while (herostat.health > 0 || enemy.health > 0) {
     const options = ["Attack", "Dodge", "Special Attack", "Run"];
     let index = keyInSelect(options, `What's your move?`);
 
     if (options[index] === options[0]) {
       const damage = dmg(herostat, enemy);
-
-      //can i change herostat or enemystat?
-
-      //this works
-      // herostat.health = 20
-      console.log(herostat)
-      // console.log('hero heath:',hero.health)
-      
-      //this doesn't???
-      // const dmgToEnemy = enemy.health - damage;
-      console.log(enemy.health,'before hit')
-      enemy.health =- damage;
-      console.log(enemy.health, 'after hit')
+      console.log(`heroDamage: `,damage)
+      enemy.health = enemy.health - damage;
 
       console.log(
         `hero did ${damage} damage to the enemy \n${herostat.health}❤️ \n${enemy.health}🖤`
-        // `Hero did ${dmgToEnemy} damage to the enemy \n${hero.health}❤️ \n${enemy.health}🖤`
         );
 
-      const enDamage = enemyDmg(herostat, enemy);
-      hero.health =- enDamage
-      console.log(
-        `Enemy did ${enDamage} damage to our hero \n${hero.health}❤️ \n${enemy.health}🖤`
-        // `Enemy did ${dmgToHero} damage to our hero \n${herostat.health}❤️ \n${enemy.health}🖤`
-      );
+      // const enDamage = enemyDmg(herostat, enemy);
+      // console.log(`enDamage:`,enDamage)
+      // hero.health = hero.health - enDamage
+      
+      
+      // console.log(
+      //   `Enemy did ${enDamage} damage to our hero \n HP❤️${hero.health} \nHP🖤${enemy.health}`
+      // );
     }
     else if (options[index] === options[1]) {
       let dodge = dodge(risk);
@@ -63,42 +53,57 @@ const fight = (herostat, enemy, risk, experience) => {
         quitGame();
       }
     }
+    if (hero.health < 1) {
+      console.log(` ||=====\ ======== //=====+=   ||=====\\ `);
+      console.log(` ||  -   |    ||    ||          ||  -   | `);
+      console.log(` ||  |   |    ||    ||---|      ||  |   | `);
+      console.log(` ||  1   |    ||    ||          ||  1   | `);
+      console.log(` ||=====// ======*= ||======\\ ||======// `);
+      start();
+    } else if (enemy.health < 1) {
+      console.log(' ==        ==  ========  ||\     ||  |  ');
+      console.log(' ||   ___  ||     ||     || |\   ||  |  ');
+      console.log(' ||    |   ||     ||     ||  |\  ||  |  ');
+      console.log(' ||    |   ||     ||     ||   |\ ||  |  ');
+      console.log(' //|==|+|==//  ======*=  ||    |\||  O  ');
+
+
+
+
+    }
+    //enDmg stuff here
+    const enDamage = enemyDmg(herostat, enemy);
+        console.log(`enDamage:`,enDamage)
+        hero.health = hero.health - enDamage
+        
+        
+        console.log(
+          `Enemy did ${enDamage} damage to our hero \n HP❤️${hero.health} \nHP🖤${enemy.health}`
+        );
   }
-  if (herostat.health === 0) {
-    console.log(` ||=====\\ ======== //=====+= ||=====\\ `);
-    console.log(` ||  -   |    ||    ||        ||  -   | `);
-    console.log(` ||  |   |    ||    ||---|    ||  |   | `);
-    console.log(` ||  1   |    ||    ||        ||  1   | `);
-    console.log(` ||=====// ======*= ||======\\||=====// `);
-    start();
-  } else if (enemy.health === 0) {
-    return "Win!";
-  }
+  // if (herostat.health < 1) {
+  //   console.log(` ||=====\\ ======== //=====+= ||=====\\ `);
+  //   console.log(` ||  -   |    ||    ||        ||  -   | `);
+  //   console.log(` ||  |   |    ||    ||---|    ||  |   | `);
+  //   console.log(` ||  1   |    ||    ||        ||  1   | `);
+  //   console.log(` ||=====// ======*= ||======\\||=====// `);
+  //   start();
+  // } else if (enemy.health < 1) {
+  //   return "Win!";
+  // }
+  // //enDmg stuff here
+  // const enDamage = enemyDmg(herostat, enemy);
+  //     console.log(`enDamage:`,enDamage)
+  //     hero.health = hero.health - enDamage
+      
+      
+  //     console.log(
+  //       `Enemy did ${enDamage} damage to our hero \n HP❤️${hero.health} \nHP🖤${enemy.health}`
+  //     );
+
+
+
 };
-// hero.health = 20
-console.log(hero.health)
+
 console.log(fight(hero, troll));
 
-// const dmg = (atk, enemyDef, level, enemy) => {
-//   const d6Roll = dice(6,1)
-//   const critRoll = dice(3, 1)
-
-//   let damage = Math.ceil((((2 * level + 10) / 150) * (atk / enemyDef) + 2) * d6Roll)
-//   let critical = Math.ceil((((2 * level + 10) / 150) * (atk / enemyDef) + 2) * critRoll)
-
-//   if (d6Roll !== 1 && d6Roll !== 6) {
-//       console.log('+--------------------------------------------------------------------------------------+')
-//       console.log('normal hit')
-//       return enemy.health - damage
-
-//   } else if (d6Roll === 6) {
-//       let critDmg = damage + critical
-//       let troll = enemy.health
-//       console.log('Critical hit!')
-//       return troll - critDmg
-
-//   } else if (d6Roll === 1) {
-//       console.log(`Your attack missed                      `)
-//       return 0
-//   }
-// }

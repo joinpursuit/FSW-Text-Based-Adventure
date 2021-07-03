@@ -10,10 +10,10 @@ const dmg = (herostat, enemy) => {
     const enemyDef = enemy.defense
     
     let damage = Math.ceil(((
-        (2 * level + 10) / 150) * (atk / enemyDef) + 2) * d6Roll)
+        (2 * level + 10) / 50) * (atk / enemyDef) + 2) * d6Roll)
     
     let critical = Math.ceil(((
-        (2 * level + 10) / 150) * (atk / enemyDef) + 2) * critRoll)
+        (2 * level + 10) / 50) * (atk / enemyDef) + 2) * critRoll)
     
 
     if (d6Roll !== 1 && d6Roll !== 6) {
