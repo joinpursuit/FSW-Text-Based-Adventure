@@ -1,5 +1,5 @@
 const dice = require(`./dice.js`)
-const statsAPI = require('./characterStats-API.js')
+// const statsAPI = require('./characterStats-API.js')
 
 const enemyDmg = (herostat, enemy) => {
     //dice dependencies
@@ -20,7 +20,6 @@ const enemyDmg = (herostat, enemy) => {
         : 0
 }
 
-console.log(enemyDmg(statsAPI.hero,statsAPI.troll))
 module.exports = enemyDmg
 
 

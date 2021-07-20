@@ -1,42 +1,42 @@
 //
 const heroStat = {
+  health: 10,
+  attack: 10,
+  defense: 8,
+  level: 1,
+  experience: 0,
+};
+//ALL OPPONENT STATS
+const oppStat = {
+  troll: {
     health: 10,
     attack: 10,
-    defense: 8,
+    defense: 10,
+    level: 1,
+    experince: 0,
+  },
+  ent: {
+    health: 12,
+    attack: 5,
+    defense: 5,
     level: 1,
     experience: 0,
-  };
-//ALL OPPONENT STATS
-  const oppStat = {
-    troll: {
-        health: 10,
-        attack: 10,
-        defense: 10,
-        level: 1,
-        experince: 0
-    },
-    ent: {
-        health: 12,
-        attack: 5,
-        defense: 5,
-        level: 1,
-        experience: 0
-    },
-    enemy: {
-        health: 0,
-        attack: 0,
-        defense:0 ,
-        level: 0,
-        experience: 0
-    }
-}
+  },
+  enemy: {
+    health: 0,
+    attack: 0,
+    defense: 0,
+    level: 0,
+    experience: 0,
+  },
+};
 
 const constitutionRoll = (passVal, reward, risk) => {
   let roll = dice(6, 1);
-    if (roll >= passVal) {
-      console.log(`${heroStat.health} health before`)
-        heroStat.health + reward;
-        console.log(`${heroStat.health} health after`)
+  if (roll >= passVal) {
+    console.log(`${heroStat.health} health before`);
+    heroStat.health + reward;
+    console.log(`${heroStat.health} health after`);
     console.log(
       "+--------------------------------------------------------------------------------------+"
     );
@@ -47,7 +47,7 @@ const constitutionRoll = (passVal, reward, risk) => {
   } else if (roll < passVal) {
     heroStat.health - risk;
     console.log(
-      "+--------------------------------------------------------------------------------------+" 
+      "+--------------------------------------------------------------------------------------+"
     );
     console.log("+ You rolled ${roll}+");
     console.log(
@@ -65,8 +65,8 @@ const constitutionRoll = (passVal, reward, risk) => {
 // let nameInput = question("Enter your name: ");
 // console.log(`Hello ${nameInput}!  Welcome to my game.`);
 
-const name = require('./HeroName.js')
-name()
+const name = require("./HeroName.js");
+name();
 
 const quitGame = () => {
   let restart = keyInYN(
@@ -84,10 +84,6 @@ const quitGame = () => {
 const dice = (nat, min) => {
   return Math.floor(Math.random() * nat + min);
 };
-
-
-
-
 
 // const dmg = (atk, enemyDef, level, enemy) => {
 //     const d6Roll = dice(6,1)
@@ -116,19 +112,20 @@ const dice = (nat, min) => {
 // }
 
 const enDmg = (enemyAtk, def, enemyLvl) => {
-    const d6Roll = dice(6, 1)
-    const d2Roll = dice(2, 1)
+  const d6Roll = dice(6, 1);
+  const d2Roll = dice(2, 1);
 
-  let damage = Math.ceil(((
-    (2 * enemyLvl + 10) / 150) * (enemyAtk / def) + 2) * d6Roll)
-    if (d2Roll === 2) {
-        let hit = heroStat.health - damage
-        return hit
-    } else if (d2 === 1) {
-        console.log('+ The enemy missed! You take no damage.              +')
-        return 0
-    }
-}
+  let damage = Math.ceil(
+    (((2 * enemyLvl + 10) / 150) * (enemyAtk / def) + 2) * d6Roll
+  );
+  if (d2Roll === 2) {
+    let hit = heroStat.health - damage;
+    return hit;
+  } else if (d2 === 1) {
+    console.log("+ The enemy missed! You take no damage.              +");
+    return 0;
+  }
+};
 
 // const dodge = (risk,enemyAtk,def) => {//if dodge roll is > 3, nullify damage
 //     const d6 = dice(6,1)
@@ -273,7 +270,7 @@ const dodge = (risk) => {
     */
 
 const fight = (herostat, enemy, risk, next) => {
-  while (herostat.health > 0 ) {
+  while (herostat.health > 0) {
     const options = ["Attack", "Dodge", "Special Attack", "Run"];
     index = rls1.keyInSelect(options, `What's your move?`);
 
@@ -316,42 +313,18 @@ const fight = (herostat, enemy, risk, next) => {
 };
 
 function start() {
-  console.log(
-    "+=======================================================================================+"
-  );
-  console.log(
-    "+---------------------------------------------------------------------------------------+"
-  );
-  console.log(
-    "+ ============//                                     ========/                     __   +"
-  );
-  console.log(
-    "+ |    _      //.———----.—---—.—.———.———.———--.-----||.       /  ______.______.____| /  +"
-  );
-  console.log(
-    "+ |.   |      ||   ____|   _   |    _  |  _  |      ||.   00  /_|  -___|       | _ | |  +"
-  );
-  console.log(
-    "+ |.   |      ||___|   |_____._|____|  |_____|___|__||.     _   |______|___|___|_____/  +"
-  );
-  console.log(
-    "+ |:   1     //                _____|  |            ||:    | |  |                       +"
-  );
-  console.log(
-    "+ |: : . .  ./                 |_______|            ||: :. | :  |                       +"
-  );
-  console.log(
-    "+ `---------’                                       `----' `--‘                        +"
-  );
-  console.log(
-    "+---------------------------------------------------------------------------------------+"
-  );
-  console.log(
-    "+---------------------------------------------------------------------------------------+"
-  );
-  console.log(
-    "+ In the land of Phimiba on the black sand coast of the Banar provinces, there lives    +"
-  );
+  console.log("+=======================================================================================+"  );
+  console.log("+---------------------------------------------------------------------------------------+"  );
+  console.log("+ ============//                                     ========/                     __   +"  );
+  console.log("+ |    _      //.———----.—---—.—.———.———.———--.-----||.       /  ______.______.____| /  +"  );
+  console.log("+ |.   |      ||   ____|   _   |    _  |  _  |      ||.   00  /_|  -___|       | _ | |  +"  );
+  console.log("+ |.   |      ||___|   |_____._|____|  |_____|___|__||.     _   |______|___|___|_____/  +"  );
+  console.log("+ |:   1     //                _____|  |            ||:    | |  |                       +"  );
+  console.log("+ |: : . .  ./                 |_______|            ||: :. | :  |                       +"  );
+  console.log("+ `---------’                                       `----' `--‘                         +"  );
+  console.log("+---------------------------------------------------------------------------------------+"  );
+  console.log("+---------------------------------------------------------------------------------------+"  );
+  console.log("+ In the land of Phimiba on the black sand coast of the Banar provinces, there lives    +"  );
   console.log(
     "+ the small village of Strinostra. A valley untouched by the wars of yore for an eon.   +"
   );

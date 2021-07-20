@@ -4,7 +4,7 @@ const dice = require('./dice.js')
 const dmg = (herostat, enemy) => {
     const d6Roll = dice(6, 1)
     const critRoll = dice(3, 1)
-
+    
     let atk, level;
     [atk, level]  = [herostat.attack,herostat.level]
     const enemyDef = enemy.defense
@@ -18,7 +18,7 @@ const dmg = (herostat, enemy) => {
 
     if (d6Roll !== 1 && d6Roll !== 6) {
         // console.log('+--------------------------------------------------------------------------------------+')
-        console.log('normal hit')
+        console.log('Normal hit.')
         return damage
 
     } else if (d6Roll === 6) {
@@ -27,9 +27,10 @@ const dmg = (herostat, enemy) => {
         return critDmg
 
     } else if (d6Roll === 1) {
-        console.log(`Your attack missed                      `)
+        console.log(`Your attack missed!`)
         return 0
     }
- }
-
+}
 module.exports = dmg
+
+
