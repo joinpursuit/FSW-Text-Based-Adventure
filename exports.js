@@ -21,17 +21,6 @@ let bodyParts = [
   "finger",
   "lip",
 ];
-let adjectives = [
-  "remarkable",
-  "strange",
-  "replusive",
-  "magnificent",
-  "energetic",
-  "outrageous",
-  "annoying",
-  "strange",
-  "terrible",
-];
 let adverbs = [
   "slowly",
   "rapidly",
@@ -55,4 +44,4 @@ let exclamations = [
   "Fantastic",
 ];
 
-module.exports = {paths, verbs, adjectives, adverbs, exclamations}
+module.exports = {paths, verbs, adverbs, exclamations}
