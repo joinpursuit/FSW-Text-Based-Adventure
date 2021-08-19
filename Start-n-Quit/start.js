@@ -1,5 +1,5 @@
-// const { keyInYN } = require("readline-sync");
-const dialogs = {
+const { keyInYN } = require("readline-sync");
+const dialogues = {
   start:  [
     "+=======================================================================================+",
     "+---------------------------------------------------------------------------------------+",
@@ -35,10 +35,10 @@ const dialogs = {
 
 const showDialogue_start = () => {
   let i = 0;
-  const len = dialogs.start.length;
+  const len = dialogues.start.length;
 
   const timer = setInterval(() => {
-    console.log(dialogs.start[i]);
+    console.log(dialogues.start[i]);
       i++;
       i === len
         ? clearInterval(timer)
@@ -65,7 +65,7 @@ const start_Quest = () => {
   else {
       const len = dialogues.pickYes.length
       const timer = setInterval(() => {
-          console.log(dislogues.pickYes[i])
+          console.log(dialogues.pickYes[i])
           i++
           i === len
               ? clearInterval(timer)
@@ -78,7 +78,7 @@ const start_Quest = () => {
 const start = () => {
   showDialogue_start()
   start_Quest()
-  
+
   
 
   
