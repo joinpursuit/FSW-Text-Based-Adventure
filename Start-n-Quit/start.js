@@ -1,7 +1,6 @@
 // const { keyInYN } = require("readline-sync");
-
-const start = () => {
-  const start_Dialog = [
+const dialogs = {
+  start:  [
     "+=======================================================================================+",
     "+---------------------------------------------------------------------------------------+",
     "+ ============//                                     ========/                     __   +",
@@ -22,76 +21,67 @@ const start = () => {
     "+ branches were cut and bent into wands and whose fruit seeds now make load for rifles. +",
     "+ We find you, dear adventurer in your forest garden, where a strange wilting flower of +",
     "+ magenta and periwinkle glows faintly.                                                 +",
-  ];
+  ],  
+  pickNo: [
+    "+======================================================================================+",
+    "+ You choose not to pick the beautiful dying flower but nuturture it instead!          +\n\n",
+    "+ Until one day...                                                                     +",
+  ],
+  pickYes: [
+    "+======================================================================================+",
+    "+ Thy name is MUD. Prithee maketh haste hence and returneth to thy hutch.              +",
+  ]  
+};
 
-  const start_Dialog_starter = () => {
-    // () => {
-    let i = 0;
-    const len = start_Dialog.length;
+const showDialogue_start = () => {
+  let i = 0;
+  const len = dialogs.start.length;
 
-    const speak = setInterval(() => {
-    //   console.log(start_Dialog[i]);
-    //   i++;
-    //   if (i === len) {
-    //     clearInterval(speak);
-    //   }
-    }, 250);
-
-    while (i < len) {
-      let timer = setTimeout(() => {
-        console.log(start_Dialog[i]);
-        i++;
-      }, 250)
-        // const myStopFunc = () => {
-          // clearTimeout(timer);
-        // }
+  const timer = setInterval(() => {
+    console.log(dialogs.start[i]);
+      i++;
       i === len
-        ? clearTimeout(timer)
+        ? clearInterval(timer)
         : null
-    }
-  };
-  start_Dialog_starter();
+  }, 250);    
+};
 
-  const quest_begins = () => {
-    // let start = keyInYN(
-    //   "+ Do you pick the flower?                                                     +"
-    // );
-    const start = false;
-    //FLOWER PICK -> NO
-    if (start === false) {
-      const arr = [
-        "+======================================================================================+",
-        "+ You choose not to pick the beautiful dying flower but nuturture it instead!          +\n\n",
-        "+ Until one day...                                                                     +",
-      ];
 
-      let i = 0;
-      const len = arr.length;
-      const speak2 = setInterval(() => {
-        i++;
-        if (i === len) {
-          clearInterval(speak2);
-        }
-      }, 250);
-      // levelOne();
-    } else {
-      const chat = [
-        "+======================================================================================+",
-        "+ Thy name is MUD. Prithee maketh haste hence and returneth to thy hutch.              +",
-      ];
-      let i = 0;
-      const len = chat.length;
-      const speak3 = setInterval(() => {
-        i++;
-        if (i === len) {
-          clearInterval(speak3);
-        }
-      }, 250);
-      // quitGame();
-    }
-  };
-  quest_begins();
-  return "  ";
+const start_Quest = () => {
+  const start = keyInYN('Do you pick the flower?')
+  let i = 0
+
+  if (!start) {
+    const len = dialogues.pickNo.length
+    const timer = setInterval(() => {
+        console.log(dialogues.pickNo[i])
+        i++
+        i === len
+            ? clearInterval(timer)
+            : null
+    }, 250);
+    
+  }
+  else {
+      const len = dialogues.pickYes.length
+      const timer = setInterval(() => {
+          console.log(dislogues.pickYes[i])
+          i++
+          i === len
+              ? clearInterval(timer)
+              : null
+      })
+  }
+}
+
+
+const start = () => {
+  showDialogue_start()
+  start_Quest()
+  
+  
+
+  
 };
 console.log(start());
 
