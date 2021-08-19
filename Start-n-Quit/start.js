@@ -20,7 +20,8 @@ const dialogues = {
     "+ gave the first dragons their fire and their barks gave men their first swords, whose  +",
     "+ branches were cut and bent into wands and whose fruit seeds now make load for rifles. +",
     "+ We find you, dear adventurer in your forest garden, where a strange wilting flower of +",
-    "+ magenta and periwinkle glows faintly.                                                 +",
+    "+ magenta and periwinkle glows faintly.                                                 +\n\n",
+
   ],  
   pickNo: [
     "+======================================================================================+",
@@ -43,9 +44,8 @@ const showDialogue_start = () => {
       i === len
         ? clearInterval(timer)
         : null
-  }, 250);    
+  }, 250);
 };
-
 
 const start_Quest = () => {
   const start = keyInYN('Do you pick the flower?')
@@ -54,35 +54,32 @@ const start_Quest = () => {
   if (!start) {
     const len = dialogues.pickNo.length
     const timer = setInterval(() => {
-        console.log(dialogues.pickNo[i])
-        i++
-        i === len
-            ? clearInterval(timer)
-            : null
+      console.log(dialogues.pickNo[i])
+      i++
+      i === len
+        ? clearInterval(timer)
+        : null
     }, 250);
     
   }
   else {
-      const len = dialogues.pickYes.length
-      const timer = setInterval(() => {
-          console.log(dialogues.pickYes[i])
-          i++
-          i === len
-              ? clearInterval(timer)
-              : null
-      })
-  }
-}
-
+    const len = dialogues.pickYes.length
+    const timer = setInterval(() => {
+      console.log(dialogues.pickYes[i])
+      i++
+      i === len
+        ? clearInterval(timer)
+        : null
+    });
+  };
+};
 
 const start = () => {
   showDialogue_start()
-  start_Quest()
 
-  
-
-  
+  setTimeout(start_Quest,5250)  
 };
-console.log(start());
+
+start();
 
 module.exports = start;
