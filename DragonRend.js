@@ -376,7 +376,7 @@ function start() {
 }
 
 start();
-console.log(dmg(10, 2, 1));
+// console.log(dmg(10, 2, 1));
 
 function levelOne() {
   console.log(

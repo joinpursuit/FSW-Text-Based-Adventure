@@ -38,7 +38,7 @@ const showDialogue_start = () => {
   let i = 0;
   const len = dialogues.start.length;
 
-  const timer = setInterval(() => {
+  const timer = setInterval(() => { 
     console.log(dialogues.start[i]);
       i++;
       i === len
@@ -76,7 +76,6 @@ const start_Quest = () => {
 
 const start = () => {
   showDialogue_start()
-
   setTimeout(start_Quest,5250)  
 };
 

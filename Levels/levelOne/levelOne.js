@@ -1,80 +1,50 @@
-function levelOne() {
-  const arr = [
-    "+ Winged Light => Hero! Qeldrin, Eater Of All has taken nest in the great bastion of   +",
-    "+                 Heldana VII Crown, Castle Ironbark. Fight your way to Ironbark and   +",
-    "+                 slay the beast!                                                      +",
-    "+                 By what name shall I address thee?                                => +\n",
-    "+--------------------------------------------------------------------------------------+",
-    "+ <= My name is " + nameInput + "                                                      +\n",
-    "+ The light brightens to a dazzling glare, then vanishes.                              +",
-    "+ A small owl like any but somehow none other comes to rest on a nearby branch.        +\n",
-    "+ Qaspiel => I wilt beest thy companion then. I cannot assist thee on thy journey yet  +",
-    "+            I shall keep thee privy to all things proper and true. Qaspiel is mine    +",
-    "+            name, PUKUKUKUKUKUKUKUKUKUKUKUU!                                       => +\n"
-  ]
+import { dialogues } from "./dialogues";
+
+
+const showDialogue = (dialogue) => {
+  let i = 0;
+  const len = dialogue.length;
+
+  const timer = setInterval(() => { 
+    console.log(dialogue[i]);
+      i++;
+      i === len
+        ? clearInterval(timer)
+        : null
+  }, 250);
+};
+const levelOne = () => {
+  showDialogue(dialogues.opening) 
   
   const rls1 = require("readline-sync");
   classPick = ["Sword", "Wand", "Rifle"];
   index = rls1.keyInSelect(classPick, "What weapon should I take?");
   if (classPick[index] === classPick[0]) {
-    const arr = [
-      "+ You grab your sword!                                                                 +",
-      "+ Qaspiel => How nice another warrior (>_>), can I drop the mystic accent noweth?   => +\n",
-      "+ You gawk at the insolent bird with annoyance and slight contempt.                    +",
-      '+  description says "bE mYsTiCaLlllLLlL qASpiEllLL" as if "Be Not Afraid" isn\'t      +',
-      "+  soooooo overdone. Blame Gabriel. Don't even get me started on that guy. 200% a tool.+"
-    ]
-  } else if (classPick[index] === classPick[1]) {
-    const arr = [
-      "+ You grab your wand!                                                                  +",
-      "+--------------------------------------------------------------------------------------+",
-      "+ You gawk at the insolent bird with annoyance and slight contempt.                    +\n",
-      "+ => Awesome, it was annoying to talk like that but the job (~REDACTED~)damn job       +",
-      '+    description says "bE mYsTiCaLlllLLlL qASpiEllLL" as if "Be Not Afraid" isn\'t        +',
-      "+    soooooo overdone. Blame Gabriel. Don't even get me started on that guy. 200% total +",
-      "+    toolbag. Remember you didn't hear that from me!                               => +\n"
-    ]
+    showDialogue(dialogues.classPick_sword)
+    stageOne()
+  }
+  else if (classPick[index] === classPick[1]) {
+    showDialogue(dialogues.classPick_wand)
     stageOne();
-  } else if (classPick[index] === classPick[2]) {
-      const arr = [
-      "+ You grab your rifle!                                                              \n +",
-      "+ Qaspiel => A mage?? In these parts? I thought only the university could train mages! +",
-      "+            Watch where you point those Fireballs!                                 => +\n",
-      "+ You gawk at the insolent bird with annoyance and slight contempt.                    +\n",
-      "+ Qaspiel => Awesome, it was annoying to talk like that but the job (~REDACTED~)damn   +",
-      '+            job description says "bE mYsTiCaLlllLLlL qASpiEllLL" as if "Be Not Afraid"+',
-      "+            isn't soooooo overdone. Blame Gabriel. Don't even get me started on that +",
-      "+            guy. 200% total toolbag. Remember you didn't hear that from me!       => +\n"
-      ]
+  }
+  else if (classPick[index] === classPick[2]) {
+    showDialogue(dialogues.classPick_rifle)
     stageOne();
-  } else {
+  }
+  else {
     quitGame();
   }
   
-  function stageOne() {
-    const arr = [
-    "+--------------------------------------------------------------------------------------+",
-    "+ " + nameInput + " => Shut up bird brain, lets kick some lizard booty!                     +",
-    "+ " + nameInput + " darts down the dirt path of the front garden and through the village to +",
-    "+ the village center where a gaping pit wide enough to host four wagon abreast at its  +",
-    "+ diameter. " +  nameInput + " the hero stops right at its edge and Qaspien perches on your  +",
-    "+ shoulder.                                                                            +"
-    ]
+  const stageOne = () => {
+    showDialogue(dialogues.stageOne.opening)
     
     let help = keyInYN(
       "+ Qaspiel => ~Psssssssst pssst pssssssst~                                     <=+\n"
     );
     if (help === true) {
-      const arr = [
-        "+--------------------------------------------------------------------------------------+",
-        "+ Qaspiel => If you let me help you down into the tunnel you could gain some wisdown & +",
-        "+            wisdom is healthy for the body!                                           +",
-        "+--------------------------------------------------------------------------------------+"
-      ]
+      showDialogue(dialogues.stageOne.help_isTrue)
       let lift = keyInYN(
-        "+ Do you let Qaspiel assist you down, " +
-        nameInput +
-        "?                                     +\n"
+        `+ Do you let  Qaspiel assist you down, ${nameInput}? +\n`
       );
       if (lift === true) {
         console.log(
