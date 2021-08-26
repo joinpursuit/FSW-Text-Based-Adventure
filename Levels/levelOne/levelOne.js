@@ -52,10 +52,10 @@ const levelOne = () => {
         );
         constitutionRoll(3, 10, 2);
         stageOneTwo();
-      } else {
+      }
+      else {
         console.log(
-          "+--------------------------------------------------------------------------------------+"
-        );
+         " +--------------------------------------------------------------------------------------+");
         console.log(
           "+ Qaspiel => Ahh tough luck buddy...                                                   +"
         );
@@ -64,14 +64,14 @@ const levelOne = () => {
         stageOneTwo();
       }
     } else {
-      console.log(
+      
         "+--------------------------------------------------------------------------------------+"
-      );
-      console.log(
+      
+      
         "+ Qaspiel => (<_<) (>_>) (;_;) k then...                                               +"
-      );
-      console.log("+ You fall down the hole and take some damage +");
-      console.log(`+ Your health is now ${heroStat[0]}!         + `);
+      
+      "+ You fall down the hole and take some damage +"
+      `+ Your health is now ${heroStat[0]}!         + `
       stageOneTwo();
     }
   }
