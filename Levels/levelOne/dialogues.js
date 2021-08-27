@@ -88,7 +88,7 @@ const dialogues = {
             `+ one have gotten this far to the surface? No matter, let's RUMBLE!!                    +`
         ]
     }
-}
+};
 
 module.exports = {
     dialogues
