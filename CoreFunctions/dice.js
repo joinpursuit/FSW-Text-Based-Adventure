@@ -4,7 +4,9 @@
 const dice = (nat, min) => {
     return Math.floor(Math.random() * nat + min);
 };
-
+const dice = (nat, min) => {
+    return Math.floor(math.random)
+};
 
 module.exports = dice;
 
