@@ -25,4 +25,4 @@ let characterStats = {
     }
 }
 
-module.exports = characterStats;
+export = characterStats;

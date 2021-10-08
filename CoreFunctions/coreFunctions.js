@@ -10,11 +10,11 @@ const dmg = (herostat, enemy) => {
   [atk, level] = [herostat.attack, herostat.level];
   const enemyDef = enemy.defense;
 
-  let damage = Math.ceil(
+  const damage = Math.ceil(
     (((2 * level + 10) / 50) * (atk / enemyDef) + 2) * d6Roll
   );
 
-  let critical = Math.ceil(
+  const critical = Math.ceil(
     (((2 * level + 10) / 50) * (atk / enemyDef) + 2) * critRoll
   );
 
@@ -22,22 +22,21 @@ const dmg = (herostat, enemy) => {
     // console.log('+--------------------------------------------------------------------------------------+')
     console.log("Normal hit.");
     return damage;
-  } else if (d6Roll === 6) {
+  } 
+  else if (d6Roll === 6) {
     let critDmg = damage + critical;
     console.log("Critical hit!");
     return critDmg;
-  } else if (d6Roll === 1) {
+  }
+   else if (d6Roll === 1) {
     console.log(`Your attack missed!`);
     return 0;
   }
 };
 
 const enemyDmg = (herostat, enemy) => {
-  //dice dependencies
   const d6 = dice(6, 1);
   const d2 = dice(2, 1);
-
-  //character dependencies
   const heroDef = herostat.defense;
 
   let enemyAtk, enemyLvl;
@@ -51,50 +50,57 @@ const enemyDmg = (herostat, enemy) => {
 };
 
 const fight = (herostat, enemy, risk, experience) => {
+  const victoryRes = [
+      ` ||=====\ //=====+=     ======   ||=====\\  `,
+      ` ||  -   | ||            //\\\    ||  -   | `,
+      ` ||  |   | ||---|       //  \\\   ||  |   | `,
+      ` ||  1   | ||          //====\\\  ||  1   | `,
+      ` ||=====// ||======\\ ===    ====||======// `
+    ]
+  const deathRes = [
+      `==       ==  ======== ||     || |  `,
+      `||  ___  ||     ||    || |   || |  `,
+      `||   |   ||     ||    ||  |  || |  `,
+      `||   1   ||     ||    ||   |||| |  `,
+      ` |==|+|==//  ======*= ||    ||| O  `,
+    ]
   while (herostat.health > 0 || enemy.health > 0) {
     const options = ["Attack", "Dodge", "Special Attack", "Run"];
     let index = keyInSelect(options, `What's your move?`);
 
-    if (options[index] === options[0]) {
-      const damage = dmg(herostat, enemy);
-      enemy.health = enemy.health - damage;
-      console.log(
-        `Hero did ${damage} damage to the enemy \n${herostat.health}❤️ \n${enemy.health}🖤`
-      );
-      if (hero.health < 1) {
-        console.log(` ||=====\ ======== //=====+=   ||=====\\ `);
-        console.log(` ||  -   |    ||    ||          ||  -   | `);
-        console.log(` ||  |   |    ||    ||---|      ||  |   | `);
-        console.log(` ||  1   |    ||    ||          ||  1   | `);
-        console.log(` ||=====// ======*= ||======\\ ||======// `);
-        start();
-      } else if (enemy.health < 1) {
-        console.log(" ==       ==  ========  ||     || |  ");
-        console.log(" ||  ___  ||     ||     || |   || |  ");
-        console.log(" ||   |   ||     ||     ||  |  || |  ");
-        console.log(" ||   1   ||     ||     ||   |||| |  ");
-        console.log("  |==|+|==//  ======*=  ||    ||   O  ");
-      }
-    } else if (options[index] === options[1]) {
-      let dodge = dodge(risk);
-      return dodge;
-    } else if (options[index] === options[2]) {
-      if (herostat.level > 3) {
-        return true;
-      } else {
-        console.log(`Do you even lift? Your level is too low, scrub.`);
-      }
-    } else if (options[index] === options[3]) {
-      const d2 = dice(2, 1);
-      if (d2 === 1) {
-        console.log(`How could 1 tail beat 2 heads? `);
-        fight(herostat, enemy, risk, next);
-      } else {
-        console.log(
-          `2 heads are indeed better than one. However, a hero never runs, the Heads beyond the skies have judged you and condemn thee to die`
-        );
-        quitGame();
-      }
+    switch (options[index]){
+      case 0:
+          const damage = dmg(herostat, enemy);
+          enemy.health = enemy.health - damage;
+          console.log(
+              `Hero did ${damage} damage to the enemy \n
+              ${herostat.health}❤️ \n${enemy.health}🖤`
+          );
+          if (hero.health < 1) {
+              showDialogue(deathRes)            
+              start();
+          } else if (enemy.health < 1) {
+              showDialogue(victoryRes)
+          };
+          break;
+      case 1:        
+      //lets move dodge to a global variable in fight()'s scope
+          let dodge = dodge(risk);
+          break;
+      case 2: 
+          //Special atk
+          hero.level > 3
+              ? true
+              : console.log(`Do you even lift? Your level is too low, scrub`)
+              break;
+      case 3: 
+          const coin = dice(2,1);
+          coin === 2
+              ? `Two heads are indeed better than one but a true hero never runs, the Heads beyond the skies have`
+              : hero.health - 1
+              break;
+      default:
+          quitGame();
     }
     const enDamage = enemyDmg(herostat, enemy);
     hero.health = hero.health - enDamage;
@@ -103,18 +109,10 @@ const fight = (herostat, enemy, risk, experience) => {
       `Enemy did ${enDamage} damage to our hero \nHP❤️ ${hero.health} \nHP🖤 ${enemy.health}`
     );
     if (hero.health < 1) {
-      console.log(` ||======\  ======== //=====+=  ||======\ `);
-      console.log(`  ||  -   |    ||    ||          ||  -   | `);
-      console.log(`  ||  |   |    ||    ||---|      ||  |   | `);
-      console.log(`  ||  1   |    ||    ||          ||  1   | `);
-      console.log(` ||======// ======*= ||======\\ ||======// `);
+      showDialogue(deathRes)
       start();
     } else if (enemy.health < 1) {
-      console.log(" ==       ==  ========  ||     || |  ");
-      console.log(" ||  ___  ||     ||     || |   || |  ");
-      console.log(" ||   |   ||     ||     ||  |  || |  ");
-      console.log(" ||   1   ||     ||     ||   |||| |  ");
-      console.log("  |==|+|==//  ======*=  ||    ||   O  ");
+      showDialogue(victoryRes);
     }
   }
 };
@@ -144,13 +142,31 @@ const showDialogue = (dialogue) => {
           : null
     }, 250);
 };
+
+const health = (passingValue, reward, risk) => {
+  let roll = dice(6, 1);
+  switch (roll){
+    case roll >= passingValue:
+      console.log(`Hero gains ${reward}💛`);
+      hero.health += reward;
+      break;
+    case roll < passingValue:
+      console.log(`+--------------------------------------------------------------------------------------+`)
+      console.log(` Hero takes ${risk}🖤`);
+      hero.health =- risk;
+      break;
+    default: 
+      console.log(`Whoa something went really wrong here`);
+  };
+};
+
   
 
 module.exports = {
     dice,
     dmg,
     fight,
-    enDamage,
+    enemyDmg,
     showDialogue,
     quitGame
 }

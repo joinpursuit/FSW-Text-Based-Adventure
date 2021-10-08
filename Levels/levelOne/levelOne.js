@@ -1,17 +1,18 @@
-import { dialogues } from "./dialogues";
-import {
+const { dialogues } = require("./dialogues");
+const {
   fight,
   showDialogue,
   quitGame
-} from "../../CoreFunctions/coreFunctions"
+} = require("../../CoreFunctions/coreFunctions");
 
 
 const levelOne = () => {
   showDialogue(dialogues.opening) 
   
   const rls1 = require("readline-sync");
-  let classPick = ["Sword", "Wand", "Rifle"];
+  let classPick = ["Sword", "Wand", "Rifle"];  
   let index = rls1.keyInSelect(classPick, "What weapon should I take?");
+  
   if (classPick[index] === classPick[0]) {
     showDialogue(dialogues.classPick_sword)
     stageOne()
@@ -86,7 +87,7 @@ const levelOne = () => {
     console.log("you made it!");
     quitGame();
   }
-}
+};
 
 module.exports = {
   levelOne

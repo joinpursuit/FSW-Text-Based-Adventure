@@ -59,8 +59,7 @@ const start_Quest = () => {
       i === len
         ? clearInterval(timer)
         : null
-    }, 250);
-    
+    }, 250);    
   }
   else {
     const len = dialogues.pickYes.length

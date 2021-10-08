@@ -31,6 +31,6 @@ const dmg = (herostat, enemy) => {
         return 0
     }
 }
-module.exports = dmg;
+export = dmg;
 
 

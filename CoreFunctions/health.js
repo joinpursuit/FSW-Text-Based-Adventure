@@ -29,6 +29,6 @@ const health = () => {
         console.log(`Whoa something went really wrong here`);
     }
 }
-module.exports = {
+export {
     health
 }

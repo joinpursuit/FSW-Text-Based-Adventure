@@ -20,7 +20,7 @@ const enemyDmg = (herostat, enemy) => {
     : 0
 };
 
-module.exports = enemyDmg
+export = enemyDmg
 
 
 

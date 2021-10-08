@@ -2,6 +2,6 @@ const constitutionRoll = () => {
     
 }
 
-module.exports = {
+export {
     constitutionRoll
 };

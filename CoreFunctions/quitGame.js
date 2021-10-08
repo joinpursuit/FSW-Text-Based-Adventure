@@ -11,4 +11,4 @@ const quitGame = () => {
     }
 };
   
-module.exports = quitGame;
+export = quitGame;

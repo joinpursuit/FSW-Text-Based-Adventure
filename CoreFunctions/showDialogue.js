@@ -11,6 +11,6 @@ const showDialogue = (dialogue) => {
     }, 250);
   };
 
-module.exports = {
+export {
     showDialogue
 }

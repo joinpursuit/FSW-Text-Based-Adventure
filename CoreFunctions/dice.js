@@ -8,5 +8,5 @@ const dice = (nat, min) => {
     return Math.floor(math.random)
 };
 
-module.exports = dice;
+export {dice};
 
