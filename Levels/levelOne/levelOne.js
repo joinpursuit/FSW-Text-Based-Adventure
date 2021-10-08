@@ -13,20 +13,21 @@ const levelOne = () => {
   let classPick = ["Sword", "Wand", "Rifle"];  
   let index = rls1.keyInSelect(classPick, "What weapon should I take?");
   
-  if (classPick[index] === classPick[0]) {
-    showDialogue(dialogues.classPick_sword)
-    stageOne()
-  }
-  else if (classPick[index] === classPick[1]) {
-    showDialogue(dialogues.classPick_wand)
-    stageOne();
-  }
-  else if (classPick[index] === classPick[2]) {
-    showDialogue(dialogues.classPick_rifle)
-    stageOne();
-  }
-  else {
-    quitGame();
+  switch (classPick[index]){
+    case 0: 
+      showDialogue(dislogues.classPick_sword)
+      stageOne()
+      break;
+    case 1:
+      showDialogue(dialogues.classPick_wand)
+      stageOne();
+      break;
+    case 2:
+      showDialogue(dialogues.classPick_rifle)
+      stageOne();
+      break;
+    default:
+      quitGame();
   }
   
   const stageOne = () => {
