@@ -5,7 +5,6 @@ const {
   quitGame
 } = require("../../CoreFunctions/coreFunctions");
 
-
 const levelOne = () => {
   showDialogue(dialogues.opening) 
   
@@ -29,7 +28,7 @@ const levelOne = () => {
     default:
       quitGame();
   }
-  
+
   const stageOne = () => {
     showDialogue(dialogues.stageOne.opening)
     

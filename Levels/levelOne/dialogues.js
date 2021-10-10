@@ -1,3 +1,4 @@
+const nameInput = require("../../HeroName.js")
 const dialogues = {
     opening: [
         `+ Winged Light => Hero! Qeldrin, Eater Of All has taken nest in the great bastion of        +`,
