@@ -1,4 +1,6 @@
-const nameInput = require("../../HeroName.js")
+const nameInput = require("../../HeroName.js");
+const {characterStats:{hero}} = require("../../Stats/characterStats-API.js");
+
 const dialogues = {
     opening: [
         `+ Winged Light => Hero! Qeldrin, Eater Of All has taken nest in the great bastion of        +`,
@@ -58,7 +60,7 @@ const dialogues = {
             `+---------------------------------------------------------------------------------------+`,
             `+ Qaspiel => (<_<) (>_>) (;_;) k then...                                                +`,
             `+ You fall down the hole and take some damage                                           +`,
-            `+ Your health is now ${heroStat[0]}!                                                    +`
+            `+ Your health is now ${hero.health}!                                                    +`
         ]
     },
     stageTwo: {
@@ -93,4 +95,4 @@ const dialogues = {
 
 module.exports = {
     dialogues
-}
+};

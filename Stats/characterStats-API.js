@@ -23,6 +23,8 @@ let characterStats = {
         experience: 0,
         description: 'Vegan veggiedom kink friendly!'
     }
-}
+};
 
-export = characterStats;
+module.exports = {
+    characterStats
+};
