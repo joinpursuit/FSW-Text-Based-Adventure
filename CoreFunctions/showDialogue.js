@@ -3,12 +3,12 @@ const showDialogue = (dialogue) => {
     const len = dialogue.length;
   
     const timer = setInterval(() => { 
-      console.log(dialogue[i]);
+      
         i++;
         i === len
           ? clearInterval(timer)
-          : null
-    }, 250);
+          : console.log(dialogue[i]);
+    }, 1_000);
   };
 
 export {
