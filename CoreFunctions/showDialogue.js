@@ -3,7 +3,6 @@ const showDialogue = (dialogue) => {
     const len = dialogue.length;
   
     const timer = setInterval(() => { 
-      
         i++;
         i === len
           ? clearInterval(timer)

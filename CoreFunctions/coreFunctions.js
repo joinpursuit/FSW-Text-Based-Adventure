@@ -1,7 +1,9 @@
+//all random events are based of this rng 'dice'
 const dice = (nat, min) => {
   return Math.floor(Math.random() * nat + min);
 };
 
+//Damage calculator
 const dmg = (herostat, enemy) => {
   const d6Roll = dice(6, 1);
   const critRoll = dice(3, 1);
@@ -34,6 +36,7 @@ const dmg = (herostat, enemy) => {
   }
 };
 
+//Enemy damage calculator
 const enemyDmg = (herostat, enemy) => {
   const d6 = dice(6, 1);
   const d2 = dice(2, 1);
@@ -49,6 +52,7 @@ const enemyDmg = (herostat, enemy) => {
   return d2 === 2 ? damage : 0;
 };
 
+//
 const fight = (herostat, enemy, risk, experience) => {
   const victoryRes = [
       ` ||=====\ //=====+=     ======   ||=====\\  `,

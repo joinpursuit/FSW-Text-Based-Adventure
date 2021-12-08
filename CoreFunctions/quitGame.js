@@ -8,7 +8,7 @@ const quitGame = () => {
     } else if (restart === false) {
       console.log("Til next time " + nameInput);
       process.exit();
-    }
+    };
 };
   
-export = quitGame;
+modules.exports = quitGame;
