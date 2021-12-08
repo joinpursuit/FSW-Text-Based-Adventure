@@ -1,3 +1,5 @@
+const { keyInYN } = require("readline-sync");
+
 //all random events are based of this rng 'dice'
 const dice = (nat, min) => {
   return Math.floor(Math.random() * nat + min);

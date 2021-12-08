@@ -10,6 +10,6 @@ const showDialogue = (dialogue) => {
     }, 1_000);
   };
 
-export {
+module.exports = {
     showDialogue
 }

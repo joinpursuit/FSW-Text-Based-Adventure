@@ -82,5 +82,4 @@ const start = () => {
 
 // start();
 
-// module.exports = start;
-export {start}
+module.exports = {start};
