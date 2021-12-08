@@ -80,6 +80,6 @@ const start = () => {
   setTimeout(start_Quest,10_000)  
 };
 
-start();
+// start();
 
 module.exports = start;
