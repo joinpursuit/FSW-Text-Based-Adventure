@@ -1,4 +1,10 @@
-const { keyInYN } = require("readline-sync");
+const { 
+  keyInYN,
+  question} = require("readline-sync");
+
+let nameInput = question("Enter your name: ");
+
+console.log(`Hello ${nameInput}!  Welcome to DragonRend.`);
 
 //all random events are based of this rng 'dice'
 const dice = (nat, min) => {
