@@ -14,7 +14,7 @@ const levelOne = () => {
   
   switch (classPick[index]){
     case 0: 
-      showDialogue(dislogues.classPick_sword)
+      showDialogue(dialogues.classPick_sword)
       stageOne()
       break;
     case 1:

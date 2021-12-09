@@ -1,6 +1,6 @@
 const { start } = require("./Start-n-Quit/start.js");
 const { levelOne } = require("./Levels/levelOne/levelOne.js");
 
-start();
+console.log(typeof start);
 levelOne();
 

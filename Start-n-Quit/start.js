@@ -36,37 +36,21 @@ const dialogues = {
   ]  
 };
 
-const showDialogue_start = () => {
-  let i = 0;
-  const len = dialogues.start.length;
-
-  const timer = setInterval(() => { 
-    console.log(dialogues.start[i]);
-      i++;
-      i === len
-        ? clearInterval(timer)
-        : null
-  }, 250);
-};
-
-const start_Quest = () => {
+const startQuest = () => {
   const start = keyInYN('Do you pick the flower?')
   let i = 0
 
   if (!start) {
     const len = dialogues.pickNo.length
     const timer = setInterval(() => {
-      
       i++
       i === len
         ? clearInterval(timer)
         : console.log(dialogues.pickNo[i])
-    }, 250);    
-  }
+    }, 250)}
   else {
     const len = dialogues.pickYes.length
     const timer = setInterval(() => {
-      
       i++
       i === len
         ? clearInterval(timer)
@@ -75,11 +59,24 @@ const start_Quest = () => {
   };
 };
 
-const start = () => {
-  showDialogue_start()
-  setTimeout(start_Quest,10_000)  
+const showDialogue_start = () => {
+  let i = 0;
+  const len = dialogues.start.length;
+
+  const timer = setInterval(() => { 
+    console.log(dialogues.start[i]);
+      i++;
+      i === len ? clearInterval(timer) : null
+  }, 250);
 };
 
-// start();
+const start = () => {
+  // showDialogue_start()
+  // setTimeout(start_Quest, 250)  
+  showDialogue_start() 
+  setTimeout(startQuest, 250)  
+};
+
+start();
 
 module.exports = {start};
