@@ -1,4 +1,5 @@
 const { keyInYN } = require("readline-sync");
+const {levelOne}= require('../Levels/levelOne/levelOne.js')
 const dialogues = {
   start:  [
     "+=======================================================================================+",
@@ -44,20 +45,36 @@ const startQuest = () => {
     const len = dialogues.pickNo.length
     const timer = setInterval(() => {
       i++
-      i === len
-        ? clearInterval(timer)
-        : console.log(dialogues.pickNo[i])
+      if (i === len){
+        clearInterval(timer)
+      }
+      else {
+        console.log(dialogues.pickNo[i])
+        levelOne()
+      }
+      // i === len
+      //   ? clearInterval(timer)
+      //   : console.log(dialogues.pickNo[i])
     }, 250)}
   else {
     const len = dialogues.pickYes.length
     const timer = setInterval(() => {
       i++
-      i === len
-        ? clearInterval(timer)
-        : console.log(dialogues.pickYes[i])
+      if (i === len){
+        clearInterval(timer)
+      }
+      else {
+        console.log(dialogues.pickYes[i])
+        //trigger restart
+      }
+      // i === len
+      //   ? clearInterval(timer)
+      //   : console.log(dialogues.pickYes[i])
     });
   };
 };
+
+///write a conditional looking at the truthiness of the heroName
 
 const showDialogue_start = () => {
   let i = 0;
@@ -66,7 +83,11 @@ const showDialogue_start = () => {
   const timer = setInterval(() => { 
     console.log(dialogues.start[i]);
       i++;
-      i === len ? clearInterval(timer) : null
+      if (i === len){
+        clearInterval(timer);
+        startQuest()
+      }
+      // i === len ? clearInterval(timer) : null
   }, 250);
 };
 
@@ -74,9 +95,9 @@ const start = () => {
   // showDialogue_start()
   // setTimeout(start_Quest, 250)  
   showDialogue_start() 
-  setTimeout(startQuest, 250)  
+  // setTimeout(()=>{startQuest()}, 8000)  
 };
 
-start();
+// start();
 
 module.exports = {start};
